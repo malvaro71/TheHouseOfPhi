@@ -1,0 +1,886 @@
+<!-- website structure
+    - index.html: This file will contains homepage content; the text and images that people see when they first go to the site.
+    - /images folder: This folder contains all the images used on the site.
+    - /styles folder: This folder contains the CSS code used to style the site content (for example, setting text and background colors).
+    - /scripts folder: This folder contains all the JavaScript code used to add interactive functionality to the site (e.g. buttons that load data when clicked).
+-->
+
+<!DOCTYPE html>
+<!--t is a required preamble.-->
+<!--<html> element wraps all the content on the entire page and is sometimes known as the root element.-->
+<!-- lang="en" declares the language of the Web page as English-->
+<html lang="en">
+<!-- <head> element acts as a container for all the stuff you want to include on the HTML page that isn't the content you are showing to your page's viewers.-->
+<head>
+    <!-- This element sets the character set your document should use to UTF-8 which includes most characters from the vast majority of written
+    languages-->
+    <meta charset="utf-8">
+
+    <!-- CODE TO EMBED FONTS FROM GOOGLE FONTS
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Math&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    -->
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <title>The House of Phi</title>
+    <!--This sets the title of your page, which is the title that appears in the browser tab the page is loaded in. It is also
+        used to describe the page when you bookmark/favorite it.-->
+    <meta name="author" content="Miguel Angel Alvaro">
+    <meta name="description" content="The Pre-Universitary Physics Area aims to provide Physics students with the necessary information to start a universitary Physics
+          course. Making enphasys in example exercises where main Physics and Mathematics concepts are used. And providing references to these concepts">
+    <!-- LOAD THE MATHJAX LIBRARY start -->
+    <!-- DOCS: https://docs.mathjax.org/en/latest/basic/mathematics.html -->
+    <!-- DEMO: https://github.com/mathjax/MathJax-demos-web -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- LOAD THE MATHJAX LIBRARY end -->
+</head>
+<!-- some format tips:
+<b> ... </b> (bold),
+<i> ... </i> (italic)
+<strong> ... </strong> (strong importance)
+<em> ... </em> (stress emphasis)
+<sub> ... </sub> (subindex)
+<br> (line break)
+-->
+<!--the body contains all the content that you want to show to web users when they visit your page-->
+<body>
+
+    <header>
+        <!-- id attribute define an unique identifier. Its purpose is to identify the element when linking, scripting, or styling -->
+        <h1 id="Home">PRE-UNIVERSITARY PHYSICS</h1>
+    </header>
+    <!--Navigation bar. Links to the site's main sections-->
+    <nav>
+        <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Vectors in Space">Vectors in Space</a></li>
+            <li><a href="#Geometry">Geometry</a></li>
+            <li><a href="#Vector Operations Exercises">Vector Operations Exercises</a></li>
+        </ul>
+
+        <!-- A Search form is another common non-linear way to navigate through a website. -->
+
+        <form>
+            <input type="search" name="q" placeholder="Search query">
+            <input type="submit" value="Go!">
+        </form>
+    </nav>
+
+    <article>
+        <h2 id="Vectors in Space">Vectors in Space</h2>
+
+        <p>
+            In this first chapter, we examine the concept of vector, the cartesian coordinate system, which are key mathematical tools for
+            dealing with vectors in more than one dimension, and the main vector operations. 
+        </p>
+
+        <section>
+            <h3>Vectors</h3>
+
+            <p>
+                A <strong>vector </strong>is a directed segment, one end of which (the point A) is said to be the origin,
+                while the other (the point B) is said to be the end of the vector. Such a vector may be denoted by <b><i>v</i></b>, 
+                <var class="vector1">v<span>&#8407;</span></var> or 
+                <var class="vector2">AB<span>&#8594;</span></var>.
+                A vector whose origin and end coincide is said to be a <strong>zero vector</strong>, and is usually denoted by <b><i>0</i></b>.   
+                The vector
+                <var class="vector2">BA<span>&#8594;</span></var> 
+                is said to be the vector <strong>oposite</strong> to
+                <var class="vector2">AB<span>&#8594;</span></var>. 
+                A vector with length equal to one is called a <strong>unit vector</strong>. Any direction may be assigned to a zero vector.
+            </p>
+
+            <figure class="centered">
+                <img src="images\Vector_101.svg"
+                    width="180"
+                    height="220" 
+                />
+
+                <figcaption>
+                    <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.            
+                    <a href="https://commons.wikimedia.org/wiki/User:Dnu72">Dnu72</a>, 
+                    <a href="https://commons.wikimedia.org/wiki/File:Vector_101.svg">Vector 101</a>
+                    , Color changed, 
+                    <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" rel="license">CC BY-SA 4.0</a>
+                </figcaption>
+            </figure>
+
+            <p>The vector origin is also named initial point or point of application. </p>
+
+            <p>
+                A geometric vector as defined above is also called a <strong>fixed vector</strong> or <strong>bound vector</strong> because it has an unique initial point.
+                In physics is used, for example, to specify the action of the force on deformable or non rigid body. In this instance, the forces and 
+                deformations within the body depend on the point of application of the force, as well as on the magnitude and line of action.
+            </p>
+
+            <p>
+                A class of equal vectors lying on the same straight line is said to be a <strong>sliding vector</strong>. 
+                An example of sliding vector is the action of a force on a rigid body. So, in this case, the point of application can be moved along the line detemined
+                by the vector direction.
+            </p>
+
+            <p>
+                If vectors are only characterized by magnitude and direction, then are called <strong>free vectors</strong>. Examples of free vectors
+                in physics are displacement, velocity and magnetic or electric field strength. In these cases, the vector can be moved to any point in the space
+            </p>
+
+            <p>
+                Vector calculus, which is the study of operations performed on vectors, is based on free vectors, since two given free vectors are 
+                equivalent to a given sliding vector or a given bound vector, as long as we keep in mind the physical meaning of the vector under analysis. 
+                From now on, <strong>we'll talk about free vectors if not mentioned otherwise</strong>. 
+            </p>
+
+            <p>
+                A vector is characterized: 
+                <ul>
+                    <li>
+                        by its <strong>modulus</strong> (or length), which is equal to the length of the segment <SPAN class="segment" >AB</SPAN> 
+                        and is denoted by |<b><i>v</i></b>|,
+                    </li>  
+                    <li>
+                        and by its <strong>direction</strong>: from A to B.
+                    </li>  
+                </ul>
+            </p>                       
+        </section>
+
+        <section>
+            <h3>Cartesian coordinate System</h3>
+
+            <p>
+                To specify the modulus and direction of a vector we need a coordinate system. There are three commonly used coordinate systems: Cartesian, cylindrical and spherical.
+                In this section we describe the Cartesian coordinate system. 
+            </p>
+
+            <p>
+                A <strong>Cartesian coordinate system in two dimensions</strong>  is defined by an ordered pair of perpendicular lines (axes), a single unit of length for both axes, 
+                and an orientation for each axis. The point where the axes meet is taken as the origin for both, thus turning each axis into a number line.
+            </p>
+
+            <p>
+                For any point P, a line is drawn through P perpendicular to each axis, and the position where it meets the axis is interpreted as a number. 
+                The two numbers, in that chosen order, are the Cartesian coordinates (x,y) of P.
+            </p>
+
+            <figure class="centered">
+                <img src="images\CartesianPlane.svg" 
+                    width="400" 
+                    height="400" 
+                />
+                
+                <figcaption><b>Figure 1.2</b> Cartesian plane and cartesian coordinates of a point.</figcaption> 
+            </figure>  
+
+            <p>
+                A <strong>Cartesian coordinate system in three dimensions</strong>  consists of three perpendicular axes: the x-axis, the y-axis, and the z-axis that go 
+                through a common point (the origin <b>0</b>).
+                Because each axis is a number line representing all real numbers in &#8477;, <!--&#8477; Unicode for real numbers-->
+
+                the three-dimensional system is often denoted by &#8477;<sup>3</sup>.
+            </p>
+
+            <p>
+                The cartesian coordinate system is also called a <strong>rectangular coordinate system</strong>  or
+                <strong>orthogonal coordinate system</strong>.
+            </p>
+
+            <p>
+                In Figure 1.3(a), the positive z-axis is shown above the plane containing the x- and y-axes.
+                The system displayed follows the right-hand rule. If we take our right hand and align the fingers with the positive x-axis, 
+                then curl the fingers so they point in the direction
+                of the positive y-axis, our thumb points in the direction of the positive z-axis. In this website, we always work with coordinate systems 
+                set up in accordance with the right-hand
+                rule. Some systems do follow a left-hand rule, but the right-hand rule is considered the standard representation.
+            </p> 
+
+            <figure class="centered">
+                <img src="images\3DCoordSystAndRightHandRule.svg" 
+                    width="600" 
+                    height="300" 
+                />
+                
+                <figcaption><b>Figure 1.3</b> (a) Three-dimensional rectangular coordinate system with the x-axis, the y-axis and the z-axis.
+                    (b) The right-hand rule is used to determine the placement of the coordinate axes in the standard Cartesian plane.</figcaption> 
+            </figure>   
+                
+            <p>
+                We describe a point in the three-dimensional rectangular coordinate system with the coordinates (<i>x</i>,<i>y</i>,<i>z</i>). Each coordinate describes how the point aligns with
+                the corresponding axis.
+            </p>     
+
+            <figure class="centered">
+                <img src="images\Rectangular_coordinates.svg"
+                    width="412"
+                    height="408" 
+                />
+
+                <figcaption><b>Figure 1.4</b> To plot the point P, with coordinates (<i>x</i>,<i>y</i>,<i>z</i>),  go  <i>x</i>  units along the x-axis, then  <i>y</i>  units in
+                    the direction of the y-axis, then  <i>z</i>  units in the direction of the z-axis.</figcaption>
+            </figure>
+
+            <p>
+                When the initial point of a vector coincides with the origin of the coordinate system, we call the vector a <strong>standar-position vector</strong>. 
+                Because the initial point of any vector in standard position is known to be  (0,0), we can describe the vector by looking at the coordinates of its terminal point.
+                Thus, if vector <b><i>v</i></b> has its initial point at the origin and its terminal point at (x,y),  we write the vector in component form as
+            </p>
+
+            <p class="centered">
+                <b><i>v</i></b> = ⟨x,y⟩.
+            </p>   
+
+            <p>             
+                When a vector is written in component form like this, the scalars x and y are called the <strong>components</strong>  of <b><i>v</i></b>.
+                When we need to perform calculations with vectors, we usually describe them as standar-position vectors because it is easier to perform such calculations.
+            </p>
+
+        </section>  
+
+        <section>
+            <h3>Vector Addition and scalar multiplication</h3>
+
+            <p>
+                The sum of two vectors <b><i>a</i></b> and <b><i>b</i></b>, or vector addition, produces a third vector <b><i>a + b</i></b>, the resultant vector.
+            </p>
+
+            <p>
+                To find <b><i>a + b</i></b>, we first draw the vector <b><i>a</i></b>, and from the terminal end of <b><i>a</i></b>, we drawn the vector <b><i>b</i></b>. 
+                In other words, we have the initial point of <b><i>b</i></b>  meet the terminal end of <b><i>a</i></b>. This position corresponds to the notion 
+                that we move along the first vector and then, from its terminal point, we move along the second vector.
+            </p>
+
+            <figure class="centered">
+                <img src="images\Vector_addition.svg"
+                    width="445"
+                    height="235" 
+                />
+
+                <figcaption><b>Figure 1.5</b> Vector addition. Graphical method.</figcaption>
+            </figure>
+
+            <p>
+                A <strong>scalar</strong> is a quantity that has magnitude but no direction. Or, in other words, a quantity that can be expressed by one (real) number.
+            </p>
+        </section>
+
+        <section>
+                <h3>References</h3> <!-- references to concepts used in this section. target="_blank" will display the link in a new tab.-->              
+            
+                <ul>
+                    <li>
+                        <a href="https://openstax.org/books/precalculus/pages/8-8-vectors" 
+                            target="_blank">
+                            8.8 Vectors. Precalculus. Openstax.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://encyclopediaofmath.org/index.php?title=Vector&oldid=49131" 
+                            target="_blank">
+                            Vector. Encyclopedia of Mathematics.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://encyclopediaofmath.org/index.php?title=Vector_algebra&oldid=49132" 
+                            target="_blank">
+                            Vector algebra. Encyclopedia of Mathematics.
+                        </a> 
+                    </li>
+                    <li>
+                        <a href="https://encyclopediaofmath.org/wiki/Cartesian_orthogonal_coordinate_system"
+                            target="_blank">
+                            Cartesian orthogonal coordinate system. Encyclopedia of Mathematics.
+                        </a>
+                    </li>
+                    <li>
+                         <a href="https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods"
+                            target="_blank">
+                            5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.
+                        </a>
+                    </li>
+                </ul>      
+        </section>
+    </article>
+
+    <article>
+        <h2 id="Geometry">Geometry</h2>
+
+        <section>
+            <h3>Pythagorean theorem</h3>
+            <p>
+                In any right triangle  ΔABC, where  c  is the length of the hypotenuse and a  and  b  are the lengths of the legs,
+            </p>
+            <p class="centered">
+                a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>.
+            </p>
+
+            <figure class="centered">
+                <img src="images\RightTriangle.svg" 
+                width="300"
+                height="225" />
+
+                <figcaption><b>Figure A.1</b> Right triangle with hypotenuse c and legs a and b.</figcaption>
+            </figure>                                   
+        </section>
+
+        <section > 
+            <h3>Graphical definitions of Sine, Cosine and Tangent Functions</h3>
+            <p>
+                Let's consider a circunference with radius of length r with centre at the origin <i>O</i> in a rectangular coordinate system, and a point P with coordinates (x,y)
+                 in the circunference.
+                And let's name &alpha; the angle between the x-axis and the segment <SPAN class="segment" >OP</SPAN>. Then, <b>sin &alpha;</b> is the ratio y/r,
+                
+                <b>cos &alpha;</b> is the ratio x/r and <b>tan &alpha;</b> is the ratio y/x.
+            </p>
+
+            <figure class="centered">
+                <img src="images\Circunference_and_coordinates.svg" 
+                width="300"
+                height="300" />
+
+                <figcaption><b>Figure A.2</b> circunference of radius r with a point P and angle &alpha; with x-axis.</figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <p><!-- references to concepts used in this section target="_blank" will display the link in a new tab.-->
+                <h4>References</h4>
+                <ul>
+                    <li>
+                        <a href="https://openstax.org/books/prealgebra-2e/pages/9-3-use-properties-of-angles-triangles-and-the-pythagorean-theorem#:~:text=of%20the%20hypotenuse.-,THE%20PYTHAGOREAN%20THEOREM,-In%20any%20right" 
+                            target="_blank">
+                            The Pitagorean Theorem. Prealgebra 2e. 9.3. Openstax.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://encyclopediaofmath.org/index.php?title=Pythagorean_theorem&oldid=40035" 
+                            target="_blank">
+                            Pythagorean theorem. Encyclopedia of Mathematics.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://encyclopediaofmath.org/wiki/Sine#:~:text=the%20hyperbolic%20sine.-,Comments,-Of%20course%2C"
+                            target="_blank">
+                            Sine. Encyclopedia of Mathematics.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mathsisfun.com/algebra/trigonometry.html#:~:text=gives%20the%20answers!-,Sine%2C%20Cosine%20and%20Tangent,-The%20main%20functions"
+                            target="_blank">
+                            Sine, Cosine and Tangent. Mathisfun.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry#:~:text=Using%20Right%20Triangles%20to%20Evaluate%20Trigonometric%20Functions"
+                            target="_blank">
+                            Using Right Triangles to Evaluate Trigonometric Functions. Openstax.
+                        </a>
+                    </li>
+                </ul>
+            </p>  
+        </section>
+    </article>
+ 
+    <article>
+        <h2 id="Vector Operations Exercises">VECTOR OPERATIONS EXERCISES</h2>
+        
+        <section >
+            <h3>Exercise 1</h3>
+            <p>
+                A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 36 km / h. The river water
+                flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
+            </p>
+
+            <p>
+                Lets represent the river in a coordinate plane where the water flows in same direction thant the x-axis, and the y-axis is perpendicular to the river bank.
+                Then, we represent <b><i>v<sub>r</sub></i></b> as water velocity and <b><i>v</i></b> as the velocity with which the boat is propelled. 
+                And decompose <b><i>v</i></b> into x and y parts.
+            </p>
+
+            <figure class="centered">
+                <img src="images\BoatAndRiver.svg" 
+                width="669" 
+                height="409" />  
+
+                <figcaption><b>Figure 2.1,</b> showing coordinate-plane, water velocity and boat velocity.</figcaption>
+            </figure>    
+             
+            <p>
+                Then,
+            </p>
+
+            <p class="centered">
+                <b><i>v<sub>r</sub></i></b> = (9 Km / h, 0), 
+            </p>
+
+            <p class="centered">
+                <b><i>v</i></b> = (v<sub>x</sub> , v<sub>y</sub>),
+            </p>
+
+            <p>
+                and the velocity of the boat wil be
+            </p>
+
+            <p class="centered">
+                <b><i>v</i></b> + <b><i>v<sub>r</sub></i></b> = (9 + v<sub>x</sub>, v<sub>y</sub>).
+            </p> 
+        
+            <p>
+                So  
+            </p>
+
+            <p class="centered">
+                9 + v<sub>x</sub> = 0 (to stay perpendicular to the river)
+            </p>    
+            
+            <p>
+                and
+            </p>    
+            
+            <p class="centered">
+                v<sub>y</sub> = 36 km / h,
+            </p>    
+        
+            <p class="centered">
+                <b><i>v</i></b> = (-9 Km / h , 36 Km / h)
+            </p>
+        
+            <p>
+                The magnitude of the vector <b><i>v</i></b> is the speed at wich the boat is propelled and it is expresed as |<b><i>v</i></b>|.
+            </p>
+
+            <div class="centered" class="eq-c" >
+                |<b><i>v</i></b>| =
+                <span class="radical">&radic;</span><span class="radicand">v<sub>x</sub><sup>2</sup> + v<sub>y</sub><sup>2</sup></span>
+                = <span class="radical">&radic;</span><span class="radicand">81+1296</span>
+                = <span class="radical">&radic;</span><span class="radicand">1377</span>
+                = 37.11 Km/h.
+            </div>
+            
+            <p>
+                The value of the angle &alpha; is the direction in wich the boat is propeled.  <br />
+            </p>
+
+            <!--
+            Code to insert a mathematical expressions using Mathjax and MathML:
+            Step 1: write the mathematical expression using a MathML editor, save it as MathML and then copy the MathML code.
+            Step 2: paste the MathML code between the <math> </math> tags; where <math display="block"> represents displayed mathematics and <math display="inline"> or just <math> represents in-line mathematics.
+            -->
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                <semantics>
+                    <mrow>
+                        <mrow>
+                            <mi>α</mi>
+                            <mo stretchy="false">=</mo>
+                            <mi>arctan</mi>
+                        </mrow>
+                        <mrow>
+                            <mrow>
+                                <mo fence="true" form="prefix" stretchy="false">(</mo>
+                                <mrow>
+                                    <mfrac>
+                                        <msub>
+                                            <mi>v</mi>
+                                            <mi>y</mi>
+                                        </msub>
+                                        <msub>
+                                            <mi>v</mi>
+                                            <mi>x</mi>
+                                        </msub>
+                                    </mfrac>
+                                </mrow>
+                                <mo fence="true" form="postfix" stretchy="false">)</mo>
+                            </mrow>
+                            <mo stretchy="false">=</mo>
+                            <mi>arctan</mi>
+                        </mrow>
+                        <mrow>
+                            <mrow>
+                                <mo fence="true" form="prefix" stretchy="false">(</mo>
+                                <mrow>
+                                    <mfrac>
+                                        <mn>36</mn>
+                                        <mrow>
+                                            <mo stretchy="false">−</mo>
+                                            <mn>9</mn>
+                                        </mrow>
+                                    </mfrac>
+                                </mrow>
+                                <mo fence="true" form="postfix" stretchy="false">)</mo>
+                            </mrow>
+                            <mo stretchy="false">=</mo>
+                            <mrow>
+                                <mo stretchy="false">−</mo>
+                                <msup>
+                                    <mn>76</mn>
+                                    <mi>O</mi>
+                                </msup>
+                            </mrow>
+                        </mrow>
+                    </mrow>
+                    <annotation encoding="StarMath 5.0">%alpha = arctan( { v_{y} } over {v_{x}} ) = arctan( {36} over {-9} ) =  -76^{O} </annotation>
+                </semantics>
+            </math>
+
+            <p>
+                Here is important to consider that:
+                <ul>
+                    <li>
+                        There are many angles which its tangent is -4 (or any other value). For the tangent, the firs two angles are &theta; and &theta; + 180º.
+                    </li>
+                    <li>
+                        The angle value given by the calculator is measured from positive side of the x axis.
+                    </li>
+                </ul> 
+            </p>
+
+            <p>
+                Then, first angle is -76º and second angle is 104º. Both measured from the positive side of the x axis. But the angle &alpha; represented in the drawing is measured between <b><i>v</i></b><sub>x</sub> and <b><i>v</i></b>. So, its value is 76º. <br />
+            And the boat must be propeled at a speed of 37.11 Km/h and in a direction that forms 76º with the port side of the river bank.
+            </p>   
+
+            <p> <!-- references to concepts used in this problem target="_blank" will display the link in a new tab. -->
+                <h4>References</h4>
+                <ul>
+                    <li>
+                        <a href="https://www.mathsisfun.com/definitions/coordinate-plane.html"
+                            target="_blank">
+                            [1] Coordinate Plane.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mathsisfun.com/algebra/vectors.html" 
+                            target="_blank">
+                            [2] Vectors.
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.mathsisfun.com/measure/speed-velocity.html"
+                            target="_blank">
+                            [3] Speed and Velocity.
+                        </a>
+                <a href="https://www.mathsisfun.com/algebra/trig-four-quadrants.html" target="_blank">[4] Sine, Cosine and Tangent in Four Quadrants.</a><br />
+                <br />
+                    
+                </ul>
+            </p>
+        </section>  
+
+        <section >  <!--Problem 2-->
+            <h3>Exercise 2</h3>
+            <p>
+                An object moves in such a way that its velocity at a certain instant is 120 m/s and forms an angle of 30º with the horizontal. Find the horizontal and vertical components of the velocity. Express the velocity vector as a function of its components.
+            </p>
+            <p>
+                The formulas to calculate the components of a vector <b><i>v</i></b> given its magnitude r and direction &theta; are: <br />
+                <b><i>v</i></b><sub>x</sub> = r&middot;cos&theta; <br />
+                <b><i>v</i></b><sub>y</sub> = r&middot;sen&theta; <br />
+                <b><i>v</i></b> = <b><i>v</i></b><sub>x</sub> + <b><i>v</i></b><sub>y</sub> <br />
+                Where r = 120 m/s, and &theta; = 30º. So <br />
+                <b><i>v</i></b><sub>x</sub> = 120&middot;cos30º = 120&middot;
+                <!--
+                Code to insert a mathematical expressions using Mathjax and MathML:
+                Step 1: write the mathematical expression using a MathML editor, save it as MathML and then copy the MathML code.
+                Step 2: paste the MathML code between the <math> </math> tags; where <math display="block"> represents displayed mathematics and <math display="inline"> or just <math> represents in-line mathematics.
+                -->
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                    <mrow>
+                        <mfrac>
+                            <msqrt>
+                                <mn>3</mn>
+                            </msqrt>
+                            <mi>2</mi>
+                        </mfrac>
+                    </mrow>
+                </math>
+                = 103.9 m/s<br />
+                <b><i>v</i></b><sub>y</sub> = 120&middot;sen30º = 120&middot;
+                <!--
+                Code to insert a mathematical expressions using Mathjax and MathML:
+                Step 1: write the mathematical expression using a MathML editor, save it as MathML and then copy the MathML code.
+                Step 2: paste the MathML code between the <math> </math> tags; where <math display="block"> represents displayed mathematics and <math display="inline"> or just <math> represents in-line mathematics.
+                -->
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                    <mrow>
+                        <mfrac>
+                            <mi>1</mi>
+                            <mi>2</mi>
+                        </mfrac>
+                    </mrow>
+                </math>
+                = 60 m/s
+                <!--
+                References to concepts used in this problem.
+                target="_blank" will display the link in a new tab.
+                -->
+            </p>
+            <p        
+                <h4>References</h4>
+                <a href="https://openstax.org/books/precalculus/pages/8-8-vectors" target="_blank">
+                    [1] Precalculus. 8.8 Vectors. Vector Components in Terms of Mangitude and Direction.
+                </a><br />
+                <a href="https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry" target="_blank">
+                [2] Algebra and Trigonometry. 7.2 Right Triangle Trigonometry.Finding Trigonometric Functions of Special Angles Using Side Lengths
+                </a><br />
+                <a href="https://openstax.org/books/algebra-and-trigonometry/pages/7-4-the-other-trigonometric-functions" target="_blank">
+                [3] Algebra and Trigonometry. 7.4 The Other Trigonometric Functions. Table 1
+            </a><br />
+            <br />
+        </p>
+    </section>
+
+        <!--Problem 3-->
+        <p>
+            Find the scalar product of the vectors 5<b><i>i</i></b> - 3<b><i>j</i></b> + 2<b><i>k</i></b>, -2<b><i>i</i></b> + <b><i>j</i></b> + 3<b><i>k</i></b> and the angle they form
+        </p>
+        <p>
+            The scalar product of two vectors <b><i>a</i></b> and <b><i>b</i></b>, given their components is <br />
+            <b><i>a</i></b> &middot; <b><i>b</i></b> = a<sub>x</sub>&middot;b<sub>x</sub> + a<sub>y</sub>&middot;b<sub>y</sub> + a<sub>z</sub>&middot;b<sub>z</sub> <br />
+            To find the angle between the two vectors (&phi;), use the formula below.<br />
+            <!--
+            code to insert a mathematical expressions using Mathjax and MathML:
+            Step 1: write the mathematical expression using a MathML editor, save it as MathML and then copy the MathML code.
+            Step 2: paste the MathML code between the <math> </math> tags; where <math display="block"> represents displayed mathematics and <math display="inline"> or
+            just <math> represents in-line mathematics.
+            -->
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                <semantics>
+                    <mrow>
+                        <mi>cos</mi>
+                        <mrow>
+                            <mrow>
+                                <mo fence="true" form="prefix" stretchy="false">(</mo>
+                                <mrow>
+                                    <mi>ϕ</mi>
+                                </mrow>
+                                <mo fence="true" form="postfix" stretchy="false">)</mo>
+                            </mrow>
+                            <mo stretchy="false">=</mo>
+                            <mfrac>
+                                <mrow>
+                                    <mstyle mathvariant="bold-italic">
+                                        <mi>a</mi>
+                                    </mstyle>
+                                    <mo stretchy="false">⋅</mo>
+                                    <mstyle mathvariant="bold-italic">
+                                        <mi>b</mi>
+                                    </mstyle>
+                                </mrow>
+                                <mrow>
+                                    <mrow>
+                                        <mo fence="true" form="prefix" stretchy="true">|</mo>
+                                        <mrow>
+                                            <mstyle mathvariant="bold-italic">
+                                                <mi>a</mi>
+                                            </mstyle>
+                                        </mrow>
+                                        <mo fence="true" form="postfix" stretchy="true">|</mo>
+                                    </mrow>
+                                    <mo stretchy="false">⋅</mo>
+                                    <mrow>
+                                        <mo fence="true" form="prefix" stretchy="true">|</mo>
+                                        <mrow>
+                                            <mstyle mathvariant="bold-italic">
+                                                <mi>b</mi>
+                                            </mstyle>
+                                        </mrow>
+                                        <mo fence="true" form="postfix" stretchy="true">|</mo>
+                                    </mrow>
+                                </mrow>
+                            </mfrac>
+                            <mo stretchy="false">=</mo>
+                            <mfrac>
+                                <mrow>
+                                    <mrow>
+                                        <msub>
+                                            <mi>a</mi>
+                                            <mi>x</mi>
+                                        </msub>
+                                        <mo stretchy="false">⋅</mo>
+                                        <msub>
+                                            <mi>b</mi>
+                                            <mi>x</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">+</mo>
+                                    <mrow>
+                                        <msub>
+                                            <mi>a</mi>
+                                            <mi>y</mi>
+                                        </msub>
+                                        <mo stretchy="false">⋅</mo>
+                                        <msub>
+                                            <mi>b</mi>
+                                            <mi>y</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mo stretchy="false">+</mo>
+                                    <mrow>
+                                        <msub>
+                                            <mi>a</mi>
+                                            <mi>z</mi>
+                                        </msub>
+                                        <mo stretchy="false">⋅</mo>
+                                        <msub>
+                                            <mi>b</mi>
+                                            <mi>z</mi>
+                                        </msub>
+                                    </mrow>
+                                </mrow>
+                                <mrow>
+                                    <mrow>
+                                        <mo fence="true" form="prefix" stretchy="true">|</mo>
+                                        <mrow>
+                                            <mstyle mathvariant="bold-italic">
+                                                <mi>a</mi>
+                                            </mstyle>
+                                        </mrow>
+                                        <mo fence="true" form="postfix" stretchy="true">|</mo>
+                                    </mrow>
+                                    <mo stretchy="false">⋅</mo>
+                                    <mrow>
+                                        <mo fence="true" form="prefix" stretchy="true">|</mo>
+                                        <mrow>
+                                            <mstyle mathvariant="bold-italic">
+                                                <mi>b</mi>
+                                            </mstyle>
+                                        </mrow>
+                                        <mo fence="true" form="postfix" stretchy="true">|</mo>
+                                    </mrow>
+                                </mrow>
+                            </mfrac>
+                        </mrow>
+                    </mrow>
+                    <annotation encoding="StarMath 5.0"> cos( %phi)    = frac {bold ital a   cdot bold ital b} {abs{ bold ital a  }  cdot abs{bold ital b}}  =  { a_{x} cdot b_{x} + a_{y} cdot b_{y} +a_{z} cdot b_{z} } over { abs{ bold ital a  }  cdot abs{bold ital b}   } </annotation>
+                </semantics>
+            </math>
+            <br />
+            So, (5<b><i>i</i></b> - 3<b><i>j</i></b> + 2<b><i>k</i></b>)&middot;(-2<b><i>i</i></b> + <b><i>j</i></b> + 3<b><i>k</i></b>) = 5&middot;(-2) + (-3)&middot;1 + 2&middot;3 =
+            (-10) + (-3) + 6 = -7
+            <br />
+            |<b><i>a</i></b>| =
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <semantics>
+                    <msqrt>
+                        <mn>25 + 9 + 4</mn>
+                    </msqrt>
+                    <annotation encoding="StarMath 5.0">sqrt{3} </annotation>
+                </semantics>
+            </math>
+            =
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <semantics>
+                    <msqrt>
+                        <mn>38</mn>
+                    </msqrt>
+                    <annotation encoding="StarMath 5.0">sqrt{3} </annotation>
+                </semantics>
+            </math>
+            <br />
+            |<b><i>b</i></b>| =
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <semantics>
+                    <msqrt>
+                        <mn>4 + 1 + 9</mn>
+                    </msqrt>
+                    <annotation encoding="StarMath 5.0">sqrt{3} </annotation>
+                </semantics>
+            </math>
+            =
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
+                <semantics>
+                    <msqrt>
+                        <mn>14</mn>
+                    </msqrt>
+                    <annotation encoding="StarMath 5.0">sqrt{3} </annotation>
+                </semantics>
+            </math>
+            <br />
+            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                <semantics>
+                    <mrow>
+                        <mrow>
+                            <mi>ϕ</mi>
+                            <mo stretchy="false">=</mo>
+                            <msup>
+                                <mi>cos</mi>
+                                <mrow>
+                                    <mo stretchy="false">−</mo>
+                                    <mn>1</mn>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                        <mrow>
+                            <mrow>
+                                <mo fence="true" form="prefix" stretchy="true">(</mo>
+                                <mrow>
+                                    <mfrac>
+                                        <mrow>
+                                            <mo stretchy="false">−</mo>
+                                            <mn>7</mn>
+                                        </mrow>
+                                        <mrow>
+                                            <msqrt>
+                                                <mn>38</mn>
+                                            </msqrt>
+                                            <mo stretchy="false">⋅</mo>
+                                            <msqrt>
+                                                <mn>14</mn>
+                                            </msqrt>
+                                        </mrow>
+                                    </mfrac>
+                                </mrow>
+                                <mo fence="true" form="postfix" stretchy="true">)</mo>
+                            </mrow>
+                            <mo stretchy="false">=</mo>
+                            <mn>107.67º</mn>
+                        </mrow>
+                    </mrow>
+                    <annotation encoding="StarMath 5.0">%phi = cos^{-1}left ( frac {-7} { sqrt{38}  cdot sqrt{14}  }  right ) = 107.67</annotation>
+                </semantics>
+            </math>
+            <br />
+
+            <!-- references to concepts used in this problem target="_blank" will display the link in a new tab.-->
+            <h3>References</h3>
+            <a href="https://openstax.org/books/university-physics-volume-1/pages/2-2-coordinate-systems-and-components-of-a-vector" target="_blank">
+                [1] Coordinate Systems and Components of a Vector.
+            </a><br />
+            <a href="https://openstax.org/books/university-physics-volume-1/pages/2-4-products-of-vectors" target="_blank">
+                [2] University Physics Volume 1. 2.4 Products of Vectors.
+            </a><br />
+            <br />
+        </p>
+
+
+        <p>
+            An airplane is moving with a speed of 600 km / h in the NE direction. Find the projection of its velocity in the east direction.
+        </p>
+        <p>
+            <!--
+            references to concepts used in this problem
+            target="_blank" will display the link in a new tab.
+            -->
+            <h3>References</h3>
+            <a href="https://openstax.org/books/calculus-volume-3/pages/2-3-the-dot-product" target="_blank">
+                [1] Calculus Volume 3. 2.3 The Dot Product. Projections.
+            </a><br />
+            <br />
+        </p>
+            
+        
+    </article>
+
+    
+
+    <footer>
+        <p>Made by M.A. Álvaro.</p>
+    </footer>
+
+</body>
+</html>

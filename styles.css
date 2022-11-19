@@ -1,0 +1,101 @@
+/* Variables definition */
+:root {
+    --base-color: #141f1f;
+    --text-color: rgb(207, 188, 153);
+  }
+
+/* || GENERAL STYLES */
+
+body {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    font-family: 'Times New Roman', Times, serif; 
+}
+
+p {
+    text-align: justify;
+    line-height: 1.3;
+}
+
+a:link {
+    color: green;
+}
+
+a:visited {
+    color: green;
+}
+
+.centered {
+    text-align: center;
+}
+
+/* || UTILITIES */
+
+/* WRITING MATHEMATICAL EQUATIONS ON THE WEB WITH CSS */
+/* https://www.periodni.com/mathematical_and_chemical_equations_on_web.html */
+
+/* Fraction */
+.fraction {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.2em 0.4ex;
+    text-align: center;
+}
+
+.fraction > span {
+    display: block;
+    padding-top: 0.15em;
+}
+
+.fraction span.fdn {
+    border-top: thin solid var(--text-color);
+}
+
+.fraction span.bar {
+    display: none;
+}
+
+/* Radical & Radicand in a root */
+.radical {
+    position: relative;
+    font-size: 1.6em;
+    vertical-align: middle;
+}
+
+.radicand {
+    padding: 0.25em 0.25em;
+    border-top: thin solid var(--text-color);
+}
+
+/* Exponent */
+.exponent {
+    position: relative;
+    top: -.8em;
+    left: -0.2em;
+    font-size: 70%;
+}
+
+/* Segment */
+span.segment {
+    text-decoration: overline;
+}
+
+/* Vector with a single letter*/
+var.vector1 span {
+    margin-left: -.2em;   /* shift the arrow back over the letter */
+    margin-right: .3em;
+    /*vertical-align : 0em;  tune the arrow vertical position */
+}
+
+/* Vector with two letters*/
+var.vector2 {
+    font-style : normal;
+    line-height: 0.1;
+  }
+
+var.vector2 span {
+    margin-left: -1.1em;   /* shift the arrow back over the letter */
+    margin-right: .3em;
+    vertical-align : .7em; /* tune the arrow vertical position */
+    line-height: 0.1;
+}
