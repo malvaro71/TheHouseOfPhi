@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="201.04138"
+   height="201.04138"
+   version="1.1"
+   id="svg16"
+   sodipodi:docname="Circunference_and_coordinates.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs20" />
+  <sodipodi:namedview
+     id="namedview18"
+     pagecolor="#d5ac75"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="true"
+     inkscape:zoom="3.26"
+     inkscape:cx="107.82209"
+     inkscape:cy="93.09816"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg16">
+    <inkscape:grid
+       type="xygrid"
+       id="grid7593"
+       originx="0"
+       originy="1.0413813" />
+  </sodipodi:namedview>
+  <path
+     d="m 100,3.0413813 q 1,6 3,8.9999997 -3,-2.9999997 -6,0 2,-2.9999997 3,-8.9999997 z m 98,97.9999987 m 0,0 q -6,1 -9,3 3,-3 0,-5.999999 3,1.999999 9,2.999999 z m -81.6,-10.399999 4,4 -3,1.5 z"
+     stroke="#000000"
+     stroke-width="1"
+     stroke-linejoin="miter"
+     stroke-miterlimit="8"
+     id="path2"
+     style="stroke:#592828;stroke-opacity:1" />
+  <circle
+     stroke-width="1.5"
+     r="85"
+     cx="100"
+     cy="101.04138"
+     stroke="#000000"
+     fill="none"
+     id="circle6"
+     style="stroke:#800000" />
+  <text
+     x="130"
+     y="71.041382"
+     font-size="15px"
+     id="text8"
+     style="font-size:15px;fill:#800000"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:serif;-inkscape-font-specification:'serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800000"
+       id="tspan2209">r</tspan></text>
+  <text
+     x="175.55215"
+     y="51.716228"
+     font-size="15px"
+     id="text8-5"
+     style="font-size:15px;fill:#800000"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:serif;-inkscape-font-specification:'serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800000"
+       id="tspan2209-9">P</tspan></text>
+  <text
+     x="130"
+     y="93.041382"
+     font-size="15px"
+     id="text10"
+     style="fill:#800000">α</text>
+  <text
+     x="133"
+     y="113.04138"
+     font-size="15px"
+     id="text12"
+     style="font-size:15px;fill:#800000"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:serif;-inkscape-font-specification:'serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800000"
+       id="tspan3537">x</tspan></text>
+  <text
+     x="172"
+     y="81.041382"
+     font-size="15px"
+     id="text14"
+     style="font-size:15px;fill:#800000"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:serif;-inkscape-font-specification:'serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800000"
+       id="tspan5621">y</tspan></text>
+  <path
+     d="M 100,201.04138 V 3.0413813 M 0,101.04138 h 198 m -98,0 70,-48.199999 v 48.199999 -4.999999 h -5 v 4.999999 m -45,0 a 20,20 0 0 0 -4,-10.999999"
+     stroke="#000000"
+     stroke-width="1.5"
+     fill="none"
+     stroke-linejoin="round"
+     id="path4"
+     style="fill:none;stroke:#721717;stroke-opacity:1" />
+  <text
+     x="84.685852"
+     y="114.10197"
+     font-size="15px"
+     id="text8-9"
+     style="font-size:15px;fill:#800000"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:serif;-inkscape-font-specification:'serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#800000"
+       id="tspan2209-4">O</tspan></text>
+</svg>

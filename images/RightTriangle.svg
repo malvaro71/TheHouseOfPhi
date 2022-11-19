@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="800"
+   height="600"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="RightTriangle.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs18" />
+  <sodipodi:namedview
+     id="namedview16"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.76838937"
+     inkscape:cx="374.15926"
+     inkscape:cy="240.11264"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <path
+     stroke="black"
+     stroke-width="5"
+     fill="#CCCCCC"
+     d="M 10,10 L 10,590 L 790,590 Z"
+     id="path2"
+     style="stroke:#800000;stroke-opacity:1;fill-opacity:1;fill:none" />
+  <path
+     stroke="red"
+     stroke-width="5"
+     fill="none"
+     d="M 10,540 L 60,540 L 60,590"
+     id="path4" />
+  <text
+     x="70"
+     y="520"
+     fill="red"
+     style="font-size: 70px;"
+     id="text6">90°</text>
+  <text
+     x="30"
+     y="300"
+     style="font-size:80px;fill:#a02c2c"
+     id="text8">a</text>
+  <text
+     x="440"
+     y="300"
+     style="font-size:80px;fill:#c83737"
+     id="text10">c</text>
+  <text
+     x="300"
+     y="570"
+     style="font-size:80px;fill:#a02c2c"
+     id="text12">b</text>
+</svg>
