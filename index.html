@@ -46,7 +46,10 @@
     <!-- LOAD THE MATHJAX LIBRARY end -->
 
     <!-- load the default AsciiMath configuration-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>--
+
+    <!-- loads page script file-->
+    <script src="scripts/main.js" defer></script>
 </head>
 <!-- some format tips:
 <b> ... </b> (bold),
@@ -316,8 +319,43 @@
                 y component is found y = sin&theta;.
             </p>
             <p>
-                this app finds vector magnitude and direction given its components.
+                click in the button to open an app that finds vector magnitude and direction given its components.
+                <button onclick="openForm()">Open Form</button>
             </p>
+            <form id="coordToMagDir" style="display: none">
+                <h2>Calculate vector magnitude and direction from given coordinates</h2>
+                <label for="xCoordinate">
+                    Vector X Coordinate:
+                </label>
+        
+                <input id="xCoordinate" type="number" name="xCoord" value="0" step="0.1">
+        
+                <label for="yCoordinate">
+                    Vector Y Coordinate:
+                </label>
+        
+                <input id="yCoordinate" type="number" name="yCoord" value="0" step="0.1">
+        
+                <label for="magnitude">
+                    Vector magnitude:
+                </label>
+        
+                <output id="magnitude" name="magnitude" for="xCoordinate yCoordinate">
+                </output>
+        
+                <label for="direction">
+                    Vector direction:
+                </label>
+        
+                <output id="direction" name="direction" for="xCoordinate yCoordinate">
+                </output>
+                º<br>
+        
+                <button onclick="closeForm()">Close Form</button><br>
+        
+                <canvas id="myCanvas" width="400" height="400" style="border:1px solid grey">
+                </canvas>
+            </form>
         </section>
 
         <aside>
