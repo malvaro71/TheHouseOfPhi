@@ -477,9 +477,32 @@
             </p>
 
             <p>
-                where `theta` is the angle between `vecv` and `vecw`.
+                Where `theta` is the angle between `vecv` and `vecw`.
+            </p>
+        </section>
+
+        <section>
+            <h3>Projection of one vector onto another.</h3>
+
+            <p>
+                The <strong>projection of `veca` onto `vecb`</strong>, denoted as `proj_b veca`, is a vector that lies on `vecb` and has a direction same as `vecb` (if the angle between `veca` and `vecb` is less than 90 degrees) or opposite to `vecb` (if the angle between `veca` and `vecb` is more than 90 degrees). The magnitude of this projection vector is equal to the component of 'veca` in the direction of `vecb`, which can be calculated as:
             </p>
 
+            <p>
+                &emsp; `abs(proj_b veca) = abs(veca)costheta
+            </p>
+
+            <p>
+                Where `theta` is the angle between `veca` and `vecb`.
+            </p>
+
+            <p>
+                Now, if we consider the scalar product of `veca` and `vecb`, the magnitude of `proj_b veca` can also expresed as:
+            </p>
+
+            <p>
+                &emsp; `abs(proj_b veca) = veca*vecb/abs(vecb)`
+            </p>
         </section>
 
         <aside>
