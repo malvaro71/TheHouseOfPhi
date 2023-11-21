@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="400" height="400">
-  <line x1="10" y1="10" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
-  <line x1="200" y1="200" x2="200.434" y2="197.031" style="stroke:rgb(255,0,0);stroke-width:2" />
-  <line x1="200" y1="200" x2="197.152" y2="199.058" style="stroke:rgb(255,0,0);stroke-width:2" />
+  <line x1="10" y1="200" x2="200" y2="10" style="stroke:rgb(255,0,0);stroke-width:2" />
+  <line x1="200" y1="10" x2="194.304" y2="11.8851" style="stroke:rgb(255,0,0);stroke-width:2" />
+  <line x1="200" y1="10" x2="200.867" y2="205.937" style="stroke:rgb(255,0,0);stroke-width:2" />
   <!-- 
     <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2" />
   -->
