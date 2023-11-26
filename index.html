@@ -79,15 +79,34 @@
             </p>
 
             <figure class="centered">
-                <img src="images\Vector_101.svg" width="180" height="220" />
+                <svg viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" width="180" height="220">
+
+                    <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                    </marker>
+
+                    <line x1="24" y1="210" x2="150" y2="5" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+
+                    <text x="0" y="205" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                        A
+                    </text>
+
+                    <text x="160" y="25" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                        B
+                    </text>
+
+                </svg>
+
 
                 <figcaption>
-                    <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to
-                    its terminal point B.
-                    <a href="https://commons.wikimedia.org/wiki/User:Dnu72">Dnu72</a>,
-                    <a href="https://commons.wikimedia.org/wiki/File:Vector_101.svg">Vector 101</a>
-                    , Color changed,
-                    <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode" rel="license">CC BY-SA 4.0</a>
+                    <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
                 </figcaption>
             </figure>
 
