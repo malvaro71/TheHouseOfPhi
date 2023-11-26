@@ -1,12 +1,4 @@
-<!-- website structure
-    - index.html: This file will contains homepage content; the text and images that people see when they first go to 
-    the site.
-    - /images folder: This folder contains all the images used on the site.
-    - /styles folder: This folder contains the CSS code used to style the site content (for example, setting text and 
-    background colors).
-    - /scripts folder: This folder contains all the JavaScript code used to add interactive functionality to the site 
-    (e.g. buttons that load data when clicked).
--->
+
 
 <!DOCTYPE html>
 <!-- lang="en" declares the language of the Web page as English-->
@@ -15,14 +7,6 @@
 <head>
     <!-- This element sets the character set your document should use to UTF-8 which includes most characters from the vast majority of written languages-->
     <meta charset="utf-8">
-
-    <!-- CODE TO EMBED FONTS FROM GOOGLE FONTS
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Math&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"-->
 
     <link rel="stylesheet" href="styles/styles.css">
 
@@ -42,7 +26,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>--
 
     <!-- loads page script file-->
-    <script src="scripts/main" defer></script>
+    <script src="scripts/main.js" defer></script>
 </head>
 
 <!--the body contains all the content that you want to show to web users when they visit your page-->
@@ -469,33 +453,40 @@
             <h3>Projection of one vector onto another.</h3>
 
             <p>
-                The <strong>projection of `veca` onto `vecb`</strong>, denoted as `proj_b veca`, is a vector that lies on `vecb` and has a direction same as `vecb` (if the angle between `veca` and `vecb` is less than 90 degrees) or opposite to `vecb` (if the angle between `veca` and `vecb` is more than 90 degrees). 
+                The <strong>projection of `vecv` onto `vecw`</strong>, denoted as `proj_w vecv`, is a vector that lies on `vecw` and has a direction same as `vecw` (if the angle between `vecv` and `vecw` is less than 90 degrees) or opposite to `vecw` (if the angle between `veca` and `vecb` is more than 90 degrees). 
             </p>
 
             <figure class="centered">
                 <img src="images\VectorProjection.svg" width="250" height="170" />
 
-                <figcaption><b>Figure 1.5</b> Projection of `veca` onto `vecb`.</figcaption>
+                <figcaption><b>Figure 1.5</b> Projection of `vecv` onto `vecw`.</figcaption>
             </figure>
 
             <p>
 
             </p>
-                The magnitude of this projection vector is equal to the component of `veca` in the direction of `vecb`, which can be calculated as:
+                The magnitude of this projection vector is equal to the component of `vecv` in the direction of `vecw`, which can be calculated as:
             <p>
-                &emsp; `abs(proj_b veca) = abs(veca)costheta`
+                &emsp; `abs(proj_w vecv) = abs(vecv)costheta`
             </p>
 
             <p>
-                Where `theta` is the angle between `veca` and `vecb`.
+                Where `theta` is the angle between `vecv` and `vecw`.
             </p>
 
             <p>
-                Now, if we consider the scalar product of `veca` and `vecb`, the magnitude of `proj_b veca` can also expresed as:
+                Now, if we consider the scalar product of `vecv` and `vecw`, the magnitude of `proj_w vecv` can also expresed as:
             </p>
 
             <p>
-                &emsp; `abs(proj_b veca) = veca*vecb/abs(vecb)`
+                &emsp; `abs(proj_w vecv) = vecv*vecw/abs(vecw) = vecv*vecu_w`
+            </p>
+
+            <p>
+                We can also calculate the magnitude of `proj_w vecv` using vector coordinates of `vecv` `(x_1, y_1, z_1)` and `vecw` `(x_2, y_2, z_2)` using the following expression:
+            </p>
+            <p>
+                &emsp; `abs(proj_w vecv) = (x_1*x_2 + y_1*y_2 + z_1*z_2)/sqrt(x_2^2+y_2^2+z_2^2)`
             </p>
         </section>
 
