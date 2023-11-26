@@ -250,26 +250,67 @@
             <h3>Cartesian coordinate System</h3>
 
             <p>
-                To specify the magnitude and direction of a vector we need a coordinate system. There are three commonly
-                used coordinate systems: Cartesian, cylindrical and spherical.
+                To specify the magnitude and direction of a vector we need a coordinate system. There are three commonly used coordinate systems: Cartesian, cylindrical and spherical.
                 In this section we describe the Cartesian coordinate system.
             </p>
 
             <p>
                 A <strong>Cartesian coordinate system in two dimensions</strong> is defined by an ordered pair of
-                perpendicular lines (axes), a single unit of length for both axes,
-                and an orientation for each axis. The point where the axes meet is taken as the origin for both, thus
-                turning each axis into a number line.
+                perpendicular lines (axes), a single unit of length for both axes, and an orientation for each axis. The point where the axes meet is taken as the origin for both, thus turning each axis into a number line.
             </p>
 
             <p>
-                For any point P, a line is drawn through P perpendicular to each axis, and the position where it meets
-                the axis is interpreted as a number.
-                The two numbers, in that chosen order, are the Cartesian coordinates (x, y) of P.
+                For any point P, a line is drawn through P perpendicular to each axis, and the position where it meetsthe axis is interpreted as a number. The two numbers, in that chosen order, are the Cartesian coordinates (x, y) of P.
             </p>
 
             <figure class="centered">
-                <img src="images\CartesianPlane.svg" width="400" height="400" />
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+                    <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                    </marker>
+
+                    <line x1="200" y1="400" x2="200" y2="0" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+
+                    <!-- <text x="210" y="25" font-size="25" stroke="brown" fill="brown">
+                        y-axis
+                    </text> -->
+
+                    <g transform="translate(180, 28)">
+                        <text transform="rotate(-90)" text-anchor="middle" dominant-baseline="central" font-size="20" stroke="brown" fill="brown">
+                            y-axis
+                        </text>
+                    </g>
+
+                    <line x1="0" y1="200" x2="400" y2="200" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+
+                    <text x="345" y="220" font-size="20" stroke="brown" fill="brown">
+                        x-axis
+                    </text>
+                    
+                    <text x="180" y="220" font-size="25" stroke="brown" fill="brown">
+                        O
+                    </text>
+
+                    <circle cx="250" cy="100" r="3" stroke="green" fill="green" />
+
+                    <line x1="250" y1="200" x2="250" y2="100" stroke="green" stroke-dasharray="5,5" />
+                    <line x1="250" y1="100" x2="200" y2="100" stroke="green" stroke-dasharray="5,5" />
+
+                    <text x="260" y="100" font-size="20" stroke="green" fill="green" stroke-width="0.6">
+                        P (x
+                        <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">1</tspan>
+                        <tspan dx="-5" dy="-8" font-size="20" stroke-width="0.6">, y</tspan>
+                        <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">1</tspan> 
+                        <tspan dx="-5" dy="-8" font-size="20" stroke-width="0.6">)</tspan>
+                      </text>
+                </svg>
 
                 <figcaption><b>Figure 1.2</b> Cartesian plane and cartesian coordinates of a point.</figcaption>
             </figure>
@@ -535,7 +576,71 @@
             </p>
 
             <figure class="centered">
-                <img src="images\VectorProjection.svg" width="250" height="170" />
+                <svg viewBox="0 0 250 170" xmlns="http://www.w3.org/2000/svg" width="300" height="204">
+                    <defs>
+                      <!-- Arrowhead marker definition -->
+                      <marker
+                        id="Bluearrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
+                      </marker>
+                  
+                      <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                      </marker>
+                  
+                      <marker
+                        id="Greenarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
+                      </marker>
+                    </defs>
+                  
+                    <line x1="10" y1="160" x2="200" y2="10" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
+                  
+                    <text x="90" y="83" font-size="25" stroke="blue" fill="blue" font-weight="bold">
+                      v
+                    </text>
+                  
+                    <line x1="10" y1="160" x2="250" y2="160" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+                  
+                    <text x="215" y="155" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                      w
+                    </text>
+                  
+                    <line x1="10" y1="160" x2="200" y2="160" stroke="blue" stroke-dasharray="5,5" stroke-width="2" marker-end="url(#Bluearrow)" />
+                  
+                    <text x="80" y="148" font-size="20" stroke="blue" fill="blue" font-weight="bold" stroke-width="0.6">
+                      proj
+                      <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">w</tspan>
+                      <tspan dx="-5" dy="-8" font-size="20" stroke-width="0.6" font-weight="bold">v</tspan> 
+                    </text>
+                  
+                    <line x1="200" y1="10" x2="200" y2="160" stroke="blue" stroke-dasharray="5,5" stroke-width="2"/>
+                  
+                    <path d="M 30 160 A 20 20 0 0 0 26 148" fill="transparent" stroke="blue"/>
+                  
+                    <text x="34" y="155" font-size="15" stroke="blue" fill="blue">
+                          &#x03B8; <!-- This is the unicode for lowercase theta -->
+                    </text>
+                </svg > 
 
                 <figcaption><b>Figure 1.5</b> Projection of `vecv` onto `vecw`.</figcaption>
             </figure>
