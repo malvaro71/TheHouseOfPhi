@@ -80,7 +80,6 @@
 
             <figure class="centered">
                 <svg viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" width="180" height="220">
-
                     <marker
                         id="Brownarrow"
                         viewBox="0 0 10 10"
@@ -101,9 +100,7 @@
                     <text x="160" y="25" font-size="25" stroke="brown" fill="brown" font-weight="bold">
                         B
                     </text>
-
                 </svg>
-
 
                 <figcaption>
                     <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
@@ -163,20 +160,82 @@
             <h3>Vector Addition, Graphical Method:</h3>
 
             <p>
-                The sum of two vectors `veca` and `vecb`, or vector addition, produces a third vector `vec(a+b)`,
-                 the resultant vector.`veca`
+                The sum of two vectors `veca` and `vecb`, or vector addition, produces a third vector `vec(a+b)`.
             </p>
 
             <p>
                 To find `vec(a+b)`, we first draw the vector `veca`, and from the terminal end of
-                `veca`, we drawn the vector `vecb`.
-                In other words, we have the initial point of `vecb` meet the terminal end of `veca`.
-                This position corresponds to the notion
-                that we move along the first vector and then, from its terminal point, we move along the second vector.
+                `veca`, we draw the vector `vecb`. In other words, we have the initial point of `vecb` meet the terminal end of `veca`. This position corresponds to the notion that we move along the first vector and then, from its terminal point, we move along the second vector. Vector addition has the conmutative property; so, if we first draw vector `vecb`, and from the terminal end of `vecb`, we draw the vector `vecba`, we will obtain `vec(b+a)`, that is equal to `vec(a+b)`. 
             </p>
 
             <figure class="centered">
-                <img src="images\Vector_addition.svg" width="445" height="235" />
+                <svg viewBox="0 0 230 240" xmlns="http://www.w3.org/2000/svg" width="230" height="240">
+                    <defs>
+                      <!-- Arrowhead marker definition -->
+                      <marker
+                        id="Bluearrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
+                      </marker>
+                  
+                      <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                      </marker>
+                  
+                      <marker
+                        id="Greenarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
+                      </marker>
+                    </defs>
+                  
+                    <line x1="80" y1="230" x2="20" y2="120" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+                  
+                    <text x="30" y="180" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                      a
+                    </text>
+                  
+                    <line x1="20" y1="120" x2="160" y2="10" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
+                  
+                    <text x="70" y="65" font-size="25" stroke="blue" fill="blue" font-weight="bold">
+                      b
+                    </text>
+                  
+                    <line x1="80" y1="230" x2="160" y2="10" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
+                  
+                    <text x="130" y="129" font-size="25" stroke="green" fill="green" font-weight="bold">
+                      a+b
+                    </text>
+
+                    <line x1="80" y1="230" x2="220" y2="120" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
+                  
+                    <text x="170" y="180" font-size="25" stroke="blue" fill="blue" font-weight="bold">
+                      b
+                    </text>
+
+                    <line x1="220" y1="120" x2="160" y2="10" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+                  
+                    <text x="195" y="65" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                      a
+                    </text>
+                  </svg > 
 
                 <figcaption><b>Figure 1.5</b> Vector addition. Graphical method.</figcaption>
             </figure>
