@@ -147,7 +147,7 @@
                 <li>
                     by its <strong>magnitude</strong> (or length), which is equal to the length of the segment <SPAN
                         class="segment">AB</SPAN>
-                    and is denoted by `abs(vecv)`,
+                    and is denoted by `norm(vecv)`,
                 </li>
                 <li>
                     and by its <strong>direction</strong>: from A to B.
@@ -402,7 +402,7 @@
             </p>
 
             <p>
-                &emsp;`abs(vecv) = sqrt(x^2+y^2)`.
+                &emsp;`norm(vecv) = sqrt(x^2+y^2)`.
             </p>
                 
             <p>
@@ -500,11 +500,11 @@
             </p>
 
             <p>
-                &emsp; `vecu_v = vecv/abs(vecv)`
+                &emsp; `vecu_v = vecv/norm(vecv)`
             </p>
 
             <p>
-                Note that vector magnitude `abs(vecv)` is an scalar, and dividing by a scalar is the same as multiplying by the reciprocal of the scalar 1/`abs(vecv)`.
+                Note that vector magnitude `norm(vecv)` is an scalar, and dividing by a scalar is the same as multiplying by the reciprocal of the scalar 1/`norm(vecv)`.
             </p>
         </section>
 
@@ -541,10 +541,10 @@
         </section>
 
         <section>
-            <h3>scalar product of two vectors</h3>
+            <h3>Scalar product of two vectors</h3>
 
             <p>
-                The scalar product (also known as the dot product) of two vectors is a number (scalar) that is obtained by multiplying the corresponding components of the two vectors and then adding those products.
+                The <strong>scalar product</strong> (also known as the <strong>dot product</strong>) of two vectors is a number (scalar) that is obtained by multiplying the corresponding components of the two vectors and then adding those products.
             </p>
 
             <p>
@@ -560,11 +560,14 @@
             </p>
 
             <p>
-                &emsp; `vecv*vecw = abs(vecv)abs(vecw)costheta`
+                &emsp; `vecv*vecw = norm(vecv)norm(vecw)costheta`
             </p>
 
             <p>
                 Where `theta` is the angle between `vecv` and `vecw`.
+            </p>
+            <p>
+                When the dot product of two vectors is zero, is said that both vectors are <strong>orthogonal</strong> (or perpendicular). 
             </p>
         </section>
 
@@ -650,7 +653,7 @@
             </p>
                 The magnitude of this projection vector is equal to the component of `vecv` in the direction of `vecw`, which can be calculated as:
             <p>
-                &emsp; `abs(proj_w vecv) = abs(vecv)costheta`
+                &emsp; `norm(proj_w vecv) = norm(vecv)costheta`
             </p>
 
             <p>
@@ -662,14 +665,42 @@
             </p>
 
             <p>
-                &emsp; `abs(proj_w vecv) = vecv*vecw/abs(vecw) = vecv*vecu_w`
+                &emsp; `norm(proj_w vecv) = vecv*vecw/norm(vecw) = vecv*vecu_w`
             </p>
 
             <p>
-                We can also calculate the magnitude of `proj_w vecv` using vector coordinates of `vecv` `(x_1, y_1, z_1)` and `vecw` `(x_2, y_2, z_2)` using the following expression:
+                We can also calculate the magnitude of `proj_w vecv` using vector coordinates of `vecv` ` << x_1, y_1, z_1 >> ` and `vecw` ` << x_2, y_2, z_2 >>` using the following expression:
             </p>
             <p>
-                &emsp; `abs(proj_w vecv) = (x_1*x_2 + y_1*y_2 + z_1*z_2)/sqrt(x_2^2+y_2^2+z_2^2)`
+                &emsp; `norm(proj_w vecv) = (x_1*x_2 + y_1*y_2 + z_1*z_2)/sqrt(x_2^2+y_2^2+z_2^2)`
+            </p>
+        </section>
+
+        <section>
+            <h3>Vector Cross Product.</h3>
+            <p>
+                The <strong>cross product</strong>, or <strong>vector product</strong>, is a binary operation on two vectors in three-dimensional space. It is written as <strong>`vecv xx vecw`</strong>. The result of the cross product is a vector that is perpendicular (or orthogonal) to the vectors being multiplied and normal to the plane containing them.
+            </p>
+            <p>
+                The magnitude (or length) of the cross product can be interpreted as the area of the parallelogram that the vectors span. If `vecv` and `vecw` are two vectors, and θ is the angle between them, the magnitude of the cross product is given by:  
+            </p>
+            <p>
+                &emsp; `norm(vecv xx vecw) = norm(vecv)norm(vecw)sin(theta)`
+            </p>
+            <p>
+                The direction of the cross product is determined by the right-hand rule. If you point your index finger in the direction of `vecv`, and your middle finger in the direction of `vecw`, your thumb points in the direction of `vecv xx vecw`.
+            </p>
+            <p>
+                In terms of its components, if `vecv = << x_1, y_1, z_1 >>` and `vecw = << x_2, y_2, z_2 >> `, the cross product `vecv xx vecw` is a vector defined as:
+            </p>
+            <p>
+                &emsp; `vecv xx vecw = << y_1*z_2 - z_1*y_2, z_1*x_2 - x_1*z_2, x_1*y_2 - y_1*x_2 >> `
+            </p>
+            <p>
+                Each component of this resulting vector is the determinant of a 2x2 matrix formed by eliminating the row and column of the corresponding component from a 3x3 matrix containing the unit vectors `veci`, `vecj`, `veck` in the first row, the components of `vecv` in the second row, and the components of `vecw` in the third row.
+            </p>
+            <p>
+                &emsp; `|[veci, vecj, veck], [x_1, y_1, z_1], [x_2, y_2, z_2]| = |[y_1, z_1], [y_2, z_2]|*veci - |[x_1, z_1], [x_2, z_2]|*vecj + |[x_1, y_1], [x_2, y_2]|*veck`
             </p>
         </section>
 
