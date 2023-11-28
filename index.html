@@ -682,11 +682,87 @@
                 The <strong>cross product</strong>, or <strong>vector product</strong>, is a binary operation on two vectors in three-dimensional space. It is written as <strong>`vecv xx vecw`</strong>. The result of the cross product is a vector that is perpendicular (or orthogonal) to the vectors being multiplied and normal to the plane containing them.
             </p>
             <p>
-                The magnitude (or length) of the cross product can be interpreted as the area of the parallelogram that the vectors span. If `vecv` and `vecw` are two vectors, and θ is the angle between them, the magnitude of the cross product is given by:  
+                 If `vecv` and `vecw` are two vectors, and θ is the angle between them, the magnitude of the cross product is given by:  
             </p>
             <p>
                 &emsp; `norm(vecv xx vecw) = norm(vecv)norm(vecw)sin(theta)`
             </p>
+            <p>
+                Then, the magnitude (or length) of the cross product can be interpreted as the area of the parallelogram that the vectors span.
+            </p>
+            <figure class="centered">
+                <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" width="600" height="204">
+                    <defs>
+                      <!-- Arrowhead marker definition -->
+                      <marker
+                        id="Bluearrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
+                      </marker>
+                  
+                      <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                      </marker>
+                  
+                      <marker
+                        id="Greenarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
+                      </marker>
+                    </defs>
+                    
+                    <!--Vector v-->
+                    <line x1="10" y1="160" x2="200" y2="10" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
+                  
+                    <text x="90" y="83" font-size="25" stroke="blue" fill="blue" font-weight="bold">
+                      v
+                    </text>
+                    
+                    <!--Vector w-->
+                    <line x1="10" y1="160" x2="250" y2="160" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+                  
+                    <text x="215" y="155" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                      w
+                    </text>
+
+                    <!--The other two sides of the parallelogram-->
+                    <line x1="250" y1="160" x2="440" y2="10" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
+
+                    <line x1="200" y1="10" x2="440" y2="10" stroke="brown" stroke-width="2" stroke-dasharray="5,5" />
+                  
+                    <!--angle theta and sin(theta)*v-->
+                    <line x1="200" y1="10" x2="200" y2="160" stroke="green" stroke-dasharray="5,5" stroke-width="2"/>
+
+                    <text x="210" y="83" font-size="20" stroke="green" fill="green" >
+                        ||v||*sin(&#x03B8;)
+                      </text>
+                  
+                    <path d="M 30 160 A 20 20 0 0 0 26 148" fill="transparent" stroke="green"/>
+                  
+                    <text x="34" y="155" font-size="15" stroke="green" fill="green">
+                          &#x03B8; <!-- This is the unicode for lowercase theta -->
+                    </text>
+                </svg > 
+
+                <figcaption><b>Figure 1.6</b> `norm(vecv xx vecw)` as parallelogram area.</figcaption>
+            </figure>
             <p>
                 The direction of the cross product is determined by the right-hand rule. If you point your index finger in the direction of `vecv`, and your middle finger in the direction of `vecw`, your thumb points in the direction of `vecv xx vecw`.
             </p>
@@ -702,6 +778,71 @@
             <p>
                 &emsp; `|[veci, vecj, veck], [x_1, y_1, z_1], [x_2, y_2, z_2]| = |[y_1, z_1], [y_2, z_2]|*veci - |[x_1, z_1], [x_2, z_2]|*vecj + |[x_1, y_1], [x_2, y_2]|*veck`
             </p>
+        </section>
+
+        <section>
+            <h3>Moment of a Sliding Vector About a Point</h3>
+
+            <p>
+                The <strong>moment of a sliding vector</strong> `vecv` about a point P is calculated using the cross product of a position vector `vecr` and the vector `vecv`.
+            </p>
+
+            <p>&emsp; `vecM = vecr xx vecv`</p>
+
+            <p>
+                The position vector, `vecr`, extends from the point of interest P to the origin of `vecv`.
+            </p>
+
+            <figure class="centered">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+                    <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                    </marker>
+
+                    <!-- y-axis -->
+                    <line x1="200" y1="400" x2="200" y2="0" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+
+                        <text x="180" y="20" font-size="20" stroke="brown" fill="brown">
+                            y
+                        </text>
+                    
+                    <!--x-axis-->
+                    <line x1="0" y1="200" x2="400" y2="200" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+
+                    <text x="345" y="220" font-size="20" stroke="brown" fill="brown">
+                        x
+                    </text>
+
+                    <!--Origin-->
+                    <text x="180" y="220" font-size="25" stroke="brown" fill="brown">
+                        O
+                    </text>
+
+                    <!--Point P-->
+                    <circle cx="150" cy="150" r="3" stroke="green" fill="green" />
+                    <text x="130" y="150" font-size="20" stroke="green" fill="green" stroke-width="0.6">
+                        P
+                    </text>
+
+                    <line x1="250" y1="200" x2="250" y2="100" stroke="green" stroke-dasharray="5,5" />
+                    <line x1="250" y1="100" x2="200" y2="100" stroke="green" stroke-dasharray="5,5" />
+
+                    
+                </svg>
+
+                <figcaption><b>Figure 1.7</b> Moment of a sliding vector `vecv` about point P.</figcaption>
+            </figure>
+
+            <p>The properties of the cross product allow us to conclude that `vecM is a vector perpendicular to the plane defined by `vecr` and `vecv`</p>
+
+            <p>This concept is fundamental in physics and engineering, as it helps us understand and calculate the effects of forces on the rotation of objects.</p>
         </section>
 
         <aside>
