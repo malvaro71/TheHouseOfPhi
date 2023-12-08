@@ -945,15 +945,17 @@
                             P
                         </text>
 
-                        <!--Vector v with origin at (50, 150, 30) (256, 264) and end at (40, 50, 40) (163,247)-->
-                        <line x1="256" y1="264" x2="163" y2="247" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
+                        <!--Vector v with origin at (50, 150, 30) (256, 264) and end at (20, 100, 20) (227,253), so vector v coordinates are <-30, -50, -10>-->
+                        <line x1="256" y1="264" x2="227" y2="253" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
                       
                         <text x="200" y="250" font-size="20" stroke="blue" fill="blue">
                           v
                         </text>
                        
-                        <!--Vector r with origin at (160, 90, 20) (118, 352) and end at (50, 150, 30) (256, 264)-->
+                        <!--Vector r with origin at (160, 90, 20) (118, 352) and end at (50, 150, 30) (256, 264), so vector r coordinates are <-110, 60, 10>-->
                         <line x1="118" y1="352" x2="256" y2="264" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
+
+                        <!--Vector w is the moment of sliding vector v about point P. This is the same as the croos product r*v; that is <-110, 60, 10>*<-30, -50, -10>. Using program CrossProduct the result is -->
                       
                         <text x="180" y="300" font-size="20" stroke="blue" fill="blue">
                           r
