@@ -354,12 +354,85 @@
             </p>
 
             <figure class="centered">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+                    <defs>
+                      <!-- Arrowhead marker definition -->
+                      <marker
+                        id="Bluearrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
+                      </marker>
+                  
+                      <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                      </marker>
+                  
+                      <marker
+                        id="Greenarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
+                      </marker>
+                    </defs>
+                  
+                    <line x1="80" y1="230" x2="20" y2="120" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+                  
+                    <text x="30" y="180" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                      a
+                    </text>
+                  
+                    <line x1="20" y1="120" x2="160" y2="10" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
+                  
+                    <text x="70" y="65" font-size="25" stroke="blue" fill="blue" font-weight="bold">
+                      b
+                    </text>
+                  
+                    <line x1="80" y1="230" x2="160" y2="10" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
+                  
+                    <text x="130" y="129" font-size="25" stroke="green" fill="green" font-weight="bold">
+                      a+b
+                    </text>
+
+                    <line x1="80" y1="230" x2="220" y2="120" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
+                  
+                    <text x="170" y="180" font-size="25" stroke="blue" fill="blue" font-weight="bold">
+                      b
+                    </text>
+
+                    <line x1="220" y1="120" x2="160" y2="10" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+                  
+                    <text x="195" y="65" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                      a
+                    </text>
+                  </svg > 
+
+                <figcaption>><b>Figure 1.5</b> To plot the point P, with coordinates (<i>x</i>, <i>y</i>, <i>z</   i>), go <i>x</i> units along the x-axis, then <i>y</i> units in the direction of the y-axis, then <i>z</i> units in the direction of the z-axis.</figcaption>
+            </figure>
+
+            <!--  
+            <figure class="centered">
                 <img src="images\Rectangular_coordinates.svg" width="412" height="408" />
 
                 <figcaption><b>Figure 1.5</b> To plot the point P, with coordinates (<i>x</i>, <i>y</i>, <i>z</i>), go
                     <i>x</i> units along the x-axis, then <i>y</i> units in
                     the direction of the y-axis, then <i>z</i> units in the direction of the z-axis.</figcaption>
-            </figure>
+            </figure> -->
         </section>
 
         <section>
