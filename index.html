@@ -390,54 +390,60 @@
                         <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
                       </marker>
                     </defs>
-                  
+
+                    <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
+
+                    <!--Z-axis-->
                     <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
                   
                     <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
                       z
                     </text>
-                  
+
+                    <!-- Y-axis-->
                     <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
                   
                     <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
                       y
                     </text>
 
+                    <!-- X-axis-->
                     <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
                   
                     <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
                       x
                     </text>
 
-                    <line x1="98" y1="301" x2="189" y2="301" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
+                    <!--Point P with coordinates (60,90,50)-->
+                    <circle cx="189" cy="251" r="3" stroke="blue" fill="blue" />
+                    <text x="180" y="247" font-size="20" stroke="blue" fill="blue">
+                        P
+                    </text>
+
+                    <!--Mark x1, y1 and z1 coordinates of point P on X, Y and Z axes-->
                     <text x="80" y="302" font-size="15" stroke="blue" fill="blue">
                         x
                         <tspan dx="-3" dy="3" font-size="10" stroke-width="0.3">1</tspan>
                     </text>
-
-                    <line x1="231" y1="259" x2="189" y2="301" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
                     <text x="235" y="252" font-size="15" stroke="blue" fill="blue">
                         y
                         <tspan dx="-3" dy="3" font-size="10" stroke-width="0.3">1</tspan>
                     </text>
-
-                    <line x1="141" y1="209" x2="99" y2="251" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
                     <text x="125" y="207" font-size="15" stroke="blue" fill="blue">
                         z
                         <tspan dx="-3" dy="3" font-size="10" stroke-width="0.3">1</tspan>
                     </text>
 
+                    <!--Draw lines of the paralelogram limited by point P, origin and X,Y,Z axes-->
+                    <line x1="98" y1="301" x2="189" y2="301" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
+                    <line x1="231" y1="259" x2="189" y2="301" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
+                    <line x1="141" y1="209" x2="99" y2="251" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
                     <line x1="99" y1="301" x2="99" y2="251" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
                     <line x1="99" y1="251" x2="189" y2="251" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
                     <line x1="141" y1="209" x2="231" y2="209" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
                     <line x1="231" y1="259" x2="231" y2="209" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
                     <line x1="231" y1="209" x2="189" y2="251" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
                     <line x1="189" y1="301" x2="189" y2="251" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
-
-                    <circle cx="189" cy="251" r="3" stroke="blue" fill="blue" />
-                    <text x="180" y="247" font-size="20" stroke="blue" fill="blue">
-                        P
-                    </text>
                   </svg > 
 
                 <figcaption><b>Figure 1.5</b> To plot the point P, with coordinates `(x_1, y_1, z_1)`, go `x_1` units along the x-axis, then `y_1` units in the direction of the y-axis, then `z_1` units in the direction of the z-axis.</figcaption>
@@ -872,53 +878,95 @@
             </p>
 
             <figure class="centered">
-                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
-                    <marker
-                        id="Brownarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                    </marker>
-
-                    <!-- y-axis -->
-                    <line x1="200" y1="400" x2="200" y2="0" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
-
-                        <text x="180" y="20" font-size="20" stroke="brown" fill="brown">
-                            y
+                <figure class="centered">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+                        <defs>
+                          <!-- Arrowhead marker definition -->
+                          <marker
+                            id="Bluearrow"
+                            viewBox="0 0 10 10"
+                            refX="10"
+                            refY="5"
+                            markerWidth="6"
+                            markerHeight="6"
+                            orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
+                          </marker>
+                      
+                          <marker
+                            id="Brownarrow"
+                            viewBox="0 0 10 10"
+                            refX="10"
+                            refY="5"
+                            markerWidth="6"
+                            markerHeight="6"
+                            orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                          </marker>
+                      
+                          <marker
+                            id="Greenarrow"
+                            viewBox="0 0 10 10"
+                            refX="10"
+                            refY="5"
+                            markerWidth="6"
+                            markerHeight="6"
+                            orient="auto-start-reverse">
+                            <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
+                          </marker>
+                        </defs>
+    
+                        <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
+    
+                        <!--Z-axis-->
+                        <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                      
+                        <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
+                          z
                         </text>
-                    
-                    <!--x-axis-->
-                    <line x1="0" y1="200" x2="400" y2="200" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+    
+                        <!-- Y-axis-->
+                        <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                      
+                        <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
+                          y
+                        </text>
+    
+                        <!-- X-axis-->
+                        <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                      
+                        <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
+                          x
+                        </text>
+    
+                        <!--Point P with coordinates (160, 90, 20) (118, 352)-->
+                        <circle cx="118" cy="352" r="3" stroke="blue" fill="blue" />
+                        <text x="105" y="352" font-size="20" stroke="blue" fill="blue">
+                            P
+                        </text>
 
-                    <text x="345" y="220" font-size="20" stroke="brown" fill="brown">
-                        x
-                    </text>
-
-                    <!--Origin-->
-                    <text x="180" y="220" font-size="25" stroke="brown" fill="brown">
-                        O
-                    </text>
-
-                    <!--Point P-->
-                    <circle cx="150" cy="150" r="3" stroke="green" fill="green" />
-                    <text x="130" y="150" font-size="20" stroke="green" fill="green" stroke-width="0.6">
-                        P
-                    </text>
-
-                    <line x1="250" y1="200" x2="250" y2="100" stroke="green" stroke-dasharray="5,5" />
-                    <line x1="250" y1="100" x2="200" y2="100" stroke="green" stroke-dasharray="5,5" />
-
-                    
-                </svg>
+                        <!--Vector v with origin at (50, 150, 30) (256, 264) and end at (40, 50, 40) (163,247)-->
+                        <line x1="256" y1="264" x2="163" y2="247" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
+                      
+                        <text x="200" y="250" font-size="20" stroke="blue" fill="blue">
+                          v
+                        </text>
+                       
+                        <!--Vector r with origin at (160, 90, 20) (118, 352) and end at (50, 150, 30) (256, 264)-->
+                        <line x1="118" y1="352" x2="256" y2="264" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
+                      
+                        <text x="180" y="300" font-size="20" stroke="blue" fill="blue">
+                          r
+                        </text>
+    
+                        
+                      </svg > 
+    
 
                 <figcaption><b>Figure 1.8</b> Moment of a sliding vector `vecv` about point P.</figcaption>
             </figure>
 
-            <p>The properties of the cross product allow us to conclude that `vecM is a vector perpendicular to the plane defined by `vecr` and `vecv`</p>
+            <p>The properties of the cross product allow us to conclude that `vecM` is a vector perpendicular to the plane defined by `vecr` and `vecv`</p>
 
             <p>This concept is fundamental in physics and engineering, as it helps us understand and calculate the effects of forces on the rotation of objects.</p>
         </section>
