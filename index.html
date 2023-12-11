@@ -983,7 +983,7 @@
             <h3>Moment of a Sliding Vector About a Line</h3>
 
             <p>
-                The moment of a sliding vector with respect to a line of interest g is the projection onto said line of the moment of the vector with respect to any point on the line.
+                The moment of a sliding vector about a line of interest g is the projection onto said line of the moment of the vector with respect to any point on the line.
             </p>
 
             <figure class="centered">
@@ -1114,6 +1114,42 @@
             <p>Finally, lets remember that:</p>
 
             <p>&emsp; `vecM_g = norm(vecM_g) * vecu_g`</p>
+        </section>
+
+        <section>
+            <h3>Vector Functions</h3>
+
+            <p>
+                A <strong>vector-valued function</strong>, also referred to as a <strong>vector function</strong>, is a mathematical function of one or more variables whose range is a set of vectors.
+            </p>
+            <p>
+                For example, a common type of vector-valued function is one that depends on a single real parameter t and produces a vector `vecf(t)` as the result. In terms of the standard unit vectors i, j, k of Cartesian 3D-space, these specific types of vector-valued functions are given by expressions such as:
+            </p>
+            <p> &emsp; `vecf(t)=f_x(t)veci+f_y(t)vecj+f_z(t)veck`</p>
+            <p>
+                where `f_x(t)`, `f_y(t)`, and `f_z(t)` are the coordinate functions of the parameter t, and the domain of this vector-valued function is the intersection of the domains of the functions `f_x`, `f_y`, and `f_z`.
+            </p>
+        </section>
+
+        <section>
+            <h3>Derivative of a vector-valued function</h3>
+            <p>
+                The derivative of a vector-valued function is nearly identical to the definition of a real-valued function of one variable. However, because the range of a vector-valued function consists of vectors, the same is true for the range of the derivative of a vector-valued function. That is:
+            </p>
+            <p> &emsp; `vecf'(t) = (dvecf)/dt = (df_x)/dtveci + (df_y)/dtvecj +(df_z)/dtveck`</p>
+        </section>
+
+        <section>
+            <h3>Partial derivative of a function and its Total derivative</h3>
+            <p>
+                If f depends of more than one variable, its <strong>partial derivative</strong> with respect to one of its variables is computed by taking the partial derivative of each component of the vector function with respect to that variable while considering the rest of variables remaining constant.
+            </p>
+            <p>The partial derivative of a function respect of one variable, x, is represented as:</p>
+            <p> &emsp; `(delf)/(delx)`</p>
+            <p>
+                Then the <strong>total derivative</strong> of the function `f(x,y,z)` is the expression:
+            </p>
+            <p>&emsp; `df = (delf)/(delx)dx + (delf)/(dely)dy + (delf)/(delz)dz`</p>
         </section>
 
         <aside>
