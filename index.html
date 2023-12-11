@@ -878,99 +878,222 @@
             </p>
 
             <figure class="centered">
-                <figure class="centered">
-                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
-                        <defs>
-                          <!-- Arrowhead marker definition -->
-                          <marker
-                            id="Bluearrow"
-                            viewBox="0 0 10 10"
-                            refX="10"
-                            refY="5"
-                            markerWidth="6"
-                            markerHeight="6"
-                            orient="auto-start-reverse">
-                            <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-                          </marker>
-                      
-                          <marker
-                            id="Brownarrow"
-                            viewBox="0 0 10 10"
-                            refX="10"
-                            refY="5"
-                            markerWidth="6"
-                            markerHeight="6"
-                            orient="auto-start-reverse">
-                            <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                          </marker>
-                      
-                          <marker
-                            id="Greenarrow"
-                            viewBox="0 0 10 10"
-                            refX="10"
-                            refY="5"
-                            markerWidth="6"
-                            markerHeight="6"
-                            orient="auto-start-reverse">
-                            <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-                          </marker>
-                        </defs>
-    
-                        <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
-    
-                        <!--Z-axis-->
-                        <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                      
-                        <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
-                          z
-                        </text>
-    
-                        <!-- Y-axis-->
-                        <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                      
-                        <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
-                          y
-                        </text>
-    
-                        <!-- X-axis-->
-                        <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                      
-                        <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
-                          x
-                        </text>
-                        <!--Graphic scale is 10:1; 10 units in the graphic equal to 1 unit in real space -->
-                        <!--Point P with coordinates (16, 9, 2) (118, 352)-->
-                        <circle cx="118" cy="352" r="3" stroke="blue" fill="blue" />
-                        <text x="100" y="365" font-size="20" stroke="blue" fill="blue">
-                            P
-                        </text>
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+                    <defs>
+                        <!-- Arrowhead marker definition -->
+                        <marker
+                        id="Bluearrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
+                        </marker>
+                    
+                        <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                        </marker>
+                    
+                        <marker
+                        id="Greenarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
+                        </marker>
+                    </defs>
 
-                        <!--Vector v with origin at (16, 17, 4) (198, 368) and end at (13, 18, 4) (229,311), so vector v coordinates are <-3, 1, 0>-->
-                        <line x1="198" y1="368" x2="229" y2="311" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />                     
-                        <text x="220" y="350" font-size="20" stroke="blue" fill="blue">
-                          v
-                        </text>
-                       
-                        <!--Vector r with origin at (16, 9, 2) (118, 352) and end at (16, 17, 4) (198, 368), so vector r coordinates are <0, 8, 2>-->
-                        <line x1="118" y1="352" x2="198" y2="368" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
-                        <text x="150" y="375" font-size="20" stroke="blue" fill="blue">
-                            r
-                        </text>
+                    <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
 
-                        <!--Vector w is the moment of sliding vector v about point P. This is the same as the croos product r*v; that is <0, 8, 2>*<-3, 1, 0>. Using program CrossProduct the result is <-2, -6, 24>. If we set its origin at P (16, 9, 2) (118, 352), its end is at (14, 3, 26) (72,98)-->
-                        <line x1="118" y1="352" x2="72" y2="98" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" font-weight="bold" />
-                        <text x="65" y="200" font-size="20" stroke="green" fill="green">
-                            M
-                        </text>  
-                      </svg > 
+                    <!--Z-axis-->
+                    <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                    
+                    <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
+                        z
+                    </text>
+
+                    <!-- Y-axis-->
+                    <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                    
+                    <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
+                        y
+                    </text>
+
+                    <!-- X-axis-->
+                    <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                    
+                    <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
+                        x
+                    </text>
+                    <!--Graphic scale is 10:1; 10 units in the graphic equal to 1 unit in real space -->
+                    <!--Point P with coordinates (16, 9, 2) (118, 352)-->
+                    <circle cx="118" cy="352" r="3" stroke="blue" fill="blue" />
+                    <text x="100" y="365" font-size="20" stroke="blue" fill="blue">
+                        P
+                    </text>
+
+                    <!--Vector v with origin at (16, 17, 4) (198, 368) and end at (13, 18, 4) (229,311), so vector v coordinates are <-3, 1, 0>-->
+                    <line x1="198" y1="368" x2="229" y2="311" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />                     
+                    <text x="220" y="350" font-size="20" stroke="blue" fill="blue">
+                        v
+                    </text>
+                    
+                    <!--Vector r with origin at (16, 9, 2) (118, 352) and end at (16, 17, 4) (198, 368), so vector r coordinates are <0, 8, 2>-->
+                    <line x1="118" y1="352" x2="198" y2="368" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
+                    <text x="150" y="375" font-size="20" stroke="blue" fill="blue">
+                        r
+                    </text>
+
+                    <!--Vector w is the moment of sliding vector v about point P. This is the same as the croos product r*v; that is <0, 8, 2>*<-3, 1, 0>. Using program CrossProduct the result is <-2, -6, 24>. If we set its origin at P (16, 9, 2) (118, 352), its end is at (14, 3, 26) (72,98)-->
+                    <line x1="118" y1="352" x2="72" y2="98" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" font-weight="bold" />
+                    <text x="65" y="200" font-size="20" stroke="green" fill="green">
+                        M
+                    </text>  
+                </svg > 
     
-
                 <figcaption><b>Figure 1.8</b> Moment of a sliding vector `vecv` about point P, `vecM = vecr xx vecv`.</figcaption>
             </figure>
 
-            <p>The properties of the cross product allow us to conclude that `vecM` is a vector perpendicular to the plane defined by `vecr` and `vecv`</p>
+            <p>
+                The properties of the cross product allow us to conclude that `vecM` is a vector perpendicular to the plane defined by `vecr` and `vecv` and it doesn't change if we move the sliding vector`vecv`  along its line of action. This is because the moment of a sliding vector is a measure of its tendency to cause rotation about a point or axis, which is determined by both the vector’s magnitude and its distance from the point or axis.
+            </p>
 
-            <p>This concept is fundamental in physics and engineering, as it helps us understand and calculate the effects of forces on the rotation of objects.</p>
+            <p>
+                When you slide a vector along its line of action, you’re not changing the sliding vector’s magnitude or the perpendicular distance from its line of action to the point or axis of interest. Therefore, the moment remains the same. This property is what makes it a “sliding vector”.
+            </p>
+
+            <p>
+                This concept is fundamental in physics and engineering, as it helps us understand and calculate the effects of forces on the rotation of objects.
+            </p> 
+        </section>
+
+        <section>
+            <h3>Moment of a Sliding Vector About a Line</h3>
+
+            <p>
+                The moment of a sliding vector with respect to a line of interest g is the projection onto said line of the moment of the vector with respect to any point on the line.
+            </p>
+
+            <figure class="centered">
+                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+                    <defs>
+                        <!-- Arrowhead marker definition -->
+                        <marker
+                        id="Bluearrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
+                        </marker>
+                    
+                        <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                        </marker>
+                    
+                        <marker
+                        id="Greenarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
+                        </marker>
+                    </defs>
+
+                    <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
+
+                    <!--Z-axis-->
+                    <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                    
+                    <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
+                        z
+                    </text>
+
+                    <!-- Y-axis-->
+                    <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                    
+                    <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
+                        y
+                    </text>
+
+                    <!-- X-axis-->
+                    <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                    
+                    <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
+                        x
+                    </text>
+                    <!--Graphic scale is 10:1; 10 units in the graphic equal to 1 unit in real space -->
+                    <!--Point P with coordinates (16, 9, 2) (118, 352)-->
+                    <circle cx="118" cy="352" r="3" stroke="blue" fill="blue" />
+                    <text x="100" y="365" font-size="20" stroke="blue" fill="blue">
+                        P
+                    </text>
+
+                    <!--Vector v with origin at (16, 17, 4) (198, 368) and end at (13, 18, 4) (229,311), so vector v coordinates are <-3, 1, 0>-->
+                    <line x1="198" y1="368" x2="229" y2="311" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />                     
+                    <text x="220" y="350" font-size="20" stroke="blue" fill="blue">
+                        v
+                    </text>
+                    
+                    <!--Vector r with origin at (16, 9, 2) (118, 352) and end at (16, 17, 4) (198, 368), so vector r coordinates are <0, 8, 2>-->
+                    <line x1="118" y1="352" x2="198" y2="368" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
+                    <text x="150" y="375" font-size="20" stroke="blue" fill="blue">
+                        r
+                    </text>
+
+                    <!--Vector w is the moment of sliding vector v about point P. This is the same as the croos product r*v; that is <0, 8, 2>*<-3, 1, 0>. Using program CrossProduct the result is <-2, -6, 24>. If we set its origin at P (16, 9, 2) (118, 352), its end is at (14, 3, 26) (72,98)-->
+                    <line x1="118" y1="352" x2="72" y2="98" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" font-weight="bold" />
+                    <text x="65" y="200" font-size="20" stroke="green" fill="green">
+                        M
+                    </text>  
+                </svg > 
+    
+                <figcaption><b>Figure 1.9</b> Moment of a sliding vector `vecv` about line g, `vecM_g = vecu_g * (vecr xx vecv)`.</figcaption>
+            </figure>
+                 
+            <p>
+                The moment of a sliding vector about a line g, `vecM_g` can be calculated using the cross and dot product of three vectors:
+                <ol>
+                    <li>Unit vector along the line of interest g, `vecu_g = << u_(gx), u_(gy), u_(gz) >> `.</li>
+                    <li>Position vector `vecr = << r_x, r_y, r_z >>` from any point along the line of interest g to any point on the line of action of the sliding vector P.</li>
+                    <li>The sliding vector `vecv = << v_x, v_y, v_z >> `.</li>
+                </ol>
+                That is:
+            </p>
+            
+            <p>&emsp; `vecM_g = vecu_g * (vecr xx vecv)`</p>
+
+            <p>
+                To streamline the calculations even further, mathematically we can combine the cross and dot product into what is known as a mixed triple product. In the mixed triple product we write the cross product as a determinant in the form:
+            </p>
+
+            <p> 
+                &emsp; `vecM_g = vecu_g * (vecr xx vecv) = |[u_(gx), u_(gy), u_(gz)], [r_x, r_y, r_z], [v_x, v_y, v_z]| = u_(gx)*|[r_y, r_z], [v_y, v_z]| - u_(gy)*|[r_x, r_z], [v_x, v_z]| + u_(gz)*|[r_x, r_y], [v_x, v_y]|`
+            </p>
         </section>
 
         <aside>
