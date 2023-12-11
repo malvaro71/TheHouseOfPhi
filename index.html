@@ -1065,18 +1065,34 @@
                         r
                     </text>
 
-                    <!--Vector w is the moment of sliding vector v about point P. This is the same as the croos product r*v; that is <0, 8, 2>*<-3, 1, 0>. Using program CrossProduct the result is <-2, -6, 24>. If we set its origin at P (16, 9, 2) (118, 352), its end is at (14, 3, 26) (72,98)-->
+                    <!--Vector M is the moment of sliding vector v about point P. This is the same as the croos product r*v; that is <0, 8, 2>*<-3, 1, 0>. Using program CrossProduct the result is <-2, -6, 24>. If we set its origin at P (16, 9, 2) (118, 352), its end is at (14, 3, 26) (72,98)-->
                     <line x1="118" y1="352" x2="72" y2="98" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" font-weight="bold" />
                     <text x="65" y="200" font-size="20" stroke="green" fill="green">
                         M
-                    </text>  
+                    </text> 
+                    
+                    <!--Line g with origin at (16, 9, -2) (118, 392) and end at (16, 9, 30) (118, 72), so vector r coordinates are <0, 8, 2>-->
+                    <line x1="118" y1="392" x2="118" y2="72" stroke="blue" stroke-width="2" />
+                    <text x="150" y="375" font-size="20" stroke="blue" fill="blue" font-weight="bold">
+                        r
+                    </text>
+
+                    <!-- Ug = <0, 0, 1>, M = <-2, -6, 24> so |Mg|=<0, 0, 1>*<-2, -6, 24>=<0, 0, 24>. If we draw Mg with origin at  P (16, 9, 2) (118, 352), then it ends at (16, 9, 26) (118, 112)-->
+                    <line x1="72" y1="98" x2="118" y2="112" stroke="green" stroke-width="2" stroke-dasharray="5,5" />
+                    <line x1="118" y1="352" x2="118" y2="112" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" stroke-dasharray="5" />
+                    <text x="125" y="200" font-size="20" stroke="green" fill="green">
+                        M
+                        <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">g</tspan>
+                    </text> 
+
+
                 </svg > 
     
-                <figcaption><b>Figure 1.9</b> Moment of a sliding vector `vecv` about line g, `vecM_g = vecu_g * (vecr xx vecv)`.</figcaption>
+                <figcaption><b>Figure 1.9</b> Moment of a sliding vector `vecv` about line g, `norm(vecM_g) = vecu_g * (vecr xx vecv)`.</figcaption>
             </figure>
                  
             <p>
-                The moment of a sliding vector about a line g, `vecM_g` can be calculated using the cross and dot product of three vectors:
+                The magnitude of the moment of a sliding vector about a line g, `norm(vecM_g)` can be calculated using the cross and dot product of three vectors:
                 <ol>
                     <li>Unit vector along the line of interest g, `vecu_g = << u_(gx), u_(gy), u_(gz) >> `.</li>
                     <li>Position vector `vecr = << r_x, r_y, r_z >>` from any point along the line of interest g to any point on the line of action of the sliding vector P.</li>
@@ -1085,15 +1101,19 @@
                 That is:
             </p>
             
-            <p>&emsp; `vecM_g = vecu_g * (vecr xx vecv)`</p>
+            <p>&emsp; `norm(vecM_g) = vecu_g * (vecr xx vecv)`</p>
 
             <p>
                 To streamline the calculations even further, mathematically we can combine the cross and dot product into what is known as a mixed triple product. In the mixed triple product we write the cross product as a determinant in the form:
             </p>
 
             <p> 
-                &emsp; `vecM_g = vecu_g * (vecr xx vecv) = |[u_(gx), u_(gy), u_(gz)], [r_x, r_y, r_z], [v_x, v_y, v_z]| = u_(gx)*|[r_y, r_z], [v_y, v_z]| - u_(gy)*|[r_x, r_z], [v_x, v_z]| + u_(gz)*|[r_x, r_y], [v_x, v_y]|`
+                &emsp; `norm(vecM_g) = vecu_g * (vecr xx vecv) = |[u_(gx), u_(gy), u_(gz)], [r_x, r_y, r_z], [v_x, v_y, v_z]| = u_(gx)*|[r_y, r_z], [v_y, v_z]| - u_(gy)*|[r_x, r_z], [v_x, v_z]| + u_(gz)*|[r_x, r_y], [v_x, v_y]|`
             </p>
+
+            <p>Finally, lets remember that:</p>
+
+            <p>&emsp; `vecM_g = norm(vecM_g) * vecu_g`</p>
         </section>
 
         <aside>
