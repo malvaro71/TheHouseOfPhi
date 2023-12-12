@@ -50,6 +50,7 @@ function drawLineWithArrowhead(pa, pb, headLength) {
 	ctx.lineTo(canvas.height, canvas.height / 2);
 	ctx.moveTo(canvas.height / 2, 0);
 	ctx.lineTo(canvas.height / 2, canvas.height);
+	ctx.strokeStyle = "red";
 	ctx.stroke();
 	//Name the X and Y asis
 	ctx.font = "10px Arial";
