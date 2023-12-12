@@ -40,7 +40,7 @@ function drawLineWithArrowhead(pa, pb, headLength) {
 	var dy = pb.y - pa.y;
 	var angle = Math.atan2(dy, dx);
 	//Define the style to use as "red", when drawing in the canvas context
-	ctx.strokeStyle = "red";
+	ctx.strokeStyle = "green";
 	//Clean previous arrow
 	ctx.clearRect(0, 0, canvas.height, canvas.height);
 	//draw x and y axis
@@ -50,10 +50,11 @@ function drawLineWithArrowhead(pa, pb, headLength) {
 	ctx.lineTo(canvas.height, canvas.height / 2);
 	ctx.moveTo(canvas.height / 2, 0);
 	ctx.lineTo(canvas.height / 2, canvas.height);
-	ctx.strokeStyle = "red";
+	ctx.strokeStyle = "green";
 	ctx.stroke();
 	//Name the X and Y asis
 	ctx.font = "10px Arial";
+	ctx.fillStyle = "red";
 	ctx.fillText("X", canvas.height - 10, canvas.height / 2 - 4);
 	ctx.fillText("Y", canvas.height / 2 - 10, 10);
 	// draw the line from pa to pb
@@ -70,6 +71,7 @@ function drawLineWithArrowhead(pa, pb, headLength) {
 	ctx.lineTo(pb.x + headLength * Math.cos(angle + 140 * Math.PI / 180),
 		pb.y + headLength * Math.sin(angle + 140 * Math.PI / 180));
 	// stroke the line and arrowhead
+	ctx.strokeStyle = "green";
 	ctx.stroke();
 }
 
