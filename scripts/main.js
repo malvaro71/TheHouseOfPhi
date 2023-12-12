@@ -7,20 +7,6 @@ function closeForm() {
 	document.getElementById("coordToMagDir").style.display = "none";
 }
 
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
-
-var p0 = { x: canvas.height / 2, y: canvas.height / 2 };
-var p2 = { x: 0, y: 0 };
-//set min and max input values
-document.getElementById("xCoordinate").min = -canvas.height / 2;
-document.getElementById("yCoordinate").min = -canvas.height / 2;
-document.getElementById("xCoordinate").max = canvas.height / 2;
-document.getElementById("yCoordinate").max = canvas.height / 2;
-//Call the function when some value is entered
-document.getElementById("xCoordinate").oninput = function () { updateMagnitudeAndDirection() };
-document.getElementById("yCoordinate").oninput = function () { updateMagnitudeAndDirection() };
-
 function updateMagnitudeAndDirection() {
 	const inpObj1 = document.getElementById("xCoordinate");
 	const inpObj2 = document.getElementById("yCoordinate");
@@ -83,3 +69,17 @@ function drawLineWithArrowhead(pa, pb, headLength) {
 	// stroke the line and arrowhead
 	ctx.stroke();
 }
+
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+
+var p0 = { x: canvas.height / 2, y: canvas.height / 2 };
+var p2 = { x: 0, y: 0 };
+//set min and max input values
+document.getElementById("xCoordinate").min = -canvas.height / 2;
+document.getElementById("yCoordinate").min = -canvas.height / 2;
+document.getElementById("xCoordinate").max = canvas.height / 2;
+document.getElementById("yCoordinate").max = canvas.height / 2;
+//Call the function when some value is entered
+document.getElementById("xCoordinate").oninput = function () { updateMagnitudeAndDirection() };
+document.getElementById("yCoordinate").oninput = function () { updateMagnitudeAndDirection() };
