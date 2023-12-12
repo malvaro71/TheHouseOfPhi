@@ -31,22 +31,34 @@
 <body>
     <header>
         <!-- id attribute define an unique identifier. Its purpose is to identify the element when linking, scripting, or styling -->
-        <h1 id="Home">PRE-UNIVERSITARY PHYSICS</h1>
+        <h1 id="Home" class="lang lang-en" >PRE-UNIVERSITARY PHYSICS</h1>
+        <h1 id="Home" class="lang lang-es" >FÍSICA PREUNIVERSITARIA</h1>
     </header>
 
-    <nav> <!--Navigation bar. Links to the site's main sections-->
+    <nav class="lang lang-en> <!--Navigation bar. Links to the site's main sections-->
         <ul>
             <li><a href="#Home">Home</a></li>
             <li><a href="#Vectors in Space">Vectors in Space</a></li>
             <li><a href="#Geometry">Geometry</a></li>
             <li><a href="#Vector Operations Exercises">Vector Operations Exercises</a></li>
         </ul>
-
-        <form><!-- A Search form is another common non-linear way to navigate through a website. -->
-            <input type="search" name="q" placeholder="Search query">
-            <input type="submit" value="Go!">
-        </form>
     </nav>
+
+    <nav class="lang lang-eS> <!--Navigation bar. Links to the site's main sections-->
+        <ul>
+            <li><a href="#Home">Inicio</a></li>
+            <li><a href="#Vectors in Space">Vectores</a></li>
+            <li><a href="#Geometry">Geometría</a></li>
+            <li><a href="#Vector Operations Exercises">Ejercicios sobre vectores</a></li>
+        </ul>
+    </nav>
+
+    </div>
+        <select id="langSelector">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    <div>
 
     <article>
         <h2 id="Vectors in Space">Vectors in Space</h2>
