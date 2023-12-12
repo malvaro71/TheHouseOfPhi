@@ -39,6 +39,8 @@ function drawLineWithArrowhead(pa, pb, headLength) {
 	var dx = pb.x - pa.x;
 	var dy = pb.y - pa.y;
 	var angle = Math.atan2(dy, dx);
+	//Set the fill style of the drawing object to the color red
+	ctx.fillStyle = "#FF0000";
 	//Clean previous arrow
 	ctx.clearRect(0, 0, canvas.height, canvas.height);
 	//draw x and y axis
