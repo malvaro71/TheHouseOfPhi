@@ -54,7 +54,7 @@ function drawLineWithArrowhead(pa, pb, headLength) {
 	ctx.stroke();
 	//Name the X and Y asis
 	ctx.font = "10px Arial";
-	ctx.fillStyle = "blue";
+	ctx.fillStyle = "brown";
 	ctx.fillText("X", canvas.height - 10, canvas.height / 2 - 4);
 	ctx.fillText("Y", canvas.height / 2 - 10, 10);
 	// draw the line from pa to pb
