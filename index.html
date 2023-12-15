@@ -853,25 +853,25 @@
 
         <section>
             <h3 class="lang lang-en">Vector Cross Product.</h3>
-            <h3 class="lang lang-es" lang="es">Vector Cross Product.</h3>
+            <h3 class="lang lang-es" lang="es">Producto Vectorial.</h3>
             <p class="lang lang-en">
-                The <strong>cross product</strong>, or <strong>vector product</strong>, is a binary operation on two vectors in three-dimensional space. It is written as <strong>`vecv xx vecw`</strong>. The result of the cross product is a vector that is perpendicular (or orthogonal) to the vectors being multiplied and normal to the plane containing them.
+                The <strong>cross product</strong>, or <strong>vector product</strong>, is a binary operation on two vectors in three-dimensional space. It is written as <strong>`vecv xx vecw`</strong>. The result of the cross product is a vector that is perpendicular (or orthogonal) to the vectors being multiplied or said in other way, normal to the plane containing them.
             </p>
             <p class="lang lang-es" lang="es">
-                The <strong>cross product</strong>, or <strong>vector product</strong>, is a binary operation on two vectors in three-dimensional space. It is written as <strong>`vecv xx vecw`</strong>. The result of the cross product is a vector that is perpendicular (or orthogonal) to the vectors being multiplied and normal to the plane containing them.
+                El <strong>producto vectorial</strong> de dos vectores es una operación binaria sobre dos vectores en un espacio tridimensional y se escribe como <strong>`vecv xx vecw`</strong>. El resultado de este producto vectorial es un tercer vector perpendicular (u ortogonal) a los vectores que se multiplican o dicho de otra forma, normal al plano que los contiene.
             </p>
             <p class="lang lang-en">
-                If `vecv` and `vecw` are two vectors, and θ is the angle between them, the magnitude of the cross product is given by:  
+                If `vecv` and `vecw` are two vectors, and θ is the angle between them, the magnitude of their cross product is given by:  
             </p>
             <p class="lang lang-es" lang="es">
-                If `vecv` and `vecw` are two vectors, and θ is the angle between them, the magnitude of the cross product is given by:  
+                Si `vecv` y `vecw` son dos vectores, y θ es el ángulo entre ellos, la magnitud de su producto vectorial viene dada por:  
            </p>
             <p> &emsp; `norm(vecv xx vecw) = norm(vecv)norm(vecw)sin(theta)` </p>
             <p class="lang lang-en">
                 Then, the magnitude (or length) of the cross product can be interpreted as the area of the parallelogram that the vectors span.
             </p>
             <p class="lang lang-es" lang="es">
-                Then, the magnitude (or length) of the cross product can be interpreted as the area of the parallelogram that the vectors span.
+                Entonces, la magnitud (o longitud) del producto vectorial se puede interpretar como el área del paralelogramo que abarcan los dos vectores que se multiplican.
             </p>
             <figure class="centered">
                 <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" width="600" height="204">
@@ -945,26 +945,26 @@
                 </svg > 
 
                 <figcaption class="lang lang-en"><b>Figure 1.7</b> `norm(vecv xx vecw)` as parallelogram area.</figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figure 1.7</b> `norm(vecv xx vecw)` as parallelogram area.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.7</b> `norm(vecv xx vecw)` como area del paralelogramo.</figcaption>
             </figure>
             <p class="lang lang-en">
                 The direction of the cross product is determined by the right-hand rule. If you point your index finger in the direction of `vecv`, and your middle finger in the direction of `vecw`, your thumb points in the direction of `vecv xx vecw`.
             </p>
             <p class="lang lang-es" lang="es">
-                The direction of the cross product is determined by the right-hand rule. If you point your index finger in the direction of `vecv`, and your middle finger in the direction of `vecw`, your thumb points in the direction of `vecv xx vecw`.
+                La dirección del producto vectorial está determinada por la regla de la mano derecha. Si apuntas con el dedo índice en la dirección de `vecv` y el dedo medio en la dirección de `vecw`, el pulgar apunta en la dirección de `vecv xx vecw`.
             </p>
             <p class="lang lang-en">
                 In terms of its components, if `vecv = << x_1, y_1, z_1 >>` and `vecw = << x_2, y_2, z_2 >> `, the cross product `vecv xx vecw` is a vector defined as:
             </p>
             <p class="lang lang-es" lang="es">
-                In terms of its components, if `vecv = << x_1, y_1, z_1 >>` and `vecw = << x_2, y_2, z_2 >> `, the cross product `vecv xx vecw` is a vector defined as:
+                Según sus componentes, si `vecv = << x_1, y_1, z_1 >>` y `vecw = << x_2, y_2, z_2 >> `, el producto vectorial `vecv xx vecw` es un vector definido como:
             </p>
             <p> &emsp; `vecv xx vecw = << y_1*z_2 - z_1*y_2, z_1*x_2 - x_1*z_2, x_1*y_2 - y_1*x_2 >> ` </p>
             <p class="lang lang-en">
                 Each component of this resulting vector is the determinant of a 2x2 matrix formed by eliminating the row and column of the corresponding component from a 3x3 matrix containing the unit vectors `veci`, `vecj`, `veck` in the first row, the components of `vecv` in the second row, and the components of `vecw` in the third row.
             </p>
             <p class="lang lang-es" lang="es">
-                Each component of this resulting vector is the determinant of a 2x2 matrix formed by eliminating the row and column of the corresponding component from a 3x3 matrix containing the unit vectors `veci`, `vecj`, `veck` in the first row, the components of `vecv` in the second row, and the components of `vecw` in the third row.
+                Cada componente de este vector resultante es el determinante de una matriz de 2x2 formada eliminando la fila y la columna del componente correspondiente de una matriz de 3x3 que contiene los vectores unitarios `veci`, `vecj`, `veck` en la primera fila, los componentes de `vecv` en la segunda fila, y los componentes de `vecw` en la tercera fila.
             </p>
             <p> &emsp; `|[veci, vecj, veck], [x_1, y_1, z_1], [x_2, y_2, z_2]| = |[y_1, z_1], [y_2, z_2]|*veci - |[x_1, z_1], [x_2, z_2]|*vecj + |[x_1, y_1], [x_2, y_2]|*veck` </p>
         </section>
