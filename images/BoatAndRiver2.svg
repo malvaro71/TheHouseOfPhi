@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- prueba del barco -->
+
+<svg
+  viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" width="180" height="220"> 
+	<path
+		d="m 75.786441,172.42735 q -0.583296,-7.876 -8.505576,-9.59485 -1.662294,7.66168 5.2073,11.71709 z"
+		stroke="brown"
+		style="fill:none" 
+	/> 
+</svg>
