@@ -2,9 +2,20 @@
 <!-- prueba del barco -->
 
 <svg
-  viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" width="180" height="220"> 
+  viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" width="180" height="220">
+	<marker
+        id="Boat"
+        viewBox="0 0 20 20"
+        refX="10"
+        refY="10"
+        markerWidth="6"
+        markerHeight="6"
+        orient="auto-start-reverse">
+    	<path d="M 0 5 q 10 -5 20 5 q -10 10 -20 5 z" stroke="brown" fill="brown" />
+    </marker>
+	
 	<path
-		d="m 90,172.42735 q -05.83296,-78.76 -85.05576,-95.9485 -16.62294,76.6168 52.073,117.1709 z"
+		d="M 0 5 q 10 -5 20 5 q -10 10 -20 5 z"
 		stroke="brown"
 		style="fill:none" 
 	/> 
