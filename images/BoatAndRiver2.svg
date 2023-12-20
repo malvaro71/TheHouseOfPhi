@@ -84,7 +84,7 @@
     <text x="230" y="160" font-size="25" stroke="brown" fill="brown">
 		y
 	</text>
-	<!--Vx <9,0> Km/h scale 4:1-->
+	<!--Vr <9,0> Km/h scale 4:1-->
 	<line x1="400" y1="250" x2="436" y2="250" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
     <text x="410" y="235" font-size="20" stroke="brown" fill="brown">
 		V
@@ -101,6 +101,13 @@
     <text x="210" y="340" font-size="20" stroke="green" fill="green">
 		V
 		<tspan dx="-5" dy="8" font-size="20" stroke-width="0.3">x</tspan>
+	</text>
+	<!--V <-9,36> Km/h scale 4:1-->
+	<line x1="214" y1="320" x2="214" y2="176" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
+	<line x1="250" y1="176" x2="214" y2="176" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
+	<line x1="250" y1="320" x2="214" y2="176" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
+    <text x="230" y="200" font-size="20" stroke="blue" fill="blue">
+		V
 	</text>
 	<!--Boat-->
 	<!--moves the object by 20 and 20, and rotates -104º with +angle clockwise-->
