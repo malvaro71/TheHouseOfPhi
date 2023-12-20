@@ -10,10 +10,10 @@
         River
     </text>
 	<!--moves the object by 20 and 20, and rotates -104º with +angle clockwise-->
-	<g transform="translate(20, 20) 
+	<g transform="translate(40, 40) 
 					rotate(-104, 10, 10)">
     	<path
-			d="M 0 5 q 10 -5 20 5 q -10 10 -20 5 z"
+			d="M 0 10 q 20 -10 40 10 q -20 20 -40 10 z"
 			stroke="brown"
 			style="fill:none" 
 		/>
