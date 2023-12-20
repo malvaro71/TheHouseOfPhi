@@ -106,7 +106,7 @@
 	<line x1="214" y1="320" x2="214" y2="176" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
 	<line x1="250" y1="176" x2="214" y2="176" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
 	<line x1="250" y1="320" x2="214" y2="176" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
-    <text x="230" y="220" font-size="20" stroke="blue" fill="blue">
+    <text x="226" y="220" font-size="20" stroke="blue" fill="blue">
 		V
 	</text>
 	<!--Boat-->
