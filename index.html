@@ -289,40 +289,26 @@
             </p>
             <figure class="centered">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
-                    <marker
-                        id="Brownarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                    </marker>
-
+					<!--y-axis-->
                     <line x1="200" y1="400" x2="200" y2="0" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
-
                     <g transform="translate(180, 28)">
                         <text transform="rotate(-90)" text-anchor="middle" dominant-baseline="central" font-size="20" stroke="brown" fill="brown">
                             y-axis
                         </text>
                     </g>
-
+					<!--x-axis-->
                     <line x1="0" y1="200" x2="400" y2="200" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
-
                     <text x="345" y="220" font-size="20" stroke="brown" fill="brown">
                         x-axis
                     </text>
-                    
+                    <!--Origin-->
                     <text x="180" y="220" font-size="25" stroke="brown" fill="brown">
                         O
                     </text>
-
+					<!--Point P-->
                     <circle cx="250" cy="100" r="3" stroke="green" fill="green" />
-
                     <line x1="250" y1="200" x2="250" y2="100" stroke="green" stroke-dasharray="5,5" />
                     <line x1="250" y1="100" x2="200" y2="100" stroke="green" stroke-dasharray="5,5" />
-
                     <text x="260" y="100" font-size="20" stroke="green" fill="green" stroke-width="0.6">
                         P (x
                         <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">1</tspan>
@@ -374,61 +360,22 @@
 
             <figure class="centered">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
-                    <defs>
-                      <!-- Arrowhead marker definition -->
-                      <marker
-                        id="Bluearrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-                      </marker>
-                  
-                      <marker
-                        id="Brownarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                      </marker>
-                  
-                      <marker
-                        id="Greenarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-                      </marker>
-                    </defs>
-
                     <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
 
                     <!--Z-axis-->
                     <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                  
                     <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
                       z
                     </text>
 
                     <!-- Y-axis-->
                     <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                  
                     <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
                       y
                     </text>
 
                     <!-- X-axis-->
                     <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                  
                     <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
                       x
                     </text>
@@ -741,42 +688,7 @@
             </p>
             <figure class="centered">
                 <svg viewBox="0 0 250 170" xmlns="http://www.w3.org/2000/svg" width="300" height="204">
-                    <defs>
-                      <!-- Arrowhead marker definition -->
-                      <marker
-                        id="Bluearrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-                      </marker>
-                  
-                      <marker
-                        id="Brownarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                      </marker>
-                  
-                      <marker
-                        id="Greenarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-                      </marker>
-                    </defs>
-                  
+                    
                     <line x1="10" y1="160" x2="200" y2="10" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
                   
                     <text x="90" y="83" font-size="25" stroke="green" fill="green" font-weight="bold">
@@ -872,71 +784,29 @@
                 Entonces, la magnitud (o longitud) del producto vectorial se puede interpretar como el área del paralelogramo que abarcan los dos vectores que se multiplican.
             </p>
             <figure class="centered">
-                <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" width="600" height="204">
-                    <defs>
-                      <!-- Arrowhead marker definition -->
-                      <marker
-                        id="Bluearrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-                      </marker>
-                  
-                      <marker
-                        id="Brownarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                      </marker>
-                  
-                      <marker
-                        id="Greenarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-                      </marker>
-                    </defs>
-                    
+                <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" width="600" height="204">    
                     <!--Vector v-->
                     <line x1="10" y1="160" x2="200" y2="10" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
-                  
                     <text x="90" y="83" font-size="25" stroke="blue" fill="blue" font-weight="bold">
                       v
                     </text>
                     
                     <!--Vector w-->
                     <line x1="10" y1="160" x2="250" y2="160" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
-                  
                     <text x="215" y="155" font-size="25" stroke="brown" fill="brown" font-weight="bold">
                       w
                     </text>
 
                     <!--The other two sides of the parallelogram-->
                     <line x1="250" y1="160" x2="440" y2="10" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
-
                     <line x1="200" y1="10" x2="440" y2="10" stroke="brown" stroke-width="2" stroke-dasharray="5,5" />
                   
                     <!--angle theta and sin(theta)*v-->
                     <line x1="200" y1="10" x2="200" y2="160" stroke="green" stroke-dasharray="5,5" stroke-width="2"/>
-
                     <text x="210" y="83" font-size="20" stroke="green" fill="green" >
                         ||v||*sin(&#x03B8;)
                       </text>
-                  
                     <path d="M 30 160 A 20 20 0 0 0 26 148" fill="transparent" stroke="green"/>
-                  
                     <text x="34" y="155" font-size="15" stroke="green" fill="green">
                           &#x03B8; <!-- This is the unicode for lowercase theta -->
                     </text>
@@ -1002,61 +872,22 @@
 
             <figure class="centered">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
-                    <defs>
-                        <!-- Arrowhead marker definition -->
-                        <marker
-                        id="Bluearrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-                        </marker>
-                    
-                        <marker
-                        id="Brownarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                        </marker>
-                    
-                        <marker
-                        id="Greenarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-                        </marker>
-                    </defs>
-
                     <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
 
                     <!--Z-axis-->
                     <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                    
                     <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
                         z
                     </text>
 
                     <!-- Y-axis-->
                     <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                    
                     <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
                         y
                     </text>
 
                     <!-- X-axis-->
                     <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                    
                     <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
                         x
                     </text>
@@ -1122,61 +953,22 @@
             </p>
             <figure class="centered">
                 <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
-                    <defs>
-                        <!-- Arrowhead marker definition -->
-                        <marker
-                        id="Bluearrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-                        </marker>
-                    
-                        <marker
-                        id="Brownarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                        </marker>
-                    
-                        <marker
-                        id="Greenarrow"
-                        viewBox="0 0 10 10"
-                        refX="10"
-                        refY="5"
-                        markerWidth="6"
-                        markerHeight="6"
-                        orient="auto-start-reverse">
-                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-                        </marker>
-                    </defs>
-
                     <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
 
                     <!--Z-axis-->
                     <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                    
                     <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
                         z
                     </text>
 
                     <!-- Y-axis-->
                     <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                    
                     <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
                         y
                     </text>
 
                     <!-- X-axis-->
                     <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-                    
                     <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
                         x
                     </text>
@@ -1218,8 +1010,6 @@
                         M
                         <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">g</tspan>
                     </text> 
-
-
                 </svg > 
     
                 <figcaption class="lang lang-en"><b>Figure 1.9</b> Moment of a sliding vector `vecv` about line g, `norm(vecM_g) = vecu_g * (vecr xx vecv)`.</figcaption>
@@ -1475,43 +1265,6 @@
 					height="410"
 					viewBox="0 0 670 410" 
 					xmlns="http://www.w3.org/2000/svg">
-					
-					<defs>
-				    <!-- Arrowhead marker definition -->
-						<marker
-							id="Bluearrow"
-							viewBox="0 0 10 10"
-							refX="10"
-							refY="5"
-							markerWidth="6"
-							markerHeight="6"
-							orient="auto-start-reverse">
-							<path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-						</marker>
-				  
-						<marker
-							id="Brownarrow"
-							viewBox="0 0 10 10"
-							refX="10"
-							refY="5"
-							markerWidth="6"
-							markerHeight="6"
-							orient="auto-start-reverse">
-							<path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-						</marker>
-				  
-					  	<marker
-							id="Greenarrow"
-							viewBox="0 0 10 10"
-							refX="10"
-							refY="5"
-							markerWidth="6"
-							markerHeight="6"
-							orient="auto-start-reverse">
-							<path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-					  	</marker>
-					</defs>
-					
 					<!--https://developer.mozilla.org/en-US/docs/Web/CSS/named-color-->
 					<!--Lower river bank-->
 					<rect
