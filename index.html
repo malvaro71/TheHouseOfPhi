@@ -1807,51 +1807,21 @@
 			<p class="lang lang-es" lang="es">
                 The formulas to calculate the components of a vector `vecv` given its magnitude `norm(vecv)` and direction &theta; are:
             </p>
-            <p> 
-                &emsp; `V_x = norm(vecv)*sin(theta)` <br />
-                <b><i>v</i></b><sub>y</sub> = r&middot;sen&theta; <br />
-                <b><i>v</i></b> = <b><i>v</i></b><sub>x</sub> + <b><i>v</i></b><sub>y</sub> <br />
-                Where r = 120 m/s, and &theta; = 30º. So <br />
-                <b><i>v</i></b><sub>x</sub> = 120&middot;cos30º = 120&middot;
-                <!--
-                Code to insert a mathematical expressions using Mathjax and MathML:
-                Step 1: write the mathematical expression using a MathML editor, save it as MathML and then copy the MathML code.
-                Step 2: paste the MathML code between the <math> </math> tags; where <math display="block"> represents displayed mathematics and <math display="inline"> or just <math> represents in-line mathematics.
-                -->
-                <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
-                    <mrow>
-                        <mfrac>
-                            <msqrt>
-                                <mn>3</mn>
-                            </msqrt>
-                            <mi>2</mi>
-                        </mfrac>
-                    </mrow>
-                </math>
-                = 103.9 m/s<br />
-                <b><i>v</i></b><sub>y</sub> = 120&middot;sen30º = 120&middot;
-                <!--
-                Code to insert a mathematical expressions using Mathjax and MathML:
-                Step 1: write the mathematical expression using a MathML editor, save it as MathML and then copy the MathML code.
-                Step 2: paste the MathML code between the <math> </math> tags; where <math display="block"> represents displayed mathematics and <math display="inline"> or just <math> represents in-line mathematics.
-                -->
-                <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline">
-                    <mrow>
-                        <mfrac>
-                            <mi>1</mi>
-                            <mi>2</mi>
-                        </mfrac>
-                    </mrow>
-                </math>
-                = 60 m/s
-                <!--
-                References to concepts used in this problem.
-                target="_blank" will display the link in a new tab.
-                -->
-            </p>
+            <p>&emsp; `vec(v_x) = norm(vecv)*cos(theta)*veci` </p>
+            <p>&emsp; `vec(v_y) = norm(vecv)*sin(theta)*vecj` </p>
+            <p>&emsp; `vecv = vec(v_x) + vec(v_y)` </p>
+            <p class="lang lang-en">    
+                Where `norm(vecv)` = 120 m/s, and &theta; = 30º. So
+			</p>
+			<p class="lang lang-es" lang="es">
+				Donde  `norm(vecv)` = 120 m/s, y &theta; = 30º. Así que
+			</p>
+			<p>&emsp; `v_x = 120*cos(30º) = 120*sqrt(3)/2`  = 103.9 m/s </p>
+			<p>&emsp; `v_y = 120*sin(30º) = 120*1/2` = 60 m/s </p>
+                
             <aside>
                 <h4 class="lang lang-en">References</h4>
-                <h4 class="lang lang-es" lang="es">References</h4>
+                <h4 class="lang lang-es" lang="es">Referencias</h4>
                 <ul>
                     <li>
                         <a href="https://openstax.org/books/precalculus/pages/8-8-vectors" target="_blank">
