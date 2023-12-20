@@ -2,15 +2,43 @@
 <!-- prueba del barco -->
 
 <svg
-	width="669" 
-	height="409"
-	viewBox="0 0 669 409" 
+	width="670" 
+	height="410"
+	viewBox="0 0 670 410" 
 	xmlns="http://www.w3.org/2000/svg">
+	<!--https://developer.mozilla.org/en-US/docs/Web/CSS/named-color-->
+	<!--Lower river bank-->
+	<rect
+       style="fill:#af634a;fill-opacity:0.84"
+       width="670"
+       height="50"
+       x="0"
+       y="360" />
+	<text x="165" y="390" font-size="25" stroke="black" font-weight="bold">
+        River bank
+    </text>
+	<!--Upper river bank-->
+	<rect
+       style="fill:#af634a;fill-opacity:0.84"
+       width="670"
+       height="50"
+       x="0"
+       y="0" />
+	<text x="165" y="30" font-size="25" stroke="black" font-weight="bold">
+        River bank
+    </text>
+	<!--River-->
+	<rect
+       style="fill:mediumaquamarine"
+       width="670"
+       height="310"
+       x="0"
+       y="50" />
 	<text x="165" y="192" font-size="25" stroke="brown" fill="brown" font-weight="bold">
         River
     </text>
 	<!--moves the object by 20 and 20, and rotates -104º with +angle clockwise-->
-	<g transform="translate(40, 40) 
+	<g transform="translate(40, 90) 
 					rotate(-104, 10, 10)">
     	<path
 			d="M 0 10 q 20 -10 40 10 q -20 20 -40 10 z"
