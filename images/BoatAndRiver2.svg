@@ -2,8 +2,15 @@
 <!-- prueba del barco -->
 
 <svg
-  viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" width="180" height="220">
-	<g transform="translate(20, 20)
+	width="669" 
+	height="409"
+	viewBox="0 0 669 409" 
+	xmlns="http://www.w3.org/2000/svg">
+	<text x="165" y="192" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+        River
+    </text>
+	<!--moves the object by 20 and 20, and rotates -104º with +angle clockwise-->
+	<g transform="translate(20, 20) 
 					rotate(-104, 10, 10)">
     	<path
 			d="M 0 5 q 10 -5 20 5 q -10 10 -20 5 z"
