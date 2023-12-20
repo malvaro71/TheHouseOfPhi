@@ -84,6 +84,24 @@
     <text x="230" y="160" font-size="25" stroke="brown" fill="brown">
 		y
 	</text>
+	<!--Vx <9,0> Km/h scale 4:1-->
+	<line x1="400" y1="250" x2="436" y2="250" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+    <text x="410" y="235" font-size="20" stroke="brown" fill="brown">
+		V
+		<tspan dx="-5" dy="8" font-size="20" stroke-width="0.3">r</tspan>
+	</text>
+	<!--Vy <0,36> Km/h scale 4:1-->
+	<line x1="250" y1="320" x2="250" y2="176" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
+    <text x="255" y="220" font-size="20" stroke="green" fill="green">
+		V
+		<tspan dx="-5" dy="8" font-size="20" stroke-width="0.3">y</tspan>
+	</text>
+	<!--Vx <-9,0> Km/h scale 4:1-->
+	<line x1="250" y1="320" x2="214" y2="320" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
+    <text x="210" y="340" font-size="20" stroke="green" fill="green">
+		V
+		<tspan dx="-5" dy="8" font-size="20" stroke-width="0.3">x</tspan>
+	</text>
 	<!--Boat-->
 	<!--moves the object by 20 and 20, and rotates -104º with +angle clockwise-->
 	<g transform="translate(230, 300) 
