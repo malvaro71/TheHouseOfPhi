@@ -86,8 +86,8 @@
 	</text>
 	<!--Boat-->
 	<!--moves the object by 20 and 20, and rotates -104º with +angle clockwise-->
-	<g transform="translate(230, 320) 
-					rotate(-104, 10, 10)">
+	<g transform="translate(230, 300) 
+					rotate(-104, 20, 20)">
     	<path
 			d="M 0 10 q 20 -10 40 10 q -20 20 -40 10 z"
 			stroke="brown"
