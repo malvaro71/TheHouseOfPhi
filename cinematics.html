@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- lang="en" declares the language of the Web page as English-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <title>Cinematics / Cinemática</title>
+    <!--This sets the title of your page, which is the title that appears in the browser tab the page is loaded in. It is also used to describe the page when you bookmark/favorite it.-->
+    <meta name="author" content="Miguel Angel Alvaro">
+    <meta name="description"
+        content="Subpage showing information about vectors. / 
+				Subpágina mostrando información sobre cinemática.">
+   
+	<!--To set the viewport of the page, which will give the browser instructions on how to control the page's dimensions and scaling.-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- LOAD THE MATHJAX LIBRARY start -->
+    <!-- DOCS: https://docs.mathjax.org/en/latest/basic/mathematics.html -->
+    <!-- DEMO: https://github.com/mathjax/MathJax-demos-web -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- LOAD THE MATHJAX LIBRARY end -->
+
+    <!-- load the default AsciiMath configuration  http://asciimath.org/ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+
+    <!-- loads page script file-->
+    <script src="scripts/main.js" defer></script>
+</head>
+
+<!--the body contains all the content that you want to show to web users when they visit your page-->
+<body>
+    <header>
+        <!-- id attribute define an unique identifier. Its purpose is to identify the element when linking, scripting, or styling -->
+        <h1 id="Home" class="lang lang-en" >CINEMATICS</h1>
+        <h1 id="Home" class="lang lang-es" lang="es" >CINEMÁTICA</h1>
+    </header>
+	<p>Please, choose English or Spanish language. / Por favor, elige entre idioma Español o Inglés.</p>
+    </div>
+		<!--<select onchange="changeLanguage(this.value)">-->
+		<select id="langSelector">
+			<option value="en">English</option>
+			<option value="es">Español</option>
+		</select>
+    <div>
+
+	<nav class="lang lang-en"> <!--Navigation bar. Links to the site's main sections-->
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="#Vectors in Space">Vectors in Space</a></li>
+		</ul>
+	</nav>
+
+	<nav class="lang lang-es" lang="es"> <!--Navigation bar. Links to the site's main sections-->
+		<ul>
+			<li><a href="index.html">Inicio</a></li>
+			<li><a href="#Vectores">Vectores</a></li>
+		</ul>
+	</nav>
+
+    <article>
+		<h2 id="Vectors in Space" class="lang lang-en">Vectors in Space</h2>
+        <h2 id="Vectores" class="lang lang-es" lang="es">Vectores</h2>
+	</article>
+</body>
+
+</html>
