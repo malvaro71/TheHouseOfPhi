@@ -40,8 +40,24 @@ a:visited {
     color: green;
 }
 
+
 .centered {
     text-align: center;
+}
+.container {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.right {
+    margin-left: auto;
 }
 
 /* || UTILITIES */
