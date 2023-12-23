@@ -45,7 +45,7 @@
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="#Introducción">Introducción</a></li>
-            <li><a href="#Ejercicios con Introducción">Ejercicios sobre vectores</a></li>
+            <li><a href="#Ejercicios con vectores">Ejercicios sobre vectores</a></li>
         </ul>
     </nav>
 
@@ -404,8 +404,8 @@
     </section>
 
     <section><!--1.5 Vector components-->
-        <h3 class="lang lang-en">1.5 Vector components </h3>
-        <h3 class="lang lang-es" lang="es">1.5 Componentes de un Vector</h3>
+        <h3 class="lang lang-en" id="Vector components">1.5 Vector components </h3>
+        <h3 class="lang lang-es" lang="es" id="Componentes de un Vector">1.5 Componentes de un Vector</h3>
         <p class="lang lang-en">
             When the initial point of a vector coincides with the origin of the coordinate system, we call the
             vector a <strong>standard-position vector</strong>. Because the initial point of any vector in standard position is known to be (0,0), we can describe the vector by looking only at the coordinates of its terminal point. Thus, if vector `vecv` has its initial point at the origin and its terminal point at (x, y), we write the vector in component form as
@@ -428,8 +428,8 @@
     </section>
 
     <section><!--1.6 Relationship between vector components and its magnitude and orientation-->
-        <h3 class="lang lang-en">1.6 Relationship between vector components and its magnitude and orientation</h3>
-        <h3 class="lang lang-es" lang="es">1.6 Relación entre las componentes de un vector, su módulo y su dirección</h3>
+        <h3 class="lang lang-en" id="Relationship between vector components and its magnitude and orientation">1.6 Relationship between vector components and its magnitude and orientation</h3>
+        <h3 class="lang lang-es" lang="es" id="Relación entre las componentes de un vector, su módulo y su dirección">1.6 Relación entre las componentes de un vector, su módulo y su dirección</h3>
         <p class="lang lang-en">
             To find vector magnitude from its components, we use the Pythagorean Theorem. And to find its direction we use the inverse tangent function.
         </p>
@@ -625,8 +625,8 @@
     </section>
 
     <section><!--1.10 Scalar product of two vectors-->
-        <h3 class="lang lang-en">1.10 Scalar product of two vectors</h3>
-        <h3 class="lang lang-es" lang="es">1.10 Producto escalar de dos vectores</h3>
+        <h3 class="lang lang-en" id="Scalar product of two vectors">1.10 Scalar product of two vectors</h3>
+        <h3 class="lang lang-es" lang="es" id="Producto escalar de dos vectores">1.10 Producto escalar de dos vectores</h3>
 
         <p class="lang lang-en">
             The <strong>scalar product</strong> (also known as the <strong>dot product</strong>) of two vectors is a number (scalar) that is obtained by multiplying the corresponding components of the two vectors and then adding those products.
@@ -1506,6 +1506,26 @@
 					height="300"
 					viewBox="0 0 400 300" 
 					xmlns="http://www.w3.org/2000/svg">
+
+                    <!-- Dibujar líneas verticales -->
+                    <g stroke="green" stroke-width="1">
+                        <script type="application/ecmascript"> <![CDATA[
+                        var x;
+                        for (x = 0; x <= 400; x += 40) {
+                            document.write('<line x1="' + x + '" y1="0" x2="' + x + '" y2="300" />');
+                        }
+                        ]]> </script>
+                    </g>
+
+                    <!-- Dibujar líneas horizontales -->
+                    <g stroke="green" stroke-width="1">
+                        <script type="application/ecmascript"> <![CDATA[
+                        var y;
+                        for (y = 0; y <= 300; y += 40) {
+                            document.write('<line x1="0" y1="' + y + '" x2="400" y2="' + y + '" />');
+                        }
+                        ]]> </script>
+                    </g>
 					<!--Vector a = 2i + 3j scale 40:1-->
 					<line x1="40" y1="200" x2="120" y2="80" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
 				    <text x="70" y="120" font-size="25" stroke="brown" fill="brown" font-weight="bold">
@@ -1563,12 +1583,12 @@
                 Un barco de vela se mueve con una velocidad de 4 km/h en la dirección NNE (nornoreste). ¿Cuáles son las componentes de la velocidad del barco en dirección Norte y en dirección Este? 
             </p>
             <p class="lang lang-en">
-                A sailboat is moving with a speed of 4 km/h in the NNE (north-northeast) direction. What are the components of the speed of the ship in the North direction and in the East direction?
+                If we place the x-axis in the easterly direction and the y-axis in the north direction, the NNE (north-northeast) direction forms an angle of 67.5º with the east; as shown in the figure below.
             </p>
             <p class="lang lang-es" lang="es">
                 Si situamos el eje x en la dirección este y el eje y en la dirección norte, la dirección NNE (nornoreste) está orientada formando un ángulo de 67,5º con el este; según se muestra en la siguiente figura.
             </p>   
-            <figure class="centered"><!--showing angle between E and NE and `proj_Evecv`.-->
+            <figure class="centered"><!--showing angle between E and NNE, vector V and its components Vx and Vy.-->
                 <svg
 					width="400" 
 					height="400"
@@ -1600,40 +1620,60 @@
 						S
 					</text>
 					<!--NorthEast-->
-					<line x1="200" y1="200" x2="370" y2="30" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+					<line x1="200" y1="200" x2="355" y2="45" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
 				    <text x="360" y="60" font-size="25" stroke="brown" fill="brown">
 						NE
 					</text>
-					<!--Draw an angle mark-->
-                    <path d="M 220 200 A 20 20 0 0 0 214 186" fill="transparent" stroke="green"/>
-                    <text x="224" y="195" font-size="15" stroke="green" fill="green">
-                          &#x03B8; = 45º<!-- This is the unicode for lowercase theta -->
+					<!--NorthNorthEast x=200+(200*cos67,5º)/4=277 y=200-(200*sen67,5º)/4=15-->
+					<line x1="200" y1="200" x2="277" y2="15" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+				    <text x="280" y="15" font-size="20" stroke="brown" fill="brown" font-weight="bold">
+						NNE
 					</text>
-					<!--Velocity vector with scale 1:4 x=(600*cos45)/4=106 y=(600*sen45)/4=106-->
-					<line x1="200" y1="200" x2="306" y2="94" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
-				    <text x="240" y="140" font-size="20" stroke="green" fill="green" font-weight="bold">
+                    <!--Velocity vector with scale 40:1 Vx=4*40*cos67,5=62 Vy=4*40*sen67,5=148-->
+					<line x1="200" y1="200" x2="262" y2="52" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)"/>
+				    <text x="220" y="100" font-size="20" stroke="green" fill="green" font-weight="bold">
 						V
-					</text>	
-					<!--Proyection vector with scale 1:4 x=424/4=106 -->
-					<line x1="306" y1="94" x2="306" y2="200" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
-					<line x1="200" y1="200" x2="306" y2="200" stroke="green" stroke-width="2"  stroke-dasharray="5,5" marker-end="url(#Greenarrow)" />
+					</text>		
+                    <!--Draw an angle mark x=200+(20*cos67,5º)/4=208 y=200-(20*sen67,5º)/4=182-->
+                    <path d="M 220 200 A 20 20 0 0 0 208 182" fill="transparent" stroke="green"/>
+                    <text x="218" y="190" font-size="15" stroke="green" fill="green">
+                          &#x03B8; = 67,5º<!-- This is the unicode for lowercase theta -->
+					</text>
+                    <!--Vx-->
+					<line x1="262" y1="52" x2="262" y2="200" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
+					<line x1="200" y1="200" x2="262" y2="200" stroke="green" stroke-width="2"  stroke-dasharray="5,5" marker-end="url(#Greenarrow)"/>
 				    <text x="220" y="220" font-size="20" stroke="green" fill="green" font-weight="bold" stroke-width="0.6">
-                      proj
-                      <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">E</tspan>
-                      <tspan dx="-5" dy="-8" font-size="20" stroke-width="0.6" font-weight="bold">v</tspan> 
+                      V
+                      <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">x</tspan> 
+                    </text>
+                    <!--Vy-->
+					<line x1="262" y1="52" x2="200" y2="52" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
+					<line x1="200" y1="200" x2="200" y2="52" stroke="green" stroke-width="2"  stroke-dasharray="5,5" marker-end="url(#Greenarrow)"/>
+				    <text x="170" y="100" font-size="20" stroke="green" fill="green" font-weight="bold" stroke-width="0.6">
+                      V
+                      <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">y</tspan> 
                     </text>
 				</svg>
-                <figcaption class="lang lang-en"><b>Figure 2.c</b>, showing angle between E and NE and `proj_Evecv`.</figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figura 2.c</b>, mostrando el ángulo formado entre E y NE, así como la `proj_Evecv`.</figcaption>
+                <figcaption class="lang lang-en"><b>Figure 2.c</b>, showing NNE direction, velocity `vecV` and its components `vec(V_x)` and `vec(V_y)`.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 2.c</b>, mostrando la dirección NNE, velocidad `vecV` y sus componentes `vec(V_x)` y `vec(V_y)`.</figcaption>
 			</figure>
 
             <p class="lang lang-en">
-                It can be seen that the origin of `veca` coincides with the end of `vecd`. So the vector resulting from said sum is the vector `vec0`, and its magnitude is zero.
+                To solve this exercise, we use the concept of <a href="#Vector components">vector components</a> and the <a href="#Relationship between vector components and its magnitude and orientation">relationship between vector components and its magnitude and orientation</a>.
             </p>
             <p class="lang lang-es" lang="es">
-                Se puede observar que el origen de `veca` coincide con el final de `vecd`. Así que el vector resultante de dicha suma es el vector `vec0`,  y su magnitud es cero.
+                Para resolver este ejercicio, utilicemos las noción de <a href="#Componentes de un Vector">componentes de un vector</a> y la <a href="#Relación entre las componentes de un vector, su módulo y su dirección">relación entre las componentes de un vector, su módulo y su dirección</a>.
             </p>
-
+            <p class="lang lang-en">
+                Then, to calculate the value of the component `V_x`of `vecV` we use the expresion <a href="#[1.4]">[1.4]</a> and to calculate the value of `V_y` we use the expresion <a href="#[1.5]">[1.5]</a>. With `norm(vecV) = 4` km/h and `theta = 67.5º`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Entonces calculamos el valor de la componente `V_x`de `vecV` mediante la expresión <a href="#[1.4]">[1.4]</a>, el valor de `V_y` mediante la expresión <a href="#[1.5]">[1.5]</a>. Siendo `norm(vecV) = 4` km/h y `theta = 67.5º`.
+            </p>
+            <p class="lang lang-en">&emsp; `V_x = 4*cos65,7º`= 1.53 km/h</p>
+            <p class="lang lang-en">&emsp; `V_y = 4*sin65,7º`= 3.70 km/h</p>
+            <p class="lang lang-es" lang="es">&emsp; `V_x = 4*cos65,7º`= 1,53 km/h</p>
+            <p class="lang lang-es" lang="es">&emsp; `V_y = 4*sen65,7º`= 3.70 km/h</p>
             <aside> <!-- references-->    
                 <h4 class="lang lang-en">References</h4>
                 <h4 class="lang lang-es" lang="es">Referencias</h4>
@@ -1654,9 +1694,9 @@
             </aside>     
         </section>
 
-        <section> <!--Exercise 3-->
-            <h3 class="lang lang-en">Exercise 3</h3>
-            <h3 class="lang lang-es" lang="es">Ejercicio 3</h3>
+        <section> <!--Exercise 4-->
+            <h3 class="lang lang-en">Exercise 4</h3>
+            <h3 class="lang lang-es" lang="es">Ejercicio 4</h3>
             <p class="lang lang-en">
                 An object moves in such a way that its velocity at a certain instant is 120 m/s and forms an angle of 30º with the horizontal. Find the horizontal and vertical components of the velocity. Express the velocity vector as a function of its components.
             </p>
@@ -1664,10 +1704,10 @@
                 Un objeto se mueve de tal manera que su velocidad en un instante determinado es de 120 m/s y forma un ángulo de 30º con la horizontal. Halla las componentes horizontal y vertical de la velocidad. Expresa el vector velocidad en función de sus componentes.
             </p>
             <p class="lang lang-en">
-                The formulas to calculate the components of a vector `vecv` given its magnitude `norm(vecv)` and direction &theta; are:
+                The formulas to calculate the components of a vector `vecv` given its magnitude `norm(vecv)` and direction &theta; are given by the expresions <a href="#[1.4]">[1.4]</a> and <a href="#[1.5]">[1.5]</a>:
             </p>
 			<p class="lang lang-es" lang="es">
-                The formulas to calculate the components of a vector `vecv` given its magnitude `norm(vecv)` and direction &theta; are:
+                The formulas to calculate the components of a vector `vecv` given its magnitude `norm(vecv)` and direction &theta; vienen definidas por las expresiones <a href="#[1.4]">[1.4]</a> y <a href="#[1.5]">[1.5]</a>:
             </p>
             <p>&emsp; `vec(v_x) = norm(vecv)*cos(theta)*veci` </p>
             <p>&emsp; `vec(v_y) = norm(vecv)*sin(theta)*vecj` </p>
@@ -1714,9 +1754,9 @@
             </aside>
         </section>
 
-        <section> <!--Exercise 4-->
-            <h3 class="lang lang-en">Exercise 4</h3>
-            <h3 class="lang lang-es" lang="es">Ejercicio 4</h3>
+        <section> <!--Exercise 5-->
+            <h3 class="lang lang-en">Exercise 5</h3>
+            <h3 class="lang lang-es" lang="es">Ejercicio 5</h3>
             <p class="lang lang-en">
                 Find the scalar product of the vectors `5veci - 3vecj + 2veck`, `-2veci + vecj + 3veck` and the angle they form.
             </p>
@@ -1724,22 +1764,22 @@
                 Calcula el producto escalar de los vectores `5veci - 3vecj + 2veck`, `-2veci + vecj + 3veck` y el ángulo que forman.
             </p>
             <p class="lang lang-en">
-                The scalar product of two vectors `vecv` and `vecw`, given their components is
+                The <a href="#Scalar product of two vectors">scalar product of two vectors</a> `vecv` and `vecw`, given their components is as shown in <a href="#[1.11]">[1.11],</a>
             </p>
             <p class="lang lang-es" lang="es">
-                El producto escalar de dos vectores `vecv` y `vecw`, dadas sus componentes, es
+                El <a href="#Producto escalar de dos vectores">producto escalar de dos vectores</a> `vecv` y `vecw`, dadas sus componentes, es según se mustra en <a href="#[1.11]">[1.11]</a>,
             </p>
             <p>
-                `vecv*vecw = x_1*x_2 + y_1*y_2 + z_1*z_2`
+                &emsp;`vecv*vecw = x_1*x_2 + y_1*y_2 + z_1*z_2`
             </p>
             <p class="lang lang-en">
-                To find the angle between the two vectors, `theta`, use the formula below.<br />
+                To find the angle between the two vectors, `theta`, use the expression <a href="#[1.12]">[1.12]</a> and solve for `costheta`.<br />
             </p>
             <p class="lang lang-es" lang="es">
-                Para calcular el angulo  `theta` que forman dos vetores 'vecv' y 'vecw`, usamos la fórmula:
+                Para calcular el angulo  `theta` que forman dos vetores 'vecv' y 'vecw`, usamos la expresión <a href="#[1.12]">[1.12]</a> y despejamos `costheta`.
             </p>
             <p>
-                &emsp; `cos(theta)  = (vecv*vecw)/(norm(vecv)*norm(vecw))`
+                &emsp;`costheta  = (vecv*vecw)/(norm(vecv)*norm(vecw))`
             </p>
             <p class="lang lang-en">  
                 Then,
@@ -1777,9 +1817,9 @@
             </aside>
         </section>
 
-        <section> <!--Exercise 5-->
-            <h3 class="lang lang-en">Exercise 5</h3>
-			<h3 class="lang lang-es" lang="es">Ejercicio 5</h3>
+        <section> <!--Exercise 6-->
+            <h3 class="lang lang-en">Exercise 6</h3>
+			<h3 class="lang lang-es" lang="es">Ejercicio 6</h3>
             <p class="lang lang-en">
                 An airplane is moving with a speed of 600 km/h in the NE direction. Find the projection of its velocity in the east direction.
             </p>
@@ -1865,7 +1905,7 @@
 			</p>
 			<p> &emsp; `norm(proj_E vecv) = 600*cos45º` = 424 Km/h</p>
 				
-            <aside>
+            <aside><!--References-->
                 <h4 class="lang lang-en">References</h3>
                 <h4 class="lang lang-es" lang="es">Referencias</h3>
 				<ul>
