@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-
     <link rel="stylesheet" href="styles/styles.css">
-
     <title>TheHouseOfPhi Geometry/Geometría</title>
-    <!--This sets the title of your page, which is the title that appears in the browser tab the page is loaded in. It is also used to describe the page when you bookmark/favorite it.-->
     <meta name="author" content="Miguel Angel Alvaro">
     <meta name="description"
         content="Subpage showing information about vectors. / 
@@ -31,15 +28,12 @@
     <script src="scripts/SelectLanguage.js" defer></script>
 </head>
 
-<!--the body contains all the content that you want to show to web users when they visit your page-->
 <body>
     <header>
-        <!-- id attribute define an unique identifier. Its purpose is to identify the element when linking, scripting, or styling -->
         <h1 id="Home" class="lang lang-en" >2. GEOMETRY</h1>
         <h1 id="Home" class="lang lang-es" lang="es" >GEOMETRÍA</h1>
     </header>
     </div>
-		<!--<select onchange="changeLanguage(this.value)">-->
 		<select id="langSelector">
 			<option value="en">English</option>
 			<option value="es">Español</option>
@@ -60,87 +54,113 @@
 		</ul>
 	</nav>
 
-	<article>
-        <h2 id="Geometry" class="lang lang-en">Geometry</h2>
-        <h2 id="Geometría" class="lang lang-es" lang="es">Geometría</h2>
-        <section>
-            <h3 class="lang lang-en">Pythagorean theorem</h3>
-            <h3 class="lang lang-es" lang="es">Teorema de Pitágoras</h3>
-            <p class="lang lang-en">
-                In any right triangle `/_\ABC`, where c is the length of the hypotenuse and a and b are the lengths of the legs,
-            </p>
-            <p class="lang lang-es" lang="es">
-                En cualquier triángulo rectángulo `/_\ABC`, donde c es la longitud de la hipotenusa y a y b son las longitudes de los catetos,
-            </p>
-            <p class="centered">
-                `a^2 + b^2 = c^2`
-            </p>
+    <section> <!--2.1 Introduction-->
+        <h3 id="Introduction" class="lang lang-en">1.1 Introduction</h3>
+        <h3 id="Introducción" class="lang lang-es" lang="es">1.1 Introducción</h3>
 
-            <figure class="centered">
-                <img src="images\RightTriangle.svg" width="300" height="225" />
+        <p class="lang lang-en">
+            In this chapter, we show concepts about Geometry that will be used along the website.
+        </p>
 
-                <figcaption class="lang lang-en"><b>Figure A.1</b> Right triangle with hypotenuse c and legs a and b.</figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figura A.1</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
-            </figure>
-        </section>
+        <p id="Vectores" class="lang lang-es" lang="es">
+            En este capítulo, mostramos conceptos sobre geometría que se utilizarán a lo largo del sitio web.
+        </p>
+    </section>
+    <section><!--2.2 Pythagorean theorem-->
+        <h3 class="lang lang-en">2.2 Pythagorean theorem</h3>
+        <h3 class="lang lang-es" lang="es">2.2Teorema de Pitágoras</h3>
+        <p class="lang lang-en">
+            In any right triangle `/_\ABC`, where c is the length of the hypotenuse and a and b are the lengths of the legs,
+        </p>
+        <p class="lang lang-es" lang="es">
+            En cualquier triángulo rectángulo `/_\ABC`, donde c es la longitud de la hipotenusa y a y b son las longitudes de los catetos,
+        </p>
+        <p class="centered">
+        </p>
+        <div class="container">
+            <div  class="center">`a^2 + b^2 = c^2`</div>
+            <div  class="right" id="[2.1]">[2.2]</div>
+        </div>
+        <figure class="centered"><!--Right triangle with hypotenuse c and legs a and b.-->
+            <img src="images\RightTriangle.svg" width="300" height="225" />
 
-        <section>
-            <h3 class="lang lang-en">Graphical definitions of sine, cosine and tangent functions</h3>
-            <h3 class="lang lang-es" lang="es">Definiciones gráficas de las funciones seno, coseno y tangente</h3>
-            <p class="lang lang-en">
-                Let's consider a circunference with radius of length r with centre at the origin <i>O</i> in a
-                rectangular coordinate system, and a point P with coordinates (x,y) in the circunference. And let's name &alpha; the angle between the x-axis and the segment <SPAN class="segment">OP</SPAN>. Then, `sin alpha` is the ratio y/r, `cos alpha` is the ratio x/r and `tan alpha` is the ratio y/x.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Consideremos una circunferencia con radio de longitud r con centro en el origen <i>O</i> en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos &alpha; a el ángulo entre el eje x y el segmento OP. Entonces, `sen alpha` es el cociente y/r, `cos alpha` es el cociente x/r y `tan alpha` es el cociente y/x.
-            </p>
-            <figure class="centered">
-                <img src="images\Circunference_and_coordinates.svg" width="300" height="300" />
+            <figcaption class="lang lang-en"><b>Figure 2.1</b> Right triangle with hypotenuse c and legs a and b.</figcaption>
+            <figcaption class="lang lang-es" lang="es"><b>Figura 2.1</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
+        </figure>
+    </section>
+    <section><!--2.3 Graphical definitions of sine, cosine and tangent functions-->
+        <h3 class="lang lang-en">2.3 Graphical definitions of sine, cosine and tangent functions</h3>
+        <h3 class="lang lang-es" lang="es">2.3 Definiciones gráficas de las funciones seno, coseno y tangente</h3>
+        <p class="lang lang-en">
+            Let's consider a circunference with radius of length r with centre at the origin <i>O</i> in a
+            rectangular coordinate system, and a point P with coordinates (x,y) in the circunference. And let's name &alpha; the angle between the x-axis and the segment <SPAN class="segment">OP</SPAN>, as shown in figure below. Then, `sin alpha` is the ratio y/r, `cos alpha` is the ratio x/r and `tan alpha` is the ratio y/x.
+        </p>
+        <p class="lang lang-es" lang="es">
+            Consideremos una circunferencia con radio de longitud r con centro en el origen <i>O</i> en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos &alpha; a el ángulo entre el eje x y el segmento OP, según se muestra en la siguiente figura. Entonces, `sen alpha` es el cociente y/r,  y .
+        </p>
+        <figure class="centered"><!--Circunference of radius r with a point P and angle &alpha; with x-axis.-->
+            <img src="images\Circunference_and_coordinates.svg" width="300" height="300" />
 
-                <figcaption class="lang lang-en"><b>Figure A.2</b> Circunference of radius r with a point P and angle &alpha; with x-axis.
-                </figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figure A.2</b> Circunferencia de radio r con un punto P y su ángulo &alpha; con el eje x.
-                </figcaption>
-            </figure>
-        </section>
-
-        <aside><!-- references to concepts used in this section target="_blank" will display the link in a new tab.-->
-            <h4 class="lang lang-en">References</h4>
-            <h4 class="lang lang-es" lang="es">Referencias</h4>
-            <ul>
-                <li>
-                    <a href="https://openstax.org/books/prealgebra-2e/pages/9-3-use-properties-of-angles-triangles-and-the-pythagorean-theorem#:~:text=of%20the%20hypotenuse.-,THE%20PYTHAGOREAN%20THEOREM,-In%20any%20right"
-                        target="_blank">
-                        The Pitagorean Theorem. Prealgebra 2e. 9.3. Openstax.
-                    </a>
-                </li>
-                <li>
-                    <a href="http://encyclopediaofmath.org/index.php?title=Pythagorean_theorem&oldid=40035"
-                        target="_blank">
-                        Pythagorean theorem. Encyclopedia of Mathematics.
-                    </a>
-                </li>
-                <li>
-                    <a href="https://encyclopediaofmath.org/wiki/Sine#:~:text=the%20hyperbolic%20sine.-,Comments,-Of%20course%2C"
-                        target="_blank">
-                        Sine. Encyclopedia of Mathematics.
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mathsisfun.com/algebra/trigonometry.html#:~:text=gives%20the%20answers!-,Sine%2C%20Cosine%20and%20Tangent,-The%20main%20functions"
-                        target="_blank">
-                        Sine, Cosine and Tangent. Mathisfun.
-                    </a>
-                </li>
-                <li>
-                    <a href="https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry#:~:text=Using%20Right%20Triangles%20to%20Evaluate%20Trigonometric%20Functions"
-                        target="_blank">
-                        Using Right Triangles to Evaluate Trigonometric Functions. Openstax.
-                    </a>
-                </li>
-            </ul>
-        </aside>
-    </article>
+            <figcaption class="lang lang-en"><b>Figure 2.2</b> Circunference of radius r with a point P and angle &alpha; with x-axis.
+            </figcaption>
+            <figcaption class="lang lang-es" lang="es"><b>Figure 2.2</b> Circunferencia de radio r con un punto P y su ángulo &alpha; con el eje x.
+            </figcaption>
+        </figure>
+        <p class="lang lang-en">
+            Then, we define the sine, cosine and tangent functions as:
+        </p>
+        <p class="lang lang-es" lang="es">
+            Entonce, definimos las funicones seno, coseno y tengente como:
+        </p>
+        <div class="container">
+            <div  class="center">`sin alpha  = y/r`</div>
+            <div  class="right" id="[2.2]">[2.2]</div>
+        </div><br>
+        <div class="container">
+            <div  class="center">`cos alpha = x/r` </div>
+            <div  class="right" id="[2.3]">[2.3]</div>
+        </div><br>
+        <div class="container">
+            <div  class="center">`tan alpha = y/x` </div>
+            <div  class="right" id="[2.4]">[2.4]</div>
+        </div><br>
+    </section>
+    <aside><!--References-->
+        <h4 class="lang lang-en">References</h4>
+        <h4 class="lang lang-es" lang="es">Referencias</h4>
+        <ul>
+            <li>
+                <a href="https://openstax.org/books/prealgebra-2e/pages/9-3-use-properties-of-angles-triangles-and-the-pythagorean-theorem#:~:text=of%20the%20hypotenuse.-,THE%20PYTHAGOREAN%20THEOREM,-In%20any%20right"
+                    target="_blank"><!--target="_blank" will display the link in a new tab-->
+                    The Pitagorean Theorem. Prealgebra 2e. 9.3. Openstax.
+                </a>
+            </li>
+            <li>
+                <a href="http://encyclopediaofmath.org/index.php?title=Pythagorean_theorem&oldid=40035"
+                    target="_blank">
+                    Pythagorean theorem. Encyclopedia of Mathematics.
+                </a>
+            </li>
+            <li>
+                <a href="https://encyclopediaofmath.org/wiki/Sine#:~:text=the%20hyperbolic%20sine.-,Comments,-Of%20course%2C"
+                    target="_blank">
+                    Sine. Encyclopedia of Mathematics.
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mathsisfun.com/algebra/trigonometry.html#:~:text=gives%20the%20answers!-,Sine%2C%20Cosine%20and%20Tangent,-The%20main%20functions"
+                    target="_blank">
+                    Sine, Cosine and Tangent. Mathisfun.
+                </a>
+            </li>
+            <li>
+                <a href="https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry#:~:text=Using%20Right%20Triangles%20to%20Evaluate%20Trigonometric%20Functions"
+                    target="_blank">
+                    Using Right Triangles to Evaluate Trigonometric Functions. Openstax.
+                </a>
+            </li>
+        </ul>
+    </aside>
 </body>
 
 </html>
