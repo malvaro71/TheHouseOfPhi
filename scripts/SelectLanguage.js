@@ -1,7 +1,12 @@
 function changeLanguage(languageCode) {
     Array.from(document.getElementsByClassName('lang')).forEach(function (elem) {
         if (elem.classList.contains('lang-' + languageCode)) {
-             elem.style.display = "";
+            // Keeps elements of class header-container with display flex
+            if (elem.classList.contains('header-container')) {
+                elem.style.display = "flex";
+            } else {
+                elem.style.display = "";
+            }     
         }
         else {
              elem.style.display = 'none';

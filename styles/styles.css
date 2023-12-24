@@ -40,22 +40,31 @@ a:visited {
     color: green;
 }
 
-
 .centered {
     text-align: center;
 }
+
+/* Header container to write header and link in the same line */
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-container h2 {
+    margin: 0;
+}
+
+/* Container for math expresions and reference bracket in the same line */
 .container {
     padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
 }
-
 .center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
-
 .right {
     margin-left: auto;
 }
