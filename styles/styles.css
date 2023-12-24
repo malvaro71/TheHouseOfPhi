@@ -64,6 +64,7 @@ a:visited {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    padding-bottom: 20px;
 }
 .right {
     margin-left: auto;
