@@ -74,6 +74,35 @@ function drawLineWithArrowhead(pa, pb, headLength) {
 	ctx.stroke();
 }
 
+function convert3DTo2D(x1, y1, z1) {
+	/*
+	This program Convert from 3D coordinates to 2D oblique projection coordinates for and svg drawing. 
+	Reference: https://en.wikipedia.org/wiki/Oblique_projection
+	3D z-coordinate is parallel to svg Canva y-coordinate but has opposite orientation.
+   	3D y-coordinate is parallel to svg Canva x-coordinate and have same orientation. 
+   	3D x-axis is skewed 45 degrees and is oriented toward the svg Canva.
+	*/
+
+	// SVG viewport size
+	const svgWidth = 400;
+	const svgHeight = 400;
+  
+	// Conversion factors based on oblique angle
+	const skewedAngle = Math.PI * 45 / 180;
+	const cosAngle = Math.cos(skewedAngle);
+	const sinAngle = Math.sin(skewedAngle);
+  
+	// SVG canvas origin coordinates (0, 0, 0) (considering flipped z-axis)
+	const Ox = svgWidth * sinAngle / 2;
+	const Oy = svgHeight * (1 - cosAngle) / 2;
+  
+	// Calculate 2D coordinates
+	const x2 = Ox + y1 - x1 * cosAngle;
+	const y2 = Oy - z1 + x1 * cosAngle;
+  
+	return { x: x2, y: y2 };
+  }
+
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
