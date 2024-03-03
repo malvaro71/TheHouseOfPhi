@@ -961,7 +961,7 @@
         </p>
         <figure class="centered"><!--Moment of a sliding vector `vecv` about line g, `norm(vecM_g) = vecu_g * (vecr xx vecv)`.-->
             <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
-                <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
+                <!--Use the program ObliqueProjection to calcualte the svg coordinates.-->
 
                 <!--Z-axis-->
                 <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
@@ -1936,19 +1936,97 @@
             </p>
             <p>&emsp;`vecv = vecw xx vecr = |[veci, vecj, veck], [1, 1, 1], [2, -2, 1]| = |[1, 1], [-2, 1]|*veci - |[1, 1], [2, 1]|*vecj + |[1, 1], [2, -2]|*veck => (1+2)*veci - (1-2)*vecj + (-2-2)*veck`</p>
             <p>&emsp; `=> vecv = 3veci + vecj -4veck`</p>
-
+            
         </section>
 
         <section><!--Exercise 8-->
             <h3 class="lang lang-en">Exercise 8</h3>
 			<h3 class="lang lang-es" lang="es">Ejercicio 8</h3>
             <p class="lang lang-en">
-                Calculate the area of a triangle `/_\ABC`, where the Cartesian coordinates of the vertices are, A = (3,4,1) m, B = (-1, -2, 1) m y C = (2, 0, 3) m.
+                Calculate the area of a triangle `/_\ABC`, where the Cartesian coordinates of the vertices are, A = (3,4,1) m, B = (1,-2,2) m y C = (-2,1,4) m.
             </p>
 			 <p class="lang lang-es" lang="es">
-                Calcula el área de un triángulo `/_\ABC`, siendo las coordenadas cartesianas de los vértices, (3,4,1) m, (-1, -2, 1) m y (2, 0, 3) m.
+                Calcula el área de un triángulo `/_\ABC`, siendo las coordenadas cartesianas de los vértices, A = (3,4,1) m, B = (1,-2,2) m y C = (-2,0,4) m.
             </p>
-            
+            <figure class="centered"><!--Paralelogram formed by vectors AB and BC, and triangle ABC.-->
+                <svg
+					width="400" 
+					height="400"
+					viewBox="0 0 400 400" 
+					xmlns="http://www.w3.org/2000/svg">
+                    
+                <!--Z-axis-->
+                <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
+                    z
+                </text>
+
+                <!-- Y-axis-->
+                <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
+                    y
+                </text>
+
+                <!-- X-axis-->
+                <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+                <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
+                    x
+                </text>
+					<!--Use the program ObliqueProjection to calcualte the svg coordinates.
+                        Graphic scale is 10:1; 10 units in the graphic equal to 1 unit in real space 
+                        Point A = (30,40,10) (160, 270)
+					    Point B = (10,-20,20) (114, 246)
+                        Point C = (-20,10,40) (166, 204)
+                    -->
+                    <!--Vector AB from A = (3,4,1) to B = (-1, -2, 1) scale 20:1-->
+					<line x1="100" y1="200" x2="400" y2="200" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+				    <text x="380" y="220" font-size="25" stroke="brown" fill="brown">
+						E
+					</text>
+					<!--West-->
+					<line x1="200" y1="200" x2="0" y2="200" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+				    <text class="lang lang-en" x="5" y="220" font-size="25" stroke="brown" fill="brown">
+						W
+					</text>
+					<text class="lang lang-es" lang="es" x="5" y="220" font-size="25" stroke="brown" fill="brown">
+						O
+					</text>
+					<!--North-->
+					<line x1="200" y1="200" x2="200" y2="0" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+				    <text x="180" y="20" font-size="25" stroke="brown" fill="brown">
+						N
+					</text>
+					<!--South-->
+					<line x1="200" y1="200" x2="200" y2="400" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+				    <text x="180" y="380" font-size="25" stroke="brown" fill="brown">
+						S
+					</text>
+					<!--NorthEast-->
+					<line x1="200" y1="200" x2="370" y2="30" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
+				    <text x="360" y="60" font-size="25" stroke="brown" fill="brown">
+						NE
+					</text>
+					<!--Draw an angle mark-->
+                    <path d="M 220 200 A 20 20 0 0 0 214 186" fill="transparent" stroke="green"/>
+                    <text x="224" y="195" font-size="15" stroke="green" fill="green">
+                          &#x03B8; = 45º<!-- This is the unicode for lowercase theta -->
+					</text>
+					<!--Velocity vector with scale 1:4 x=(600*cos45)/4=106 y=(600*sen45)/4=106-->
+					<line x1="200" y1="200" x2="306" y2="94" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
+				    <text x="240" y="140" font-size="20" stroke="green" fill="green" font-weight="bold">
+						V
+					</text>	
+					<!--Proyection vector with scale 1:4 x=424/4=106 -->
+					<line x1="306" y1="94" x2="306" y2="200" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
+					<line x1="200" y1="200" x2="306" y2="200" stroke="green" stroke-width="2"  stroke-dasharray="5,5" marker-end="url(#Greenarrow)" />
+				    <text x="220" y="220" font-size="20" stroke="green" fill="green" font-weight="bold" stroke-width="0.6">
+                      proj
+                      <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">E</tspan>
+                      <tspan dx="-5" dy="-8" font-size="20" stroke-width="0.6" font-weight="bold">v</tspan> 
+                    </text>
+				</svg>
+                <figcaption class="lang lang-en"><b>Figure 2.c</b>, showing angle between E and NE and `proj_Evecv`.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 2.c</b>, mostrando el ángulo formado entre E y NE, así como la `proj_Evecv`.</figcaption>
             <aside><!--References-->
                 <h4 class="lang lang-en">References</h3>
                 <h4 class="lang lang-es" lang="es">Referencias</h3>
