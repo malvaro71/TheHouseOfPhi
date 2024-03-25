@@ -16,4 +16,4 @@ function createMarker(id, fillColor) {
   
 	marker.appendChild(path);
 	return marker;
-  }
+}
