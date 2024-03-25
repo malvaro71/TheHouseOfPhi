@@ -25,6 +25,7 @@
     <!-- loads page script files-->
     <script src="scripts/main.js" defer></script>
     <script src="scripts/SelectLanguage.js" defer></script>
+    <script src="scripts/markers.js"></script>
 </head>
 
 <body>
@@ -146,6 +147,7 @@
 
             <script>
                 // Function to create a marker element with given ID, viewBox, refX, refY, markerWidth, markerHeight, and fill color
+                /*
                 function createMarker(id, viewBox, markerWidth, markerHeight, fillColor) {
                 var marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
                 marker.setAttribute("id", id);
@@ -163,7 +165,8 @@
 
                 marker.appendChild(path);
                 return marker;
-                }  
+                }
+                */  
 
                 // Get the SVG element from the DOM
                 var svg = document.getElementById("VectorAB");
@@ -2140,7 +2143,6 @@
             </aside>
         </section>
     </article>
-    <!--<script src="scripts/markers.js"></script>-->
 </body>
 
 </html>
