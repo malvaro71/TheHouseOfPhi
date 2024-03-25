@@ -1,11 +1,12 @@
-function createMarker(id, viewBox, markerWidth, markerHeight, fillColor) {
+// Function to create a marker element with given ID and fill color
+function createMarker(id, fillColor) {
 	var marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
 	marker.setAttribute("id", id);
-	marker.setAttribute("viewBox", viewBox);
+	marker.setAttribute("viewBox", "0 0 10 10");
 	marker.setAttribute("refX", 10);
 	marker.setAttribute("refY", 5);
-	marker.setAttribute("markerWidth", markerWidth);
-	marker.setAttribute("markerHeight", markerHeight);
+	marker.setAttribute("markerWidth", 6);
+	marker.setAttribute("markerHeight", 6);
 	marker.setAttribute("orient", "auto-start-reverse");
   
 	var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
