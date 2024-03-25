@@ -86,9 +86,10 @@
             El origen del vector también se denomina punto inicial o punto de aplicación. 
         </p>
         <figure class="centered"> <!-- A vector is represented by a directed line segment from its initial point A to its terminal point B.-->
-            <svg viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" width="180" height="220">
+            <!--
+                <svg viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" width="180" height="220">
                 <defs>
-                    <!-- Arrowhead marker definition -->
+                    //Define markers
                     <marker
                     id="Bluearrow"
                     viewBox="0 0 10 10"
@@ -133,6 +134,97 @@
                     B
                 </text>
             </svg>
+            -->
+            <svg
+                id="VectorAB" 
+                width="180"
+                height="220" 
+                viewBox="0 0 180 220" 
+                xmlns="http://www.w3.org/2000/svg"
+            >  
+            </svg>
+
+            <script>
+                // Function to create a marker element with given ID, viewBox, refX, refY, markerWidth, markerHeight, and fill color
+                function createMarker(id, viewBox, markerWidth, markerHeight, fillColor) {
+                var marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+                marker.setAttribute("id", id);
+                marker.setAttribute("viewBox", viewBox);
+                marker.setAttribute("refX", 10);
+                marker.setAttribute("refY", 5);
+                marker.setAttribute("markerWidth", markerWidth);
+                marker.setAttribute("markerHeight", markerHeight);
+                marker.setAttribute("orient", "auto-start-reverse");
+
+                var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
+                path.setAttribute("stroke", fillColor);
+                path.setAttribute("fill", fillColor);
+
+                marker.appendChild(path);
+                return marker;
+                }  
+
+                // Get the SVG element from the DOM
+                var svg = document.getElementById("VectorAB");
+
+                // Define marker elements (call the function)
+                var brownMarker = createMarker("Brownarrow", "0 0 10 10", 6, 6, "brown");
+                svg.appendChild(brownMarker); // Add the marker to the SVG
+
+                // Create the line element
+                var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+                // Set attributes for id, positioning and styling
+                line.setAttribute("id", "line1");
+                line.setAttribute("x1", 24);
+                line.setAttribute("y1", 210);
+                line.setAttribute("x2", 150);
+                line.setAttribute("y2", 5);
+                line.setAttribute("stroke", "brown");
+                line.setAttribute("stroke-width", 2);
+                line.setAttribute("marker-end", "url(#Brownarrow)"); // Attach the marker
+
+                // Add the line element to the SVG
+                svg.appendChild(line);
+
+                // Create a new text element
+                var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
+                // Set the text content
+                textElement.textContent = "A"; 
+
+                // Set attributes for id, positioning and styling
+                textElement.setAttribute("id", "PointA");
+                textElement.setAttribute("x", "0");
+                textElement.setAttribute("y", "205");
+                textElement.setAttribute("font-size", "25");
+                textElement.setAttribute("stroke", "brown");
+                textElement.setAttribute("fill", "brown");
+                textElement.setAttribute("font-weight", "bold");
+
+                // Add the text element to the SVG
+                svg.appendChild(textElement);
+
+                // Create a new text element
+                var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
+                // Set the text content
+                textElement.textContent = "B"; 
+
+                // Set attributes for id, positioning and styling
+                textElement.setAttribute("id", "PointB");
+                textElement.setAttribute("x", "160");
+                textElement.setAttribute("y", "25");
+                textElement.setAttribute("font-size", "25");
+                textElement.setAttribute("stroke", "brown");
+                textElement.setAttribute("fill", "brown");
+                textElement.setAttribute("font-weight", "bold");
+
+                // Add the text element to the SVG
+                svg.appendChild(textElement);
+                
+            </script>
 
             <figcaption class="lang lang-en">
                 <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
@@ -2048,6 +2140,7 @@
             </aside>
         </section>
     </article>
+    <!--<script src="scripts/markers.js"></script>-->
 </body>
 
 </html>
