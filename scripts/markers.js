@@ -1,3 +1,4 @@
+/*
 // Function to create a marker element with given ID and fill color
 function createMarker(id, fillColor) {
 	var marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
@@ -17,3 +18,13 @@ function createMarker(id, fillColor) {
 	marker.appendChild(path);
 	return marker;
 }
+// Define global markers
+var brownMarker = createMarker("Brownarrow", "brown");
+var blueMarker = createMarker("Bluearrow", "blue");
+var greenMarker = createMarker("Greenarrow", "green");
+
+// Add the marker to the SVG (optional for global usage)
+svg.appendChild(brownMarker);
+svg.appendChild(blueMarker);
+svg.appendChild(greenMarker);
+/*

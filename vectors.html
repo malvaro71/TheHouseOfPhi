@@ -23,9 +23,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
 
     <!-- loads page script files-->
+    <script src="scripts/markers.js"></script>
     <script src="scripts/main.js" defer></script>
     <script src="scripts/SelectLanguage.js" defer></script>
-    <script src="scripts/markers.js"></script>
 </head>
 
 <body>
@@ -137,75 +137,17 @@
             </svg>
             -->
             <svg
-                id="VectorAB" 
+                id="svg1_1" 
                 width="180"
                 height="220" 
                 viewBox="0 0 180 220" 
                 xmlns="http://www.w3.org/2000/svg">  
             </svg>
-
+            <!--
             <script>
-                // Get the SVG element from the DOM
-                var svg = document.getElementById("VectorAB");
-
-                // Define marker elements (call the function)
-                var brownMarker = createMarker("Brownarrow", "brown");
-                svg.appendChild(brownMarker); // Add the marker to the SVG
-
-                // Create the line element
-                var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-
-                // Set attributes for id, positioning and styling
-                line.setAttribute("id", "line1");
-                line.setAttribute("x1", 24);
-                line.setAttribute("y1", 210);
-                line.setAttribute("x2", 150);
-                line.setAttribute("y2", 5);
-                line.setAttribute("stroke", "brown");
-                line.setAttribute("stroke-width", 2);
-                line.setAttribute("marker-end", "url(#Brownarrow)"); // Attach the marker
-
-                // Add the line element to the SVG
-                svg.appendChild(line);
-
-                // Create a new text element
-                var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-
-                // Set the text content
-                textElement.textContent = "A"; 
-
-                // Set attributes for id, positioning and styling
-                textElement.setAttribute("id", "PointA");
-                textElement.setAttribute("x", "0");
-                textElement.setAttribute("y", "205");
-                textElement.setAttribute("font-size", "25");
-                textElement.setAttribute("stroke", "brown");
-                textElement.setAttribute("fill", "brown");
-                textElement.setAttribute("font-weight", "bold");
-
-                // Add the text element to the SVG
-                svg.appendChild(textElement);
-
-                // Create a new text element
-                var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-
-                // Set the text content
-                textElement.textContent = "B"; 
-
-                // Set attributes for id, positioning and styling
-                textElement.setAttribute("id", "PointB");
-                textElement.setAttribute("x", "160");
-                textElement.setAttribute("y", "25");
-                textElement.setAttribute("font-size", "25");
-                textElement.setAttribute("stroke", "brown");
-                textElement.setAttribute("fill", "brown");
-                textElement.setAttribute("font-weight", "bold");
-
-                // Add the text element to the SVG
-                svg.appendChild(textElement);
                 
             </script>
-
+            -->
             <figcaption class="lang lang-en">
                 <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
             </figcaption>
@@ -278,7 +220,13 @@
             Para encontrar `vec(a+b)`, primero dibujamos el vector `veca`, y desde el final de `veca`, dibujamos `vecb`. En otras palabras, hacemos qeu el origen de `vecb` coincida con el final `veca`. Esta posición corresponde a la noción de que nos movemos a lo largo del primer vector y luego, desde su punto terminal, nos movemos a lo largo del segundo vector. La suma vectorial tiene la propiedad conmutativa; Entonces, si primero dibujamos un vector `vecb`, y desde el final de `vecb`, dibujamos el vector `vecba`, obtendremos `vec(b+a)`, que es igual a `vec(a+b)`. 
         </p>
         <figure class="centered"> <!--Vector addition. Graphical method.-->
-            <svg viewBox="0 0 230 240" xmlns="http://www.w3.org/2000/svg" width="230" height="240">                  
+            <svg 
+                id="svg1_2"
+                width="230" 
+                height="240"
+                viewBox="0 0 230 240" 
+                xmlns="http://www.w3.org/2000/svg">
+                <!--                  
                 <line x1="80" y1="230" x2="20" y2="120" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
                 
                 <text x="30" y="180" font-size="25" stroke="brown" fill="brown" font-weight="bold">
@@ -307,7 +255,7 @@
                 
                 <text x="195" y="65" font-size="25" stroke="brown" fill="brown" font-weight="bold">
                     a
-                </text>
+                </text>-->
                 </svg > 
 
             <figcaption class="lang lang-en"><b>Figure 1.2</b> Vector addition. Graphical method.</figcaption>
