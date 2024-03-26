@@ -117,7 +117,26 @@ function drawVector(svgElement, x1, y1, x2, y2, strokeColor, strokeWidth, id) {
 		  break;
 	  }
 	svgElement.appendChild(line);
-  }
+}
+
+//Function for drawing points in an SVG element
+function drawPoint(svgElement, x, y, scale, x0, y0, color) {
+
+// Create a new circle element
+var circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+// Set attributes for the circle
+var xPosition = x0+x*scale;
+circleElement.setAttribute("cx", xPosition);
+var yPosition = y0-y*scale;
+circleElement.setAttribute("cy", yPosition);
+circleElement.setAttribute("r", 3);
+circleElement.setAttribute("stroke", color);
+circleElement.setAttribute("fill", color);
+
+// Append the circle element to the SVG
+svgElement.appendChild(circleElement);
+}
 
 //Function to write text in an SVG element
 function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, id) {
@@ -139,6 +158,30 @@ function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, i
 	// Add the text element to the SVG
 	svgElement.appendChild(textElement);
 }
+
+function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
+	// Create a group element for transformation
+	var groupElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
+	groupElement.setAttribute("transform", "translate(" + x + "," + y + ")");
+  
+	// Create the text element
+	var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	textElement.textContent = text;
+  
+	// Set attributes for styling and rotation
+	textElement.setAttribute("transform", "rotate(-90)");
+	textElement.setAttribute("text-anchor", "end"); //Positions the rightmost character (before rotate) at the specified baselin point.
+	textElement.setAttribute("dominant-baseline", "text-after-edge"); //Aligns the bottommost edge of the last text box with the specified baseline point.
+	textElement.setAttribute("font-size", fontSize);
+	textElement.setAttribute("stroke", stroke);
+	textElement.setAttribute("fill", fill);
+  
+	// Append the text element to the group
+	groupElement.appendChild(textElement);
+  
+	// Append the group element to the SVG
+	svgElement.appendChild(groupElement);
+  }
 /*
 function convert3DTo2D(x1, y1, z1) {
 	
@@ -191,40 +234,111 @@ var blueMarker = createMarker("Bluearrow", "blue");
 var greenMarker = createMarker("Greenarrow", "green");
 
 // svg1_1. A vector is represented by a directed line segment from its initial point A to its terminal point B.
-// Get the SVG element from the DOM
-var svg1_1 = document.getElementById("svg1_1");
+	// Get the SVG element from the DOM
+	var svg1_1 = document.getElementById("svg1_1");
 
-// Add the marker to the SVG
-svg1_1.appendChild(brownMarker); 
+	// Add the marker to the SVG
+	svg1_1.appendChild(brownMarker); 
 
-// Draws a vector using exiting marker already created and added to this SVG:
-drawVector(svg1_1, 24, 210, 150, 5, "brown", 2, "Vector1");
+	// Draws a vector using existing marker already created and added to this SVG:
+	drawVector(svg1_1, 24, 210, 150, 5, "brown", 2, "Vector1");
 
-//Draws a text
-writeText(svg1_1, "A", 0, 205, 25, "brown", "brown", "bold", "PointA");
-writeText(svg1_1, "B", 160, 25, 25, "brown", "brown", "bold", "PointB");
+	//Draws a text
+	writeText(svg1_1, "A", 0, 205, 25, "brown", "brown", "bold", "PointA");
+	writeText(svg1_1, "B", 160, 25, 25, "brown", "brown", "bold", "PointB");
 
 // svg1_2. Vector addition. Graphical method
-// Get the SVG element from the DOM
-var svg1_2 = document.getElementById("svg1_2");
+	// Get the SVG element from the DOM
+	var svg1_2 = document.getElementById("svg1_2");
 
-// Add the marker to the SVG
-svg1_2.appendChild(brownMarker); 
-svg1_2.appendChild(blueMarker); 
-svg1_2.appendChild(greenMarker); 
+	// Add the marker to the SVG
+	svg1_2.appendChild(brownMarker); 
+	svg1_2.appendChild(blueMarker); 
+	svg1_2.appendChild(greenMarker); 
 
-// Vector a
-drawVector(svg1_2, 80, 230, 20, 120, "brown", 2, "vectorA");
-writeText(svg1_2, "a", 30, 180, 25, "brown", "brown", "bold", "labelA1");
-// Vector b
-drawVector(svg1_2, 20, 120, 160, 10, "blue", 2, "vectorB");
-writeText(svg1_2, "b", 70, 65, 25, "blue", "blue", "bold", "labelB1");
-// Vector a+b
-drawVector(svg1_2, 80, 230, 160, 10, "green", 2, "vectorA+B");
-writeText(svg1_2, "a+b", 130, 129, 25, "green", "green", "bold", "labelA+B");
-// Vector b at the other side of the paralelogram
-drawVector(svg1_2, 80, 230, 220, 120, "blue", 2, "vectorB2");
-writeText(svg1_2, "b", 170, 180, 25, "blue", "blue", "bold", "labelB2");
-// Vector a at the other side of the paralelogram
-drawVector(svg1_2, 220, 120, 160, 10, "brown", 2, "vectorA2");
-writeText(svg1_2, "a", 195, 65, 25, "brown", "brown", "bold", "labelA2");
+	// Vector a
+	drawVector(svg1_2, 80, 230, 20, 120, "brown", 2, "vectorA");
+	writeText(svg1_2, "a", 30, 180, 25, "brown", "brown", "bold", "labelA1");
+
+	// Vector b
+	drawVector(svg1_2, 20, 120, 160, 10, "blue", 2, "vectorB");
+	writeText(svg1_2, "b", 70, 65, 25, "blue", "blue", "bold", "labelB1");
+
+	// Vector a+b
+	drawVector(svg1_2, 80, 230, 160, 10, "green", 2, "vectorA+B");
+	writeText(svg1_2, "a+b", 130, 129, 25, "green", "green", "bold", "labelA+B");
+
+	// Vector b at the other side of the paralelogram
+	drawVector(svg1_2, 80, 230, 220, 120, "blue", 2, "vectorB2");
+	writeText(svg1_2, "b", 170, 180, 25, "blue", "blue", "bold", "labelB2");
+
+	// Vector a at the other side of the paralelogram
+	drawVector(svg1_2, 220, 120, 160, 10, "brown", 2, "vectorA2");
+	writeText(svg1_2, "a", 195, 65, 25, "brown", "brown", "bold", "labelA2");
+
+// svg1_3. Cartesian plane and cartesian coordinates of a point.
+	// Get the SVG element from the DOM
+	var svg1_3 = document.getElementById("svg1_3");
+
+	// Get the width and height of the SVG element as strings
+	var svgWidth = svg1_3.getAttribute("width");
+	var svgHeight = svg1_3.getAttribute("height");
+
+	// Convert strings to numbers
+	svgWidth = parseFloat(svgWidth);
+	svgHeight = parseFloat(svgHeight);
+
+	// Set the position of the origin of coordinates. In this case at midle of the SVG element.
+	var xOrigin = svgWidth/2;
+	var yOrigin = svgHeight/2;
+
+	// Set the scale; that is, the number of pixels that correspond to a unit of lenght in the plane.
+	var planeScale = 10 
+	
+	// y-axis
+		drawVector(svg1_3, xOrigin, svgWidth, xOrigin, 0, "brown", 2, "y-axis");
+		writeVerticalText(svg1_3, "y-axis", xOrigin, 0, 20, "brown", "brown");
+
+	// x-axis
+		drawVector(svg1_3, 0, yOrigin, svgWidth, yOrigin, "brown", 2, "x-axis");
+		// Create a new text element
+		var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
+		// Set the text content
+		textElement.textContent = "x-axis"; 
+		// Set attributes for positioning and styling
+		//specify baseline point.
+		textElement.setAttribute("x", svgWidth);
+		textElement.setAttribute("y", yOrigin);
+		//Positions the rightmost character at the specified baselin point.
+		textElement.setAttribute("text-anchor", "end");
+		//Aligns the topmost edge of the first text box with the specified baseline point.
+		textElement.setAttribute("dominant-baseline", "text-before-edge"); 
+		textElement.setAttribute("font-size", 20);
+		textElement.setAttribute("stroke", "brown");
+		textElement.setAttribute("fill", "brown");
+		textElement.setAttribute("font-weight", "normal");
+		// Add the text element to the SVG
+		svg1_3.appendChild(textElement);
+
+	// Origin
+		// Create a new text element
+		var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
+		// Set the text content
+		textElement.textContent = "O"; 
+		// Set attributes for positioning and styling
+		//specify baseline point.
+		textElement.setAttribute("x", xOrigin);
+		textElement.setAttribute("y", yOrigin);
+		//Positions the rightmost character at the specified baselin point.
+		textElement.setAttribute("text-anchor", "end");
+		//Aligns the topmost edge of the first text box with the specified baseline point.
+		textElement.setAttribute("dominant-baseline", "text-before-edge"); 
+		textElement.setAttribute("font-size", 20);
+		textElement.setAttribute("stroke", "brown");
+		textElement.setAttribute("fill", "brown");
+		textElement.setAttribute("font-weight", "normal");
+		// Add the text element to the SVG
+		svg1_3.appendChild(textElement);
+	
+	// Point (5, 10)
+		drawPoint(svg1_3, 5, 10, planeScale, xOrigin, yOrigin, "green");
