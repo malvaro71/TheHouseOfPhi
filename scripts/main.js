@@ -116,11 +116,34 @@ function drawVector(svgElement, x1, y1, x2, y2, strokeColor, strokeWidth, id) {
 			line.setAttribute("marker-end", "url(#Greenarrow)");
 		  break;
 	  }
+	// Append the vector element to the SVG
 	svgElement.appendChild(line);
 }
 
-//Function for drawing points in an SVG element
-function drawPoint(svgElement, x, y, scale, x0, y0, color) {
+//Function for drawing lines in a cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
+function drawLineInCartesianPlane(svgElement, x1, y1, x2, y2, scale, x0, y0, strokeColor, strokeWidth, strokeDasharray, id) {
+	// Create the line element with styling
+	var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+	line.setAttribute("id", id);
+	var x1Position = x0+x1*scale;
+	line.setAttribute("x1", x1Position);
+	var y1Position = x0-y1*scale;
+	line.setAttribute("y1", y1Position);
+	var x2Position = x0+x2*scale;
+	line.setAttribute("x2", x2Position);
+	var y2Position = x0-y2*scale;
+	line.setAttribute("y2", y2Position);
+	line.setAttribute("stroke", strokeColor);
+	line.setAttribute("stroke-width", strokeWidth);
+	line.setAttribute("stroke-dasharray", strokeDasharray);
+	// Append the line element to the SVG
+	svgElement.appendChild(line);
+}
+
+
+
+//Function for drawing points in a cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
+function drawPointInCartesianPlane(svgElement, x, y, scale, x0, y0, color) {
 
 // Create a new circle element
 var circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -341,4 +364,8 @@ var greenMarker = createMarker("Greenarrow", "green");
 		svg1_3.appendChild(textElement);
 	
 	// Point (5, 10)
-		drawPoint(svg1_3, 5, 10, planeScale, xOrigin, yOrigin, "green");
+		drawPointInCartesianPlane(svg1_3, 5, 10, planeScale, xOrigin, yOrigin, "green");
+
+	// Dashed lines to mark Point coordinates in x-asis and y-asis
+  		drawLineInCartesianPlane(svg1_3, 5, 0, 5, 10, planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
+		drawLineInCartesianPlane(svg1_3, 0, 10, 5, 10, planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
