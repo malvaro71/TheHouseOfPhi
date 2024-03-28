@@ -120,6 +120,23 @@ function drawVector(svgElement, x1, y1, x2, y2, strokeColor, strokeWidth, id) {
 	svgElement.appendChild(line);
 }
 
+function transformCoordinatesInCartesianPlane(coordinates, scale, xOffset, yOffset) {
+	// Check if coordinates is an array of length 2
+	if (!Array.isArray(coordinates) || coordinates.length !== 2) {
+	  throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+	}
+  
+	// Destructure the coordinates array
+	const [x, y] = coordinates;
+  
+	// Transform the x and y values
+	const transformedX = xOffset + x * scale;
+	const transformedY = yOffset - y * scale;
+  
+	// Return a new array with transformed coordinates
+	return [transformedX, transformedY];
+  }
+
 //Function for drawing lines in a cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
 function drawLineInCartesianPlane(svgElement, x1, y1, x2, y2, scale, x0, y0, strokeColor, strokeWidth, strokeDasharray, id) {
 	// Create the line element with styling
@@ -140,25 +157,29 @@ function drawLineInCartesianPlane(svgElement, x1, y1, x2, y2, scale, x0, y0, str
 	svgElement.appendChild(line);
 }
 
-
-
 //Function for drawing points in a cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
-function drawPointInCartesianPlane(svgElement, x, y, scale, x0, y0, color) {
+function drawPointInCartesianPlane(svgElement, coordinates, scale, x0, y0, color) {
+	// Check if coordinates is an array of length 2
+	if (!Array.isArray(coordinates) || coordinates.length !== 2) {
+		throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+	}
 
-// Create a new circle element
-var circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+	// Transform point coordinates to draw it in the SVG element and destructure the coordinates array
+	const transformedCoordinates = transformCoordinatesInCartesianPlane(coordinates, scale, x0, y0);
+	const [xPosition, yPosition] = transformedCoordinates;
 
-// Set attributes for the circle
-var xPosition = x0+x*scale;
-circleElement.setAttribute("cx", xPosition);
-var yPosition = y0-y*scale;
-circleElement.setAttribute("cy", yPosition);
-circleElement.setAttribute("r", 3);
-circleElement.setAttribute("stroke", color);
-circleElement.setAttribute("fill", color);
+	// Create a new circle element
+	var circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 
-// Append the circle element to the SVG
-svgElement.appendChild(circleElement);
+	// Set attributes for the circle
+	circleElement.setAttribute("cx", xPosition);
+	circleElement.setAttribute("cy", yPosition);
+	circleElement.setAttribute("r", 3);
+	circleElement.setAttribute("stroke", color);
+	circleElement.setAttribute("fill", color);
+
+	// Append the circle element to the SVG
+	svgElement.appendChild(circleElement);
 }
 
 //Function to write text in an SVG element
@@ -364,7 +385,7 @@ var greenMarker = createMarker("Greenarrow", "green");
 		svg1_3.appendChild(textElement);
 	
 	// Point (5, 10)
-		drawPointInCartesianPlane(svg1_3, 5, 10, planeScale, xOrigin, yOrigin, "green");
+		drawPointInCartesianPlane(svg1_3, [5, 10], planeScale, xOrigin, yOrigin, "green");
 
 	// Dashed lines to mark Point coordinates in x-asis and y-asis
   		drawLineInCartesianPlane(svg1_3, 5, 0, 5, 10, planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
