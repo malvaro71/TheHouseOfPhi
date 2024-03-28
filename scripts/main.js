@@ -166,7 +166,7 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 }
 
 // Function for setting up a cartesian plane in an SVG element
-function setUpCartesianPlane(svgElement, x0, y0, scale, yAxisText, xAxisText){
+function setUpCartesianPlane(svgElement, x0, y0, scaleX, scaleY, yAxisText, xAxisText){
 
 	// Get the width and height of the SVG element as strings
 	var svgWidth = svgElement.getAttribute("width");
@@ -181,7 +181,8 @@ function setUpCartesianPlane(svgElement, x0, y0, scale, yAxisText, xAxisText){
 	var yOrigin = svgHeight*y0;
 
 	// Set the scale; that is, the number of pixels that correspond to a unit of lenght in the plane.
-	var planeScale = scale; 
+	var planeScaleX = scaleX; 
+	var planeScaleY = scaleY;
 
 	// y-axis
 		drawVector(svgElement, xOrigin, svgWidth, xOrigin, 0, "brown", 2, "y-axis");
@@ -229,7 +230,7 @@ function setUpCartesianPlane(svgElement, x0, y0, scale, yAxisText, xAxisText){
 		svgElement.appendChild(textElement);
 
 		// Return an array with planeScale, xOrigin and yOrigin
-	return [planeScale, xOrigin, yOrigin];
+	return [planeScaleX, planeScaleY, xOrigin, yOrigin];
 }
 
 function transformCoordinatesInCartesianPlane(coordinates, planeParameters) {
@@ -238,18 +239,18 @@ function transformCoordinatesInCartesianPlane(coordinates, planeParameters) {
 	  throw new Error("Invalid coordinates: Expecting an array with x and y values.");
 	}
 
-	// Check if planeParameters is an array of length 3
-	if (!Array.isArray(planeParameters) || planeParameters.length !== 3) {
-		throw new Error("Invalid coordinates: Expecting an array with x0, y0 and scale values.");
+	// Check if planeParameters is an array of length 4
+	if (!Array.isArray(planeParameters) || planeParameters.length !== 4) {
+		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX and scaleY values.");
 	}
   
 	// Destructure the coordinates array
 	const [x, y] = coordinates;
-	const[scale, xOffset, yOffset] = planeParameters;
+	const[scaleX, scaleY, xOffset, yOffset] = planeParameters;
   
 	// Transform the x and y values
-	const transformedX = xOffset + x * scale;
-	const transformedY = yOffset - y * scale;
+	const transformedX = xOffset + x * scaleX;
+	const transformedY = yOffset - y * scaleY;
   
 	// Return a new array with transformed coordinates
 	return [transformedX, transformedY];
@@ -261,9 +262,9 @@ function drawLineInCartesianPlane(svgElement, coordinates1, coordinates2, planeP
 		throw new Error("Invalid coordinates: Expecting arrays with x and y values.");
 	}
 
-	// Check if planeParameters is an array of length 3
-	if (!Array.isArray(planeParameters) || planeParameters.length !== 3) {
-		throw new Error("Invalid coordinates: Expecting an array with x0, y0 and scale values.");
+	// Check if planeParameters is an array of length 4
+	if (!Array.isArray(planeParameters) || planeParameters.length !== 4) {
+		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX and scaleY values.");
 	}
 
 	// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
@@ -294,9 +295,9 @@ function drawPointInCartesianPlane(svgElement, coordinates, planeParameters, col
 		throw new Error("Invalid coordinates: Expecting an array with x and y values.");
 	}
 
-	// Check if planeParameters is an array of length 3
-	if (!Array.isArray(planeParameters) || planeParameters.length !== 3) {
-		throw new Error("Invalid coordinates: Expecting an array with x0, y0 and scale values.");
+	// Check if planeParameters is an array of length 4
+	if (!Array.isArray(planeParameters) || planeParameters.length !== 4) {
+		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX and scaleY values.");
 	}
 
 	// Transform point coordinates to draw it in the SVG element and destructure the coordinates array
@@ -477,7 +478,7 @@ var greenMarker = createMarker("Greenarrow", "green");
 		svg1_3.appendChild(textElement);
 	*/
 	
-	const CartesianPlaneParameters = setUpCartesianPlane(svg1_3, 0.5, 0.5, 10, "y-axis", "x-axis");
+	const CartesianPlaneParameters = setUpCartesianPlane(svg1_3, 0.5, 0.5, 10, 10, "y-axis", "x-axis");
 	
 	// Point (5, 10)
 		//drawPointInCartesianPlane(svg1_3, [5, 10], planeScale, xOrigin, yOrigin, "green");
@@ -487,4 +488,4 @@ var greenMarker = createMarker("Greenarrow", "green");
   		//drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
 		//drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
 		drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine1");
-		drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine1");
+		drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine2");
