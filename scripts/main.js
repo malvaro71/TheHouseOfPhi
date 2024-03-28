@@ -138,21 +138,28 @@ function transformCoordinatesInCartesianPlane(coordinates, scale, xOffset, yOffs
   }
 
 //Function for drawing lines in a cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
-function drawLineInCartesianPlane(svgElement, x1, y1, x2, y2, scale, x0, y0, strokeColor, strokeWidth, strokeDasharray, id) {
+function drawLineInCartesianPlane(svgElement, coordinates1, coordinates2, scale, x0, y0, strokeColor, strokeWidth, strokeDasharray, id) {
+	if (![coordinates1, coordinates2].every(arr => Array.isArray(arr) && arr.length === 2)) {
+		throw new Error("Invalid coordinates: Expecting arrays with x and y values.");
+	}
+
+	// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
+	const transformedCoordinates1 = transformCoordinatesInCartesianPlane(coordinates1, scale, x0, y0);
+	const [xPosition1, yPosition1] = transformedCoordinates1;
+	const transformedCoordinates2 = transformCoordinatesInCartesianPlane(coordinates2, scale, x0, y0);
+	const [xPosition2, yPosition2] = transformedCoordinates2;
+
 	// Create the line element with styling
 	var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 	line.setAttribute("id", id);
-	var x1Position = x0+x1*scale;
-	line.setAttribute("x1", x1Position);
-	var y1Position = x0-y1*scale;
-	line.setAttribute("y1", y1Position);
-	var x2Position = x0+x2*scale;
-	line.setAttribute("x2", x2Position);
-	var y2Position = x0-y2*scale;
-	line.setAttribute("y2", y2Position);
+	line.setAttribute("x1", xPosition1);
+	line.setAttribute("y1", yPosition1);
+	line.setAttribute("x2", xPosition2);
+	line.setAttribute("y2", yPosition2);
 	line.setAttribute("stroke", strokeColor);
 	line.setAttribute("stroke-width", strokeWidth);
 	line.setAttribute("stroke-dasharray", strokeDasharray);
+	
 	// Append the line element to the SVG
 	svgElement.appendChild(line);
 }
@@ -388,5 +395,5 @@ var greenMarker = createMarker("Greenarrow", "green");
 		drawPointInCartesianPlane(svg1_3, [5, 10], planeScale, xOrigin, yOrigin, "green");
 
 	// Dashed lines to mark Point coordinates in x-asis and y-asis
-  		drawLineInCartesianPlane(svg1_3, 5, 0, 5, 10, planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
-		drawLineInCartesianPlane(svg1_3, 0, 10, 5, 10, planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
+  		drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
+		drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
