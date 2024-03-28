@@ -489,3 +489,55 @@ var greenMarker = createMarker("Greenarrow", "green");
 		//drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
 		drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine1");
 		drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine2");
+
+	// Create a text element
+	const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
+	// Set attributes for the text element
+	textElement.setAttribute("x", 260);
+	textElement.setAttribute("y", 100);
+	textElement.setAttribute("font-size", "20");
+	textElement.setAttribute("stroke", "green");
+	textElement.setAttribute("fill", "green");
+	textElement.setAttribute("stroke-width", "0.6");
+	textElement.textContent = "P (x";
+
+	// Create child elements for styled text sections
+	//const pElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+	const x1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+	const commaElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+	const y1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+	const closingParenElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+
+	// Set attributes for child elements
+	//pElement.textContent = "P (x";
+	x1Element.setAttribute("dx", "-1");
+	x1Element.setAttribute("dy", "6");
+	x1Element.setAttribute("font-size", "12");
+	x1Element.setAttribute("stroke-width", "0.3");
+	x1Element.textContent = "1";
+	commaElement.setAttribute("dx", "-1");
+	commaElement.setAttribute("dy", "-6");
+	commaElement.setAttribute("font-size", "20");
+	commaElement.setAttribute("stroke-width", "0.6");
+	commaElement.textContent = ", y";
+	y1Element.setAttribute("dx", "-1");
+	y1Element.setAttribute("dy", "6");
+	y1Element.setAttribute("font-size", "12");
+	y1Element.setAttribute("stroke-width", "0.3");
+	y1Element.textContent = "1";
+	closingParenElement.setAttribute("dx", "-1");
+	closingParenElement.setAttribute("dy", "-6");
+	closingParenElement.setAttribute("font-size", "20");
+	closingParenElement.setAttribute("stroke-width", "0.6");
+	closingParenElement.textContent = ")";
+
+	// Append child elements to the text element
+	//textElement.appendChild(pElement);
+	textElement.appendChild(x1Element);
+	textElement.appendChild(commaElement);
+	textElement.appendChild(y1Element);
+	textElement.appendChild(closingParenElement);
+
+	// Append the text element to the SVG
+	svg1_3.appendChild(textElement);	
