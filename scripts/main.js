@@ -166,7 +166,7 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 }
 
 // Function for setting up a cartesian plane in an SVG element
-function setUpCartesianPlane(svgElement, x0, y0, scaleX, scaleY, yAxisText, xAxisText){
+function setUpCartesianPlane(svgElement, xMin, xMax, yMin, yMax, yAxisText, xAxisText){
 
 	// Get the width and height of the SVG element as strings
 	var svgWidth = svgElement.getAttribute("width");
@@ -177,12 +177,12 @@ function setUpCartesianPlane(svgElement, x0, y0, scaleX, scaleY, yAxisText, xAxi
 	svgHeight = parseFloat(svgHeight);
 
 	// Set the position of the origin of coordinates. In this case at midle of the SVG element.
-	var xOrigin = svgWidth*x0;
-	var yOrigin = svgHeight*y0;
+	var xOrigin = svgWidth*(-xMin/(xMax-xMin));
+	var yOrigin = svgHeight*(-yMin/(yMax-yMin));
 
 	// Set the scale; that is, the number of pixels that correspond to a unit of lenght in the plane.
-	var planeScaleX = scaleX; 
-	var planeScaleY = scaleY;
+	var planeScaleX = svgWidth/(xMax-xMin); 
+	var planeScaleY = svgHeight/(yMax-yMin);
 
 	// y-axis
 		drawVector(svgElement, xOrigin, svgWidth, xOrigin, 0, "brown", 2, "y-axis");
@@ -478,7 +478,7 @@ var greenMarker = createMarker("Greenarrow", "green");
 		svg1_3.appendChild(textElement);
 	*/
 	
-	const CartesianPlaneParameters = setUpCartesianPlane(svg1_3, 0.5, 0.5, 10, 10, "y-axis", "x-axis");
+	const CartesianPlaneParameters = setUpCartesianPlane(svg1_3, -20, 20, -20, 20, "y-axis", "x-axis");
 	
 	// Point (5, 10)
 		//drawPointInCartesianPlane(svg1_3, [5, 10], planeScale, xOrigin, yOrigin, "green");
