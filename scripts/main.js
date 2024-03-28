@@ -416,128 +416,63 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Get the SVG element from the DOM
 	var svg1_3 = document.getElementById("svg1_3");
 
-	/*
-	// Get the width and height of the SVG element as strings
-	var svgWidth = svg1_3.getAttribute("width");
-	var svgHeight = svg1_3.getAttribute("height");
-
-	// Convert strings to numbers
-	svgWidth = parseFloat(svgWidth);
-	svgHeight = parseFloat(svgHeight);
-
-	// Set the position of the origin of coordinates. In this case at midle of the SVG element.
-	var xOrigin = svgWidth/2;
-	var yOrigin = svgHeight/2;
-
-	// Set the scale; that is, the number of pixels that correspond to a unit of lenght in the plane.
-	var planeScale = 10 
-	
-	// y-axis
-		drawVector(svg1_3, xOrigin, svgWidth, xOrigin, 0, "brown", 2, "y-axis");
-		writeVerticalText(svg1_3, "y-axis", xOrigin, 0, 20, "brown", "brown");
-
-	// x-axis
-		drawVector(svg1_3, 0, yOrigin, svgWidth, yOrigin, "brown", 2, "x-axis");
-		// Create a new text element
-		var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
-		// Set the text content
-		textElement.textContent = "x-axis"; 
-		// Set attributes for positioning and styling
-		//specify baseline point.
-		textElement.setAttribute("x", svgWidth);
-		textElement.setAttribute("y", yOrigin);
-		//Positions the rightmost character at the specified baselin point.
-		textElement.setAttribute("text-anchor", "end");
-		//Aligns the topmost edge of the first text box with the specified baseline point.
-		textElement.setAttribute("dominant-baseline", "text-before-edge"); 
-		textElement.setAttribute("font-size", 20);
-		textElement.setAttribute("stroke", "brown");
-		textElement.setAttribute("fill", "brown");
-		textElement.setAttribute("font-weight", "normal");
-		// Add the text element to the SVG
-		svg1_3.appendChild(textElement);
-
-	// Origin
-		// Create a new text element
-		var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
-		// Set the text content
-		textElement.textContent = "O"; 
-		// Set attributes for positioning and styling
-		//specify baseline point.
-		textElement.setAttribute("x", xOrigin);
-		textElement.setAttribute("y", yOrigin);
-		//Positions the rightmost character at the specified baselin point.
-		textElement.setAttribute("text-anchor", "end");
-		//Aligns the topmost edge of the first text box with the specified baseline point.
-		textElement.setAttribute("dominant-baseline", "text-before-edge"); 
-		textElement.setAttribute("font-size", 20);
-		textElement.setAttribute("stroke", "brown");
-		textElement.setAttribute("fill", "brown");
-		textElement.setAttribute("font-weight", "normal");
-		// Add the text element to the SVG
-		svg1_3.appendChild(textElement);
-	*/
-	
 	const CartesianPlaneParameters = setUpCartesianPlane(svg1_3, -20, 20, -20, 20, "y-axis", "x-axis");
 	
 	// Point (5, 10)
-		//drawPointInCartesianPlane(svg1_3, [5, 10], planeScale, xOrigin, yOrigin, "green");
 		drawPointInCartesianPlane(svg1_3, [5, 10], CartesianPlaneParameters, "green");
 
 	// Dashed lines to mark Point coordinates in x-asis and y-asis
-  		//drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
-		//drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], planeScale, xOrigin, yOrigin, "green", 1, "5,5", "DashedLine1");
 		drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine1");
 		drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine2");
 
-	// Create a text element
-	const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	// Write point coordinates
+		const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
-	// Set attributes for the text element
-	textElement.setAttribute("x", 260);
-	textElement.setAttribute("y", 100);
-	textElement.setAttribute("font-size", "20");
-	textElement.setAttribute("stroke", "green");
-	textElement.setAttribute("fill", "green");
-	textElement.setAttribute("stroke-width", "0.6");
-	textElement.textContent = "P (x";
+		// Set attributes for the text element
+		textElement.setAttribute("x", 260);
+		textElement.setAttribute("y", 100);
+		textElement.setAttribute("font-size", "20");
+		textElement.setAttribute("stroke", "green");
+		textElement.setAttribute("fill", "green");
+		textElement.setAttribute("stroke-width", "0.6");
+		textElement.textContent = "P (x";
 
-	// Create child elements for styled text sections
-	//const pElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-	const x1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-	const commaElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-	const y1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-	const closingParenElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+		// Create child elements for styled text sections
+		//const pElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+		const x1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+		const commaElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+		const y1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+		const closingParenElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
 
-	// Set attributes for child elements
-	//pElement.textContent = "P (x";
-	x1Element.setAttribute("dx", "-1");
-	x1Element.setAttribute("dy", "6");
-	x1Element.setAttribute("font-size", "12");
-	x1Element.setAttribute("stroke-width", "0.3");
-	x1Element.textContent = "1";
-	commaElement.setAttribute("dx", "-1");
-	commaElement.setAttribute("dy", "-6");
-	commaElement.setAttribute("font-size", "20");
-	commaElement.setAttribute("stroke-width", "0.6");
-	commaElement.textContent = ", y";
-	y1Element.setAttribute("dx", "-1");
-	y1Element.setAttribute("dy", "6");
-	y1Element.setAttribute("font-size", "12");
-	y1Element.setAttribute("stroke-width", "0.3");
-	y1Element.textContent = "1";
-	closingParenElement.setAttribute("dx", "-1");
-	closingParenElement.setAttribute("dy", "-6");
-	closingParenElement.setAttribute("font-size", "20");
-	closingParenElement.setAttribute("stroke-width", "0.6");
-	closingParenElement.textContent = ")";
+		// Set attributes for child elements
+		//pElement.textContent = "P (x";
+		x1Element.setAttribute("dx", "-1");
+		x1Element.setAttribute("dy", "6");
+		x1Element.setAttribute("font-size", "12");
+		x1Element.setAttribute("stroke-width", "0.3");
+		x1Element.textContent = "1";
+		commaElement.setAttribute("dx", "-1");
+		commaElement.setAttribute("dy", "-6");
+		commaElement.setAttribute("font-size", "20");
+		commaElement.setAttribute("stroke-width", "0.6");
+		commaElement.textContent = ", y";
+		y1Element.setAttribute("dx", "-1");
+		y1Element.setAttribute("dy", "6");
+		y1Element.setAttribute("font-size", "12");
+		y1Element.setAttribute("stroke-width", "0.3");
+		y1Element.textContent = "1";
+		closingParenElement.setAttribute("dx", "-1");
+		closingParenElement.setAttribute("dy", "-6");
+		closingParenElement.setAttribute("font-size", "20");
+		closingParenElement.setAttribute("stroke-width", "0.6");
+		closingParenElement.textContent = ")";
 
-	// Append child elements to the text element
-	//textElement.appendChild(pElement);
-	textElement.appendChild(x1Element);
-	textElement.appendChild(commaElement);
-	textElement.appendChild(y1Element);
-	textElement.appendChild(closingParenElement);
+		// Append child elements to the text element
+		//textElement.appendChild(pElement);
+		textElement.appendChild(x1Element);
+		textElement.appendChild(commaElement);
+		textElement.appendChild(y1Element);
+		textElement.appendChild(closingParenElement);
 
-	// Append the text element to the SVG
-	svg1_3.appendChild(textElement);	
+		// Append the text element to the SVG
+		svg1_3.appendChild(textElement);	
