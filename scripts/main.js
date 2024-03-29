@@ -152,8 +152,11 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
   
 	// Set attributes for styling and rotation
 	textElement.setAttribute("transform", "rotate(-90)");
-	textElement.setAttribute("text-anchor", "end"); //Positions the rightmost character (before rotate) at the specified baselin point.
-	textElement.setAttribute("dominant-baseline", "text-after-edge"); //Aligns the bottommost edge of the last text box with the specified baseline point.
+	//Positions the rightmost character (before rotate) at the specified baselin point.
+	textElement.setAttribute("text-anchor", "end"); 
+	//Aligns the bottommost edge of the last text box with the specified baseline point.
+	textElement.setAttribute("dominant-baseline", "text-after-edge");
+
 	textElement.setAttribute("font-size", fontSize);
 	textElement.setAttribute("stroke", stroke);
 	textElement.setAttribute("fill", fill);
@@ -166,8 +169,7 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 }
 
 // Function for setting up a cartesian plane in an SVG element
-function setUpCartesianPlane(svgElement, xMin, xMax, yMin, yMax, yAxisText, xAxisText){
-
+function setUpCartesianPlane(svgElement, xMin, xMax, yMin, yMax){
 	// Get the width and height of the SVG element as strings
 	var svgWidth = svgElement.getAttribute("width");
 	var svgHeight = svgElement.getAttribute("height");
@@ -183,7 +185,22 @@ function setUpCartesianPlane(svgElement, xMin, xMax, yMin, yMax, yAxisText, xAxi
 	// Set the scale; that is, the number of pixels that correspond to a unit of lenght in the plane.
 	var planeScaleX = svgWidth/(xMax-xMin); 
 	var planeScaleY = svgHeight/(yMax-yMin);
+	
+	// Return an array with planeScale, xOrigin, yOrigin, svgWidth and svgHeight.
+	return [planeScaleX, planeScaleY, xOrigin, yOrigin, svgWidth, svgHeight];
+}
 
+// Function for drawing x and y axes in cartesian plane.
+function drawAxesInCartesianPlane(svgElement, planeParameters, yAxisText, xAxisText, OriginText){
+	
+	// Check if planeParameters is an array of length 6.
+	if (!Array.isArray(planeParameters) || planeParameters.length !== 6) {
+		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX, scaleY, svgWidth and svgHeight values.");
+	}
+
+	// Destructure the planeParameters array.
+	const [ , , xOrigin, yOrigin, svgWidth, ] = planeParameters; 
+	
 	// y-axis
 		drawVector(svgElement, xOrigin, svgWidth, xOrigin, 0, "brown", 2, "y-axis");
 		writeVerticalText(svgElement, yAxisText, xOrigin, 0, 20, "brown", "brown");
@@ -194,59 +211,56 @@ function setUpCartesianPlane(svgElement, xMin, xMax, yMin, yMax, yAxisText, xAxi
 		var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
 		// Set the text content
 		textElement.textContent = xAxisText; 
-		// Set attributes for positioning and styling
-		//specify baseline point.
+		// Set attributes for positioning (specify baseline point).
 		textElement.setAttribute("x", svgWidth);
 		textElement.setAttribute("y", yOrigin);
 		//Positions the rightmost character at the specified baseline point.
 		textElement.setAttribute("text-anchor", "end");
 		//Aligns the topmost edge of the first text box with the specified baseline point.
 		textElement.setAttribute("dominant-baseline", "text-before-edge"); 
+		// Set attributes for styling.
 		textElement.setAttribute("font-size", 20);
 		textElement.setAttribute("stroke", "brown");
 		textElement.setAttribute("fill", "brown");
 		textElement.setAttribute("font-weight", "normal");
-		// Add the text element to the SVG
+		// Add the text element to the SVG.
 		svgElement.appendChild(textElement);
 
-	// Origin
-		// Create a new text element
+	// Origin.
+		// Create a new text element.
 		var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
-		// Set the text content
-		textElement.textContent = "O"; 
-		// Set attributes for positioning and styling
-		//specify baseline point.
+		// Set the text content.
+		textElement.textContent = OriginText; 
+		// Set attributes for positioning (specify baseline point).
 		textElement.setAttribute("x", xOrigin);
 		textElement.setAttribute("y", yOrigin);
-		//Positions the rightmost character at the specified baselin point.
+		// Positions the rightmost character at the specified baseline point.
 		textElement.setAttribute("text-anchor", "end");
-		//Aligns the topmost edge of the first text box with the specified baseline point.
+		// Aligns the topmost edge of the first text box with the specified baseline point.
 		textElement.setAttribute("dominant-baseline", "text-before-edge"); 
+		// Set attributes for styling.
 		textElement.setAttribute("font-size", 20);
 		textElement.setAttribute("stroke", "brown");
 		textElement.setAttribute("fill", "brown");
 		textElement.setAttribute("font-weight", "normal");
-		// Add the text element to the SVG
+		// Add the text element to the SVG.
 		svgElement.appendChild(textElement);
-
-		// Return an array with planeScale, xOrigin and yOrigin
-	return [planeScaleX, planeScaleY, xOrigin, yOrigin];
 }
 
 function transformCoordinatesInCartesianPlane(coordinates, planeParameters) {
-	// Check if coordinates is an array of length 2
+	// Check if coordinates is an array of length 2.
 	if (!Array.isArray(coordinates) || coordinates.length !== 2) {
 	  throw new Error("Invalid coordinates: Expecting an array with x and y values.");
 	}
 
-	// Check if planeParameters is an array of length 4
-	if (!Array.isArray(planeParameters) || planeParameters.length !== 4) {
-		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX and scaleY values.");
+	// Check if planeParameters is an array of length 6.
+	if (!Array.isArray(planeParameters) || planeParameters.length !== 6) {
+		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX, scaleY, svgWidth and svgHeight values.");
 	}
   
-	// Destructure the coordinates array
+	// Destructure the coordinates and planeParameters arrays.
 	const [x, y] = coordinates;
-	const[scaleX, scaleY, xOffset, yOffset] = planeParameters;
+	const[scaleX, scaleY, xOffset, yOffset, , ] = planeParameters;
   
 	// Transform the x and y values
 	const transformedX = xOffset + x * scaleX;
@@ -262,9 +276,9 @@ function drawLineInCartesianPlane(svgElement, coordinates1, coordinates2, planeP
 		throw new Error("Invalid coordinates: Expecting arrays with x and y values.");
 	}
 
-	// Check if planeParameters is an array of length 4
-	if (!Array.isArray(planeParameters) || planeParameters.length !== 4) {
-		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX and scaleY values.");
+	// Check if planeParameters is an array of length 6.
+	if (!Array.isArray(planeParameters) || planeParameters.length !== 6) {
+		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX, scaleY, svgWidth and svgHeight values.");
 	}
 
 	// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
@@ -290,31 +304,31 @@ function drawLineInCartesianPlane(svgElement, coordinates1, coordinates2, planeP
 
 //Function for drawing points in a cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
 function drawPointInCartesianPlane(svgElement, coordinates, planeParameters, color) {
-	// Check if coordinates is an array of length 2
+	// Check if coordinates is an array of length 2.
 	if (!Array.isArray(coordinates) || coordinates.length !== 2) {
 		throw new Error("Invalid coordinates: Expecting an array with x and y values.");
 	}
 
-	// Check if planeParameters is an array of length 4
-	if (!Array.isArray(planeParameters) || planeParameters.length !== 4) {
-		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX and scaleY values.");
+	// Check if planeParameters is an array of length 6.
+	if (!Array.isArray(planeParameters) || planeParameters.length !== 6) {
+		throw new Error("Invalid coordinates: Expecting an array with x0, y0, scaleX, scaleY, svgWidth and svgHeight values.");
 	}
 
-	// Transform point coordinates to draw it in the SVG element and destructure the coordinates array
+	// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
 	const transformedCoordinates = transformCoordinatesInCartesianPlane(coordinates, planeParameters);
 	const [xPosition, yPosition] = transformedCoordinates;
 
-	// Create a new circle element
+	// Create a new circle element.
 	var circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 
-	// Set attributes for the circle
+	// Set attributes for the circle.
 	circleElement.setAttribute("cx", xPosition);
 	circleElement.setAttribute("cy", yPosition);
 	circleElement.setAttribute("r", 3);
 	circleElement.setAttribute("stroke", color);
 	circleElement.setAttribute("fill", color);
 
-	// Append the circle element to the SVG
+	// Append the circle element to the SVG.
 	svgElement.appendChild(circleElement);
 }
 
@@ -392,23 +406,23 @@ var greenMarker = createMarker("Greenarrow", "green");
 	svg1_2.appendChild(blueMarker); 
 	svg1_2.appendChild(greenMarker); 
 
-	// Vector a
+	// Vector 'a'
 	drawVector(svg1_2, 80, 230, 20, 120, "brown", 2, "vectorA");
 	writeText(svg1_2, "a", 30, 180, 25, "brown", "brown", "bold", "labelA1");
 
-	// Vector b
+	// Vector 'b'
 	drawVector(svg1_2, 20, 120, 160, 10, "blue", 2, "vectorB");
 	writeText(svg1_2, "b", 70, 65, 25, "blue", "blue", "bold", "labelB1");
 
-	// Vector a+b
+	// Vector 'a+b'
 	drawVector(svg1_2, 80, 230, 160, 10, "green", 2, "vectorA+B");
 	writeText(svg1_2, "a+b", 130, 129, 25, "green", "green", "bold", "labelA+B");
 
-	// Vector b at the other side of the paralelogram
+	// Vector 'b' at the other side of the paralelogram
 	drawVector(svg1_2, 80, 230, 220, 120, "blue", 2, "vectorB2");
 	writeText(svg1_2, "b", 170, 180, 25, "blue", "blue", "bold", "labelB2");
 
-	// Vector a at the other side of the paralelogram
+	// Vector 'a' at the other side of the paralelogram
 	drawVector(svg1_2, 220, 120, 160, 10, "brown", 2, "vectorA2");
 	writeText(svg1_2, "a", 195, 65, 25, "brown", "brown", "bold", "labelA2");
 
@@ -416,12 +430,16 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Get the SVG element from the DOM
 	var svg1_3 = document.getElementById("svg1_3");
 
-	const CartesianPlaneParameters = setUpCartesianPlane(svg1_3, -20, 20, -20, 20, "y-axis", "x-axis");
+	// Define the parameters asociated to the cartesian plane in the SVG element, to be used in functions related with the cartesian plane.
+	const CartesianPlaneParameters = setUpCartesianPlane(svg1_3, -20, 20, -20, 20);
+
+	// Draw cartesian plane axes and its origin.
+	drawAxesInCartesianPlane(svg1_3, CartesianPlaneParameters, "y-axis", "x-axis", "O");
 	
-	// Point (5, 10)
+	// Draw point (5, 10).
 		drawPointInCartesianPlane(svg1_3, [5, 10], CartesianPlaneParameters, "green");
 
-	// Dashed lines to mark Point coordinates in x-asis and y-asis
+	// Dashed lines to mark Point coordinates in x-asis and y-asis.
 		drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine1");
 		drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine2");
 
