@@ -303,7 +303,7 @@ function drawLineInCartesianPlane(svgElement, coordinates1, coordinates2, planeP
 }
 
 //Function for drawing points in a cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
-function drawPointInCartesianPlane(svgElement, coordinates, planeParameters, color) {
+function drawPointInCartesianPlane(svgElement, coordinates, planeParameters, color, id) {
 	// Check if coordinates is an array of length 2.
 	if (!Array.isArray(coordinates) || coordinates.length !== 2) {
 		throw new Error("Invalid coordinates: Expecting an array with x and y values.");
@@ -322,6 +322,7 @@ function drawPointInCartesianPlane(svgElement, coordinates, planeParameters, col
 	var circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 
 	// Set attributes for the circle.
+	circleElement.setAttribute("id", id);
 	circleElement.setAttribute("cx", xPosition);
 	circleElement.setAttribute("cy", yPosition);
 	circleElement.setAttribute("r", 3);
@@ -436,8 +437,8 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Draw cartesian plane axes and its origin.
 	drawAxesInCartesianPlane(svg1_3, CartesianPlaneParameters, "y-axis", "x-axis", "O");
 	
-	// Draw point (5, 10).
-		drawPointInCartesianPlane(svg1_3, [5, 10], CartesianPlaneParameters, "green");
+	// Draw point P = (5, 10).
+		drawPointInCartesianPlane(svg1_3, [5, 10], CartesianPlaneParameters, "green", "PointP");
 
 	// Dashed lines to mark Point coordinates in x-asis and y-asis.
 		drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine1");
