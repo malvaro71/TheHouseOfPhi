@@ -170,7 +170,10 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 
 class CartesianPlane {
     constructor(svgElement, xMin, xMax, yMin, yMax) {
-        this.svgElement = svgElement;
+
+        // Define the svg element where the cartesian plane will be represented
+		this.svgElement = svgElement;
+
 		// Validate minimum and maximum values
 		if (xMin > xMax) {
 			throw new Error("Invalid plane dimensions: xMin cannot be greater than xMax.");
@@ -203,16 +206,13 @@ class CartesianPlane {
     }
 	
 	// Draw x and y axes in cartesian plane.
-	// Draw axes using this.parameters, this.drawVector and this.svgElement
     drawAxes(yAxisText, xAxisText, originText) {
        
 		// y-axis
-			//drawVector(this.svgElement, OriginX, svgHeight, OriginX, 0, "brown", 2, "y-axis");
 			this.drawVector([0, this.yMin], [0, this.yMax], "brown", 2, "y-axis");
 			writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
 
 		// x-axis
-			//drawVector(this.svgElement, 0, OriginY, svgWidth, OriginY, "brown", 2, "x-axis");
 			this.drawVector([this.xMin, 0], [this.xMax, 0], "brown", 2, "x-axis");
 			// Create a new text element
 			const xAxisTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
@@ -254,7 +254,7 @@ class CartesianPlane {
 			this.svgElement.appendChild(originTextElement);
     }
 
-	// Transform coordinates using this.parameters
+	// Transform cartesian plane coordinates in svg element coordinates
     transformCoordinates(coordinates) {
         // Check if coordinates is an array of length 2.
 		if (!Array.isArray(coordinates) || coordinates.length !== 2) {
@@ -272,8 +272,7 @@ class CartesianPlane {
 		return [transformedX, transformedY];
     }
 
-	//Draw a line in the cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
-	// Draw line using this.transformCoordinates and this.svgElement.
+	//Draw a line in the cartesian plane
     drawLine(coordinates1, coordinates2, strokeColor, strokeWidth, strokeDasharray, id) {
 		
 		// Check if coordinates1 and coordinates2 are arrays of length 2.
@@ -300,8 +299,7 @@ class CartesianPlane {
 		this.svgElement.appendChild(line);
     }
 
-	//Draw a point in the cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
-	// Draw point using transformed coordinates and this.svgElement.
+	//Draw a point in the cartesian plane
     drawPoint(coordinates, color, id) {
     
 		// Check if coordinates is an array of length 2.
@@ -327,7 +325,7 @@ class CartesianPlane {
 		this.svgElement.appendChild(circleElement);
     }
 
-	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green), this.transformCoordinates and this.svgElement.
+	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
 	drawVector(coordinates1, coordinates2, strokeColor, strokeWidth, id) {
 		
 		// Check if coordinates1 and coordinates2 are arrays of length 2.
