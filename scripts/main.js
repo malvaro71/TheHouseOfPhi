@@ -167,7 +167,7 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	// Append the group element to the SVG
 	svgElement.appendChild(groupElement);
 }
-/*
+
 class CartesianPlane {
     constructor(svgElement, xMin, xMax, yMin, yMax) {
         this.svgElement = svgElement;
@@ -196,71 +196,135 @@ class CartesianPlane {
 		return [planeScaleX, planeScaleY, xOrigin, yOrigin, svgWidthNum, svgHeightNum];
     }
 
+	// Draw x and y axes in cartesian plane.
 	// Draw axes using this.parameters and this.svgElement
     drawAxes(yAxisText, xAxisText, originText) {
         
 		// Destructure the planeParameters array.
-		const [ , , xOrigin, yOrigin, svgWidth, ] = this.parameters; 
+		const [ , , xOrigin, yOrigin, svgWidth, svgHeight] = this.parameters; 
 		
 		// y-axis
-			drawVector(this.svgElement, xOrigin, svgWidth, xOrigin, 0, "brown", 2, "y-axis");
-			writeVerticalText(this.svgElement, yAxisText, xOrigin, 0, 20, "brown", "brown");
+			drawVector(this.svgElement, xOrigin, svgHeight, xOrigin, 0, "brown", 2, "y-axis");
+			writeVerticalText(this.svgElement, yAxisText, xOrigin - 5, 0, 20, "brown", "brown");
 
 		// x-axis
 			drawVector(this.svgElement, 0, yOrigin, svgWidth, yOrigin, "brown", 2, "x-axis");
 			// Create a new text element
-			var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
+			const xAxisTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
 			// Set the text content
-			textElement.textContent = xAxisText; 
+			xAxisTextElement.textContent = xAxisText; 
 			// Set attributes for positioning (specify baseline point).
-			textElement.setAttribute("x", svgWidth);
-			textElement.setAttribute("y", yOrigin);
+			xAxisTextElement.setAttribute("x", svgWidth);
+			xAxisTextElement.setAttribute("y", yOrigin + 5);
 			//Positions the rightmost character at the specified baseline point.
-			textElement.setAttribute("text-anchor", "end");
+			xAxisTextElement.setAttribute("text-anchor", "end");
 			//Aligns the topmost edge of the first text box with the specified baseline point.
-			textElement.setAttribute("dominant-baseline", "text-before-edge"); 
+			xAxisTextElement.setAttribute("dominant-baseline", "text-before-edge"); 
 			// Set attributes for styling.
-			textElement.setAttribute("font-size", 20);
-			textElement.setAttribute("stroke", "brown");
-			textElement.setAttribute("fill", "brown");
-			textElement.setAttribute("font-weight", "normal");
+			xAxisTextElement.setAttribute("font-size", 20);
+			xAxisTextElement.setAttribute("stroke", "brown");
+			xAxisTextElement.setAttribute("fill", "brown");
+			xAxisTextElement.setAttribute("font-weight", "normal");
 			// Add the text element to the SVG.
-			this.svgElement.appendChild(textElement);
+			this.svgElement.appendChild(xAxisTextElement);
 
 		// Origin.
 			// Create a new text element.
-			var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
+			const originTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
 			// Set the text content.
-			textElement.textContent = originText; 
+			originTextElement.textContent = originText; 
 			// Set attributes for positioning (specify baseline point).
-			textElement.setAttribute("x", xOrigin);
-			textElement.setAttribute("y", yOrigin);
+			originTextElement.setAttribute("x", xOrigin - 5);
+			originTextElement.setAttribute("y", yOrigin);
 			// Positions the rightmost character at the specified baseline point.
-			textElement.setAttribute("text-anchor", "end");
+			originTextElement.setAttribute("text-anchor", "end");
 			// Aligns the topmost edge of the first text box with the specified baseline point.
-			textElement.setAttribute("dominant-baseline", "text-before-edge"); 
+			originTextElement.setAttribute("dominant-baseline", "text-before-edge"); 
 			// Set attributes for styling.
-			textElement.setAttribute("font-size", 20);
-			textElement.setAttribute("stroke", "brown");
-			textElement.setAttribute("fill", "brown");
-			textElement.setAttribute("font-weight", "normal");
+			originTextElement.setAttribute("font-size", 20);
+			originTextElement.setAttribute("stroke", "brown");
+			originTextElement.setAttribute("fill", "brown");
+			originTextElement.setAttribute("font-weight", "normal");
 			// Add the text element to the SVG.
-			this.svgElement.appendChild(textElement);
+			this.svgElement.appendChild(originTextElement);
     }
 
+	// Transform coordinates using this.parameters
     transformCoordinates(coordinates) {
-        // ... (transform coordinates using this.parameters)
+        // Check if coordinates is an array of length 2.
+		if (!Array.isArray(coordinates) || coordinates.length !== 2) {
+			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+		}
+		
+		// Destructure the coordinates and planeParameters arrays.
+		const [x, y] = coordinates;
+		const [scaleX, scaleY, xOffset, yOffset, , ] = this.parameters;
+		
+		// Transform the x and y values
+		const transformedX = xOffset + x * scaleX;
+		const transformedY = yOffset - y * scaleY;
+		
+		// Return a new array with transformed coordinates
+		return [transformedX, transformedY];
     }
 
+	//Draw a line in the cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
+	// Draw line using this.transformCoordinates and this.svgElement.
     drawLine(coordinates1, coordinates2, strokeColor, strokeWidth, strokeDasharray, id) {
-        // ... (draw line using transformed coordinates and this.svgElement)
+		if (![coordinates1, coordinates2].every(arr => Array.isArray(arr) && arr.length === 2)) {
+			throw new Error("Invalid coordinates: Expecting arrays with x and y values.");
+		}
+	
+		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
+		const transformedCoordinates1 = this.transformCoordinates(coordinates1);
+		const [xPosition1, yPosition1] = transformedCoordinates1;
+		const transformedCoordinates2 = this.transformCoordinates(coordinates2);
+		const [xPosition2, yPosition2] = transformedCoordinates2;
+	
+		// Create the line element with styling
+		const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		line.setAttribute("id", id);
+		line.setAttribute("x1", xPosition1);
+		line.setAttribute("y1", yPosition1);
+		line.setAttribute("x2", xPosition2);
+		line.setAttribute("y2", yPosition2);
+		line.setAttribute("stroke", strokeColor);
+		line.setAttribute("stroke-width", strokeWidth);
+		line.setAttribute("stroke-dasharray", strokeDasharray);
+		
+		// Append the line element to the SVG
+		this.svgElement.appendChild(line);
     }
 
-    drawPoint(coordinates, color) {
-        // ... (draw point using transformed coordinates and this.svgElement)
+	//Draw a point in the cartesian plane already defined by an origin (x0, y0) and a scale, inside an SVG element.
+	// Draw point using transformed coordinates and this.svgElement.
+    drawPoint(coordinates, color, id) {
+    
+		// Check if coordinates is an array of length 2.
+		if (!Array.isArray(coordinates) || coordinates.length !== 2) {
+			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+		}
+
+		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
+		const transformedCoordinates = this.transformCoordinates(coordinates);
+		const [xPosition, yPosition] = transformedCoordinates;
+
+		// Create a new circle element.
+		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+		// Set attributes for the circle.
+		circleElement.setAttribute("id", id);
+		circleElement.setAttribute("cx", xPosition);
+		circleElement.setAttribute("cy", yPosition);
+		circleElement.setAttribute("r", 3);
+		circleElement.setAttribute("stroke", color);
+		circleElement.setAttribute("fill", color);
+
+		// Append the circle element to the SVG.
+		this.svgElement.appendChild(circleElement);
     }
 }
-*/
+/*
 // Function for setting up a cartesian plane in an SVG element
 function setUpCartesianPlane(svgElement, xMin, xMax, yMin, yMax){
 	// Get the width and height of the SVG element as strings
@@ -425,7 +489,7 @@ function drawPointInCartesianPlane(svgElement, coordinates, planeParameters, col
 	// Append the circle element to the SVG.
 	svgElement.appendChild(circleElement);
 }
-
+*/
 /*
 function convert3DTo2D(x1, y1, z1) {
 	
@@ -524,6 +588,13 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Get the SVG element from the DOM
 	var svg1_3 = document.getElementById("svg1_3");
 
+	// Example usage:
+	const myPlane = new CartesianPlane(svg1_3, -20, 20, -20, 20);
+	myPlane.drawAxes("y-axis", "x-axis", "O");
+	myPlane.drawPoint([5, 10], "green", "PointP");
+  	myPlane.drawLine([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
+	myPlane.drawLine([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
+  	/*
 	// Define the parameters asociated to the cartesian plane in the SVG element, to be used in functions related with the cartesian plane.
 	const CartesianPlaneParameters = setUpCartesianPlane(svg1_3, -20, 20, -20, 20);
 
@@ -536,7 +607,7 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Dashed lines to mark Point coordinates in x-asis and y-asis.
 		drawLineInCartesianPlane(svg1_3, [5, 0], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine1");
 		drawLineInCartesianPlane(svg1_3, [0, 10], [5, 10], CartesianPlaneParameters, "green", 1, "5,5", "DashedLine2");
-
+  	*/
 	// Write point coordinates
 		const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
