@@ -276,10 +276,8 @@ class CartesianPlane {
 		}
 	
 		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
-		const transformedCoordinates1 = this.transformCoordinates(coordinates1);
-		const [xPosition1, yPosition1] = transformedCoordinates1;
-		const transformedCoordinates2 = this.transformCoordinates(coordinates2);
-		const [xPosition2, yPosition2] = transformedCoordinates2;
+		const [xPosition1, yPosition1] = this.transformCoordinates(coordinates1);
+		const [xPosition2, yPosition2] = this.transformCoordinates(coordinates2);
 	
 		// Create the line element with styling
 		const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
@@ -306,8 +304,7 @@ class CartesianPlane {
 		}
 
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
-		const transformedCoordinates = this.transformCoordinates(coordinates);
-		const [xPosition, yPosition] = transformedCoordinates;
+		const [xPosition, yPosition] = this.transformCoordinates(coordinates);
 
 		// Create a new circle element.
 		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
