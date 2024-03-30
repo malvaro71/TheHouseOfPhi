@@ -1,2 +1,2 @@
 # TheHouseOfPhi
-Website for physics showing how to represent mathematical expressions and svg coded drawings.
+Website for physics showing how to represent mathematical expressions and svg/JavaScript coded drawings.
