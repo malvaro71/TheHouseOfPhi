@@ -466,7 +466,6 @@ var greenMarker = createMarker("Greenarrow", "green");
 	myPlane.drawPoint([5, 10], "green", "PointP");
   	myPlane.drawLine([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
 	myPlane.drawLine([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
-	//myPlane.drawVector([0, 0], [5, 10], "green", 1, "vector1")
   	
 	// Write point coordinates
 		const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -481,14 +480,12 @@ var greenMarker = createMarker("Greenarrow", "green");
 		textElement.textContent = "P (x";
 
 		// Create child elements for styled text sections
-		//const pElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
 		const x1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
 		const commaElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
 		const y1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
 		const closingParenElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
 
 		// Set attributes for child elements
-		//pElement.textContent = "P (x";
 		x1Element.setAttribute("dx", "-1");
 		x1Element.setAttribute("dy", "6");
 		x1Element.setAttribute("font-size", "12");
@@ -511,7 +508,6 @@ var greenMarker = createMarker("Greenarrow", "green");
 		closingParenElement.textContent = ")";
 
 		// Append child elements to the text element
-		//textElement.appendChild(pElement);
 		textElement.appendChild(x1Element);
 		textElement.appendChild(commaElement);
 		textElement.appendChild(y1Element);
