@@ -168,7 +168,7 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	svgElement.appendChild(groupElement);
 }
 
-// Define class Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
+// Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
 class Point {
 	constructor(coordinates) {
 		if (!Array.isArray(coordinates) || (coordinates.length !== 2 && coordinates.length !== 3)) {
