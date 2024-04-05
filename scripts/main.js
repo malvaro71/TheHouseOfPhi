@@ -168,6 +168,17 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	svgElement.appendChild(groupElement);
 }
 
+// Define class Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
+class Point {
+	constructor(coordinates) {
+		if (!Array.isArray(coordinates) || (coordinates.length !== 2 && coordinates.length !== 3)) {
+			throw new Error("Invalid coordinates: Expecting an array with length 2 (2D) or 3 (3D).");
+		}
+		this.coordinates = coordinates;
+	}
+}
+
+// Define class CartesianPlane, to manage the graphical representation of a Cartesian Plane in an SVG element.
 class CartesianPlane {
     constructor(svgElement, xMin, xMax, yMin, yMax) {
 
@@ -286,6 +297,36 @@ class CartesianPlane {
     }
 
 	//Draw a point in the cartesian plane
+    drawPoint(point, color, id) {
+		
+		// Check if point is an instance of the Point class
+		if (!(point instanceof Point)) {
+			throw new Error("Invalid input: Expecting a Point object.");
+		  }
+		
+		// Access coordinates from the valid Point object
+		const coordinates = point.coordinates;
+		
+		// Transform point coordinates to draw it in the SVG element (no need to destructure)
+		const transformedCoordinates = this.transformCoordinates(coordinates);
+
+		// Create a new circle element.
+		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+		// Set attributes for the circle.
+		circleElement.setAttribute("id", id);
+		circleElement.setAttribute("cx", transformedCoordinates[0]);
+		circleElement.setAttribute("cy", transformedCoordinates[1]);
+		circleElement.setAttribute("r", 3);
+		circleElement.setAttribute("stroke", color);
+		circleElement.setAttribute("fill", color);
+
+		// Append the circle element to the SVG.
+		this.svgElement.appendChild(circleElement);
+    }
+
+	/*
+	//Draw a point in the cartesian plane
     drawPoint(coordinates, color, id) {
     
 		// Check if coordinates is an array of length 2.
@@ -309,7 +350,7 @@ class CartesianPlane {
 
 		// Append the circle element to the SVG.
 		this.svgElement.appendChild(circleElement);
-    }
+    }*/
 
 	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
 	drawVector(coordinates1, coordinates2, strokeColor, strokeWidth, id) {
@@ -512,7 +553,8 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Example usage:
 	const myPlane = new CartesianPlane(svg1_3, -20, 20, -20, 20);
 	myPlane.drawAxes("y-axis", "x-axis", "O");
-	myPlane.drawPoint([5, 10], "green", "PointP");
+	const PointP = new Point([5, 10]);
+	myPlane.drawPoint(PointP, "green", "PointP");
   	myPlane.drawLine([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
 	myPlane.drawLine([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
   	
