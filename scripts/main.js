@@ -167,14 +167,93 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	// Append the group element to the SVG
 	svgElement.appendChild(groupElement);
 }
-
+/*
 // Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
 class Point {
-	constructor(coordinates) {
-		if (!Array.isArray(coordinates) || (coordinates.length !== 2 && coordinates.length !== 3)) {
+	constructor(orthogonalParam) {
+		if (!Array.isArray(orthogonalParam) || (orthogonalParam.length !== 2 && orthogonalParam.length !== 3)) {
 			throw new Error("Invalid coordinates: Expecting an array with length 2 (2D) or 3 (3D).");
 		}
-		this.coordinates = coordinates;
+		this.orthogonalCoord = orthogonalParam;
+	}
+}*/
+
+// Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively. Point coordinates can be provided for an orthogonal coordinates system or for a polar-spherical coordinates system. But, only one of the two set of components can be given (orthogonal parameter or spherical parameter) when a new point object is created.
+class Point {
+	constructor({ orthogonalParam, sphericalParam = null } = {}) {
+	
+		// Check if only one property is provided
+		const numParameters = (orthogonalParam ? 1 : 0) + (sphericalParam ? 1 : 0);
+		if (numParameters == 1) {
+			if (orthogonalParam) {
+				if (Array.isArray(orthogonalParam)) {
+					switch (orthogonalParam.length) {
+						case 2:
+							this.orthogonalCoord = orthogonalParam;
+							const [x2D, y2D] = this.orthogonalCoord;
+							// Initialize sphericalCoord property as an empty array
+							this.sphericalCoord = []; 
+							// Calculate radial coordinate (distance from origin)
+							this.sphericalCoord[0] = Math.sqrt(Math.pow(x2D, 2) + Math.pow(y2D, 2));
+						
+							// Calculate theta coordinate (counter-clockwise angle from x-axis in xy-plane). 
+							this.sphericalCoord[1] = Math.atan2(y2D, x2D) + (Math.PI * (y2D < 0 ? 2 : 0));   // To ensure that theta is between 0 and 2PI.
+						break;
+						case 3:
+							this.orthogonalCoord = orthogonalParam;
+							const [x3D, y3D, z3D] = this.orthogonalCoord;
+							// Initialize sphericalCoord property as an empty array
+							this.sphericalCoord = [];
+							// Calculate radial coordinate (distance from origin)
+							this.sphericalCoord[0] = Math.sqrt(Math.pow(x3D, 2) + Math.pow(y3D, 2) + Math.pow(z3D, 2));
+						
+							// Calculate theta coordinate (counter-clockwise angle from x-axis in xy-plane). 
+							this.sphericalCoord[1] = Math.atan2(y3D, x3D) + (Math.PI * (y3D < 0 ? 2 : 0));   // To ensure that theta is between 0 and 2PI.
+							
+							// Calculate phi coordinate (from the positive z-axis, between 0 an PI)
+							this.sphericalCoord[2] = Math.acos(z3D / this.sphericalCoord[0]); // phi is between 0 and PI.	
+						break;
+						default:
+							throw new Error("Invalid coordinates: Expecting an array with length 2 (2D) or 3 (3D).");
+					}
+				} else {
+					throw new Error("Invalid coordinates: Expecting an array.");
+				}	
+			} else {
+				if (Array.isArray(sphericalParam)){
+					switch(sphericalParam.length){
+						case 2:
+							this.sphericalCoord = sphericalParam;
+							const [r2D, theta2D] = this.sphericalCoord;  
+							// Initialize orthogonalCoord property as an empty array
+							this.orthogonalCoord = [];
+							// Calculate x
+							this.orthogonalCoord[0] =  r2D * Math.cos(theta2D);
+							// Calculate y
+							this.orthogonalCoord[1] =  r2D * Math.sin(theta2D);
+						break;
+						case 3:
+							this.sphericalCoord = sphericalParam;
+							const [r3D, theta3D, phi3D] = this.sphericalCoord;
+							// Initialize orthogonalCoord property as an empty array
+							this.orthogonalCoord = [];
+							// Calculate x
+							this.orthogonalCoord[0] =  r3D * Math.cos(theta3D) * Math.sin(phi3D);
+							// Calculate y
+							this.orthogonalCoord[1] =  r3D * Math.sin(theta3D) * Math.sin(phi3D);
+							// Calculate z coordinate.
+							this.orthogonalCoord[2] = r3D * Math.cos(phi3D); // phi is between 0 and PI.
+						break;
+						default:
+							throw new Error("Invalid coordinates: Expecting an array with length 2 (2D) or 3 (3D).");
+					}
+				} else {
+					throw new Error("Invalid coordinates: Expecting an array.");
+				}
+			}	
+		} else {
+			throw new Error("Invalid input: Provide either Ortogonal coordinates or Polar-spherical coordinates; not both or none.");
+		}
 	}
 }
 
@@ -305,7 +384,7 @@ class CartesianPlane {
 		  }
 		
 		// Access coordinates from the valid Point object
-		const coordinates = point.coordinates;
+		const coordinates = point.orthogonalCoord;
 		
 		// Transform point coordinates to draw it in the SVG element (no need to destructure)
 		const transformedCoordinates = this.transformCoordinates(coordinates);
@@ -553,7 +632,7 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Example usage:
 	const myPlane = new CartesianPlane(svg1_3, -20, 20, -20, 20);
 	myPlane.drawAxes("y-axis", "x-axis", "O");
-	const PointP = new Point([5, 10]);
+	const PointP = new Point({orthogonalParam: [5, 10] });
 	myPlane.drawPoint(PointP, "green", "PointP");
   	myPlane.drawLine([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
 	myPlane.drawLine([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
