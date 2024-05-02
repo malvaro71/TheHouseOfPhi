@@ -262,6 +262,17 @@ class Point {
 	}
 }*/
 
+// Returns the addition of two arrays
+function addArrays(array1, array2) {
+	const sumArray = [];
+  
+	array1.forEach((element, index) => {
+	  sumArray.push(element + array2[index]); // Access array2 from the function argument
+	});
+  
+	return sumArray; // Return the resulting array
+  }
+
 // Define class CartesianPlane, to manage the graphical representation of a Cartesian Plane in an SVG element.
 class CartesianPlane {
     constructor(svgElement, xMin, xMax, yMin, yMax) {
@@ -446,11 +457,7 @@ class CartesianPlane {
 		}
 
 		//Calculate vector endpoint using initial point and vector components.
-		const [initialX, initialY] = initialPoint;
-		const [componentX, componentY] = vectorComponents;
-		const endX = initialX + componentX;
-		const endY = initialY + componentY;
-		const endPoint = [endX, endY];
+		const endPoint = addArrays(initialPoint, vectorComponents);
 
 		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
 		const [initialXTransformed, initialYTransformed] = this.transformCoordinates(initialPoint);
