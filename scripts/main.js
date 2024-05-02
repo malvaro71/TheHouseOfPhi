@@ -436,16 +436,16 @@ class CartesianPlane {
     }
 
 	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
-	drawVector(coordinates1, coordinates2, strokeColor, strokeWidth, id) {
+	drawVector(initialPoint, vectorComponents, strokeColor, strokeWidth, id) {
 		
 		// Check if coordinates1 and coordinates2 are arrays of length 2.
-		if (![coordinates1, coordinates2].every(arr => Array.isArray(arr) && arr.length === 2)) {
+		if (![initialPoint, vectorComponents].every(arr => Array.isArray(arr) && arr.length === 2)) {
 			throw new Error("Invalid coordinates: Expecting arrays with x and y values.");
 		}
 
 		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
-		const [xPosition1, yPosition1] = this.transformCoordinates(coordinates1);
-		const [xPosition2, yPosition2] = this.transformCoordinates(coordinates2);
+		const [xPosition1, yPosition1] = this.transformCoordinates(initialPoint);
+		const [xPosition2, yPosition2] = this.transformCoordinates(vectorComponents);
 		
 		// Create the line element with styling and add the marker of colors brown, blue or green.
 		const vector = document.createElementNS("http://www.w3.org/2000/svg", "line");
