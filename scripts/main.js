@@ -634,14 +634,15 @@ var greenMarker = createMarker("Greenarrow", "green");
 	var svg1_3 = document.getElementById("svg1_3");
 
 	// Example usage:
-	const myPlane = new CartesianPlane(svg1_3, -20, 20, -20, 20);
-	myPlane.drawAxes("y-axis", "x-axis", "O");
+	const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
+	myPlane1_3.drawAxes("y-axis", "x-axis", "O");
 	//const PointP = new Point({orthogonalParam: [5, 10] });
 	//const PointP = new Point([5, 10]);
 	var PointP = [5, 10];
-	myPlane.drawPoint(PointP, "green", "PointP");
-  	myPlane.drawSegment([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
-	myPlane.drawSegment([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
+	myPlane1_3.drawPoint(PointP, "green", "PointP");
+  	myPlane1_3.drawSegment([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
+	myPlane1_3.drawSegment([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
+	myPlane1_3.drawVector([5,10], [1, 1], "blue", 2, "vector1");
   	
 	// Write point coordinates
 	const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
