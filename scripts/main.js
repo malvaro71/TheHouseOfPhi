@@ -28,12 +28,12 @@ function updateMagnitudeAndDirection() {
 			document.getElementById("direction").innerHTML =
 				Math.round((thetaDeg + Number.EPSILON) * 100) / 100;
 			//draw the vector	
-			drawLineWithArrowhead(p0, p2, 5);
+			drawSegmentWithArrowhead(p0, p2, 5);
 		}
 	}
 }
 
-function drawLineWithArrowhead(pa, pb, headLength) {
+function drawSegmentWithArrowhead(pa, pb, headLength) {
 	// calc the angle of the line
 	var dx = pb.x - pa.x;
 	var dy = pb.y - pa.y;
@@ -167,7 +167,8 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	// Append the group element to the SVG
 	svgElement.appendChild(groupElement);
 }
-/*
+
+
 // Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
 class Point {
 	constructor(orthogonalParam) {
@@ -176,8 +177,12 @@ class Point {
 		}
 		this.orthogonalCoord = orthogonalParam;
 	}
-}*/
+}
 
+//Define Vector class to use standard-position vectors; with where only 
+
+
+/*
 // Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively. Point coordinates can be provided for an orthogonal coordinates system or for a polar-spherical coordinates system. But, only one of the two set of components can be given (orthogonal parameter or spherical parameter) when a new point object is created.
 class Point {
 	constructor({ orthogonalParam, sphericalParam = null } = {}) {
@@ -255,7 +260,7 @@ class Point {
 			throw new Error("Invalid input: Provide either Ortogonal coordinates or Polar-spherical coordinates; not both or none.");
 		}
 	}
-}
+}*/
 
 // Define class CartesianPlane, to manage the graphical representation of a Cartesian Plane in an SVG element.
 class CartesianPlane {
@@ -349,7 +354,7 @@ class CartesianPlane {
     }
 
 	//Draw a line in the cartesian plane
-    drawLine(coordinates1, coordinates2, strokeColor, strokeWidth, strokeDasharray, id) {
+    drawSegment(coordinates1, coordinates2, strokeColor, strokeWidth, strokeDasharray, id) {
 		
 		// Check if coordinates1 and coordinates2 are arrays of length 2.
 		if (![coordinates1, coordinates2].every(arr => Array.isArray(arr) && arr.length === 2)) {
@@ -632,10 +637,11 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Example usage:
 	const myPlane = new CartesianPlane(svg1_3, -20, 20, -20, 20);
 	myPlane.drawAxes("y-axis", "x-axis", "O");
-	const PointP = new Point({orthogonalParam: [5, 10] });
+	//const PointP = new Point({orthogonalParam: [5, 10] });
+	const PointP = new Point([5, 10]);
 	myPlane.drawPoint(PointP, "green", "PointP");
-  	myPlane.drawLine([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
-	myPlane.drawLine([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
+  	myPlane.drawSegment([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
+	myPlane.drawSegment([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
   	
 	// Write point coordinates
 	const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
