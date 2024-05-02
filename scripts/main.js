@@ -353,7 +353,7 @@ class CartesianPlane {
 		return [transformedX, transformedY];
     }
 
-	//Draw a line in the cartesian plane
+	//Draw a segment in the cartesian plane
     drawSegment(coordinates1, coordinates2, strokeColor, strokeWidth, strokeDasharray, id) {
 		
 		// Check if coordinates1 and coordinates2 are arrays of length 2.
