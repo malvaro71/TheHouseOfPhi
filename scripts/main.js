@@ -168,7 +168,7 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	svgElement.appendChild(groupElement);
 }
 
-
+/*
 // Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
 class Point {
 	constructor(orthogonalParam) {
@@ -177,7 +177,7 @@ class Point {
 		}
 		this.orthogonalCoord = orthogonalParam;
 	}
-}
+}*/
 
 //Define Vector class to use standard-position vectors; with where only 
 
@@ -379,7 +379,7 @@ class CartesianPlane {
 		// Append the line element to the SVG
 		this.svgElement.appendChild(line);
     }
-
+	/*
 	//Draw a point in the cartesian plane
     drawPoint(point, color, id) {
 		
@@ -407,9 +407,8 @@ class CartesianPlane {
 
 		// Append the circle element to the SVG.
 		this.svgElement.appendChild(circleElement);
-    }
+    }*/
 
-	/*
 	//Draw a point in the cartesian plane
     drawPoint(coordinates, color, id) {
     
@@ -434,7 +433,7 @@ class CartesianPlane {
 
 		// Append the circle element to the SVG.
 		this.svgElement.appendChild(circleElement);
-    }*/
+    }
 
 	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
 	drawVector(coordinates1, coordinates2, strokeColor, strokeWidth, id) {
@@ -638,7 +637,8 @@ var greenMarker = createMarker("Greenarrow", "green");
 	const myPlane = new CartesianPlane(svg1_3, -20, 20, -20, 20);
 	myPlane.drawAxes("y-axis", "x-axis", "O");
 	//const PointP = new Point({orthogonalParam: [5, 10] });
-	const PointP = new Point([5, 10]);
+	//const PointP = new Point([5, 10]);
+	var PointP = [5, 10];
 	myPlane.drawPoint(PointP, "green", "PointP");
   	myPlane.drawSegment([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
 	myPlane.drawSegment([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
