@@ -304,12 +304,14 @@ class CartesianPlane {
     drawAxes(yAxisText, xAxisText, originText) {
        
 		// y-axis
-			this.drawVector([0, this.yMin], [0, this.yMax], "brown", 2, "y-axis");
+			const planeHeight = this.yMax - this.yMin;
+			this.drawVector([0, this.yMin], [0, planeHeight], "brown", 2, "y-axis");
 			writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
 			//this.drawLabel([0-0.6, this.yMax], "y", 20, "brown", "brown", "normal", "rigthtop", "y-axis");
 
 		// x-axis
-			this.drawVector([this.xMin, 0], [this.xMax, 0], "brown", 2, "x-axis");
+			const planeWidht = this.xMax - this.xMin;
+			this.drawVector([this.xMin, 0], [planeWidht, 0], "brown", 2, "x-axis");
 			//this.drawLabel([this.xMax, 0], "x", 20, "brown", "brown", "normal", "rigthtop", "x-axis");
 			
 			// Create a new text element
@@ -443,17 +445,24 @@ class CartesianPlane {
 			throw new Error("Invalid coordinates: Expecting arrays with x and y values.");
 		}
 
+		//Calculate vector endpoint using initial point and vector components.
+		const [initialX, initialY] = initialPoint;
+		const [componentX, componentY] = vectorComponents;
+		const endX = initialX + componentX;
+		const endY = initialY + componentY;
+		const endPoint = [endX, endY];
+
 		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
-		const [xPosition1, yPosition1] = this.transformCoordinates(initialPoint);
-		const [xPosition2, yPosition2] = this.transformCoordinates(vectorComponents);
+		const [initialXTransformed, initialYTransformed] = this.transformCoordinates(initialPoint);
+		const [endXTransformed, endYTransformed] = this.transformCoordinates(endPoint);
 		
 		// Create the line element with styling and add the marker of colors brown, blue or green.
 		const vector = document.createElementNS("http://www.w3.org/2000/svg", "line");
 		vector.setAttribute("id", id);
-		vector.setAttribute("x1", xPosition1);
-		vector.setAttribute("y1", yPosition1);
-		vector.setAttribute("x2", xPosition2);
-		vector.setAttribute("y2", yPosition2);
+		vector.setAttribute("x1", initialXTransformed);
+		vector.setAttribute("y1", initialYTransformed);
+		vector.setAttribute("x2", endXTransformed);
+		vector.setAttribute("y2", endYTransformed);
 		vector.setAttribute("stroke", strokeColor);
 		vector.setAttribute("stroke-width", strokeWidth);
 		switch(strokeColor) {
@@ -642,7 +651,6 @@ var greenMarker = createMarker("Greenarrow", "green");
 	myPlane1_3.drawPoint(PointP, "green", "PointP");
   	myPlane1_3.drawSegment([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
 	myPlane1_3.drawSegment([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
-	myPlane1_3.drawVector([5,10], [1, 1], "blue", 2, "vector1");
   	
 	// Write point coordinates
 	const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
