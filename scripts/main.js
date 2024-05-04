@@ -304,7 +304,7 @@ class CartesianPlane {
 	  
 		// Set the position of the origin of coordinates.
 		this.OriginX = this.svgWidthNum * (-xMin / (xMax - xMin));
-		this.OriginY = this.svgHeightNum * (-yMin / (yMax - yMin));
+		this.OriginY = this.svgHeightNum *(1- (-yMin / (yMax - yMin)));
 	  
 		// Set the scale; that is, the number of pixels that correspond to a unit of length in the plane.
 		this.planeScaleX = this.svgWidthNum / (xMax - xMin);
@@ -625,6 +625,11 @@ var greenMarker = createMarker("Greenarrow", "green");
 	svg1_2.appendChild(blueMarker); 
 	svg1_2.appendChild(greenMarker); 
 
+	// set a cartesian plane
+	const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
+	const vectorA = [5, 5];
+	myPlane1_2.drawVector([0,0], vectorA, "brown", 2, "vA");
+  	/*
 	// Vector 'a'
 	drawVector(svg1_2, 80, 230, 20, 120, "brown", 2, "vectorA");
 	writeText(svg1_2, "a", 30, 180, 25, "brown", "brown", "bold", "labelA1");
@@ -644,12 +649,13 @@ var greenMarker = createMarker("Greenarrow", "green");
 	// Vector 'a' at the other side of the paralelogram
 	drawVector(svg1_2, 220, 120, 160, 10, "brown", 2, "vectorA2");
 	writeText(svg1_2, "a", 195, 65, 25, "brown", "brown", "bold", "labelA2");
+	*/
 
 // svg1_3. Cartesian plane and cartesian coordinates of a point.
 	// Get the SVG element from the DOM
 	var svg1_3 = document.getElementById("svg1_3");
 
-	// Example usage:
+	// set a cartesian plane
 	const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
 	myPlane1_3.drawAxes("y-axis", "x-axis", "O");
 	//const PointP = new Point({orthogonalParam: [5, 10] });
@@ -658,6 +664,7 @@ var greenMarker = createMarker("Greenarrow", "green");
 	myPlane1_3.drawPoint(PointP, "green", "PointP");
   	myPlane1_3.drawSegment([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
 	myPlane1_3.drawSegment([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
+	//myPlane1_3.drawVector([5, 10], [5, 10], "green", 1,"v");
   	
 	// Write point coordinates
 	const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
