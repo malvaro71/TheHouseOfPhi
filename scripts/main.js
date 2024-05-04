@@ -487,12 +487,16 @@ class CartesianPlane {
 		this.svgElement.appendChild(vector);
 	}
 	
-	// Draw the label of an element giving coordinates of a baseline point, a text, styling options and wich corner of text is aligned with the baseline point.
-	// font-weight: Common values include normal, bold, bolder, lighter, and specific numerical values (100-900) indicating different weight levels
-	//The stroke property is used in SVG to define the outline color.
-	//The fill property is used in SVG to define the intline color.
-	// corner: "rigthtop", "rigthbottom", "lefttop" or "leftbottom"
-	drawLabel(baselinePoint, text, fontSize, stroke, fill, fontWeight, corner, id) {
+	// Draw the label of an element giving coordinates of a baseline point, the label text, 
+	// the corner parameter: "rigthtop", "rigthbottom", "lefttop" or "leftbottom"
+	// and define some default style attributes.
+	drawLabel(baselinePoint, corner, {
+		textContent = "label", // Default text content
+		fontSize = 12, // Default font size
+		stroke = "none", // Default stroke color (no stroke)
+		fill = "brown",  // Default text fill color
+		fontWeight = "normal", // Default font weight
+	  } = {}) {
 		
 		// Check if coordinates is an array of length 2.
 		if (!Array.isArray(baselinePoint) || baselinePoint.length !== 2) {
@@ -506,7 +510,7 @@ class CartesianPlane {
 		const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
 		// Set the text content.
-		textElement.textContent = text;
+		textElement.textContent = textContent;
 
 		// Handles different corner values to position the text element.
 		switch(corner) {
@@ -539,12 +543,12 @@ class CartesianPlane {
 			break;
 		} 
 
-		// Set attributes for id, positioning and styling
-		textElement.setAttribute("id", id);
+		// Set attributes for positioning
+		//textElement.setAttribute("id", id);
 		textElement.setAttribute("x", xPosition);
 		textElement.setAttribute("y", yPosition);
 		
-		// Set attributes for id styling
+		// Set attributes for styling
 		textElement.setAttribute("font-size", fontSize);
 		textElement.setAttribute("stroke", stroke);
 		textElement.setAttribute("fill", fill);
@@ -636,10 +640,22 @@ var greenMarker = createMarker("Greenarrow", "green");
 	const vectorB = [15, 6];
 	const vectorAPlusB = addArrays(vectorA, vectorB)
 	myPlane1_2.drawVector(pointA, vectorA, "green", 2, "vA");
-	myPlane1_2.drawVector(vectorA, vectorB, "blue", 2, "vB");
-	myPlane1_2.drawVector(pointA, vectorAPlusB, "brown", 2, "vAplusB");
 	const halfA = vectorA.map(element => element / 2);
-	myPlane1_2.drawLabel(halfA, "A", 30, "green", "green", "bold", "rigthbottom", "labelvA");
+	myPlane1_2.drawLabel(halfA, "rigthbottom", {
+		textContent: "a",
+		fontSize: 22,
+		fill: "green"
+	});
+	myPlane1_2.drawVector(vectorA, vectorB, "blue", 2, "vB");
+	const halfB = vectorB.map(element => element / 2);
+	var position = addArrays(vectorA, halfB)
+	myPlane1_2.drawLabel(position, "rigthbottom", {
+		textContent: "b",
+		fontSize: 22,
+		fill: "blue"
+	});
+	myPlane1_2.drawVector(pointA, vectorAPlusB, "brown", 2, "vAplusB");
+	
   	/*
 	// Vector 'a'
 	drawVector(svg1_2, 80, 230, 20, 120, "brown", 2, "vectorA");
