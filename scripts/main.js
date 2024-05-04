@@ -488,6 +488,10 @@ class CartesianPlane {
 	}
 	
 	// Draw the label of an element giving coordinates of a baseline point, a text, styling options and wich corner of text is aligned with the baseline point.
+	// font-weight: Common values include normal, bold, bolder, lighter, and specific numerical values (100-900) indicating different weight levels
+	//The stroke property is used in SVG to define the outline color.
+	//The fill property is used in SVG to define the intline color.
+	// corner: "rigthtop", "rigthbottom", "lefttop" or "leftbottom"
 	drawLabel(baselinePoint, text, fontSize, stroke, fill, fontWeight, corner, id) {
 		
 		// Check if coordinates is an array of length 2.
@@ -627,8 +631,15 @@ var greenMarker = createMarker("Greenarrow", "green");
 
 	// set a cartesian plane
 	const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
-	const vectorA = [5, 5];
-	myPlane1_2.drawVector([0,0], vectorA, "brown", 2, "vA");
+	const pointA = [0, 0];
+	const vectorA = [4, 12];
+	const vectorB = [15, 6];
+	const vectorAPlusB = addArrays(vectorA, vectorB)
+	myPlane1_2.drawVector(pointA, vectorA, "green", 2, "vA");
+	myPlane1_2.drawVector(vectorA, vectorB, "blue", 2, "vB");
+	myPlane1_2.drawVector(pointA, vectorAPlusB, "brown", 2, "vAplusB");
+	const halfA = vectorA.map(element => element / 2);
+	myPlane1_2.drawLabel(halfA, "A", 30, "green", "green", "bold", "rigthbottom", "labelvA");
   	/*
 	// Vector 'a'
 	drawVector(svg1_2, 80, 230, 20, 120, "brown", 2, "vectorA");
