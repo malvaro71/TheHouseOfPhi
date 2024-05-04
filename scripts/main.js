@@ -316,13 +316,13 @@ class CartesianPlane {
        
 		// y-axis
 			const planeHeight = this.yMax - this.yMin;
-			this.drawVector([0, this.yMin], [0, planeHeight], "brown", 2, "y-axis");
+			this.drawVector([0, this.yMin], [0, planeHeight], "brown", 2);
 			writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
 			//this.drawLabel([0-0.6, this.yMax], "y", 20, "brown", "brown", "normal", "rigthtop", "y-axis");
 
 		// x-axis
 			const planeWidht = this.xMax - this.xMin;
-			this.drawVector([this.xMin, 0], [planeWidht, 0], "brown", 2, "x-axis");
+			this.drawVector([this.xMin, 0], [planeWidht, 0], "brown", 2);
 			//this.drawLabel([this.xMax, 0], "x", 20, "brown", "brown", "normal", "rigthtop", "x-axis");
 			
 			// Create a new text element
@@ -345,7 +345,11 @@ class CartesianPlane {
 			this.svgElement.appendChild(xAxisTextElement);
 
 		// Origin.
-			this.drawLabel([0-0.2, 0], originText, 20, "brown", "brown", "normal", "rigthtop", "origin");
+			this.drawLabel([0-0.2, 0], "rigthtop",{
+				textContent: "O",
+				fontSize: 22,
+				fill: "brown" 
+			});
     }
 
 	// Transform cartesian plane coordinates in svg element coordinates
@@ -449,7 +453,7 @@ class CartesianPlane {
     }
 
 	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
-	drawVector(initialPoint, vectorComponents, strokeColor, strokeWidth, id) {
+	drawVector(initialPoint, vectorComponents, strokeColor, strokeWidth) {
 		
 		// Check if coordinates1 and coordinates2 are arrays of length 2.
 		if (![initialPoint, vectorComponents].every(arr => Array.isArray(arr) && arr.length === 2)) {
@@ -465,7 +469,7 @@ class CartesianPlane {
 		
 		// Create the line element with styling and add the marker of colors brown, blue or green.
 		const vector = document.createElementNS("http://www.w3.org/2000/svg", "line");
-		vector.setAttribute("id", id);
+		//vector.setAttribute("id", id);
 		vector.setAttribute("x1", initialXTransformed);
 		vector.setAttribute("y1", initialYTransformed);
 		vector.setAttribute("x2", endXTransformed);
@@ -482,6 +486,8 @@ class CartesianPlane {
 			case "green":
 				vector.setAttribute("marker-end", "url(#Greenarrow)");
 			break;
+			default:
+				throw new Error("Invalid value for vector color: Expecting ´brown´, ´blue´ or ´green´.");
 		}
 		// Append the vector element to the SVG
 		this.svgElement.appendChild(vector);
@@ -540,7 +546,6 @@ class CartesianPlane {
 			break;
 			default:
 				throw new Error("Invalid value for corner input: Expecting ´rigthtop´, ´rigthbottom´, ´lefttop´ or ´leftbottom´.");
-			break;
 		} 
 
 		// Set attributes for positioning
@@ -639,14 +644,14 @@ var greenMarker = createMarker("Greenarrow", "green");
 	const vectorA = [4, 12];
 	const vectorB = [15, 6];
 	const vectorAPlusB = addArrays(vectorA, vectorB)
-	myPlane1_2.drawVector(pointA, vectorA, "green", 2, "vA");
+	myPlane1_2.drawVector(pointA, vectorA, "green", 2);
 	const halfA = vectorA.map(element => element / 2);
 	myPlane1_2.drawLabel(halfA, "rigthbottom", {
 		textContent: "a",
 		fontSize: 22,
 		fill: "green"
 	});
-	myPlane1_2.drawVector(vectorA, vectorB, "blue", 2, "vB");
+	myPlane1_2.drawVector(vectorA, vectorB, "blue", 2);
 	const halfB = vectorB.map(element => element / 2);
 	var position = addArrays(vectorA, halfB)
 	myPlane1_2.drawLabel(position, "rigthbottom", {
@@ -654,7 +659,7 @@ var greenMarker = createMarker("Greenarrow", "green");
 		fontSize: 22,
 		fill: "blue"
 	});
-	myPlane1_2.drawVector(pointA, vectorAPlusB, "brown", 2, "vAplusB");
+	myPlane1_2.drawVector(pointA, vectorAPlusB, "brown", 2);
 	
   	/*
 	// Vector 'a'
