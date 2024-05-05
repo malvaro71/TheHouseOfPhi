@@ -316,13 +316,13 @@ class CartesianPlane {
        
 		// y-axis
 			const planeHeight = this.yMax - this.yMin;
-			this.drawVector([0, this.yMin], [0, planeHeight], "brown", 2);
+			this.drawVector([0, this.yMin], [0, planeHeight]);
 			writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
 			//this.drawLabel([0-0.6, this.yMax], "y", 20, "brown", "brown", "normal", "rigthtop", "y-axis");
 
 		// x-axis
 			const planeWidht = this.xMax - this.xMin;
-			this.drawVector([this.xMin, 0], [planeWidht, 0], "brown", 2);
+			this.drawVector([this.xMin, 0], [planeWidht, 0]);
 			//this.drawLabel([this.xMax, 0], "x", 20, "brown", "brown", "normal", "rigthtop", "x-axis");
 			
 			// Create a new text element
@@ -345,8 +345,8 @@ class CartesianPlane {
 			this.svgElement.appendChild(xAxisTextElement);
 
 		// Origin.
-			this.drawLabel([0-0.2, 0], "rigthtop",{
-				textContent: "O",
+			this.drawLabel([0-0.2, 0], "O", {
+				corner: "rigthtop",
 				fontSize: 22,
 				fill: "brown" 
 			});
@@ -453,7 +453,16 @@ class CartesianPlane {
     }
 
 	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
-	drawVector(initialPoint, vectorComponents, strokeColor, strokeWidth) {
+	drawVector(initialPoint, vectorComponents, {
+		label = "", // Default label text
+		corner = "rigthbottom", // Default corner text placement
+		fontSize = 12, // Default font size
+		stroke = "none", // Default stroke color (no stroke)
+		fill = "brown",  // Default text fill color
+		fontWeight = "normal", // Default font weight
+		strokeColor = "brown", 
+		strokeWidth = 2
+	} = {}) {
 		
 		// Check if coordinates1 and coordinates2 are arrays of length 2.
 		if (![initialPoint, vectorComponents].every(arr => Array.isArray(arr) && arr.length === 2)) {
@@ -491,17 +500,30 @@ class CartesianPlane {
 		}
 		// Append the vector element to the SVG
 		this.svgElement.appendChild(vector);
+		
+		// Draw label if defined
+		if (label != "") {
+			const half = vectorComponents.map(element => element / 2);
+			const position = addArrays(initialPoint, half);
+			this.drawLabel(position, label, {
+				corner: corner,
+				fontSize: fontSize,
+				stroke: stroke,
+				fill: fill,
+				fontWeight: fontWeight
+			});
+		}
 	}
 	
 	// Draw the label of an element giving coordinates of a baseline point, the label text, 
 	// the corner parameter: "rigthtop", "rigthbottom", "lefttop" or "leftbottom"
 	// and define some default style attributes.
-	drawLabel(baselinePoint, corner, {
-		textContent = "label", // Default text content
+	drawLabel(baselinePoint, textContent, {
+		corner = "rigthbottom", // Default corner text placement
 		fontSize = 12, // Default font size
 		stroke = "none", // Default stroke color (no stroke)
 		fill = "brown",  // Default text fill color
-		fontWeight = "normal", // Default font weight
+		fontWeight = "normal" // Default font weight
 	  } = {}) {
 		
 		// Check if coordinates is an array of length 2.
@@ -644,44 +666,43 @@ var greenMarker = createMarker("Greenarrow", "green");
 	const vectorA = [4, 12];
 	const vectorB = [15, 6];
 	const vectorAPlusB = addArrays(vectorA, vectorB)
-	myPlane1_2.drawVector(pointA, vectorA, "green", 2);
-	const halfA = vectorA.map(element => element / 2);
-	myPlane1_2.drawLabel(halfA, "rigthbottom", {
-		textContent: "a",
+	myPlane1_2.drawVector(pointA, vectorA, {
+		label: "a",
+		strokeColor: "green",
+		corner: "rigthbottom",
 		fontSize: 22,
 		fill: "green"
 	});
-	myPlane1_2.drawVector(vectorA, vectorB, "blue", 2);
-	const halfB = vectorB.map(element => element / 2);
-	var position = addArrays(vectorA, halfB)
-	myPlane1_2.drawLabel(position, "rigthbottom", {
-		textContent: "b",
+	
+	myPlane1_2.drawVector(vectorA, vectorB, {
+		label: "b",
+		strokeColor: "blue",
+		corner: "rigthbottom",
 		fontSize: 22,
 		fill: "blue"
 	});
-	myPlane1_2.drawVector(pointA, vectorAPlusB, "brown", 2);
 	
-  	/*
-	// Vector 'a'
-	drawVector(svg1_2, 80, 230, 20, 120, "brown", 2, "vectorA");
-	writeText(svg1_2, "a", 30, 180, 25, "brown", "brown", "bold", "labelA1");
+	myPlane1_2.drawVector(pointA, vectorAPlusB, {
+		label: "a+b",
+		corner: "lefttop",
+		fontSize: 22
+	});
+	
+	myPlane1_2.drawVector(pointA, vectorB, {
+		label: "b",
+		strokeColor: "blue",
+		corner: "rigthbottom",
+		fontSize: 22,
+		fill: "blue"
+	});
 
-	// Vector 'b'
-	drawVector(svg1_2, 20, 120, 160, 10, "blue", 2, "vectorB");
-	writeText(svg1_2, "b", 70, 65, 25, "blue", "blue", "bold", "labelB1");
-
-	// Vector 'a+b'
-	drawVector(svg1_2, 80, 230, 160, 10, "green", 2, "vectorA+B");
-	writeText(svg1_2, "a+b", 130, 129, 25, "green", "green", "bold", "labelA+B");
-
-	// Vector 'b' at the other side of the paralelogram
-	drawVector(svg1_2, 80, 230, 220, 120, "blue", 2, "vectorB2");
-	writeText(svg1_2, "b", 170, 180, 25, "blue", "blue", "bold", "labelB2");
-
-	// Vector 'a' at the other side of the paralelogram
-	drawVector(svg1_2, 220, 120, 160, 10, "brown", 2, "vectorA2");
-	writeText(svg1_2, "a", 195, 65, 25, "brown", "brown", "bold", "labelA2");
-	*/
+	myPlane1_2.drawVector(vectorB, vectorA, {
+		label: "a",
+		strokeColor: "green",
+		corner: "rigthbottom",
+		fontSize: 22,
+		fill: "green"
+	});
 
 // svg1_3. Cartesian plane and cartesian coordinates of a point.
 	// Get the SVG element from the DOM
