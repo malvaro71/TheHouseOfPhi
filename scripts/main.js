@@ -662,10 +662,14 @@ var greenMarker = createMarker("Greenarrow", "green");
 
 	// set a cartesian plane
 	const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
+
+	// define two vectors and calculate its vector addition
 	const pointA = [0, 0];
 	const vectorA = [4, 12];
 	const vectorB = [15, 6];
 	const vectorAPlusB = addArrays(vectorA, vectorB)
+
+	// draw vectors representing a vector adition 
 	myPlane1_2.drawVector(pointA, vectorA, {
 		label: "a",
 		strokeColor: "green",
