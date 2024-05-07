@@ -168,12 +168,6 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	svgElement.appendChild(groupElement);
 }
 
-function setSVGAttributes(svgElement, attributes) {
-	for (const [attributeName, attributeValue] of Object.entries(attributes)) {
-	  svgElement.setAttribute(attributeName, attributeValue);
-	}
-  }
-
 /*
 // Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
 class Point {
@@ -463,7 +457,7 @@ class CartesianPlane {
 	) {
 		// Destructure the object and set default values
 		const {strokeColor = "brown", strokeWidth = 2} = lineAttributes;
-		const {textContent = "", fontSize = 12, stroke = "none", fill = "brown", fontWeight = "normal"} = textAttributes;
+		const {textContent = ""} = textAttributes;
 
 		// Check if coordinates1 and coordinates2 are arrays of length 2.
 		if (![initialPoint, vectorComponents].every(arr => Array.isArray(arr) && arr.length === 2)) {
@@ -503,16 +497,10 @@ class CartesianPlane {
 		this.svgElement.appendChild(vector);
 		
 		// Draw label if defined
-		if (textAttributes.textContent != "") {
+		if (textContent != "") {
 			const half = vectorComponents.map(element => element / 2);
 			const position = addArrays(initialPoint, half);
-			this.drawLabel(position, corner, {
-				textContent: textContent,
-				fontSize: fontSize,
-				stroke: stroke,
-				fill: fill,
-				fontWeight: fontWeight
-			});
+			this.drawLabel(position, corner, textAttributes);
 		}
 	}
 	
@@ -520,7 +508,7 @@ class CartesianPlane {
 	// the corner parameter: "rigthtop", "rigthbottom", "lefttop" or "leftbottom"
 	// and define some default style attributes.
 	drawLabel(baselinePoint, corner = "rigthbottom", textAttributes = {}) {
-		const {textContent= "", fontSize= 12, stroke= "none", fill= "brown",  fontWeight= "normal" } = textAttributes;
+		const {textContent = "", fontSize = 12, stroke = "none", fill = "brown",  fontWeight = "normal" } = textAttributes;
 		// Check if coordinates is an array of length 2.
 		if (!Array.isArray(baselinePoint) || baselinePoint.length !== 2) {
 			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
@@ -570,7 +558,7 @@ class CartesianPlane {
 		textElement.setAttribute("x", xPosition);
 		textElement.setAttribute("y", yPosition);
 		
-		// Set attributes for styling
+		// Set other passed attributes like styling, etc.
 		textElement.setAttribute("font-size", fontSize);
 		textElement.setAttribute("stroke", stroke);
 		textElement.setAttribute("fill", fill);
