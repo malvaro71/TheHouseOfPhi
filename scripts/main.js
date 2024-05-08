@@ -346,7 +346,7 @@ class CartesianPlane {
 
 		// Origin.
 			this.drawLabel([0-0.2, 0], "rigthtop", {
-				textContent: "O",
+				textContent: originText,
 				fontSize: 22,
 				fill: "brown" 
 			});
@@ -396,35 +396,6 @@ class CartesianPlane {
 		// Append the line element to the SVG
 		this.svgElement.appendChild(line);
     }
-	/*
-	//Draw a point in the cartesian plane
-    drawPoint(point, color, id) {
-		
-		// Check if point is an instance of the Point class
-		if (!(point instanceof Point)) {
-			throw new Error("Invalid input: Expecting a Point object.");
-		  }
-		
-		// Access coordinates from the valid Point object
-		const coordinates = point.orthogonalCoord;
-		
-		// Transform point coordinates to draw it in the SVG element (no need to destructure)
-		const transformedCoordinates = this.transformCoordinates(coordinates);
-
-		// Create a new circle element.
-		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-
-		// Set attributes for the circle.
-		circleElement.setAttribute("id", id);
-		circleElement.setAttribute("cx", transformedCoordinates[0]);
-		circleElement.setAttribute("cy", transformedCoordinates[1]);
-		circleElement.setAttribute("r", 3);
-		circleElement.setAttribute("stroke", color);
-		circleElement.setAttribute("fill", color);
-
-		// Append the circle element to the SVG.
-		this.svgElement.appendChild(circleElement);
-    }*/
 
 	//Draw a point in the cartesian plane
     drawPoint(coordinates, color, id) {
@@ -567,6 +538,98 @@ class CartesianPlane {
 		// Add the text element to the SVG
 		this.svgElement.appendChild(textElement);
 	}
+}
+
+// Define class EuclideanSpace, to manage the graphical representation of a Euclidean Space in an SVG element.
+// centerPoint are the coordinates of the point show in the "center" of the space shown in the plane.
+// spaceScale is the 
+class EuclideanSpace {
+	constructor(svgElement, centerPoint, scale) {
+		// Define the svg element where the euclidean space will be represented
+		this.svgElement = svgElement;
+
+		// Get the width and height of the SVG element as strings
+		const svgWidth = this.svgElement.getAttribute("width");
+		const svgHeight = this.svgElement.getAttribute("height");
+
+		// Convert strings to numbers
+		this.svgWidthNum = parseFloat(svgWidth);
+		this.svgHeightNum = parseFloat(svgHeight);
+
+		// 3D z-coordinate is parallel to svg Canva y-coordinate but has opposite orientation.
+		// 3D y-coordinate is parallel to svg Canva x-coordinate and have same orientation. 
+		// 3D x-axis is skewed 45 degrees and is oriented toward the svg Canva
+		const skewedAngle = 45*Math.PI/180; //expressed in radians.
+		// SVG canva coordinates of centerPoint 
+		this.OriginX = svgWidth*Math.sin(skewedAngle)/2;
+		this.OriginY = svgHeight*(1 - Math.cos(skewedAngle)/2);
+
+		//Set the space scale
+		this.spaceScale = scale;
+
+		//Destructure the coordinates of centerPoint
+		this.xC = centerPoint[0];
+		this.yC = centerPoint[1];
+		this.zC = centerPoint[2];
+	} 
+
+	// Draw x, y and z axes in euclidean space.
+	drawAxes() {
+		// y-axis
+		const planeHeight = this.yMax - this.yMin;
+		this.drawVector([0, this.yMin], [0, planeHeight]);
+		writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
+		//this.drawLabel([0-0.6, this.yMax], "y", 20, "brown", "brown", "normal", "rigthtop", "y-axis");
+
+		// x-axis
+		const planeWidht = this.xMax - this.xMin;
+		this.drawVector([this.xMin, 0], [planeWidht, 0]);
+		//this.drawLabel([this.xMax, 0], "x", 20, "brown", "brown", "normal", "rigthtop", "x-axis");
+		
+		// Create a new text element
+		const xAxisTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
+		// Set the text content
+		xAxisTextElement.textContent = xAxisText; 
+		// Set attributes for positioning (specify baseline point).
+		xAxisTextElement.setAttribute("x", this.svgHeightNum);
+		xAxisTextElement.setAttribute("y", this.OriginY + 5);
+		//Positions the rightmost character at the specified baseline point.
+		xAxisTextElement.setAttribute("text-anchor", "end");
+		//Aligns the topmost edge of the first text box with the specified baseline point.
+		xAxisTextElement.setAttribute("dominant-baseline", "text-before-edge"); 
+		// Set attributes for styling.
+		xAxisTextElement.setAttribute("font-size", 20);
+		xAxisTextElement.setAttribute("stroke", "brown");
+		xAxisTextElement.setAttribute("fill", "brown");
+		xAxisTextElement.setAttribute("font-weight", "normal");
+		// Add the text element to the SVG.
+		this.svgElement.appendChild(xAxisTextElement);
+
+		// Origin.
+		this.drawLabel([0-0.2, 0], "rigthtop", {
+			textContent: originText,
+			fontSize: 22,
+			fill: "brown" 
+		});
+	}
+
+	// Transform euclidean space coordinates in svg element coordinates
+    transformCoordinates(coordinates) {
+        // Check if coordinates is an array of length 2.
+		if (!Array.isArray(coordinates) || coordinates.length !== 2) {
+			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+		}
+		
+		// Destructure the coordinates array.
+		const [x, y] = coordinates;
+		
+		// Transform the x and y values
+		const transformedX = this.OriginX + x * this.planeScaleX;
+		const transformedY = this.OriginY - y * this.planeScaleY;
+		
+		// Return a new array with transformed coordinates
+		return [transformedX, transformedY];
+    }
 }
 
 /*
