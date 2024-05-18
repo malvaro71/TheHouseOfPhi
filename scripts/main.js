@@ -615,10 +615,40 @@ class EuclideanSpace {
 		return [transformedX, transformedY];
     }
 
-	// Draw a vector in the euclidean space from initialPoint to vectorComponents (number arrays of length 3) using an existing marker created earlier (only for brown, blue or green colors) to draw the point arrow.
+	//Draw a segment in the Euclidean space from a intiPoint to an endPoint, setting some line atrributes 
+    drawSegment(initialPoint, endPoint, lineAttributes = {}) {
+		
+		// Destructure the lineAttributes and set its default values
+		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none"} = lineAttributes;
+
+		// Check if initialPoint and vectorComponents are arrays of numbers of length 3.
+		if (![initialPoint, endPoint].every(arr => Array.isArray(arr) && arr.length === 3 && arr.every((element) => typeof element === "number"))) {
+			throw new Error("Invalid coordinates: Expecting number arrays with 3 values: x, y and z.");
+		}
+
+		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
+		const [initialXTransformed, initialYTransformed] = this.transformCoordinates(initialPoint);
+		const [endXTransformed, endYTransformed] = this.transformCoordinates(endPoint);
+		
+		// Create the segment element with styling.
+		const segment = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		segment.setAttribute("x1", initialXTransformed);
+		segment.setAttribute("y1", initialYTransformed);
+		segment.setAttribute("x2", endXTransformed);
+		segment.setAttribute("y2", endYTransformed);
+		segment.setAttribute("stroke", strokeColor);
+		segment.setAttribute("stroke-width", strokeWidth);
+		segment.setAttribute("stroke-dasharray", strokeDasharray);
+		
+		// Append the segment element to the SVG
+		this.svgElement.appendChild(segment);
+    }
+
+	// Draw a vector in the euclidean space from initialPoint to an endPoint that is ther result of adding initialPoint and vectorComponents vectorComponents.
+	// it uses an existing marker created earlier (only for brown, blue or green colors) to draw the point arrow.
 	drawVector(initialPoint, vectorComponents, corner = "rightbottom", lineAttributes = {}, textAttributes = {}
 	) {
-		// Destructure the object and set default values
+		// Destructure lineAttributes and textAttributes, and set its default values
 		const {strokeColor = "brown", strokeWidth = 2} = lineAttributes;
 		const {textContent = ""} = textAttributes;
 
@@ -926,4 +956,21 @@ var greenMarker = createMarker("Greenarrow", "green");
 	const mySpace1_5 = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
 	mySpace1_5.drawAxes();
 
+	// Draw a point
 	mySpace1_5.drawPoint([6, 9, 5], "green");
+	
+	// Draw dashed lines to ilustrate the point coordinates on each axe x, y and z.
+	mySpace1_5.drawSegment([6, 0, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([6, 9, 0], [6, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 9, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 9, 0], [0, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 9, 5], [6, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 0, 5], [0, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 0, 5], [6, 0, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([6, 0, 5], [6, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([6, 0, 0], [6, 0, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+
+	// Label x1, y1 and z1
+	mySpace1_5.drawLabel([6, -0.1, 0], {textContent: "x1", fill: "green"});
+	mySpace1_5.drawLabel([0, 9.1, 0.1], {textContent: "y1", fill: "green"}, corner = "leftbottom");
+	mySpace1_5.drawLabel([0, -0.1, 5], {textContent: "z1", fill: "green"});
