@@ -311,52 +311,11 @@ class CartesianPlane {
 		this.planeScaleY = this.svgHeightNum / (yMax - yMin);
     }
 	
-	// Draw x and y axes in cartesian plane.
-    drawAxes(yAxisText, xAxisText, originText) {
-       
-		// y-axis
-			const planeHeight = this.yMax - this.yMin;
-			this.drawVector([0, this.yMin], [0, planeHeight]);
-			writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
-			//this.drawLabel([0-0.6, this.yMax], "y", 20, "brown", "brown", "normal", "rigthtop", "y-axis");
-
-		// x-axis
-			const planeWidht = this.xMax - this.xMin;
-			this.drawVector([this.xMin, 0], [planeWidht, 0]);
-			//this.drawLabel([this.xMax, 0], "x", 20, "brown", "brown", "normal", "rigthtop", "x-axis");
-			
-			// Create a new text element
-			const xAxisTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
-			// Set the text content
-			xAxisTextElement.textContent = xAxisText; 
-			// Set attributes for positioning (specify baseline point).
-			xAxisTextElement.setAttribute("x", this.svgHeightNum);
-			xAxisTextElement.setAttribute("y", this.OriginY + 5);
-			//Positions the rightmost character at the specified baseline point.
-			xAxisTextElement.setAttribute("text-anchor", "end");
-			//Aligns the topmost edge of the first text box with the specified baseline point.
-			xAxisTextElement.setAttribute("dominant-baseline", "text-before-edge"); 
-			// Set attributes for styling.
-			xAxisTextElement.setAttribute("font-size", 20);
-			xAxisTextElement.setAttribute("stroke", "brown");
-			xAxisTextElement.setAttribute("fill", "brown");
-			xAxisTextElement.setAttribute("font-weight", "normal");
-			// Add the text element to the SVG.
-			this.svgElement.appendChild(xAxisTextElement);
-
-		// Origin.
-			this.drawLabel([0-0.2, 0], "rigthtop", {
-				textContent: originText,
-				fontSize: 22,
-				fill: "brown" 
-			});
-    }
-
 	// Transform cartesian plane coordinates in svg element coordinates
     transformCoordinates(coordinates) {
-        // Check if coordinates is an array of length 2.
-		if (!Array.isArray(coordinates) || coordinates.length !== 2) {
-			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+        // Check if coordinates is a number array of length 2.
+		if (!Array.isArray(coordinates) || coordinates.length !== 2 || !coordinates.every((element) => typeof element === "number")) {
+			throw new Error("Invalid coordinates: Expecting a number array of length 2, with x and y values.");
 		}
 		
 		// Destructure the coordinates array.
@@ -398,7 +357,7 @@ class CartesianPlane {
     }
 
 	//Draw a point in the cartesian plane
-    drawPoint(coordinates, color, id) {
+    drawPoint(coordinates, color) {
     
 		// Check if coordinates is an array of length 2.
 		if (!Array.isArray(coordinates) || coordinates.length !== 2) {
@@ -412,7 +371,7 @@ class CartesianPlane {
 		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 
 		// Set attributes for the circle.
-		circleElement.setAttribute("id", id);
+		//circleElement.setAttribute("id", id);
 		circleElement.setAttribute("cx", xPosition);
 		circleElement.setAttribute("cy", yPosition);
 		circleElement.setAttribute("r", 3);
@@ -424,15 +383,248 @@ class CartesianPlane {
     }
 
 	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
-	drawVector(initialPoint, vectorComponents, corner = "rigthbottom", lineAttributes = {}, textAttributes = {}
+	drawVector(initialPoint, vectorComponents, corner = "rightbottom", lineAttributes = {}, textAttributes = {}
 	) {
 		// Destructure the object and set default values
 		const {strokeColor = "brown", strokeWidth = 2} = lineAttributes;
 		const {textContent = ""} = textAttributes;
 
-		// Check if coordinates1 and coordinates2 are arrays of length 2.
-		if (![initialPoint, vectorComponents].every(arr => Array.isArray(arr) && arr.length === 2)) {
-			throw new Error("Invalid coordinates: Expecting arrays with x and y values.");
+		// Check if initialPoint and vectorComponents are number arrays of length 2.
+		if (![initialPoint, vectorComponents].every(arr => Array.isArray(arr) && arr.length === 2 && arr.every((element) => typeof element === "number"))) {
+			throw new Error("Invalid coordinates: Expecting number arrays with x and y values.");
+		}
+
+		//Calculate vector endpoint using initial point and vector components.
+		const endPoint = addArrays(initialPoint, vectorComponents);
+
+		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
+		const [initialXTransformed, initialYTransformed] = this.transformCoordinates(initialPoint);
+		const [endXTransformed, endYTransformed] = this.transformCoordinates(endPoint);
+		
+		// Create the line element with styling and add the marker of colors brown, blue or green.
+		const vector = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		//vector.setAttribute("id", id);
+		vector.setAttribute("x1", initialXTransformed);
+		vector.setAttribute("y1", initialYTransformed);
+		vector.setAttribute("x2", endXTransformed);
+		vector.setAttribute("y2", endYTransformed);
+		vector.setAttribute("stroke", strokeColor);
+		vector.setAttribute("stroke-width", strokeWidth);
+		switch(strokeColor) {
+			case "brown":
+				vector.setAttribute("marker-end", "url(#Brownarrow)");
+			break;
+			case "blue":
+				vector.setAttribute("marker-end", "url(#Bluearrow)");
+			break;
+			case "green":
+				vector.setAttribute("marker-end", "url(#Greenarrow)");
+			break;
+			default:
+				throw new Error("Invalid value for vector color: Expecting ´brown´, ´blue´ or ´green´.");
+		}
+		// Append the vector element to the SVG
+		this.svgElement.appendChild(vector);
+		
+		// Draw label if defined
+		if (textContent != "") {
+			const half = vectorComponents.map(element => element / 2);
+			const position = addArrays(initialPoint, half);
+			this.drawLabel(position, textAttributes, corner);
+		}
+	}
+	
+	// Draw the label of an element giving coordinates of a baseline point, the label text, 
+	// the corner parameter: "righttop", "rightbottom", "lefttop" or "leftbottom"
+	// and define some default style attributes.
+	drawLabel(baselinePoint, textAttributes = {}, corner = "rightbottom") {
+		const {textContent = "", fontSize = 12, stroke = "none", fill = "brown",  fontWeight = "normal" } = textAttributes;
+		// Check if coordinates is an array of length 2.
+		if (!Array.isArray(baselinePoint) || baselinePoint.length !== 2) {
+			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+		}
+
+		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
+		const [xPosition, yPosition] = this.transformCoordinates(baselinePoint);
+		
+		// Create a new text element.
+		const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
+		// Set the text content.
+		textElement.textContent = textContent;
+
+		// Handles different corner values to position the text element.
+		switch(corner) {
+			case "righttop":
+				// Positions the rightmost character at the specified baseline point.
+				textElement.setAttribute("text-anchor", "end");
+				// Aligns the topmost edge of the first text box with the specified baseline point.
+				textElement.setAttribute("dominant-baseline", "text-before-edge");
+			break;
+			case "rightbottom":
+				// Positions the rightmost character at the specified baseline point.
+				textElement.setAttribute("text-anchor", "end");
+				// Aligns the bottommost edge of the last text box with the specified baseline point.
+				textElement.setAttribute("dominant-baseline", "text-after-edge");
+			break;
+			case "lefttop":
+				// Positions the leftmost character at the specified x-coordinate.
+				textElement.setAttribute("text-anchor", "start");
+				// Aligns the topmost edge of the first text box with the specified baseline point.
+				textElement.setAttribute("dominant-baseline", "text-before-edge");
+			break;
+			case "leftbottom":
+				// Positions the leftmost character at the specified x-coordinate.
+				textElement.setAttribute("text-anchor", "start");
+				// Aligns the bottommost edge of the last text box with the specified baseline point.
+				textElement.setAttribute("dominant-baseline", "text-after-edge");
+			break;
+			default:
+				throw new Error("Invalid value for corner input: Expecting ´righttop´, ´rightbottom´, ´lefttop´ or ´leftbottom´.");
+		} 
+
+		// Set attributes for positioning
+		textElement.setAttribute("x", xPosition);
+		textElement.setAttribute("y", yPosition);
+		
+		// Set other passed attributes like styling, etc.
+		textElement.setAttribute("font-size", fontSize);
+		textElement.setAttribute("stroke", stroke);
+		textElement.setAttribute("fill", fill);
+		textElement.setAttribute("font-weight", fontWeight);
+
+		// Add the text element to the SVG
+		this.svgElement.appendChild(textElement);
+	}
+
+	// Draw x and y axes in cartesian plane.
+    drawAxes(yAxisText, xAxisText, originText) {
+       
+		// y-axis
+			const planeHeight = this.yMax - this.yMin;
+			this.drawVector([0, this.yMin], [0, planeHeight]);
+			writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
+			//this.drawLabel([0-0.6, this.yMax], "y", 20, "brown", "brown", "normal", "righttop", "y-axis");
+
+		// x-axis
+			const planeWidht = this.xMax - this.xMin;
+			this.drawVector([this.xMin, 0], [planeWidht, 0]);
+			//this.drawLabel([this.xMax, 0], "x", 20, "brown", "brown", "normal", "righttop", "x-axis");
+			
+			// Create a new text element
+			const xAxisTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
+			// Set the text content
+			xAxisTextElement.textContent = xAxisText; 
+			// Set attributes for positioning (specify baseline point).
+			xAxisTextElement.setAttribute("x", this.svgHeightNum);
+			xAxisTextElement.setAttribute("y", this.OriginY + 5);
+			//Positions the rightmost character at the specified baseline point.
+			xAxisTextElement.setAttribute("text-anchor", "end");
+			//Aligns the topmost edge of the first text box with the specified baseline point.
+			xAxisTextElement.setAttribute("dominant-baseline", "text-before-edge"); 
+			// Set attributes for styling.
+			xAxisTextElement.setAttribute("font-size", 20);
+			xAxisTextElement.setAttribute("stroke", "brown");
+			xAxisTextElement.setAttribute("fill", "brown");
+			xAxisTextElement.setAttribute("font-weight", "normal");
+			// Add the text element to the SVG.
+			this.svgElement.appendChild(xAxisTextElement);
+
+		// Origin.
+			this.drawLabel([0-0.2, 0], {
+				textContent: originText,
+				fontSize: 22,
+				fill: "brown" 
+			});
+    }
+}
+
+// Define class EuclideanSpace, to manage the graphical representation of a Euclidean Space in an SVG element.
+// centerPoint are the coordinates of the point show in the "center" of the SVG canva.
+// scale is the number of pixels in the SVG canva per unit of length in the euclidean space.
+// Euclidean Space z-coordinate is parallel to svg Canva y-coordinate but has opposite orientation.
+// Euclidean Space y-coordinate is parallel to svg Canva x-coordinate and have same orientation. 
+// Euclidean Space x-axis is skewed 45 degrees and is oriented toward the svg Canva
+
+class EuclideanSpace {
+	// Define constant values to be used in the class, based on the degrees the x-axis is skewed.
+	static cosAngle = Math.cos(45*Math.PI/180);
+	static sinAngle = Math.sin(45*Math.PI/180);
+
+	constructor(svgElement, centerPoint, scale) {
+		// Define the svg element where the euclidean space will be represented
+		this.svgElement = svgElement;
+
+		// Get the width and height of the SVG element as strings
+		const svgWidth = this.svgElement.getAttribute("width");
+		const svgHeight = this.svgElement.getAttribute("height");
+
+		// Convert strings to numbers
+		this.svgWidthNum = parseFloat(svgWidth);
+		this.svgHeightNum = parseFloat(svgHeight);
+
+		//Set the space scale
+		this.spaceScale = scale;
+
+		//Destructure the coordinates of centerPoint
+		this.xC = centerPoint[0];
+		this.yC = centerPoint[1];
+		this.zC = centerPoint[2];
+
+		// SVG canva coordinates of euclidean space origin of coordinates 
+		this.OriginX = this.svgWidthNum*EuclideanSpace.sinAngle/2 - this.yC*this.spaceScale + this.xC*EuclideanSpace.cosAngle*this.spaceScale;
+		this.OriginY = this.svgHeightNum*(1 - EuclideanSpace.cosAngle/2) + this.zC*this.spaceScale - this.xC*EuclideanSpace.cosAngle*this.spaceScale;
+	} 
+
+	// Draw x, y, z axes and origin in euclidean space.
+	drawAxes() {
+		const planeHeight = this.svgHeightNum/this.spaceScale;
+		const planeWidht = this.svgWidthNum/this.spaceScale;
+
+		// x-axis
+		this.drawVector([-planeWidht/6, 0, 0], [planeWidht*5/8, 0, 0]);
+		this.drawLabel([planeWidht*4/9, 0, planeWidht/100], {textContent: "x"});
+
+		// y-axis
+		this.drawVector([0, -planeHeight/6, 0], [0, planeHeight*3/4, 0]);
+		this.drawLabel([0, planeHeight*5/9, planeWidht/100], {textContent: "y"});
+
+		//z-axis
+		this.drawVector([0, 0, -planeWidht/6], [0, 0, planeWidht*3/4]);
+		this.drawLabel([0, -planeWidht/100, planeWidht*5/9], {textContent: "z"}, "righttop");
+		
+		// Origin.
+		this.drawLabel([0, 0-0.1, 0], {textContent: "O"});
+	}
+
+	// Transform euclidean space coordinates in svg element coordinates
+    transformCoordinates(coordinates) {
+        // Check if coordinates is a number array of length 3.
+		if (!Array.isArray(coordinates) || coordinates.length !== 3 || !coordinates.every((element) => typeof element === "number")) {
+			throw new Error("Invalid coordinates: Expecting a number array with 3 values: x, y and z.");
+		}
+		
+		// Destructure the coordinates array.
+		const [x, y, z] = coordinates;
+		
+		// Transform the x and y values
+		const transformedX =  this.OriginX + y*this.spaceScale - x*EuclideanSpace.cosAngle*this.spaceScale;
+		const transformedY = this.OriginY - z*this.spaceScale + x*EuclideanSpace.cosAngle*this.spaceScale;
+		
+		// Return a new array with transformed coordinates
+		return [transformedX, transformedY];
+    }
+
+	// Draw a vector in the euclidean space from initialPoint to vectorComponents (number arrays of length 3) using an existing marker created earlier (only for brown, blue or green colors) to draw the point arrow.
+	drawVector(initialPoint, vectorComponents, corner = "rightbottom", lineAttributes = {}, textAttributes = {}
+	) {
+		// Destructure the object and set default values
+		const {strokeColor = "brown", strokeWidth = 2} = lineAttributes;
+		const {textContent = ""} = textAttributes;
+
+		// Check if initialPoint and vectorComponents are arrays of numbers of length 3.
+		if (![initialPoint, vectorComponents].every(arr => Array.isArray(arr) && arr.length === 3 && arr.every((element) => typeof element === "number"))) {
+			throw new Error("Invalid coordinates: Expecting number arrays with 3 values: x, y and z.");
 		}
 
 		//Calculate vector endpoint using initial point and vector components.
@@ -474,15 +666,15 @@ class CartesianPlane {
 			this.drawLabel(position, corner, textAttributes);
 		}
 	}
-	
+
 	// Draw the label of an element giving coordinates of a baseline point, the label text, 
-	// the corner parameter: "rigthtop", "rigthbottom", "lefttop" or "leftbottom"
+	// the corner parameter: "righttop", "rightbottom", "lefttop" or "leftbottom"
 	// and define some default style attributes.
-	drawLabel(baselinePoint, corner = "rigthbottom", textAttributes = {}) {
-		const {textContent = "", fontSize = 12, stroke = "none", fill = "brown",  fontWeight = "normal" } = textAttributes;
-		// Check if coordinates is an array of length 2.
-		if (!Array.isArray(baselinePoint) || baselinePoint.length !== 2) {
-			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+	drawLabel(baselinePoint, textAttributes = {}, corner = "rightbottom") {
+		const {textContent = "", fontSize = 17, stroke = "none", fill = "brown",  fontWeight = "normal" } = textAttributes;
+		// Check if baselinePoint is a number array of length 3.
+		if (!Array.isArray(baselinePoint) || baselinePoint.length !== 3 || !baselinePoint.every((element) => typeof element === "number")) {
+			throw new Error("Invalid coordinates: Expecting a number array with 3 values: x, y and z.");
 		}
 
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
@@ -496,13 +688,13 @@ class CartesianPlane {
 
 		// Handles different corner values to position the text element.
 		switch(corner) {
-			case "rigthtop":
+			case "righttop":
 				// Positions the rightmost character at the specified baseline point.
 				textElement.setAttribute("text-anchor", "end");
 				// Aligns the topmost edge of the first text box with the specified baseline point.
 				textElement.setAttribute("dominant-baseline", "text-before-edge");
 			break;
-			case "rigthbottom":
+			case "rightbottom":
 				// Positions the rightmost character at the specified baseline point.
 				textElement.setAttribute("text-anchor", "end");
 				// Aligns the bottommost edge of the last text box with the specified baseline point.
@@ -521,7 +713,7 @@ class CartesianPlane {
 				textElement.setAttribute("dominant-baseline", "text-after-edge");
 			break;
 			default:
-				throw new Error("Invalid value for corner input: Expecting ´rigthtop´, ´rigthbottom´, ´lefttop´ or ´leftbottom´.");
+				throw new Error("Invalid value for corner input: Expecting ´righttop´, ´rightbottom´, ´lefttop´ or ´leftbottom´.");
 		} 
 
 		// Set attributes for positioning
@@ -538,97 +730,31 @@ class CartesianPlane {
 		// Add the text element to the SVG
 		this.svgElement.appendChild(textElement);
 	}
-}
 
-// Define class EuclideanSpace, to manage the graphical representation of a Euclidean Space in an SVG element.
-// centerPoint are the coordinates of the point show in the "center" of the space shown in the plane.
-// spaceScale is the 
-class EuclideanSpace {
-	constructor(svgElement, centerPoint, scale) {
-		// Define the svg element where the euclidean space will be represented
-		this.svgElement = svgElement;
-
-		// Get the width and height of the SVG element as strings
-		const svgWidth = this.svgElement.getAttribute("width");
-		const svgHeight = this.svgElement.getAttribute("height");
-
-		// Convert strings to numbers
-		this.svgWidthNum = parseFloat(svgWidth);
-		this.svgHeightNum = parseFloat(svgHeight);
-
-		// 3D z-coordinate is parallel to svg Canva y-coordinate but has opposite orientation.
-		// 3D y-coordinate is parallel to svg Canva x-coordinate and have same orientation. 
-		// 3D x-axis is skewed 45 degrees and is oriented toward the svg Canva
-		const skewedAngle = 45*Math.PI/180; //expressed in radians.
-		// SVG canva coordinates of centerPoint 
-		this.OriginX = svgWidth*Math.sin(skewedAngle)/2;
-		this.OriginY = svgHeight*(1 - Math.cos(skewedAngle)/2);
-
-		//Set the space scale
-		this.spaceScale = scale;
-
-		//Destructure the coordinates of centerPoint
-		this.xC = centerPoint[0];
-		this.yC = centerPoint[1];
-		this.zC = centerPoint[2];
-	} 
-
-	// Draw x, y and z axes in euclidean space.
-	drawAxes() {
-		// y-axis
-		const planeHeight = this.yMax - this.yMin;
-		this.drawVector([0, this.yMin], [0, planeHeight]);
-		writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
-		//this.drawLabel([0-0.6, this.yMax], "y", 20, "brown", "brown", "normal", "rigthtop", "y-axis");
-
-		// x-axis
-		const planeWidht = this.xMax - this.xMin;
-		this.drawVector([this.xMin, 0], [planeWidht, 0]);
-		//this.drawLabel([this.xMax, 0], "x", 20, "brown", "brown", "normal", "rigthtop", "x-axis");
-		
-		// Create a new text element
-		const xAxisTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
-		// Set the text content
-		xAxisTextElement.textContent = xAxisText; 
-		// Set attributes for positioning (specify baseline point).
-		xAxisTextElement.setAttribute("x", this.svgHeightNum);
-		xAxisTextElement.setAttribute("y", this.OriginY + 5);
-		//Positions the rightmost character at the specified baseline point.
-		xAxisTextElement.setAttribute("text-anchor", "end");
-		//Aligns the topmost edge of the first text box with the specified baseline point.
-		xAxisTextElement.setAttribute("dominant-baseline", "text-before-edge"); 
-		// Set attributes for styling.
-		xAxisTextElement.setAttribute("font-size", 20);
-		xAxisTextElement.setAttribute("stroke", "brown");
-		xAxisTextElement.setAttribute("fill", "brown");
-		xAxisTextElement.setAttribute("font-weight", "normal");
-		// Add the text element to the SVG.
-		this.svgElement.appendChild(xAxisTextElement);
-
-		// Origin.
-		this.drawLabel([0-0.2, 0], "rigthtop", {
-			textContent: originText,
-			fontSize: 22,
-			fill: "brown" 
-		});
-	}
-
-	// Transform euclidean space coordinates in svg element coordinates
-    transformCoordinates(coordinates) {
-        // Check if coordinates is an array of length 2.
-		if (!Array.isArray(coordinates) || coordinates.length !== 2) {
-			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
+	//Draw a point in the euclidean space
+    drawPoint(coordinates, color) {
+    
+		// Check if coordinates is a number array of length 3.
+		if (!Array.isArray(coordinates) || coordinates.length !== 3 || !coordinates.every((element) => typeof element === "number")) {
+			throw new Error("Invalid coordinates: Expecting a number array with 3 values: x, y and z.");
 		}
-		
-		// Destructure the coordinates array.
-		const [x, y] = coordinates;
-		
-		// Transform the x and y values
-		const transformedX = this.OriginX + x * this.planeScaleX;
-		const transformedY = this.OriginY - y * this.planeScaleY;
-		
-		// Return a new array with transformed coordinates
-		return [transformedX, transformedY];
+
+		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
+		const [xPosition, yPosition] = this.transformCoordinates(coordinates);
+
+		// Create a new circle element.
+		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+		// Set attributes for the circle.
+		//circleElement.setAttribute("id", id);
+		circleElement.setAttribute("cx", xPosition);
+		circleElement.setAttribute("cy", yPosition);
+		circleElement.setAttribute("r", 3);
+		circleElement.setAttribute("stroke", color);
+		circleElement.setAttribute("fill", color);
+
+		// Append the circle element to the SVG.
+		this.svgElement.appendChild(circleElement);
     }
 }
 
@@ -715,33 +841,16 @@ var greenMarker = createMarker("Greenarrow", "green");
 	const vectorB = [15, 6];
 	const vectorAPlusB = addArrays(vectorA, vectorB)
 
-	/*
-	// draw vectors representing a vector adition
-	const circleAttributes = {
-		cx: 50,
-		cy: 70,
-		r: 20,
-		fill: "green"
-	  };
-	  
-	  
-	  const svgCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-	  setSVGAttributes(svgCircle, circleAttributes);
-	 
-	  // Append the vector element to the SVG
-		myPlane1_2.svgElement.appendChild(svgCircle);
-		*/
-	 
-
-	myPlane1_2.drawVector(pointA, vectorA, "rigthbottom", {strokeColor: "green"}, {textContent: "a", fontSize: 22, fill: "green"});
+	// draw vectos a, b and a+b
+	myPlane1_2.drawVector(pointA, vectorA, "rightbottom", {strokeColor: "green"}, {textContent: "a", fontSize: 22, fill: "green"});
 	
-	myPlane1_2.drawVector(vectorA, vectorB, "rigthbottom", {strokeColor: "blue"}, {textContent: "b", fontSize: 22, fill: "blue"});
+	myPlane1_2.drawVector(vectorA, vectorB, "rightbottom", {strokeColor: "blue"}, {textContent: "b", fontSize: 22, fill: "blue"});
 	
 	myPlane1_2.drawVector(pointA, vectorAPlusB, "lefttop", {strokeColor: "brown"}, {textContent: "a+b", fontSize: 22});
 	
-	myPlane1_2.drawVector(pointA, vectorB, "rigthbottom", {strokeColor: "blue"}, {textContent: "b", fontSize: 22, fill: "blue"});
+	myPlane1_2.drawVector(pointA, vectorB, "rightbottom", {strokeColor: "blue"}, {textContent: "b", fontSize: 22, fill: "blue"});
 
-	myPlane1_2.drawVector(vectorB, vectorA, "rigthbottom",{ strokeColor: "green"}, {textContent: "a", fontSize: 22,
+	myPlane1_2.drawVector(vectorB, vectorA, "rightbottom",{ strokeColor: "green"}, {textContent: "a", fontSize: 22,
 	fill: "green"});
 
 // svg1_3. Cartesian plane and cartesian coordinates of a point.
@@ -754,7 +863,7 @@ var greenMarker = createMarker("Greenarrow", "green");
 	//const PointP = new Point({orthogonalParam: [5, 10] });
 	//const PointP = new Point([5, 10]);
 	var PointP = [5, 10];
-	myPlane1_3.drawPoint(PointP, "green", "PointP");
+	myPlane1_3.drawPoint(PointP, "green");
   	myPlane1_3.drawSegment([5, 0], [5, 10], "green", 1, "5,5", "DashedLine1");
 	myPlane1_3.drawSegment([0, 10], [5, 10], "green", 1, "5,5", "DashedLine2");
 	//myPlane1_3.drawVector([5, 10], [5, 10], "green", 1,"v");
@@ -807,3 +916,14 @@ var greenMarker = createMarker("Greenarrow", "green");
 
 	// Append the text element to the SVG
 	svg1_3.appendChild(textElement);	
+
+// svg1.5 point P, with coordinates (x1, y1, z1)
+
+	// Get the SVG element from the DOM
+	var svg1_5 = document.getElementById("svg1_5");
+
+	// set a euclidean space
+	const mySpace1_5 = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
+	mySpace1_5.drawAxes();
+
+	mySpace1_5.drawPoint([6, 9, 5], "green");
