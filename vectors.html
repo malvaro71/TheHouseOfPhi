@@ -797,14 +797,24 @@
         </figure>
 
         <p class="lang lang-en">
-            The magnitude of this projection vector is equal to the component of `vecv` in the direction of `vecw`, which can be calculated as:
+            Since the projection of `vecv` onto `vecw` is aligned with `vecw`:
         </p>
         <p class="lang lang-es" lang="es">
-            La magnitud de este vector de proyección es igual a la componente de `vecv` en la dirección de  `vecw`, que se puede calcular como:
+            Dado que la proyección de `vecv` sobre `vecw` está alineada con `vecw`:
+        </p>
+        <div class="container">
+            <div  class="center">`proj_w vecv = norm(proj_w vecv)*vecu_w`</div>
+            <div  class="right" id="[1.13]">[1.13]</div>
+        </div>  
+        <p class="lang lang-en">
+            From the definition of <a href="geometry.html#[2.3]" target="_blank"> cosine</a> it follows that the magnitude of this projection vector can be calculated as:
+        </p>
+        <p class="lang lang-es" lang="es">
+            De la definición de <a href="geometry.html#[2.3]" target="_blank"> coseno</a> se deduce que la magnitud de este vector de proyección se puede calcular como: 
         </p>                
         <div class="container">
             <div  class="center">`norm(proj_w vecv) = norm(vecv)costheta`</div>
-            <div  class="right" id="[1.13]">[1.13]</div>
+            <div  class="right" id="[1.14]">[1.14]</div>
         </div>
         <p class="lang lang-en">
             Where `theta` is the angle between `vecv` and `vecw`.
@@ -813,24 +823,24 @@
             Donde `theta` es el ángulo entre `vecv` y `vecw`.
         </p>
         <p class="lang lang-es" lang="es">
-            Ahora bien, si consideramos el producto escalar de `vecv` y  `vecw`, la magnitud de `proj_w vecv` también puede expresarse como:
+            Ahora bien, si consideramos la expresión [1.12] del producto escalar de `vecv` y  `vecw`, la magnitud de `proj_w vecv` también puede expresarse como:
         </p>
         <p class="lang lang-en">
-            Now, if we consider the scalar product of `vecv` and `vecw`, the magnitude of `proj_w vecv` can also expresed as:
+            Now, if we consider the expression [1.12] for the dot product of `vecv` and `vecw`, the magnitude of `proj_w vecv` can also be expressed as:
         </p>
         <div class="container">
             <div  class="center">`norm(proj_w vecv) = vecv*vecw/norm(vecw) = vecv*vecu_w`</div>
-            <div  class="right" id="[1.14]">[1.14]</div>
+            <div  class="right" id="[1.15]">[1.15]</div>
         </div>
         <p class="lang lang-en">
-            We can also calculate the magnitude of `proj_w vecv` using vector coordinates of `vecv` ` << x_1, y_1, z_1 >> ` and `vecw` ` << x_2, y_2, z_2 >>` using the following expression:
+            So, using the coordinates of `vecv` ` << x_1, y_1, z_1 >> ` and of `vecw` ` << x_2, y_2, z_2 >>` to calculate their dot product:
         </p>
         <p class="lang lang-es" lang="es">
-            También podemos calcular la magnitud de `proj_w vecv` usando las coordenadas de `vecv` ` << x_1, y_1, z_1 >> ` y de `vecw` ` << x_2, y_2, z_2 >>` mediante la siguiente expression:
+            Entonces, usando las coordenadas de `vecv` ` << x_1, y_1, z_1 >> ` y de `vecw` ` << x_2, y_2, z_2 >>` para calcular su producto escalar:
         </p>
         <div class="container">
             <div  class="center">`norm(proj_w vecv) = (x_1*x_2 + y_1*y_2 + z_1*z_2)/sqrt(x_2^2+y_2^2+z_2^2)`</div>
-            <div  class="right" id="[1.15]">[1.15]</div>
+            <div  class="right" id="[1.16]">[1.16]</div>
         </div>
     </section>
 
@@ -857,7 +867,7 @@
         </p>
         <div class="container">
             <div  class="center">`norm(vecv xx vecw) = norm(vecv)norm(vecw)sin(theta)`</div>
-            <div  class="right" id="[1.16]">[1.16]</div>
+            <div  class="right" id="[1.17]">[1.17]</div>
         </div>
         <p class="lang lang-en">
             Then, the magnitude (or length) of the cross product can be interpreted as the area of the parallelogram that the vectors span.
@@ -906,7 +916,7 @@
         </p>
         <div class="container">
             <div  class="center">`vecv xx vecw = << y_1*z_2 - z_1*y_2, z_1*x_2 - x_1*z_2, x_1*y_2 - y_1*x_2 >> `</div>
-            <div  class="right" id="[1.17]">[1.17]</div>
+            <div  class="right" id="[1.18]">[1.18]</div>
         </div>
         <p class="lang lang-en">
             Each component of this resulting vector is the determinant of a 2x2 matrix formed by eliminating the row and column of the corresponding component from a 3x3 matrix containing the unit vectors `veci`, `vecj`, `veck` in the first row, the components of `vecv` in the second row, and the components of `vecw` in the third row.
@@ -916,7 +926,7 @@
         </p>
         <div class="container">
             <div  class="center">`|[veci, vecj, veck], [x_1, y_1, z_1], [x_2, y_2, z_2]| = |[y_1, z_1], [y_2, z_2]|*veci - |[x_1, z_1], [x_2, z_2]|*vecj + |[x_1, y_1], [x_2, y_2]|*veck`</div>
-            <div  class="right" id="[1.18]">[1.18]</div>
+            <div  class="right" id="[1.19]">[1.19]</div>
         </div><br><br>
         <p class="lang lang-en">
             Properties of the cross product:
@@ -952,7 +962,7 @@
         <p>&emsp; </p>
         <div class="container">
             <div  class="center">`vecM = vecr xx vecv`</div>
-            <div  class="right" id="[1.19]">[1.19]</div>
+            <div  class="right" id="[1.20]">[1.20]</div>
         </div>
         <p class="lang lang-en">
             The position vector, `vecr`, extends from the point of interest P to the origin of `vecv`.
@@ -1127,7 +1137,7 @@
         </p>
         <div class="container">
             <div  class="center">`norm(vecM_g) = vecu_g * (vecr xx vecv)`</div>
-            <div  class="right" id="[1.20]">[1.20]</div>
+            <div  class="right" id="[1.21]">[1.21]</div>
         </div>
         <p class="lang lang-en">
             To streamline the calculations even further, mathematically we can combine the cross and dot product into what is known as a <stron>mixed triple product</stron>. In the mixed triple product we write the cross product as a determinant in the form:
@@ -1137,13 +1147,13 @@
         </p>
         <div class="container">
             <div  class="center">`norm(vecM_g) = vecu_g * (vecr xx vecv) = |[u_(gx), u_(gy), u_(gz)], [r_x, r_y, r_z], [v_x, v_y, v_z]| = u_(gx)*|[r_y, r_z], [v_y, v_z]| - u_(gy)*|[r_x, r_z], [v_x, v_z]| + u_(gz)*|[r_x, r_y], [v_x, v_y]|`</div>
-            <div  class="right" id="[1.21]">[1.21]</div>
+            <div  class="right" id="[1.22]">[1.22]</div>
         </div><br><br>
         <p class="lang lang-en">Finally, since a vector can be expressed as the product of its modulus and its unit vector, we have:</p>
         <p class="lang lang-es" lang="es">Finalmente, como un vector se puede expresar como el producto de su módulo por su vecotr unitario, tenemos que:</p>
         <div class="container">
             <div  class="center">`vecM_g = norm(vecM_g) * vecu_g`</div>
-            <div  class="right" id="[1.22]">[1.22]</div>
+            <div  class="right" id="[1.23]">[1.23]</div>
         </div>
     </section>
 
@@ -1164,7 +1174,7 @@
         </p>
         <div class="container">
             <div  class="center">`vecf(t)=f_x(t)veci+f_y(t)vecj+f_z(t)veck`</div>
-            <div  class="right" id="[1.23]">[1.23]</div>
+            <div  class="right" id="[1.24]">[1.24]</div>
         </div>
         <p class="lang lang-en">
             where `f_x(t)`, `f_y(t)`, and `f_z(t)` are the <strong>coordinate functions</strong> of the parameter t, and the domain of this vector-valued function is the intersection of the domains of the functions `f_x(t)`, `f_y(t)` and `f_z(t)`.
@@ -1185,7 +1195,7 @@
         </p>
         <div class="container">
             <div  class="center">`vecf'(t) = (dvecf)/dt = (df_x)/dtveci + (df_y)/dtvecj +(df_z)/dtveck`</div>
-            <div  class="right" id="[1.24]">[1.24]</div>
+            <div  class="right" id="[1.25]">[1.25]</div>
         </div>
     </section>
 
@@ -1206,7 +1216,7 @@
         </p>
         <div class="container">
             <div  class="center">`(delf)/(delx)`</div>
-            <div  class="right" id="[1.25]">[1.25]</div>
+            <div  class="right" id="[1.26]">[1.26]</div>
         </div>
         <p class="lang lang-en">
             The <strong>total derivative</strong> of the function `f(x,y,z)` can be calculated using the expression:
@@ -1217,7 +1227,7 @@
         <p>&emsp; </p>
         <div class="container">
             <div  class="center">`df = (delf)/(delx)dx + (delf)/(dely)dy + (delf)/(delz)dz`</div>
-            <div  class="right" id="[1.26]">[1.26]</div>
+            <div  class="right" id="[1.27]">[1.27]</div>
         </div>
     </section>
 
@@ -1232,7 +1242,7 @@
         </p>
         <div class="container">
             <div  class="center">`int vecf(t)dt = int << f_x(t), f_y(t), f_z(t) >> dt = << int f_x(t)dt, int f_y(t)dt, int f_z(t)dt >> `</div>
-            <div  class="right" id="[1.27]">[1.27]</div>
+            <div  class="right" id="[1.28]">[1.28]</div>
         </div>
     </section>
 
