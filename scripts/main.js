@@ -420,7 +420,6 @@ function dot(vectorA, vectorB) {
  *
  * @returns {number} The magnitude (Euclidean norm) of the input vector.
  */
-// Returns the magnitude of a vector
 function norm(vector) {
 	// Check if input is a valid array
 	validateCoordinates2D3D(vector);
@@ -465,7 +464,6 @@ Returns 0 if either vector has a magnitude of 0.
 @throws {TypeError} If either vector1 or vector2 is not a list.
 @throws {ValueError} If either vector1 or vector2 is not of length 2, or if they contain non-numeric elements, or if any of their numeric elements is infinite. 
 */
-//calculate the angle in radians between two vectors in counter-closewise sense
 function angleBetweenVectorsCCW(vector1, vector2) {
 	// Check if vectors are valid arrays of length 2
 	[vector1, vector2].every(arr => validateCoordinates2D(arr));
