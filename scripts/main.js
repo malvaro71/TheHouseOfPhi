@@ -89,7 +89,6 @@ function drawSegment(svgElement, x1, y1, x2, y2, strokeColor, strokeWidth, strok
  * @param {string} color - The color of the circle's stroke and fill.
  * @param {number} radius - The radius of the circle.
  */
-//Draw a circle in a SVG element
 function drawCircle(svgElement, centreX, centreY, color, radius) {
 	// Create a new circle element.
 	const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -122,7 +121,6 @@ function drawCircle(svgElement, centreX, centreY, color, radius) {
  *
  * @throws {Error} If an invalid value is provided for the `corner` parameter.
  */
-//Function to write text in an SVG element
 function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, corner = "rightbottom") {
 	// Create a new text element
 	var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -214,7 +212,7 @@ function validateCoordinates2D(coordinates) {
 	if (coordinates.length !== 2) {
 	  throw new ValueError("Invalid coordinates: Expecting a list with length 2 (x and y values).");
 	}
-	if (!coordinates.every((element) => typeof element === "number"&& isFinite(element))) {
+	if (!coordinates.every((element) => typeof element === "number" && isFinite(element))) {
 	  throw new ValueError("Invalid coordinates: Expecting a list containing only finite numbers.");
 	}
 	// If all conditions pass, the function returns true (implicit return)
@@ -261,7 +259,17 @@ function validateCoordinates2D3D(coordinates) {
 	}
 	// If all conditions pass, the function returns true (implicit return)
 }
-  
+
+/**
+Validates if the input is a valid object (not null).
+@param {*} input - The value to be validated.
+@throws {TypeError} If the input is not an object or is null. 
+*/ 
+function validateObject(input) {
+	if (typeof input !== 'object' || input === null) {
+		throw new TypeError("This parameter must be an object.");
+	}
+}	
 /*
 // Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
 class Point {
@@ -448,6 +456,42 @@ function multiply(scalar, array){
 	}
 	return scaledArray;
 }
+/**
+Calculates the angle in radians between two 2D vectors in the counter-clockwise (CCW) sense.
+@param {number[]} vector1 - The first 2D vector represented as an array of length 2 (x, y).
+@param {number[]} vector2 - The second 2D vector represented as an array of length 2 (x, y).
+@returns {number} The angle in radians between the two vectors in the CCW sense.
+Returns 0 if either vector has a magnitude of 0.
+@throws {TypeError} If either vector1 or vector2 is not a list.
+@throws {ValueError} If either vector1 or vector2 is not of length 2, or if they contain non-numeric elements, or if any of their numeric elements is infinite. 
+*/
+//calculate the angle in radians between two vectors in counter-closewise sense
+function angleBetweenVectorsCCW(vector1, vector2) {
+	// Check if vectors are valid arrays of length 2
+	[vector1, vector2].every(arr => validateCoordinates2D(arr));
+  
+	// Calculate dot product and magnitudes
+	const dotProduct = vector1[0] * vector2[0] + vector1[1] * vector2[1];
+	const magnitude1 = norm(vector1);
+	const magnitude2 = norm(vector2);
+  
+	// Prevent division by zero
+	if (magnitude1 === 0 || magnitude2 === 0) {
+	  return 0;
+	}
+  
+	// Calculate angle using acos and handle potential rounding errors
+	let angleRad = Math.acos(dotProduct / (magnitude1 * magnitude2));
+  
+	// Determine sign based on cross product to ensure CCW direction
+	const determinant = vector1[0] * vector2[1] - vector1[1] * vector2[0];
+	if (determinant < 0) {
+	  angleRad = 2 * Math.PI - angleRad; // Correct for CW angle
+	}
+  
+	// Return angle in radians
+	return angleRad;
+  }
 
 // Define class CartesianPlane, to manage the graphical representation of a Cartesian Plane in an SVG element.
 class CartesianPlane {
@@ -490,9 +534,7 @@ class CartesianPlane {
 	// Transform cartesian plane coordinates in svg element coordinates
     transformCoordinates(coordinates) {
         // Check if coordinates is a number array of length 2.
-		if (!Array.isArray(coordinates) || coordinates.length !== 2 || !coordinates.every((element) => typeof element === "number")) {
-			throw new Error("Invalid coordinates: Expecting a number array of length 2, with x and y values.");
-		}
+		validateCoordinates2D(coordinates);
 		
 		// Destructure the coordinates array.
 		const [x, y] = coordinates;
@@ -507,11 +549,14 @@ class CartesianPlane {
 
 	//Draw a segment in the cartesian plane
     drawSegment(coordinates1, coordinates2, lineAttributes = {}) {
-		// Destructure the lineAttributes and set its default values
-		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = false} = lineAttributes;
-
 		// Validate coordinates1 and coordinates2.
 		[coordinates1, coordinates2].every(arr => validateCoordinates2D(arr));
+
+		// Validate lineAttributes
+		validateObject(lineAttributes);
+
+		// Destructure the lineAttributes and set its default values
+		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = false} = lineAttributes;
 	
 		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
 		const [xPosition1, yPosition1] = this.transformCoordinates(coordinates1);
@@ -523,6 +568,7 @@ class CartesianPlane {
 
 	//Draw a point in the cartesian plane
     drawPoint(coordinates, color) {
+		//validate inputs
 		validateCoordinates2D(coordinates);
 
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
@@ -532,46 +578,13 @@ class CartesianPlane {
 		drawCircle(this.svgElement, xPosition, yPosition, color, 3);
     }
 
-	//calculate the angle in radians between two vectors in counter-closewise sense
-	angleBetweenVectorsCCW(vector1, vector2) {
-		// Check if vectors are valid arrays of length 2
-		if (!Array.isArray(vector1) || vector1.length !== 2 || !vector1.every((element) => typeof element === "number")) {
-		  throw new Error("Invalid vector1: Expecting a number array with x and y values.");
-		}
-		if (!Array.isArray(vector2) || vector2.length !== 2 || !vector2.every((element) => typeof element === "number")) {
-		  throw new Error("Invalid vector2: Expecting a number array with x and y values.");
-		}
-	  
-		// Calculate dot product and magnitudes
-		const dotProduct = vector1[0] * vector2[0] + vector1[1] * vector2[1];
-		const magnitude1 = norm(vector1);
-		const magnitude2 = norm(vector2);
-	  
-		// Prevent division by zero
-		if (magnitude1 === 0 || magnitude2 === 0) {
-		  return 0;
-		}
-	  
-		// Calculate angle using acos and handle potential rounding errors
-		let angleRad = Math.acos(dotProduct / (magnitude1 * magnitude2));
-	  
-		// Determine sign based on cross product to ensure CCW direction
-		const determinant = vector1[0] * vector2[1] - vector1[1] * vector2[0];
-		if (determinant < 0) {
-		  angleRad = 2 * Math.PI - angleRad; // Correct for CW angle
-		}
-	  
-		// Return angle in radians
-		return angleRad;
-	  }
+	
 
 	// Draw the angle laid from vector1 to vector2 counter-clockwise
 	drawArc(vertex, initialSide, terminalSide, radius) {
 		
 		// Check if initialPoint and vectorComponents are number arrays of length 2.
-		if (![vertex, initialSide, terminalSide].every(arr => Array.isArray(arr) && arr.length === 2 && arr.every((element) => typeof element === "number"))) {
-			throw new Error("Invalid coordinates: Expecting number arrays with x and y values.");
-		}
+		[vertex, initialSide, terminalSide].every(arr => validateCoordinates2D(arr));
 
 		// Declare block values
 		let initialPoint = [initialSide[0]/norm(initialSide)*radius, initialSide[1]/norm(initialSide)*radius];
@@ -604,12 +617,15 @@ class CartesianPlane {
 
 	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
 	drawVector(initialPoint, vectorComponents, lineAttributes = {}, textAttributes = {}) {
+		// Validate coordinates1 and coordinates2.
+		[initialPoint, vectorComponents].every(arr => validateCoordinates2D(arr));
+
+		// Validate lineAttributes and textAttributes
+		[lineAttributes,textAttributes].every(arr => validateObject(arr));
+
 		// Destructure the object and set default values
 		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
 		const {textContent = "", corner = "rightbottom"} = textAttributes;
-
-		// Validate coordinates1 and coordinates2.
-		[initialPoint, vectorComponents].every(arr => validateCoordinates2D(arr));
 
 		//Calculate vector endpoint using initial point and vector components.
 		const endPoint = add(initialPoint, vectorComponents);
@@ -633,12 +649,15 @@ class CartesianPlane {
 	// the corner parameter: "righttop", "rightbottom", "lefttop" or "leftbottom"
 	// and apply some style attributes.
 	drawLabel(baselinePoint, textAttributes = {}) {
-		const {textContent = "", fontSize = 12, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
-		// Check if coordinates is an array of length 2.
-		if (!Array.isArray(baselinePoint) || baselinePoint.length !== 2) {
-			throw new Error("Invalid coordinates: Expecting an array with x and y values.");
-		}
+		// Validade baselinePoint
+		validateCoordinates2D(baselinePoint);
 
+		//validate textAttributes
+		validateObject(textAttributes);
+		
+		// destructure textAttributes and assign default values
+		const {textContent = "", fontSize = 12, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
+		
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
 		const [xPosition, yPosition] = this.transformCoordinates(baselinePoint);
 
@@ -685,18 +704,24 @@ class CartesianPlane {
     }
 }
 
-// Define class EuclideanSpace, to manage the graphical representation of a Euclidean Space in an SVG element.
-// centerPoint are the coordinates of the point show in the "center" of the SVG canva.
-// scale is the number of pixels in the SVG canva per unit of length in the euclidean space.
-// Euclidean Space z-coordinate is parallel to svg Canva y-coordinate but has opposite orientation.
-// Euclidean Space y-coordinate is parallel to svg Canva x-coordinate and have same orientation. 
-// Euclidean Space x-axis is skewed 45 degrees and is oriented toward the svg Canva
 
+/**
+	Represents a Euclidean space within an SVG element. 
+*/
 class EuclideanSpace {
-	// Define constant values to be used in the class, based on the degrees the x-axis is skewed.
-	static cosAngle = Math.cos(45*Math.PI/180);
+	/**
+		Constants used throughout the class based on the x-axis skew angle. 
+	*/ 
+	static cosAngle = Math.cos(45*Math.PI/180); 
 	static sinAngle = Math.sin(45*Math.PI/180);
-
+	/**
+		Creates a new EuclideanSpace instance.
+		@param {SVGElement} svgElement - The SVG element where the space will be drawn.
+		@param {number[]} centerPoint - The coordinates of the center point in the Euclidean space ([x, y, z]).
+		@param {number} scale - The number of pixels per unit of length in the Euclidean space.
+		@throws {TypeError} If the svgElement is not an SVGElement or the centerPoint is not an array of length 3.
+		@throws {ValueError} If any element in centerPoint is not a number. 
+	*/
 	constructor(svgElement, centerPoint, scale) {
 		// Define the svg element where the euclidean space will be represented
 		this.svgElement = svgElement;
@@ -743,12 +768,16 @@ class EuclideanSpace {
 		this.drawLabel([0, 0-0.1, 0], {textContent: "O"});
 	}
 
-	// Transform euclidean space coordinates in svg element coordinates
+	/**
+		Transforms a set of Euclidean space coordinates into SVG element coordinates.
+		@param {number[]} coordinates - The coordinates in Euclidean space ([x, y, z]).
+		@throws {TypeError} If the coordinates array is not of length 3.
+		@throws {ValueError} If any element in coordinates is not a number.
+		@returns {number[]} The transformed coordinates in SVG element space ([x, y]). 
+	*/
     transformCoordinates(coordinates) {
         // Check if coordinates is a number array of length 3.
-		if (!Array.isArray(coordinates) || coordinates.length !== 3 || !coordinates.every((element) => typeof element === "number")) {
-			throw new Error("Invalid coordinates: Expecting a number array with 3 values: x, y and z.");
-		}
+		validateCoordinates3D(coordinates);
 		
 		// Destructure the coordinates array.
 		const [x, y, z] = coordinates;
@@ -761,13 +790,28 @@ class EuclideanSpace {
 		return [transformedX, transformedY];
     }
 
-	//Draw a segment in the Euclidean space from a intiPoint to an endPoint, setting some line atrributes 
+	/**
+		Draws a line segment in the Euclidean space from a starting point to an end point with specific style attributes.
+		@param {number[]} initialPoint - The starting point coordinates in Euclidean space ([x, y, z]).
+		@param {number[]} endPoint - The end point coordinates in Euclidean space ([x, y, z]).
+		@param {object} lineAttributes - An object containing style attributes for the line segment (default values are applied if omitted).
+					* `strokeColor` (string): The color of the line (default: "brown").
+					* `strokeWidth` (number): The width of the line in pixels (default: 2).
+					* `strokeDasharray` (string): The dash pattern for the line (default: "none").
+					* `showArrow` (boolean): Whether to draw an arrowhead at the end of the line (default: false).
+		@throws {TypeError} If either initialPoint or endPoint is not a number array of length 3.
+		@throws {ValueError} If any element in initialPoint or endPoint is not a number.
+		@throws {TypeError} If lineAttributes is not an object. 
+	*/ 
     drawSegment(initialPoint, endPoint, lineAttributes = {}) {
-		// Destructure the lineAttributes and set its default values
-		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = false} = lineAttributes;
-
 		// Validate coordinates1 and coordinates2.
 		[initialPoint, endPoint].every(arr => validateCoordinates3D(arr));
+
+		// Validate lineAttributes
+		validateObject(lineAttributes);
+
+		// Destructure the lineAttributes and set its default values
+		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = false} = lineAttributes;
 
 		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
 		const [initialXTransformed, initialYTransformed] = this.transformCoordinates(initialPoint);
@@ -777,16 +821,34 @@ class EuclideanSpace {
 		drawSegment(this.svgElement, initialXTransformed, initialYTransformed, endXTransformed, endYTransformed, strokeColor, strokeWidth, strokeDasharray, showArrow);
     }
 
-	// Draw a vector in the euclidean space from initialPoint to an endPoint that is ther result of adding initialPoint and vectorComponents vectorComponents.
-	// it uses an existing marker created earlier (only for brown, blue or green colors) to draw the point arrow.
-	drawVector(initialPoint, vectorComponents, corner = "rightbottom", lineAttributes = {}, textAttributes = {}
+	/**
+		Draws a vector in the Euclidean space from a starting point to an end point, which is calculated by adding the vector components to the starting point.
+		Optionally, a label can be drawn along the vector.
+		@param {number[]} initialPoint - The starting point coordinates in Euclidean space ([x, y, z]).
+		@param {number[]} vectorComponents - The vector components to add to the starting point to define the end point ([x, y, z]).
+		@param {object} lineAttributes - An object containing style attributes for the vector (default values are applied if omitted).
+					* `strokeColor` (string): The color of the line (default: "brown").
+					* `strokeWidth` (number): The width of the line in pixels (default: 2).
+					* `strokeDasharray` (string): The dash pattern for the line (default: "none").
+					* `showArrow` (boolean): Whether to draw an arrowhead at the end of the line (default: true).
+		@param {object} textAttributes - An object containing style attributes for the label (default values are applied if omitted).
+					* `textContent` (string): The text content of the label (default: "").
+					* `corner` (string): The position of the label relative to the vector ("righttop", "rightbottom", "lefttop", or "leftbottom", default: "rightbottom").
+		@throws {TypeError} If either initialPoint or vectorComponents is not a number array of length 3.
+		@throws {ValueError} If any element in initialPoint or vectorComponents is not a number.
+		@throws {TypeError} If either lineAttributes or textAttributes is not an object. 
+	*/
+	drawVector(initialPoint, vectorComponents, lineAttributes = {}, textAttributes = {}
 	) {
-		// Destructure lineAttributes and textAttributes, and set its default values
-		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
-		const {textContent = ""} = textAttributes;
-
 		// Validate coordinates1 and coordinates2.
 		[initialPoint, vectorComponents].every(arr => validateCoordinates3D(arr));
+
+		// Validate lineAttributes and textAttributes
+		[lineAttributes, textAttributes].every(arr	=> validateObject(arr));
+
+		// Destructure lineAttributes and textAttributes, and set its default values
+		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
+		const {textContent = "", corner = "rightbottom"} = textAttributes;
 
 		//Calculate vector endpoint using initial point and vector components.
 		const endPoint = add(initialPoint, vectorComponents);
@@ -802,19 +864,36 @@ class EuclideanSpace {
 		if (textContent != "") {
 			const half = vectorComponents.map(element => element / 2);
 			const position = add(initialPoint, half);
-			this.drawLabel(position, corner, textAttributes);
+			this.drawLabel(position, textAttributes);
 		}
 	}
 
-	// Draw the label of an element giving coordinates of a baseline point, the label text, 
-	// the corner parameter: "righttop", "rightbottom", "lefttop" or "leftbottom"
-	// and define some default style attributes.
+	/**
+	 * Draws a label for an element at a specified baseline point. 
+	 * The label can be positioned at one of four corners relative to the point ("righttop", "rightbottom", "lefttop", or "leftbottom").
+	 * 
+	 * @param {number[]} baselinePoint - The coordinates of the baseline point in Euclidean space ([x, y, z]).
+	 * @param {object} textAttributes - An object containing style attributes for the label (default values are applied if omitted).
+	 *                 * `textContent` (string): The text content of the label (default: "").
+	 *                 * `fontSize` (number): The font size of the label in pixels (default: 20).
+	 *                 * `stroke` (string): The color of the label stroke (default: "none").
+	 *                 * `fill` (string): The color to fill the label (default: "brown").
+	 *                 * `fontWeight` (string): The font weight of the label (default: "normal").
+	 *                 * `corner` (string): The position of the label relative to the baseline point ("righttop", "rightbottom", "lefttop", or "leftbottom", default: "rightbottom").
+	 * 
+	 * @throws {TypeError} If baselinePoint is not a number array of length 3.
+	 * @throws {ValueError} If any element in baselinePoint is not a number.
+	 * @throws {TypeError} If textAttributes is not an object.
+	*/
 	drawLabel(baselinePoint, textAttributes = {}) {
-		// Destructure lineAttributes and textAttributes, and set its default values
-		const {textContent = "", fontSize = 20, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
-
 		// Validate coordinates1 and coordinates2.
 		validateCoordinates3D(baselinePoint);
+
+		// Validate textAttributes
+		validateObject(textAttributes);
+
+		// Destructure textAttributes, and set its default values
+		const {textContent = "", fontSize = 20, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
 
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
 		const [xPosition, yPosition] = this.transformCoordinates(baselinePoint);
@@ -823,28 +902,24 @@ class EuclideanSpace {
 		writeText(this.svgElement, textContent, xPosition, yPosition, fontSize, stroke, fill, fontWeight, corner);
 	}
 
-	//Draw a point in the euclidean space
+	/**
+	 * Draws a point in the Euclidean space at a specified location.
+	 * 
+	 * @param {number[]} coordinates - The coordinates of the point in Euclidean space ([x, y, z]).
+	 * @param {string} color - The color of the point.
+	 * 
+	 * @throws {TypeError} If coordinates is not a number array of length 3.
+	 * @throws {ValueError} If any element in coordinates is not a number.
+	 */
     drawPoint(coordinates, color) {
-    
 		// Validate coordinates1 and coordinates2.
 		validateCoordinates3D(coordinates);
 
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
 		const [xPosition, yPosition] = this.transformCoordinates(coordinates);
 
-		// Create a new circle element.
-		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-
-		// Set attributes for the circle.
-		//circleElement.setAttribute("id", id);
-		circleElement.setAttribute("cx", xPosition);
-		circleElement.setAttribute("cy", yPosition);
-		circleElement.setAttribute("r", 3);
-		circleElement.setAttribute("stroke", color);
-		circleElement.setAttribute("fill", color);
-
-		// Append the circle element to the SVG.
-		this.svgElement.appendChild(circleElement);
+		// Draw the point
+		drawCircle(this.svgElement, xPosition, yPosition, color, 3);
     }
 }
 
