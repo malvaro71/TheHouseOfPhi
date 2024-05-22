@@ -566,7 +566,7 @@ class CartesianPlane {
 	  }
 
 	// Draw the angle laid from vector1 to vector2 counter-clockwise
-	drawAngle(vertex, initialSide, terminalSide, radius) {
+	drawArc(vertex, initialSide, terminalSide, radius) {
 		
 		// Check if initialPoint and vectorComponents are number arrays of length 2.
 		if (![vertex, initialSide, terminalSide].every(arr => Array.isArray(arr) && arr.length === 2 && arr.every((element) => typeof element === "number"))) {
@@ -809,9 +809,9 @@ class EuclideanSpace {
 	// Draw the label of an element giving coordinates of a baseline point, the label text, 
 	// the corner parameter: "righttop", "rightbottom", "lefttop" or "leftbottom"
 	// and define some default style attributes.
-	drawLabel(baselinePoint, textAttributes = {}, corner = "rightbottom") {
+	drawLabel(baselinePoint, textAttributes = {}) {
 		// Destructure lineAttributes and textAttributes, and set its default values
-		const {textContent = "", fontSize = 17, stroke = "none", fill = "brown",  fontWeight = "normal" } = textAttributes;
+		const {textContent = "", fontSize = 20, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
 
 		// Validate coordinates1 and coordinates2.
 		validateCoordinates3D(baselinePoint);
@@ -1001,12 +1001,12 @@ class EuclideanSpace {
 	myPlane1_3.drawAxes("y-axis", "x-axis", "O");
 	//const PointP = new Point({orthogonalParam: [5, 10] });
 	//const PointP = new Point([5, 10]);
-	var PointP = [5, 10];
-	myPlane1_3.drawPoint(PointP, "green");
+	myPlane1_3.drawPoint([5, 10], "green");
   	myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
 	myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
 	//myPlane1_3.drawVector([5, 10], [5, 10], "green", 1,"v");
-  	
+  	myPlane1_3.drawLabel([6, 10], {textContent: "P(x\u2081, y\u2081)", fill: "green", fontSize: 20, corner: "leftbottom"})
+	/*
 	// Write point coordinates
 	const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
 
@@ -1054,7 +1054,7 @@ class EuclideanSpace {
 	textElement.appendChild(closingParenElement);
 
 	// Append the text element to the SVG
-	svg1_3.appendChild(textElement);	
+	svg1_3.appendChild(textElement);	*/
 }
 
 // svg1.5 point P, with coordinates (x1, y1, z1)
@@ -1067,26 +1067,27 @@ class EuclideanSpace {
 	mySpace1_5.drawAxes();
 
 	// Draw a point
-	mySpace1_5.drawPoint([6, 9, 5], "green");
+	mySpace1_5.drawPoint([6, 9, 15], "green");
 	
 	// Draw dashed lines to ilustrate the point coordinates on each axe x, y and z.
 	mySpace1_5.drawSegment([6, 0, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([6, 9, 0], [6, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([6, 9, 0], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
 	mySpace1_5.drawSegment([0, 9, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 9, 0], [0, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 9, 5], [6, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 0, 5], [0, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 0, 5], [6, 0, 5], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([6, 0, 5], [6, 9, 5], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([6, 0, 0], [6, 0, 5], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 9, 0], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 9, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 0, 15], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([0, 0, 15], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([6, 0, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+	mySpace1_5.drawSegment([6, 0, 0], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
 
-	// Label x1, y1 and z1
-	mySpace1_5.drawLabel([6, -0.1, 0], {textContent: "x1", fill: "green"});
-	mySpace1_5.drawLabel([0, 9.1, 0.1], {textContent: "y1", fill: "green"}, corner = "leftbottom");
-	mySpace1_5.drawLabel([0, -0.1, 5], {textContent: "z1", fill: "green"});
+	// Labels x1, y1, z1 and P(x1, y1, z1)
+	mySpace1_5.drawLabel([6, -0.1, 0], {textContent: "x\u2081", fill: "green", fontSize: 20});
+	mySpace1_5.drawLabel([0, 9.1, 0.1], {textContent: "y\u2081", fill: "green", fontSize: 20, corner: "leftbottom"});
+	mySpace1_5.drawLabel([0, -0.1, 15], {textContent: "z\u2081", fill: "green", fontSize: 20});
+	mySpace1_5.drawLabel([6, 10, 16], {textContent: "P(x\u2081, y\u2081, z\u2081)", fill: "green", corner: "lefttop"});
 }
 
-// svg1.6 Projection of `vecv` onto `vecw`
+// svg1.6 Projection of `vecW` onto `vecv`
 {
 	// Get the SVG element from the DOM
 	var svg1_6 = document.getElementById("svg1_6");
@@ -1101,16 +1102,25 @@ class EuclideanSpace {
 
 	// set some coordinates
 	const origin = [2, 2];
-	const vectorV = [14, 12];
-	const vectorW = [19, 0];
-	const dividend = 1/(norm(vectorW));
-	const unitW = multiply(dividend, vectorW);
-	const projectionModule = dot(vectorV, unitW);
-	const ProjectVonW = multiply(projectionModule, unitW);
+	const vectorW = [14, 12];
+	const vectorV = [19, 0];
+	
+	// Calculate vector proyection
+	const unitV = multiply(1/(norm(vectorV)), vectorV);
+	const ProjectWonV = multiply(dot(vectorW, unitV), unitV);
 
 	// draw vectors
-	myPlane1_6.drawVector(origin, vectorV, {strokeColor: "green"}, {textContent: "v", fontSize: 22, fill: "green"});
-	myPlane1_6.drawVector(origin, vectorW);
-	myPlane1_6.drawAngle(origin, vectorW, vectorV, 5);
-	myPlane1_6.drawVector(origin, ProjectVonW, {strokeColor: "green", strokeDasharray: "5,5"});
+	myPlane1_6.drawVector(origin, vectorW, {strokeColor: "green"}, {textContent: "w", fontSize: 22, fill: "green"});
+	myPlane1_6.drawVector(origin, vectorV);
+	myPlane1_6.drawLabel([19, 2], {textContent: "v", fontSize: 18});
+	myPlane1_6.drawVector(origin, ProjectWonV, {strokeColor: "green", strokeDasharray: "5,5"});
+	myPlane1_6.drawLabel([14, 2], {textContent: "Proj\u1D65W", fontSize: 18, fill: "green"});
+	
+
+	// Draw angle
+	myPlane1_6.drawArc(origin, vectorV, vectorW, 4);
+	myPlane1_6.drawLabel([7, 3], {textContent: "θ", fontSize: 16, fill: "blue"});
+
+	// Draw segment
+	myPlane1_6.drawSegment(add(origin, vectorW), add(origin, ProjectWonV), {strokeColor: "green", strokeDasharray: "5,5"});
 }
