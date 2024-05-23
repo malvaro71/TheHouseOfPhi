@@ -121,53 +121,62 @@ function drawCircle(svgElement, centreX, centreY, color, radius) {
  *
  * @throws {Error} If an invalid value is provided for the `corner` parameter.
  */
-function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, corner = "rightbottom") {
+function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, corner = "rightbottom", textElement = null) {
+	let svgTextElement;
+	if (textElement) {
+		// Use the provided textElement (assuming it's valid)
+		svgTextElement = textElement;
+	} else {
+		// Create a new text element from the string
+		svgTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+		svgTextElement.textContent = text;
+	}
 	// Create a new text element
-	var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	//var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
 	
 	// Set the text content
-	textElement.textContent = text; 
+	//textElement.textContent = text; 
 
 	// Set attributes for id, positioning and styling
-	textElement.setAttribute("x", x);
-	textElement.setAttribute("y", y);
-	textElement.setAttribute("font-size", fontSize);
-	textElement.setAttribute("stroke", stroke);
-	textElement.setAttribute("fill", fill);
-	textElement.setAttribute("font-weight", fontWeight);
+	svgTextElement.setAttribute("x", x);
+	svgTextElement.setAttribute("y", y);
+	svgTextElement.setAttribute("font-size", fontSize);
+	svgTextElement.setAttribute("stroke", stroke);
+	svgTextElement.setAttribute("fill", fill);
+	svgTextElement.setAttribute("font-weight", fontWeight);
 
 	// Handles different corner values to position the text element.
 	switch(corner) {
 		case "righttop":
 			// Positions the rightmost character at the specified baseline point.
-			textElement.setAttribute("text-anchor", "end");
+			svgTextElement.setAttribute("text-anchor", "end");
 			// Aligns the topmost edge of the first text box with the specified baseline point.
-			textElement.setAttribute("dominant-baseline", "text-before-edge");
+			svgTextElement.setAttribute("dominant-baseline", "text-before-edge");
 		break;
 		case "rightbottom":
 			// Positions the rightmost character at the specified baseline point.
-			textElement.setAttribute("text-anchor", "end");
+			svgTextElement.setAttribute("text-anchor", "end");
 			// Aligns the bottommost edge of the last text box with the specified baseline point.
-			textElement.setAttribute("dominant-baseline", "text-after-edge");
+			svgTextElement.setAttribute("dominant-baseline", "text-after-edge");
 		break;
 		case "lefttop":
 			// Positions the leftmost character at the specified x-coordinate.
-			textElement.setAttribute("text-anchor", "start");
+			svgTextElement.setAttribute("text-anchor", "start");
 			// Aligns the topmost edge of the first text box with the specified baseline point.
-			textElement.setAttribute("dominant-baseline", "text-before-edge");
+			svgTextElement.setAttribute("dominant-baseline", "text-before-edge");
 		break;
 		case "leftbottom":
 			// Positions the leftmost character at the specified x-coordinate.
-			textElement.setAttribute("text-anchor", "start");
+			svgTextElement.setAttribute("text-anchor", "start");
 			// Aligns the bottommost edge of the last text box with the specified baseline point.
-			textElement.setAttribute("dominant-baseline", "text-after-edge");
+			svgTextElement.setAttribute("dominant-baseline", "text-after-edge");
 		break;
 		default:
 			throw new Error("Invalid value for corner input: Expecting ´righttop´, ´rightbottom´, ´lefttop´ or ´leftbottom´.");
 	} 
 
 	// Add the text element to the SVG
-	svgElement.appendChild(textElement);
+	svgElement.appendChild(svgTextElement);
 }
 
 function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
@@ -491,9 +500,22 @@ function angleBetweenVectorsCCW(vector1, vector2) {
 	return angleRad;
   }
 
-// Define class CartesianPlane, to manage the graphical representation of a Cartesian Plane in an SVG element.
+/**
+ * Defines a CartesianPlane class to manage the graphical representation of a Cartesian plane within an SVG element.
+ */
 class CartesianPlane {
-    constructor(svgElement, xMin, xMax, yMin, yMax) {
+	/**
+	 * Creates a new CartesianPlane instance.
+	 * 
+	 * @param {SVGElement} svgElement - The SVG element where the Cartesian plane will be drawn.
+	 * @param {number} xMin - The minimum value on the x-axis.
+	 * @param {number} xMax - The maximum value on the x-axis (must be greater than xMin).
+	 * @param {number} yMin - The minimum value on the y-axis.
+	 * @param {number} yMax - The maximum value on the y-axis (must be greater than yMin).
+	 * 
+	 * @throws {Error} If xMin is greater than xMax or yMin is greater than yMax.
+	 */
+	constructor(svgElement, xMin, xMax, yMin, yMax) {
 
         // Define the svg element where the cartesian plane will be represented
 		this.svgElement = svgElement;
@@ -529,7 +551,16 @@ class CartesianPlane {
 		this.planeScaleY = this.svgHeightNum / (yMax - yMin);
     }
 	
-	// Transform cartesian plane coordinates in svg element coordinates
+	/**
+	 * Transforms a set of Cartesian plane coordinates into SVG element coordinates.
+	 * 
+	 * @param {number[]} coordinates - An array containing the x and y coordinates of a point in the Cartesian plane.
+	 * 
+	 * @throws {TypeError} If coordinates is not a number array of length 2.
+	 * @throws {ValueError} If any element in coordinates is not a number.
+	 * 
+	 * @returns {number[]} The transformed coordinates in SVG element space ([x, y]).
+	 */
     transformCoordinates(coordinates) {
         // Check if coordinates is a number array of length 2.
 		validateCoordinates2D(coordinates);
@@ -545,7 +576,21 @@ class CartesianPlane {
 		return [transformedX, transformedY];
     }
 
-	//Draw a segment in the cartesian plane
+	/**
+	 * Draws a line segment in the Cartesian plane.
+	 * 
+	 * @param {number[]} coordinates1 - The starting point coordinates in the Cartesian plane ([x, y]).
+	 * @param {number[]} coordinates2 - The end point coordinates in the Cartesian plane ([x, y]).
+	 * @param {object} lineAttributes - An object containing style attributes for the line segment (default values are applied if omitted).
+	 *                 * `strokeColor` (string): The color of the line (default: "brown").
+	 *                 * `strokeWidth` (number): The width of the line in pixels (default: 2).
+	 *                 * `strokeDasharray` (string): The dash pattern for the line (default: "none").
+	 *                 * `showArrow` (boolean): Whether to draw an arrowhead at the end of the line (default: false).
+	 * 
+	 * @throws {TypeError} If either coordinates1 or coordinates2 is not a number array of length 2.
+	 * @throws {ValueError} If any element in coordinates1 or coordinates2 is not a number.
+	 * @throws {TypeError} If lineAttributes is not an object.
+	 */
     drawSegment(coordinates1, coordinates2, lineAttributes = {}) {
 		// Validate coordinates1 and coordinates2.
 		[coordinates1, coordinates2].every(arr => validateCoordinates2D(arr));
@@ -564,7 +609,15 @@ class CartesianPlane {
 		drawSegment(this.svgElement, xPosition1, yPosition1, xPosition2, yPosition2, strokeColor, strokeWidth, strokeDasharray, showArrow);
     }
 
-	//Draw a point in the cartesian plane
+	/**
+	 * Draws a point in the Cartesian plane.
+	 * 
+	 * @param {number[]} coordinates - The coordinates of the point in the Cartesian plane ([x, y]).
+	 * @param {string} color - The color of the point.
+	 * 
+	 * @throws {TypeError} If coordinates is not a number array of length 2.
+	 * @throws {ValueError} If any element in coordinates is not a number.
+	 */
     drawPoint(coordinates, color) {
 		//validate inputs
 		validateCoordinates2D(coordinates);
@@ -576,9 +629,17 @@ class CartesianPlane {
 		drawCircle(this.svgElement, xPosition, yPosition, color, 3);
     }
 
-	
-
-	// Draw the angle laid from vector1 to vector2 counter-clockwise
+	/**
+	 * Draws an arc representing an angle in the Cartesian plane, counter-clockwise from the initial side to the terminal side.
+	 * 
+	 * @param {number[]} vertex - The coordinates of the vertex of the angle ([x, y]).
+	 * @param {number[]} initialSide - The initial side vector of the angle ([x, y]).
+	 * @param {number[]} terminalSide - The terminal side vector of the angle ([x, y]).
+	 * @param {number} radius - The radius of the arc.
+	 * 
+	 * @throws {TypeError} If vertex, initialSide, or terminalSide is not a number array of length 2.
+	 * @throws {ValueError} If any element in vertex, initialSide, or terminalSide is not a number.
+	 */
 	drawArc(vertex, initialSide, terminalSide, radius) {
 		
 		// Check if initialPoint and vectorComponents are number arrays of length 2.
@@ -613,7 +674,24 @@ class CartesianPlane {
 		this.svgElement.appendChild(path);
 	}
 
-	// Draw a vector in the cartesian plane using an existing marker created earlier (only for brown, blue or green colors)
+	  /**
+	 * Draws a vector in the Cartesian plane using an existing marker created earlier (only for brown, blue or green colors).
+	 * 
+	 * @param {number[]} initialPoint - The starting point coordinates of the vector in the Cartesian plane ([x, y]).
+	 * @param {number[]} vectorComponents - The components of the vector in the Cartesian plane ([x, y]).
+	 * @param {object} lineAttributes - An object containing style attributes for the vector (default values are applied if omitted).
+	 *                 * `strokeColor` (string): The color of the line (default: "brown").
+	 *                 * `strokeWidth` (number): The width of the line in pixels (default: 2).
+	 *                 * `strokeDasharray` (string): The dash pattern for the line (default: "none").
+	 *                 * `showArrow` (boolean): Whether to draw an arrowhead at the end of the line (default: true).
+	 * @param {object} textAttributes - An object containing style attributes for the label (default values are applied if omitted).
+	 *                 * `textContent` (string): The text content of the label (default: "").
+	 *                 * `corner` (string): The position of the label relative to the vector ("righttop", "rightbottom", "lefttop", or "leftbottom", default: "rightbottom").
+	 * 
+	 * @throws {TypeError} If either initialPoint or vectorComponents is not a number array of length 2.
+	 * @throws {ValueError} If any element in initialPoint or vectorComponents is not a number.
+	 * @throws {TypeError} If either lineAttributes or textAttributes is not an object.
+	 */
 	drawVector(initialPoint, vectorComponents, lineAttributes = {}, textAttributes = {}) {
 		// Validate coordinates1 and coordinates2.
 		[initialPoint, vectorComponents].every(arr => validateCoordinates2D(arr));
@@ -643,9 +721,24 @@ class CartesianPlane {
 		}
 	}
 	
-	// Draw the label of an element giving coordinates of a baseline point, the label text, 
-	// the corner parameter: "righttop", "rightbottom", "lefttop" or "leftbottom"
-	// and apply some style attributes.
+	  /**
+	 * Draws the label of an element giving coordinates of a baseline point, the label text, 
+	 * the corner parameter: "righttop", "rightbottom", "lefttop" or "leftbottom"
+	 * and apply some style attributes.
+	 * 
+	 * @param {number[]} baselinePoint - The coordinates of the baseline point in the Cartesian plane ([x, y]).
+	 * @param {object} textAttributes - An object containing style attributes for the label (default values are applied if omitted).
+	 *                 * `textContent` (string): The text content of the label (default: "").
+	 *                 * `fontSize` (number): The font size of the label in pixels (default: 12).
+	 *                 * `stroke` (string): The color of the label stroke (default: "none").
+	 *                 * `fill` (string): The color to fill the label (default: "brown").
+	 *                 * `fontWeight` (string): The font weight of the label (default: "normal").
+	 *                 * `corner` (string): The position of the label relative to the baseline point ("righttop", "rightbottom", "lefttop", or "leftbottom", default: "rightbottom").
+	 * 
+	 * @throws {TypeError} If baselinePoint is not a number array of length 2.
+	 * @throws {ValueError} If any element in baselinePoint is not a number.
+	 * @throws {TypeError} If textAttributes is not an object.
+	 */
 	drawLabel(baselinePoint, textAttributes = {}) {
 		// Validade baselinePoint
 		validateCoordinates2D(baselinePoint);
@@ -663,7 +756,15 @@ class CartesianPlane {
 		writeText(this.svgElement, textContent, xPosition, yPosition, fontSize, stroke, fill, fontWeight, corner);
 	}
 
-	// Draw x and y axes in cartesian plane.
+	/**
+	 * Draws the x and y axes of the Cartesian plane within the SVG element, along with axis labels and an optional origin label.
+	 * 
+	 * This method uses the `drawVector` and `drawLabel` methods to create the axes with arrowheads and labels.
+	 * 
+	 * @param {string} yAxisText - The text to display for the y-axis label.
+	 * @param {string} xAxisText - The text to display for the x-axis label.
+	 * @param {string} originText - The text to display at the origin (optional).
+	 */
     drawAxes(yAxisText, xAxisText, originText) {   
 		// y-axis
 			const planeHeight = this.yMax - this.yMin;
