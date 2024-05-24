@@ -719,93 +719,26 @@
         <h3 class="lang lang-en">1.11 Vector projection.</h3>
         <h3 class="lang lang-es" lang="es">1.11 Proyección de un vector.</h3>
         <p class="lang lang-en">
-            The <strong>projection of `vecv`</strong> onto `vecw` or onto the line that contains `vecw`, denoted as `proj_w vecv`, is a vector that lies on `vecw` and has a direction same as `vecw` (if the angle between `vecv` and `vecw` is less than 90 degrees) or opposite to `vecw` (if the angle between `veca` and `vecb` is more than 90 degrees). 
+            The <strong>projection of `vecw`</strong> onto `vecv` or onto the line that contains `vecv`, denoted as `proj_v vecw`, is a vector that lies on `vecv` and has a direction same as `vecv` (if the angle between `vecv` and `vecw` is less than 90 degrees) or opposite to `vecv` (if the angle between `vecv` and `vecw` is more than 90 degrees). 
         </p>
         <p class="lang lang-es" lang="es">
-            La <strong>proyección de `vecv`</strong> sobre `vecw` o sobre la línea que contiene a `vecw`, se denota como `proj_w vecv`, es un vector que se encuentra en `vecw` y tiene la misma dirección que `vecw` (si el ángulo entre `vecv` y `vecw` es inferior a 90 grados) u opuesto a `vecw` (si el ángulo entre `vecv` y `vecw` es mayor de 90 grados).
+            La <strong>provección de `vecw`</strong> sobre `vecv` o sobre la línea que contiene a `vecv`, se denota como `proj_v vecw`, es un vector que se encuentra en `vecv` y tiene la misma dirección que `vecw` (si el ángulo entre `vecv` y `vecw` es inferior a 90 grados) u opuesto a `vecv` (si el ángulo entre `vecv` y `vecw` es mayor de 90 grados).
         </p>
         <figure class="centered"> <!--Projection of `vecv` onto `vecw`-->
-            <svg id= "svg1_6">
-                <!--
-                <defs>
-                    //Define markers
-                    <marker
-                    id="Bluearrow"
-                    viewBox="0 0 10 10"
-                    refX="10"
-                    refY="5"
-                    markerWidth="6"
-                    markerHeight="6"
-                    orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-                    </marker>
-                
-                    <marker
-                    id="Brownarrow"
-                    viewBox="0 0 10 10"
-                    refX="10"
-                    refY="5"
-                    markerWidth="6"
-                    markerHeight="6"
-                    orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                    </marker>
-                
-                    <marker
-                    id="Greenarrow"
-                    viewBox="0 0 10 10"
-                    refX="10"
-                    refY="5"
-                    markerWidth="6"
-                    markerHeight="6"
-                    orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-                    </marker>
-                </defs>-->
-                <!--Vector V-->
-                <!--
-                <line x1="10" y1="160" x2="200" y2="10" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
-                <text x="90" y="83" font-size="25" stroke="green" fill="green" font-weight="bold">
-                    v
-                </text>
-                
-                <line x1="10" y1="160" x2="250" y2="160" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
-                
-                <text x="215" y="155" font-size="25" stroke="brown" fill="brown" font-weight="bold">
-                    w
-                </text>
-                
-                <line x1="10" y1="160" x2="200" y2="160" stroke="green" stroke-dasharray="5,5" stroke-width="2" marker-end="url(#Greenarrow)" />
-                
-                <text x="80" y="148" font-size="20" stroke="green" fill="green" font-weight="bold" stroke-width="0.6">
-                    proj
-                    <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">w</tspan>
-                    <tspan dx="-5" dy="-8" font-size="20" stroke-width="0.6" font-weight="bold">v</tspan> 
-                </text>
-                
-                <line x1="200" y1="10" x2="200" y2="160" stroke="green" stroke-dasharray="5,5" stroke-width="2"/>
-                -->
-                <!--Draw an angle mark-->
-                <!--
-                <path d="M 30 160 A 20 20 0 0 0 26 148" fill="transparent" stroke="green"/>
-                
-                <text x="34" y="155" font-size="15" stroke="green" fill="green">
-                        &#x03B8;--> <!-- This is the unicode for lowercase theta -->
-                <!--</text>-->
-            </svg > 
+            <svg id= "svg1_6"> </svg > 
 
-            <figcaption class="lang lang-en"><b>Figure 1.6</b> Projection of `vecv` onto `vecw`.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.6</b> Proyección de `vecv` sobre `vecw`.</figcaption>
+            <figcaption class="lang lang-en"><b>Figure 1.6</b> Projection of `vecw` onto `vecv`.</figcaption>
+            <figcaption class="lang lang-es" lang="es"><b>Figura 1.6</b> Proyección de `vecw` sobre `vecv`.</figcaption>
         </figure>
 
         <p class="lang lang-en">
-            Since the projection of `vecv` onto `vecw` is aligned with `vecw`:
+            Since the projection of `vecw` onto `vecv` is aligned with `vecv`:
         </p>
         <p class="lang lang-es" lang="es">
-            Dado que la proyección de `vecv` sobre `vecw` está alineada con `vecw`:
+            Dado que la proyección de `vecw` sobre `vecv` está alineada con `vecv`:
         </p>
         <div class="container">
-            <div  class="center">`proj_w vecv = norm(proj_w vecv)*vecu_w`</div>
+            <div  class="center">`proj_v vecw = norm(proj_v vecw)*vecu_v`</div>
             <div  class="right" id="[1.13]">[1.13]</div>
         </div>  
         <p class="lang lang-en">
@@ -815,7 +748,7 @@
             De la definición de <a href="geometry.html#[2.3]" target="_blank"> coseno</a> se deduce que la magnitud de este vector de proyección se puede calcular como: 
         </p>                
         <div class="container">
-            <div  class="center">`norm(proj_w vecv) = norm(vecv)costheta`</div>
+            <div  class="center">`norm(proj_v vecw) = norm(vecw)costheta`</div>
             <div  class="right" id="[1.14]">[1.14]</div>
         </div>
         <p class="lang lang-en">
@@ -825,13 +758,13 @@
             Donde `theta` es el ángulo entre `vecv` y `vecw`.
         </p>
         <p class="lang lang-es" lang="es">
-            Ahora bien, si consideramos la expresión [1.12] del producto escalar de `vecv` y  `vecw`, la magnitud de `proj_w vecv` también puede expresarse como:
+            Ahora bien, si consideramos la expresión [1.12] del producto escalar de `vecv` y  `vecw`, la magnitud de `proj_v vecw` también puede expresarse como:
         </p>
         <p class="lang lang-en">
-            Now, if we consider the expression [1.12] for the dot product of `vecv` and `vecw`, the magnitude of `proj_w vecv` can also be expressed as:
+            Now, if we consider the expression [1.12] for the dot product of `vecv` and `vecw`, the magnitude of `proj_v vecw` can also be expressed as:
         </p>
         <div class="container">
-            <div  class="center">`norm(proj_w vecv) = vecv*vecw/norm(vecw) = vecv*vecu_w`</div>
+            <div  class="center">`norm(proj_v vecw) = vecw*vecv/norm(vecv) = vecw*vecu_v`</div>
             <div  class="right" id="[1.15]">[1.15]</div>
         </div>
         <p class="lang lang-en">
@@ -841,7 +774,7 @@
             Entonces, usando las coordenadas de `vecv` ` << x_1, y_1, z_1 >> ` y de `vecw` ` << x_2, y_2, z_2 >>` para calcular su producto escalar:
         </p>
         <div class="container">
-            <div  class="center">`norm(proj_w vecv) = (x_1*x_2 + y_1*y_2 + z_1*z_2)/sqrt(x_2^2+y_2^2+z_2^2)`</div>
+            <div  class="center">`norm(proj_v w) = (x_1*x_2 + y_1*y_2 + z_1*z_2)/sqrt(x_1^2+y_1^2+z_1^2)`</div>
             <div  class="right" id="[1.16]">[1.16]</div>
         </div>
     </section>
@@ -956,10 +889,10 @@
         <h3 class="lang lang-en">1.13 Moment of a Sliding Vector about a Point</h3>
         <h3 class="lang lang-es" lang="es">1.13 Momento de un Vector Deslizante respecto a un Punto</h3>
         <p class="lang lang-en">
-            The <strong>moment of a sliding vector</strong> `vecv` about a point P is calculated using the cross product of a position vector `vecr` and the vector `vecv`.
+            The <strong>moment of a sliding vector</strong> `vecv` about a point P is calculated using the cross product of `vecr` by `vecv`. Being `vecr` the position vector of `vecv` relative to P
         </p>
         <p class="lang lang-es" lang="es">
-            El <strong>momento de un vector deslizante</strong> `vecv` respecto a un punto P se calcula utilizando el producto vectorial de un vector de posición `vecr` por el vector `vecv`.
+            El <strong>momento de un vector deslizante</strong> `vecv` respecto a un punto P se calcula mediante el producto vectorial de `vecr` por `vecv`. Siendo `vecr` el vector de posición de `vecv` respecto a P.
         </p>
         <p>&emsp; </p>
         <div class="container">
@@ -974,44 +907,44 @@
         </p>
 
         <figure class="centered"> <!--Moment of a sliding vector `vecv` about point P, `vecM = vecr xx vecv`.-->
-            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
+            <svg id= "svg1_8" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" width="400" height="400">
                 <!--Use the program ObliqueProjection to calcualte the svg coordinates. -->
 
-                <!--Z-axis-->
+                <!--Z-axis
                 <line x1="141" y1="300" x2="141" y2="10" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
                 <text x="125" y="20" font-size="20" stroke="brown" fill="brown">
                     z
-                </text>
+                </text>-->
 
-                <!-- Y-axis-->
+                <!-- Y-axis
                 <line x1="100" y1="259" x2="390" y2="259" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
                 <text x="380" y="250" font-size="20" stroke="brown" fill="brown">
                     y
-                </text>
+                </text>-->
 
-                <!-- X-axis-->
+                <!-- X-axis
                 <line x1="156" y1="244" x2="7" y2="393" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
                 <text x="3" y="383" font-size="20" stroke="brown" fill="brown">
                     x
-                </text>
+                </text>-->
                 <!--Graphic scale is 10:1; 10 units in the graphic equal to 1 unit in real space -->
-                <!--Point P with coordinates (16, 9, 2) (118, 352)-->
+                <!--Point P with coordinates (16, 9, 2) (118, 352)
                 <circle cx="118" cy="352" r="3" stroke="blue" fill="blue" />
                 <text x="100" y="365" font-size="20" stroke="blue" fill="blue">
                     P
-                </text>
+                </text>-->
 
-                <!--Vector v with origin at (16, 17, 4) (198, 368) and end at (13, 18, 4) (229,311), so vector v coordinates are <-3, 1, 0>-->
+                <!--Vector v with origin at (16, 17, 4) (198, 368) and end at (13, 18, 4) (229,311), so vector v coordinates are <-3, 1, 0>
                 <line x1="198" y1="368" x2="229" y2="311" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />                     
                 <text x="220" y="350" font-size="20" stroke="blue" fill="blue">
                     v
-                </text>
+                </text>-->
                 
-                <!--Vector r with origin at (16, 9, 2) (118, 352) and end at (16, 17, 4) (198, 368), so vector r coordinates are <0, 8, 2>-->
+                <!--Vector r with origin at (16, 9, 2) (118, 352) and end at (16, 17, 4) (198, 368), so vector r coordinates are <0, 8, 2>
                 <line x1="118" y1="352" x2="198" y2="368" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" font-weight="bold" />
                 <text x="150" y="375" font-size="20" stroke="blue" fill="blue">
                     r
-                </text>
+                </text>-->
 
                 <!--Vector w is the moment of sliding vector v about point P. This is the same as the croos product r*v; that is <0, 8, 2>*<-3, 1, 0>. Using program CrossProduct the result is <-2, -6, 24>. If we set its origin at P (16, 9, 2) (118, 352), its end is at (14, 3, 26) (72,98)-->
                 <line x1="118" y1="352" x2="72" y2="98" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" font-weight="bold" />

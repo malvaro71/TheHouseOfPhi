@@ -121,21 +121,20 @@ function drawCircle(svgElement, centreX, centreY, color, radius) {
  *
  * @throws {Error} If an invalid value is provided for the `corner` parameter.
  */
-function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, corner = "rightbottom", textElement = null) {
+function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, corner = "rightbottom") {
 	let svgTextElement;
-	if (textElement) {
-		// Use the provided textElement (assuming it's valid)
-		svgTextElement = textElement;
-	} else {
-		// Create a new text element from the string
+	
+	if (typeof text === "string") {
+		// Creates a new SVG text element and sets its text content.
 		svgTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
 		svgTextElement.textContent = text;
-	}
-	// Create a new text element
-	//var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-	
-	// Set the text content
-	//textElement.textContent = text; 
+	  } else if (text instanceof SVGTextElement) {
+		// Use the provided SVGTextElement directly
+		svgTextElement = text;
+	  } else {
+		// Throw an error for unexpected types
+		throw new TypeError("Invalid type for 'text' parameter. Expected string, SVGTextElement, or object.");
+	  }
 
 	// Set attributes for id, positioning and styling
 	svgTextElement.setAttribute("x", x);
@@ -207,64 +206,64 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 }
 
 /**
- * Validates if the input coordinates are a list of length 2 containing numbers.
+ * Validates if the input coordinates are an array of length 2 containing numbers.
  *
- * @param {number[]} coordinates - A list representing the coordinates.
+ * @param {number[]} coordinates - an array representing the coordinates.
  *
- * @throws {TypeError} If the coordinates are not a list.
- * @throws {ValueError} If the coordinates list is not of length 2 or if it contains non-numeric elements or if any of its numeric elements is infinite.
+ * @throws {TypeError} If the coordinates are not an array.
+ * @throws {ValueError} If the coordinates array is not of length 2 or if it contains non-numeric elements or if any of its numeric elements is infinite.
  */
 function validateCoordinates2D(coordinates) {
 	if (!Array.isArray(coordinates)) {
-	  throw new TypeError("Invalid coordinates: Expecting a list.");
+	  throw new TypeError("Invalid coordinates: Expecting an array.");
 	}
 	if (coordinates.length !== 2) {
-	  throw new ValueError("Invalid coordinates: Expecting a list with length 2 (x and y values).");
+	  throw new ValueError("Invalid coordinates: Expecting an array with length 2 (x and y values).");
 	}
 	if (!coordinates.every((element) => typeof element === "number" && isFinite(element))) {
-	  throw new ValueError("Invalid coordinates: Expecting a list containing only finite numbers.");
+	  throw new ValueError("Invalid coordinates: Expecting an array containing only finite numbers.");
 	}
 	// If all conditions pass, the function returns true (implicit return)
 }
 
 /**
- * Validates if the input coordinates are a list of length 3 containing numbers.
+ * Validates if the input coordinates are an array of length 3 containing numbers.
  *
- * @param {number[]} coordinates - A list representing the coordinates.
+ * @param {number[]} coordinates - an array representing the coordinates.
  *
- * @throws {TypeError} If the coordinates are not a list.
- * @throws {ValueError} If the coordinates list is not of length 3 or if it contains non-numeric elements or if any of its numeric elements is infinite.
+ * @throws {TypeError} If the coordinates are not an array.
+ * @throws {ValueError} If the coordinates array is not of length 3 or if it contains non-numeric elements or if any of its numeric elements is infinite.
  */
 function validateCoordinates3D(coordinates) {
 	if (!Array.isArray(coordinates)) {
-	  throw new TypeError("Invalid coordinates: Expecting a list.");
+	  throw new TypeError("Invalid coordinates: Expecting an array.");
 	}
 	if (coordinates.length !== 3) {
-	  throw new ValueError("Invalid coordinates: Expecting a list with length 3 (x, y and z values).");
+	  throw new ValueError("Invalid coordinates: Expecting an array with length 3 (x, y and z values).");
 	}
 	if (!coordinates.every((element) => typeof element === "number" && isFinite(element))) {
-	  throw new ValueError("Invalid coordinates: Expecting a list containing only finite numbers.");
+	  throw new ValueError("Invalid coordinates: Expecting an array containing only finite numbers.");
 	}
 	// If all conditions pass, the function returns true (implicit return)
 }
 
 /**
- * Validates if the input coordinates are a list of length 2 or 3 containing numbers.
+ * Validates if the input coordinates are an array of length 2 or 3 containing numbers.
  *
- * @param {number[]} coordinates - A list representing the coordinates.
+ * @param {number[]} coordinates - an array representing the coordinates.
  *
- * @throws {TypeError} If the coordinates are not a list.
- * @throws {ValueError} If the coordinates list is not of length 2 or 3 or if it contains non-numeric elements or if any of its numeric elements is infinite.
+ * @throws {TypeError} If the coordinates are not an array.
+ * @throws {ValueError} If the coordinates array is not of length 2 or 3 or if it contains non-numeric elements or if any of its numeric elements is infinite.
  */
 function validateCoordinates2D3D(coordinates) {
 	if (!Array.isArray(coordinates)) {
-	  throw new TypeError("Invalid coordinates: Expecting a list.");
+	  throw new TypeError("Invalid coordinates: Expecting an array.");
 	}
 	if (coordinates.length !== 2 && coordinates.length !== 3) {
-	  throw new ValueError("Invalid coordinates: Expecting a list with length 2 or 3 (x and y or x, y and z values).");
+	  throw new ValueError("Invalid coordinates: Expecting an array with length 2 or 3 (x and y or x, y and z values).");
 	}
 	if (!coordinates.every((element) => typeof element === "number" && isFinite(element))) {
-	  throw new ValueError("Invalid coordinates: Expecting a list containing only finite numbers.");
+	  throw new ValueError("Invalid coordinates: Expecting an array containing only finite numbers.");
 	}
 	// If all conditions pass, the function returns true (implicit return)
 }
@@ -383,6 +382,14 @@ class Point {
  * @throws {TypeError} If the input arrays are not of type number[] or have different lengths.
  */
 function add(array1, array2) {
+	// check if both arrays have the same length
+	if (array1.length !== array2.length) {
+		throw new TypeError("Vectors must have the same dimensions");
+	}
+
+	// validate arrays
+	[array1, array2].every(arr => validateCoordinates2D3D(arr));
+
 	const sumArray = [];
   
 	array1.forEach((element, index) => {
@@ -405,9 +412,13 @@ function add(array1, array2) {
  * @returns {number} The dot product (scalar value) of the input vectors.
  */
 function dot(vectorA, vectorB) {
+	// check if both arrays have the same length
 	if (vectorA.length !== vectorB.length) {
 	  throw new Error("Vectors must have the same dimensions");
 	}
+
+	// validate arrays
+	[vectorA, vectorB].every(arr => validateCoordinates2D3D(arr));
   
 	let product = 0;
 	for (let i = 0; i < vectorA.length; i++) {
@@ -465,20 +476,26 @@ function multiply(scalar, array){
 	return scaledArray;
 }
 /**
-Calculates the angle in radians between two 2D vectors in the counter-clockwise (CCW) sense.
-@param {number[]} vector1 - The first 2D vector represented as an array of length 2 (x, y).
-@param {number[]} vector2 - The second 2D vector represented as an array of length 2 (x, y).
+Calculates the angle in radians between two 2D or 3D vectors in the counter-clockwise (CCW) sense.
+@param {number[]} vector1 - The first vector represented as an array of length 2 or 3.
+@param {number[]} vector2 - The second 2D vector represented as an array of length 2 or 3.
 @returns {number} The angle in radians between the two vectors in the CCW sense.
 Returns 0 if either vector has a magnitude of 0.
-@throws {TypeError} If either vector1 or vector2 is not a list.
-@throws {ValueError} If either vector1 or vector2 is not of length 2, or if they contain non-numeric elements, or if any of their numeric elements is infinite. 
+@throws {Error} If arrays have different length.
+@throws {TypeError} If either vector1 or vector2 is not an array.
+@throws {ValueError} If either vector1 or vector2 is not of length 2 or 3, or if they contain non-numeric elements, or if any of their numeric elements is infinite. 
 */
 function angleBetweenVectorsCCW(vector1, vector2) {
+	// check if both arrays have the same length
+	if (vector1.length !== vector2.length) {
+		throw new Error("Vectors must have the same dimensions");
+	}
+	
 	// Check if vectors are valid arrays of length 2
-	[vector1, vector2].every(arr => validateCoordinates2D(arr));
+	[vector1, vector2].every(arr => validateCoordinates2D3D(arr));
   
 	// Calculate dot product and magnitudes
-	const dotProduct = vector1[0] * vector2[0] + vector1[1] * vector2[1];
+	const dotProduct = dot(vector1, vector2);
 	const magnitude1 = norm(vector1);
 	const magnitude2 = norm(vector2);
   
@@ -498,6 +515,41 @@ function angleBetweenVectorsCCW(vector1, vector2) {
   
 	// Return angle in radians
 	return angleRad;
+}
+
+/**
+* Calculates the cross product of two 3D vectors.
+* 
+* The cross product of two vectors a and b is a new vector that is orthogonal to both a and b. 
+* The direction of the resulting vector is determined by the right-hand rule.
+*
+* @param {number[]} vector1 - The first 3D vector represented as an array of length 3 (x, y, z).
+* @param {number[]} vector2 - The second 3D vector represented as an array of length 3 (x, y, z).
+* @returns {number[]} The resulting cross product vector as a new array of length 3 (x, y, z).
+* @throws {Error} If the two vectors have different lengths (dimensions).
+* @throws {TypeError} If either vector1 or vector2 is not an array.
+* @throws {ValueError} If either vector1 or vector2 contains non-numeric elements, or if any of their numeric elements are infinite. 
+*/
+function cross(vector1, vector2) {
+	// check if both arrays have the same length
+	if (vector1.length !== vector2.length) {
+		throw new Error("Vectors must have the same dimensions");
+	}
+	
+	// Check if vectors are valid arrays of length 3
+	[vector1, vector2].every(arr => validateCoordinates3D(arr));
+  
+	// Destructure the vectors for readability
+	const [x1, y1, z1] = vector1;
+	const [x2, y2, z2] = vector2;
+  
+	// Calculate the vector product components
+	const vectorProductX = y1 * z2 - z1 * y2;
+	const vectorProductY = z1 * x2 - x1 * z2;
+	const vectorProductZ = x1 * y2 - y1 * x2;
+  
+	// Return the resulting vector product as an array
+	return [vectorProductX, vectorProductY, vectorProductZ];
   }
 
 /**
@@ -947,7 +999,7 @@ class EuclideanSpace {
 
 		// Destructure lineAttributes and textAttributes, and set its default values
 		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
-		const {textContent = "", corner = "rightbottom"} = textAttributes;
+		const {textContent = "", corner = "rightbottom", fill} = textAttributes;
 
 		//Calculate vector endpoint using initial point and vector components.
 		const endPoint = add(initialPoint, vectorComponents);
@@ -963,6 +1015,7 @@ class EuclideanSpace {
 		if (textContent != "") {
 			const half = vectorComponents.map(element => element / 2);
 			const position = add(initialPoint, half);
+			textAttributes.fill = strokeColor;
 			this.drawLabel(position, textAttributes);
 		}
 	}
@@ -1115,9 +1168,6 @@ class EuclideanSpace {
 	}
 }
 
-
-
-
 // svg1_1. A vector is represented by a directed line segment from its initial point A to its terminal point B.
 {
 	// Get the SVG element from the DOM
@@ -1173,62 +1223,12 @@ class EuclideanSpace {
 	// set a cartesian plane
 	const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
 	myPlane1_3.drawAxes("y-axis", "x-axis", "O");
-	//const PointP = new Point({orthogonalParam: [5, 10] });
-	//const PointP = new Point([5, 10]);
+	
+	// Draw a point, its label and two segments
 	myPlane1_3.drawPoint([5, 10], "green");
-  	myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
-	myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
-	//myPlane1_3.drawVector([5, 10], [5, 10], "green", 1,"v");
-  	myPlane1_3.drawLabel([6, 10], {textContent: "P(x\u2081, y\u2081)", fill: "green", fontSize: 20, corner: "leftbottom"})
-	/*
-	// Write point coordinates
-	const textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-
-	// Set attributes for the text element
-	textElement.setAttribute("x", 260);
-	textElement.setAttribute("y", 100);
-	textElement.setAttribute("font-size", "20");
-	textElement.setAttribute("stroke", "green");
-	textElement.setAttribute("fill", "green");
-	textElement.setAttribute("stroke-width", "0.6");
-	textElement.textContent = "P (x";
-
-	// Create child elements for styled text sections
-	const x1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-	const commaElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-	const y1Element = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-	const closingParenElement = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-
-	// Set attributes for child elements
-	x1Element.setAttribute("dx", "-1");
-	x1Element.setAttribute("dy", "6");
-	x1Element.setAttribute("font-size", "12");
-	x1Element.setAttribute("stroke-width", "0.3");
-	x1Element.textContent = "1";
-	commaElement.setAttribute("dx", "-1");
-	commaElement.setAttribute("dy", "-6");
-	commaElement.setAttribute("font-size", "20");
-	commaElement.setAttribute("stroke-width", "0.6");
-	commaElement.textContent = ", y";
-	y1Element.setAttribute("dx", "-1");
-	y1Element.setAttribute("dy", "6");
-	y1Element.setAttribute("font-size", "12");
-	y1Element.setAttribute("stroke-width", "0.3");
-	y1Element.textContent = "1";
-	closingParenElement.setAttribute("dx", "-1");
-	closingParenElement.setAttribute("dy", "-6");
-	closingParenElement.setAttribute("font-size", "20");
-	closingParenElement.setAttribute("stroke-width", "0.6");
-	closingParenElement.textContent = ")";
-
-	// Append child elements to the text element
-	textElement.appendChild(x1Element);
-	textElement.appendChild(commaElement);
-	textElement.appendChild(y1Element);
-	textElement.appendChild(closingParenElement);
-
-	// Append the text element to the SVG
-	svg1_3.appendChild(textElement);	*/
+  	myPlane1_3.drawLabel([6, 10], {textContent: "P(x\u2081, y\u2081)", fill: "green", fontSize: 20, corner: "leftbottom"});
+	  myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+	  myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
 }
 
 // svg1.5 point P, with coordinates (x1, y1, z1)
@@ -1288,7 +1288,7 @@ class EuclideanSpace {
 	myPlane1_6.drawVector(origin, vectorV);
 	myPlane1_6.drawLabel([19, 2], {textContent: "v", fontSize: 18});
 	myPlane1_6.drawVector(origin, ProjectWonV, {strokeColor: "green", strokeDasharray: "5,5"});
-	myPlane1_6.drawLabel([14, 2], {textContent: "Proj\u1D65W", fontSize: 18, fill: "green"});
+	myPlane1_6.drawLabel([14, 2], {textContent: "Proj\u1D65w", fontSize: 18, fill: "green"});
 	
 
 	// Draw angle
@@ -1297,4 +1297,33 @@ class EuclideanSpace {
 
 	// Draw segment
 	myPlane1_6.drawSegment(add(origin, vectorW), add(origin, ProjectWonV), {strokeColor: "green", strokeDasharray: "5,5"});
+}
+
+// Moment of a sliding vector v about point P, M = rxv.
+{
+	// Get the SVG element from the DOM
+	var svg1_8 = document.getElementById("svg1_8");
+
+	// Set attributes 
+	svg1_8.setAttribute("viewBox", "0 0 400 400"); 
+	svg1_8.setAttribute("width", "400"); 
+	svg1_8.setAttribute("height", "410");
+
+	// set a euclidean space
+	const mySpace1_8 = new EuclideanSpace(svg1_8, [0, 0, 0], 10);
+	mySpace1_8.drawAxes();
+
+	// set drawing elements coordinates
+	const pointP = [16, 9, 2];
+	const vectorR = [0, 8, 2];
+	const vectorV = [-3, 1, 0];
+	
+	// Draw a point P, vector r, vector v
+	mySpace1_8.drawPoint(pointP, "green");
+	mySpace1_8.drawVector(pointP, vectorR, {strokeColor: "blue"}, {textContent: "r"})
+	let initialPoint = add(pointP,vectorR);
+	mySpace1_8.drawVector(initialPoint, vectorV, {strokeColor: "blue"}, {textContent: "v"})
+	
+	// Calculate Moment of v about point p, being r the position vector of v from point p.
+	const vectorM = cross(vectorR, vectorV);
 }
