@@ -1340,11 +1340,55 @@ class EuclideanSpace {
 	
 	// Draw a point P, vector r, vector v
 	mySpace1_8.drawPoint(pointP, "green");
-	mySpace1_8.drawVector(pointP, vectorR, {strokeColor: "blue"}, {textContent: "r"})
+	mySpace1_8.drawVector(pointP, vectorR, {strokeColor: "blue"}, {textContent: "r"});
 	let initialPoint = add(pointP,vectorR);
-	mySpace1_8.drawVector(initialPoint, vectorV, {strokeColor: "blue"}, {textContent: "v"})
+	mySpace1_8.drawVector(initialPoint, vectorV, {strokeColor: "blue"}, {textContent: "v"});
 	
 	// Calculate Moment of v about point p, being r the position vector of v from point p. m = rxv.
 	const vectorM = cross(vectorR, vectorV);
 	mySpace1_8.drawVector(pointP, vectorM,{strokeColor: "green"}, {textContent: "m", corner: "righttop"});
+}
+
+// svg1_9: Moment of a sliding vector v about a line l, m = proyl(rxv).
+{
+	// Get the SVG element from the DOM
+	var svg1_9 = document.getElementById("svg1_9");
+
+	// Set attributes 
+	svg1_9.setAttribute("viewBox", "0 0 400 400"); 
+	svg1_9.setAttribute("width", "400"); 
+	svg1_9.setAttribute("height", "410");
+
+	// set a euclidean space
+	const mySpace1_9 = new EuclideanSpace(svg1_9, [0, 0, 0], 10);
+	mySpace1_9.drawAxes();
+
+	// set drawing elements coordinates
+	const pointP = [16, 9, 2];
+	const vectorR = [0, 6, 2];
+	const vectorV = [-5, -1, 0];
+	const unitl = [0, 0, 1]; // Line l is parallel to z-axe
+	const linel1 = [16, 9, -2]; // points to draw a segment representing line l
+	const linel2 = [16, 9, 40];
+
+	// Draw a point P, vector r, vector v
+	mySpace1_9.drawPoint(pointP, "green");
+	mySpace1_9.drawVector(pointP, vectorR, {strokeColor: "blue"}, {textContent: "r"});
+	let initialPoint = add(pointP,vectorR);
+	mySpace1_9.drawVector(initialPoint, vectorV, {strokeColor: "blue"}, {textContent: "v"});
+	
+	// Calculate Moment of v about point p, being r the position vector of v from point p. m = rxv.
+	const vectorM = cross(vectorR, vectorV);
+	// Draw vector m.
+	mySpace1_9.drawVector(pointP, vectorM,{strokeColor: "green"}, {textContent: "M", corner: "righttop"});
+	// Drawy line l
+	mySpace1_9.drawSegment(linel1, linel2, {strokeColor: "blue"});
+	// Calculate proyection of m on l.
+	const ProjectMonG = multiply(dot(vectorM, unitl), unitl);
+	// Draw  proyection of m on l.
+	mySpace1_9.drawVector(pointP, ProjectMonG, {strokeColor: "green", strokeDasharray: "5,5"}, {textContent: "M\u2097", corner: "leftbottom"});
+	// Draw dashed line to ilustra the proyection of m on l.
+	const dashed1 = add(pointP, vectorM);
+	const dashed2 = add( pointP, ProjectMonG);
+	mySpace1_9.drawSegment(dashed1, dashed2, {strokeColor: "green", strokeDasharray: "5,5"});
 }
