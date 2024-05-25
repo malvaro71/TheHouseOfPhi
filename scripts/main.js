@@ -1173,6 +1173,11 @@ class EuclideanSpace {
 	// Get the SVG element from the DOM
 	var svg1_1 = document.getElementById("svg1_1");
 
+	// Set attributes
+	svg1_1.setAttribute("viewBox", "0 0 180 220"); 
+	svg1_1.setAttribute("width", "180"); 
+	svg1_1.setAttribute("height", "220");
+
 	// Add the marker to the SVG
 	svg1_1.appendChild(brownMarker); 
 
@@ -1188,6 +1193,11 @@ class EuclideanSpace {
 {
 	// Get the SVG element from the DOM
 	var svg1_2 = document.getElementById("svg1_2");
+
+	// Set attributes
+	svg1_2.setAttribute("viewBox", "0 0 230 240"); 
+	svg1_2.setAttribute("width", "230"); 
+	svg1_2.setAttribute("height", "240");
 
 	// Add the marker to the SVG
 	svg1_2.appendChild(brownMarker); 
@@ -1220,6 +1230,11 @@ class EuclideanSpace {
 	// Get the SVG element from the DOM
 	var svg1_3 = document.getElementById("svg1_3");
 
+	// Set attributes
+	svg1_3.setAttribute("viewBox", "0 0 400 400"); 
+	svg1_3.setAttribute("width", "400"); 
+	svg1_3.setAttribute("height", "400");
+
 	// set a cartesian plane
 	const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
 	myPlane1_3.drawAxes("y-axis", "x-axis", "O");
@@ -1235,6 +1250,11 @@ class EuclideanSpace {
 {
 	// Get the SVG element from the DOM
 	var svg1_5 = document.getElementById("svg1_5");
+
+	// Set attributes
+	svg1_5.setAttribute("viewBox", "0 0 400 400"); 
+	svg1_5.setAttribute("width", "400"); 
+	svg1_5.setAttribute("height", "400");
 
 	// set a euclidean space
 	const mySpace1_5 = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
@@ -1261,7 +1281,7 @@ class EuclideanSpace {
 	mySpace1_5.drawLabel([6, 10, 16], {textContent: "P(x\u2081, y\u2081, z\u2081)", fill: "green", corner: "lefttop"});
 }
 
-// svg1.6 Projection of `vecW` onto `vecv`
+// svg1.6: Projection of `vecW` onto `vecv`
 {
 	// Get the SVG element from the DOM
 	var svg1_6 = document.getElementById("svg1_6");
@@ -1299,7 +1319,7 @@ class EuclideanSpace {
 	myPlane1_6.drawSegment(add(origin, vectorW), add(origin, ProjectWonV), {strokeColor: "green", strokeDasharray: "5,5"});
 }
 
-// Moment of a sliding vector v about point P, M = rxv.
+// svg1_8: Moment of a sliding vector v about point P, m = rxv.
 {
 	// Get the SVG element from the DOM
 	var svg1_8 = document.getElementById("svg1_8");
@@ -1315,8 +1335,8 @@ class EuclideanSpace {
 
 	// set drawing elements coordinates
 	const pointP = [16, 9, 2];
-	const vectorR = [0, 8, 2];
-	const vectorV = [-3, 1, 0];
+	const vectorR = [0, 6, 2];
+	const vectorV = [-5, -1, 0];
 	
 	// Draw a point P, vector r, vector v
 	mySpace1_8.drawPoint(pointP, "green");
@@ -1324,6 +1344,7 @@ class EuclideanSpace {
 	let initialPoint = add(pointP,vectorR);
 	mySpace1_8.drawVector(initialPoint, vectorV, {strokeColor: "blue"}, {textContent: "v"})
 	
-	// Calculate Moment of v about point p, being r the position vector of v from point p.
+	// Calculate Moment of v about point p, being r the position vector of v from point p. m = rxv.
 	const vectorM = cross(vectorR, vectorV);
+	mySpace1_8.drawVector(pointP, vectorM,{strokeColor: "green"}, {textContent: "m", corner: "righttop"});
 }
