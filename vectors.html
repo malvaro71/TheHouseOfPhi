@@ -26,23 +26,23 @@
 
 <body>
     <header>
-        <h2 id="Top" class="lang lang-en" >1. VECTORS</h2>
-        <h2 id="Arriba" class="lang lang-es" lang="es" >1. VECTORES</h2>
+        <h1 id="Top" class="lang lang-en" >VECTORS</h2>
+        <h1 id="Arriba" class="lang lang-es" lang="es" >VECTORES</h2>
     </header>
 
     <nav class="lang lang-en"> <!--Navigation bar. Links to the site's main sections-->
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#Introduction">Introduction</a></li>
-            <li><a href="#Vector Operations Exercises">Vector Operations Exercises</a></li>
+            <li><a href="#Theory">1. Theory</a></li>
+            <li><a href="#Vector Operations Exercises">2. Vector Exercises</a></li>
         </ul>
     </nav>
 
     <nav class="lang lang-es" lang="es"> <!--Navigation bar. Links to the site's main sections-->
         <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="#Introducción">Introducción</a></li>
-            <li><a href="#Ejercicios con vectores">Ejercicios sobre vectores</a></li>
+            <li><a href="#Teoría">1. Teoría</a></li>
+            <li><a href="#Ejercicios con vectores">2. Ejercicios sobre vectores</a></li>
         </ul>
     </nav>
 
@@ -53,911 +53,917 @@
         </select>
     <div>
 
-    <section> <!--1.1 Introduction-->
-        <h3 id="Introduction" class="lang lang-en">1.1 Introduction</h3>
-        <h3 id="Introducción" class="lang lang-es" lang="es">1.1 Introducción</h3>
-
-        <p class="lang lang-en">
-            In this first chapter, we examine the concepts of vector, the Cartesian coordinate system and the main vector operations, which are key mathematical tools for dealing with vectors in more than one dimension.
-        </p>
-
-        <p id="Vectores" class="lang lang-es" lang="es">
-            En este primer capítulo, examinamos los conceptos de vector, el sistema de coordenadas cartesianas y las principales operaciones vectoriales, que son herramientas matemáticas clave para tratar con vectores en más de una dimensión.
-        </p>
-    </section>
-
-    <section><!--1.2 Vectors-->
-        <h3 class="lang lang-en">1.2 Vectors</h3>
-        <h3 class="lang lang-es" lang="es">1.2 Vectores</h3>
-
-        <p class="lang lang-en">
-            A <strong>vector </strong>is a directed segment, one end of which (the point A) is said to be the origin, while the other (the point B) is said to be the end of the vector. Such a vector may be denoted by <b><i>v</i></b>, <!--<var class="vector1">v<span>&#8407;</span></var> --> `vecv` or `vec(AB)` <!-- <var class="vector2">AB<span>&#8594;</span></var> -->. A vector whose origin and end coincide is said to be a <strong>zero vector</strong>, and is usually denoted by `vec0`. The vector `vec(BA)` is said to be the vector <strong>opposite</strong> to `vec(AB)`. A vector with length equal to one is called a <strong>unit vector</strong>. Any direction may be assigned to a zero vector.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Un <strong>vector </strong> es un segmento dirigido, uno de cuyos extremos (el punto A) se dice que es el origen, mientras que el otro (el punto B) se dice que es el final del vector. Tal vector puede ser denotado por <b><i>v</i></b>, <!--<var class="vector1">v<span>&#8407;</span></var> --> `vecv` or `vec(AB)` <!-- <var class="vector2">AB<span>&#8594;</span></var> -->. Un vector cuyo origen y fin coinciden se dice que es un <strong>vector cero</strong>, y generalmente se denota por `vec0`. El vector `vec(BA)` se dice que es el <strong>vector opuesto</strong> a `vec(AB)`. Un vector con una longitud igual a uno se denomina vector unitario. Cualquier dirección puede ser asignada a un vector cero.
-        </p>
-        <p class="lang lang-en">
-            The vector origin is also named initial point or point of application. 
-        </p>
-        <p class="lang lang-es" lang="es">
-            El origen del vector también se denomina punto inicial o punto de aplicación. 
-        </p>
-        <figure class="centered"> <!-- A vector is represented by a directed line segment from its initial point A to its terminal point B.-->
-            <svg id="svg1_1"></svg> <!--See drawing code in main.js-->
-            <figcaption class="lang lang-en">
-                <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
-            </figcaption>
-            <figcaption class="lang lang-es" lang="es">
-                <b>Figura 1.1 </b> Un vector está representado por un segmento de línea dirigida desde su punto inicial A hasta su punto terminal B.
-            </figcaption>
-        </figure>
-        <p class="lang lang-en">
-            A geometric vector, as defined above, is also called a <strong>fixed vector</strong> or <strong>bound vector</strong>. Because it has a unique initial point. In physics is used, for example, to specify the action of the force on deformable or non rigid body. In this instance, the forces and deformations within the body depend on the point of application of the force, as well as on the  magnitude and line of action.
-        </p>
-            <p class="lang lang-es" lang="es">
-            Un vector geométrico, como se ha definido anteriormente, también se denomina <strong>vector fijo</strong> o <strong>vector ligado</strong>. Porque tiene un punto de partida único. En física se utiliza, por ejemplo, para especificar la acción de la fuerza sobre un cuerpo deformable o no rígido. En este caso, las fuerzas y deformaciones dentro del cuerpo dependen del punto de aplicación de la fuerza, así como de la magnitud y la línea de acción.
-        </p>
-        <p class="lang lang-en">
-            A class of equal vectors lying on the same straight line is said to be a <strong>sliding vector</strong>. An example of sliding vector is the action of a force on a rigid body. So, in this case, the point of application can be moved along the line determined by the vector direction.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Se dice que una clase de vectores iguales que se encuentran en la misma línea recta es un <strong>vector deslizante</strong>. Un ejemplo de vector deslizante es la acción de una fuerza sobre un cuerpo rígido. Entonces, en este caso, el punto de aplicación se puede mover a lo largo de la línea determinada por la dirección del vector.
-        </p>
-        <p class="lang lang-en">
-            If vectors are only characterized by magnitude and direction, then are called <strong>free vectors</strong>. Examples of free vectors in physics are displacement, velocity and magnetic or electric field strength. In these cases, the vector can be moved to any point in the space
-        </p>
-        <p class="lang lang-es" lang="es">
-            Si los vectores solo se caracterizan por la magnitud y la dirección, entonces se denominan <strong>vectores libres</strong>. Ejemplos de vectores libres en física son el desplazamiento, la velocidad y la intensidad del campo magnético o eléctrico. En estos casos, el vector se puede mover a cualquier punto del espacio.
-        </p>
-        <p class="lang lang-en">
-            Vector calculus, which is the study of operations performed on vectors, is based on free vectors, since two given free vectors are equivalent to a given sliding vector or a given bound vector, as long as we keep in mind the physical meaning of the vector under analysis. From now on, <strong>we'll talk about free vectors if not mentioned otherwise</strong>.
-        </p>
-        <p class="lang lang-es" lang="es">
-            El cálculo vectorial, que es el estudio de las operaciones realizadas sobre vectores, se basa en vectores libres, ya que dos vectores libres dados son equivalente a un vector deslizante dado o a un vector ligado dado, siempre y cuando tengamos en cuenta el valor físico y el significado del vector analizado. A partir de ahora, <strong>hablaremos de vectores libres si no se menciona lo contrario</strong>.
-        </p>
-        <p class="lang lang-en">
-            A vector is characterized:
-            <ul class="lang lang-en">
-                <li>
-                    by its <strong>magnitude</strong> (or length), which is equal to the length of the segment `bar(AB)` and is denoted by `norm(vecv)`,
-                </li>
-                <li>
-                    and by its <strong>direction</strong>: from A to B.
-                </li>
-            </ul>
-        </p>
-        <p class="lang lang-es" lang="es">
-            Un vector está caracterizado:
-            <ul class="lang lang-es" lang="es">
-                <li>
-                    por su magnitud (o longitud), que es igual a la longitud del segmento `bar(AB)` y se denota por `norm(vecv)`, 
-                </li>
-                <li>
-                    y por su <strong>dirección</strong>: de A hacia B.
-                </li>
-            </ul>
-        </p>
-    </section>
-    
-    <section><!--1.3 Vector Addition, Graphical Method-->
-        <h3 class="lang lang-en">1.3 Vector Addition, Graphical Method:</h3>
-        <h3 class="lang lang-es" lang="es">1.3 Suma de Vectores, Método Gráfico:</h3>
-
-        <p class="lang lang-en">
-            The sum of two vectors `veca` and `vecb`, or vector addition, produces a third vector `vec(a+b)`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            La suma de dos vectores `veca` y `vecb`, o suma de vectores, produce un tercer vector `vec(a+b)`. 
-        </p>
-        <p class="lang lang-en">
-            To find `vec(a+b)`, we first draw the vector `veca`, and from the terminal end of `veca`, we draw the vector `vecb`. In other words, we have the initial point of `vecb` meet the terminal end of `veca`. This position corresponds to the notion that we move along the first vector and then, from its terminal point, we move along the second vector. Vector addition has the conmutative property; so, if we first draw vector `vecb`, and from the terminal end of `vecb`, we draw the vector `vecba`, we will obtain `vec(b+a)`, that is equal to `vec(a+b)`. 
-        </p>
-            <p class="lang lang-es" lang="es">
-            Para encontrar `vec(a+b)`, primero dibujamos el vector `veca`, y desde el final de `veca`, dibujamos `vecb`. En otras palabras, hacemos qeu el origen de `vecb` coincida con el final `veca`. Esta posición corresponde a la noción de que nos movemos a lo largo del primer vector y luego, desde su punto terminal, nos movemos a lo largo del segundo vector. La suma vectorial tiene la propiedad conmutativa; Entonces, si primero dibujamos un vector `vecb`, y desde el final de `vecb`, dibujamos el vector `vecba`, obtendremos `vec(b+a)`, que es igual a `vec(a+b)`. 
-        </p>
-        <figure class="centered"> <!--Vector addition. Graphical method.-->
-            <svg id="svg1_2"></svg > <!--See drawing code in main.js-->
-
-            <figcaption class="lang lang-en"><b>Figure 1.2</b> Vector addition. Graphical method.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.2</b> Suma de vectores. Método Gráfico.</figcaption>
-        </figure>
-
-        <p class="lang lang-en">
-            A <strong>scalar</strong> is a quantity that has magnitude but no direction. Or, in other words, a quantity that can be expressed by one (real) number.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Un <strong>escalar</strong> es una cantidad que tiene magnitud pero no dirección. O, en otras palabras, una cantidad que se puede expresar con un número (real).
-        </p>
-    </section>
-
-    <section><!--1.4 Cartesian coordinate System-->
-        <h3 class="lang lang-en">1.4 Cartesian coordinate System</h3>
-        <h3 class="lang lang-es" lang="es">1.4 Sistema de coordenadas cartesianas</h3>
-
-        <p class="lang lang-en">
-            To specify the magnitude and direction of a vector we need a coordinate system. There are three commonly used coordinate systems: Cartesian, cylindrical and spherical.
-            In this section we describe the Cartesian coordinate system.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Para especificar la magnitud y la dirección de un vector necesitamos un sistema de coordenadas. Hay tres sistemas de coordenadas comúnmente utilizados: cartesiano, cilíndrico y esférico. En esta sección describimos el sistema de coordenadas cartesianas.
-        </p>
-        <p class="lang lang-en">
-            A <strong>Cartesian coordinate system in two dimensions</strong> is defined by an ordered pair of
-            perpendicular lines (axes), a single unit of length for both axes, and an orientation for each axis. The point where the axes meet is taken as the origin for both, thus turning each axis into a number line.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Un <strong>sistema de coordenadas cartesianas en dos dimensiones</strong> se define mediante un par ordenado de líneas perpendiculares (ejes), una sola unidad de longitud para ambos ejes y una orientación para cada eje. El punto donde se encuentran los ejes se toma como origen de ambos, convirtiendo así cada eje en una recta numérica.
-        </p>
-        <p class="lang lang-en">
-            For any point P, a line is drawn through P perpendicular to each axis, and the position where it meetsthe axis is interpreted as a number. The two numbers, in that chosen order, are the Cartesian coordinates (x, y) of P.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Para cualquier punto P, se dibuja una línea a través de P perpendicular a cada eje, y la posición en la que se encuentra con el eje se interpreta como un número. Los dos números, en ese orden elegido, son las coordenadas cartesianas (x, y) de P.
-        </p>
-        <figure class="centered"><!--Cartesian plane and cartesian coordinates of a point.-->
-            <svg id="svg1_3"></svg> <!--See drawing code in main.js--> 
-
-            <figcaption class="lang lang-en"><b>Figure 1.3</b> Cartesian plane and cartesian coordinates of a point.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.3</b> Plano cartesiano y coordenadas cartesianas de un punto.</figcaption>
-        </figure>
-        <p class="lang lang-en">
-            A <strong>Cartesian coordinate system in three dimensions</strong> consists of three perpendicular axes: the x-axis, the y-axis, and the z-axis that go through a common point (the origin <b>0</b>). Because each axis is a number line representing all real numbers in `RR`, <!--&#8477; Unicode for real numbers--> the three-dimensional system is often denoted by `RR^3`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Un <strong>Sistema de coordenadas cartesianas en tres dimensiones</strong> consta de tres ejes perpendiculares: el eje x, el eje y y el eje z que se cruzan en un punto común (el origen 0). Debido a que cada eje es una recta numérica que representa todos los números reales en `RR`, el sistema tridimensional a menudo se denota por  `RR^3`.
-        </p>
-        <p class="lang lang-en">
-            The cartesian coordinate system is also called a <strong>rectangular coordinate system</strong> or
-            <strong>orthogonal coordinate system</strong>.
-        </p>
-        <p class="lang lang-es" lang="es">
-            El sistema de coordenadas cartesianas también se denomina <strong>sistema de coordenadas rectangulares</strong> o <strong>sistema de coordenadas ortogonales</strong>.
-        </p>
-        <p class="lang lang-en">
-            In Figure 1.4(a), the positive z-axis is shown above the plane containing the x- and y-axes. The system displayed follows the right-hand rule. If we take our right hand and align the fingers with
-            the positive x-axis, then curl the fingers so they point in the direction of the positive y-axis, our thumb points in the direction of the positive z-axis. In this website, we always work with coordinate systems set up in accordance with the right-hand rule. Some systems do follow a left-hand rule, but the right-hand rule is considered the standard representation.
-        </p>
-        <p class="lang lang-es" lang="es">
-            En la Figura 1.4 (a), el eje z positivo se muestra sobre el plano que contiene los ejes x e y. El sistema que se muestra sigue la regla de la mano derecha. Si tomamos nuestra mano derecha y alineamos los dedos con el eje x positivo, luego dobla los dedos para que apunten en la dirección del eje y positivo, nuestro pulgar apunta en la dirección del eje z positivo. En este sitio web, siempre trabajamos con sistemas de coordenadas configurados de acuerdo con la regla de la mano derecha. Algunos sistemas siguen una regla de la mano izquierda, pero la regla de la mano derecha se considera la representación estándar.
-        </p>
-        <figure class="centered">
-            <img src="images\3DCoordSystAndRightHandRule.svg" width="600" height="300" />
-
-            <figcaption class="lang lang-en"><b>Figure 1.4</b> (a) Three-dimensional rectangular coordinate system with the x-axis, the y-axis and the z-axis. (b) The right-hand rule is used to determine the placement of the coordinate axes in the standard Cartesian Plane.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.4</b> (a) Sistema de coordenadas rectangulares tridimensionales con el eje x, el eje y y el eje z. (b) La regla de la mano derecha se utiliza para determinar la ubicación de los ejes de coordenadas en la norma Plano Cartesiano.</figcaption>
-        </figure>
-
-        <p class="lang lang-en">
-            We describe a point P in the three-dimensional rectangular coordinate system with the coordinates
-            `(x_1, y_1, z_1)`. Each coordinate describes how the point aligns with
-            the corresponding axis.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Describimos un punto P en el sistema de coordenadas rectangulares tridimensionales con las coordenadas `(x_1, y_1, z_1)`. Cada coordenada describe cómo se alinea el punto con el eje correspondiente.
-        </p>
-
-        <figure class="centered"><!--To plot the point P, with coordinates `(x_1, y_1, z_1)`, go `x_1` units along the x-axis, then `y_1` units in the direction of the y-axis, then `z_1` units in the direction of the z-axis.-->
-            <svg id="svg1_5"></svg > <!--See drawing code in main.js--> 
-
-            <figcaption class="lang lang-en"><b>Figure 1.5</b> To plot the point P, with coordinates `(x_1, y_1, z_1)`, go `x_1` units along the x-axis, then `y_1` units in the direction of the y-axis, then `z_1` units in the direction of the z-axis.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.5</b> Para trazar el punto P, con coordenadas `(x_1, y_1, z_1)`, desplazarse `x_1` unidades a lo largo del eje x, entonces ir `y_1` unidades en la dirección del eje Y, luego desplazarse `z_1` unidades en la dirección del eje z.</figcaption>
-        </figure>
-    </section>
-
-    <section><!--1.5 Vector components-->
-        <h3 class="lang lang-en" id="Vector components">1.5 Vector components </h3>
-        <h3 class="lang lang-es" lang="es" id="Componentes de un Vector">1.5 Componentes de un Vector</h3>
-        <p class="lang lang-en">
-            When the initial point of a vector coincides with the origin of the coordinate system, we call the
-            vector a <strong>standard-position vector</strong>. Because the initial point of any vector in standard position is known to be (0,0), we can describe the vector by looking only at the coordinates of its terminal point. Thus, if vector `vecv` has its initial point at the origin and its terminal point at (x, y), we write the vector in component form as
-        </p>
-        <p class="lang lang-es" lang="es"lang lang-en">
-            Cuando el punto inicial de un vector coincide con el origen del sistema de coordenadas, llamamos al vector <strong>vector de posición estándar</strong>. Debido a que se sabe que el punto inicial de cualquier vector en posición estándar es (0,0), podemos describir el vector tomando sólo las coordenadas de su punto terminal. Por lo tanto, si el vector `vecv` tiene su punto inicial en el origen y su punto terminal en (x, y), escribimos el vector mediante sus componentes como
-        </p>
-        <div class="container">
-            <div  class="center">`vecv = << x,y >>`</div>
-            <div  class="right" id="[1.1]">[1.1]</div>
-        </div>
-
-        <p class="lang lang-en">
-            When a vector is written in component form like this, the scalars x and y are called the
-            <strong>components</strong> of `vecv`. When we need to perform calculations with vectors, we usually describe them as standard-position vectors because it is easier to perform such calculations.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Cuando un vector se escribe de esta manera, los escalares x e y se denominan <strong>componentes</strong> de `vecv. Cuando necesitamos realizar cálculos con vectores, solemos describirlos como vectores de posición estándar porque es más fácil realizar tales cálculos.
-        </p>
-    </section>
-
-    <section><!--1.6 Relationship between vector components and its magnitude and orientation-->
-        <h3 class="lang lang-en" id="Relationship between vector components and its magnitude and orientation">1.6 Relationship between vector components and its magnitude and orientation</h3>
-        <h3 class="lang lang-es" lang="es" id="Relación entre las componentes de un vector, su módulo y su dirección">1.6 Relación entre las componentes de un vector, su módulo y su dirección</h3>
-        <p class="lang lang-en">
-            To find vector magnitude from its components, we use the Pythagorean Theorem. And to find its direction we use the inverse tangent function.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Para hallar la magnitud de un vector a partir de sus componentes, utilizamos el Teorema de Pitágoras. Y para encontrar su dirección Usamos la función tangente inversa.
-        </p>
-        <p class="lang lang-en">
-            Given a position vector `vecv = << x,y >>`, the <strong>magnitude (or module)</strong> is found by       
-        </p>
-        <p class="lang lang-es" lang="es">
-            Dado un vector de posición `vecv = << x,y >>`, su <strong>magnitud (o módulo)</strong> se calcula mediante       
-        </p>
-        <div class="container">
-            <div  class="center">`norm(vecv) = sqrt(x^2+y^2)`</div>
-            <div  class="right" id="[1.2]">[1.2]</div>
-        </div>    
-        <p class="lang lang-en">
-            And the <strong>direction</strong> is found by
-        </p>
-        <p class="lang lang-es" lang="es">
-            Y su <strong>dirección</strong> se calcula mediante
-        </p>
-        <div class="container">
-            <div  class="center">`theta = tan^1 (y/x)`</div>
-            <div  class="right" id="[1.3]">[1.3]</div>
-        </div>
-        <p class="lang lang-en">
-            Given the magnitude and direction of a vector `vecv`, its <strong>x component</strong> is found by  
-        </p>
-        <p class="lang lang-es" lang="es">
-            Dadas la magnitud y dirección de un vector `vecv`, su <strong>componente x</strong> se calcula   mediante
-        </p>
-        <div class="container">
-            <div  class="center">`x = norm(vecv)costheta`</div>
-            <div  class="right" id="[1.4]">[1.4]</div>
-        </div>
-        <p class="lang lang-en">
-            and its <strong>y component</strong> is found by
-        </p>
-        <p class="lang lang-es" lang="es">
-            y su <strong>componente y</strong> se calcula   mediante
-        </p>
-        <div class="container">
-            <div  class="center">`y = norm(vecv)sintheta`</div>
-            <div  class="right" id="[1.5]">[1.5]</div>
-        </div>
-        <p class="lang lang-en">
-            Click in the button to open an app that finds vector magnitude and direction given its components. 
-            <br><button onclick="openForm()">Calculate vector magnitude and direction</button>
-        </p>
-        <p class="lang lang-es" lang="es">
-            Haz click en el botón para abrir la aplicación qeu calcula magnitud y dirección de un vector dadas sus componentes. 
-            <br><button onclick="openForm()">Calcula magnitud y dirección de un vector</button>
-        </p>
-
-        <form id="coordToMagDir" style="display: none">
-            <h2 class="lang lang-en">Calculate vector magnitude and direction from given coordinates.</h2>
-            <h2 class="lang lang-es" lang="es">Calcula magnitud y dirección de un vector dadas sus coordenadas.</h2>
-            <label class="lang lang-en" for="xCoordinate">
-                Vector X Coordinate:
-            </label>
-            <label class="lang lang-es" lang="es" for="xCoordinate">
-                coordenada X del vector:
-            </label>
-            <input id="xCoordinate" type="number" name="xCoord" value="0" step="0.1">
-    
-            <label class="lang lang-en" for="yCoordinate">
-                Vector Y Coordinate:
-            </label>
-            <label class="lang lang-es" lang="es" for="yCoordinate">
-                coordenada Y del vector:
-            </label>
-            <input id="yCoordinate" type="number" name="yCoord" value="0" step="0.1">
-    
-            <label class="lang lang-en" for="magnitude">
-                Vector magnitude:
-            </label>
-            <label class="lang lang-es" lang="es" for="magnitude">
-                magnitud del vector:
-            </label>
-            <output id="magnitude" name="magnitude" for="xCoordinate yCoordinate">
-            </output>
-    
-            <label class="lang lang-en" for="direction">
-                Vector direction:
-            </label>
-            <label class="lang lang-es" lang="es" for="direction">
-                Dirección del vector:
-            </label>
-            <output id="direction" name="direction" for="xCoordinate yCoordinate">
-            </output>
-            º<br>
-    
-            <button class="lang lang-en" type='button' onclick="closeForm()">Close</button><br>
-            <button class="lang lang-es" lang="es" type='button' onclick="closeForm()">Cierra</button><br>
-    
-            <canvas id="myCanvas" width="400" height="400" style="border:1px solid grey">
-            </canvas>
-        </form>
-    </section>
-
-    <section><!--1.7 Vector addition and scalar multiplication using vector components-->
-        <h3 class="lang lang-en">1.7 Vector addition and scalar multiplication using vector components</h3>
-        <h3 class="lang lang-es" lang="es">1.7 Suma de vectores y multiplicación por un escalar usando sus componentes</h3>
-        <p class="lang lang-en">
-            The sum of two vectors given in its component form, `vecv = << x_1, y_1 >> ` and 
-            `vecw = << x_2, y_2 >> `, is defined as
-        </p>
-        <p class="lang lang-es" lang="es">
-            La suma de dos vectores expresados mediante sus componentes, `vecv = << x_1, y_1 >> ` y 
-            `vecw = << x_2, y_2 >> `, se define como
-        </p>
-        <div class="container">
-            <div  class="center">`vecv + vecw = << x_1 + x_2, y_1 + y_2 >> `</div>
-            <div  class="right" id="[1.6]">[1.6]</div>
-        </div>
-        <p class="lang lang-en">
-            The product of an scalar `lambda` and a vector `vecv`, given in its component form,
-            `vecv = << x, y >> `, is defined as
-        </p>
-        <p class="lang lang-es" lang="es">
-            El producto de un scalar `lambda` por un vector `vecv`, expresado mediante sus componentes, 
-            `vecv = << x, y >> `, se define como 
-        </p>
-        <div class="container">
-            <div  class="center">`lamdavecv = << lambdax, lambday >> `</div>
-            <div  class="right" id="[1.7]">[1.7]</div>
-        </div>
-    </section>
-
-    <section><!--1.8 The unit vector-->
-        <h3 class="lang lang-en">1.8 The unit vector</h3>
-        <h3 class="lang lang-es" lang="es">1.8 El vector unidad</h3>
-        <p class="lang lang-en">
-            The <strong>unit vector</strong> `vecu_v` of a non cero vector `vecv` is a vector that has the same direction as `vecv` but a magnitude of 1. the unit vector is calculated as. 
-        </p>
-        <p class="lang lang-es" lang="es">
-            El <strong>unit vector</strong> `vecu_v` de un vector distinto de cero `vecv` es un vector que tiene la misma dirección que `vecv` pero una magnitud de 1. El vector unitario se calcula mediante
-        </p>
-        <div class="container">
-            <div  class="center">`vecu_v = vecv/norm(vecv)`</div>
-            <div  class="right" id="[1.8]">[1.8]</div>
-        </div>
-        <p class="lang lang-en">
-            Note that vector magnitude `norm(vecv)` is an scalar, and dividing by a scalar is the same as multiplying by the reciprocal of the scalar 1/`norm(vecv)`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Obsérvese que la magnitud `norm(vecv)` es un escalar, y dividir por un escalar es lo mismo que multiplicar por el recíproco del escalar 1/`norm(vecv)`.
-        </p>
-    </section>
-
-    <section><!--1.9 Vector representation with unitary vectors `veci`, `vecj` and `veck`-->
-        <h3 class="lang lang-en">1.9 Vector representation with unitary vectors `veci`, `vecj` and `veck`</h3>
-        <h3 class="lang lang-es" lang="es">1.9 Representación de vectores mediante sus vectores unitarios `veci`, `vecj` y `veck`</h3>
-        <p class="lang lang-en">
-            In a two-dimensional space, a vector can be represented using unit vectors `veci` and `vecj`. The unit vector `veci` is a vector of length 1 along the x-axis, and the unit vector `vecj` is a vector of length 1 along the y-axis.
-        </p>
-        <p class="lang lang-es" lang="es">
-            En un espacio bidimensional, un vector se puede representar mediante los vectores unitarios `veci` y `vecj`. El vector unitario `veci` es un vector de longitud 1 a lo largo del eje x, y el vector unitario `vecj` es un vector de longitud 1 a lo largo del eje y.
-        </p>
-        <p class="lang lang-en">
-            If we have a vector given in its component form `vecv = << x, y >> `, it can be represented as:
-        </p>
-        <p class="lang lang-es" lang="es">
-            Si tenemos un vector dado por sus componentes `vecv = << x, y >> `, se puede representar como:
-        </p>           
-        <div class="container">
-            <div  class="center">`vecv =  xveci + yvecj`</div>
-            <div  class="right" id="[1.9]">[1.9]</div>
-        </div>
-        <p class="lang lang-en">
-            In a three-dimensional space, a vector can be represented using unit vectors `veci`, `vecj`, and `bb"k"`. The unit vector `bb"i"` is a vector of length 1 along the x-axis, the unit vector `vecj` is a vector of length 1 along the y-axis, and the unit vector `veck` is a vector of length 1 along the z-axis.
-        </p>
-        <p class="lang lang-es" lang="es">
-            En un espacio tridimensional, un vector se puede representar mediante vectores unitarios `veci`, `vecj` y `veck`. El vector unitario `veci` es un vector de longitud 1 a lo largo del eje x, el vector unitario `vecj` es un vector de longitud 1 a lo largo del eje y, y el vector unitario `veck` es un vector de longitud 1 a lo largo del eje z.
-        </p>
-        <p class="lang lang-en">
-            If we have a vector given in its component form `vecv = << x, y, z >> `, it can be represented as:
-        </p>
-        <p class="lang lang-es" lang="es">
-            Si tenemos un vector expresado mediante sus componentes `vecv = << x, y, z >> `, se puede representar como:
-        </p>
-        <div class="container">
-            <div  class="center">`vecv =  xveci + yvecj + zveck`</div>
-            <div  class="right" id="[1.10]">[1.10]</div>
-        </div>
-        <p class="lang lang-en">
-            This vector sum is called a <strong>linear combination</strong> of the vectors `veci``, `vecj` and `veck`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Esta suma vectorial se denomina <strong>combinación lineal</strong> de los vectores `veci`, `vecj` y `veck`.
-        </p>
-    </section>
-
-    <section><!--1.10 Scalar product of two vectors-->
-        <h3 class="lang lang-en" id="Scalar product of two vectors">1.10 Scalar product of two vectors</h3>
-        <h3 class="lang lang-es" lang="es" id="Producto escalar de dos vectores">1.10 Producto escalar de dos vectores</h3>
-
-        <p class="lang lang-en">
-            The <strong>scalar product</strong> (also known as the <strong>dot product</strong>) of two vectors is a number (scalar) that is obtained by multiplying the corresponding components of the two vectors and then adding those products.
-        </p>
-        <p class="lang lang-es" lang="es">
-            El <strong>producto escalar</strong> de dos vectores es un número (escalar) que se obtiene multiplicando los componentes correspondientes de los dos vectores y luego sumando dichos productos.
-        </p>
-
-        <p class="lang lang-en">
-            If `vecv = << x_1, y_1, z_1 >> ` and `vecw = << x_2, y_2, z_2 >> ` are two vectors, then their scalar product is calculated as follows:
-        </p>
-        <p class="lang lang-es" lang="es">
-            Si `vecv = << x_1, y_1, z_1 >> ` y `vecw = << x_2, y_2, z_2 >> ` son dos vectores, entonces su producto escalar se calcula mediante:
-        </p>
-        <div class="container">
-            <div  class="center">`vecv*vecw = x_1*x_2 + y_1*y_2 + z_1*z_2`</div>
-            <div  class="right" id="[1.11]">[1.11]</div>
-        </div>
-        <p class="lang lang-en">
-            In terms of magnitude and direction, the scalar product can also be defined as:
-        </p>
-        <p class="lang lang-es" lang="es">
-            En términos de magnitud y dirección, el producto escalar también se puede definir como:
-        </p>
-        <div class="container">
-            <div  class="center">`vecv*vecw = norm(vecv)norm(vecw)costheta`</div>
-            <div  class="right" id="[1.12]">[1.12]</div>
-        </div>
-        <p class="lang lang-en">
-            Where `theta` is the angle between `vecv` and `vecw`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Donde `theta` es el ángulo comprendido entre `vecv` y `vecw`.
-        </p>
-        <p class="lang lang-en">
-            When the dot product of two vectors is zero, is said that both vectors are <strong>orthogonal</strong> or perpendicular. 
-        </p>
-        <p class="lang lang-es" lang="es">
-            WCuando el producto escalar de dos vectores es cero, se dice que ambos vectores son <strong>ortogonales</strong> o perpendiculares. 
-        </p>
-    </section>
-
-    <section><!--1.11 Vector projection.-->
-        <h3 class="lang lang-en">1.11 Vector projection.</h3>
-        <h3 class="lang lang-es" lang="es">1.11 Proyección de un vector.</h3>
-        <p class="lang lang-en">
-            The <strong>projection of `vecw`</strong> onto `vecv` or onto the line that contains `vecv`, denoted as `proj_v vecw`, is a vector that lies on `vecv` and has a direction same as `vecv` (if the angle between `vecv` and `vecw` is less than 90 degrees) or opposite to `vecv` (if the angle between `vecv` and `vecw` is more than 90 degrees). 
-        </p>
-        <p class="lang lang-es" lang="es">
-            La <strong>provección de `vecw`</strong> sobre `vecv` o sobre la línea que contiene a `vecv`, se denota como `proj_v vecw`, es un vector que se encuentra en `vecv` y tiene la misma dirección que `vecw` (si el ángulo entre `vecv` y `vecw` es inferior a 90 grados) u opuesto a `vecv` (si el ángulo entre `vecv` y `vecw` es mayor de 90 grados).
-        </p>
-        <figure class="centered"> <!--Projection of `vecv` onto `vecw`-->
-            <svg id= "svg1_6"> </svg > <!--See drawing code in main.js--> 
-
-            <figcaption class="lang lang-en"><b>Figure 1.6</b> Projection of `vecw` onto `vecv`.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.6</b> Proyección de `vecw` sobre `vecv`.</figcaption>
-        </figure>
-
-        <p class="lang lang-en">
-            Since the projection of `vecw` onto `vecv` is aligned with `vecv`:
-        </p>
-        <p class="lang lang-es" lang="es">
-            Dado que la proyección de `vecw` sobre `vecv` está alineada con `vecv`:
-        </p>
-        <div class="container">
-            <div  class="center">`proj_v vecw = norm(proj_v vecw)*vecu_v`</div>
-            <div  class="right" id="[1.13]">[1.13]</div>
-        </div>  
-        <p class="lang lang-en">
-            From the definition of <a href="geometry.html#[2.3]" target="_blank"> cosine</a> it follows that the magnitude of this projection vector can be calculated as:
-        </p>
-        <p class="lang lang-es" lang="es">
-            De la definición de <a href="geometry.html#[2.3]" target="_blank"> coseno</a> se deduce que la magnitud de este vector de proyección se puede calcular como: 
-        </p>                
-        <div class="container">
-            <div  class="center">`norm(proj_v vecw) = norm(vecw)costheta`</div>
-            <div  class="right" id="[1.14]">[1.14]</div>
-        </div>
-        <p class="lang lang-en">
-            Where `theta` is the angle between `vecv` and `vecw`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Donde `theta` es el ángulo entre `vecv` y `vecw`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Ahora bien, si consideramos la expresión [1.12] del producto escalar de `vecv` y  `vecw`, la magnitud de `proj_v vecw` también puede expresarse como:
-        </p>
-        <p class="lang lang-en">
-            Now, if we consider the expression [1.12] for the dot product of `vecv` and `vecw`, the magnitude of `proj_v vecw` can also be expressed as:
-        </p>
-        <div class="container">
-            <div  class="center">`norm(proj_v vecw) = vecw*vecv/norm(vecv) = vecw*vecu_v`</div>
-            <div  class="right" id="[1.15]">[1.15]</div>
-        </div>
-        <p class="lang lang-en">
-            So, using the coordinates of `vecv` ` << x_1, y_1, z_1 >> ` and of `vecw` ` << x_2, y_2, z_2 >>` to calculate their dot product:
-        </p>
-        <p class="lang lang-es" lang="es">
-            Entonces, usando las coordenadas de `vecv` ` << x_1, y_1, z_1 >> ` y de `vecw` ` << x_2, y_2, z_2 >>` para calcular su producto escalar:
-        </p>
-        <div class="container">
-            <div  class="center">`norm(proj_v w) = (x_1*x_2 + y_1*y_2 + z_1*z_2)/sqrt(x_1^2+y_1^2+z_1^2)`</div>
-            <div  class="right" id="[1.16]">[1.16]</div>
-        </div>
-    </section>
-
-    <section><!--1.12 Vector Cross Product.-->
-        <h3 class="lang lang-en" id="Vector cross product">1.12 Vector cross product.</h3>
-        <h3 class="lang lang-es" lang="es" id="Producto vectorial">1.12 Producto vectorial.</h3>
-        <p class="lang lang-en">
-            The <strong>cross product</strong>, or <strong>vector product</strong>, is a binary operation on two vectors in three-dimensional space. It is written as <strong>`vecv xx vecw`</strong>. The result of the cross product is a vector that is perpendicular (or orthogonal) to the vectors being multiplied or said in other way, normal to the plane containing them.
-        </p>
-        <p class="lang lang-es" lang="es">
-            El <strong>producto vectorial</strong> de dos vectores es una operación binaria sobre dos vectores en un espacio tridimensional y se escribe como <strong>`vecv xx vecw`</strong>. El resultado de este producto vectorial es un tercer vector perpendicular (u ortogonal) a los vectores que se multiplican o dicho de otra forma, normal al plano que los contiene.
-        </p>
-        <p class="lang lang-en">
-            The direction of the cross product is determined by the right-hand rule. If you point your index finger in the direction of `vecv`, and your middle finger in the direction of `vecw`, your thumb points in the direction of `vecv xx vecw`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            La dirección del producto vectorial está determinada por la regla de la mano derecha. Si apuntas con el dedo índice en la dirección de `vecv` y el dedo medio en la dirección de `vecw`, el pulgar apunta en la dirección de `vecv xx vecw`.
-        </p>
-        <p class="lang lang-en">
-            If `vecv` and `vecw` are two vectors, and θ is the angle between them, the magnitude of their cross product is given by:  
-        </p>
-        <p class="lang lang-es" lang="es">
-            Si `vecv` y `vecw` son dos vectores, y θ es el ángulo entre ellos, la magnitud de su producto vectorial viene dada por:  
-        </p>
-        <div class="container">
-            <div  class="center">`norm(vecv xx vecw) = norm(vecv)norm(vecw)sin(theta)`</div>
-            <div  class="right" id="[1.17]">[1.17]</div>
-        </div>
-        <p class="lang lang-en">
-            Then, the magnitude (or length) of the cross product can be interpreted as the area of the parallelogram that the vectors span.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Entonces, la magnitud (o longitud) del producto vectorial se puede interpretar como el área del paralelogramo que abarcan los dos vectores que se multiplican.
-        </p>
-        <figure class="centered"><!--`norm(vecv xx vecw)` as parallelogram area.-->
-            <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" width="600" height="204">    
-                <!--Define markers-->
-                <defs>
-                    <marker
-                    id="Bluearrow"
-                    viewBox="0 0 10 10"
-                    refX="10"
-                    refY="5"
-                    markerWidth="6"
-                    markerHeight="6"
-                    orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
-                    </marker>
-                
-                    <marker
-                    id="Brownarrow"
-                    viewBox="0 0 10 10"
-                    refX="10"
-                    refY="5"
-                    markerWidth="6"
-                    markerHeight="6"
-                    orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
-                    </marker>
-                
-                    <marker
-                    id="Greenarrow"
-                    viewBox="0 0 10 10"
-                    refX="10"
-                    refY="5"
-                    markerWidth="6"
-                    markerHeight="6"
-                    orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
-                    </marker>
-                </defs>
-
-                <!--Vector v-->
-                <line x1="10" y1="160" x2="200" y2="10" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
-                <text x="90" y="83" font-size="25" stroke="blue" fill="blue" font-weight="bold">
-                    v
-                </text>
-                
-                <!--Vector w-->
-                <line x1="10" y1="160" x2="250" y2="160" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
-                <text x="215" y="155" font-size="25" stroke="brown" fill="brown" font-weight="bold">
-                    w
-                </text>
-
-                <!--The other two sides of the parallelogram-->
-                <line x1="250" y1="160" x2="440" y2="10" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
-                <line x1="200" y1="10" x2="440" y2="10" stroke="brown" stroke-width="2" stroke-dasharray="5,5" />
-                
-                <!--angle theta and sin(theta)*v-->
-                <line x1="200" y1="10" x2="200" y2="160" stroke="green" stroke-dasharray="5,5" stroke-width="2"/>
-                <text x="210" y="83" font-size="20" stroke="green" fill="green" >
-                    ||v||*sin(&#x03B8;)
-                    </text>
-                <path d="M 30 160 A 20 20 0 0 0 26 148" fill="transparent" stroke="green"/>
-                <text x="34" y="155" font-size="15" stroke="green" fill="green">
-                        &#x03B8; <!-- This is the unicode for lowercase theta -->
-                </text>
-            </svg > 
-
-            <figcaption class="lang lang-en"><b>Figure 1.7</b> `norm(vecv xx vecw)` as parallelogram area.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.7</b> `norm(vecv xx vecw)` como area del paralelogramo.</figcaption>
-        </figure>
+    <article> <!-- 1. THEORY AND KEY CONCEPTS-->
+        <header>
+            <h2 id="Theory" class="lang lang-en" >1. Theory and Key Concepts</h2>
+            <h2 id="Teoría" class="lang lang-es" lang="es" >1. Teoría y Conceptos Clave</h2>
+        </header>
         
-        <p class="lang lang-en">
-            In terms of its components, if `vecv = << x_1, y_1, z_1 >>` and `vecw = << x_2, y_2, z_2 >> `, the cross product `vecv xx vecw` is a vector defined as:
-        </p>
-        <p class="lang lang-es" lang="es">
-            Según sus componentes, si `vecv = << x_1, y_1, z_1 >>` y `vecw = << x_2, y_2, z_2 >> `, el producto vectorial `vecv xx vecw` es un vector definido como:
-        </p>
-        <div class="container">
-            <div  class="center">`vecv xx vecw = << y_1*z_2 - z_1*y_2, z_1*x_2 - x_1*z_2, x_1*y_2 - y_1*x_2 >> `</div>
-            <div  class="right" id="[1.18]">[1.18]</div>
-        </div>
-        <p class="lang lang-en">
-            Each component of this resulting vector is the determinant of a 2x2 matrix formed by eliminating the row and column of the corresponding component from a 3x3 matrix containing the unit vectors `veci`, `vecj`, `veck` in the first row, the components of `vecv` in the second row, and the components of `vecw` in the third row.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Cada componente de este vector resultante es el determinante de una matriz de 2x2 formada eliminando la fila y la columna del componente correspondiente de una matriz de 3x3 que contiene los vectores unitarios `veci`, `vecj`, `veck` en la primera fila, los componentes de `vecv` en la segunda fila, y los componentes de `vecw` en la tercera fila.
-        </p>
-        <div class="container">
-            <div  class="center">`|[veci, vecj, veck], [x_1, y_1, z_1], [x_2, y_2, z_2]| = |[y_1, z_1], [y_2, z_2]|*veci - |[x_1, z_1], [x_2, z_2]|*vecj + |[x_1, y_1], [x_2, y_2]|*veck`</div>
-            <div  class="right" id="[1.19]">[1.19]</div>
-        </div><br><br>
-        <p class="lang lang-en">
-            Properties of the cross product:
-            <ul class="lang lang-en">
-                <li>Anticommutative property: <br> &emsp; `vecu xx vecv = -vecv xx vecu`</li>
-                <li>Distributive property: <br> &emsp; `vecu xx (vecv + vecw) = vecu xx vecv + vecu xx vecW`</li>
-                <li>Multiplication by a constant: <br> &emsp; `c*(vecu xx vecv) = (c*vecu) xx vecv = vecu xx (c*vecv)`</li>
-                <li>Cross product of the zero vector: <br> &emsp; `vecu xx vec0 = vec0 xx vecu = vec0`</li>
-                <li>Cross product of a vector with itself: <br> &emsp; `vecv xx vecv = vec0`</li>
+        <section> <!--1.1 Introduction-->
+            <h3 id="Introduction" class="lang lang-en">1.1 Introduction</h3>
+            <h3 id="Introducción" class="lang lang-es" lang="es">1.1 Introducción</h3>
+
+            <p class="lang lang-en">
+                In this first chapter, we examine the concepts of vector, the Cartesian coordinate system and the main vector operations, which are key mathematical tools for dealing with vectors in more than one dimension.
+            </p>
+
+            <p id="Vectores" class="lang lang-es" lang="es">
+                En este primer capítulo, examinamos los conceptos de vector, el sistema de coordenadas cartesianas y las principales operaciones vectoriales, que son herramientas matemáticas clave para tratar con vectores en más de una dimensión.
+            </p>
+        </section>
+
+        <section><!--1.2 Vectors-->
+            <h3 class="lang lang-en">1.2 Vectors</h3>
+            <h3 class="lang lang-es" lang="es">1.2 Vectores</h3>
+
+            <p class="lang lang-en">
+                A <strong>vector </strong>is a directed segment, one end of which (the point A) is said to be the origin, while the other (the point B) is said to be the end of the vector. Such a vector may be denoted by <b><i>v</i></b>, <!--<var class="vector1">v<span>&#8407;</span></var> --> `vecv` or `vec(AB)` <!-- <var class="vector2">AB<span>&#8594;</span></var> -->. A vector whose origin and end coincide is said to be a <strong>zero vector</strong>, and is usually denoted by `vec0`. The vector `vec(BA)` is said to be the vector <strong>opposite</strong> to `vec(AB)`. A vector with length equal to one is called a <strong>unit vector</strong>. Any direction may be assigned to a zero vector.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Un <strong>vector </strong> es un segmento dirigido, uno de cuyos extremos (el punto A) se dice que es el origen, mientras que el otro (el punto B) se dice que es el final del vector. Tal vector puede ser denotado por <b><i>v</i></b>, <!--<var class="vector1">v<span>&#8407;</span></var> --> `vecv` or `vec(AB)` <!-- <var class="vector2">AB<span>&#8594;</span></var> -->. Un vector cuyo origen y fin coinciden se dice que es un <strong>vector cero</strong>, y generalmente se denota por `vec0`. El vector `vec(BA)` se dice que es el <strong>vector opuesto</strong> a `vec(AB)`. Un vector con una longitud igual a uno se denomina vector unitario. Cualquier dirección puede ser asignada a un vector cero.
+            </p>
+            <p class="lang lang-en">
+                The vector origin is also named initial point or point of application. 
+            </p>
+            <p class="lang lang-es" lang="es">
+                El origen del vector también se denomina punto inicial o punto de aplicación. 
+            </p>
+            <figure class="centered"> <!-- A vector is represented by a directed line segment from its initial point A to its terminal point B.-->
+                <svg id="svg1_1"></svg> <!--See drawing code in main.js-->
+                <figcaption class="lang lang-en">
+                    <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
+                </figcaption>
+                <figcaption class="lang lang-es" lang="es">
+                    <b>Figura 1.1 </b> Un vector está representado por un segmento de línea dirigida desde su punto inicial A hasta su punto terminal B.
+                </figcaption>
+            </figure>
+            <p class="lang lang-en">
+                A geometric vector, as defined above, is also called a <strong>fixed vector</strong> or <strong>bound vector</strong>. Because it has a unique initial point. In physics is used, for example, to specify the action of the force on deformable or non rigid body. In this instance, the forces and deformations within the body depend on the point of application of the force, as well as on the  magnitude and line of action.
+            </p>
+                <p class="lang lang-es" lang="es">
+                Un vector geométrico, como se ha definido anteriormente, también se denomina <strong>vector fijo</strong> o <strong>vector ligado</strong>. Porque tiene un punto de partida único. En física se utiliza, por ejemplo, para especificar la acción de la fuerza sobre un cuerpo deformable o no rígido. En este caso, las fuerzas y deformaciones dentro del cuerpo dependen del punto de aplicación de la fuerza, así como de la magnitud y la línea de acción.
+            </p>
+            <p class="lang lang-en">
+                A class of equal vectors lying on the same straight line is said to be a <strong>sliding vector</strong>. An example of sliding vector is the action of a force on a rigid body. So, in this case, the point of application can be moved along the line determined by the vector direction.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Se dice que una clase de vectores iguales que se encuentran en la misma línea recta es un <strong>vector deslizante</strong>. Un ejemplo de vector deslizante es la acción de una fuerza sobre un cuerpo rígido. Entonces, en este caso, el punto de aplicación se puede mover a lo largo de la línea determinada por la dirección del vector.
+            </p>
+            <p class="lang lang-en">
+                If vectors are only characterized by magnitude and direction, then are called <strong>free vectors</strong>. Examples of free vectors in physics are displacement, velocity and magnetic or electric field strength. In these cases, the vector can be moved to any point in the space
+            </p>
+            <p class="lang lang-es" lang="es">
+                Si los vectores solo se caracterizan por la magnitud y la dirección, entonces se denominan <strong>vectores libres</strong>. Ejemplos de vectores libres en física son el desplazamiento, la velocidad y la intensidad del campo magnético o eléctrico. En estos casos, el vector se puede mover a cualquier punto del espacio.
+            </p>
+            <p class="lang lang-en">
+                Vector calculus, which is the study of operations performed on vectors, is based on free vectors, since two given free vectors are equivalent to a given sliding vector or a given bound vector, as long as we keep in mind the physical meaning of the vector under analysis. From now on, <strong>we'll talk about free vectors if not mentioned otherwise</strong>.
+            </p>
+            <p class="lang lang-es" lang="es">
+                El cálculo vectorial, que es el estudio de las operaciones realizadas sobre vectores, se basa en vectores libres, ya que dos vectores libres dados son equivalente a un vector deslizante dado o a un vector ligado dado, siempre y cuando tengamos en cuenta el valor físico y el significado del vector analizado. A partir de ahora, <strong>hablaremos de vectores libres si no se menciona lo contrario</strong>.
+            </p>
+            <p class="lang lang-en">
+                A vector is characterized:
+                <ul class="lang lang-en">
+                    <li>
+                        by its <strong>magnitude</strong> (or length), which is equal to the length of the segment `bar(AB)` and is denoted by `norm(vecv)`,
+                    </li>
+                    <li>
+                        and by its <strong>direction</strong>: from A to B.
+                    </li>
+                </ul>
+            </p>
+            <p class="lang lang-es" lang="es">
+                Un vector está caracterizado:
+                <ul class="lang lang-es" lang="es">
+                    <li>
+                        por su magnitud (o longitud), que es igual a la longitud del segmento `bar(AB)` y se denota por `norm(vecv)`, 
+                    </li>
+                    <li>
+                        y por su <strong>dirección</strong>: de A hacia B.
+                    </li>
+                </ul>
+            </p>
+        </section>
+        
+        <section><!--1.3 Vector Addition, Graphical Method-->
+            <h3 class="lang lang-en">1.3 Vector Addition, Graphical Method:</h3>
+            <h3 class="lang lang-es" lang="es">1.3 Suma de Vectores, Método Gráfico:</h3>
+
+            <p class="lang lang-en">
+                The sum of two vectors `veca` and `vecb`, or vector addition, produces a third vector `vec(a+b)`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                La suma de dos vectores `veca` y `vecb`, o suma de vectores, produce un tercer vector `vec(a+b)`. 
+            </p>
+            <p class="lang lang-en">
+                To find `vec(a+b)`, we first draw the vector `veca`, and from the terminal end of `veca`, we draw the vector `vecb`. In other words, we have the initial point of `vecb` meet the terminal end of `veca`. This position corresponds to the notion that we move along the first vector and then, from its terminal point, we move along the second vector. Vector addition has the conmutative property; so, if we first draw vector `vecb`, and from the terminal end of `vecb`, we draw the vector `vecba`, we will obtain `vec(b+a)`, that is equal to `vec(a+b)`. 
+            </p>
+                <p class="lang lang-es" lang="es">
+                Para encontrar `vec(a+b)`, primero dibujamos el vector `veca`, y desde el final de `veca`, dibujamos `vecb`. En otras palabras, hacemos qeu el origen de `vecb` coincida con el final `veca`. Esta posición corresponde a la noción de que nos movemos a lo largo del primer vector y luego, desde su punto terminal, nos movemos a lo largo del segundo vector. La suma vectorial tiene la propiedad conmutativa; Entonces, si primero dibujamos un vector `vecb`, y desde el final de `vecb`, dibujamos el vector `vecba`, obtendremos `vec(b+a)`, que es igual a `vec(a+b)`. 
+            </p>
+            <figure class="centered"> <!--Vector addition. Graphical method.-->
+                <svg id="svg1_2"></svg > <!--See drawing code in main.js-->
+
+                <figcaption class="lang lang-en"><b>Figure 1.2</b> Vector addition. Graphical method.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.2</b> Suma de vectores. Método Gráfico.</figcaption>
+            </figure>
+
+            <p class="lang lang-en">
+                A <strong>scalar</strong> is a quantity that has magnitude but no direction. Or, in other words, a quantity that can be expressed by one (real) number.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Un <strong>escalar</strong> es una cantidad que tiene magnitud pero no dirección. O, en otras palabras, una cantidad que se puede expresar con un número (real).
+            </p>
+        </section>
+
+        <section><!--1.4 Cartesian coordinate System-->
+            <h3 class="lang lang-en">1.4 Cartesian coordinate System</h3>
+            <h3 class="lang lang-es" lang="es">1.4 Sistema de coordenadas cartesianas</h3>
+
+            <p class="lang lang-en">
+                To specify the magnitude and direction of a vector we need a coordinate system. There are three commonly used coordinate systems: Cartesian, cylindrical and spherical.
+                In this section we describe the Cartesian coordinate system.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Para especificar la magnitud y la dirección de un vector necesitamos un sistema de coordenadas. Hay tres sistemas de coordenadas comúnmente utilizados: cartesiano, cilíndrico y esférico. En esta sección describimos el sistema de coordenadas cartesianas.
+            </p>
+            <p class="lang lang-en">
+                A <strong>Cartesian coordinate system in two dimensions</strong> is defined by an ordered pair of
+                perpendicular lines (axes), a single unit of length for both axes, and an orientation for each axis. The point where the axes meet is taken as the origin for both, thus turning each axis into a number line.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Un <strong>sistema de coordenadas cartesianas en dos dimensiones</strong> se define mediante un par ordenado de líneas perpendiculares (ejes), una sola unidad de longitud para ambos ejes y una orientación para cada eje. El punto donde se encuentran los ejes se toma como origen de ambos, convirtiendo así cada eje en una recta numérica.
+            </p>
+            <p class="lang lang-en">
+                For any point P, a line is drawn through P perpendicular to each axis, and the position where it meetsthe axis is interpreted as a number. The two numbers, in that chosen order, are the Cartesian coordinates (x, y) of P.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Para cualquier punto P, se dibuja una línea a través de P perpendicular a cada eje, y la posición en la que se encuentra con el eje se interpreta como un número. Los dos números, en ese orden elegido, son las coordenadas cartesianas (x, y) de P.
+            </p>
+            <figure class="centered"><!--Cartesian plane and cartesian coordinates of a point.-->
+                <svg id="svg1_3"></svg> <!--See drawing code in main.js--> 
+
+                <figcaption class="lang lang-en"><b>Figure 1.3</b> Cartesian plane and cartesian coordinates of a point.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.3</b> Plano cartesiano y coordenadas cartesianas de un punto.</figcaption>
+            </figure>
+            <p class="lang lang-en">
+                A <strong>Cartesian coordinate system in three dimensions</strong> consists of three perpendicular axes: the x-axis, the y-axis, and the z-axis that go through a common point (the origin <b>0</b>). Because each axis is a number line representing all real numbers in `RR`, <!--&#8477; Unicode for real numbers--> the three-dimensional system is often denoted by `RR^3`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Un <strong>Sistema de coordenadas cartesianas en tres dimensiones</strong> consta de tres ejes perpendiculares: el eje x, el eje y y el eje z que se cruzan en un punto común (el origen 0). Debido a que cada eje es una recta numérica que representa todos los números reales en `RR`, el sistema tridimensional a menudo se denota por  `RR^3`.
+            </p>
+            <p class="lang lang-en">
+                The cartesian coordinate system is also called a <strong>rectangular coordinate system</strong> or
+                <strong>orthogonal coordinate system</strong>.
+            </p>
+            <p class="lang lang-es" lang="es">
+                El sistema de coordenadas cartesianas también se denomina <strong>sistema de coordenadas rectangulares</strong> o <strong>sistema de coordenadas ortogonales</strong>.
+            </p>
+            <p class="lang lang-en">
+                In Figure 1.4(a), the positive z-axis is shown above the plane containing the x- and y-axes. The system displayed follows the right-hand rule. If we take our right hand and align the fingers with
+                the positive x-axis, then curl the fingers so they point in the direction of the positive y-axis, our thumb points in the direction of the positive z-axis. In this website, we always work with coordinate systems set up in accordance with the right-hand rule. Some systems do follow a left-hand rule, but the right-hand rule is considered the standard representation.
+            </p>
+            <p class="lang lang-es" lang="es">
+                En la Figura 1.4 (a), el eje z positivo se muestra sobre el plano que contiene los ejes x e y. El sistema que se muestra sigue la regla de la mano derecha. Si tomamos nuestra mano derecha y alineamos los dedos con el eje x positivo, luego dobla los dedos para que apunten en la dirección del eje y positivo, nuestro pulgar apunta en la dirección del eje z positivo. En este sitio web, siempre trabajamos con sistemas de coordenadas configurados de acuerdo con la regla de la mano derecha. Algunos sistemas siguen una regla de la mano izquierda, pero la regla de la mano derecha se considera la representación estándar.
+            </p>
+            <figure class="centered">
+                <img src="images\3DCoordSystAndRightHandRule.svg" width="600" height="300" />
+
+                <figcaption class="lang lang-en"><b>Figure 1.4</b> (a) Three-dimensional rectangular coordinate system with the x-axis, the y-axis and the z-axis. (b) The right-hand rule is used to determine the placement of the coordinate axes in the standard Cartesian Plane.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.4</b> (a) Sistema de coordenadas rectangulares tridimensionales con el eje x, el eje y y el eje z. (b) La regla de la mano derecha se utiliza para determinar la ubicación de los ejes de coordenadas en la norma Plano Cartesiano.</figcaption>
+            </figure>
+
+            <p class="lang lang-en">
+                We describe a point P in the three-dimensional rectangular coordinate system with the coordinates
+                `(x_1, y_1, z_1)`. Each coordinate describes how the point aligns with
+                the corresponding axis.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Describimos un punto P en el sistema de coordenadas rectangulares tridimensionales con las coordenadas `(x_1, y_1, z_1)`. Cada coordenada describe cómo se alinea el punto con el eje correspondiente.
+            </p>
+
+            <figure class="centered"><!--To plot the point P, with coordinates `(x_1, y_1, z_1)`, go `x_1` units along the x-axis, then `y_1` units in the direction of the y-axis, then `z_1` units in the direction of the z-axis.-->
+                <svg id="svg1_5"></svg > <!--See drawing code in main.js--> 
+
+                <figcaption class="lang lang-en"><b>Figure 1.5</b> To plot the point P, with coordinates `(x_1, y_1, z_1)`, go `x_1` units along the x-axis, then `y_1` units in the direction of the y-axis, then `z_1` units in the direction of the z-axis.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.5</b> Para trazar el punto P, con coordenadas `(x_1, y_1, z_1)`, desplazarse `x_1` unidades a lo largo del eje x, entonces ir `y_1` unidades en la dirección del eje Y, luego desplazarse `z_1` unidades en la dirección del eje z.</figcaption>
+            </figure>
+        </section>
+
+        <section><!--1.5 Vector components-->
+            <h3 class="lang lang-en" id="Vector components">1.5 Vector components </h3>
+            <h3 class="lang lang-es" lang="es" id="Componentes de un Vector">1.5 Componentes de un Vector</h3>
+            <p class="lang lang-en">
+                When the initial point of a vector coincides with the origin of the coordinate system, we call the
+                vector a <strong>standard-position vector</strong>. Because the initial point of any vector in standard position is known to be (0,0), we can describe the vector by looking only at the coordinates of its terminal point. Thus, if vector `vecv` has its initial point at the origin and its terminal point at (x, y), we write the vector in component form as
+            </p>
+            <p class="lang lang-es" lang="es"lang lang-en">
+                Cuando el punto inicial de un vector coincide con el origen del sistema de coordenadas, llamamos al vector <strong>vector de posición estándar</strong>. Debido a que se sabe que el punto inicial de cualquier vector en posición estándar es (0,0), podemos describir el vector tomando sólo las coordenadas de su punto terminal. Por lo tanto, si el vector `vecv` tiene su punto inicial en el origen y su punto terminal en (x, y), escribimos el vector mediante sus componentes como
+            </p>
+            <div class="container">
+                <div  class="center">`vecv = << x,y >>`</div>
+                <div  class="right" id="[1.1]">[1.1]</div>
+            </div>
+
+            <p class="lang lang-en">
+                When a vector is written in component form like this, the scalars x and y are called the
+                <strong>components</strong> of `vecv`. When we need to perform calculations with vectors, we usually describe them as standard-position vectors because it is easier to perform such calculations.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Cuando un vector se escribe de esta manera, los escalares x e y se denominan <strong>componentes</strong> de `vecv. Cuando necesitamos realizar cálculos con vectores, solemos describirlos como vectores de posición estándar porque es más fácil realizar tales cálculos.
+            </p>
+        </section>
+
+        <section><!--1.6 Relationship between vector components and its magnitude and orientation-->
+            <h3 class="lang lang-en" id="Relationship between vector components and its magnitude and orientation">1.6 Relationship between vector components and its magnitude and orientation</h3>
+            <h3 class="lang lang-es" lang="es" id="Relación entre las componentes de un vector, su módulo y su dirección">1.6 Relación entre las componentes de un vector, su módulo y su dirección</h3>
+            <p class="lang lang-en">
+                To find vector magnitude from its components, we use the Pythagorean Theorem. And to find its direction we use the inverse tangent function.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Para hallar la magnitud de un vector a partir de sus componentes, utilizamos el Teorema de Pitágoras. Y para encontrar su dirección Usamos la función tangente inversa.
+            </p>
+            <p class="lang lang-en">
+                Given a position vector `vecv = << x,y >>`, the <strong>magnitude (or module)</strong> is found by       
+            </p>
+            <p class="lang lang-es" lang="es">
+                Dado un vector de posición `vecv = << x,y >>`, su <strong>magnitud (o módulo)</strong> se calcula mediante       
+            </p>
+            <div class="container">
+                <div  class="center">`norm(vecv) = sqrt(x^2+y^2)`</div>
+                <div  class="right" id="[1.2]">[1.2]</div>
+            </div>    
+            <p class="lang lang-en">
+                And the <strong>direction</strong> is found by
+            </p>
+            <p class="lang lang-es" lang="es">
+                Y su <strong>dirección</strong> se calcula mediante
+            </p>
+            <div class="container">
+                <div  class="center">`theta = tan^1 (y/x)`</div>
+                <div  class="right" id="[1.3]">[1.3]</div>
+            </div>
+            <p class="lang lang-en">
+                Given the magnitude and direction of a vector `vecv`, its <strong>x component</strong> is found by  
+            </p>
+            <p class="lang lang-es" lang="es">
+                Dadas la magnitud y dirección de un vector `vecv`, su <strong>componente x</strong> se calcula   mediante
+            </p>
+            <div class="container">
+                <div  class="center">`x = norm(vecv)costheta`</div>
+                <div  class="right" id="[1.4]">[1.4]</div>
+            </div>
+            <p class="lang lang-en">
+                and its <strong>y component</strong> is found by
+            </p>
+            <p class="lang lang-es" lang="es">
+                y su <strong>componente y</strong> se calcula   mediante
+            </p>
+            <div class="container">
+                <div  class="center">`y = norm(vecv)sintheta`</div>
+                <div  class="right" id="[1.5]">[1.5]</div>
+            </div>
+            <p class="lang lang-en">
+                Click in the button to open an app that finds vector magnitude and direction given its components. 
+                <br><button onclick="openForm()">Calculate vector magnitude and direction</button>
+            </p>
+            <p class="lang lang-es" lang="es">
+                Haz click en el botón para abrir la aplicación qeu calcula magnitud y dirección de un vector dadas sus componentes. 
+                <br><button onclick="openForm()">Calcula magnitud y dirección de un vector</button>
+            </p>
+
+            <form id="coordToMagDir" style="display: none">
+                <h2 class="lang lang-en">Calculate vector magnitude and direction from given coordinates.</h2>
+                <h2 class="lang lang-es" lang="es">Calcula magnitud y dirección de un vector dadas sus coordenadas.</h2>
+                <label class="lang lang-en" for="xCoordinate">
+                    Vector X Coordinate:
+                </label>
+                <label class="lang lang-es" lang="es" for="xCoordinate">
+                    coordenada X del vector:
+                </label>
+                <input id="xCoordinate" type="number" name="xCoord" value="0" step="0.1">
+        
+                <label class="lang lang-en" for="yCoordinate">
+                    Vector Y Coordinate:
+                </label>
+                <label class="lang lang-es" lang="es" for="yCoordinate">
+                    coordenada Y del vector:
+                </label>
+                <input id="yCoordinate" type="number" name="yCoord" value="0" step="0.1">
+        
+                <label class="lang lang-en" for="magnitude">
+                    Vector magnitude:
+                </label>
+                <label class="lang lang-es" lang="es" for="magnitude">
+                    magnitud del vector:
+                </label>
+                <output id="magnitude" name="magnitude" for="xCoordinate yCoordinate">
+                </output>
+        
+                <label class="lang lang-en" for="direction">
+                    Vector direction:
+                </label>
+                <label class="lang lang-es" lang="es" for="direction">
+                    Dirección del vector:
+                </label>
+                <output id="direction" name="direction" for="xCoordinate yCoordinate">
+                </output>
+                º<br>
+        
+                <button class="lang lang-en" type='button' onclick="closeForm()">Close</button><br>
+                <button class="lang lang-es" lang="es" type='button' onclick="closeForm()">Cierra</button><br>
+        
+                <canvas id="myCanvas" width="400" height="400" style="border:1px solid grey">
+                </canvas>
+            </form>
+        </section>
+
+        <section><!--1.7 Vector addition and scalar multiplication using vector components-->
+            <h3 class="lang lang-en">1.7 Vector addition and scalar multiplication using vector components</h3>
+            <h3 class="lang lang-es" lang="es">1.7 Suma de vectores y multiplicación por un escalar usando sus componentes</h3>
+            <p class="lang lang-en">
+                The sum of two vectors given in its component form, `vecv = << x_1, y_1 >> ` and 
+                `vecw = << x_2, y_2 >> `, is defined as
+            </p>
+            <p class="lang lang-es" lang="es">
+                La suma de dos vectores expresados mediante sus componentes, `vecv = << x_1, y_1 >> ` y 
+                `vecw = << x_2, y_2 >> `, se define como
+            </p>
+            <div class="container">
+                <div  class="center">`vecv + vecw = << x_1 + x_2, y_1 + y_2 >> `</div>
+                <div  class="right" id="[1.6]">[1.6]</div>
+            </div>
+            <p class="lang lang-en">
+                The product of an scalar `lambda` and a vector `vecv`, given in its component form,
+                `vecv = << x, y >> `, is defined as
+            </p>
+            <p class="lang lang-es" lang="es">
+                El producto de un scalar `lambda` por un vector `vecv`, expresado mediante sus componentes, 
+                `vecv = << x, y >> `, se define como 
+            </p>
+            <div class="container">
+                <div  class="center">`lamdavecv = << lambdax, lambday >> `</div>
+                <div  class="right" id="[1.7]">[1.7]</div>
+            </div>
+        </section>
+
+        <section><!--1.8 The unit vector-->
+            <h3 class="lang lang-en">1.8 The unit vector</h3>
+            <h3 class="lang lang-es" lang="es">1.8 El vector unidad</h3>
+            <p class="lang lang-en">
+                The <strong>unit vector</strong> `vecu_v` of a non cero vector `vecv` is a vector that has the same direction as `vecv` but a magnitude of 1. the unit vector is calculated as. 
+            </p>
+            <p class="lang lang-es" lang="es">
+                El <strong>unit vector</strong> `vecu_v` de un vector distinto de cero `vecv` es un vector que tiene la misma dirección que `vecv` pero una magnitud de 1. El vector unitario se calcula mediante
+            </p>
+            <div class="container">
+                <div  class="center">`vecu_v = vecv/norm(vecv)`</div>
+                <div  class="right" id="[1.8]">[1.8]</div>
+            </div>
+            <p class="lang lang-en">
+                Note that vector magnitude `norm(vecv)` is an scalar, and dividing by a scalar is the same as multiplying by the reciprocal of the scalar 1/`norm(vecv)`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Obsérvese que la magnitud `norm(vecv)` es un escalar, y dividir por un escalar es lo mismo que multiplicar por el recíproco del escalar 1/`norm(vecv)`.
+            </p>
+        </section>
+
+        <section><!--1.9 Vector representation with unitary vectors `veci`, `vecj` and `veck`-->
+            <h3 class="lang lang-en">1.9 Vector representation with unitary vectors `veci`, `vecj` and `veck`</h3>
+            <h3 class="lang lang-es" lang="es">1.9 Representación de vectores mediante sus vectores unitarios `veci`, `vecj` y `veck`</h3>
+            <p class="lang lang-en">
+                In a two-dimensional space, a vector can be represented using unit vectors `veci` and `vecj`. The unit vector `veci` is a vector of length 1 along the x-axis, and the unit vector `vecj` is a vector of length 1 along the y-axis.
+            </p>
+            <p class="lang lang-es" lang="es">
+                En un espacio bidimensional, un vector se puede representar mediante los vectores unitarios `veci` y `vecj`. El vector unitario `veci` es un vector de longitud 1 a lo largo del eje x, y el vector unitario `vecj` es un vector de longitud 1 a lo largo del eje y.
+            </p>
+            <p class="lang lang-en">
+                If we have a vector given in its component form `vecv = << x, y >> `, it can be represented as:
+            </p>
+            <p class="lang lang-es" lang="es">
+                Si tenemos un vector dado por sus componentes `vecv = << x, y >> `, se puede representar como:
+            </p>           
+            <div class="container">
+                <div  class="center">`vecv =  xveci + yvecj`</div>
+                <div  class="right" id="[1.9]">[1.9]</div>
+            </div>
+            <p class="lang lang-en">
+                In a three-dimensional space, a vector can be represented using unit vectors `veci`, `vecj`, and `bb"k"`. The unit vector `bb"i"` is a vector of length 1 along the x-axis, the unit vector `vecj` is a vector of length 1 along the y-axis, and the unit vector `veck` is a vector of length 1 along the z-axis.
+            </p>
+            <p class="lang lang-es" lang="es">
+                En un espacio tridimensional, un vector se puede representar mediante vectores unitarios `veci`, `vecj` y `veck`. El vector unitario `veci` es un vector de longitud 1 a lo largo del eje x, el vector unitario `vecj` es un vector de longitud 1 a lo largo del eje y, y el vector unitario `veck` es un vector de longitud 1 a lo largo del eje z.
+            </p>
+            <p class="lang lang-en">
+                If we have a vector given in its component form `vecv = << x, y, z >> `, it can be represented as:
+            </p>
+            <p class="lang lang-es" lang="es">
+                Si tenemos un vector expresado mediante sus componentes `vecv = << x, y, z >> `, se puede representar como:
+            </p>
+            <div class="container">
+                <div  class="center">`vecv =  xveci + yvecj + zveck`</div>
+                <div  class="right" id="[1.10]">[1.10]</div>
+            </div>
+            <p class="lang lang-en">
+                This vector sum is called a <strong>linear combination</strong> of the vectors `veci``, `vecj` and `veck`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Esta suma vectorial se denomina <strong>combinación lineal</strong> de los vectores `veci`, `vecj` y `veck`.
+            </p>
+        </section>
+
+        <section><!--1.10 Scalar product of two vectors-->
+            <h3 class="lang lang-en" id="Scalar product of two vectors">1.10 Scalar product of two vectors</h3>
+            <h3 class="lang lang-es" lang="es" id="Producto escalar de dos vectores">1.10 Producto escalar de dos vectores</h3>
+
+            <p class="lang lang-en">
+                The <strong>scalar product</strong> (also known as the <strong>dot product</strong>) of two vectors is a number (scalar) that is obtained by multiplying the corresponding components of the two vectors and then adding those products.
+            </p>
+            <p class="lang lang-es" lang="es">
+                El <strong>producto escalar</strong> de dos vectores es un número (escalar) que se obtiene multiplicando los componentes correspondientes de los dos vectores y luego sumando dichos productos.
+            </p>
+
+            <p class="lang lang-en">
+                If `vecv = << x_1, y_1, z_1 >> ` and `vecw = << x_2, y_2, z_2 >> ` are two vectors, then their scalar product is calculated as follows:
+            </p>
+            <p class="lang lang-es" lang="es">
+                Si `vecv = << x_1, y_1, z_1 >> ` y `vecw = << x_2, y_2, z_2 >> ` son dos vectores, entonces su producto escalar se calcula mediante:
+            </p>
+            <div class="container">
+                <div  class="center">`vecv*vecw = x_1*x_2 + y_1*y_2 + z_1*z_2`</div>
+                <div  class="right" id="[1.11]">[1.11]</div>
+            </div>
+            <p class="lang lang-en">
+                In terms of magnitude and direction, the scalar product can also be defined as:
+            </p>
+            <p class="lang lang-es" lang="es">
+                En términos de magnitud y dirección, el producto escalar también se puede definir como:
+            </p>
+            <div class="container">
+                <div  class="center">`vecv*vecw = norm(vecv)norm(vecw)costheta`</div>
+                <div  class="right" id="[1.12]">[1.12]</div>
+            </div>
+            <p class="lang lang-en">
+                Where `theta` is the angle between `vecv` and `vecw`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Donde `theta` es el ángulo comprendido entre `vecv` y `vecw`.
+            </p>
+            <p class="lang lang-en">
+                When the dot product of two vectors is zero, is said that both vectors are <strong>orthogonal</strong> or perpendicular. 
+            </p>
+            <p class="lang lang-es" lang="es">
+                WCuando el producto escalar de dos vectores es cero, se dice que ambos vectores son <strong>ortogonales</strong> o perpendiculares. 
+            </p>
+        </section>
+
+        <section><!--1.11 Vector projection.-->
+            <h3 class="lang lang-en">1.11 Vector projection.</h3>
+            <h3 class="lang lang-es" lang="es">1.11 Proyección de un vector.</h3>
+            <p class="lang lang-en">
+                The <strong>projection of `vecw`</strong> onto `vecv` or onto the line that contains `vecv`, denoted as `proj_v vecw`, is a vector that lies on `vecv` and has a direction same as `vecv` (if the angle between `vecv` and `vecw` is less than 90 degrees) or opposite to `vecv` (if the angle between `vecv` and `vecw` is more than 90 degrees). 
+            </p>
+            <p class="lang lang-es" lang="es">
+                La <strong>provección de `vecw`</strong> sobre `vecv` o sobre la línea que contiene a `vecv`, se denota como `proj_v vecw`, es un vector que se encuentra en `vecv` y tiene la misma dirección que `vecw` (si el ángulo entre `vecv` y `vecw` es inferior a 90 grados) u opuesto a `vecv` (si el ángulo entre `vecv` y `vecw` es mayor de 90 grados).
+            </p>
+            <figure class="centered"> <!--Projection of `vecv` onto `vecw`-->
+                <svg id= "svg1_6"> </svg > <!--See drawing code in main.js--> 
+
+                <figcaption class="lang lang-en"><b>Figure 1.6</b> Projection of `vecw` onto `vecv`.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.6</b> Proyección de `vecw` sobre `vecv`.</figcaption>
+            </figure>
+
+            <p class="lang lang-en">
+                Since the projection of `vecw` onto `vecv` is aligned with `vecv`:
+            </p>
+            <p class="lang lang-es" lang="es">
+                Dado que la proyección de `vecw` sobre `vecv` está alineada con `vecv`:
+            </p>
+            <div class="container">
+                <div  class="center">`proj_v vecw = norm(proj_v vecw)*vecu_v`</div>
+                <div  class="right" id="[1.13]">[1.13]</div>
+            </div>  
+            <p class="lang lang-en">
+                From the definition of <a href="geometry.html#[2.3]" target="_blank"> cosine</a> it follows that the magnitude of this projection vector can be calculated as:
+            </p>
+            <p class="lang lang-es" lang="es">
+                De la definición de <a href="geometry.html#[2.3]" target="_blank"> coseno</a> se deduce que la magnitud de este vector de proyección se puede calcular como: 
+            </p>                
+            <div class="container">
+                <div  class="center">`norm(proj_v vecw) = norm(vecw)costheta`</div>
+                <div  class="right" id="[1.14]">[1.14]</div>
+            </div>
+            <p class="lang lang-en">
+                Where `theta` is the angle between `vecv` and `vecw`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Donde `theta` es el ángulo entre `vecv` y `vecw`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Ahora bien, si consideramos la expresión [1.12] del producto escalar de `vecv` y  `vecw`, la magnitud de `proj_v vecw` también puede expresarse como:
+            </p>
+            <p class="lang lang-en">
+                Now, if we consider the expression [1.12] for the dot product of `vecv` and `vecw`, the magnitude of `proj_v vecw` can also be expressed as:
+            </p>
+            <div class="container">
+                <div  class="center">`norm(proj_v vecw) = vecw*vecv/norm(vecv) = vecw*vecu_v`</div>
+                <div  class="right" id="[1.15]">[1.15]</div>
+            </div>
+            <p class="lang lang-en">
+                So, using the coordinates of `vecv` ` << x_1, y_1, z_1 >> ` and of `vecw` ` << x_2, y_2, z_2 >>` to calculate their dot product:
+            </p>
+            <p class="lang lang-es" lang="es">
+                Entonces, usando las coordenadas de `vecv` ` << x_1, y_1, z_1 >> ` y de `vecw` ` << x_2, y_2, z_2 >>` para calcular su producto escalar:
+            </p>
+            <div class="container">
+                <div  class="center">`norm(proj_v w) = (x_1*x_2 + y_1*y_2 + z_1*z_2)/sqrt(x_1^2+y_1^2+z_1^2)`</div>
+                <div  class="right" id="[1.16]">[1.16]</div>
+            </div>
+        </section>
+
+        <section><!--1.12 Vector Cross Product.-->
+            <h3 class="lang lang-en" id="Vector cross product">1.12 Vector cross product.</h3>
+            <h3 class="lang lang-es" lang="es" id="Producto vectorial">1.12 Producto vectorial.</h3>
+            <p class="lang lang-en">
+                The <strong>cross product</strong>, or <strong>vector product</strong>, is a binary operation on two vectors in three-dimensional space. It is written as <strong>`vecv xx vecw`</strong>. The result of the cross product is a vector that is perpendicular (or orthogonal) to the vectors being multiplied or said in other way, normal to the plane containing them.
+            </p>
+            <p class="lang lang-es" lang="es">
+                El <strong>producto vectorial</strong> de dos vectores es una operación binaria sobre dos vectores en un espacio tridimensional y se escribe como <strong>`vecv xx vecw`</strong>. El resultado de este producto vectorial es un tercer vector perpendicular (u ortogonal) a los vectores que se multiplican o dicho de otra forma, normal al plano que los contiene.
+            </p>
+            <p class="lang lang-en">
+                The direction of the cross product is determined by the right-hand rule. If you point your index finger in the direction of `vecv`, and your middle finger in the direction of `vecw`, your thumb points in the direction of `vecv xx vecw`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                La dirección del producto vectorial está determinada por la regla de la mano derecha. Si apuntas con el dedo índice en la dirección de `vecv` y el dedo medio en la dirección de `vecw`, el pulgar apunta en la dirección de `vecv xx vecw`.
+            </p>
+            <p class="lang lang-en">
+                If `vecv` and `vecw` are two vectors, and θ is the angle between them, the magnitude of their cross product is given by:  
+            </p>
+            <p class="lang lang-es" lang="es">
+                Si `vecv` y `vecw` son dos vectores, y θ es el ángulo entre ellos, la magnitud de su producto vectorial viene dada por:  
+            </p>
+            <div class="container">
+                <div  class="center">`norm(vecv xx vecw) = norm(vecv)norm(vecw)sin(theta)`</div>
+                <div  class="right" id="[1.17]">[1.17]</div>
+            </div>
+            <p class="lang lang-en">
+                Then, the magnitude (or length) of the cross product can be interpreted as the area of the parallelogram that the vectors span.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Entonces, la magnitud (o longitud) del producto vectorial se puede interpretar como el área del paralelogramo que abarcan los dos vectores que se multiplican.
+            </p>
+            <figure class="centered"><!--`norm(vecv xx vecw)` as parallelogram area.-->
+                <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" width="600" height="204">    
+                    <!--Define markers-->
+                    <defs>
+                        <marker
+                        id="Bluearrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="blue" fill="blue" />
+                        </marker>
+                    
+                        <marker
+                        id="Brownarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="brown" fill="brown" />
+                        </marker>
+                    
+                        <marker
+                        id="Greenarrow"
+                        viewBox="0 0 10 10"
+                        refX="10"
+                        refY="5"
+                        markerWidth="6"
+                        markerHeight="6"
+                        orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" stroke="green" fill="green" />
+                        </marker>
+                    </defs>
+
+                    <!--Vector v-->
+                    <line x1="10" y1="160" x2="200" y2="10" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
+                    <text x="90" y="83" font-size="25" stroke="blue" fill="blue" font-weight="bold">
+                        v
+                    </text>
+                    
+                    <!--Vector w-->
+                    <line x1="10" y1="160" x2="250" y2="160" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
+                    <text x="215" y="155" font-size="25" stroke="brown" fill="brown" font-weight="bold">
+                        w
+                    </text>
+
+                    <!--The other two sides of the parallelogram-->
+                    <line x1="250" y1="160" x2="440" y2="10" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
+                    <line x1="200" y1="10" x2="440" y2="10" stroke="brown" stroke-width="2" stroke-dasharray="5,5" />
+                    
+                    <!--angle theta and sin(theta)*v-->
+                    <line x1="200" y1="10" x2="200" y2="160" stroke="green" stroke-dasharray="5,5" stroke-width="2"/>
+                    <text x="210" y="83" font-size="20" stroke="green" fill="green" >
+                        ||v||*sin(&#x03B8;)
+                        </text>
+                    <path d="M 30 160 A 20 20 0 0 0 26 148" fill="transparent" stroke="green"/>
+                    <text x="34" y="155" font-size="15" stroke="green" fill="green">
+                            &#x03B8; <!-- This is the unicode for lowercase theta -->
+                    </text>
+                </svg > 
+
+                <figcaption class="lang lang-en"><b>Figure 1.7</b> `norm(vecv xx vecw)` as parallelogram area.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.7</b> `norm(vecv xx vecw)` como area del paralelogramo.</figcaption>
+            </figure>
+            
+            <p class="lang lang-en">
+                In terms of its components, if `vecv = << x_1, y_1, z_1 >>` and `vecw = << x_2, y_2, z_2 >> `, the cross product `vecv xx vecw` is a vector defined as:
+            </p>
+            <p class="lang lang-es" lang="es">
+                Según sus componentes, si `vecv = << x_1, y_1, z_1 >>` y `vecw = << x_2, y_2, z_2 >> `, el producto vectorial `vecv xx vecw` es un vector definido como:
+            </p>
+            <div class="container">
+                <div  class="center">`vecv xx vecw = << y_1*z_2 - z_1*y_2, z_1*x_2 - x_1*z_2, x_1*y_2 - y_1*x_2 >> `</div>
+                <div  class="right" id="[1.18]">[1.18]</div>
+            </div>
+            <p class="lang lang-en">
+                Each component of this resulting vector is the determinant of a 2x2 matrix formed by eliminating the row and column of the corresponding component from a 3x3 matrix containing the unit vectors `veci`, `vecj`, `veck` in the first row, the components of `vecv` in the second row, and the components of `vecw` in the third row.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Cada componente de este vector resultante es el determinante de una matriz de 2x2 formada eliminando la fila y la columna del componente correspondiente de una matriz de 3x3 que contiene los vectores unitarios `veci`, `vecj`, `veck` en la primera fila, los componentes de `vecv` en la segunda fila, y los componentes de `vecw` en la tercera fila.
+            </p>
+            <div class="container">
+                <div  class="center">`|[veci, vecj, veck], [x_1, y_1, z_1], [x_2, y_2, z_2]| = |[y_1, z_1], [y_2, z_2]|*veci - |[x_1, z_1], [x_2, z_2]|*vecj + |[x_1, y_1], [x_2, y_2]|*veck`</div>
+                <div  class="right" id="[1.19]">[1.19]</div>
+            </div><br><br>
+            <p class="lang lang-en">
+                Properties of the cross product:
+                <ul class="lang lang-en">
+                    <li>Anticommutative property: <br> &emsp; `vecu xx vecv = -vecv xx vecu`</li>
+                    <li>Distributive property: <br> &emsp; `vecu xx (vecv + vecw) = vecu xx vecv + vecu xx vecW`</li>
+                    <li>Multiplication by a constant: <br> &emsp; `c*(vecu xx vecv) = (c*vecu) xx vecv = vecu xx (c*vecv)`</li>
+                    <li>Cross product of the zero vector: <br> &emsp; `vecu xx vec0 = vec0 xx vecu = vec0`</li>
+                    <li>Cross product of a vector with itself: <br> &emsp; `vecv xx vecv = vec0`</li>
+                </ul>
+            </p>
+            <p class="lang lang-es" lang="es">
+                Propiedades del producto vectorial:
+                <ul class="lang lang-es" lang="es">
+                    <li>Propiedad anticonmutativa: <br> &emsp; `vecu xx vecv = -vecv xx vecu`</li>
+                    <li>Propiedad distributiva: <br> &emsp; `vecu xx (vecv + vecw) = vecu xx vecv + vecu xx vecW`</li>
+                    <li>Multiplicación por un escalar: <br> &emsp; `c*(vecu xx vecv) = (c*vecu) xx vecv = vecu xx (c*vecv)`</li>
+                    <li>Producto vectorial del vector cero: <br> &emsp; `vecu xx vec0 = vec0 xx vecu = vec0`</li>
+                    <li>Producto vectorial de un vector por sigo mismo: <br> &emsp; `vecv xx vecv = vec0`</li>
+                </ul>
+            </p>	
+        </section>
+
+        <section> <!--1.13 Moment of a Sliding Vector about a Point-->
+            <h3 class="lang lang-en">1.13 Moment of a Sliding Vector about a Point</h3>
+            <h3 class="lang lang-es" lang="es">1.13 Momento de un Vector Deslizante respecto a un Punto</h3>
+            <p class="lang lang-en">
+                The <strong>moment of a sliding vector</strong> `vecv` about a point P is calculated using the cross product of `vecr` by `vecv`. Being `vecr` the position vector of `vecv` relative to P
+            </p>
+            <p class="lang lang-es" lang="es">
+                El <strong>momento de un vector deslizante</strong> `vecv` respecto a un punto P se calcula mediante el producto vectorial de `vecr` por `vecv`. Siendo `vecr` el vector de posición de `vecv` respecto a P.
+            </p>
+            <p>&emsp; </p>
+            <div class="container">
+                <div  class="center">`vecM = vecr xx vecv`</div>
+                <div  class="right" id="[1.20]">[1.20]</div>
+            </div>
+            <p class="lang lang-en">
+                The position vector, `vecr`, extends from the point of interest P to the origin of `vecv`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Donde el vector de posición, `vecr`, se extiende desde el punto de interés P hasta el origen de `vecv`.
+            </p>
+
+            <figure class="centered"> <!--Moment of a sliding vector `vecv` about point P, `vecM = vecr xx vecv`.-->
+                <svg id= "svg1_8"></svg > <!--See drawing code in main.js-->
+
+                <figcaption class="lang lang-en"><b>Figure 1.8</b> Moment of a sliding vector `vecv` about point P, `vecM = vecr xx vecv`.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.8</b> Momento de un vector deslizante `vecv` respecto a un punto P, `vecM = vecr xx vecv`.</figcaption>
+            </figure>
+
+            <p class="lang lang-en">
+                The properties of the cross product allow us to conclude that `vecM` is a vector perpendicular to the plane defined by `vecr` and `vecv` and it doesn't change if we move the sliding vector `vecv` along its line of action. This is because the moment of a sliding vector is a measure of its tendency to cause rotation about a point or axis, which is determined by both the vector’s magnitude and its distance from the point or axis.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Las propiedades del producto vectorial nos permiten concluir que `vecM` es un vector perpendicular al plano definido por `vecr` y `vecv` y que no cambia si movemos el vector deslizante `vecv` a lo largo de su línea de acción. Esto se debe a que el momento de un vector deslizante es una medida de su tendencia a causar rotación alrededor de un punto o eje, que está determinada tanto por la magnitud del vector como por su distancia desde el punto o eje.
+            </p>
+
+            <p class="lang lang-en">
+                When you slide a vector along its line of action, you’re not changing the sliding vector’s magnitude or the perpendicular distance from its line of action to the point or axis of interest. Therefore, the moment remains the same. This property is what makes it a “sliding vector”.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Al deslizar un vector a lo largo de su línea de acción, no cambia la magnitud del vector deslizante ni la distancia perpendicular desde su línea de acción hasta el punto o eje de interés. Por lo tanto, el momento sigue siendo el mismo. Esta propiedad es lo que lo convierte en un "vector deslizante".
+            </p>
+            <p class="lang lang-en">
+                This concept is fundamental in physics and engineering, as it helps us understand and calculate the effects of forces on the rotation of objects.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Este concepto es fundamental en física e ingeniería, ya que nos ayuda a comprender y calcular los efectos de las fuerzas en la rotación de los objetos.
+            </p> 
+        </section>
+
+        <section><!--1.14 Moment of a Sliding Vector About a Line-->
+            <h3 class="lang lang-en">1.14 Moment of a Sliding Vector About a Line</h3>
+            <h3 class="lang lang-es" lang="es">Momento de un Vector Deslizante respecto de una Línea</h3>
+            <p class="lang lang-en">
+                The moment of a sliding vector about a line of interest l is the projection onto said line of the moment of the vector with respect to any point on the line.
+            </p>
+            <p class="lang lang-es" lang="es">
+                El momento de un vector deslizante alrededor de una recta de interés l es la proyección sobre dicha recta del momento del vector con respecto a cualquier punto de la recta.
+            </p>
+            <figure class="centered"><!--Moment of a sliding vector `vecv` about line g, `norm(vecM_g) = vecu_g * (vecr xx vecv)`.-->
+                <svg id="svg1_9"></svg> <!--See SVG drawing code in main.js-->
+
+                <figcaption class="lang lang-en"><b>Figure 1.9</b> Moment of a sliding vector `vecv` about line l, `norm(vecM_l) = vecu_l * (vecr xx vecv)`.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 1.9</b> Momento de un vector deslizante `vecv` respecto de la línea l, `norm(vecM_l) = vecu_l * (vecr xx vecv)`.</figcaption>
+            </figure>
+                    
+            <p class="lang lang-en">
+                The magnitude of the moment of a sliding vector about a line l, `norm(vecM_g)` can be calculated using the cross and dot product of three vectors:
+                <ol class="lang lang-en">
+                    <li>Unit vector along the line of interest g, `vecu_l = << u_(lx), u_(ly), u_(lz) >> `.</li>
+                    <li>Position vector `vecr = << r_x, r_y, r_z >>` from any point along the line of interest l to any point on the line of action of the sliding vector `vecv`.</li>
+                    <li>The sliding vector `vecv = << v_x, v_y, v_z >> `.</li>
+                </ol>
+                That is:
+            </p>
+            <p class="lang lang-es" lang="es">
+                La magnitud del momento de un vector deslizante alrededor de una recta g, `norm(vecM_g)` se puede calcular utilizando el producto vectorial y escalar de tres vectores:
+                <ol class="lang lang-es" lang="es">
+                    <li>Vector unitario a lo largo de la línea de interés g, `vecu_l = << u_(lx), u_(ly), u_(lz) >> `.</li>
+                    <li>Vector de posición `vecr = << r_x, r_y, r_z >>` desde cualquier punto de la línea de interés g hasta cualquier punto de la línea de acción del vector deslizante `vecv`.</li>
+                    <li>El vector deslizante `vecv = << v_x, v_y, v_z >> `.</li>
+                </ol>
+                Esto es:
+            </p>
+            <div class="container">
+                <div  class="center">`norm(vecM_l) = vecu_l * (vecr xx vecv)`</div>
+                <div  class="right" id="[1.21]">[1.21]</div>
+            </div>
+            <p class="lang lang-en">
+                To streamline the calculations even further, mathematically we can combine the cross and dot product into what is known as a <strong>mixed triple product</strong>. In the mixed triple product we write the cross product as a determinant in the form:
+            </p>
+            <p class="lang lang-es" lang="es">
+                Para simplificar aún más los cálculos, matemáticamente podemos combinar el producto vectorial y escalar en lo que se conoce como un <strong>producto mixto</strong>. En el producto mixto escribimos el producto como un determinante con la forma:
+            </p>
+            <div class="container">
+                <div  class="center">`norm(vecM_l) = vecu_l * (vecr xx vecv) = |[u_(lx), u_(ly), u_(lz)], [r_x, r_y, r_z], [v_x, v_y, v_z]| = u_(lx)*|[r_y, r_z], [v_y, v_z]| - u_(ly)*|[r_x, r_z], [v_x, v_z]| + u_(lz)*|[r_x, r_y], [v_x, v_y]|`</div>
+                <div  class="right" id="[1.22]">[1.22]</div>
+            </div><br><br>
+            <p class="lang lang-en">Finally, since a vector can be expressed as the product of its modulus and its unit vector, we have:</p>
+            <p class="lang lang-es" lang="es">Finalmente, como un vector se puede expresar como el producto de su módulo por su vecotr unitario, tenemos que:</p>
+            <div class="container">
+                <div  class="center">`vecM_l = norm(vecM_l) * vecu_l`</div>
+                <div  class="right" id="[1.23]">[1.23]</div>
+            </div>
+        </section>
+
+        <section><!--1.15 Vector Functions-->
+            <h3 class="lang lang-en">1.15 Vector Functions</h3>
+            <h3 class="lang lang-es" lang="es">1.15 Funciones Vectoriales</h3>
+            <p class="lang lang-en">
+                A <strong>vector-valued function</strong>, also referred to as a <strong>vector function</strong>, is a mathematical function of one or more variables whose range is a set of vectors.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Una <strong>función vectorial</strong> es una función matemática de una o más variables cuyo rango es un conjunto de vectores.
+            </p>
+            <p class="lang lang-en">
+                For example, a common type of vector-valued function is one that depends on a single real parameter t and produces a vector `vecf(t)` as the result. In terms of the standard unit vectors `veci`, `vecj`, `veck` of Cartesian 3D-space, these specific types of vector-valued functions are given by expressions such as:
+            </p>
+            <p class="lang lang-es" lang="es">
+                Por ejemplo, un tipo común de función vectorial es aquella que depende de un único parámetro real t y produce un vector `vecf(t)` como resultado. En términos de los vectores unitarios estándar `veci`, `vecj`, `veck` del espacio cartesiano 3D, estos tipos específicos de funciones con valores vectoriales vienen dados por expresiones como:
+            </p>
+            <div class="container">
+                <div  class="center">`vecf(t)=f_x(t)veci+f_y(t)vecj+f_z(t)veck`</div>
+                <div  class="right" id="[1.24]">[1.24]</div>
+            </div>
+            <p class="lang lang-en">
+                where `f_x(t)`, `f_y(t)`, and `f_z(t)` are the <strong>coordinate functions</strong> of the parameter t, and the domain of this vector-valued function is the intersection of the domains of the functions `f_x(t)`, `f_y(t)` and `f_z(t)`.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Donde `f_x(t)`, `f_y(t)` y `f_z(t)` son las funciones de coordenadas del parámetro t, y el dominio de esta función vectorial es la intersección de los dominios de las funciones `f_x(t)`, `f_y(t)` y `f_z(t)`.
+            </p>
+        </section>
+
+        <section><!--1.16 Derivative of a vector-valued function-->
+            <h3 class="lang lang-en">1.16 Derivative of a vector-valued function</h3>
+            <h3 class="lang lang-es" lang="es">1.16 Derivada de una función vectorial</h3>
+            <p class="lang lang-en">
+                The <strong>derivative of a vector-valued function</strong> is nearly identical to the definition of derivative of a real-valued function of one variable. However, because the range of a vector-valued function consists of vectors, the same is true for the range of the derivative of a vector-valued function. That is:
+            </p>
+            <p class="lang lang-es" lang="es">
+                La <strong>derivada de una función vectorial</strong> es casi idéntica a la definición de derivada de una función real de una variable. Sin embargo, debido a que el rango de una función con valores vectoriales consta de vectores, lo mismo ocurre con el rango de la derivada de una función con valores vectoriales. Es decir:
+            </p>
+            <div class="container">
+                <div  class="center">`vecf'(t) = (dvecf)/dt = (df_x)/dtveci + (df_y)/dtvecj +(df_z)/dtveck`</div>
+                <div  class="right" id="[1.25]">[1.25]</div>
+            </div>
+        </section>
+
+        <section><!--1.17 Partial derivative of a function and its Total derivative.-->
+            <h3 class="lang lang-en">1.17 Partial derivative of a function and its Total derivative.</h3>
+            <h3 class="lang lang-es" lang="es">1.17 Derivada parcial de una función y su derivada total.</h3>
+            <p class="lang lang-en">
+                If a function depends of more than one variable, its <strong>partial derivative</strong> is the derivative with respect to one of those variables, keeping the others as constants.
+            </p>
+            <p class="lang lang-es" lang="es">
+                Si una función depende de más de una variable, su <strong>derivada parcial</strong> es la derivada con respecto a una de esas variables manteniendo las otras como constantes.
+            </p>
+            <p class="lang lang-en">
+                The partial derivative of a function `f(x,y,z)` respect of one variable, x, is represented as:
+            </p>
+            <p class="lang lang-es" lang="es">
+                La derivada parcial de una función `f(x,y,z)` respecto a una de sus variables, x, se representa como:
+            </p>
+            <div class="container">
+                <div  class="center">`(delf)/(delx)`</div>
+                <div  class="right" id="[1.26]">[1.26]</div>
+            </div>
+            <p class="lang lang-en">
+                The <strong>total derivative</strong> of the function `f(x,y,z)` can be calculated using the expression:
+            </p>
+            <p class="lang lang-es" lang="es">
+                La <strong>derivada total</strong> de una función `f(x,y,z)` se puede calcular mediante la expresión:
+            </p>
+            <p>&emsp; </p>
+            <div class="container">
+                <div  class="center">`df = (delf)/(delx)dx + (delf)/(dely)dy + (delf)/(delz)dz`</div>
+                <div  class="right" id="[1.27]">[1.27]</div>
+            </div>
+        </section>
+
+        <section><!--1.18 Integral of a vector-valued function-->
+            <h3 class="lang lang-en">1.18 Integral of a vector-valued function</h3>
+            <h3 class="lang lang-es" lang="es">1.18 Integral de una función vectorial</h3>
+            <p class="lang lang-en">
+                To find the <strong>integral of a vector-valued function</strong>, we usually split it into its components and integrate each component separately. That is, if  `vecf(t) = f_x(t)veci+f_y(t)vecj+f_z(t)veck = << f_x(t), f_y(t), f_z(t) >> `, its integral is: 
+            </p>
+            <p class="lang lang-es" lang="es">
+                La <strong>integral de una función vectorial</strong> es otra función vectorial en la que sus funciones coordenadas son las integrales de la funciones coordenadas de la función vectorial inicial. Es decir, si `vecf(t) = f_x(t)veci+f_y(t)vecj+f_z(t)veck = << f_x(t), f_y(t), f_z(t) >> `, su integral es: 
+            </p>
+            <div class="container">
+                <div  class="center">`int vecf(t)dt = int << f_x(t), f_y(t), f_z(t) >> dt = << int f_x(t)dt, int f_y(t)dt, int f_z(t)dt >> `</div>
+                <div  class="right" id="[1.28]">[1.28]</div>
+            </div>
+        </section>
+
+        <aside> <!--References-->
+            <h3 class="lang lang-en">References</h3>
+            <h3 class="lang lang-es" lang="es">Referencias</h3>
+            <!-- references to concepts used in this article. target="_blank" will display the link in a new tab.-->
+            <ul>
+                <li>
+                    <a href="https://openstax.org/books/precalculus/pages/8-8-vectors" target="_blank">
+                        8.8 Vectors. Precalculus. Openstax.
+                    </a>
+                </li>
+                <li>
+                    <a href="http://encyclopediaofmath.org/index.php?title=Vector&oldid=49131" target="_blank">
+                        Vector. Encyclopedia of Mathematics.
+                    </a>
+                </li>
+                <li>
+                    <a href="http://encyclopediaofmath.org/index.php?title=Vector_algebra&oldid=49132" target="_blank">
+                        Vector algebra. Encyclopedia of Mathematics.
+                    </a>
+                </li>
+                <li>
+                    <a href="https://encyclopediaofmath.org/wiki/Cartesian_orthogonal_coordinate_system"
+                        target="_blank">
+                        Cartesian orthogonal coordinate system. Encyclopedia of Mathematics.
+                    </a>
+                </li>
+                <li>
+                    <a href="https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods"
+                        target="_blank">
+                        5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.
+                    </a>
+                </li>
             </ul>
-        </p>
-        <p class="lang lang-es" lang="es">
-            Propiedades del producto vectorial:
-            <ul class="lang lang-es" lang="es">
-                <li>Propiedad anticonmutativa: <br> &emsp; `vecu xx vecv = -vecv xx vecu`</li>
-                <li>Propiedad distributiva: <br> &emsp; `vecu xx (vecv + vecw) = vecu xx vecv + vecu xx vecW`</li>
-                <li>Multiplicación por un escalar: <br> &emsp; `c*(vecu xx vecv) = (c*vecu) xx vecv = vecu xx (c*vecv)`</li>
-                <li>Producto vectorial del vector cero: <br> &emsp; `vecu xx vec0 = vec0 xx vecu = vec0`</li>
-                <li>Producto vectorial de un vector por sigo mismo: <br> &emsp; `vecv xx vecv = vec0`</li>
-            </ul>
-        </p>	
-    </section>
-
-    <section> <!--1.13 Moment of a Sliding Vector about a Point-->
-        <h3 class="lang lang-en">1.13 Moment of a Sliding Vector about a Point</h3>
-        <h3 class="lang lang-es" lang="es">1.13 Momento de un Vector Deslizante respecto a un Punto</h3>
-        <p class="lang lang-en">
-            The <strong>moment of a sliding vector</strong> `vecv` about a point P is calculated using the cross product of `vecr` by `vecv`. Being `vecr` the position vector of `vecv` relative to P
-        </p>
-        <p class="lang lang-es" lang="es">
-            El <strong>momento de un vector deslizante</strong> `vecv` respecto a un punto P se calcula mediante el producto vectorial de `vecr` por `vecv`. Siendo `vecr` el vector de posición de `vecv` respecto a P.
-        </p>
-        <p>&emsp; </p>
-        <div class="container">
-            <div  class="center">`vecM = vecr xx vecv`</div>
-            <div  class="right" id="[1.20]">[1.20]</div>
-        </div>
-        <p class="lang lang-en">
-            The position vector, `vecr`, extends from the point of interest P to the origin of `vecv`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Donde el vector de posición, `vecr`, se extiende desde el punto de interés P hasta el origen de `vecv`.
-        </p>
-
-        <figure class="centered"> <!--Moment of a sliding vector `vecv` about point P, `vecM = vecr xx vecv`.-->
-            <svg id= "svg1_8"></svg > <!--See drawing code in main.js-->
-
-            <figcaption class="lang lang-en"><b>Figure 1.8</b> Moment of a sliding vector `vecv` about point P, `vecM = vecr xx vecv`.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.8</b> Momento de un vector deslizante `vecv` respecto a un punto P, `vecM = vecr xx vecv`.</figcaption>
-        </figure>
-
-        <p class="lang lang-en">
-            The properties of the cross product allow us to conclude that `vecM` is a vector perpendicular to the plane defined by `vecr` and `vecv` and it doesn't change if we move the sliding vector `vecv` along its line of action. This is because the moment of a sliding vector is a measure of its tendency to cause rotation about a point or axis, which is determined by both the vector’s magnitude and its distance from the point or axis.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Las propiedades del producto vectorial nos permiten concluir que `vecM` es un vector perpendicular al plano definido por `vecr` y `vecv` y que no cambia si movemos el vector deslizante `vecv` a lo largo de su línea de acción. Esto se debe a que el momento de un vector deslizante es una medida de su tendencia a causar rotación alrededor de un punto o eje, que está determinada tanto por la magnitud del vector como por su distancia desde el punto o eje.
-        </p>
-
-        <p class="lang lang-en">
-            When you slide a vector along its line of action, you’re not changing the sliding vector’s magnitude or the perpendicular distance from its line of action to the point or axis of interest. Therefore, the moment remains the same. This property is what makes it a “sliding vector”.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Al deslizar un vector a lo largo de su línea de acción, no cambia la magnitud del vector deslizante ni la distancia perpendicular desde su línea de acción hasta el punto o eje de interés. Por lo tanto, el momento sigue siendo el mismo. Esta propiedad es lo que lo convierte en un "vector deslizante".
-        </p>
-        <p class="lang lang-en">
-            This concept is fundamental in physics and engineering, as it helps us understand and calculate the effects of forces on the rotation of objects.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Este concepto es fundamental en física e ingeniería, ya que nos ayuda a comprender y calcular los efectos de las fuerzas en la rotación de los objetos.
-        </p> 
-    </section>
-
-    <section><!--1.14 Moment of a Sliding Vector About a Line-->
-        <h3 class="lang lang-en">1.14 Moment of a Sliding Vector About a Line</h3>
-        <h3 class="lang lang-es" lang="es">Momento de un Vector Deslizante respecto de una Línea</h3>
-        <p class="lang lang-en">
-            The moment of a sliding vector about a line of interest l is the projection onto said line of the moment of the vector with respect to any point on the line.
-        </p>
-        <p class="lang lang-es" lang="es">
-            El momento de un vector deslizante alrededor de una recta de interés l es la proyección sobre dicha recta del momento del vector con respecto a cualquier punto de la recta.
-        </p>
-        <figure class="centered"><!--Moment of a sliding vector `vecv` about line g, `norm(vecM_g) = vecu_g * (vecr xx vecv)`.-->
-            <svg id="svg1_9"></svg> <!--See SVG drawing code in main.js-->
-
-            <figcaption class="lang lang-en"><b>Figure 1.9</b> Moment of a sliding vector `vecv` about line l, `norm(vecM_l) = vecu_l * (vecr xx vecv)`.</figcaption>
-            <figcaption class="lang lang-es" lang="es"><b>Figura 1.9</b> Momento de un vector deslizante `vecv` respecto de la línea l, `norm(vecM_l) = vecu_l * (vecr xx vecv)`.</figcaption>
-        </figure>
-                
-        <p class="lang lang-en">
-            The magnitude of the moment of a sliding vector about a line l, `norm(vecM_g)` can be calculated using the cross and dot product of three vectors:
-            <ol class="lang lang-en">
-                <li>Unit vector along the line of interest g, `vecu_l = << u_(lx), u_(ly), u_(lz) >> `.</li>
-                <li>Position vector `vecr = << r_x, r_y, r_z >>` from any point along the line of interest l to any point on the line of action of the sliding vector `vecv`.</li>
-                <li>The sliding vector `vecv = << v_x, v_y, v_z >> `.</li>
-            </ol>
-            That is:
-        </p>
-        <p class="lang lang-es" lang="es">
-            La magnitud del momento de un vector deslizante alrededor de una recta g, `norm(vecM_g)` se puede calcular utilizando el producto vectorial y escalar de tres vectores:
-            <ol class="lang lang-es" lang="es">
-                <li>Vector unitario a lo largo de la línea de interés g, `vecu_l = << u_(lx), u_(ly), u_(lz) >> `.</li>
-                <li>Vector de posición `vecr = << r_x, r_y, r_z >>` desde cualquier punto de la línea de interés g hasta cualquier punto de la línea de acción del vector deslizante `vecv`.</li>
-                <li>El vector deslizante `vecv = << v_x, v_y, v_z >> `.</li>
-            </ol>
-            Esto es:
-        </p>
-        <div class="container">
-            <div  class="center">`norm(vecM_l) = vecu_l * (vecr xx vecv)`</div>
-            <div  class="right" id="[1.21]">[1.21]</div>
-        </div>
-        <p class="lang lang-en">
-            To streamline the calculations even further, mathematically we can combine the cross and dot product into what is known as a <strong>mixed triple product</strong>. In the mixed triple product we write the cross product as a determinant in the form:
-        </p>
-        <p class="lang lang-es" lang="es">
-            Para simplificar aún más los cálculos, matemáticamente podemos combinar el producto vectorial y escalar en lo que se conoce como un <strong>producto mixto</strong>. En el producto mixto escribimos el producto como un determinante con la forma:
-        </p>
-        <div class="container">
-            <div  class="center">`norm(vecM_l) = vecu_l * (vecr xx vecv) = |[u_(lx), u_(ly), u_(lz)], [r_x, r_y, r_z], [v_x, v_y, v_z]| = u_(lx)*|[r_y, r_z], [v_y, v_z]| - u_(ly)*|[r_x, r_z], [v_x, v_z]| + u_(lz)*|[r_x, r_y], [v_x, v_y]|`</div>
-            <div  class="right" id="[1.22]">[1.22]</div>
-        </div><br><br>
-        <p class="lang lang-en">Finally, since a vector can be expressed as the product of its modulus and its unit vector, we have:</p>
-        <p class="lang lang-es" lang="es">Finalmente, como un vector se puede expresar como el producto de su módulo por su vecotr unitario, tenemos que:</p>
-        <div class="container">
-            <div  class="center">`vecM_l = norm(vecM_l) * vecu_l`</div>
-            <div  class="right" id="[1.23]">[1.23]</div>
-        </div>
-    </section>
-
-    <section><!--1.15 Vector Functions-->
-        <h3 class="lang lang-en">1.15 Vector Functions</h3>
-        <h3 class="lang lang-es" lang="es">1.15 Funciones Vectoriales</h3>
-        <p class="lang lang-en">
-            A <strong>vector-valued function</strong>, also referred to as a <strong>vector function</strong>, is a mathematical function of one or more variables whose range is a set of vectors.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Una <strong>función vectorial</strong> es una función matemática de una o más variables cuyo rango es un conjunto de vectores.
-        </p>
-        <p class="lang lang-en">
-            For example, a common type of vector-valued function is one that depends on a single real parameter t and produces a vector `vecf(t)` as the result. In terms of the standard unit vectors `veci`, `vecj`, `veck` of Cartesian 3D-space, these specific types of vector-valued functions are given by expressions such as:
-        </p>
-        <p class="lang lang-es" lang="es">
-            Por ejemplo, un tipo común de función vectorial es aquella que depende de un único parámetro real t y produce un vector `vecf(t)` como resultado. En términos de los vectores unitarios estándar `veci`, `vecj`, `veck` del espacio cartesiano 3D, estos tipos específicos de funciones con valores vectoriales vienen dados por expresiones como:
-        </p>
-        <div class="container">
-            <div  class="center">`vecf(t)=f_x(t)veci+f_y(t)vecj+f_z(t)veck`</div>
-            <div  class="right" id="[1.24]">[1.24]</div>
-        </div>
-        <p class="lang lang-en">
-            where `f_x(t)`, `f_y(t)`, and `f_z(t)` are the <strong>coordinate functions</strong> of the parameter t, and the domain of this vector-valued function is the intersection of the domains of the functions `f_x(t)`, `f_y(t)` and `f_z(t)`.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Donde `f_x(t)`, `f_y(t)` y `f_z(t)` son las funciones de coordenadas del parámetro t, y el dominio de esta función vectorial es la intersección de los dominios de las funciones `f_x(t)`, `f_y(t)` y `f_z(t)`.
-        </p>
-    </section>
-
-    <section><!--1.16 Derivative of a vector-valued function-->
-        <h3 class="lang lang-en">1.16 Derivative of a vector-valued function</h3>
-        <h3 class="lang lang-es" lang="es">1.16 Derivada de una función vectorial</h3>
-        <p class="lang lang-en">
-            The <strong>derivative of a vector-valued function</strong> is nearly identical to the definition of derivative of a real-valued function of one variable. However, because the range of a vector-valued function consists of vectors, the same is true for the range of the derivative of a vector-valued function. That is:
-        </p>
-        <p class="lang lang-es" lang="es">
-            La <strong>derivada de una función vectorial</strong> es casi idéntica a la definición de derivada de una función real de una variable. Sin embargo, debido a que el rango de una función con valores vectoriales consta de vectores, lo mismo ocurre con el rango de la derivada de una función con valores vectoriales. Es decir:
-        </p>
-        <div class="container">
-            <div  class="center">`vecf'(t) = (dvecf)/dt = (df_x)/dtveci + (df_y)/dtvecj +(df_z)/dtveck`</div>
-            <div  class="right" id="[1.25]">[1.25]</div>
-        </div>
-    </section>
-
-    <section><!--1.17 Partial derivative of a function and its Total derivative.-->
-        <h3 class="lang lang-en">1.17 Partial derivative of a function and its Total derivative.</h3>
-        <h3 class="lang lang-es" lang="es">1.17 Derivada parcial de una función y su derivada total.</h3>
-        <p class="lang lang-en">
-            If a function depends of more than one variable, its <strong>partial derivative</strong> is the derivative with respect to one of those variables, keeping the others as constants.
-        </p>
-        <p class="lang lang-es" lang="es">
-            Si una función depende de más de una variable, su <strong>derivada parcial</strong> es la derivada con respecto a una de esas variables manteniendo las otras como constantes.
-        </p>
-        <p class="lang lang-en">
-            The partial derivative of a function `f(x,y,z)` respect of one variable, x, is represented as:
-        </p>
-        <p class="lang lang-es" lang="es">
-            La derivada parcial de una función `f(x,y,z)` respecto a una de sus variables, x, se representa como:
-        </p>
-        <div class="container">
-            <div  class="center">`(delf)/(delx)`</div>
-            <div  class="right" id="[1.26]">[1.26]</div>
-        </div>
-        <p class="lang lang-en">
-            The <strong>total derivative</strong> of the function `f(x,y,z)` can be calculated using the expression:
-        </p>
-        <p class="lang lang-es" lang="es">
-            La <strong>derivada total</strong> de una función `f(x,y,z)` se puede calcular mediante la expresión:
-        </p>
-        <p>&emsp; </p>
-        <div class="container">
-            <div  class="center">`df = (delf)/(delx)dx + (delf)/(dely)dy + (delf)/(delz)dz`</div>
-            <div  class="right" id="[1.27]">[1.27]</div>
-        </div>
-    </section>
-
-    <section><!--1.18 Integral of a vector-valued function-->
-        <h3 class="lang lang-en">1.18 Integral of a vector-valued function</h3>
-        <h3 class="lang lang-es" lang="es">1.18 Integral de una función vectorial</h3>
-        <p class="lang lang-en">
-            To find the <strong>integral of a vector-valued function</strong>, we usually split it into its components and integrate each component separately. That is, if  `vecf(t) = f_x(t)veci+f_y(t)vecj+f_z(t)veck = << f_x(t), f_y(t), f_z(t) >> `, its integral is: 
-        </p>
-        <p class="lang lang-es" lang="es">
-            La <strong>integral de una función vectorial</strong> es otra función vectorial en la que sus funciones coordenadas son las integrales de la funciones coordenadas de la función vectorial inicial. Es decir, si `vecf(t) = f_x(t)veci+f_y(t)vecj+f_z(t)veck = << f_x(t), f_y(t), f_z(t) >> `, su integral es: 
-        </p>
-        <div class="container">
-            <div  class="center">`int vecf(t)dt = int << f_x(t), f_y(t), f_z(t) >> dt = << int f_x(t)dt, int f_y(t)dt, int f_z(t)dt >> `</div>
-            <div  class="right" id="[1.28]">[1.28]</div>
-        </div>
-    </section>
-
-    <aside> <!--References-->
-        <h3 class="lang lang-en">References</h3>
-        <h3 class="lang lang-es" lang="es">Referencias</h3>
-        <!-- references to concepts used in this article. target="_blank" will display the link in a new tab.-->
-        <ul>
-            <li>
-                <a href="https://openstax.org/books/precalculus/pages/8-8-vectors" target="_blank">
-                    8.8 Vectors. Precalculus. Openstax.
-                </a>
-            </li>
-            <li>
-                <a href="http://encyclopediaofmath.org/index.php?title=Vector&oldid=49131" target="_blank">
-                    Vector. Encyclopedia of Mathematics.
-                </a>
-            </li>
-            <li>
-                <a href="http://encyclopediaofmath.org/index.php?title=Vector_algebra&oldid=49132" target="_blank">
-                    Vector algebra. Encyclopedia of Mathematics.
-                </a>
-            </li>
-            <li>
-                <a href="https://encyclopediaofmath.org/wiki/Cartesian_orthogonal_coordinate_system"
-                    target="_blank">
-                    Cartesian orthogonal coordinate system. Encyclopedia of Mathematics.
-                </a>
-            </li>
-            <li>
-                <a href="https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods"
-                    target="_blank">
-                    5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.
-                </a>
-            </li>
-        </ul>
-    </aside>
-
+        </aside>
+    </article>
     
-    <article><!--VECTOR OPERATIONS EXERCISES-->
+    <article><!-- 2. VECTOR OPERATIONS EXERCISES-->
         
         <div class="lang lang-en header-container">
-            <h2 id="Vector Operations Exercises" style="margin-right: 10px;">VECTOR OPERATIONS EXERCISES</h2>
+            <h2 id="Vector Operations Exercises" style="margin-right: 10px;">2. VECTOR OPERATIONS EXERCISES</h2>
             <a href="#Top">Back to the top.</a>
         </div>
         <div class="lang lang-es header-container" lang="es">
-            <h2 id="Ejercicios con vectores" style="margin-right: 10px;">EJERCIOS CON VECTORES</h2>
+            <h2 id="Ejercicios con vectores" style="margin-right: 10px;">2. EJERCIOS CON VECTORES</h2>
             <a href="#Arriba">Regresar arriba.</a>
         </div>
         
-        <section> <!--Exercise 1-->
+        <section> <!-- 2.1 Exercise 1-->
             <h3 class="lang lang-en">Exercise 1</h3>
             <h3 class="lang lang-es" lang="es">Ejercicio 1</h3>
             <p class="lang lang-en">
@@ -975,12 +981,13 @@
 
             <figure class="centered"><!--showing coordinate-plane, `vecv_r` as the water velocity and `vecv` as the velocity with which the boat is propelled-->
                 <svg
-					width="670" 
+					id="svg2_1"
+                    width="670" 
 					height="410"
 					viewBox="0 0 670 410" 
 					xmlns="http://www.w3.org/2000/svg">
 					<!--https://developer.mozilla.org/en-US/docs/Web/CSS/named-color-->
-					<!--Lower river bank-->
+					<!--Lower river bank
 					<rect
 				       style="fill:#af634a;fill-opacity:0.84"
 				       width="670"
@@ -992,8 +999,8 @@
 				    </text>
 					<text class="lang lang-es" lang="es" x="500" y="390" font-size="25" stroke="black" font-weight="bold">
 				        Orilla del río
-				    </text>
-					<!--Upper river bank-->
+				    </text> -->
+					<!--Upper river bank
 					<rect
 				       style="fill:#af634a;fill-opacity:0.84"
 				       width="670"
@@ -1005,8 +1012,8 @@
 				    </text>
 					<text class="lang lang-es" lang="es" x="500" y="30" font-size="25" stroke="black" font-weight="bold">
 				        Orilla del río
-				    </text>
-					<!--River-->
+				    </text>-->
+					<!--River
 					<rect
 				       style="fill:mediumaquamarine"
 				       width="670"
@@ -1018,44 +1025,44 @@
 				    </text>
 					<text class="lang lang-es" lang="es" x="500" y="192" font-size="25" stroke="brown" fill="brown" font-weight="bold">
 				        Río
-				    </text>
-					<!--X-axis-->
+				    </text>-->
+					<!--X-axis
 					<line x1="50" y1="320" x2="400" y2="320" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
 				    <text x="380" y="340" font-size="25" stroke="brown" fill="brown">
 						x
-					</text>
-					<!--Y-axis-->
+					</text>-->
+					<!--Y-axis
 					<line x1="250" y1="350" x2="250" y2="150" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
 				    <text x="230" y="160" font-size="25" stroke="brown" fill="brown">
 						y
-					</text>
-					<!--Vr <9,0> Km/h scale 4:1-->
+					</text>-->
+					<!--Vr <9,0> Km/h scale 4:1
 					<line x1="400" y1="250" x2="436" y2="250" stroke="brown" stroke-width="2" marker-end="url(#Brownarrow)" />
 				    <text x="410" y="235" font-size="20" stroke="brown" fill="brown">
 						V
 						<tspan dx="-5" dy="8" font-size="20" stroke-width="0.3">r</tspan>
-					</text>
-					<!--Vy <0,36> Km/h scale 4:1-->
+					</text>-->
+					<!--Vy <0,36> Km/h scale 4:1
 					<line x1="250" y1="320" x2="250" y2="176" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
 				    <text x="255" y="220" font-size="20" stroke="green" fill="green">
 						V
 						<tspan dx="-5" dy="8" font-size="20" stroke-width="0.3">y</tspan>
-					</text>
-					<!--Vx <-9,0> Km/h scale 4:1-->
+					</text>-->
+					<!--Vx <-9,0> Km/h scale 4:1
 					<line x1="250" y1="320" x2="214" y2="320" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)" />
 				    <text x="210" y="340" font-size="20" stroke="green" fill="green">
 						V
 						<tspan dx="-5" dy="8" font-size="20" stroke-width="0.3">x</tspan>
-					</text>
-					<!--V <-9,36> Km/h scale 4:1-->
+					</text>-->
+					<!--V <-9,36> Km/h scale 4:1
 					<line x1="214" y1="320" x2="214" y2="176" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
 					<line x1="250" y1="176" x2="214" y2="176" stroke="blue" stroke-width="2" stroke-dasharray="5,5" />
 					<line x1="250" y1="320" x2="214" y2="176" stroke="blue" stroke-width="2" marker-end="url(#Bluearrow)" />
 				    <text x="226" y="220" font-size="20" stroke="blue" fill="blue">
 						V
-					</text>
+					</text>-->
 					<!--Boat-->
-					<!--moves the object by 20 and 20, and rotates -104º with +angle clockwise-->
+					<!--moves the object by 20 and 20, and rotates -104º with +angle clockwise
 					<g transform="translate(230, 300) 
 									rotate(-104, 20, 20)">
 				    	<path
@@ -1063,11 +1070,11 @@
 							stroke="brown"
 							style="fill:none" 
 						/>
-				    </g>	 
+				    </g>--> 
 				</svg>
 
-                <figcaption class="lang lang-en"><b>Figure 1.a,</b> showing coordinate-plane, `vecv_r` as the water velocity and `vecv` as the velocity with which the boat is propelled.</figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figura 1.a,</b> mostrando plano de coordenadas, `vecv_r` como la velocidad del agua del río y `vecv` como la velocidad con la que se propulsa el bote.</figcaption>
+                <figcaption class="lang lang-en"><b>Figure 2.1</b>, showing coordinate-plane, `vecv_r` as the water velocity and `vecv` as the velocity with which the boat is propelled.</figcaption>
+                <figcaption class="lang lang-es" lang="es"><b>Figura 2.1</b>, mostrando plano de coordenadas, `vecv_r` como la velocidad del agua del río y `vecv` como la velocidad con la que se propulsa el bote.</figcaption>
             </figure>
 
             <p class="lang lang-en">

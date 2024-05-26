@@ -423,6 +423,7 @@ class CartesianPlane {
 		if (textContent != "") {
 			const half = vectorComponents.map(element => element / 2);
 			const position = add(initialPoint, half);
+			textAttributes.fill = strokeColor;
 			this.drawLabel(position, textAttributes);
 		}
 	}
@@ -453,7 +454,7 @@ class CartesianPlane {
 		validateObject(textAttributes);
 		
 		// destructure textAttributes and assign default values
-		const {textContent = "", fontSize = 12, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
+		const {textContent = "", fontSize = 20, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
 		
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
 		const [xPosition, yPosition] = this.transformCoordinates(baselinePoint);
