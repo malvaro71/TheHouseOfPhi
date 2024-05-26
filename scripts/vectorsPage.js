@@ -380,10 +380,10 @@
 	myPlane2_2.drawAxes("y-axis", "x-axis", "O");
 
 	// Draw horizontal and vertical lines to better show plane coordinates
-    for (let x = xMin; x <= xMax; x += 1) {
+    for (let x = xMin; x <= xMax; x++) {
         myPlane2_2.drawSegment([x, yMin], [x, yMax], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
     }
-	for (let y = yMin; y <= yMax; y += 1) {
+	for (let y = yMin; y <= yMax; y++) {
         myPlane2_2.drawSegment([xMin, y], [xMax, y], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
     }
 
@@ -397,7 +397,7 @@
 	let initialPoint = [0, 0];
 	const vectorList = [vectorA, vectorB, vectorC, vectorD];
 	const vectorNames = ["a", "b", "c", "d"];
-	for(let v = 0; v < vectorList.length; v += 1){
+	for(let v = 0; v < vectorList.length; v++){
 		myPlane2_2.drawVector(initialPoint, vectorList[v], {}, {textContent: vectorNames[v]});
 		initialPoint = add(initialPoint, vectorList[v]);
 	}
