@@ -187,7 +187,7 @@
 	// Draw a point
 	mySpace1_5.drawPoint([6, 9, 15], "green");
 	
-	// Draw dashed lines to ilustrate the point coordinates on each axe x, y and z.
+	// Draw dashed lines to ilustrate the point coordinates on each axis x, y and z.
 	mySpace1_5.drawSegment([6, 0, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
 	mySpace1_5.drawSegment([6, 9, 0], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
 	mySpace1_5.drawSegment([0, 9, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
@@ -291,7 +291,7 @@
 	const pointP = [16, 9, 2];
 	const vectorR = [0, 6, 2];
 	const vectorV = [-5, -1, 0];
-	const unitl = [0, 0, 1]; // Line l is parallel to z-axe
+	const unitl = [0, 0, 1]; // Line l is parallel to z-axis
 	const linel1 = [16, 9, -2]; // points to draw a segment representing line l
 	const linel2 = [16, 9, 40];
 
@@ -317,7 +317,7 @@
 	mySpace1_9.drawSegment(dashed1, dashed2, {strokeColor: "green", strokeDasharray: "5,5"});
 }
 
-// svg2_1: 
+// svg2_1: showing coordinate-plane, Vr as the water velocity and V as the velocity with which the boat is propelled
 {
 	// Get the SVG element from the DOM
 	var svg2_1 = document.getElementById("svg2_1");
@@ -327,24 +327,36 @@
 	svg2_1.setAttribute("width", "400"); 
 	svg2_1.setAttribute("height", "400");
 
-	// set a cartesian plane
+	// set a cartesian plane wher the river bank is parallel to x-axis.
 	const myPlane2_1 = new CartesianPlane(svg2_1, -23, 23, -6, 40);
 	myPlane2_1.drawAxes("y-axis", "x-axis", "O");
 
-	// Declare exercise elements
-	const initialPoint = [0, 0]; // Vectors are drawn at the origin.
-	const vRiver = [9, 0]; // Water velocity; parallel to x-axe.
-	const vBoat = [-9, 36]; // Velocity with which the boat is propelled.
+	// Exercise data. 
+	const vRiver = [9, 0]; // Water velocity; parallel to river bank; so parallel to x-axis.
+	const vBoat = [0, 36]; // Speed of 36 km/h perpendicular to river bank; so parallel to y-axis.
+	
+	// Write exercise data
+	myPlane2_1.drawLabel([7, 39],  {textContent: "Data:", corner: "lefttop", fontSize: 15});
+	myPlane2_1.drawLabel([7, 36],  {textContent: "Vr = <9, 0> Km/h", corner: "lefttop", fontSize: 15});
+	myPlane2_1.drawLabel([7, 33],  {textContent: "Vb = <0, 36> Km/h", corner: "lefttop", fontSize: 15});
+	// Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled, vPropelled: vBoat = vRiver + vPropelled. So vPropelled = vBoat - vRiver. 
+	const vPropelled = add(multiply(-1, vRiver), vBoat); // Velocity with which the boat is propelled.
 
 	// Draw vectors
+	const initialPoint = [0, 0]; // Vectors are drawn at the origin.
 	myPlane2_1.drawVector(initialPoint, vRiver, {strokeColor: "green"}, {textContent: "Vr", corner: "righttop"});
-	myPlane2_1.drawVector(initialPoint, vBoat, {strokeColor: "green"}, {textContent: "V", corner: "righttop"});
-	myPlane2_1.drawArc(initialPoint, vRiver, vBoat, 3);
+	myPlane2_1.drawVector(initialPoint, vPropelled, {strokeColor: "blue"}, {textContent: "V", corner: "righttop"});
+	myPlane2_1.drawSegment(vPropelled, multiply(-1, vRiver), {strokeColor: "green", strokeDasharray: "5,5"});
+	myPlane2_1.drawVector(initialPoint, multiply(-1, vRiver), {strokeColor: "green"}, {textContent: "Vx = -Vrx", corner: "righttop"});
+	myPlane2_1.drawSegment(vPropelled, vBoat, {strokeColor: "green", strokeDasharray: "5,5"});
+	myPlane2_1.drawVector(initialPoint, vBoat, {strokeColor: "green"}, {textContent: "Vy = Vby", corner: "lefttop"});
+	myPlane2_1.drawArc(initialPoint, vRiver, vPropelled, 3);
+	myPlane2_1.drawLabel([3,3], {textContent: "φ", fill: "blue", corner: "leftbottom"}); // phi
 	
-	
-	//Calculate soslutions
-	const normVBoat = norm(vBoat); // How fast should the boat be propelled?
-	const phi = angleBetweenVectorsCCW(vRiver, vBoat)*180/Math.PI; //In what direction?
-	const angleLabel = ("φ = " + phi.toFixed(1).toString() + "º"); // Expressed in degrees
-	myPlane2_1.drawLabel([3,3], {textContent: angleLabel, fill: "blue", corner: "leftbottom"}); // phi
+	//Calculate and write solutions
+	const normvPropelled = norm(vPropelled); // How fast should the boat be propelled?
+	const phi = angleBetweenVectorsCCW(vRiver, vPropelled)*180/Math.PI; //In what direction?
+	myPlane2_1.drawLabel([7, 30],  {textContent: "Solution:", corner: "lefttop", fontSize: 15});
+	myPlane2_1.drawLabel([7, 27],  {textContent: "φ = " + phi.toFixed(1).toString() + "º", corner: "lefttop", fontSize: 15});
+	myPlane2_1.drawLabel([7, 24],  {textContent: "|V| = " + normvPropelled.toFixed(1).toString() + " Km/h", corner: "lefttop", fontSize: 15});
 }
