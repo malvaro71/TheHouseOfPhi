@@ -487,7 +487,7 @@ class CartesianPlane {
 			// Set the text content
 			xAxisTextElement.textContent = xAxisText; 
 			// Set attributes for positioning (specify baseline point).
-			xAxisTextElement.setAttribute("x", this.svgHeightNum);
+			xAxisTextElement.setAttribute("x", this.svgWidthNum);
 			xAxisTextElement.setAttribute("y", this.OriginY + 5);
 			//Positions the rightmost character at the specified baseline point.
 			xAxisTextElement.setAttribute("text-anchor", "end");

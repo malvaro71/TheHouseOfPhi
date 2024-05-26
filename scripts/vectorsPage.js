@@ -360,3 +360,48 @@
 	myPlane2_1.drawLabel([7, 27],  {textContent: "φ = " + phi.toFixed(1).toString() + "º", corner: "lefttop", fontSize: 15});
 	myPlane2_1.drawLabel([7, 24],  {textContent: "|V| = " + normvPropelled.toFixed(1).toString() + " Km/h", corner: "lefttop", fontSize: 15});
 }
+
+// svg2_2: sum of vectors a, b, c and d using the graphical method
+{
+	// Get the SVG element from the DOM
+	var svg2_2 = document.getElementById("svg2_2");
+
+	// Set attributes
+	svg2_2.setAttribute("viewBox", "0 0 440 320"); 
+	svg2_2.setAttribute("width", "440"); 
+	svg2_2.setAttribute("height", "320");
+
+	// set a cartesian plane wher the river bank is parallel to x-axis.
+	const xMin = -1;
+	const xMax = 10;
+	const yMin = -3;
+	const yMax = 5;
+	const myPlane2_2 = new CartesianPlane(svg2_2, xMin, xMax, yMin, yMax);
+	myPlane2_2.drawAxes("y-axis", "x-axis", "O");
+
+	// Draw horizontal and vertical lines to better show plane coordinates
+	let x;
+    for (x = xMin; x <= xMax; x += 1) {
+        myPlane2_2.drawSegment([x, yMin], [x, yMax], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+    }
+	let y;
+	for (y = yMin; y <= yMax; y += 1) {
+        myPlane2_2.drawSegment([xMin, y], [xMax, y], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+    }
+
+	// Exercise data
+	const vectorA = [2, 3];
+	const vectorB = [4, -2];
+	const vectorC = [3, -2];
+	const vectorD = [-9, 1];
+
+	// Draw vectors
+	let initialPoint = [0, 0];
+	const vectorList = [vectorA, vectorB, vectorC, vectorD];
+	const vectorNames = ["a", "b", "c", "d"];
+	let v;
+	for(v = 0; v < vectorList.length; v += 1){
+		myPlane2_2.drawVector(initialPoint, vectorList[v], {}, {textContent: vectorNames[v]});
+		initialPoint = add(initialPoint, vectorList[v]);
+	}
+} 
