@@ -359,6 +359,8 @@
 
 	// Apply the 'baseline-shift' attribute to the subscript tspan
 	subscriptSpan.setAttribute("baseline-shift", "-0.3em");
+	subscriptSpan.setAttribute("style", "font-size: 90%"); // Adjust font size as needed
+
 
 	// Add the subscript tspan to the main text element
 	text.appendChild(subscriptSpan);
