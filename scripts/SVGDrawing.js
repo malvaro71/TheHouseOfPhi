@@ -133,7 +133,7 @@ function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, c
 	  } else {
 		// Throw an error for unexpected types
 		throw new TypeError("Invalid type for 'text' parameter. Expected string, SVGTextElement, or object.");
-	  }
+	}
 
 	// Set attributes for id, positioning and styling
 	svgTextElement.setAttribute("x", x);
@@ -398,7 +398,7 @@ class CartesianPlane {
 	 * @throws {ValueError} If any element in initialPoint or vectorComponents is not a number.
 	 * @throws {TypeError} If either lineAttributes or textAttributes is not an object.
 	 */
-	drawVector(initialPoint, vectorComponents, lineAttributes = {}, textAttributes = {}) {
+	drawVector(initialPoint, vectorComponents, textContent = "", lineAttributes = {}, textAttributes = {}) {
 		// Validate coordinates1 and coordinates2.
 		[initialPoint, vectorComponents].every(arr => validateCoordinates2D(arr));
 
@@ -407,7 +407,7 @@ class CartesianPlane {
 
 		// Destructure the object and set default values
 		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
-		const {textContent = "", corner = "rightbottom"} = textAttributes;
+		const { corner = "rightbottom"} = textAttributes;
 
 		//Calculate vector endpoint using initial point and vector components.
 		const endPoint = add(initialPoint, vectorComponents);
@@ -424,7 +424,7 @@ class CartesianPlane {
 			const half = vectorComponents.map(element => element / 2);
 			const position = add(initialPoint, half);
 			textAttributes.fill = strokeColor;
-			this.drawLabel(position, textAttributes);
+			this.drawLabel(position, textContent, textAttributes);
 		}
 	}
 	
@@ -446,7 +446,7 @@ class CartesianPlane {
 	 * @throws {ValueError} If any element in baselinePoint is not a number.
 	 * @throws {TypeError} If textAttributes is not an object.
 	 */
-	drawLabel(baselinePoint, textAttributes = {}) {
+	drawLabel(baselinePoint, textContent, textAttributes = {}) {
 		// Validade baselinePoint
 		validateCoordinates2D(baselinePoint);
 
@@ -454,7 +454,7 @@ class CartesianPlane {
 		validateObject(textAttributes);
 		
 		// destructure textAttributes and assign default values
-		const {textContent = "", fontSize = 20, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
+		const {fontSize = 20, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
 		
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
 		const [xPosition, yPosition] = this.transformCoordinates(baselinePoint);
@@ -502,11 +502,7 @@ class CartesianPlane {
 			this.svgElement.appendChild(xAxisTextElement);
 			
 		// Origin.
-			this.drawLabel([0-0.2, 0], {
-				textContent: originText,
-				fontSize: 22,
-				fill: "brown" 
-			});
+			this.drawLabel([0-0.2, 0], originText, {fontSize: 22, fill: "brown"});
     }
 }
 
@@ -560,18 +556,18 @@ class EuclideanSpace {
 
 		// x-axis
 		this.drawVector([-planeWidht/6, 0, 0], [planeWidht*5/8, 0, 0]);
-		this.drawLabel([planeWidht*4/9, 0, planeWidht/100], {textContent: "x"});
+		this.drawLabel([planeWidht*4/9, 0, planeWidht/100], "x", {});
 
 		// y-axis
 		this.drawVector([0, -planeHeight/6, 0], [0, planeHeight*3/4, 0]);
-		this.drawLabel([0, planeHeight*5/9, planeWidht/100], {textContent: "y"});
+		this.drawLabel([0, planeHeight*5/9, planeWidht/100], "y", {});
 
 		//z-axis
 		this.drawVector([0, 0, -planeWidht/6], [0, 0, planeWidht*3/4]);
-		this.drawLabel([0, -planeWidht/100, planeWidht*5/9], {textContent: "z"}, "righttop");
+		this.drawLabel([0, -planeWidht/100, planeWidht*5/9], "z", {corner: "righttop"});
 		
 		// Origin.
-		this.drawLabel([0, 0-0.1, 0], {textContent: "O"});
+		this.drawLabel([0, 0-0.1, 0], "O", {});
 	}
 
 	/**
@@ -644,7 +640,7 @@ class EuclideanSpace {
 		@throws {ValueError} If any element in initialPoint or vectorComponents is not a number.
 		@throws {TypeError} If either lineAttributes or textAttributes is not an object. 
 	*/
-	drawVector(initialPoint, vectorComponents, lineAttributes = {}, textAttributes = {}
+	drawVector(initialPoint, vectorComponents, textContent = "", lineAttributes = {}, textAttributes = {}
 	) {
 		// Validate coordinates1 and coordinates2.
 		[initialPoint, vectorComponents].every(arr => validateCoordinates3D(arr));
@@ -654,7 +650,7 @@ class EuclideanSpace {
 
 		// Destructure lineAttributes and textAttributes, and set its default values
 		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
-		const {textContent = "", corner = "rightbottom", fill} = textAttributes;
+		const {corner = "rightbottom", fill} = textAttributes;
 
 		//Calculate vector endpoint using initial point and vector components.
 		const endPoint = add(initialPoint, vectorComponents);
@@ -671,7 +667,7 @@ class EuclideanSpace {
 			const half = vectorComponents.map(element => element / 2);
 			const position = add(initialPoint, half);
 			textAttributes.fill = strokeColor;
-			this.drawLabel(position, textAttributes);
+			this.drawLabel(position, textContent, textAttributes);
 		}
 	}
 
@@ -692,7 +688,7 @@ class EuclideanSpace {
 	 * @throws {ValueError} If any element in baselinePoint is not a number.
 	 * @throws {TypeError} If textAttributes is not an object.
 	*/
-	drawLabel(baselinePoint, textAttributes = {}) {
+	drawLabel(baselinePoint, textContent, textAttributes = {}) {
 		// Validate coordinates1 and coordinates2.
 		validateCoordinates3D(baselinePoint);
 
@@ -700,7 +696,7 @@ class EuclideanSpace {
 		validateObject(textAttributes);
 
 		// Destructure textAttributes, and set its default values
-		const {textContent = "", fontSize = 20, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
+		const {fontSize = 20, stroke = "none", fill = "brown",  fontWeight = "normal", corner = "rightbottom"} = textAttributes;
 
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
 		const [xPosition, yPosition] = this.transformCoordinates(baselinePoint);
