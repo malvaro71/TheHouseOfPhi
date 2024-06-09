@@ -352,14 +352,14 @@ class CartesianPlane {
 		[vertex, initialSide, terminalSide].every(arr => validateCoordinates2D(arr));
 
 		// Declare block values
-		let initialPoint = [initialSide[0]/norm(initialSide)*radius, initialSide[1]/norm(initialSide)*radius];
-		let terminalPoint = [terminalSide[0]/norm(terminalSide)*radius, terminalSide[1]/norm(terminalSide)*radius];
+		let initialPoint = [initialSide[0]/math.norm(initialSide)*radius, initialSide[1]/math.norm(initialSide)*radius];
+		let terminalPoint = [terminalSide[0]/math.norm(terminalSide)*radius, terminalSide[1]/math.norm(terminalSide)*radius];
 		const radiusX = radius*this.planeScaleX;
 		const radiusY = radius*this.planeScaleY;
 		
 		// Adjust initialPoint and terminalPoint to the position of the vertex
-		initialPoint = add(vertex, initialPoint);
-		terminalPoint = add(vertex, terminalPoint);
+		initialPoint = math.add(vertex, initialPoint);
+		terminalPoint = math.add(vertex, terminalPoint);
 
 		// Transform point coordinates to draw it in the SVG element.
 		initialPoint = this.transformCoordinates(initialPoint);
@@ -410,7 +410,7 @@ class CartesianPlane {
 		const { corner = "rightbottom"} = textAttributes;
 
 		//Calculate vector endpoint using initial point and vector components.
-		const endPoint = add(initialPoint, vectorComponents);
+		const endPoint = math.add(initialPoint, vectorComponents);
 
 		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
 		const [initialXTransformed, initialYTransformed] = this.transformCoordinates(initialPoint);
@@ -422,7 +422,7 @@ class CartesianPlane {
 		// Draw label if defined
 		if (textContent != "") {
 			const half = vectorComponents.map(element => element / 2);
-			const position = add(initialPoint, half);
+			const position = math.add(initialPoint, half);
 			textAttributes.fill = strokeColor;
 			this.drawLabel(position, textContent, textAttributes);
 		}
@@ -653,7 +653,7 @@ class EuclideanSpace {
 		const {corner = "rightbottom", fill} = textAttributes;
 
 		//Calculate vector endpoint using initial point and vector components.
-		const endPoint = add(initialPoint, vectorComponents);
+		const endPoint = math.add(initialPoint, vectorComponents);
 
 		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
 		const [initialXTransformed, initialYTransformed] = this.transformCoordinates(initialPoint);
@@ -665,7 +665,7 @@ class EuclideanSpace {
 		// Draw label if defined
 		if (textContent != "") {
 			const half = vectorComponents.map(element => element / 2);
-			const position = add(initialPoint, half);
+			const position = math.add(initialPoint, half);
 			textAttributes.fill = strokeColor;
 			this.drawLabel(position, textContent, textAttributes);
 		}

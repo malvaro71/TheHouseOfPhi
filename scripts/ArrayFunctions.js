@@ -71,6 +71,7 @@ function validateObject(input) {
 		throw new TypeError("This parameter must be an object.");
 	}
 }	
+
 /*
 // Define Point class, that can handle both 2D (Cartesian plane) and 3D (Euclidean space) points by accepting arrays of length 2 or 3, respectively.
 class Point {
@@ -174,6 +175,7 @@ class Point {
  *
  * @throws {TypeError} If the input arrays are not of type number[] or have different lengths.
  */
+/*
 function add(array1, array2) {
 	// check if both arrays have the same length
 	if (array1.length !== array2.length) {
@@ -190,7 +192,7 @@ function add(array1, array2) {
 	});
   
 	return sumArray; // Return the resulting array
-}
+}*/
 
 /**
  * Calculates the dot product (scalar product) of two input vectors.
@@ -204,6 +206,7 @@ function add(array1, array2) {
  *
  * @returns {number} The dot product (scalar value) of the input vectors.
  */
+/*
 function dot(vectorA, vectorB) {
 	// check if both arrays have the same length
 	if (vectorA.length !== vectorB.length) {
@@ -218,7 +221,7 @@ function dot(vectorA, vectorB) {
 	  product += vectorA[i] * vectorB[i];
 	}
 	return product;
-}
+}*/
 
 /**
  * Calculates the magnitude (Euclidean norm) of a 2D or 3D vector represented as a numerical array.
@@ -233,6 +236,7 @@ function dot(vectorA, vectorB) {
  *
  * @returns {number} The magnitude (Euclidean norm) of the input vector.
  */
+/*
 function norm(vector) {
 	// Check if input is a valid array
 	validateCoordinates2D3D(vector);
@@ -242,7 +246,7 @@ function norm(vector) {
   
 	// Take the square root to get the magnitude
 	return Math.sqrt(sumOfSquares);
-}
+}*/
 
 /**
  * Multiplies all elements in an array by a scalar value.
@@ -258,6 +262,7 @@ function norm(vector) {
  *
  * @returns {number[]} A new array containing the element-wise products of the scalar and the input array.
  */
+/*
 function multiply(scalar, array){
 	// Check if input is a valid array
 	validateCoordinates2D3D(array);
@@ -267,7 +272,8 @@ function multiply(scalar, array){
 	scaledArray.push(scalar * array[i]);
 	}
 	return scaledArray;
-}
+}*/
+
 /**
 Calculates the angle in radians between two 2D or 3D vectors in the counter-clockwise (CCW) sense.
 @param {number[]} vector1 - The first vector represented as an array of length 2 or 3.
@@ -288,9 +294,9 @@ function angleBetweenVectorsCCW(vector1, vector2) {
 	[vector1, vector2].every(arr => validateCoordinates2D3D(arr));
   
 	// Calculate dot product and magnitudes
-	const dotProduct = dot(vector1, vector2);
-	const magnitude1 = norm(vector1);
-	const magnitude2 = norm(vector2);
+	const dotProduct = math.dot(vector1, vector2);
+	const magnitude1 = math.norm(vector1);
+	const magnitude2 = math.norm(vector2);
   
 	// Prevent division by zero
 	if (magnitude1 === 0 || magnitude2 === 0) {
@@ -323,6 +329,7 @@ function angleBetweenVectorsCCW(vector1, vector2) {
 * @throws {TypeError} If either vector1 or vector2 is not an array.
 * @throws {ValueError} If either vector1 or vector2 contains non-numeric elements, or if any of their numeric elements are infinite. 
 */
+/*
 function cross(vector1, vector2) {
 	// check if both arrays have the same length
 	if (vector1.length !== vector2.length) {
@@ -343,4 +350,4 @@ function cross(vector1, vector2) {
   
 	// Return the resulting vector product as an array
 	return [vectorProductX, vectorProductY, vectorProductZ];
-  }
+  }*/

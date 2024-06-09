@@ -135,7 +135,7 @@
 	const pointA = [0, 0];
 	const vectorA = [4, 12];
 	const vectorB = [15, 6];
-	const vectorAPlusB = add(vectorA, vectorB)
+	const vectorAPlusB = math.add(vectorA, vectorB);
 
 	// draw vectos a, b and a+b
 	myPlane1_2.drawVector(pointA, vectorA, "a", {strokeColor: "green"}, {fontSize: 22, fill: "green"});
@@ -224,8 +224,8 @@
 	const vectorV = [19, 0];
 	
 	// Calculate vector proyection
-	const unitV = multiply(1/(norm(vectorV)), vectorV);
-	const ProjectWonV = multiply(dot(vectorW, unitV), unitV);
+	const unitV = math.multiply(1/(math.norm(vectorV)), vectorV);
+	const ProjectWonV = math.multiply(math.dot(vectorW, unitV), unitV);
 
 	// draw vectors
 	myPlane1_6.drawVector(origin, vectorW, "w", {strokeColor: "green"}, {fontSize: 22, fill: "green"});
@@ -240,7 +240,7 @@
 	myPlane1_6.drawLabel([7, 3], "θ", {fontSize: 16, fill: "blue"}); // theta
 
 	// Draw segment
-	myPlane1_6.drawSegment(add(origin, vectorW), add(origin, ProjectWonV), {strokeColor: "green", strokeDasharray: "5,5"});
+	myPlane1_6.drawSegment(math.add(origin, vectorW), math.add(origin, ProjectWonV), {strokeColor: "green", strokeDasharray: "5,5"});
 }
 
 // svg1_8: Moment of a sliding vector v about point P, m = rxv.
@@ -265,11 +265,11 @@
 	// Draw a point P, vector r, vector v
 	mySpace1_8.drawPoint(pointP, "green");
 	mySpace1_8.drawVector(pointP, vectorR, "r", {strokeColor: "blue"}, {});
-	let initialPoint = add(pointP,vectorR);
+	let initialPoint = math.add(pointP,vectorR);
 	mySpace1_8.drawVector(initialPoint, vectorV, "v", {strokeColor: "blue"}, {});
 	
 	// Calculate Moment of v about point p, being r the position vector of v from point p. m = rxv.
-	const vectorM = cross(vectorR, vectorV);
+	const vectorM = math.cross(vectorR, vectorV);
 	mySpace1_8.drawVector(pointP, vectorM, "m", {strokeColor: "green"}, {corner: "righttop"});
 }
 
@@ -298,22 +298,22 @@
 	// Draw a point P, vector r, vector v
 	mySpace1_9.drawPoint(pointP, "green");
 	mySpace1_9.drawVector(pointP, vectorR, "r", {strokeColor: "blue"}, {});
-	let initialPoint = add(pointP,vectorR);
+	let initialPoint = math.add(pointP,vectorR);
 	mySpace1_9.drawVector(initialPoint, vectorV, "v", {strokeColor: "blue"}, {});
 	
 	// Calculate Moment of v about point p, being r the position vector of v from point p. m = rxv.
-	const vectorM = cross(vectorR, vectorV);
+	const vectorM = math.cross(vectorR, vectorV);
 	// Draw vector m.
 	mySpace1_9.drawVector(pointP, vectorM, "M", {strokeColor: "green"}, {corner: "righttop"});
 	// Drawy line l
 	mySpace1_9.drawSegment(linel1, linel2, {strokeColor: "blue"});
 	// Calculate proyection of m on l.
-	const ProjectMonG = multiply(dot(vectorM, unitl), unitl);
+	const ProjectMonG = math.multiply(math.dot(vectorM, unitl), unitl);
 	// Draw  proyection of m on l.
 	mySpace1_9.drawVector(pointP, ProjectMonG, "M\u2097", {strokeColor: "green", strokeDasharray: "5,5"}, {corner: "leftbottom"});
 	// Draw dashed line to ilustra the proyection of m on l.
-	const dashed1 = add(pointP, vectorM);
-	const dashed2 = add( pointP, ProjectMonG);
+	const dashed1 = math.add(pointP, vectorM);
+	const dashed2 = math.add( pointP, ProjectMonG);
 	mySpace1_9.drawSegment(dashed1, dashed2, {strokeColor: "green", strokeDasharray: "5,5"});
 }
 
@@ -340,7 +340,7 @@
 	myPlane2_1.drawLabel([7, 36], "Vr = <9, 0> Km/h", {corner: "lefttop", fontSize: 15});
 	myPlane2_1.drawLabel([7, 33], "Vb = <0, 36> Km/h", {corner: "lefttop", fontSize: 15});
 	// Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled, vPropelled: vBoat = vRiver + vPropelled. So vPropelled = vBoat - vRiver. 
-	const vPropelled = add(multiply(-1, vRiver), vBoat); // Velocity with which the boat is propelled.
+	const vPropelled = math.add(math.multiply(-1, vRiver), vBoat); // Velocity with which the boat is propelled.
 
 	// Draw vectors
 	const initialPoint = [0, 0]; // Vectors are drawn at the origin.
@@ -369,15 +369,15 @@
 
 	myPlane2_1.drawVector(initialPoint, vRiver, text, {strokeColor: "green"}, {corner: "righttop"});
 	myPlane2_1.drawVector(initialPoint, vPropelled, "V", {strokeColor: "blue"}, {corner: "righttop"});
-	myPlane2_1.drawSegment(vPropelled, multiply(-1, vRiver), {strokeColor: "green", strokeDasharray: "5,5"});
-	myPlane2_1.drawVector(initialPoint, multiply(-1, vRiver), "Vx = -Vrx", {strokeColor: "green"}, {corner: "righttop"});
+	myPlane2_1.drawSegment(vPropelled, math.multiply(-1, vRiver), {strokeColor: "green", strokeDasharray: "5,5"});
+	myPlane2_1.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx", {strokeColor: "green"}, {corner: "righttop"});
 	myPlane2_1.drawSegment(vPropelled, vBoat, {strokeColor: "green", strokeDasharray: "5,5"});
 	myPlane2_1.drawVector(initialPoint, vBoat, "Vy = Vby", {strokeColor: "green"}, {corner: "lefttop"});
 	myPlane2_1.drawArc(initialPoint, vRiver, vPropelled, 3);
 	myPlane2_1.drawLabel([3,3], "φ", {fill: "blue", corner: "leftbottom"}); // phi
 	
 	//Calculate and write solutions
-	const normvPropelled = norm(vPropelled); // How fast should the boat be propelled?
+	const normvPropelled = math.norm(vPropelled); // How fast should the boat be propelled?
 	const phi = angleBetweenVectorsCCW(vRiver, vPropelled)*180/Math.PI; //In what direction?
 	myPlane2_1.drawLabel([7, 30], "Solution:", {corner: "lefttop", fontSize: 15});
 	myPlane2_1.drawLabel([7, 27], "φ = " + phi.toFixed(1).toString() + "º", {corner: "lefttop", fontSize: 15});
@@ -422,6 +422,6 @@
 	const vectorNames = ["a", "b", "c", "d"];
 	for(let v = 0; v < vectorList.length; v++){
 		myPlane2_2.drawVector(initialPoint, vectorList[v], vectorNames[v], {}, {});
-		initialPoint = add(initialPoint, vectorList[v]);
+		initialPoint = math.add(initialPoint, vectorList[v]);
 	}
 } 
