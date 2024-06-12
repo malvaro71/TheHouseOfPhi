@@ -472,6 +472,58 @@
 
 	// Draw angle between Vx and V
 	myPlane2_3.drawArc(origin, [sailboatSpeedX, 0], sailboatVelocity, 0.5);
-	myPlane2_3.drawLabel([0.5*Math.cos(Math.PI*3/16), 0.5*Math.sin(Math.PI*3/16)], "θ=67.5º", {stroke: "blue", corner: "leftbottom", fontSize: 16});
+	myPlane2_3.drawLabel([0.5*Math.cos(Math.PI*3/16), 0.5*Math.sin(Math.PI*3/16)], "θ=67.5º", {stroke: "blue", corner: "leftbottom", fontSize: 16, fontWeight: "lighter"});
 
+}
+
+// Svg2_6: showing angle between E and NE and `proj_Evecv`
+{
+	// Define problem input data
+	const planeSpeed = 600; //Km/h.
+	const angleNE = Math.PI/4; //45º=PI/4 radians.
+
+	// Calculate V
+	const V = [planeSpeed*Math.cos(angleNE), planeSpeed*Math.sin(angleNE)];
+
+	// Calculate `proj_Evecv`
+	const projEV = math.multiply(planeSpeed*Math.cos(angleNE), [1, 0]);
+
+	// Get the SVG element from the DOM
+	var svg2_6 = document.getElementById("svg2_6");
+
+	// Set attributes
+	svg2_6.setAttribute("viewBox", "0 0 400 400"); 
+	svg2_6.setAttribute("width", "400"); 
+	svg2_6.setAttribute("height", "400");
+
+	// set a cartesian plane
+	const xMin = -700;
+	const xMax = 700;
+	const yMin = -700;
+	const yMax = 700;
+	const myPlane2_6 = new CartesianPlane(svg2_6, xMin, xMax, yMin, yMax);
+	myPlane2_6.drawAxes("", "E", "O");
+	myPlane2_6.drawLabel([-15, yMax], "N", {corner: "righttop"});
+	
+	// Draw NE and NNE arrows
+	const origin = [0, 0];
+	const NE = [xMax*Math.cos(angleNE), yMax*Math.sin(angleNE)];
+	myPlane2_6.drawVector(origin, NE);
+	myPlane2_6.drawLabel(NE, "NE", {corner: "lefttop"});
+
+	// Draw V vector
+	myPlane2_6.drawVector(origin, V, "V", {strokeColor: "green"}, {corner: "lefttop"});
+
+	// Draw `proj_Evecv`
+	const projEVText = TextWithSubscript("proj", "E");
+	const textNode = document.createTextNode("V");
+    projEVText.appendChild(textNode);
+	myPlane2_6.drawVector(origin, projEV, projEVText, {strokeColor: "green"}, {corner: "lefttop"});
+
+	//Draw dashed line
+	myPlane2_6.drawSegment(projEV, V, {strokeColor: "blue", strokeDasharray: "5, 5"});
+
+	// Draw angle
+	myPlane2_6.drawArc(origin, projEV, V, 100);
+	myPlane2_6.drawLabel([120*Math.cos(Math.PI*3/16), 120*Math.sin(Math.PI*3/16)], "θ=45º", {stroke: "blue", corner: "lefttop", fontSize: 16, fontWeight: "lighter"});
 }
