@@ -361,11 +361,8 @@
 	subscriptSpan.setAttribute("baseline-shift", "-0.3em");
 	subscriptSpan.setAttribute("style", "font-size: 90%"); // Adjust font size as needed
 
-
 	// Add the subscript tspan to the main text element
 	text.appendChild(subscriptSpan);
-	
-	//writeText(svg2_1, text, 50, 50, 20, "brown", "brown");
 
 	myPlane2_1.drawVector(initialPoint, vRiver, text, {strokeColor: "green"}, {corner: "righttop"});
 	myPlane2_1.drawVector(initialPoint, vPropelled, "V", {strokeColor: "blue"}, {corner: "righttop"});
@@ -394,7 +391,7 @@
 	svg2_2.setAttribute("width", "440"); 
 	svg2_2.setAttribute("height", "320");
 
-	// set a cartesian plane wher the river bank is parallel to x-axis.
+	// set a cartesian plane to represent the vectors.
 	const xMin = -1;
 	const xMax = 10;
 	const yMin = -3;
@@ -425,3 +422,56 @@
 		initialPoint = math.add(initialPoint, vectorList[v]);
 	}
 } 
+
+// svg2_3:  NNE direction, velocity V and its components Vx and Vy
+{
+	// Get the SVG element from the DOM
+	var svg2_3 = document.getElementById("svg2_3");
+
+	// Set attributes
+	svg2_3.setAttribute("viewBox", "0 0 400 400"); 
+	svg2_3.setAttribute("width", "400"); 
+	svg2_3.setAttribute("height", "400");
+
+	// set a cartesian plane
+	const xMin = -5;
+	const xMax = 5;
+	const yMin = -5;
+	const yMax = 5;
+	const myPlane2_3 = new CartesianPlane(svg2_3, xMin, xMax, yMin, yMax);
+	myPlane2_3.drawAxes("", "E", "O");
+	myPlane2_3.drawLabel([-0.3, yMax], "N", {corner: "righttop"});
+	
+	// Draw NE and NNE arrows
+	const origin = [0, 0];
+	const sailboatSpeed = 4;
+	const NE = [xMax*Math.cos(Math.PI/4), yMax*Math.sin(Math.PI/4)];
+	const NNE = [xMax*Math.cos(Math.PI*3/8), yMax*Math.sin(Math.PI*3/8)];
+	myPlane2_3.drawVector(origin, NE);
+	myPlane2_3.drawLabel(NE, "NE", {corner: "lefttop"});
+	myPlane2_3.drawVector(origin, NNE);
+	myPlane2_3.drawLabel(NNE, "NNE", {corner: "lefttop"});
+
+	// Define sailboat velocity components and draw sailboat velocity
+	const sailboatSpeedX = sailboatSpeed*Math.cos(Math.PI*3/8);
+	const sailboatSpeedY = sailboatSpeed*Math.sin(Math.PI*3/8);
+	const sailboatVelocity = [sailboatSpeedX, sailboatSpeedY];
+	myPlane2_3.drawVector(origin, sailboatVelocity, "V", {strokeColor: "green"});
+	
+	//Draw dashed lines
+	myPlane2_3.drawSegment([sailboatSpeedX, 0], [sailboatSpeedX, sailboatSpeedY], {strokeColor: "blue", strokeDasharray: "5, 5"});
+	myPlane2_3.drawSegment([0, sailboatSpeedY], [sailboatSpeedX, sailboatSpeedY], {strokeColor: "blue", strokeDasharray: "5, 5"});
+
+	// Draw Vx vector
+	const Vx = TextWithSubscript("V", "x");
+	myPlane2_3.drawVector(origin, [sailboatSpeedX, 0], Vx, {strokeColor: "green"}, {corner: "lefttop"});
+
+	// Draw Vy vector
+	const Vy = TextWithSubscript("V", "y");
+	myPlane2_3.drawVector(origin, [0, sailboatSpeedY], Vy, {strokeColor: "green"}, {corner: "rightbottom"});
+
+	// Draw angle between Vx and V
+	myPlane2_3.drawArc(origin, [sailboatSpeedX, 0], sailboatVelocity, 0.5);
+	myPlane2_3.drawLabel([0.5*Math.cos(Math.PI*3/16), 0.5*Math.sin(Math.PI*3/16)], "θ=67.5º", {stroke: "blue", corner: "leftbottom", fontSize: 16});
+
+}

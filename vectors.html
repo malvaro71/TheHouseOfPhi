@@ -1167,7 +1167,7 @@
             </aside>
         </section>
 
-        <section> <!--Exercise 2-->
+        <section> <!-- 2.2 Exercise 2-->
             <h3 class="lang lang-en">Exercise 2</h3>
             <h3 class="lang lang-es" lang="es">Ejercicio 2</h3>
             <p class="lang lang-en">
@@ -1204,7 +1204,7 @@
             </aside>
         </section>
 
-        <section> <!--Exercise 3-->
+        <section> <!-- 2.3 Exercise 3-->
             <h3 class="lang lang-en">Exercise 3</h3>
             <h3 class="lang lang-es" lang="es">Ejercicio 3</h3>
             <p class="lang lang-en">
@@ -1220,71 +1220,7 @@
                 Si situamos el eje x en la dirección este y el eje y en la dirección norte, la dirección NNE (nornoreste) está orientada formando un ángulo de 67,5º con el este; según se muestra en la siguiente figura.
             </p>   
             <figure class="centered"><!--showing angle between E and NNE, vector V and its components Vx and Vy.-->
-                <svg
-					width="400" 
-					height="400"
-					viewBox="0 0 400 400" 
-					xmlns="http://www.w3.org/2000/svg">
-					<!--https://developer.mozilla.org/en-US/docs/Web/CSS/named-color-->
-					
-					<!--East-->
-					<line x1="200" y1="200" x2="400" y2="200" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-				    <text x="380" y="220" font-size="25" stroke="brown" fill="brown">
-						E
-					</text>
-					<!--West-->
-					<line x1="200" y1="200" x2="0" y2="200" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-				    <text class="lang lang-en" x="5" y="220" font-size="25" stroke="brown" fill="brown">
-						W
-					</text>
-					<text class="lang lang-es" lang="es" x="5" y="220" font-size="25" stroke="brown" fill="brown">
-						O
-					</text>
-					<!--North-->
-					<line x1="200" y1="200" x2="200" y2="0" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-				    <text x="180" y="20" font-size="25" stroke="brown" fill="brown">
-						N
-					</text>
-					<!--South-->
-					<line x1="200" y1="200" x2="200" y2="400" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-				    <text x="180" y="380" font-size="25" stroke="brown" fill="brown">
-						S
-					</text>
-					<!--NorthEast-->
-					<line x1="200" y1="200" x2="355" y2="45" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-				    <text x="360" y="60" font-size="25" stroke="brown" fill="brown">
-						NE
-					</text>
-					<!--NorthNorthEast x=200+(200*cos67,5º)/4=277 y=200-(200*sen67,5º)/4=15-->
-					<line x1="200" y1="200" x2="277" y2="15" stroke="brown" stroke-width="1" marker-end="url(#Brownarrow)" />
-				    <text x="280" y="15" font-size="20" stroke="brown" fill="brown" font-weight="bold">
-						NNE
-					</text>
-                    <!--Velocity vector with scale 40:1 Vx=4*40*cos67,5=62 Vy=4*40*sen67,5=148-->
-					<line x1="200" y1="200" x2="262" y2="52" stroke="green" stroke-width="2" marker-end="url(#Greenarrow)"/>
-				    <text x="220" y="100" font-size="20" stroke="green" fill="green" font-weight="bold">
-						V
-					</text>		
-                    <!--Draw an angle mark x=200+(20*cos67,5º)/4=208 y=200-(20*sen67,5º)/4=182-->
-                    <path d="M 220 200 A 20 20 0 0 0 208 182" fill="transparent" stroke="green"/>
-                    <text x="218" y="190" font-size="15" stroke="green" fill="green">
-                          &#x03B8; = 67,5º<!-- This is the unicode for lowercase theta -->
-					</text>
-                    <!--Vx-->
-					<line x1="262" y1="52" x2="262" y2="200" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
-					<line x1="200" y1="200" x2="262" y2="200" stroke="green" stroke-width="2"  stroke-dasharray="5,5" marker-end="url(#Greenarrow)"/>
-				    <text x="220" y="220" font-size="20" stroke="green" fill="green" font-weight="bold" stroke-width="0.6">
-                      V
-                      <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">x</tspan> 
-                    </text>
-                    <!--Vy-->
-					<line x1="262" y1="52" x2="200" y2="52" stroke="blue" stroke-width="1" stroke-dasharray="5,5" />
-					<line x1="200" y1="200" x2="200" y2="52" stroke="green" stroke-width="2"  stroke-dasharray="5,5" marker-end="url(#Greenarrow)"/>
-				    <text x="170" y="100" font-size="20" stroke="green" fill="green" font-weight="bold" stroke-width="0.6">
-                      V
-                      <tspan dx="-5" dy="8" font-size="15" stroke-width="0.3">y</tspan> 
-                    </text>
-				</svg>
+                <svg id="svg2_3"></svg>
                 <figcaption class="lang lang-en"><b>Figure 2.c</b>, showing NNE direction, velocity `vecV` and its components `vec(V_x)` and `vec(V_y)`.</figcaption>
                 <figcaption class="lang lang-es" lang="es"><b>Figura 2.c</b>, mostrando la dirección NNE, velocidad `vecV` y sus componentes `vec(V_x)` y `vec(V_y)`.</figcaption>
 			</figure>

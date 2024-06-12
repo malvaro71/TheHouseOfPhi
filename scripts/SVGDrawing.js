@@ -105,6 +105,36 @@ function drawCircle(svgElement, centreX, centreY, color, radius) {
 }
 
 /**
+ * Returns an SVG text element with a regular text followed by a subscript text.
+ * 
+ * @param {string} regular The main text content.
+ * @param {string} subscript The subscript text content.
+ * @returns {SVGTextElement} An SVG text element containing the regular text and subscript.
+ */
+function TextWithSubscript(regular, subscript) {
+    // Create the text element
+    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+
+    // Create the text node for main text
+    const textNode = document.createTextNode(regular);
+    text.appendChild(textNode);
+
+    // Create a separate tspan element for the subscript
+    const subscriptSpan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+    const subscriptNode = document.createTextNode(subscript);
+    subscriptSpan.appendChild(subscriptNode);
+
+    // Apply the 'baseline-shift' attribute to the subscript tspan
+    subscriptSpan.setAttribute("baseline-shift", "-0.3em");
+    subscriptSpan.setAttribute("style", "font-size: 90%"); // Adjust font size as needed
+
+    // Add the subscript tspan to the main text element
+    text.appendChild(subscriptSpan);
+
+    return text;
+}
+
+/**
  * Writes text within an SVG element with specified content, positioning, and styling.
  *
  * @param {SVGElement} svgElement - The SVG element where the text will be written.
@@ -207,11 +237,11 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 
 
 /**
- * Defines a CartesianPlane class to manage the graphical representation of a Cartesian plane within an SVG element.
+ * Class to manage the graphical representation of a Cartesian plane within an SVG element.
  */
 class CartesianPlane {
 	/**
-	 * Creates a new CartesianPlane instance.
+	 * Create a new CartesianPlane instance.
 	 * 
 	 * @param {SVGElement} svgElement - The SVG element where the Cartesian plane will be drawn.
 	 * @param {number} xMin - The minimum value on the x-axis.
@@ -462,6 +492,8 @@ class CartesianPlane {
 		// Write the text
 		writeText(this.svgElement, textContent, xPosition, yPosition, fontSize, stroke, fill, fontWeight, corner);
 	}
+
+	
 
 	/**
 	 * Draws the x and y axes of the Cartesian plane within the SVG element, along with axis labels and an optional origin label.
