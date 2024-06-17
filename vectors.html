@@ -13,11 +13,14 @@
 	<!--To set the viewport of the page, which will give the browser instructions on how to control the page's dimensions and scaling.-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
+    <!-- load Mathjax library to be used with mathjs expressions https://www.mathjax.org/-->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    
     <!-- load the default AsciiMath configuration  http://asciimath.org/ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
 
-     <!--Load math.js library https://mathjs.org/ -->
-     <script src="https://unpkg.com/mathjs@13.0.0/lib/browser/math.js"></script>
+    <!--Load math.js library https://mathjs.org/ -->
+    <script src="https://unpkg.com/mathjs@13.0.0/lib/browser/math.js"></script>
 
     <!-- loads page script files-->
     <script src="scripts/SelectLanguage.js" defer></script>
@@ -1449,6 +1452,14 @@
             </p>
             <p>&emsp;`vecv = vecw xx vecr = |[veci, vecj, veck], [1, 1, 1], [2, -2, 1]| = |[1, 1], [-2, 1]|*veci - |[1, 1], [2, 1]|*vecj + |[1, 1], [2, -2]|*veck => (1+2)*veci - (1-2)*vecj + (-2-2)*veck`</p>
             <p>&emsp; `=> vecv = 3veci + vecj -4veck`</p>
+            <p> `vecv = vecw xx vecr =` <span id="2_7_1" style="display: inline-block;"></span> = <span id="2_7_2"></span></p>
+            <!--
+            <div class="container">
+                <div id="2_7_1"></div>
+            </div>
+            <div class="container">
+                <div id="2_7_2"></div>
+            </div>-->
             
         </section>
 

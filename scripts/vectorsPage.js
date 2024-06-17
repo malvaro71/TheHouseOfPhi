@@ -527,3 +527,29 @@
 	myPlane2_6.drawArc(origin, projEV, V, 100);
 	myPlane2_6.drawLabel([120*Math.cos(Math.PI*3/16), 120*Math.sin(Math.PI*3/16)], "θ=45º", {stroke: "blue", corner: "lefttop", fontSize: 16, fontWeight: "lighter"});
 }
+
+{
+	// Get the HTML element
+    const expressionElement = document.getElementById("2_7_1");
+	const resultElement = document.getElementById("2_7_2");
+
+    // Define the expression
+    const expr = 'cross([1, 1, 1], [2, -2, 1])';
+
+	renderMathExpression(expressionElement, expr);
+	// Evaluate and display the result
+	const result = math.evaluate(expr);
+	resultElement.textContent = math.format(result); // Use textContent for plain text output
+
+    /*
+	// Parse the expression using Math.js
+    const node = math.parse(expr);
+
+    // Convert the parsed expression to LaTeX
+    const latex = node.toTex({parenthesis: 'keep'});
+
+    // Use MathJax to render the LaTeX expression
+    div271.innerHTML = '';
+    div271.innerHTML = MathJax.tex2svg(latex).outerHTML;
+	*/
+}

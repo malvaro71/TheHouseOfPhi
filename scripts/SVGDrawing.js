@@ -757,3 +757,15 @@ class EuclideanSpace {
 		drawCircle(this.svgElement, xPosition, yPosition, color, 3);
     }
 }
+
+function renderMathExpression(elementId, expression) {
+	// Parse the expression using Math.js
+	const node = math.parse(expression);
+
+	// Convert the parsed expression to LaTeX
+	const latex = node.toTex({parenthesis: 'keep'});
+
+	// Use MathJax to render the LaTeX expression
+	elementId.innerHTML = '';
+	elementId.innerHTML = MathJax.tex2svg(latex).outerHTML;
+}
