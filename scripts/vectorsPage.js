@@ -317,7 +317,7 @@
 	mySpace1_9.drawSegment(dashed1, dashed2, {strokeColor: "green", strokeDasharray: "5,5"});
 }
 
-// svg2_1: showing coordinate-plane, Vr as the water velocity and V as the velocity with which the boat is propelled
+// Exercise 2_1: showing coordinate-plane, Vr as the water velocity and V as the velocity with which the boat is propelled
 {
 	// Get the SVG element from the DOM
 	var svg2_1 = document.getElementById("svg2_1");
@@ -327,7 +327,7 @@
 	svg2_1.setAttribute("width", "400"); 
 	svg2_1.setAttribute("height", "400");
 
-	// set a cartesian plane wher the river bank is parallel to x-axis.
+	// set a cartesian plane where the river bank is parallel to x-axis.
 	const myPlane2_1 = new CartesianPlane(svg2_1, -23, 23, -6, 40);
 	myPlane2_1.drawAxes("y-axis", "x-axis", "O");
 
@@ -381,7 +381,7 @@
 	myPlane2_1.drawLabel([7, 24], "|V| = " + normvPropelled.toFixed(1).toString() + " Km/h", {corner: "lefttop", fontSize: 15});
 }
 
-// svg2_2: sum of vectors a, b, c and d using the graphical method
+// Exercise 2_2: sum of vectors a, b, c and d using the graphical method
 {
 	// Get the SVG element from the DOM
 	var svg2_2 = document.getElementById("svg2_2");
@@ -423,7 +423,7 @@
 	}
 } 
 
-// svg2_3:  NNE direction, velocity V and its components Vx and Vy
+// Exercise 2_3:  NNE direction, velocity V and its components Vx and Vy
 {
 	// Get the SVG element from the DOM
 	var svg2_3 = document.getElementById("svg2_3");
@@ -476,7 +476,7 @@
 
 }
 
-// Svg2_6: showing angle between E and NE and `proj_Evecv`
+// Execise 2_6: showing angle between E and NE and `proj_Evecv`
 {
 	// Define problem input data
 	const planeSpeed = 600; //Km/h.
@@ -528,6 +528,7 @@
 	myPlane2_6.drawLabel([120*Math.cos(Math.PI*3/16), 120*Math.sin(Math.PI*3/16)], "θ=45º", {stroke: "blue", corner: "lefttop", fontSize: 16, fontWeight: "lighter"});
 }
 
+// Exercise 2_7: linear speed of a point P of a rotating rigid body with angular velocit w
 {
 	// Get the HTML element
     const expressionElement = document.getElementById("2_7_1");
