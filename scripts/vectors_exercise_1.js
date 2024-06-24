@@ -1,6 +1,6 @@
-# Define a variable containing the complete HTML content for the exercise.
-const ExerciseContent = '
-<h3 class="lang lang-en">Exercise 1</h3>
+// Define a variable containing the complete HTML content for the exercise.
+const exerciseContent = '
+            <h3 class="lang lang-en">Exercise 1</h3>
             <h3 class="lang lang-es" lang="es">Ejercicio 1</h3>
             <p class="lang lang-en">
                 A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 36 km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
@@ -14,14 +14,14 @@ const ExerciseContent = '
             <p class="lang lang-es" lang="es">
                 Vamos a representar el río en un plano de coordenadas donde el agua fluye en la misma dirección que el eje x, y el eje y es perpendicular a la orilla del río. Luego, representamos `vecv_r` como la velocidad del agua del río y `vecv` como la velocidad con la que se propulsa el bote. Y descomponer `vecv` en sus componentes x e y. Como los vectores que representan la velocidad son vectores libres, situamos el origen de `vecv_r` y `vecv` en el origen de coordenadas, como vectores de posición estándar.
             </p>
-
+            
             <figure class="centered">
                 <svg id="svg2_1"></svg>
-
+            
                 <figcaption class="lang lang-en"><b>Figure 2.1</b>, showing coordinate-plane, `vecv_r` as the water velocity and `vecv` as the velocity with which the boat is propelled.</figcaption>
                 <figcaption class="lang lang-es" lang="es"><b>Figura 2.1</b>, mostrando plano de coordenadas, `vecv_r` como la velocidad del agua del río y `vecv` como la velocidad con la que se propulsa el bote.</figcaption>
             </figure>
-
+            
             <p class="lang lang-en">
                 According to the data of the exercise,
             </p>
@@ -31,11 +31,11 @@ const ExerciseContent = '
             <p>
                 &emsp; `vecv_r = << 9 (Km)/h, 0 (Km)/h >> `,
             </p>
-
+            
             <p>
                 &emsp; `vecv = << v_x , v_y >> `,
             </p>
-
+            
             <p class="lang lang-en">
                 We can consider that the speed of the boat with respect to the river bank is a sum of the speed with which the boat is propelled `vecv` plus the speed of the river water `vecv_r`. For example, if the boatman did not row, `vecv = vec0` and the speed of the boat with respect to the shore would be equal to the speed of the river water. So,
             </p>
@@ -45,7 +45,7 @@ const ExerciseContent = '
             <p>
                 &emsp; `vecv + vecv_r = << 9 + v_x (Km)/h, v_y (Km)/h >> `.
             </p>
-
+            
             <p class="lang lang-en">
                 So, to stay perpendicular to the river, the x-component of the vector sum must be zero.
             </p>
@@ -55,7 +55,7 @@ const ExerciseContent = '
             <p >
                 &emsp; `9 + v_x = 0 => v_x = -9 (km)/h`
             </p>
-
+            
             <p class="lang lang-en">
                 and, since the boatman wants to cross with an average speed of 36 km/h, the y component of the sum must be 36 km/h.
             </p>
@@ -65,11 +65,11 @@ const ExerciseContent = '
             <p>
                 &emsp; `v_y = 36 (km)/h`,
             </p>
-
+            
             <p>
                 &emsp; `vecv = << -9 (Km)/h, 36 (Km)/h >>`
             </p>
-
+            
             <p class="lang lang-en">
                 The magnitude of the vector `vec v` is the speed at wich the boat is propelled and it is
                 expresed as `norm(vecv)`.
@@ -80,7 +80,7 @@ const ExerciseContent = '
             <p>
                 &emsp; `norm(vecv) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377) = 37.11 (km)/h.`
             </p>
-
+            
             <p class="lang lang-en">
                 The value of the angle &phi; is the direction in wich the boat is propeled. <br />
             </p>
@@ -135,3 +135,9 @@ const ExerciseContent = '
                     </li>
                 </ul>
             </aside>';
+
+// Access the section element
+const sectionElement = document.getElementById("vectors_exercise_1");
+
+// Insert the content within the section.
+sectionElement.innerHTML = exerciseContent;
