@@ -969,7 +969,7 @@
             <a href="#Arriba">Regresar arriba.</a>
         </div>
         
-        <section> <!-- 2.1 Exercise 1-->
+        <section id=vectors_exercise_1> <!-- 2.1 Exercise 1-->
             <h3 class="lang lang-en">Exercise 1</h3>
             <h3 class="lang lang-es" lang="es">Ejercicio 1</h3>
             <p class="lang lang-en">
@@ -985,7 +985,7 @@
                 Vamos a representar el río en un plano de coordenadas donde el agua fluye en la misma dirección que el eje x, y el eje y es perpendicular a la orilla del río. Luego, representamos `vecv_r` como la velocidad del agua del río y `vecv` como la velocidad con la que se propulsa el bote. Y descomponer `vecv` en sus componentes x e y. Como los vectores que representan la velocidad son vectores libres, situamos el origen de `vecv_r` y `vecv` en el origen de coordenadas, como vectores de posición estándar.
             </p>
 
-            <figure class="centered"><!--showing coordinate-plane, `vecv_r` as the water velocity and `vecv` as the velocity with which the boat is propelled-->
+            <figure class="centered">
                 <svg id="svg2_1"></svg>
 
                 <figcaption class="lang lang-en"><b>Figure 2.1</b>, showing coordinate-plane, `vecv_r` as the water velocity and `vecv` as the velocity with which the boat is propelled.</figcaption>
@@ -1037,7 +1037,7 @@
             </p>
 
             <p>
-                &emsp; `vecv = << -9 (Km)/h, 36 (Km)/h >>`
+                &emsp; `vecv = << -9 , 36 >> (Km)/h`
             </p>
 
             <p class="lang lang-en">
@@ -1066,69 +1066,6 @@
             <p class="lang lang-es" lang="es">
                 Este es el ángulo que va de `vecv_x` a `vecv`.  <br />
             </p>
-
-            <!--
-            Code to insert a mathematical expressions using Mathjax and MathML:
-            Step 1: write the mathematical expression using a MathML editor, save it as MathML and then copy the MathML code.
-            Step 2: paste the MathML code between the <math> </math> tags; where <math display="block"> represents displayed mathematics and <math display="inline"> or just <math> represents in-line mathematics.
-            
-            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                <semantics>
-                    <mrow>
-                        <mrow>
-                            <mi>α</mi>
-                            <mo stretchy="false">=</mo>
-                            <mi>arctan</mi>
-                        </mrow>
-                        <mrow>
-                            <mrow>
-                                <mo fence="true" form="prefix" stretchy="false">(</mo>
-                                <mrow>
-                                    <mfrac>
-                                        <msub>
-                                            <mi>v</mi>
-                                            <mi>y</mi>
-                                        </msub>
-                                        <msub>
-                                            <mi>v</mi>
-                                            <mi>x</mi>
-                                        </msub>
-                                    </mfrac>
-                                </mrow>
-                                <mo fence="true" form="postfix" stretchy="false">)</mo>
-                            </mrow>
-                            <mo stretchy="false">=</mo>
-                            <mi>arctan</mi>
-                        </mrow>
-                        <mrow>
-                            <mrow>
-                                <mo fence="true" form="prefix" stretchy="false">(</mo>
-                                <mrow>
-                                    <mfrac>
-                                        <mn>36</mn>
-                                        <mrow>
-                                            <mo stretchy="false">−</mo>
-                                            <mn>9</mn>
-                                        </mrow>
-                                    </mfrac>
-                                </mrow>
-                                <mo fence="true" form="postfix" stretchy="false">)</mo>
-                            </mrow>
-                            <mo stretchy="false">=</mo>
-                            <mrow>
-                                <mo stretchy="false">−</mo>
-                                <msup>
-                                    <mn>76</mn>
-                                    <mi>O</mi>
-                                </msup>
-                            </mrow>
-                        </mrow>
-                    </mrow>
-                    <annotation encoding="StarMath 5.0">%alpha = arctan( { v_{y} } over {v_{x}} ) = arctan( {36} over
-                        {-9} ) = -76^{O} </annotation>
-                </semantics>
-            </math> -->
-
             <p class="lang lang-en">
                 But normally the angle to calculate the orientation is measured from the x-axis, which in this case is in the opposite direction to `v_x`. So, if we measure the orientation of the boat with respect to the x axis, it would be 180 - 76 = 104º.
             </p>
