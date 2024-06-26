@@ -88,7 +88,7 @@ const exerciseContent = `
         </aside>
     </div>      
 
-    <div  >
+    <div class="lang lang-es">
         <h3>Ejercicio 1</h3>
         <p>
             Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de 36 km/h. El agua del río fluye a una velocidad de 9 km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
