@@ -317,69 +317,6 @@
 	mySpace1_9.drawSegment(dashed1, dashed2, {strokeColor: "green", strokeDasharray: "5,5"});
 }
 
-// Exercise 2_1: showing coordinate-plane, Vr as the water velocity and V as the velocity with which the boat is propelled
-{
-	// Get the SVG element from the DOM
-	var svg2_1 = document.getElementById("svg2_1");
-
-	// Set attributes
-	svg2_1.setAttribute("viewBox", "0 0 400 400"); 
-	svg2_1.setAttribute("width", "400"); 
-	svg2_1.setAttribute("height", "400");
-
-	// set a cartesian plane where the river bank is parallel to x-axis.
-	const myPlane2_1 = new CartesianPlane(svg2_1, -23, 23, -6, 40);
-	myPlane2_1.drawAxes("y-axis", "x-axis", "O");
-
-	// Exercise data. 
-	const vRiver = [9, 0]; // Water velocity; parallel to river bank; so parallel to x-axis.
-	const vBoat = [0, 36]; // Speed of 36 km/h perpendicular to river bank; so parallel to y-axis.
-	
-	// Write exercise data
-	myPlane2_1.drawLabel([7, 39], "Data:", {corner: "lefttop", fontSize: 15});
-	myPlane2_1.drawLabel([7, 36], "Vr = <9, 0> Km/h", {corner: "lefttop", fontSize: 15});
-	myPlane2_1.drawLabel([7, 33], "Vb = <0, 36> Km/h", {corner: "lefttop", fontSize: 15});
-	// Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled, vPropelled: vBoat = vRiver + vPropelled. So vPropelled = vBoat - vRiver. 
-	const vPropelled = math.add(math.multiply(-1, vRiver), vBoat); // Velocity with which the boat is propelled.
-
-	// Draw vectors
-	const initialPoint = [0, 0]; // Vectors are drawn at the origin.
-	
-	// Create the text element
-	const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-
-	// Create the text node for 'V'
-	const textNode = document.createTextNode("V");
-	text.appendChild(textNode);
-
-	// Create a separate tspan element for the subscript 'r'
-	const subscriptSpan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-	const subscriptNode = document.createTextNode("r");
-	subscriptSpan.appendChild(subscriptNode);
-
-	// Apply the 'baseline-shift' attribute to the subscript tspan
-	subscriptSpan.setAttribute("baseline-shift", "-0.3em");
-	subscriptSpan.setAttribute("style", "font-size: 90%"); // Adjust font size as needed
-
-	// Add the subscript tspan to the main text element
-	text.appendChild(subscriptSpan);
-
-	myPlane2_1.drawVector(initialPoint, vRiver, text, {strokeColor: "green"}, {corner: "righttop"});
-	myPlane2_1.drawVector(initialPoint, vPropelled, "V", {strokeColor: "blue"}, {corner: "righttop"});
-	myPlane2_1.drawSegment(vPropelled, math.multiply(-1, vRiver), {strokeColor: "green", strokeDasharray: "5,5"});
-	myPlane2_1.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx", {strokeColor: "green"}, {corner: "righttop"});
-	myPlane2_1.drawSegment(vPropelled, vBoat, {strokeColor: "green", strokeDasharray: "5,5"});
-	myPlane2_1.drawVector(initialPoint, vBoat, "Vy = Vby", {strokeColor: "green"}, {corner: "lefttop"});
-	myPlane2_1.drawArc(initialPoint, vRiver, vPropelled, 3);
-	myPlane2_1.drawLabel([3,3], "φ", {fill: "blue", corner: "leftbottom"}); // phi
-	
-	//Calculate and write solutions
-	const normvPropelled = math.norm(vPropelled); // How fast should the boat be propelled?
-	const phi = angleBetweenVectorsCCW(vRiver, vPropelled)*180/Math.PI; //In what direction?
-	myPlane2_1.drawLabel([7, 30], "Solution:", {corner: "lefttop", fontSize: 15});
-	myPlane2_1.drawLabel([7, 27], "φ = " + phi.toFixed(1).toString() + "º", {corner: "lefttop", fontSize: 15});
-	myPlane2_1.drawLabel([7, 24], "|V| = " + normvPropelled.toFixed(1).toString() + " Km/h", {corner: "lefttop", fontSize: 15});
-}
 
 // Exercise 2_2: sum of vectors a, b, c and d using the graphical method
 {

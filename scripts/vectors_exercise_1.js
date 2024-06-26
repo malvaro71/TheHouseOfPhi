@@ -94,46 +94,31 @@ const exerciseContent = `
             Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de 36 km/h. El agua del río fluye a una velocidad de 9 km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
         </p>
         <p>
-            Vamos a representar el río en un plano de coordenadas donde el agua fluye en la misma dirección que el eje x, y el eje y es perpendicular a la orilla del río. Luego, representamos \`vecv_r\` como la velocidad del agua del río y \`vecv\` como la velocidad con la que se propulsa el bote. Y descomponer \`vecv\` en sus componentes x e y. Como los vectores que representan la velocidad son vectores libres, situamos el origen de \`vecv_r\` y \`vecv\` en el origen de coordenadas, como vectores de posición estándar.
+            La velocidad del bote \`vecv_b\` es la suma de la velocidad con la que se propulsa el bote \`vecv_p\` más la velocidad del agua del río \`vecv_r\`. Entonces:
         </p>
         <p>
-            Según los datos del ejercicio,
+            &emsp; \`vecv_p = vecv_b - vecv_r \`,
         </p>
         <p>
-            &emsp; \`vecv_r = << 9 (Km)/h, 0 (Km)/h >> \`,
+            Si elegimos el plano de coordenadas de manera que el eje x tenga la misma dirección que el río:
         </p>
         <p>
-            &emsp; \`vecv = << v_x , v_y >> \`,
+            &emsp; \`vecv_b =\` (0, 36) Km/h ,
         </p>
         <p>
-            Podemos considerar que la velocidad del bote respecto a la orilla del río es una suma de la velocidad con la que se propulsa el bote \`vecv\` más la la velocidad del agua del río \`vecv_r\`. Por ejemplo si el barquero no remara, \`vecv = vec0\` y la velocidad del bote respecto a la orilla sería igual a la velocidad del agua del río. Entonces,
+            &emsp; \`vecv_r =\` (9, 0) Km/h ,
         </p>
         <p>
-            &emsp; \`vecv + vecv_r = << 9 + v_x (Km)/h, v_y (Km)/h >> \`.
+            &emsp; \`vecv_p = (0, 36) - (9, 0) = (-9, 36) Km/h \`,
         </p>
         <p>
-            Entonces, para permanecer perpendicular al río, la componente x de la suma debe ser cero.
-        </p>
-        <p >
-            &emsp; \`9 + v_x = 0 => v_x = -9 (km)/h\`
+            La magnitud del vector \`vec v_p\` es la velocidad a la que se impulsa el bote, se expresa como \`norm(vecv_p)\` y, según <a href="#[1.2]">[1.2]</a>, se calcula como:
         </p>
         <p>
-            y, como el barquero quire cruzar con una velocidad media de 36 km/h, la componente y de la suma debe ser 36 km/h.
+            &emsp; \`norm(vecv_p) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377) = 37.11 (km)/h.\`
         </p>
         <p>
-            &emsp; \`v_y = 36 (km)/h\`,
-        </p>
-        <p>
-            &emsp; \`vecv = << -9 (Km)/h, 36 (Km)/h >>\`
-        </p>
-        <p>
-            La magnitud del vector \`vec v\` es la velocidad a la se impulsa el bote. Y se expresa como \`norm(vecv)\`.
-        </p>
-        <p>
-            &emsp; \`norm(vecv) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377) = 37.11 (km)/h.\`
-        </p>
-        <p>
-            El valor del ángulo  &phi; es la dirección en la que se impulsa el bote. <br />
+            El valor del ángulo  &phi; es la dirección en la que se impulsa el bote, corresponde con la orientación de \`vecv_p\` y según <a href="#[1.3]">[1.3]</a>, se calcula como: <br />
         </p>
         <p>
             &emsp; &phi; \`= arctan(v_y/v_x) = arctan(36/-9) =\` -76º
@@ -186,3 +171,56 @@ const sectionElement = document.getElementById("vectors_exercise_1");
 
 // Insert the content within the section.
 sectionElement.innerHTML = exerciseContent;
+
+// Exercise data. 
+const vRiver = [9, 0]; // Water velocity; parallel to river bank; so parallel to x-axis.
+const vBoat = [0, 36]; // Speed of 36 km/h perpendicular to river bank; so parallel to y-axis.
+
+// Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled, vPropelled: vBoat = vRiver + vPropelled. So vPropelled = vBoat - vRiver. 
+const vPropelled = math.add(math.multiply(-1, vRiver), vBoat); // Velocity with which the boat is propelled.
+
+//Calculate the solutions
+const normvPropelled = math.norm(vPropelled); // How fast should the boat be propelled?
+const phi = angleBetweenVectorsCCW(vRiver, vPropelled)*180/Math.PI; //In what direction?
+
+// Get the SVG element from the DOM
+var svg2_1 = document.getElementById("svg2_1");
+
+// Set attributes
+svg2_1.setAttribute("viewBox", "0 0 400 400"); 
+svg2_1.setAttribute("width", "400"); 
+svg2_1.setAttribute("height", "400");
+
+// set a cartesian plane where the river bank is parallel to x-axis.
+const myPlane2_1 = new CartesianPlane(svg2_1, -23, 23, -6, 40);
+myPlane2_1.drawAxes("y-axis", "x-axis", "O");
+
+// Write exercise data
+myPlane2_1.drawLabel([7, 39], "Data:", {corner: "lefttop", fontSize: 15});
+myPlane2_1.drawLabel([7, 36], "Vr = <9, 0> Km/h", {corner: "lefttop", fontSize: 15});
+myPlane2_1.drawLabel([7, 33], "Vb = <0, 36> Km/h", {corner: "lefttop", fontSize: 15});
+
+
+// Set a common initial point for the vectors at the origin of coordinates 
+const initialPoint = [0, 0];
+
+// Draw Vr
+const Vr = TextWithSubscript("V", "r");
+myPlane2_1.drawVector(initialPoint, vRiver, Vr, {strokeColor: "green"}, {corner: "righttop"});
+
+// Draw Vp
+const Vp = TextWithSubscript("V", "p");
+myPlane2_1.drawVector(initialPoint, vPropelled, Vp, {strokeColor: "blue"}, {corner: "righttop"});
+
+// Draw V components
+myPlane2_1.drawSegment(vPropelled, math.multiply(-1, vRiver), {strokeColor: "green", strokeDasharray: "5,5"});
+myPlane2_1.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx", {strokeColor: "green"}, {corner: "righttop"});
+myPlane2_1.drawSegment(vPropelled, vBoat, {strokeColor: "green", strokeDasharray: "5,5"});
+myPlane2_1.drawVector(initialPoint, vBoat, "Vy = Vby", {strokeColor: "green"}, {corner: "lefttop"});
+myPlane2_1.drawArc(initialPoint, vRiver, vPropelled, 3);
+myPlane2_1.drawLabel([3,3], "φ", {fill: "blue", corner: "leftbottom"}); // phi
+
+// Write the solutions
+myPlane2_1.drawLabel([7, 30], "Solution:", {corner: "lefttop", fontSize: 15});
+myPlane2_1.drawLabel([7, 27], "φ = " + phi.toFixed(1).toString() + "º", {corner: "lefttop", fontSize: 15});
+myPlane2_1.drawLabel([7, 24], "|Vp| = " + normvPropelled.toFixed(1).toString() + " Km/h", {corner: "lefttop", fontSize: 15});
