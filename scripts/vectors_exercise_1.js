@@ -3,8 +3,8 @@
 const vRiver = [9, 0]; // Water velocity; parallel to river bank; so parallel to x-axis.
 const vBoat = [0, 36]; // Speed of 36 km/h perpendicular to river bank; so parallel to y-axis.
 
-// Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled, vPropelled: vBoat = vRiver + vPropelled. So vPropelled = vBoat - vRiver. 
-const vPropelled = math.add(math.multiply(-1, vRiver), vBoat); // Velocity with which the boat is propelled.
+// Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled by the boatman, vPropelled => vBoat = vRiver + vPropelled. So,vPropelled = vBoat - vRiver. 
+const vPropelled = math.subtract(vBoat, vRiver); 
 
 //Calculate the solutions
 const normvPropelled = math.norm(vPropelled); // How fast should the boat be propelled?

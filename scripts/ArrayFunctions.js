@@ -100,7 +100,7 @@ function angleBetweenVectorsCCW(vector1, vector2) {
 	if (magnitude1 === 0 || magnitude2 === 0) {
 	  return 0;
 	}
-  
+
 	// Calculate angle using acos and handle potential rounding errors
 	let angleRad = Math.acos(dotProduct / (magnitude1 * magnitude2));
   
