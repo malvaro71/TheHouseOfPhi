@@ -1,9 +1,20 @@
+// Exercise data. 
+const vRiver = [9, 0]; // Water velocity; parallel to river bank; so parallel to x-axis.
+const vBoat = [0, 36]; // Speed of 36 km/h perpendicular to river bank; so parallel to y-axis.
+
+// Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled, vPropelled: vBoat = vRiver + vPropelled. So vPropelled = vBoat - vRiver. 
+const vPropelled = math.add(math.multiply(-1, vRiver), vBoat); // Velocity with which the boat is propelled.
+
+//Calculate the solutions
+const normvPropelled = math.norm(vPropelled); // How fast should the boat be propelled?
+const phi = angleBetweenVectorsCCW(vRiver, vPropelled)*180/Math.PI; //In what direction?
+
 // Define a variable containing the complete HTML content for the exercise.
 const exerciseContent = `
     <div class="lang lang-en">
         <h3>Exercise 1</h3>
         <p>
-            A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 36 km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
+            A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of ${vBoat[1]} km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
         </p>
         <p>
             Lets represent the river in a coordinate plane where the water flows in same direction thant the x-axis, and the y-axis is perpendicular to the river bank. Then, we represent  \`vecv_r \` as water velocity and  \`vecv \` as the velocity with which the boat is propelled. And decompose  \`vecv \` into its x and y components. As the vectors that represent velocity are free vectors, we place the origin of \`vecv_r\` and \`vecv \` at the origin of coordinates, as standard-position vectors.
@@ -171,17 +182,6 @@ const sectionElement = document.getElementById("vectors_exercise_1");
 
 // Insert the content within the section.
 sectionElement.innerHTML = exerciseContent;
-
-// Exercise data. 
-const vRiver = [9, 0]; // Water velocity; parallel to river bank; so parallel to x-axis.
-const vBoat = [0, 36]; // Speed of 36 km/h perpendicular to river bank; so parallel to y-axis.
-
-// Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled, vPropelled: vBoat = vRiver + vPropelled. So vPropelled = vBoat - vRiver. 
-const vPropelled = math.add(math.multiply(-1, vRiver), vBoat); // Velocity with which the boat is propelled.
-
-//Calculate the solutions
-const normvPropelled = math.norm(vPropelled); // How fast should the boat be propelled?
-const phi = angleBetweenVectorsCCW(vRiver, vPropelled)*180/Math.PI; //In what direction?
 
 // Get the SVG element from the DOM
 var svg2_1 = document.getElementById("svg2_1");
