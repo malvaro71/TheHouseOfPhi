@@ -1,7 +1,5 @@
 // Define a variable containing the complete HTML content for the exercise.
 const exerciseContent = `
-    <p class="lang lang-en> test: ${vRiver} </p>
-    <p class="lang lang-es> prueba: ${vRiver} </p>
     <div class="lang lang-en">
         <h3>Exercise 1</h3>
         <p>
