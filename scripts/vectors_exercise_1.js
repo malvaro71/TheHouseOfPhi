@@ -17,7 +17,7 @@ const exerciseContent = `
             A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 9 km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
         </p>
         <p>
-           The velocity of the boat 'vecv_b' is the sum of the velocity with which the boat 'vecv_p' is propelled plus the velocity of the river water 'vecv_r'. Then:
+           The velocity of the boat \'vecv_b\' is the sum of the velocity with which the boat \'vecv_p\' is propelled plus the velocity of the river water \'vecv_r\'. Then:
         </p>
         <p>
             &emsp; \`vecv_p = vecv_b - vecv_r \`,
@@ -26,16 +26,16 @@ const exerciseContent = `
             If we choose the coordinate plane so that the x-axis has the same direction as the river:
         </p>
         <p>
-             &emsp; \`vecv_b\` = ${vBoat} Km/h,
+             &emsp; \`vecv_b\` = (${vBoat}) Km/h,
         </p>
         <p>
-            &emsp; \`vecv_r\` = ${vRiver} Km/h,
+             &emsp; \`vecv_r\` = (${vRiver}) Km/h,
         </p>
         <p>
-            &emsp; \`vecv + vecv_r = << 9 + v_x (Km)/h, v_y (Km)/h >> \`.
+             &emsp; \`vecv_p\` = (${vBoat}) - (${vRiver}) = (${vPropelled}) Km/h,
         </p>
         <p>
-            So, to stay perpendicular to the river, the x-component of the vector sum must be zero.
+            The magnitude of the vector \'vec v_p\' is the speed at which the boat is propelled, is expressed as \'norm(vecv_p)\' and, according to <a href="#[1.2]">[1.2]</a>, is calculated as:
         </p>
         <p >
             &emsp; \`9 + v_x = 0 => v_x = -9 (km)/h\`
@@ -54,22 +54,22 @@ const exerciseContent = `
             expresed as \`norm(vecv)\`.
         </p>
         <p>
-            &emsp; \`norm(vecv) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377) = 37.11 (km)/h.\`
+            &emsp; \`norm(vecv_p) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377)\` = ${normvPropelled} (km)/h.
         </p>
         <p>
-            The value of the angle &phi; is the direction in wich the boat is propeled. <br />
+            The value of the angle &phi; is the direction in which the boat is propelled, corresponds to the orientation of \'vecv_p\' and according to <a href="#[1.3]">[1.3]</a>, is calculated as:
         </p>
         <p>
             &emsp; &phi; \`= arctan(v_y/v_x) = arctan(36/-9) =\` -76º
         </p>
         <p>
-            this is the angle span betwen \`vecv_x\` and \`vecv\`.  <br />
+            this is the angle span betwen \`vecv_x\` and \`vecv\`.
         </p>
         <p>
-            But normally the angle to calculate the orientation is measured from the x-axis, which in this case is in the opposite direction to \`v_x\`. So, if we measure the orientation of the boat with respect to the x axis, it would be 180 - 76 = 104º.
+            But normally the angle to calculate the orientation is measured from the x-axis, which in this case is in the opposite direction to \`v_x\`. So, if we measure the orientation of the boat with respect to the x axis, it would be 180 - 76 = ${phi}º.
         </p>
         <p>
-            So, the answer to the exercise is that the boat must be propeled at a speed of 37.11 Km/h and in a direction that forms 104º with the river.
+            So, the answer to the exercise is that the boat must be propeled at a speed of ${normvPropelled} Km/h and in a direction that forms ${phi}º with the river.
         </p>
         <aside><!--References-->
             <!-- references to concepts used in this problem target="_blank" will display the link in a new tab. -->
@@ -120,16 +120,16 @@ const exerciseContent = `
             &emsp; \`vecv_r\` = ${vRiver} Km/h,
         </p>
         <p>
-            &emsp; \`vecv_p = (0, 36) - (9, 0) = (-9, 36) Km/h \`,
+            &emsp; \`vecv_p\` = (${vBoat}) - (${vRiver}) = (${vPropelled}) Km/h,
         </p>
         <p>
             La magnitud del vector \`vec v_p\` es la velocidad a la que se impulsa el bote, se expresa como \`norm(vecv_p)\` y, según <a href="#[1.2]">[1.2]</a>, se calcula como:
         </p>
         <p>
-            &emsp; \`norm(vecv_p) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377) = 37.11 (km)/h.\`
+            &emsp; \`norm(vecv_p) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377)\` = ${normvPropelled} (km)/h.
         </p>
         <p>
-            El valor del ángulo  &phi; es la dirección en la que se impulsa el bote, corresponde con la orientación de \`vecv_p\` y según <a href="#[1.3]">[1.3]</a>, se calcula como: <br />
+            El valor del ángulo  &phi; es la dirección en la que se impulsa el bote, corresponde con la orientación de \`vecv_p\` y según <a href="#[1.3]">[1.3]</a>, se calcula como:
         </p>
         <p>
             &emsp; &phi; \`= arctan(v_y/v_x) = arctan(36/-9) =\` -76º
@@ -138,10 +138,10 @@ const exerciseContent = `
             Este es el ángulo que va de \`vecv_x\` a \`vecv\`.  <br />
         </p>
         <p>
-            Pero, normalmente, el ángulo para calcular la orientación se mide desde el eje x, que en este caso está en dirección opuesta a \`v_x\`. Así que, si medimos la orientación del bote respecto al eje x, ésta sería 180 - 76= 104º.
+            Pero, normalmente, el ángulo para calcular la orientación se mide desde el eje x, que en este caso está en dirección opuesta a \`v_x\`. Así que, si medimos la orientación del bote respecto al eje x, ésta sería 180 - 76= ${phi}º.
         </p>
         <p>
-            Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de 37,11 Km/h y en una dirección que forme 104º con el río.
+            Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de ${normvPropelled} Km/h y en una dirección que forme ${phi}º con el río.
         </p>
         <aside><!--References-->
             <!-- references to concepts used in this problem target="_blank" will display the link in a new tab. -->
