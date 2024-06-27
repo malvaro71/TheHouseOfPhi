@@ -17,19 +17,19 @@ const exerciseContent = `
             A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 9 km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
         </p>
         <p>
-            Lets represent the river in a coordinate plane where the water flows in same direction thant the x-axis, and the y-axis is perpendicular to the river bank. Then, we represent  \`vecv_r \` as water velocity and  \`vecv \` as the velocity with which the boat is propelled. And decompose  \`vecv \` into its x and y components. As the vectors that represent velocity are free vectors, we place the origin of \`vecv_r\` and \`vecv \` at the origin of coordinates, as standard-position vectors.
+           The velocity of the boat 'vecv_b' is the sum of the velocity with which the boat 'vecv_p' is propelled plus the velocity of the river water 'vecv_r'. Then:
         </p>
         <p>
-            According to the data of the exercise,
+            &emsp; \`vecv_p = vecv_b - vecv_r \`,
         </p>
         <p>
-            &emsp;  \`vecv_r\` = ( ${vRiver} ) Km/h,
+            If we choose the coordinate plane so that the x-axis has the same direction as the river:
         </p>
         <p>
-            &emsp; \`vecv = << v_x , v_y >> \`,
+             &emsp; \`vecv_b\` = ${vBoat} Km/h,
         </p>
         <p>
-            We can consider that the speed of the boat with respect to the river bank is a sum of the speed with which the boat is propelled \`vecv\` plus the speed of the river water \`vecv_r\`. For example, if the boatman did not row, \`vecv = vec0\` and the speed of the boat with respect to the shore would be equal to the speed of the river water. So,
+            &emsp; \`vecv_r\` = ${vRiver} Km/h,
         </p>
         <p>
             &emsp; \`vecv + vecv_r = << 9 + v_x (Km)/h, v_y (Km)/h >> \`.
@@ -114,10 +114,10 @@ const exerciseContent = `
             Si elegimos el plano de coordenadas de manera que el eje x tenga la misma dirección que el río:
         </p>
         <p>
-            &emsp; \`vecv_b =\` (0, 36) Km/h ,
+            &emsp; \`vecv_b\` = ${vBoat} Km/h,
         </p>
         <p>
-            &emsp; \`vecv_r =\` (9, 0) Km/h ,
+            &emsp; \`vecv_r\` = ${vRiver} Km/h,
         </p>
         <p>
             &emsp; \`vecv_p = (0, 36) - (9, 0) = (-9, 36) Km/h \`,
