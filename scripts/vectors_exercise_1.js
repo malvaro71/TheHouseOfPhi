@@ -14,7 +14,7 @@ const exerciseContent = `
     <div class="lang lang-en">
         <h3>Exercise 1</h3>
         <p>
-            A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of ${vBoat[1]} km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
+            A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 9 km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
         </p>
         <p>
             Lets represent the river in a coordinate plane where the water flows in same direction thant the x-axis, and the y-axis is perpendicular to the river bank. Then, we represent  \`vecv_r \` as water velocity and  \`vecv \` as the velocity with which the boat is propelled. And decompose  \`vecv \` into its x and y components. As the vectors that represent velocity are free vectors, we place the origin of \`vecv_r\` and \`vecv \` at the origin of coordinates, as standard-position vectors.
@@ -23,7 +23,7 @@ const exerciseContent = `
             According to the data of the exercise,
         </p>
         <p>
-            &emsp;  \`vecv_r = << 9 (Km)/h, 0 (Km)/h >> \`,
+            &emsp;  \`vecv_r\` = ( ${vRiver} ) Km/h,
         </p>
         <p>
             &emsp; \`vecv = << v_x , v_y >> \`,
