@@ -8,8 +8,8 @@ const vPropelled = math.subtract(vBoat, vRiver);
 
 //Calculate the solutions
 const normvPropelled = math.norm(vPropelled); // How fast should the boat be propelled?
-//
-const phi = angleBetweenVectorsCCW(vRiver, vPropelled)*180/Math.PI; //In what direction?
+// From the dot product, see [1.13] 
+const phi = math.acos(math.dot(vRiver, vPropelled)/(math.norm(vRiver)*normvPropelled))*180/math.PI;
 
 // Define a variable containing the complete HTML content for the exercise.
 const exerciseContentEng = `
@@ -42,16 +42,10 @@ const exerciseContentEng = `
         &emsp; \`norm(vecv_p) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377)\` = ${normvPropelled.toFixed(1)} Km/h.
     </p>
     <p>
-        The value of the angle &phi; is the direction in which the boat is propelled, corresponds to the orientation of \'vecv_p\' and according to <a href="#[1.3]">[1.3]</a>, is calculated as:
+        The value of the angle &phi; is the direction in which the boat is propelled, corresponds to the orientation of \`vecv_p\` and according to <a href="#[1.13]">[1.13]</a>, is calculated as:
     </p>
     <p>
-        &emsp; &phi; \`= arctan(v_y/v_x) = arctan(36/-9) =\` -76º
-    </p>
-    <p>
-        this is the angle span betwen \`vecv_x\` and \`vecv\`.
-    </p>
-    <p>
-        But normally the angle to calculate the orientation is measured from the x-axis, which in this case is in the opposite direction to \`v_x\`. So, if we measure the orientation of the boat with respect to the x axis, it would be 180 - 76 = ${phi.toFixed(1)}º.
+        &emsp; &phi; \` = arccos((norm(vecv_p)norm(vecv_r))/(vecv_p*vecv_r))\` = ${phi.toFixed(1)}º
     </p>
     <p>
         So, the answer to the exercise is that the boat must be propeled at a speed of ${normvPropelled.toFixed(1)} Km/h and in a direction that forms ${phi.toFixed(1)}º with the river.
@@ -78,6 +72,11 @@ const exerciseContentEng = `
             <li>
                 <a href="https://www.mathsisfun.com/algebra/trig-four-quadrants.html" target="_blank">
                     [4] Sine, Cosine and Tangent in Four Quadrants.
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mathsisfun.com/algebra/vectors-dot-product.html" target="_blank">
+                    [5] Dot Product.
                 </a>
             </li>
         </ul>
@@ -120,16 +119,10 @@ const exerciseContentEsp = `
         &emsp; \`norm(vecv_p) = sqrt(v_x^2+v_y^2) = sqrt(9^2 + 36^2) = sqrt(81+1296) = sqrt(1377)\` = ${normvPropelled.toFixed(1)} (km)/h.
     </p>
     <p>
-        El valor del ángulo  &phi; es la dirección en la que se impulsa el bote, corresponde con la orientación de \`vecv_p\` y según <a href="#[1.3]">[1.3]</a>, se calcula como:
+        El valor del ángulo  &phi; es la dirección en la que se impulsa el bote, corresponde con la orientación de \`vecv_p\` y según <a href="#[1.13]">[1.13]</a>, se calcula como:
     </p>
     <p>
-        &emsp; &phi; \`= arctan(v_y/v_x) = arctan(36/-9) =\` -76º
-    </p>
-    <p>
-        Este es el ángulo que va de \`vecv_x\` a \`vecv\`.  <br />
-    </p>
-    <p>
-        Pero, normalmente, el ángulo para calcular la orientación se mide desde el eje x, que en este caso está en dirección opuesta a \`v_x\`. Así que, si medimos la orientación del bote respecto al eje x, ésta sería 180 - 76= ${phi.toFixed(1)}º.
+        &emsp; &phi; \` = arccos((norm(vecv_p)norm(vecv_r))/(vecv_p*vecv_r))\` = ${phi.toFixed(1)}º
     </p>
     <p>
         Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de ${normvPropelled.toFixed(1)} Km/h y en una dirección que forme ${phi.toFixed(1)}º con el río.
@@ -156,6 +149,11 @@ const exerciseContentEsp = `
             <li>
                 <a href="https://www.mathsisfun.com/algebra/trig-four-quadrants.html" target="_blank">
                     [4] Sine, Cosine and Tangent in Four Quadrants.
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mathsisfun.com/algebra/vectors-dot-product.html" target="_blank">
+                    [5] Dot Product.
                 </a>
             </li>
         </ul>
