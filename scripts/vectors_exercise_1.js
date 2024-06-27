@@ -17,7 +17,7 @@ const exerciseContent = `
             A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 9 km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?
         </p>
         <p>
-           The velocity of the boat \'vecv_b\' is the sum of the velocity with which the boat \'vecv_p\' is propelled plus the velocity of the river water \'vecv_r\'. Then:
+           The velocity of the boat \'vecv_b\' is the sum of the velocity with which the boat \'vecv_p\' is propelled by the boatman plus the velocity of the river water \'vecv_r\'. Then:
         </p>
         <p>
             &emsp; \`vecv_p = vecv_b - vecv_r \`,
@@ -105,7 +105,7 @@ const exerciseContent = `
             Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de 36 km/h. El agua del río fluye a una velocidad de 9 km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
         </p>
         <p>
-            La velocidad del bote \`vecv_b\` es la suma de la velocidad con la que se propulsa el bote \`vecv_p\` más la velocidad del agua del río \`vecv_r\`. Entonces:
+            La velocidad del bote \`vecv_b\` es la suma de la velocidad con la que el barquero propulsa el bote \`vecv_p\` más la velocidad del agua del río \`vecv_r\`. Entonces:
         </p>
         <p>
             &emsp; \`vecv_p = vecv_b - vecv_r \`,
