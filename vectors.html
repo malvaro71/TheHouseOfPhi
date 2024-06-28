@@ -162,6 +162,44 @@
                     We describe a point P in the three-dimensional rectangular coordinate system with the coordinates \((x_1, y_1, z_1)\). Each coordinate describes how the point aligns with
                     the corresponding axis.
                 </p>
+                <figure class="centered">
+                    <svg id="svg1_5"></svg > <!--See drawing code in main.js--> 
+                    <figcaption class="lang lang-en"><b>Figure 1.5</b> To plot the point P, with coordinates \((x_1, y_1, z_1)\), go \(x_1\) units along the x-axis, then \(y_1\) units in the direction of the y-axis, then \(z_1\) units in the direction of the z-axis.</figcaption>
+                </figure>
+            </section>
+            <section>
+                <h3>1.5 Vector components </h3>
+                <p>
+                    When the initial point of a vector coincides with the origin of the coordinate system, we call the vector a <strong>standard-position vector</strong>. Because the initial point of any vector in standard position is known to be (0,0), we can describe the vector by looking only at the coordinates of its terminal point. Thus, if vector \(vec v\) has its initial point at the origin and its terminal point at (x, y), we write the vector in component form as
+                </p>
+                <div class="container">
+                    <div  class="center">\(vec v = (x, y)\)</div>
+                    <div  class="right" id="[1.1]">[1.1]</div>
+                </div>
+                <p>
+                    When a vector is written in component form like this, the scalars x and y are called the
+                    <strong>components</strong> of \(vec v\). When we need to perform calculations with vectors, we usually describe them as standard-position vectors because it is easier to perform such calculations.
+                </p>
+            </section>
+            <section>
+                <h3>1.6 Relationship between vector components and its magnitude and orientation</h3>
+                <p>
+                    To find vector magnitude from its components, we use the Pythagorean Theorem. And to find its direction we use the inverse tangent function.
+                </p>
+                <p>
+                    Given a position vector \(vec v = (x, y)\), the <strong>magnitude (or module)</strong> is found by       
+                </p>
+                <div class="container">
+                    <div  class="center">\(\Vert\vec v\Vert\ = \sqrt{x^2+y^2}\)</div>
+                    <div  class="right" id="[1.2]">[1.2]</div>
+                </div>
+                <p>
+                    And the <strong>direction</strong> is found by
+                </p>
+                <div class="container">
+                    <div  class="center">\(\theta = \arctan (y/x)\)</div>
+                    <div  class="right" id="[1.3]">[1.3]</div>
+                </div>
             </section>
         </div>
         <div class="lang lang-es">
@@ -176,17 +214,18 @@
             </section>
             <section>
                 <h3>1.2 Vectores</h3>
-                <p class="lang lang-es" lang="es">
+                <p>
                     Un <strong>vector </strong> es un segmento dirigido, uno de cuyos extremos (el punto A) se dice que es el origen, mientras que el otro (el punto B) se dice que es el final del vector. Tal vector puede ser denotado por <b><i>v</i></b>, \(\vec v\) or \(\overrightarrow{AB}\). Un vector cuyo origen y fin coinciden se dice que es un <strong>vector cero</strong>, y generalmente se denota por \(\vec0\). El vector \(\overrightarrow{BA}\) se dice que es el <strong>vector opuesto</strong> a \(\overrightarrow{AB}\). Un vector con una longitud igual a uno se denomina vector unitario. Cualquier dirección puede ser asignada a un vector cero.
                 </p>
                 <p>
                     El origen del vector también se denomina punto inicial o punto de aplicación. 
                 </p>
                 <figure class="centered">
-                <svg id="svg1_1_es"></svg>
-                <figcaption>
-                    <b>Figura 1.1 </b> Un vector está representado por un segmento de línea dirigida desde su punto inicial A hasta su punto terminal B.
-                </figcaption>
+                    <svg id="svg1_1_es"></svg>
+                    <figcaption>
+                        <b>Figura 1.1 </b> Un vector está representado por un segmento de línea dirigida desde su punto inicial A hasta su punto terminal B.
+                    </figcaption>
+                </figure>
                 <p>
                     Un vector geométrico, como se ha definido anteriormente, también se denomina <strong>vector fijo</strong> o <strong>vector ligado</strong>. Porque tiene un punto de partida único. En física se utiliza, por ejemplo, para especificar la acción de la fuerza sobre un cuerpo deformable o no rígido. En este caso, las fuerzas y deformaciones dentro del cuerpo dependen del punto de aplicación de la fuerza, así como de la magnitud y la línea de acción.
                 </p>
@@ -258,92 +297,57 @@
                 <p class="lang lang-es" lang="es">
                     Describimos un punto P en el sistema de coordenadas rectangulares tridimensionales con las coordenadas \((x_1, y_1, z_1)\). Cada coordenada describe cómo se alinea el punto con el eje correspondiente.
                 </p>
+                <figure class="centered">
+                    <svg id="svg1_5_es"></svg >
+                    <figcaption><b>Figura 1.5</b> Para trazar el punto P, con coordenadas \((x_1, y_1, z_1)\), desplazarse \(x_1\) unidades a lo largo del eje x, entonces ir \(y_1\) unidades en la dirección del eje Y, luego desplazarse \(z_1\) unidades en la dirección del eje z.</figcaption>
+                </figure>
+            </section>
+            <section>
+                <h3>1.5 Componentes de un Vector</h3>
+                <p>
+                    Cuando el punto inicial de un vector coincide con el origen del sistema de coordenadas, llamamos al vector <strong>vector de posición estándar</strong>. Debido a que se sabe que el punto inicial de cualquier vector en posición estándar es (0,0), podemos describir el vector tomando sólo las coordenadas de su punto terminal. Por lo tanto, si el vector \(vec v\) tiene su punto inicial en el origen y su punto terminal en (x, y), escribimos el vector mediante sus componentes como
+                </p>
+                <div class="container">
+                    <div  class="center">\(vec v = (x, y)\)</div>
+                    <div  class="right" id="[1.1]">[1.1]</div>
+                </div>
+                <p>
+                    Cuando un vector se escribe de esta manera, los escalares x e y se denominan <strong>componentes</strong> de \(vec v\). Cuando necesitamos realizar cálculos con vectores, solemos describirlos como vectores de posición estándar porque es más fácil realizar tales cálculos.
+                </p>
+            </section>
+            <section>
+                <h3>1.6 Relación entre las componentes de un vector, su módulo y su dirección</h3>
+                <p>
+                    Para hallar la magnitud de un vector a partir de sus componentes, utilizamos el Teorema de Pitágoras. Y para encontrar su dirección Usamos la función tangente inversa.
+                </p>
+                <p>
+                    Dado un vector de posición \(vec v = (x, y)\), su <strong>magnitud (o módulo)</strong> se calcula mediante       
+                </p>
+                <div class="container">
+                    <div  class="center">\(\Vert\vec v\Vert\ = \sqrt{x^2+y^2}\)</div>
+                    <div  class="right" id="[1.2]">[1.2]</div>
+                </div>
+                <p>
+                    Y su <strong>dirección</strong> se calcula mediante
+                </p>
+                <div class="container">
+                    <div  class="center">\(\theta = \arctan (y/x)\)</div>
+                    <div  class="right" id="[1.3]">[1.3]</div>
+                </div>
             </section>
         </div>
 
-        <section><!--1.4 Cartesian coordinate System-->
-            
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
-            
-
-            <figure class="centered"><!--To plot the point P, with coordinates `(x_1, y_1, z_1)`, go `x_1` units along the x-axis, then `y_1` units in the direction of the y-axis, then `z_1` units in the direction of the z-axis.-->
-                <svg id="svg1_5"></svg > <!--See drawing code in main.js--> 
-
-                <figcaption class="lang lang-en"><b>Figure 1.5</b> To plot the point P, with coordinates `(x_1, y_1, z_1)`, go `x_1` units along the x-axis, then `y_1` units in the direction of the y-axis, then `z_1` units in the direction of the z-axis.</figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figura 1.5</b> Para trazar el punto P, con coordenadas `(x_1, y_1, z_1)`, desplazarse `x_1` unidades a lo largo del eje x, entonces ir `y_1` unidades en la dirección del eje Y, luego desplazarse `z_1` unidades en la dirección del eje z.</figcaption>
-            </figure>
-        </section>
-
-        <section><!--1.5 Vector components-->
-            <h3 class="lang lang-en" id="Vector components">1.5 Vector components </h3>
-            <h3 class="lang lang-es" lang="es" id="Componentes de un Vector">1.5 Componentes de un Vector</h3>
-            <p class="lang lang-en">
-                When the initial point of a vector coincides with the origin of the coordinate system, we call the
-                vector a <strong>standard-position vector</strong>. Because the initial point of any vector in standard position is known to be (0,0), we can describe the vector by looking only at the coordinates of its terminal point. Thus, if vector `vecv` has its initial point at the origin and its terminal point at (x, y), we write the vector in component form as
-            </p>
-            <p class="lang lang-es" lang="es"lang lang-en">
-                Cuando el punto inicial de un vector coincide con el origen del sistema de coordenadas, llamamos al vector <strong>vector de posición estándar</strong>. Debido a que se sabe que el punto inicial de cualquier vector en posición estándar es (0,0), podemos describir el vector tomando sólo las coordenadas de su punto terminal. Por lo tanto, si el vector `vecv` tiene su punto inicial en el origen y su punto terminal en (x, y), escribimos el vector mediante sus componentes como
-            </p>
-            <div class="container">
-                <div  class="center">`vecv = << x,y >>`</div>
-                <div  class="right" id="[1.1]">[1.1]</div>
-            </div>
-
-            <p class="lang lang-en">
-                When a vector is written in component form like this, the scalars x and y are called the
-                <strong>components</strong> of `vecv`. When we need to perform calculations with vectors, we usually describe them as standard-position vectors because it is easier to perform such calculations.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Cuando un vector se escribe de esta manera, los escalares x e y se denominan <strong>componentes</strong> de `vecv. Cuando necesitamos realizar cálculos con vectores, solemos describirlos como vectores de posición estándar porque es más fácil realizar tales cálculos.
-            </p>
-        </section>
-
         <section><!--1.6 Relationship between vector components and its magnitude and orientation-->
-            <h3 class="lang lang-en" id="Relationship between vector components and its magnitude and orientation">1.6 Relationship between vector components and its magnitude and orientation</h3>
-            <h3 class="lang lang-es" lang="es" id="Relación entre las componentes de un vector, su módulo y su dirección">1.6 Relación entre las componentes de un vector, su módulo y su dirección</h3>
-            <p class="lang lang-en">
-                To find vector magnitude from its components, we use the Pythagorean Theorem. And to find its direction we use the inverse tangent function.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Para hallar la magnitud de un vector a partir de sus componentes, utilizamos el Teorema de Pitágoras. Y para encontrar su dirección Usamos la función tangente inversa.
-            </p>
-            <p class="lang lang-en">
-                Given a position vector `vecv = << x,y >>`, the <strong>magnitude (or module)</strong> is found by       
-            </p>
-            <p class="lang lang-es" lang="es">
-                Dado un vector de posición `vecv = << x,y >>`, su <strong>magnitud (o módulo)</strong> se calcula mediante       
-            </p>
-            <div class="container">
-                <div  class="center">`norm(vecv) = sqrt(x^2+y^2)`</div>
-                <div  class="right" id="[1.2]">[1.2]</div>
-            </div>    
-            <p class="lang lang-en">
-                And the <strong>direction</strong> is found by
-            </p>
-            <p class="lang lang-es" lang="es">
-                Y su <strong>dirección</strong> se calcula mediante
-            </p>
-            <div class="container">
-                <div  class="center">`theta = arctan (y/x)`</div>
-                <div  class="right" id="[1.3]">[1.3]</div>
-            </div>
+            
+            
+            
+            
+            
+            
+               
+            
+            
+            
             <p class="lang lang-en">
                 Given the magnitude and direction of a vector `vecv`, its <strong>x component</strong> is found by  
             </p>
