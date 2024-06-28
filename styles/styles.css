@@ -28,6 +28,15 @@ h3 {
     display: block;
 }
 
+ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+li {
+    text-align: justify;
+}
+
 strong {
     color: var(--bold-color);
 }

@@ -94,81 +94,97 @@
 
 // svg1_1. A vector is represented by a directed line segment from its initial point A to its terminal point B.
 {
-	// Get the SVG element from the DOM
-	var svg1_1 = document.getElementById("svg1_1");
-
-	// Set attributes
-	svg1_1.setAttribute("viewBox", "0 0 180 220"); 
-	svg1_1.setAttribute("width", "180"); 
-	svg1_1.setAttribute("height", "220");
-
-	// Add the marker to the SVG
-	svg1_1.appendChild(brownMarker); 
-
-	// Draws a vector using existing marker already created and added to this SVG:
-	drawSegment(svg1_1, 24, 210, 150, 5, "brown", 2, "none", true);
-
-	//Draws a text
-	writeText(svg1_1, "A", 0, 205, 25, "brown", "brown", "bold", "leftbottom");
-	writeText(svg1_1, "B", 160, 5, 25, "brown", "brown", "bold", "lefttop");
+    function drawSvg1_1(svgElementId){
+        // Get the SVG element from the DOM
+        var svg1_1 = document.getElementById(svgElementId);
+    
+        // Set attributes
+        svg1_1.setAttribute("viewBox", "0 0 180 220"); 
+        svg1_1.setAttribute("width", "180"); 
+        svg1_1.setAttribute("height", "220");
+    
+        // Add the marker to the SVG
+        svg1_1.appendChild(brownMarker); 
+    
+        // Draws a vector using existing marker already created and added to this SVG:
+        drawSegment(svg1_1, 24, 210, 150, 5, "brown", 2, "none", true);
+    
+        //Draws a text
+        writeText(svg1_1, "A", 0, 205, 25, "brown", "brown", "bold", "leftbottom");
+        writeText(svg1_1, "B", 160, 5, 25, "brown", "brown", "bold", "lefttop");
+    };
+    /*call the drawSvg1_1 function twice, passing different IDs for the SVG elements ("svg1_1_en" and "svg1_1_es"). This allow to create two separate SVG figures */
+    drawSvg1_1("svg1_1_en");
+    drawSvg1_1("svg1_1_es");
 }
+
 
 // svg1_2. Vector addition. Graphical method
 {
-	// Get the SVG element from the DOM
-	var svg1_2 = document.getElementById("svg1_2");
-
-	// Set attributes
-	svg1_2.setAttribute("viewBox", "0 0 230 240"); 
-	svg1_2.setAttribute("width", "230"); 
-	svg1_2.setAttribute("height", "240");
-
-	// Add the marker to the SVG
-	svg1_2.appendChild(brownMarker); 
-	svg1_2.appendChild(blueMarker); 
-	svg1_2.appendChild(greenMarker); 
-
-	// set a cartesian plane
-	const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
-
-	// define two vectors and calculate its vector addition
-	const pointA = [0, 0];
-	const vectorA = [4, 12];
-	const vectorB = [15, 6];
-	const vectorAPlusB = math.add(vectorA, vectorB);
-
-	// draw vectos a, b and a+b
-	myPlane1_2.drawVector(pointA, vectorA, "a", {strokeColor: "green"}, {fontSize: 22, fill: "green"});
-	
-	myPlane1_2.drawVector(vectorA, vectorB, "b", {strokeColor: "blue"}, {fontSize: 22, fill: "blue"});
-	
-	myPlane1_2.drawVector(pointA, vectorAPlusB, "a+b", {strokeColor: "brown"}, {fontSize: 22, corner: "lefttop"});
-	
-	myPlane1_2.drawVector(pointA, vectorB, "b", {strokeColor: "blue"}, {fontSize: 22, fill: "blue"});
-
-	myPlane1_2.drawVector(vectorB, vectorA, "a", { strokeColor: "green"}, {fontSize: 22, fill: "green"});
+    function drawSvg1_2(svgElementId){
+        // Get the SVG element from the DOM
+        var svg1_2 = document.getElementById(svgElementId);
+    
+        // Set attributes
+        svg1_2.setAttribute("viewBox", "0 0 230 240"); 
+        svg1_2.setAttribute("width", "230"); 
+        svg1_2.setAttribute("height", "240");
+    
+        // Add the marker to the SVG
+        svg1_2.appendChild(brownMarker); 
+        svg1_2.appendChild(blueMarker); 
+        svg1_2.appendChild(greenMarker); 
+    
+        // set a cartesian plane
+        const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
+    
+        // define two vectors and calculate its vector addition
+        const pointA = [0, 0];
+        const vectorA = [4, 12];
+        const vectorB = [15, 6];
+        const vectorAPlusB = math.add(vectorA, vectorB);
+    
+        // draw vectos a, b and a+b
+        myPlane1_2.drawVector(pointA, vectorA, "a", {strokeColor: "green"}, {fontSize: 22, fill: "green"});
+        
+        myPlane1_2.drawVector(vectorA, vectorB, "b", {strokeColor: "blue"}, {fontSize: 22, fill: "blue"});
+        
+        myPlane1_2.drawVector(pointA, vectorAPlusB, "a+b", {strokeColor: "brown"}, {fontSize: 22, corner: "lefttop"});
+        
+        myPlane1_2.drawVector(pointA, vectorB, "b", {strokeColor: "blue"}, {fontSize: 22, fill: "blue"});
+    
+        myPlane1_2.drawVector(vectorB, vectorA, "a", { strokeColor: "green"}, {fontSize: 22, fill: "green"});
+    }
+    drawSvg1_2("svg1_2_en");
+    drawSvg1_2("svg1_2_es");
 }
+
 
 // svg1_3. Cartesian plane and cartesian coordinates of a point.
 {
-	// Get the SVG element from the DOM
-	var svg1_3 = document.getElementById("svg1_3");
-
-	// Set attributes
-	svg1_3.setAttribute("viewBox", "0 0 400 400"); 
-	svg1_3.setAttribute("width", "400"); 
-	svg1_3.setAttribute("height", "400");
-
-	// set a cartesian plane
-	const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
-	myPlane1_3.drawAxes("y-axis", "x-axis", "O");
-	
-	// Draw a point, its label and two segments
-	myPlane1_3.drawPoint([5, 10], "green");
-  	myPlane1_3.drawLabel([6, 10], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
-	myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
-	myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+    function drawSvg1_3(svgElementId){
+        // Get the SVG element from the DOM
+        var svg1_3 = document.getElementById(svgElementId);
+    
+        // Set attributes
+        svg1_3.setAttribute("viewBox", "0 0 400 400"); 
+        svg1_3.setAttribute("width", "400"); 
+        svg1_3.setAttribute("height", "400");
+    
+        // set a cartesian plane
+        const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
+        myPlane1_3.drawAxes("y-axis", "x-axis", "O");
+        
+        // Draw a point, its label and two segments
+        myPlane1_3.drawPoint([5, 10], "green");
+          myPlane1_3.drawLabel([6, 10], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
+        myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+        myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+    }
+    drawSvg1_3("svg1_3_en");
+    drawSvg1_3("svg1_3_es");
 }
+
 
 // svg1.5 point P, with coordinates (x1, y1, z1)
 {

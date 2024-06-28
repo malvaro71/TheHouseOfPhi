@@ -77,20 +77,94 @@
             <section>
                 <h3>1.2 Vectors</h3>
                 <p>
-                    A <strong>vector </strong>is a directed segment, one end of which (the point A) is said to be the origin, while the other (the point B) is said to be the end of the vector. Such a vector may be denoted by <b><i>v</i></b>,  \(\vec v\) or \(\overrightarrow{AB}\). A vector whose origin and end coincide is said to be a <strong>zero vector</strong>, and is usually denoted by  \(\vec0\). The vector \(\overrightarrow{BA}\) is said to be the vector <strong>opposite</strong> to \(\overrightarrow{AB}\). A vector with length equal to one is called a <strong>unit vector</strong>. Any direction may be assigned to a zero vector.
+                    A <strong>vector</strong>is a directed segment, one end of which (the point A) is said to be the origin, while the other (the point B) is said to be the end of the vector. Such a vector may be denoted by <b><i>v</i></b>,  \(\vec v\) or \(\overrightarrow{AB}\). A vector whose origin and end coincide is said to be a <strong>zero vector</strong>, and is usually denoted by  \(\vec0\). The vector \(\overrightarrow{BA}\) is said to be the vector <strong>opposite</strong> to \(\overrightarrow{AB}\). A vector with length equal to one is called a <strong>unit vector</strong>. Any direction may be assigned to a zero vector.
                 </p>
                 <p>
                     The vector origin is also named initial point or point of application. 
                 </p>
                 <figure class="centered"> 
-                <svg id="svg1_1"></svg>
-                <figcaption>
-                    <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
-                </figcaption>
-            </figure>
+                    <svg id="svg1_1_en"></svg>
+                    <figcaption>
+                        <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
+                    </figcaption>
+                </figure>
+                <p>
+                    A geometric vector, as defined above, is also called a <strong>fixed vector</strong> or <strong>bound vector</strong>. Because it has a unique initial point. In physics is used, for example, to specify the action of the force on deformable or non rigid body. In this instance, the forces and deformations within the body depend on the point of application of the force, as well as on the  magnitude and line of action.
+                </p>
+                <p>
+                    A class of equal vectors lying on the same straight line is said to be a <strong>sliding vector</strong>. An example of sliding vector is the action of a force on a rigid body. So, in this case, the point of application can be moved along the line determined by the vector direction.
+                </p>
+                <p>
+                    If vectors are only characterized by magnitude and direction, then are called <strong>free vectors</strong>. Examples of free vectors in physics are displacement, velocity and magnetic or electric field strength. In these cases, the vector can be moved to any point in the space
+                </p>
+                <p>
+                    Vector calculus, which is the study of operations performed on vectors, is based on free vectors, since two given free vectors are equivalent to a given sliding vector or a given bound vector, as long as we keep in mind the physical meaning of the vector under analysis. From now on, <strong>we'll talk about free vectors if not mentioned otherwise</strong>.
+                </p>
+                <p style="margin-bottom: 7px;">
+                    A vector is characterized:
+                    <ul>
+                        <li>
+                            by its <strong>magnitude</strong> (or length), which is equal to the length of the segment \(\overline{AB}\) and is denoted by \(\Vert\vec v\Vert\),
+                        </li>
+                        <li>
+                            and by its <strong>direction</strong>: from A to B.
+                        </li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h3>1.3 Vector Addition, Graphical Method:</h3>
+                <p>
+                    The sum of two vectors \(vec a\) and \(vec b\), or vector addition, produces a third vector \(\overrightarrow{a+b}\).
+                </p>
+                <p>
+                    To find (\overrightarrow{a+b}\), we first draw the vector \(vec a\), and from the terminal end of \(vec a\), we draw the vector \(vec b\). In other words, we have the initial point of \(vec b\) meet the terminal end of \(vec a\). This position corresponds to the notion that we move along the first vector and then, from its terminal point, we move along the second vector. Vector addition has the conmutative property; so, if we first draw vector \(vec b\), and from the terminal end of \(vec b\), we draw the vector \(vec a\), we will obtain (\overrightarrow{b+a}\), that is equal to (\overrightarrow{a+b}\). 
+                </p>
+                <figure class="centered">
+                    <svg id="svg1_2_en"></svg >
+                    <figcaption><b>Figure 1.2</b> Vector addition. Graphical method.</figcaption>
+                </figure>
+                <p>
+                    A <strong>scalar</strong> is a quantity that has magnitude but no direction. Or, in other words, a quantity that can be expressed by one (real) number.
+                </p>
+            </section>
+            <section>
+                <h3>1.4 Cartesian coordinate System</h3>
+                <p>
+                    To specify the magnitude and direction of a vector we need a coordinate system. There are three commonly used coordinate systems: Cartesian, cylindrical and spherical.
+                    In this section we describe the Cartesian coordinate system.
+                </p>
+                <p>
+                    A <strong>Cartesian coordinate system in two dimensions</strong> is defined by an ordered pair of
+                    perpendicular lines (axes), a single unit of length for both axes, and an orientation for each axis. The point where the axes meet is taken as the origin for both, thus turning each axis into a number line.
+                </p>
+                <p>
+                    For any point P, a line is drawn through P perpendicular to each axis, and the position where it meetsthe axis is interpreted as a number. The two numbers, in that chosen order, are the Cartesian coordinates (x, y) of P.
+                </p>
+                <figure class="centered">
+                    <svg id="svg1_3_en"></svg>
+                    <figcaption><b>Figure 1.3</b> Cartesian plane and cartesian coordinates of a point.</figcaption>
+                </figure>
+                <p>
+                    A <strong>Cartesian coordinate system in three dimensions</strong> consists of three perpendicular axes: the x-axis, the y-axis, and the z-axis that go through a common point (the origin <b>0</b>). Because each axis is a number line representing all real numbers in \(\Bbb R\) , the three-dimensional system is often denoted by \(\Bbb R^3\).
+                </p>
+                <p>
+                    The cartesian coordinate system is also called a <strong>rectangular coordinate system</strong> or <strong>orthogonal coordinate system</strong>.
+                </p>
+                <p>
+                    In Figure 1.4(a), the positive z-axis is shown above the plane containing the x- and y-axes. The system displayed follows the right-hand rule. If we take our right hand and align the fingers with the positive x-axis, then curl the fingers so they point in the direction of the positive y-axis, our thumb points in the direction of the positive z-axis. In this website, we always work with coordinate systems set up in accordance with the right-hand rule. Some systems do follow a left-hand rule, but the right-hand rule is considered the standard representation.
+                </p>
+                <figure class="centered">
+                    <img src="images\3DCoordSystAndRightHandRule.svg" width="600" height="300" />
+                    <figcaption><b>Figure 1.4</b> (a) Three-dimensional rectangular coordinate system with the x-axis, the y-axis and the z-axis. (b) The right-hand rule is used to determine the placement of the coordinate axes in the standard Cartesian Plane.</figcaption>
+                </figure>
+                <p>
+                    We describe a point P in the three-dimensional rectangular coordinate system with the coordinates \((x_1, y_1, z_1)\). Each coordinate describes how the point aligns with
+                    the corresponding axis.
+                </p>
             </section>
         </div>
-        <div class="lang lang-es" lang="es">
+        <div class="lang lang-es">
             <header>
                 <h2 id="Teoría">1. Teoría y Conceptos Clave</h2>
             </header>
@@ -109,157 +183,105 @@
                     El origen del vector también se denomina punto inicial o punto de aplicación. 
                 </p>
                 <figure class="centered">
-                <svg id="svg1_1"></svg>
+                <svg id="svg1_1_es"></svg>
                 <figcaption>
                     <b>Figura 1.1 </b> Un vector está representado por un segmento de línea dirigida desde su punto inicial A hasta su punto terminal B.
                 </figcaption>
+                <p>
+                    Un vector geométrico, como se ha definido anteriormente, también se denomina <strong>vector fijo</strong> o <strong>vector ligado</strong>. Porque tiene un punto de partida único. En física se utiliza, por ejemplo, para especificar la acción de la fuerza sobre un cuerpo deformable o no rígido. En este caso, las fuerzas y deformaciones dentro del cuerpo dependen del punto de aplicación de la fuerza, así como de la magnitud y la línea de acción.
+                </p>
+                <p>
+                    Se dice que una clase de vectores iguales que se encuentran en la misma línea recta es un <strong>vector deslizante</strong>. Un ejemplo de vector deslizante es la acción de una fuerza sobre un cuerpo rígido. Entonces, en este caso, el punto de aplicación se puede mover a lo largo de la línea determinada por la dirección del vector.
+                </p>
+                <p>
+                    Si los vectores solo se caracterizan por la magnitud y la dirección, entonces se denominan <strong>vectores libres</strong>. Ejemplos de vectores libres en física son el desplazamiento, la velocidad y la intensidad del campo magnético o eléctrico. En estos casos, el vector se puede mover a cualquier punto del espacio.
+                </p>
+                <p>
+                    El cálculo vectorial, que es el estudio de las operaciones realizadas sobre vectores, se basa en vectores libres, ya que dos vectores libres dados son equivalente a un vector deslizante dado o a un vector ligado dado, siempre y cuando tengamos en cuenta el valor físico y el significado del vector analizado. A partir de ahora, <strong>hablaremos de vectores libres si no se menciona lo contrario</strong>.
+                </p>
+                <p style="margin-bottom: 7px;">
+                    Un vector está caracterizado:
+                    <ul>
+                        <li>
+                            por su magnitud (o longitud), que es igual a la longitud del segmento \(\overline{AB}\) y se denota por \(\Vert\vec v\Vert\), 
+                        </li>
+                        <li>
+                            y por su <strong>dirección</strong>: de A hacia B.
+                        </li>
+                    </ul>
+                </p>
+            </section>
+            <section>
+                <h3>1.3 Suma de Vectores, Método Gráfico:</h3>
+                <p>
+                    La suma de dos vectores \(vec a\) y \(vec b\), o suma de vectores, produce un tercer vector (\overrightarrow{a+b}\). 
+                </p>
+                <p>
+                    Para encontrar (\overrightarrow{a+b}\), primero dibujamos el vector \(vec a\), y desde el final de \(vec a\), dibujamos \(vec b\). En otras palabras, hacemos qeu el origen de \(vec b\) coincida con el final \(vec a\). Esta posición corresponde a la noción de que nos movemos a lo largo del primer vector y luego, desde su punto terminal, nos movemos a lo largo del segundo vector. La suma vectorial tiene la propiedad conmutativa; Entonces, si primero dibujamos un vector \(vec b\), y desde el final de \(vec b\), dibujamos el vector \(vec a\), obtendremos (\overrightarrow{b+a}\), que es igual a (\overrightarrow{a+b}\). 
+                </p>
+                <figure class="centered">
+                    <svg id="svg1_2_es"></svg >
+                    <figcaption><b>Figura 1.2</b> Suma de vectores. Método Gráfico.</figcaption>
+                </figure>
+                <p>
+                    Un <strong>escalar</strong> es una cantidad que tiene magnitud pero no dirección. O, en otras palabras, una cantidad que se puede expresar con un número (real).
+                </p>
+            </section>
+            <section>
+                <h3>1.4 Sistema de coordenadas cartesianas</h3>
+                <p>
+                    Para especificar la magnitud y la dirección de un vector necesitamos un sistema de coordenadas. Hay tres sistemas de coordenadas comúnmente utilizados: cartesiano, cilíndrico y esférico. En esta sección describimos el sistema de coordenadas cartesianas.
+                </p>
+                <p>
+                    Un <strong>sistema de coordenadas cartesianas en dos dimensiones</strong> se define mediante un par ordenado de líneas perpendiculares (ejes), una sola unidad de longitud para ambos ejes y una orientación para cada eje. El punto donde se encuentran los ejes se toma como origen de ambos, convirtiendo así cada eje en una recta numérica.
+                </p>
+                <p>
+                    Para cualquier punto P, se dibuja una línea a través de P perpendicular a cada eje, y la posición en la que se encuentra con el eje se interpreta como un número. Los dos números, en ese orden elegido, son las coordenadas cartesianas (x, y) de P.
+                </p>
+                <figure class="centered">
+                    <svg id="svg1_3_es"></svg>
+                    <figcaption><b>Figura 1.3</b> Plano cartesiano y coordenadas cartesianas de un punto.</figcaption>
+                </figure>
+                <p>
+                    Un <strong>Sistema de coordenadas cartesianas en tres dimensiones</strong> consta de tres ejes perpendiculares: el eje x, el eje y y el eje z que se cruzan en un punto común (el origen 0). Debido a que cada eje es una recta numérica que representa todos los números reales en \(\Bbb R\), el sistema tridimensional a menudo se denota por \(\Bbb R^3\).
+                </p>
+                <p>
+                    El sistema de coordenadas cartesianas también se denomina <strong>sistema de coordenadas rectangulares</strong> o <strong>sistema de coordenadas ortogonales</strong>.
+                </p>
+                <p>
+                    En la Figura 1.4 (a), el eje z positivo se muestra sobre el plano que contiene los ejes x e y. El sistema que se muestra sigue la regla de la mano derecha. Si tomamos nuestra mano derecha y alineamos los dedos con el eje x positivo, luego dobla los dedos para que apunten en la dirección del eje y positivo, nuestro pulgar apunta en la dirección del eje z positivo. En este sitio web, siempre trabajamos con sistemas de coordenadas configurados de acuerdo con la regla de la mano derecha. Algunos sistemas siguen una regla de la mano izquierda, pero la regla de la mano derecha se considera la representación estándar.
+                </p>
+                <figure class="centered">
+                    <img src="images\3DCoordSystAndRightHandRule.svg" width="600" height="300" />
+                    <figcaption><b>Figura 1.4</b> (a) Sistema de coordenadas rectangulares tridimensionales con el eje x, el eje y y el eje z. (b) La regla de la mano derecha se utiliza para determinar la ubicación de los ejes de coordenadas en la norma Plano Cartesiano.</figcaption>
+                </figure>
+                <p class="lang lang-es" lang="es">
+                    Describimos un punto P en el sistema de coordenadas rectangulares tridimensionales con las coordenadas \((x_1, y_1, z_1)\). Cada coordenada describe cómo se alinea el punto con el eje correspondiente.
+                </p>
             </section>
         </div>
-            
-            <p class="lang lang-en">
-                A geometric vector, as defined above, is also called a <strong>fixed vector</strong> or <strong>bound vector</strong>. Because it has a unique initial point. In physics is used, for example, to specify the action of the force on deformable or non rigid body. In this instance, the forces and deformations within the body depend on the point of application of the force, as well as on the  magnitude and line of action.
-            </p>
-                <p class="lang lang-es" lang="es">
-                Un vector geométrico, como se ha definido anteriormente, también se denomina <strong>vector fijo</strong> o <strong>vector ligado</strong>. Porque tiene un punto de partida único. En física se utiliza, por ejemplo, para especificar la acción de la fuerza sobre un cuerpo deformable o no rígido. En este caso, las fuerzas y deformaciones dentro del cuerpo dependen del punto de aplicación de la fuerza, así como de la magnitud y la línea de acción.
-            </p>
-            <p class="lang lang-en">
-                A class of equal vectors lying on the same straight line is said to be a <strong>sliding vector</strong>. An example of sliding vector is the action of a force on a rigid body. So, in this case, the point of application can be moved along the line determined by the vector direction.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Se dice que una clase de vectores iguales que se encuentran en la misma línea recta es un <strong>vector deslizante</strong>. Un ejemplo de vector deslizante es la acción de una fuerza sobre un cuerpo rígido. Entonces, en este caso, el punto de aplicación se puede mover a lo largo de la línea determinada por la dirección del vector.
-            </p>
-            <p class="lang lang-en">
-                If vectors are only characterized by magnitude and direction, then are called <strong>free vectors</strong>. Examples of free vectors in physics are displacement, velocity and magnetic or electric field strength. In these cases, the vector can be moved to any point in the space
-            </p>
-            <p class="lang lang-es" lang="es">
-                Si los vectores solo se caracterizan por la magnitud y la dirección, entonces se denominan <strong>vectores libres</strong>. Ejemplos de vectores libres en física son el desplazamiento, la velocidad y la intensidad del campo magnético o eléctrico. En estos casos, el vector se puede mover a cualquier punto del espacio.
-            </p>
-            <p class="lang lang-en">
-                Vector calculus, which is the study of operations performed on vectors, is based on free vectors, since two given free vectors are equivalent to a given sliding vector or a given bound vector, as long as we keep in mind the physical meaning of the vector under analysis. From now on, <strong>we'll talk about free vectors if not mentioned otherwise</strong>.
-            </p>
-            <p class="lang lang-es" lang="es">
-                El cálculo vectorial, que es el estudio de las operaciones realizadas sobre vectores, se basa en vectores libres, ya que dos vectores libres dados son equivalente a un vector deslizante dado o a un vector ligado dado, siempre y cuando tengamos en cuenta el valor físico y el significado del vector analizado. A partir de ahora, <strong>hablaremos de vectores libres si no se menciona lo contrario</strong>.
-            </p>
-            <p class="lang lang-en">
-                A vector is characterized:
-                <ul class="lang lang-en">
-                    <li>
-                        by its <strong>magnitude</strong> (or length), which is equal to the length of the segment `bar(AB)` and is denoted by `norm(vecv)`,
-                    </li>
-                    <li>
-                        and by its <strong>direction</strong>: from A to B.
-                    </li>
-                </ul>
-            </p>
-            <p class="lang lang-es" lang="es">
-                Un vector está caracterizado:
-                <ul class="lang lang-es" lang="es">
-                    <li>
-                        por su magnitud (o longitud), que es igual a la longitud del segmento `bar(AB)` y se denota por `norm(vecv)`, 
-                    </li>
-                    <li>
-                        y por su <strong>dirección</strong>: de A hacia B.
-                    </li>
-                </ul>
-            </p>
-        </section>
-        
-        <section><!--1.3 Vector Addition, Graphical Method-->
-            <h3 class="lang lang-en">1.3 Vector Addition, Graphical Method:</h3>
-            <h3 class="lang lang-es" lang="es">1.3 Suma de Vectores, Método Gráfico:</h3>
-
-            <p class="lang lang-en">
-                The sum of two vectors `veca` and `vecb`, or vector addition, produces a third vector `vec(a+b)`.
-            </p>
-            <p class="lang lang-es" lang="es">
-                La suma de dos vectores `veca` y `vecb`, o suma de vectores, produce un tercer vector `vec(a+b)`. 
-            </p>
-            <p class="lang lang-en">
-                To find `vec(a+b)`, we first draw the vector `veca`, and from the terminal end of `veca`, we draw the vector `vecb`. In other words, we have the initial point of `vecb` meet the terminal end of `veca`. This position corresponds to the notion that we move along the first vector and then, from its terminal point, we move along the second vector. Vector addition has the conmutative property; so, if we first draw vector `vecb`, and from the terminal end of `vecb`, we draw the vector `vecba`, we will obtain `vec(b+a)`, that is equal to `vec(a+b)`. 
-            </p>
-                <p class="lang lang-es" lang="es">
-                Para encontrar `vec(a+b)`, primero dibujamos el vector `veca`, y desde el final de `veca`, dibujamos `vecb`. En otras palabras, hacemos qeu el origen de `vecb` coincida con el final `veca`. Esta posición corresponde a la noción de que nos movemos a lo largo del primer vector y luego, desde su punto terminal, nos movemos a lo largo del segundo vector. La suma vectorial tiene la propiedad conmutativa; Entonces, si primero dibujamos un vector `vecb`, y desde el final de `vecb`, dibujamos el vector `vecba`, obtendremos `vec(b+a)`, que es igual a `vec(a+b)`. 
-            </p>
-            <figure class="centered"> <!--Vector addition. Graphical method.-->
-                <svg id="svg1_2"></svg > <!--See drawing code in main.js-->
-
-                <figcaption class="lang lang-en"><b>Figure 1.2</b> Vector addition. Graphical method.</figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figura 1.2</b> Suma de vectores. Método Gráfico.</figcaption>
-            </figure>
-
-            <p class="lang lang-en">
-                A <strong>scalar</strong> is a quantity that has magnitude but no direction. Or, in other words, a quantity that can be expressed by one (real) number.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Un <strong>escalar</strong> es una cantidad que tiene magnitud pero no dirección. O, en otras palabras, una cantidad que se puede expresar con un número (real).
-            </p>
-        </section>
 
         <section><!--1.4 Cartesian coordinate System-->
-            <h3 class="lang lang-en">1.4 Cartesian coordinate System</h3>
-            <h3 class="lang lang-es" lang="es">1.4 Sistema de coordenadas cartesianas</h3>
+            
+            
 
-            <p class="lang lang-en">
-                To specify the magnitude and direction of a vector we need a coordinate system. There are three commonly used coordinate systems: Cartesian, cylindrical and spherical.
-                In this section we describe the Cartesian coordinate system.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Para especificar la magnitud y la dirección de un vector necesitamos un sistema de coordenadas. Hay tres sistemas de coordenadas comúnmente utilizados: cartesiano, cilíndrico y esférico. En esta sección describimos el sistema de coordenadas cartesianas.
-            </p>
-            <p class="lang lang-en">
-                A <strong>Cartesian coordinate system in two dimensions</strong> is defined by an ordered pair of
-                perpendicular lines (axes), a single unit of length for both axes, and an orientation for each axis. The point where the axes meet is taken as the origin for both, thus turning each axis into a number line.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Un <strong>sistema de coordenadas cartesianas en dos dimensiones</strong> se define mediante un par ordenado de líneas perpendiculares (ejes), una sola unidad de longitud para ambos ejes y una orientación para cada eje. El punto donde se encuentran los ejes se toma como origen de ambos, convirtiendo así cada eje en una recta numérica.
-            </p>
-            <p class="lang lang-en">
-                For any point P, a line is drawn through P perpendicular to each axis, and the position where it meetsthe axis is interpreted as a number. The two numbers, in that chosen order, are the Cartesian coordinates (x, y) of P.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Para cualquier punto P, se dibuja una línea a través de P perpendicular a cada eje, y la posición en la que se encuentra con el eje se interpreta como un número. Los dos números, en ese orden elegido, son las coordenadas cartesianas (x, y) de P.
-            </p>
-            <figure class="centered"><!--Cartesian plane and cartesian coordinates of a point.-->
-                <svg id="svg1_3"></svg> <!--See drawing code in main.js--> 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
 
-                <figcaption class="lang lang-en"><b>Figure 1.3</b> Cartesian plane and cartesian coordinates of a point.</figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figura 1.3</b> Plano cartesiano y coordenadas cartesianas de un punto.</figcaption>
-            </figure>
-            <p class="lang lang-en">
-                A <strong>Cartesian coordinate system in three dimensions</strong> consists of three perpendicular axes: the x-axis, the y-axis, and the z-axis that go through a common point (the origin <b>0</b>). Because each axis is a number line representing all real numbers in `RR`, <!--&#8477; Unicode for real numbers--> the three-dimensional system is often denoted by `RR^3`.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Un <strong>Sistema de coordenadas cartesianas en tres dimensiones</strong> consta de tres ejes perpendiculares: el eje x, el eje y y el eje z que se cruzan en un punto común (el origen 0). Debido a que cada eje es una recta numérica que representa todos los números reales en `RR`, el sistema tridimensional a menudo se denota por  `RR^3`.
-            </p>
-            <p class="lang lang-en">
-                The cartesian coordinate system is also called a <strong>rectangular coordinate system</strong> or
-                <strong>orthogonal coordinate system</strong>.
-            </p>
-            <p class="lang lang-es" lang="es">
-                El sistema de coordenadas cartesianas también se denomina <strong>sistema de coordenadas rectangulares</strong> o <strong>sistema de coordenadas ortogonales</strong>.
-            </p>
-            <p class="lang lang-en">
-                In Figure 1.4(a), the positive z-axis is shown above the plane containing the x- and y-axes. The system displayed follows the right-hand rule. If we take our right hand and align the fingers with
-                the positive x-axis, then curl the fingers so they point in the direction of the positive y-axis, our thumb points in the direction of the positive z-axis. In this website, we always work with coordinate systems set up in accordance with the right-hand rule. Some systems do follow a left-hand rule, but the right-hand rule is considered the standard representation.
-            </p>
-            <p class="lang lang-es" lang="es">
-                En la Figura 1.4 (a), el eje z positivo se muestra sobre el plano que contiene los ejes x e y. El sistema que se muestra sigue la regla de la mano derecha. Si tomamos nuestra mano derecha y alineamos los dedos con el eje x positivo, luego dobla los dedos para que apunten en la dirección del eje y positivo, nuestro pulgar apunta en la dirección del eje z positivo. En este sitio web, siempre trabajamos con sistemas de coordenadas configurados de acuerdo con la regla de la mano derecha. Algunos sistemas siguen una regla de la mano izquierda, pero la regla de la mano derecha se considera la representación estándar.
-            </p>
-            <figure class="centered">
-                <img src="images\3DCoordSystAndRightHandRule.svg" width="600" height="300" />
-
-                <figcaption class="lang lang-en"><b>Figure 1.4</b> (a) Three-dimensional rectangular coordinate system with the x-axis, the y-axis and the z-axis. (b) The right-hand rule is used to determine the placement of the coordinate axes in the standard Cartesian Plane.</figcaption>
-                <figcaption class="lang lang-es" lang="es"><b>Figura 1.4</b> (a) Sistema de coordenadas rectangulares tridimensionales con el eje x, el eje y y el eje z. (b) La regla de la mano derecha se utiliza para determinar la ubicación de los ejes de coordenadas en la norma Plano Cartesiano.</figcaption>
-            </figure>
-
-            <p class="lang lang-en">
-                We describe a point P in the three-dimensional rectangular coordinate system with the coordinates
-                `(x_1, y_1, z_1)`. Each coordinate describes how the point aligns with
-                the corresponding axis.
-            </p>
-            <p class="lang lang-es" lang="es">
-                Describimos un punto P en el sistema de coordenadas rectangulares tridimensionales con las coordenadas `(x_1, y_1, z_1)`. Cada coordenada describe cómo se alinea el punto con el eje correspondiente.
-            </p>
+            
+            
 
             <figure class="centered"><!--To plot the point P, with coordinates `(x_1, y_1, z_1)`, go `x_1` units along the x-axis, then `y_1` units in the direction of the y-axis, then `z_1` units in the direction of the z-axis.-->
                 <svg id="svg1_5"></svg > <!--See drawing code in main.js--> 
