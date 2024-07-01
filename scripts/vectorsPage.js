@@ -1,61 +1,51 @@
 
 // form id="coordToMagDir" Calculate vector magnitude and direction from given coordinates and show it in a canvas.
+
 {
-	const canvas = document.getElementById("myCanvas");
-	const ctx = canvas.getContext("2d");
-
-	var p0 = { x: canvas.height / 2, y: canvas.height / 2 };
-	var p2 = { x: 0, y: 0 };
-	//set min and max input values
-	document.getElementById("xCoordinate").min = -canvas.height / 2;
-	document.getElementById("yCoordinate").min = -canvas.height / 2;
-	document.getElementById("xCoordinate").max = canvas.height / 2;
-	document.getElementById("yCoordinate").max = canvas.height / 2;
-	//Call the function when some value is entered
-	document.getElementById("xCoordinate").oninput = function () { updateMagnitudeAndDirection() };
-	document.getElementById("yCoordinate").oninput = function () { updateMagnitudeAndDirection() };
-
-	function openForm() {
-		document.getElementById("coordToMagDir").style.display = "block";
+	function openForm(formID) {
+		document.getElementById(formID).style.display = "block";
 	}
 	
-	function closeForm() {
-		document.getElementById("coordToMagDir").style.display = "none";
+	function closeForm(formID) {
+		document.getElementById(formID).style.display = "none";
 	}
 
-	function updateMagnitudeAndDirection() {
-		const inpObj1 = document.getElementById("xCoordinate");
-		const inpObj2 = document.getElementById("yCoordinate");
-		p2.x = parseFloat(inpObj1.value) + canvas.height / 2;
-		p2.y = -parseFloat(inpObj2.value) + canvas.height / 2;
+	function updateMagnitudeAndDirection(xInput, yInput, mag, dir, canvas) {
+        //const xObj = document.getElementById(xID);
+		//const yObj = document.getElementById(yID);
+        const p0 = { x: canvas.height / 2, y: canvas.height / 2 };
+        const p2 = { x: 0, y: 0 };
+		p2.x = parseFloat(xInput.value) + canvas.height / 2;
+		p2.y = -parseFloat(yInput.value) + canvas.height / 2;
 		let mod = Math.sqrt((p2.x - p0.x) ** 2 + (p2.y - p0.y) ** 2);
 		let thetaRad = Math.atan2(-p2.y + p0.y, p2.x - p0.x);
 		let thetaDeg = thetaRad * 180 / Math.PI;
 	
-		if (!inpObj1.checkValidity()) {
-			alert(inpObj1.validationMessage);
+		if (!xInput.checkValidity()) {
+			alert(xInput.validationMessage);
 		} else {
-			if (!inpObj2.checkValidity()) {
-				alert(inpObj2.validationMessage);
+			if (!yInput.checkValidity()) {
+				alert(yInput.validationMessage);
 			} else {
 				//shows magnitude with two decimals
-				document.getElementById("magnitude").innerHTML =
+				document.getElementById(mag).innerHTML =
 					Math.round((mod + Number.EPSILON) * 100) / 100;
 				//shows direction with two decimals	
-				document.getElementById("direction").innerHTML =
+				document.getElementById(dir).innerHTML =
 					Math.round((thetaDeg + Number.EPSILON) * 100) / 100;
 				//draw the vector	
-				drawSegmentWithArrowhead(p0, p2, 5);
+				drawSegmentWithArrowhead(p0, p2, 5, canvas);
 			}
 		}
 	}
 
-	function drawSegmentWithArrowhead(pa, pb, headLength) {
-		// calc the angle of the line
+	function drawSegmentWithArrowhead(pa, pb, headLength, canvas) {
+		const ctx = canvas.getContext("2d");
+        // calc the angle of the line
 		var dx = pb.x - pa.x;
 		var dy = pb.y - pa.y;
 		var angle = Math.atan2(dy, dx);
-		//Define the style to use as "red", when drawing in the canvas context
+		//Define the style to use as "green", when drawing in the canvas context
 		ctx.strokeStyle = "green";
 		//Clean previous arrow
 		ctx.clearRect(0, 0, canvas.height, canvas.height);
@@ -90,13 +80,31 @@
 		ctx.strokeStyle = "green";
 		ctx.stroke();
 	}
+
+    function manageCanvas(canvasID, xID, yID, magID, dirID){
+        const canvas = document.getElementById(canvasID);
+        const xInput = document.getElementById(xID);
+		const yInput = document.getElementById(yID);
+        //set min and max input values
+        xInput.min = -canvas.height / 2;
+        yInput.min = -canvas.height / 2;
+        xInput.max = canvas.height / 2;
+        yInput.max = canvas.height / 2;
+        //Call the function when some value is entered
+        xInput.oninput = function () { updateMagnitudeAndDirection(xInput, yInput, magID, dirID, canvas) };
+        yInput.oninput = function () { updateMagnitudeAndDirection(xInput, yInput, magID, dirID, canvas) };
+    }
+
+    manageCanvas ("myCanvasEng", "xCoordinate", "yCoordinate", "magnitude", "direction");
+    manageCanvas ("myCanvasEsp", "coordenadaX", "coordenadaY", "magnitud", "direccion");
 }
+
 
 // svg1_1. A vector is represented by a directed line segment from its initial point A to its terminal point B.
 {
     function drawSvg1_1(svgElementId){
         // Get the SVG element from the DOM
-        var svg1_1 = document.getElementById(svgElementId);
+        const svg1_1 = document.getElementById(svgElementId);
     
         // Set attributes
         svg1_1.setAttribute("viewBox", "0 0 180 220"); 
@@ -188,38 +196,43 @@
 
 // svg1.5 point P, with coordinates (x1, y1, z1)
 {
-	// Get the SVG element from the DOM
-	var svg1_5 = document.getElementById("svg1_5");
-
-	// Set attributes
-	svg1_5.setAttribute("viewBox", "0 0 400 400"); 
-	svg1_5.setAttribute("width", "400"); 
-	svg1_5.setAttribute("height", "400");
-
-	// set a euclidean space
-	const mySpace1_5 = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
-	mySpace1_5.drawAxes();
-
-	// Draw a point
-	mySpace1_5.drawPoint([6, 9, 15], "green");
-	
-	// Draw dashed lines to ilustrate the point coordinates on each axis x, y and z.
-	mySpace1_5.drawSegment([6, 0, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([6, 9, 0], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 9, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 9, 0], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 9, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 0, 15], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([0, 0, 15], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([6, 0, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-	mySpace1_5.drawSegment([6, 0, 0], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-
-	// Labels x1, y1, z1 and P(x1, y1, z1)
-	mySpace1_5.drawLabel([6, -0.1, 0], "x\u2081", {fill: "green", fontSize: 20});
-	mySpace1_5.drawLabel([0, 9.1, 0.1], "y\u2081", {fill: "green", fontSize: 20, corner: "leftbottom"});
-	mySpace1_5.drawLabel([0, -0.1, 15], "z\u2081", {fill: "green", fontSize: 20});
-	mySpace1_5.drawLabel([6, 10, 16], "P(x\u2081, y\u2081, z\u2081)", {fill: "green", corner: "lefttop"});
+    function drawSvg1_5(svgElementId){
+        // Get the SVG element from the DOM
+        var svg1_5 = document.getElementById(svgElementId);
+    
+        // Set attributes
+        svg1_5.setAttribute("viewBox", "0 0 400 400"); 
+        svg1_5.setAttribute("width", "400"); 
+        svg1_5.setAttribute("height", "400");
+    
+        // set a euclidean space
+        const mySpace1_5 = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
+        mySpace1_5.drawAxes();
+    
+        // Draw a point
+        mySpace1_5.drawPoint([6, 9, 15], "green");
+        
+        // Draw dashed lines to ilustrate the point coordinates on each axis x, y and z.
+        mySpace1_5.drawSegment([6, 0, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
+        mySpace1_5.drawSegment([6, 9, 0], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+        mySpace1_5.drawSegment([0, 9, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
+        mySpace1_5.drawSegment([0, 9, 0], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+        mySpace1_5.drawSegment([0, 9, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+        mySpace1_5.drawSegment([0, 0, 15], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+        mySpace1_5.drawSegment([0, 0, 15], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+        mySpace1_5.drawSegment([6, 0, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+        mySpace1_5.drawSegment([6, 0, 0], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+    
+        // Labels x1, y1, z1 and P(x1, y1, z1)
+        mySpace1_5.drawLabel([6, -0.1, 0], "x\u2081", {fill: "green", fontSize: 20});
+        mySpace1_5.drawLabel([0, 9.1, 0.1], "y\u2081", {fill: "green", fontSize: 20, corner: "leftbottom"});
+        mySpace1_5.drawLabel([0, -0.1, 15], "z\u2081", {fill: "green", fontSize: 20});
+        mySpace1_5.drawLabel([6, 10, 16], "P(x\u2081, y\u2081, z\u2081)", {fill: "green", corner: "lefttop"});
+    };
+    drawSvg1_5("svg1_5_en");
+    drawSvg1_5("svg1_5_es");
 }
+
 
 // svg1.6: Projection of `vecW` onto `vecv`
 {

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -32,7 +31,13 @@
 </head>
 
 <body>
-	<div class="lang lang-en">
+    <div style="float: right;">
+        <select id="langSelector">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+	<div lang="en" style="width: fit-content; margin-right: auto;">
 		<header>
 			<h1>VECTORS</h1>
 		</header>
@@ -44,7 +49,7 @@
         	</ul>
 		</nav>
 	</div>
-	<div class="lang lang-es">
+	<div lang="es" style="width: fit-content; margin-right: auto;">
 		<header>
 			<h1>VECTORES</h1>
 		</header>
@@ -56,15 +61,10 @@
 	        </ul>
 		</nav>
 	</div>
-    </div>
-        <select id="langSelector">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-        </select>
-    <div>
 
     <article> <!-- 1. THEORY AND KEY CONCEPTS-->
-        <div class="lang lang-en" >
+        <!-- class="lang lang-en" used by the language selector; see scripts/SelectLanguage.js, lang="es-Es" attribute is used to indicate the English language of the element's content.-->
+        <div lang="en">
             <header>
                 <h2 id="Theory">1. Theory and Key Concepts</h2>
             </header>
@@ -85,7 +85,7 @@
                 <figure class="centered"> 
                     <svg id="svg1_1_en"></svg>
                     <figcaption>
-                        <b>Figure 1.1 </b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
+                        <b>Figure 1.1</b> A vector is represented by a directed line segment from its initial point A to its terminal point B.
                     </figcaption>
                 </figure>
                 <p>
@@ -163,7 +163,7 @@
                     the corresponding axis.
                 </p>
                 <figure class="centered">
-                    <svg id="svg1_5"></svg > <!--See drawing code in main.js--> 
+                    <svg id="svg1_5_en"></svg > <!--See drawing code in main.js--> 
                     <figcaption class="lang lang-en"><b>Figure 1.5</b> To plot the point P, with coordinates \((x_1, y_1, z_1)\), go \(x_1\) units along the x-axis, then \(y_1\) units in the direction of the y-axis, then \(z_1\) units in the direction of the z-axis.</figcaption>
                 </figure>
             </section>
@@ -200,9 +200,48 @@
                     <div  class="center">\(\theta = \arctan (y/x)\)</div>
                     <div  class="right" id="[1.3]">[1.3]</div>
                 </div>
+                <p>
+                    Given the magnitude and direction of a vector `vecv`, its <strong>x component</strong> is found by  
+                </p>
+                <div class="container">
+                    <div  class="center">\(x = \Vert\vec v\Vert\cos\theta\)</div>
+                    <div  class="right" id="[1.4]">[1.4]</div>
+                </div>
+                <p>
+                    and its <strong>y component</strong> is found by
+                </p>
+                <div class="container">
+                    <div  class="center">\(y = \Vert\vec v\Vert\sin\theta\)</div>
+                    <div  class="right" id="[1.5]">[1.5]</div>
+                </div>
+                
+                <p>
+                    Click in the button to open an app that finds vector magnitude and direction given its components. 
+                    <br><button onclick="openForm('coordToMagDirEng')">Calculate vector magnitude and direction</button>
+                </p>
+                <form id="coordToMagDirEng" style="display: none">
+                    <h2>Calculate vector magnitude and direction from given coordinates.</h2>
+                    <label>Vector X Coordinate:
+                        <input id="xCoordinate" type="number" name="xCoordEng" value="0" step="0.1">
+                    </label>                   
+                    <label>Vector Y Coordinate:
+                        <input id="yCoordinate" type="number" name="yCoordEng" value="0" step="0.1">
+                    </label>
+                    <label>Vector magnitude:
+                        <output id="magnitude" name="magnitude" for="xCoordinate yCoordinate"></output>  
+                    </label>                         
+                    <label>Vector direction:
+                        <output id="direction" name="direction" for="xCoordinate yCoordinate"></output>
+                    º<br>
+                    </label>                    
+                    <button type='button' onclick="closeForm('coordToMagDirEng')">Close</button><br>
+                    <canvas id="myCanvasEng" width="400" height="400" style="border:1px solid grey"></canvas>
+                </form>
+                
             </section>
         </div>
-        <div class="lang lang-es">
+        <!-- class="lang lang-es" used by the language selector; see scripts/SelectLanguage.js, lang="es-Es" attribute is used to indicate the Spanish language of the element's content.-->
+        <div lang="es">
             <header>
                 <h2 id="Teoría">1. Teoría y Conceptos Clave</h2>
             </header>
@@ -334,94 +373,49 @@
                     <div  class="center">\(\theta = \arctan (y/x)\)</div>
                     <div  class="right" id="[1.3]">[1.3]</div>
                 </div>
+                <p>
+                    Dadas la magnitud y dirección de un vector \(vec v\), su <strong>componente x</strong> se calcula   mediante
+                </p>
+                <div class="container">
+                    <div  class="center">\(x = \Vert\vec v\Vert\cos\theta\)</div>
+                    <div  class="right" id="[1.4]">[1.4]</div>
+                </div>
+                <p>
+                    y su <strong>componente y</strong> se calcula   mediante
+                </p>
+                <div class="container">
+                    <div  class="center">\(y = \Vert\vec v\Vert\sint\heta\)</div>
+                    <div  class="right" id="[1.5]">[1.5]</div>
+                </div>
+                
+                <p>
+                    Haz click en el botón para abrir la aplicación qeu calcula magnitud y dirección de un vector dadas sus componentes. 
+                    <br><button onclick="openForm('coordToMagDirEsp')">Calcula magnitud y dirección de un vector</button>
+                </p>
+                <form id="coordToMagDirEsp" style="display: none">
+                    <h2>Calcula magnitud y dirección de un vector dadas sus coordenadas.</h2>
+                    <!-- value of for is the same as the id in the <input> element-->
+                    <label>Coordenada X del vector:
+                        <input id="coordenadaX" type="number" name="xCoordEsp" value="0" step="0.1">
+                    </label>                    
+                    <label>Coordenada Y del vector:
+                        <input id="coordenadaY" type="number" name="yCoordEsp" value="0" step="0.1">
+                    </label>  
+                    <label> magnitud del vector:
+                        <output id="magnitud" name="magnitude" for="coordenadaX coordenadaY"></output>
+                    </label>
+                    <label for="direction">Dirección del vector:
+                        <output id="direccion" name="direction" for="coordenadaX coordenadaY"></output>
+                        º<br>
+                    </label>
+                    <button lang="es" type='button' onclick="closeForm('coordToMagDirEsp')">
+                        Cierra
+                    </button><br>
+                    <canvas id="myCanvasEsp" width="400" height="400" style="border:1px solid grey"></canvas>
+                </form>
+                
             </section>
         </div>
-
-        <section><!--1.6 Relationship between vector components and its magnitude and orientation-->
-            
-            
-            
-            
-            
-            
-               
-            
-            
-            
-            <p class="lang lang-en">
-                Given the magnitude and direction of a vector `vecv`, its <strong>x component</strong> is found by  
-            </p>
-            <p class="lang lang-es" lang="es">
-                Dadas la magnitud y dirección de un vector `vecv`, su <strong>componente x</strong> se calcula   mediante
-            </p>
-            <div class="container">
-                <div  class="center">`x = norm(vecv)costheta`</div>
-                <div  class="right" id="[1.4]">[1.4]</div>
-            </div>
-            <p class="lang lang-en">
-                and its <strong>y component</strong> is found by
-            </p>
-            <p class="lang lang-es" lang="es">
-                y su <strong>componente y</strong> se calcula   mediante
-            </p>
-            <div class="container">
-                <div  class="center">`y = norm(vecv)sintheta`</div>
-                <div  class="right" id="[1.5]">[1.5]</div>
-            </div>
-            <p class="lang lang-en">
-                Click in the button to open an app that finds vector magnitude and direction given its components. 
-                <br><button onclick="openForm()">Calculate vector magnitude and direction</button>
-            </p>
-            <p class="lang lang-es" lang="es">
-                Haz click en el botón para abrir la aplicación qeu calcula magnitud y dirección de un vector dadas sus componentes. 
-                <br><button onclick="openForm()">Calcula magnitud y dirección de un vector</button>
-            </p>
-
-            <form id="coordToMagDir" style="display: none">
-                <h2 class="lang lang-en">Calculate vector magnitude and direction from given coordinates.</h2>
-                <h2 class="lang lang-es" lang="es">Calcula magnitud y dirección de un vector dadas sus coordenadas.</h2>
-                <label class="lang lang-en" for="xCoordinate">
-                    Vector X Coordinate:
-                </label>
-                <label class="lang lang-es" lang="es" for="xCoordinate">
-                    coordenada X del vector:
-                </label>
-                <input id="xCoordinate" type="number" name="xCoord" value="0" step="0.1">
-        
-                <label class="lang lang-en" for="yCoordinate">
-                    Vector Y Coordinate:
-                </label>
-                <label class="lang lang-es" lang="es" for="yCoordinate">
-                    coordenada Y del vector:
-                </label>
-                <input id="yCoordinate" type="number" name="yCoord" value="0" step="0.1">
-        
-                <label class="lang lang-en" for="magnitude">
-                    Vector magnitude:
-                </label>
-                <label class="lang lang-es" lang="es" for="magnitude">
-                    magnitud del vector:
-                </label>
-                <output id="magnitude" name="magnitude" for="xCoordinate yCoordinate">
-                </output>
-        
-                <label class="lang lang-en" for="direction">
-                    Vector direction:
-                </label>
-                <label class="lang lang-es" lang="es" for="direction">
-                    Dirección del vector:
-                </label>
-                <output id="direction" name="direction" for="xCoordinate yCoordinate">
-                </output>
-                º<br>
-        
-                <button class="lang lang-en" type='button' onclick="closeForm()">Close</button><br>
-                <button class="lang lang-es" lang="es" type='button' onclick="closeForm()">Cierra</button><br>
-        
-                <canvas id="myCanvas" width="400" height="400" style="border:1px solid grey">
-                </canvas>
-            </form>
-        </section>
 
         <section><!--1.7 Vector addition and scalar multiplication using vector components-->
             <h3 class="lang lang-en">1.7 Vector addition and scalar multiplication using vector components</h3>
