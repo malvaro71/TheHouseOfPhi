@@ -1,239 +1,123 @@
 
-// form id="coordToMagDir" Calculate vector magnitude and direction from given coordinates and show it in a canvas.
-
-{
-	function openForm(formID) {
-		document.getElementById(formID).style.display = "block";
-	}
-	
-	function closeForm(formID) {
-		document.getElementById(formID).style.display = "none";
-	}
-
-	function updateMagnitudeAndDirection(xInput, yInput, mag, dir, canvas) {
-        //const xObj = document.getElementById(xID);
-		//const yObj = document.getElementById(yID);
-        const p0 = { x: canvas.height / 2, y: canvas.height / 2 };
-        const p2 = { x: 0, y: 0 };
-		p2.x = parseFloat(xInput.value) + canvas.height / 2;
-		p2.y = -parseFloat(yInput.value) + canvas.height / 2;
-		let mod = Math.sqrt((p2.x - p0.x) ** 2 + (p2.y - p0.y) ** 2);
-		let thetaRad = Math.atan2(-p2.y + p0.y, p2.x - p0.x);
-		let thetaDeg = thetaRad * 180 / Math.PI;
-	
-		if (!xInput.checkValidity()) {
-			alert(xInput.validationMessage);
-		} else {
-			if (!yInput.checkValidity()) {
-				alert(yInput.validationMessage);
-			} else {
-				//shows magnitude with two decimals
-				document.getElementById(mag).innerHTML =
-					Math.round((mod + Number.EPSILON) * 100) / 100;
-				//shows direction with two decimals	
-				document.getElementById(dir).innerHTML =
-					Math.round((thetaDeg + Number.EPSILON) * 100) / 100;
-				//draw the vector	
-				drawSegmentWithArrowhead(p0, p2, 5, canvas);
-			}
-		}
-	}
-
-	function drawSegmentWithArrowhead(pa, pb, headLength, canvas) {
-		const ctx = canvas.getContext("2d");
-        // calc the angle of the line
-		var dx = pb.x - pa.x;
-		var dy = pb.y - pa.y;
-		var angle = Math.atan2(dy, dx);
-		//Define the style to use as "green", when drawing in the canvas context
-		ctx.strokeStyle = "green";
-		//Clean previous arrow
-		ctx.clearRect(0, 0, canvas.height, canvas.height);
-		//draw x and y axis
-		ctx.beginPath();
-		ctx.lineWidth = 0.3;
-		ctx.moveTo(0, canvas.height / 2);
-		ctx.lineTo(canvas.height, canvas.height / 2);
-		ctx.moveTo(canvas.height / 2, 0);
-		ctx.lineTo(canvas.height / 2, canvas.height);
-		ctx.strokeStyle = "green";
-		ctx.stroke();
-		//Name the X and Y asis
-		ctx.font = "10px Arial";
-		ctx.fillStyle = "brown";
-		ctx.fillText("X", canvas.height - 10, canvas.height / 2 - 4);
-		ctx.fillText("Y", canvas.height / 2 - 10, 10);
-		// draw the line from pa to pb
-		ctx.beginPath();
-		ctx.lineWidth = 2;
-		ctx.moveTo(pa.x, pa.y);
-		ctx.lineTo(pb.x, pb.y);
-		// draw partial arrowhead at 220 degrees
-		ctx.moveTo(pb.x, pb.y);
-		ctx.lineTo(pb.x + headLength * Math.cos(angle + 220 * Math.PI / 180),
-			pb.y + headLength * Math.sin(angle + 220 * Math.PI / 180));
-		// draw partial arrowhead at 140 degrees
-		ctx.moveTo(pb.x, pb.y);
-		ctx.lineTo(pb.x + headLength * Math.cos(angle + 140 * Math.PI / 180),
-			pb.y + headLength * Math.sin(angle + 140 * Math.PI / 180));
-		// stroke the line and arrowhead
-		ctx.strokeStyle = "green";
-		ctx.stroke();
-	}
-
-    function manageCanvas(canvasID, xID, yID, magID, dirID){
-        const canvas = document.getElementById(canvasID);
-        const xInput = document.getElementById(xID);
-		const yInput = document.getElementById(yID);
-        //set min and max input values
-        xInput.min = -canvas.height / 2;
-        yInput.min = -canvas.height / 2;
-        xInput.max = canvas.height / 2;
-        yInput.max = canvas.height / 2;
-        //Call the function when some value is entered
-        xInput.oninput = function () { updateMagnitudeAndDirection(xInput, yInput, magID, dirID, canvas) };
-        yInput.oninput = function () { updateMagnitudeAndDirection(xInput, yInput, magID, dirID, canvas) };
-    }
-
-    manageCanvas ("myCanvasEng", "xCoordinate", "yCoordinate", "magnitude", "direction");
-    manageCanvas ("myCanvasEsp", "coordenadaX", "coordenadaY", "magnitud", "direccion");
-}
-
-
 // svg1_1. A vector is represented by a directed line segment from its initial point A to its terminal point B.
 {
-    function drawSvg1_1(svgElementId){
-        // Get the SVG element from the DOM
-        const svg1_1 = document.getElementById(svgElementId);
-    
-        // Set attributes
-        svg1_1.setAttribute("viewBox", "0 0 180 220"); 
-        svg1_1.setAttribute("width", "180"); 
-        svg1_1.setAttribute("height", "220");
-    
-        // Add the marker to the SVG
-        svg1_1.appendChild(brownMarker); 
-    
-        // Draws a vector using existing marker already created and added to this SVG:
-        drawSegment(svg1_1, 24, 210, 150, 5, "brown", 2, "none", true);
-    
-        //Draws a text
-        writeText(svg1_1, "A", 0, 205, 25, "brown", "brown", "bold", "leftbottom");
-        writeText(svg1_1, "B", 160, 5, 25, "brown", "brown", "bold", "lefttop");
-    };
-    /*call the drawSvg1_1 function twice, passing different IDs for the SVG elements ("svg1_1_en" and "svg1_1_es"). This allow to create two separate SVG figures */
-    drawSvg1_1("svg1_1_en");
-    drawSvg1_1("svg1_1_es");
-}
+    // Get the SVG element from the DOM
+    const svg1_1 = document.getElementById("svg1_1");
 
+    // Add the marker to the SVG
+    const brownMarker = createMarkerArrow("Brownarrow", "brown");
+    svg1_1.appendChild(brownMarker);
+
+    // Set attributes
+    svg1_1.setAttribute("viewBox", "0 0 180 220"); 
+    svg1_1.setAttribute("width", "180"); 
+    svg1_1.setAttribute("height", "220");
+
+    // Draws a vector using existing marker already created and added to this SVG:
+    drawSegment(svg1_1, 24, 210, 150, 5, "brown", 2, "none", true);
+    
+    //Draws a text
+    writeText(svg1_1, "A", 0, 205, 25, "brown", "brown", "bold", "leftbottom");
+    writeText(svg1_1, "B", 160, 5, 25, "brown", "brown", "bold", "lefttop");
+}
 
 // svg1_2. Vector addition. Graphical method
 {
-    function drawSvg1_2(svgElementId){
-        // Get the SVG element from the DOM
-        var svg1_2 = document.getElementById(svgElementId);
+    // Get the SVG element from the DOM
+    const svg1_2 = document.getElementById("svg1_2");
+
+    // Set attributes
+    svg1_2.setAttribute("viewBox", "0 0 230 240"); 
+    svg1_2.setAttribute("width", "230"); 
+    svg1_2.setAttribute("height", "240");
+
+    //Create arrow markers
+    const brownMarker = createMarkerArrow("Brownarrow", "brown");
+    const blueMarker = createMarkerArrow("Bluearrow", "blue");
+    const greenMarker = createMarkerArrow("Greenarrow", "green");
+
+    // Add the marker to the SVG
+    svg1_2.appendChild(brownMarker); 
+    svg1_2.appendChild(blueMarker); 
+    svg1_2.appendChild(greenMarker); 
+
+    // set a cartesian plane
+    const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
+
+    // define two vectors and calculate its vector addition
+    const pointA = [0, 0];
+    const vectorA = [4, 12];
+    const vectorB = [15, 6];
+    const vectorAPlusB = math.add(vectorA, vectorB);
+
+    // draw vectos a, b and a+b
+    myPlane1_2.drawVector(pointA, vectorA, "a", {strokeColor: "green"}, {fontSize: 22, fill: "green"});
     
-        // Set attributes
-        svg1_2.setAttribute("viewBox", "0 0 230 240"); 
-        svg1_2.setAttribute("width", "230"); 
-        svg1_2.setAttribute("height", "240");
+    myPlane1_2.drawVector(vectorA, vectorB, "b", {strokeColor: "blue"}, {fontSize: 22, fill: "blue"});
     
-        // Add the marker to the SVG
-        svg1_2.appendChild(brownMarker); 
-        svg1_2.appendChild(blueMarker); 
-        svg1_2.appendChild(greenMarker); 
+    myPlane1_2.drawVector(pointA, vectorAPlusB, "a+b", {strokeColor: "brown"}, {fontSize: 22, corner: "lefttop"});
     
-        // set a cartesian plane
-        const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
-    
-        // define two vectors and calculate its vector addition
-        const pointA = [0, 0];
-        const vectorA = [4, 12];
-        const vectorB = [15, 6];
-        const vectorAPlusB = math.add(vectorA, vectorB);
-    
-        // draw vectos a, b and a+b
-        myPlane1_2.drawVector(pointA, vectorA, "a", {strokeColor: "green"}, {fontSize: 22, fill: "green"});
-        
-        myPlane1_2.drawVector(vectorA, vectorB, "b", {strokeColor: "blue"}, {fontSize: 22, fill: "blue"});
-        
-        myPlane1_2.drawVector(pointA, vectorAPlusB, "a+b", {strokeColor: "brown"}, {fontSize: 22, corner: "lefttop"});
-        
-        myPlane1_2.drawVector(pointA, vectorB, "b", {strokeColor: "blue"}, {fontSize: 22, fill: "blue"});
-    
-        myPlane1_2.drawVector(vectorB, vectorA, "a", { strokeColor: "green"}, {fontSize: 22, fill: "green"});
-    }
-    drawSvg1_2("svg1_2_en");
-    drawSvg1_2("svg1_2_es");
+    myPlane1_2.drawVector(pointA, vectorB, "b", {strokeColor: "blue"}, {fontSize: 22, fill: "blue"});
+
+    myPlane1_2.drawVector(vectorB, vectorA, "a", { strokeColor: "green"}, {fontSize: 22, fill: "green"});
 }
-
-
+    
 // svg1_3. Cartesian plane and cartesian coordinates of a point.
 {
-    function drawSvg1_3(svgElementId){
-        // Get the SVG element from the DOM
-        var svg1_3 = document.getElementById(svgElementId);
-    
-        // Set attributes
-        svg1_3.setAttribute("viewBox", "0 0 400 400"); 
-        svg1_3.setAttribute("width", "400"); 
-        svg1_3.setAttribute("height", "400");
-    
-        // set a cartesian plane
-        const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
-        myPlane1_3.drawAxes("y-axis", "x-axis", "O");
-        
-        // Draw a point, its label and two segments
-        myPlane1_3.drawPoint([5, 10], "green");
-          myPlane1_3.drawLabel([6, 10], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
-        myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
-        myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
-    }
-    drawSvg1_3("svg1_3_en");
-    drawSvg1_3("svg1_3_es");
-}
+    // Get the SVG element from the DOM
+    var svg1_3 = document.getElementById("svg1_3");
 
+    // Set attributes
+    svg1_3.setAttribute("viewBox", "0 0 400 400"); 
+    svg1_3.setAttribute("width", "400"); 
+    svg1_3.setAttribute("height", "400");
+
+    // set a cartesian plane
+    const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
+    myPlane1_3.drawAxes("y-axis", "x-axis", "O");
+    
+    // Draw a point, its label and two segments
+    myPlane1_3.drawPoint([5, 10], "green");
+        myPlane1_3.drawLabel([6, 10], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
+    myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+    myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+}
 
 // svg1.5 point P, with coordinates (x1, y1, z1)
 {
-    function drawSvg1_5(svgElementId){
-        // Get the SVG element from the DOM
-        var svg1_5 = document.getElementById(svgElementId);
+    // Get the SVG element from the DOM
+    var svg1_5 = document.getElementById("svg1_5");
+
+    // Set attributes
+    svg1_5.setAttribute("viewBox", "0 0 400 400"); 
+    svg1_5.setAttribute("width", "400"); 
+    svg1_5.setAttribute("height", "400");
+
+    // set a euclidean space
+    const mySpace1_5 = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
+    mySpace1_5.drawAxes();
+
+    // Draw a point
+    mySpace1_5.drawPoint([6, 9, 15], "green");
     
-        // Set attributes
-        svg1_5.setAttribute("viewBox", "0 0 400 400"); 
-        svg1_5.setAttribute("width", "400"); 
-        svg1_5.setAttribute("height", "400");
-    
-        // set a euclidean space
-        const mySpace1_5 = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
-        mySpace1_5.drawAxes();
-    
-        // Draw a point
-        mySpace1_5.drawPoint([6, 9, 15], "green");
-        
-        // Draw dashed lines to ilustrate the point coordinates on each axis x, y and z.
-        mySpace1_5.drawSegment([6, 0, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
-        mySpace1_5.drawSegment([6, 9, 0], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-        mySpace1_5.drawSegment([0, 9, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
-        mySpace1_5.drawSegment([0, 9, 0], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-        mySpace1_5.drawSegment([0, 9, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-        mySpace1_5.drawSegment([0, 0, 15], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-        mySpace1_5.drawSegment([0, 0, 15], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-        mySpace1_5.drawSegment([6, 0, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-        mySpace1_5.drawSegment([6, 0, 0], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
-    
-        // Labels x1, y1, z1 and P(x1, y1, z1)
-        mySpace1_5.drawLabel([6, -0.1, 0], "x\u2081", {fill: "green", fontSize: 20});
-        mySpace1_5.drawLabel([0, 9.1, 0.1], "y\u2081", {fill: "green", fontSize: 20, corner: "leftbottom"});
-        mySpace1_5.drawLabel([0, -0.1, 15], "z\u2081", {fill: "green", fontSize: 20});
-        mySpace1_5.drawLabel([6, 10, 16], "P(x\u2081, y\u2081, z\u2081)", {fill: "green", corner: "lefttop"});
-    };
-    drawSvg1_5("svg1_5_en");
-    drawSvg1_5("svg1_5_es");
+    // Draw dashed lines to ilustrate the point coordinates on each axis x, y and z.
+    mySpace1_5.drawSegment([6, 0, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
+    mySpace1_5.drawSegment([6, 9, 0], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+    mySpace1_5.drawSegment([0, 9, 0], [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
+    mySpace1_5.drawSegment([0, 9, 0], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+    mySpace1_5.drawSegment([0, 9, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+    mySpace1_5.drawSegment([0, 0, 15], [0, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+    mySpace1_5.drawSegment([0, 0, 15], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+    mySpace1_5.drawSegment([6, 0, 15], [6, 9, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+    mySpace1_5.drawSegment([6, 0, 0], [6, 0, 15], {strokeColor: "green", strokeDasharray: "5,5"});
+
+    // Labels x1, y1, z1 and P(x1, y1, z1)
+    mySpace1_5.drawLabel([6, -0.1, 0], "x\u2081", {fill: "green", fontSize: 20});
+    mySpace1_5.drawLabel([0, 9.1, 0.1], "y\u2081", {fill: "green", fontSize: 20, corner: "leftbottom"});
+    mySpace1_5.drawLabel([0, -0.1, 15], "z\u2081", {fill: "green", fontSize: 20});
+    mySpace1_5.drawLabel([6, 10, 16], "P(x\u2081, y\u2081, z\u2081)", {fill: "green", corner: "lefttop"});
 }
-
-
+    
 // svg1.6: Projection of `vecW` onto `vecv`
 {
 	// Get the SVG element from the DOM
@@ -305,7 +189,7 @@
 // svg1_9: Moment of a sliding vector v about a line l, m = proyl(rxv).
 {
 	// Get the SVG element from the DOM
-	var svg1_9 = document.getElementById("svg1_9");
+	const svg1_9 = document.getElementById("svg1_9");
 
 	// Set attributes 
 	svg1_9.setAttribute("viewBox", "0 0 400 400"); 
@@ -346,9 +230,107 @@
 	mySpace1_9.drawSegment(dashed1, dashed2, {strokeColor: "green", strokeDasharray: "5,5"});
 }
 
+/**
+ * Writes a value to an element's innerHTML.
+ *
+ * If the value is an array, joins its elements with commas and spaces.
+ * Otherwise, sets the innerHTML to the value directly.
+ *
+ * @param {string} elementId - The ID of the element to update.
+ * @param {Array|string|number} value - The value to write to the element.
+ */
+function writeValue(elementId, value) {
+    const element = document.getElementById(elementId);
+    if (Array.isArray(value)) {
+    element.innerHTML = value.join(", "); // Join elements for arrays
+    } else {
+    element.innerHTML = value; // Set single value directly
+    }
+};
+
+// Exercise 2_1
+{
+    // Exercise enunciate
+    /*A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 36 km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?*/
+
+    // Exercise data. 
+    const vRiver = [9, 0]; // Water velocity; parallel to river bank; so parallel to x-axis.
+    const vBoat = [0, 36]; // Speed of 36 km/h perpendicular to river bank; so parallel to y-axis.
+
+    // Boat velocity, vBoat, is the composition of water velocity, vRiver, and the Velocity with which the boat is propelled by the boatman, vPropelled => vBoat = vRiver + vPropelled. So,vPropelled = vBoat - vRiver. 
+    const vPropelled = math.subtract(vBoat, vRiver); 
+
+    //Calculate the solutions
+    const normvPropelled = math.norm(vPropelled); // How fast should the boat be propelled?
+    // From the dot product, see [1.13] 
+    const phi = math.acos(math.dot(vRiver, vPropelled)/(math.norm(vRiver)*normvPropelled))*180/math.PI;
+
+    
+    //Write exercise values in HTML elements
+    writeValue("2_1avgSpeed", vBoat[1]);
+    writeValue("2_1riverSpeed", vRiver[0]);
+    writeValue("2_1vBoat", vBoat);
+    writeValue("2_1vRiver", vRiver);
+    writeValue("2_1vBoat1", vBoat);
+    writeValue("2_1vRiver1", vRiver);
+    writeValue("2_1vPropelled", vPropelled);
+    writeValue("2_1normvPropelled", normvPropelled.toFixed(1));
+    writeValue("2_1phi1", phi.toFixed(1));
+    writeValue("2_1normvPropelled1", normvPropelled.toFixed(1));
+    writeValue("2_1phi2", phi.toFixed(1));
+
+
+    // Get the SVG element from the DOM
+    const svg2_1 = document.getElementById("svg2_1");
+
+    // Set attributes
+    svg2_1.setAttribute("viewBox", "0 0 400 400"); 
+    svg2_1.setAttribute("width", "400"); 
+    svg2_1.setAttribute("height", "400");
+
+    // set a cartesian plane where the river bank is parallel to x-axis.
+    const myPlane2_1 = new CartesianPlane(svg2_1, -23, 23, -6, 40);
+    myPlane2_1.drawAxes("y-axis", "x-axis", "O");
+
+    // Write exercise data
+    myPlane2_1.drawLabel([7, 39], "Data:", {corner: "lefttop", fontSize: 15});
+    myPlane2_1.drawLabel([7, 36], "Vr = <9, 0> Km/h", {corner: "lefttop", fontSize: 15});
+    myPlane2_1.drawLabel([7, 33], "Vb = <0, 36> Km/h", {corner: "lefttop", fontSize: 15});
+
+
+    // Set a common initial point for the vectors at the origin of coordinates 
+    const initialPoint = [0, 0];
+
+    // Draw Vr
+    const Vr = TextWithSubscript("V", "r");
+    myPlane2_1.drawVector(initialPoint, vRiver, Vr, {strokeColor: "green"}, {corner: "righttop"});
+
+    // Draw Vp
+    const Vp = TextWithSubscript("V", "p");
+    myPlane2_1.drawVector(initialPoint, vPropelled, Vp, {strokeColor: "blue"}, {corner: "righttop"});
+
+    // Draw V components
+    myPlane2_1.drawSegment(vPropelled, math.multiply(-1, vRiver), {strokeColor: "green", strokeDasharray: "5,5"});
+    myPlane2_1.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx", {strokeColor: "green"}, {corner: "righttop"});
+    myPlane2_1.drawSegment(vPropelled, vBoat, {strokeColor: "green", strokeDasharray: "5,5"});
+    myPlane2_1.drawVector(initialPoint, vBoat, "Vy = Vby", {strokeColor: "green"}, {corner: "lefttop"});
+    myPlane2_1.drawArc(initialPoint, vRiver, vPropelled, 3);
+    myPlane2_1.drawLabel([3,3], "φ", {fill: "blue", corner: "leftbottom"}); // phi
+
+    // Write the solutions
+    myPlane2_1.drawLabel([7, 30], "Solution:", {corner: "lefttop", fontSize: 15});
+    myPlane2_1.drawLabel([7, 27], "φ = " + phi.toFixed(1).toString() + "º", {corner: "lefttop", fontSize: 15});
+    myPlane2_1.drawLabel([7, 24], "|Vp| = " + normvPropelled.toFixed(1).toString() + " Km/h", {corner: "lefttop", fontSize: 15});
+}
 
 // Exercise 2_2: sum of vectors a, b, c and d using the graphical method
 {
+    // Exercise data
+	const vectorA = [2, 3];
+	const vectorB = [4, -2];
+	const vectorC = [3, -2];
+	const vectorD = [-9, 1];
+
 	// Get the SVG element from the DOM
 	var svg2_2 = document.getElementById("svg2_2");
 
@@ -373,12 +355,6 @@
         myPlane2_2.drawSegment([xMin, y], [xMax, y], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
     }
 
-	// Exercise data
-	const vectorA = [2, 3];
-	const vectorB = [4, -2];
-	const vectorC = [3, -2];
-	const vectorD = [-9, 1];
-
 	// Draw vectors
 	let initialPoint = [0, 0];
 	const vectorList = [vectorA, vectorB, vectorC, vectorD];
@@ -391,7 +367,25 @@
 
 // Exercise 2_3:  NNE direction, velocity V and its components Vx and Vy
 {
-	// Get the SVG element from the DOM
+	// Exercise enunciate
+    /*A sailboat is moving with a speed of 4 km/h in the NNE (north-northeast) direction. What are the components of the speed of the ship in the North direction and in the East direction? */
+    
+    // Exercise data
+    const sailboatSpeed = 4; //Km/h
+    const NNE = Math.PI*3/8 //radians
+
+    // Calculate sailboat velocity components 
+	const sailboatSpeedX = sailboatSpeed*Math.cos(NNE);
+	const sailboatSpeedY = sailboatSpeed*Math.sin(NNE);
+	const sailboatVelocity = [sailboatSpeedX, sailboatSpeedY];
+
+    //Write exercise values in HTML elements
+    writeValue("2_3sailboatSpeed", sailboatSpeed);
+    writeValue("2_3Vx", sailboatSpeedX.toFixed(2));
+    writeValue("2_3Vy", sailboatSpeedY.toFixed(2));
+
+    /* Draw a representation of the exercise */
+    // Get the SVG element from the DOM
 	var svg2_3 = document.getElementById("svg2_3");
 
 	// Set attributes
@@ -410,18 +404,12 @@
 	
 	// Draw NE and NNE arrows
 	const origin = [0, 0];
-	const sailboatSpeed = 4;
-	const NE = [xMax*Math.cos(Math.PI/4), yMax*Math.sin(Math.PI/4)];
-	const NNE = [xMax*Math.cos(Math.PI*3/8), yMax*Math.sin(Math.PI*3/8)];
-	myPlane2_3.drawVector(origin, NE);
-	myPlane2_3.drawLabel(NE, "NE", {corner: "lefttop"});
-	myPlane2_3.drawVector(origin, NNE);
-	myPlane2_3.drawLabel(NNE, "NNE", {corner: "lefttop"});
+	const NNEextreme = [xMax*Math.cos(NNE), yMax*Math.sin(NNE)];
+	myPlane2_3.drawVector(origin, NNEextreme);
+	myPlane2_3.drawLabel(NNEextreme, "NNE", {corner: "lefttop"});
 
-	// Define sailboat velocity components and draw sailboat velocity
-	const sailboatSpeedX = sailboatSpeed*Math.cos(Math.PI*3/8);
-	const sailboatSpeedY = sailboatSpeed*Math.sin(Math.PI*3/8);
-	const sailboatVelocity = [sailboatSpeedX, sailboatSpeedY];
+	
+    // Draw sailboat velocity
 	myPlane2_3.drawVector(origin, sailboatVelocity, "V", {strokeColor: "green"});
 	
 	//Draw dashed lines
@@ -439,20 +427,80 @@
 	// Draw angle between Vx and V
 	myPlane2_3.drawArc(origin, [sailboatSpeedX, 0], sailboatVelocity, 0.5);
 	myPlane2_3.drawLabel([0.5*Math.cos(Math.PI*3/16), 0.5*Math.sin(Math.PI*3/16)], "θ=67.5º", {stroke: "blue", corner: "leftbottom", fontSize: 16, fontWeight: "lighter"});
+}
 
+// Exercise 2_4
+{
+    // Exercise enunciate
+    /*An object moves in such a way that its speed at a certain instant is 120 m/s and forms an angle of 30º with the horizontal. Find the horizontal and vertical components of the velocity. Express the velocity vector as a function of its components.*/
+
+    // Exercise data
+    const speed = 120; //m/s
+    const orientationDeg = 30 //degrees
+    const orientationRad = Math.PI*orientationDeg/180 //radians
+
+    // Calculate velocity components 
+	const Vx = speed*Math.cos(orientationRad); // Horizontal component
+	const Vy = speed*Math.sin(orientationRad); // Vertical component
+
+    //Write exercise values in HTML elements
+    writeValue("2_4Speed1", speed);
+    writeValue("2_4orientation1", orientationDeg);
+    writeValue("2_4Speed2", speed);
+    writeValue("2_4orientation2", orientationDeg);
+    writeValue("2_4Vx1", Vx.toFixed(1));
+    writeValue("2_4Vy1", Vy.toFixed(1));
+    writeValue("2_4Vx2", Vx.toFixed(1));
+    writeValue("2_4Vy2", Vy.toFixed(1));
+}
+
+// Exercise 2_5
+{
+    // Exercise enunciate
+    /* Find the scalar product of the vectors v = (5, - 3, 2) and w = (-2, 1, 3), and the angle they form. */
+
+    // Exercise data
+	const v = [5, -3, 2];
+	const w = [-2, 1, 3];
+
+    // Calculate scalar product
+    const scalarProduct = math.dot(v, w);
+
+    // Calculate angle
+    const cosAng = scalarProduct / (math.norm(v) * math.norm(w));
+    const angleRad = math.acos(cosAng);
+    const angleDeg = angleRad * 180 / math.PI;
+
+    //Write exercise values in HTML elements
+    writeValue("2_5escProd1", scalarProduct);
+    writeValue("2_5angle1", angleDeg.toFixed(2));
 }
 
 // Execise 2_6: showing angle between E and NE and `proj_Evecv`
 {
-	// Define problem input data
+	// Exercise enunciate
+    /* An airplane is moving with a speed of 600 km/h in the NE direction. Find the projection of its velocity onto the east direction.*/
+    
+    // Exercise data
 	const planeSpeed = 600; //Km/h.
-	const angleNE = Math.PI/4; //45º=PI/4 radians.
+	const angleNERad = Math.PI/4; // Radians. 45º=PI/4 radians.
+    const angleNEDeg = angleNERad * 180 / math.PI;
 
-	// Calculate V
-	const V = [planeSpeed*Math.cos(angleNE), planeSpeed*Math.sin(angleNE)];
+	// Calculate airplane velocity, V
+	const V = [planeSpeed*Math.cos(angleNERad), planeSpeed*Math.sin(angleNERad)];
 
 	// Calculate `proj_Evecv`
-	const projEV = math.multiply(planeSpeed*Math.cos(angleNE), [1, 0]);
+	const projEV =  math.multiply(planeSpeed*Math.cos(angleNERad), [1, 0]);
+
+    // Calculate |proj_Evecv|
+    const normProjEV = math.norm(projEV);
+
+    //Write exercise values in HTML elements
+    writeValue("2_6speed1", planeSpeed);
+    writeValue("2_6angle1", angleNEDeg.toFixed(0));
+    writeValue("2_6speed2", planeSpeed);
+    writeValue("2_6angle2", angleNEDeg.toFixed(0));
+    writeValue("2_6projection", normProjEV.toFixed(0));
 
 	// Get the SVG element from the DOM
 	var svg2_6 = document.getElementById("svg2_6");
@@ -471,9 +519,9 @@
 	myPlane2_6.drawAxes("", "E", "O");
 	myPlane2_6.drawLabel([-15, yMax], "N", {corner: "righttop"});
 	
-	// Draw NE and NNE arrows
+	// Draw NE arrow
 	const origin = [0, 0];
-	const NE = [xMax*Math.cos(angleNE), yMax*Math.sin(angleNE)];
+	const NE = [xMax*Math.cos(angleNERad), yMax*Math.sin(angleNERad)];
 	myPlane2_6.drawVector(origin, NE);
 	myPlane2_6.drawLabel(NE, "NE", {corner: "lefttop"});
 
@@ -494,9 +542,22 @@
 	myPlane2_6.drawLabel([120*Math.cos(Math.PI*3/16), 120*Math.sin(Math.PI*3/16)], "θ=45º", {stroke: "blue", corner: "lefttop", fontSize: 16, fontWeight: "lighter"});
 }
 
-// Exercise 2_7: linear speed of a point P of a rotating rigid body with angular velocit w
+// Execise 2_7
 {
-	// Get the HTML element
+    // Exercise enunciate
+    /* A rigid body rotates with an angular velocity w given by the vector (1, 1, 1) rad/s. Calculate the linear velocity v with which a point P of the body moves, whose position vector is (2, -2, 1) m., knowing that v = w x r */
+
+    // Exercise data
+    const w = [1, 1, 1] // rad/s.
+    const r = [2, -2, 1] // m.
+
+    // Calculate the cross product
+    const v = math.cross(w, r);
+
+    //Write exercise values in HTML elements
+    writeValue("2_7v", v);
+
+    // Get the HTML element
     const expressionElement = document.getElementById("2_7_1");
 	const resultElement = document.getElementById("2_7_2");
 
@@ -504,19 +565,78 @@
     const expr = 'cross([1, 1, 1], [2, -2, 1])';
 
 	renderMathExpression(expressionElement, expr);
+
 	// Evaluate and display the result
 	const result = math.evaluate(expr);
 	resultElement.textContent = math.format(result); // Use textContent for plain text output
 
-    /*
 	// Parse the expression using Math.js
     const node = math.parse(expr);
 
     // Convert the parsed expression to LaTeX
     const latex = node.toTex({parenthesis: 'keep'});
 
+    // Get the HTML element
+    const div273 = document.getElementById("2_7_3");
+
     // Use MathJax to render the LaTeX expression
-    div271.innerHTML = '';
-    div271.innerHTML = MathJax.tex2svg(latex).outerHTML;
-	*/
+    div273.innerHTML = '';
+    div273.innerHTML = MathJax.tex2svg(latex).outerHTML;
+
+}
+
+// Exercise 2_8
+{
+    // Exercise enunciate
+    /* Calculate the area of a triangle /_\ABC, where the Cartesian coordinates of the vertices are, A = (3,4,1) m., B = (1,-2,2) m. and C = (-2,1,4) m.*/
+
+    // Exercise data
+    const A = [3, 4, 1] // m.
+    const B = [1, -2, 2] // m.
+    const C = [-2, 1, 4] // m.
+
+    // Calculate vectors AB and AC
+    const AB = math.subtract(B, A);
+	const AC = math.subtract(C, A);
+    const area = math.norm(math.cross(AB, AC))/2; // m^2.
+
+    //Write exercise values in HTML elements
+    writeValue("2_8A", A);
+    writeValue("2_8B", B);
+    writeValue("2_8C", C);
+    writeValue("2_8AB", AB);
+    writeValue("2_8AC", AC);
+    writeValue("2_8area", area.toFixed(2));
+
+    // Get the SVG element from the DOM
+	const svg2_8 = document.getElementById("svg2_8");
+
+	// Set attributes 
+	svg2_8.setAttribute("viewBox", "0 0 400 400"); 
+	svg2_8.setAttribute("width", "400"); 
+	svg2_8.setAttribute("height", "410");
+
+	// set a euclidean space
+	const mySpace2_8 = new EuclideanSpace(svg2_8, [0, 0, 0], 30);
+	mySpace2_8.drawAxes();
+
+	// set other drawing elements coordinates
+    const BplusAC = math.add(B, AC);
+
+	// Draw points A, B and C and label them
+	mySpace2_8.drawPoint(A, "green");
+    mySpace2_8.drawLabel(A, "A", {corner: "righttop"});
+    mySpace2_8.drawPoint(B, "green");
+    mySpace2_8.drawLabel(B, "B", {corner: "righttop"});
+    mySpace2_8.drawPoint(C, "green");
+    mySpace2_8.drawLabel(C, "C", {corner: "leftbottom"});
+
+    // Draw vectors AB and AC, and segment BC
+	mySpace2_8.drawVector(A, AB, "AB", {strokeColor: "green"}, {corner: "righttop"});
+    mySpace2_8.drawVector(A, AC, "AC", {strokeColor: "green"}, {corner: "leftbottom"});
+    mySpace2_8.drawSegment(B, C, {strokeColor: "green"});
+
+    // Draw te other two sides of the paralelogram that vectors AB and AC span
+    mySpace2_8.drawSegment(B, BplusAC, {strokeColor: "blue", strokeDasharray: "5,5"});
+    mySpace2_8.drawSegment(C, BplusAC, {strokeColor: "blue", strokeDasharray: "5,5"});
 }

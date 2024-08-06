@@ -47,7 +47,7 @@ function validateCoordinates3D(coordinates) {
  *
  * @throws {TypeError} If the coordinates are not an array.
  * @throws {ValueError} If the coordinates array is not of length 2 or 3 or if it contains non-numeric elements or if any of its numeric elements is infinite.
- */
+ 
 function validateCoordinates2D3D(coordinates) {
 	if (!Array.isArray(coordinates)) {
 	  throw new TypeError("Invalid coordinates: Expecting an array.");
@@ -59,7 +59,7 @@ function validateCoordinates2D3D(coordinates) {
 	  throw new ValueError("Invalid coordinates: Expecting an array containing only finite numbers.");
 	}
 	// If all conditions pass, the function returns true (implicit return)
-}
+}*/
 
 /**
 Validates if the input is a valid object (not null).
@@ -81,7 +81,7 @@ Returns 0 if either vector has a magnitude of 0.
 @throws {Error} If arrays have different length.
 @throws {TypeError} If either vector1 or vector2 is not an array.
 @throws {ValueError} If either vector1 or vector2 is not of length 2 or 3, or if they contain non-numeric elements, or if any of their numeric elements is infinite. 
-*/
+
 function angleBetweenVectorsCCW(vector1, vector2) {
 	// check if both arrays have the same length
 	if (vector1.length !== vector2.length) {
@@ -112,4 +112,4 @@ function angleBetweenVectorsCCW(vector1, vector2) {
   
 	// Return angle in radians
 	return angleRad;
-}
+}*/

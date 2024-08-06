@@ -1,0 +1,103 @@
+
+function createMarkerArrow(id, fillColor) {
+	var marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+	marker.setAttribute("id", id);
+	marker.setAttribute("viewBox", "0 0 10 10");
+	marker.setAttribute("refX", 10);
+	marker.setAttribute("refY", 5);
+	marker.setAttribute("markerWidth", 6);
+	marker.setAttribute("markerHeight", 6);
+	marker.setAttribute("orient", "auto-start-reverse");
+  
+	var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	path.setAttribute("d", "M 0 0 L 10 5 L 0 10 z");
+	path.setAttribute("stroke", fillColor);
+	path.setAttribute("fill", fillColor);
+  
+	marker.appendChild(path);
+	return marker;
+}
+
+function drawSegment(svgElement, x1, y1, x2, y2, strokeColor, strokeWidth, strokeDasharray, showArrow) {
+	// Create the line element with styling
+	const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+	line.setAttribute("x1", x1);
+	line.setAttribute("y1", y1);
+	line.setAttribute("x2", x2);
+	line.setAttribute("y2", y2);
+	line.setAttribute("stroke", strokeColor);
+	line.setAttribute("stroke-width", strokeWidth);
+	line.setAttribute("stroke-dasharray", strokeDasharray);
+	if(showArrow){
+		switch(strokeColor) {
+			case "brown":
+				line.setAttribute("marker-end", "url(#Brownarrow)");
+			break;
+			case "blue":
+				line.setAttribute("marker-end", "url(#Bluearrow)");
+			break;
+			case "green":
+				line.setAttribute("marker-end", "url(#Greenarrow)");
+			break;
+		}
+	}
+	// Append the line element to the SVG
+	svgElement.appendChild(line);
+}
+
+function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, corner = "rightbottom") {
+	let svgTextElement;
+	
+	if (typeof text === "string") {
+		// Creates a new SVG text element and sets its text content.
+		svgTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+		svgTextElement.textContent = text;
+	  } else if (text instanceof SVGTextElement) {
+		// Use the provided SVGTextElement directly
+		svgTextElement = text;
+	  } else {
+		// Throw an error for unexpected types
+		throw new TypeError("Invalid type for 'text' parameter. Expected string, SVGTextElement, or object.");
+	}
+
+	// Set attributes for id, positioning and styling
+	svgTextElement.setAttribute("x", x);
+	svgTextElement.setAttribute("y", y);
+	svgTextElement.setAttribute("font-size", fontSize);
+	svgTextElement.setAttribute("stroke", stroke);
+	svgTextElement.setAttribute("fill", fill);
+	svgTextElement.setAttribute("font-weight", fontWeight);
+
+	// Handles different corner values to position the text element.
+	switch(corner) {
+		case "righttop":
+			// Positions the rightmost character at the specified baseline point.
+			svgTextElement.setAttribute("text-anchor", "end");
+			// Aligns the topmost edge of the first text box with the specified baseline point.
+			svgTextElement.setAttribute("dominant-baseline", "text-before-edge");
+		break;
+		case "rightbottom":
+			// Positions the rightmost character at the specified baseline point.
+			svgTextElement.setAttribute("text-anchor", "end");
+			// Aligns the bottommost edge of the last text box with the specified baseline point.
+			svgTextElement.setAttribute("dominant-baseline", "text-after-edge");
+		break;
+		case "lefttop":
+			// Positions the leftmost character at the specified x-coordinate.
+			svgTextElement.setAttribute("text-anchor", "start");
+			// Aligns the topmost edge of the first text box with the specified baseline point.
+			svgTextElement.setAttribute("dominant-baseline", "text-before-edge");
+		break;
+		case "leftbottom":
+			// Positions the leftmost character at the specified x-coordinate.
+			svgTextElement.setAttribute("text-anchor", "start");
+			// Aligns the bottommost edge of the last text box with the specified baseline point.
+			svgTextElement.setAttribute("dominant-baseline", "text-after-edge");
+		break;
+		default:
+			throw new Error("Invalid value for corner input: Expecting ´righttop´, ´rightbottom´, ´lefttop´ or ´leftbottom´.");
+	} 
+
+	// Add the text element to the SVG
+	svgElement.appendChild(svgTextElement);
+}

@@ -29,11 +29,6 @@ function createMarkerArrow(id, fillColor) {
 	return marker;
 }
 
-// Define global markers
-var brownMarker = createMarkerArrow("Brownarrow", "brown");
-var blueMarker = createMarkerArrow("Bluearrow", "blue");
-var greenMarker = createMarkerArrow("Greenarrow", "green");
-
 /**
  * Draws a line segment in an SVG element with specified styling.
  *
@@ -233,8 +228,6 @@ function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	// Append the group element to the SVG
 	svgElement.appendChild(groupElement);
 }
-
-
 
 /**
  * Class to manage the graphical representation of a Cartesian plane within an SVG element.
@@ -537,7 +530,6 @@ class CartesianPlane {
 			this.drawLabel([0-0.2, 0], originText, {fontSize: 22, fill: "brown"});
     }
 }
-
 
 /**
 	Represents a Euclidean space within an SVG element. 
