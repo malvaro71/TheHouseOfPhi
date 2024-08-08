@@ -18,7 +18,10 @@
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
         <!-- loads page script files-->
-        <script src="scripts/SelectLanguage.js" defer></script>
+        <script src="scripts/ArrayFunctions.js"></script> 
+        <script src="scripts/SVGDrawing.js"></script>
+        <script src="scripts/KinematicsPage.js" defer></script>
+        <!--<script src="scripts/SelectLanguage.js" defer></script>-->
     </head>
     <body>
         <!--<select id="langSelector">
@@ -34,15 +37,82 @@
         	</ul>
 		</nav>
         <article><header><h2 id="Theory">1. Theory and Key Concepts</h2></header>
-            <section>
+            <section><h3>1.1 Introduction</h3>
                 <p>
                     A body moves when over time it changes position relative to a reference point that is assumed to be fixed.
                 </p>
                 <p>
-                    In this article, dedicated to <strong>kinematics</strong>, we study the movement of physical bodies. This objective will be achieved when we know at each instant where the moving body is and how it moves. We must therefore obtain an equation that relates the position of the body to time.
+                    In this article, dedicated to <strong>kinematics</strong>, we study the movement of physical bodies without considering the causes that produce it. This objective will be achieved when we know at each instant where the moving body is located and how it moves. We must therefore obtain an equation that relates the position of the body to time.
+                </p>
+                <p>
+                    To reduce complexity and focus on the basic concepts of kinematics, instead of studying the motion of any body, we will begin by studying the motion of a <strong>material point</strong>; with which we sometimes roughly represent a body. And we define it as a geometric point in which we consider that all the mass of the body is concentrated.
                 </p>
             </section>
-
+            <section><h3> 1.2 Movement and trajectory</h3>
+                <p>
+                    To determine the position of a material point, it is necessary to specify the <strong>coordinate system</strong> relative to which its position is measured.
+                </p>
+                <p>
+                    The position of a point, relative to the chosen reference system, is described by the <strong>position vector \(\vec r\)</strong>.
+                </p>
+                <p>
+                    To study the motion of the material point, we will analyze how the position vector \(\vec r\) varies over time. Thus, we will seek to determine the vector function \(\vec r(t)\), which describes how each of its components varies with time (t).
+                </p>
+                <div class="container">
+                    <div  class="center">\( \vec r(t) = x(t)\vec i + y(t)\vec j + z(t)\vec k = (x(t), y(t), z(t)) \)</div>
+                    <div  class="right" id="[1.1]">[1.1]</div>
+                </div>
+                <figure class="centered">
+                    <svg id="svg1_1"></svg >
+                    <figcaption><b>Figure 1.1</b> Position vector \(\vec r\), indicating the position of the material point at a given instant and with respect to a given coordinate system.</figcaption>
+                </figure>
+                <p>
+                    The end of the position vector \(\vec r\) draws a line in space described by the material point in its movement. This route or path that the moving point follows over time is called a <strong>trajectory</strong>. We can imagine the trajectory as a line that marks the exact path of the object.
+                </p>
+                <p>
+                    If we know the trajectory of the moving point (for example, a straight line, a circle, etc.), then the problem of describing its motion is greatly simplified. All we need to find is an equation that tells us at what point of that trajectory the object is at each instant of time. If we call s the path traveled, the kinematic problem is therefore reduced to knowing s = f(t).
+                </p>
+                <p>
+                    For example, imagine a ball falling in a straight line. The trajectory is a vertical line. If we find an equation s = f(t), which tells us how high the ball is at each second, then we have solved the kinematic problem for that ball.
+                </p>
+            </section>
+            <section><h3>1.3 Displacement Vector</h3>
+                <p>
+                    The instant at which the study of the motion of a material point begins is called the <strong>initial instant</strong> \(t_0\). The position of the point at that instant is the <strong>initial position</strong> \(\vec r_0\).
+                </p>
+                <p>
+                    Since the temporal reference system, like the spatial reference instant, is arbitrary, we consider \(t_0\) = 0.
+                </p>
+                <p>
+                    As time goes by, the moving body will change position. At time \(t_1\), its position will be \(\vec r(t_1)\), at time \(t_2\), it will be \(\vec r(t_2)\) and so on.
+                </p>
+                <p>
+                    So, to represent the change in position of the material point, we define the <strong>displacement vector</strong> \(\Delta \vec r\) in the time interval [\(t_1\), \(t_2\)] as a vector whose origin is the position of the point at the instant \(t_1\) and whose end is the position at the instant \(t_2\).
+                </p>
+                <p>Thus,</p>
+                <div class="container">
+                    <div  class="center">\(\Delta\vec r = \vec r(t_2) - \vec r(t_1)\)</div>
+                    <div  class="right" id="[1.2]">[1.2]</div>
+                </div>
+                <p>If we call \(\Delta t\) the elapsed time interval, we can write</p>
+                <p>&emsp; \(t_1 = t\)</p>
+                <p>&emsp; \(t_2 = t + \Delta t\)</p>
+                <div class="container">
+                    <div  class="center">\(\Delta\vec r = \vec r(t + \Delta t) - \vec r(t)\)</div>
+                    <div  class="right" id="[1.3]">[1.3]</div>
+                </div>
+                <p>which can also be expressed as</p>
+                <div class="container">
+                    <div  class="center">\(\Delta\vec r = \Delta x\vec i + \Delta y\vec j + \Delta z\vec k\)</div>
+                    <div  class="right" id="[1.4]">[1.4]</div>
+                </div>
+                <p>
+                    where \(\Delta x\), \(\Delta y\) and \(\Delta z\) represent how the coordinates of the point vary in the time interval considered.
+                </p>
+                <p>
+                    If the body moves in a straight line, and without changing the direction of its movement, the magnitude of the displacement vector coincides with the distance traveled by the body. However, this only applies in these circumstances, because the displacement vector does not depend on the path followed by the object, only on the initial and final points.
+                </p>
+            </section>
         </article>
     </body>
 </html>

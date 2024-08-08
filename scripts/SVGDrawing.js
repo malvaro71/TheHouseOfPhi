@@ -392,7 +392,7 @@ class CartesianPlane {
 		// Generate path data string using template literals
 		const pathData = `M ${initialPoint[0]},${initialPoint[1]} A ${radiusX},${radiusY} 0 0 0 ${terminalPoint[0]},${terminalPoint[1]}`;
 
-		// Create the path element
+		// Create the path element (https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
 		const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		path.setAttribute("d", pathData);
 		path.setAttribute("fill", "none");
