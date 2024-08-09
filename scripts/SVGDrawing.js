@@ -389,10 +389,14 @@ class CartesianPlane {
 		terminalPoint = this.transformCoordinates(terminalPoint);
 
 
-		// Generate path data string using template literals
+		// Generate path data string using template literals (https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
+        // Uppercase letter => absolute coordinate
+        // Lowercase letter => relative coordinate 
+        // M or m: move to x, y
+        // A or a: section of circle or ellipse rx ry x-axis-rotation large-arc-flag sweep-flag x y (if rx=ry circle)
 		const pathData = `M ${initialPoint[0]},${initialPoint[1]} A ${radiusX},${radiusY} 0 0 0 ${terminalPoint[0]},${terminalPoint[1]}`;
 
-		// Create the path element (https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)
+		// Create the path element 
 		const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		path.setAttribute("d", pathData);
 		path.setAttribute("fill", "none");
@@ -402,6 +406,48 @@ class CartesianPlane {
 		// Append the path element to the SVG
 		this.svgElement.appendChild(path);
 	}
+
+    drawPath(coordinates, controlPoint, color) {
+        // https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+        // M x y: moves to absolute coordinate x, y
+        // Q x1 y1, x y: Quadratic Bézier curve (x1, y1) is the control point and (x, y) is the last point of the curve.
+        // T x y: Quadratic Bézier curve (x, y) is the last point of the curve, infers control point from previous curve.
+
+        // Check if there are at least two coordinates
+        if (coordinates.length < 2) {
+            throw new Error('The coordinate list must contain at least two values.');
+        }
+
+        // Validate coordinates
+        for (let i = 0; i < coordinates.length; i++) {
+            validateCoordinates2D(coordinates[i]);
+        }
+
+        // Transform coodinates
+        const svgCoordinates = [[0,0,0]];
+        for (let i = 0; i < coordinates.length; i++) {
+            svgCoordinates[i] = this.transformCoordinates(coordinates[i]);
+        }
+        let svgControlPoint = this.transformCoordinates(controlPoint);
+
+        // Start the path chain with the movement to the first point and the first Q curve
+        let pathData = `M ${svgCoordinates[0].join(' ')} Q ${svgControlPoint.join(' ')} ${svgCoordinates[1].join(' ')}`;
+
+        // Iterate over the remaining coordinates, using T for subsequent curves.
+        for (let i = 2; i < svgCoordinates.length; i++) {
+            pathData += ` T ${svgCoordinates[i].join(' ')}`;
+        }
+
+        // Create the path element 
+		const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		path.setAttribute("d", pathData);
+		path.setAttribute("fill", "none");
+		path.setAttribute("stroke", color);
+		path.setAttribute("stroke-width", "1");
+
+		// Append the path element to the SVG
+		this.svgElement.appendChild(path);
+    }
 
 	  /**
 	 * Draws a vector in the Cartesian plane using an existing marker created earlier (only for brown, blue or green colors).
@@ -747,6 +793,49 @@ class EuclideanSpace {
 
 		// Draw the point
 		drawCircle(this.svgElement, xPosition, yPosition, color, 3);
+    }
+
+    drawPath(coordinates, controlPoint, color) {
+        // Verify if there are at least three values, point, point and control point for the quadratic bezier curve
+        // https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+        // M x y: moves to absolute coordinate x, y
+        // Q x1 y1, x y: Quadratic Bézier curve (x1, y1) is the control point and (x, y) is the last point of the curve.
+        // T x y: Quadratic Bézier curve (x, y) is the last point of the curve, infers control point from previous curve.
+
+        // Check if there are at least three coordinates
+        if (coordinates.length < 2) {
+            throw new Error('The coordinate list must contain at least two values.');
+        }
+
+        // Validate coordinates
+        for (let i = 0; i < coordinates.length; i++) {
+            validateCoordinates3D(coordinates[i]);
+        }
+
+        // Transform coodinates
+        const svgCoordinates = [[0,0,0]];
+        for (let i = 0; i < coordinates.length; i++) {
+            svgCoordinates[i] = this.transformCoordinates(coordinates[i]);
+        }
+        let svgControlPoint = this.transformCoordinates(controlPoint);
+
+        // Start the path chain with the movement to the first point and the first Q curve
+        let pathData = `M ${svgCoordinates[0].join(' ')} Q ${svgControlPoint.join(' ')} ${svgCoordinates[1].join(' ')}`;
+
+        // Iterate over the remaining coordinates, using T for subsequent curves.
+        for (let i = 2; i < svgCoordinates.length; i++) {
+            pathData += ` T ${svgCoordinates[i].join(' ')}`;
+        }
+
+        // Create the path element 
+		const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+		path.setAttribute("d", pathData);
+		path.setAttribute("fill", "none");
+		path.setAttribute("stroke", color);
+		path.setAttribute("stroke-width", "1");
+
+		// Append the path element to the SVG
+		this.svgElement.appendChild(path);
     }
 }
 

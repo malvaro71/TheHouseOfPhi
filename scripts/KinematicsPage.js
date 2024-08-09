@@ -49,3 +49,32 @@
     mySpace1_1.drawVector([0, 0, 0], y, "y", {strokeColor: "blue"}, {});
     mySpace1_1.drawVector([0, 0, 0], z, "z", {strokeColor: "blue"}, {});
 }
+
+// svg1.2 trajectory and displacement vector
+{
+    // Get the SVG element from the DOM
+    var svg1_2 = document.getElementById("svg1_2");
+
+    // Set attributes
+    svg1_2.setAttribute("viewBox", "0 0 400 400"); 
+    svg1_2.setAttribute("width", "400"); 
+    svg1_2.setAttribute("height", "400");
+
+    // set a euclidean space
+    const mySpace1_2 = new EuclideanSpace(svg1_2, [0, 0, 0], 10);
+    mySpace1_2.drawAxes();
+
+    // set a list of point that define the path of movement. 
+    const Points = [[-1, -1, 8], [3, 6, 15], [11, 28, 18], [20, 25, 12]];
+
+    // Calculate displacement vector (deltar)
+    const deltar = math.subtract(Points[2], Points[1]);
+
+    // Draw r1 and r2 and deltar
+    mySpace1_2.drawVector([0, 0, 0], Points[1], "r1", {strokeColor: "blue"}, {});
+    mySpace1_2.drawVector([0, 0, 0], Points[2], "r2", {strokeColor: "blue"}, {});
+    mySpace1_2.drawVector(Points[1], deltar, "r2-r1", {strokeColor: "green"}, {corner: "righttop"});
+    
+    // Draw the path
+    mySpace1_2.drawPath(Points, [0, 1, 9], "green");
+}
