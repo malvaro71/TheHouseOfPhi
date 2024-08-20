@@ -68,7 +68,7 @@
                     El extremo del vector posición \(\vec r\) dibuja en el espacio una línea descrita por el punto material en su movimiento. Esta ruta o camino que sigue el punto móvil a lo largo del tiempo se denominada <strong>trayectoria</strong>. Podemos imaginar la trayectoria como una línea que marca el camino exacto del objeto.
                 </p>
                 <p>
-                    Si conocoemos la trayectoria del punto móvil (por ejemplo, una línea recta, una circunferencia, etc.), entonces el problema de describir su movimiento se simplifica mucho. Lo único que necesitamos encontrar es una ecuación que nos diga en qué punto de esa trayectoria se encuentra el objeto en cada instante de tiempo. Si llamamos s al camino recorrido, el problema cinemático se reduce por tanto a conocer s = f(t). 
+                    Si conocoemos la trayectoria del punto móvil (por ejemplo, una línea recta, una circunferencia, etc.), entonces el problema de describir su movimiento se simplifica mucho. Lo único que necesitamos encontrar es una ecuación que nos diga en qué punto de esa trayectoria se encuentra el objeto en cada instante de tiempo. Si llamamos s al <strong>camino recorrido</strong> o <strong>longitud de la trayectoria</strong>, el problema cinemático se reduce por tanto a conocer s = f(t). 
                 </p>
                 <p>
                     Por ejemplo, imaginemos una pelota que cae en línea recta. La trayectoria es una línea vertical. Si encontramos una ecuación s = f(t), que nos diga a qué altura está la pelota en cada segundo, entonces hemos resuelto el problema cinemático para esa pelota.
@@ -143,14 +143,14 @@
                 <p>Es decir, como la rapidez del cambio del vector de posición \(\vec r\) respecto al tiempo.</p>
                 <p>Este vector es tangente a la trayectoria y su sentido es el del movimiento.</p>
                 <p>
-                    Si referimos la velocidad instantánea a la trayectoria, la velocidad instantánea puede desarrollarse en la forma siguiente:  
+                    Si referimos la velocidad instantánea al camino recorrido, o la longitud de la trayectoria, la velocidad instantánea puede desarrollarse en la forma siguiente:  
                 </p>
                 <div class="container">
                     <div  class="center">$$ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \frac{\Delta s}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \lim_{\Delta t\to 0} \frac{\Delta s}{\Delta t} $$</div>
                     <div  class="right" id="[1.7]">[1.7]</div>
                 </div>
                 <p>
-                    A cada vector desplazamiento \(\Delta \vec r\) le corresponde una longitud de trayectoria \(\Delta s\), para cada intervalo de tiempo \(\Delta t\). Normalmente, \(\Delta s > \vert \Delta \vec r \vert \), pero al considerar intervalos de tiempo \(\Delta t\) que tienden a cero, ambos valores tienden a coincidir. Es decir, si \(\Delta t \to 0\), el arco \(\Delta s \to \) la cuerda \(\vert \Delta \vec r \vert \). Y el primer límite será un vector de módulo unidad, tangente a la trayectoria y sentido el del movimiento. Vector que simbolizaremos por \(\vec \tau\).
+                    A cada vector desplazamiento \(\Delta \vec r\) le corresponde un intervalo de la longitud de trayectoria \(\Delta s\), para cada intervalo de tiempo \(\Delta t\). Normalmente, \(\Delta s > \vert \Delta \vec r \vert \), pero al considerar intervalos de tiempo \(\Delta t\) que tienden a cero, ambos valores tienden a coincidir. Es decir, si \(\Delta t \to 0\), el arco \(\Delta s \to \) la cuerda \(\vert \Delta \vec r \vert \). Y el primer límite será un vector de módulo unidad, tangente a la trayectoria y sentido el del movimiento. Vector que simbolizaremos por \(\vec \tau\).
                 </p>
                 <p>
                     El segundo límite es un escalar y representa el módulo de la velocidad instantánea \(\vert \vec r \vert\), se denomina <strong>celeridad</strong> y se representa por \(v\).
@@ -193,11 +193,31 @@
                     <div  class="right" id="[1.12]">[1.12]</div>
                 </div>
                 <p>
-                    La <strong>aceleración instantánea</strong> es la aceleración que tiene la partícula en cualquier instante \(t\), o en cualquier punto de la trayectoria \(s=f(t)\). De modo que podemos expresar la aceleración instantánea como el valor límite de la aceleración media cuando el intervalo de tiempo tiende a cero.
+                    La <strong>aceleración instantánea</strong> es la aceleración que tiene la partícula en cualquier instante \(t\), o en cualquier punto de la trayectoria. De modo que podemos expresar la aceleración instantánea como el valor límite de la aceleración media cuando el intervalo de tiempo tiende a cero.
                 </p>
                 <div class="container">
                     <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \frac{d \vec v}{d t} = \frac{d^2 \vec r}{d t^2} $$</div>
                     <div  class="right" id="[1.13]">[1.13]</div>
+                </div>
+                <p>
+                    La aceleración media tiene escaso valor práctico. Mientras que la aceleración instantánea tiene gran importacia. Por lo que, a partir de ahora, siempre nos referiremos a la aceleración instantánea cuando hablemos de aceleración.
+                </p>
+                <p>
+                    Si conocemos la función que expresa el vector posición en función del tiempo \(\vec r = f(t)\), podemos expresar las <strong>componentes cartesianas de la aceleración</strong> como:
+                </p>
+                <div class="container">
+                    <div  class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d (v_x\vec i + v_y\vec j + v_z\vec k)}{d t} = \frac{dv_x}{dt}\vec i + \frac{dv_y}{dt}\vec j + \frac{dv_z}{dt}\vec k = a_x\vec i + a_y\vec j + a_z\vec k $$</div>
+                    <div  class="right" id="[1.14]">[1.14]</div>
+                </div>
+                <p>El <strong>módulo de la aceleración</strong> será entonces:</p>
+                <div class="container">
+                    <div  class="center">$$ \vert \vec a\vert = \sqrt{a_x^2+a_y^2+a_z^2} $$</div>
+                    <div  class="right" id="[1.15]">[1.15]</div>
+                </div>
+                <p>Si conocemos la curva que define trayectoria de la partícula y su camino recorrido en función del tiempo \(s=f(t)\), podemos expresar la variación de la velocidad \(\Delta \vec v\) entre dos puntos de la trayectoria, \(P_1\) y \(P_2\), dondes la velocidad de la partícula es \(\vec v_1\) y \(\vec v_2\) respectivamente, mediante la composición de dos vectores: uno en la dirección de \(\vec v_1\) y otro perpendicular a \(\vec v_1\). Entonces, la variación de la velocidad sería:</p>
+                <div class="container">
+                    <div  class="center">$$ \Delta \vec v = \Delta\vec v_{\tau} + \Delta\vec v_{\mu}  $$</div>
+                    <div  class="right" id="[1.16]">[1.16]</div>
                 </div>
             </section>
         </article>
