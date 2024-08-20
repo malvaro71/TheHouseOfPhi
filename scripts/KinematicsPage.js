@@ -115,9 +115,9 @@
     var svg1_4 = document.getElementById("svg1_4");
 
     // Set attributes
-    svg1_3.setAttribute("viewBox", "0 0 400 400"); 
-    svg1_3.setAttribute("width", "400"); 
-    svg1_3.setAttribute("height", "400");
+    svg1_4.setAttribute("viewBox", "0 0 400 400"); 
+    svg1_4.setAttribute("width", "400"); 
+    svg1_4.setAttribute("height", "400");
 
     // set a cartesian plane
 	const myPlane1_4 = new CartesianPlane(svg1_4, 0, 8, 0, 8);
