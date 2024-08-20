@@ -108,3 +108,33 @@
     // Draw the path
     myPlane1_3.drawPath(Points, [2, 5], "green");
 }
+
+// svg1.4 Velocity change in a time interval
+{
+    // Get the SVG element from the DOM
+    var svg1_4 = document.getElementById("svg1_4");
+
+    // Set attributes
+    svg1_3.setAttribute("viewBox", "0 0 400 400"); 
+    svg1_3.setAttribute("width", "400"); 
+    svg1_3.setAttribute("height", "400");
+
+    // set a cartesian plane
+	const myPlane1_4 = new CartesianPlane(svg1_4, 0, 8, 0, 8);
+    
+    // set a list of point that define the path of movement. 
+    const Points = [[1, 5], [3, 6], [5, 6.1], [7, 5], [8, 4]];
+
+    // Calculate displacement vector (deltar)
+    const deltar = math.subtract(Points[3], Points[1]);
+
+    // Draw r1 and r2, deltar, v1 and v2
+    myPlane1_4.drawVector([0, 0], Points[1], "r\u2081", {strokeColor: "blue"}, {});
+    myPlane1_4.drawVector([0, 0], Points[3], "r\u2082", {strokeColor: "blue"}, {});
+    myPlane1_4.drawVector(Points[1], deltar, "\u0394r", {strokeColor: "green"}, {corner: "righttop"});
+    myPlane1_4.drawVector(Points[1], [2,2], "v\u2081", {strokeColor: "brown"}, {});
+    myPlane1_4.drawVector(Points[3], [1, -2], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+    
+    // Draw the path
+    myPlane1_4.drawPath(Points, [2, 5.6], "green");
+}
