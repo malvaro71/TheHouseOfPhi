@@ -120,7 +120,7 @@
     svg1_4.setAttribute("height", "400");
 
     // set a cartesian plane
-	const myPlane1_4 = new CartesianPlane(svg1_4, 0, 8, 0, 8);
+	const myPlane1_4 = new CartesianPlane(svg1_4, 0, 10, 0, 10);
     
     // set a list of point that define the path of movement. 
     const Points = [[1, 5], [3, 6], [5, 6.1], [7, 5], [8, 4]];
