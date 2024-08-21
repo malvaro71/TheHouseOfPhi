@@ -126,7 +126,7 @@
     const Points = [[1, 5], [3, 6], [5, 6.1], [7, 5], [8, 4]];
 
     // Draw r1 and r2, deltar, v1 and v2
-    const center = [4, 3.3];
+    const center = [4.2, 3.1];
     const r1End = math.subtract(Points[1], center);
     const r2End = math.subtract(Points[3], center);
     myPlane1_4.drawVector(center, r1End, "r\u2081", {strokeColor: "blue"}, {corner: "righttop"});
@@ -139,7 +139,7 @@
     const deltavStart = math.add(Points[1], [1.5, 0.5]);
     const deltavEnd = math.add(Points[1], [2, -1.6]);
     const deltav = math.subtract(deltavEnd, deltavStart);
-    myPlane1_4.drawVector(deltavStart, deltav, "\u0394v", {strokeColor: "green"}, {corner: "righttop"});
+    myPlane1_4.drawVector(deltavStart, deltav, "\u0394v", {strokeColor: "green"}, {corner: "rightbottom"});
     
     
     // Draw the path
