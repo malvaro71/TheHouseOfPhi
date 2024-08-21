@@ -132,9 +132,9 @@
     myPlane1_4.drawVector([0, 0], Points[1], "r\u2081", {strokeColor: "blue"}, {});
     myPlane1_4.drawVector([0, 0], Points[3], "r\u2082", {strokeColor: "blue"}, {});
     myPlane1_4.drawVector(Points[1], deltar, "\u0394r", {strokeColor: "green"}, {corner: "righttop"});
-    myPlane1_4.drawVector(Points[1], [2, 0.4], "v\u2081", {strokeColor: "brown"}, {});
-    myPlane1_4.drawVector(Points[3], [2, -0.8], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
-    myPlane1_4.drawVector(Points[1], [2, -0.8], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+    myPlane1_4.drawVector(Points[1], [1.5, 0.4], "v\u2081", {strokeColor: "brown"}, {});
+    myPlane1_4.drawVector(Points[3], [2, -1.5], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+    myPlane1_4.drawVector(Points[1], [2, -1.5], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     
     // Draw the path
     myPlane1_4.drawPath(Points, [2, 5.6], "green");
