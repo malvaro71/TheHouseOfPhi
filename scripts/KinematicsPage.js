@@ -123,7 +123,7 @@
 	const myPlane1_4 = new CartesianPlane(svg1_4, 0, 10, 0, 10);
     
     // set a list of point that define the path of movement. 
-    const Points = [[1, 5], [3, 6], [5, 6.1], [7, 5], [8, 4]];
+    const Points = [[2, 5], [3, 6], [4.5, 6.1], [6, 5], [7, 4]];
 
     // Draw r1 and r2, deltar, v1 and v2
     const center = [4.4, 2.5];
@@ -143,5 +143,5 @@
     
     
     // Draw the path
-    myPlane1_4.drawPath(Points, [2, 5.6], "green");
+    myPlane1_4.drawPath(Points, [2.5, 5.6], "green");
 }
