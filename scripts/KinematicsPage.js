@@ -127,8 +127,8 @@
 
     // Draw r1 and r2, deltar, v1 and v2
     const center = [4.5, 3.8];
-    const r1End = math.substract(Points[1], center];
-    const r2End = math.substract(Points[3], center];
+    const r1End = math.subtract(Points[1], center];
+    const r2End = math.subtract(Points[3], center];
     myPlane1_4.drawVector(center, r1End, "r\u2081", {strokeColor: "blue"}, {});
     myPlane1_4.drawVector(center, r2End, "r\u2082", {strokeColor: "blue"}, {});
     myPlane1_4.drawVector(Points[1], [1.5, 0.5], "v\u2081", {strokeColor: "brown"}, {});
