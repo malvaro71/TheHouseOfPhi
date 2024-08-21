@@ -125,16 +125,19 @@
     // set a list of point that define the path of movement. 
     const Points = [[1, 5], [3, 6], [5, 6.1], [7, 5], [8, 4]];
 
-    // Calculate displacement vector (deltar)
-    const deltar = math.subtract(Points[3], Points[1]);
-
     // Draw r1 and r2, deltar, v1 and v2
     myPlane1_4.drawVector([0, 0], Points[1], "r\u2081", {strokeColor: "blue"}, {});
     myPlane1_4.drawVector([0, 0], Points[3], "r\u2082", {strokeColor: "blue"}, {});
-    myPlane1_4.drawVector(Points[1], deltar, "\u0394r", {strokeColor: "green"}, {corner: "righttop"});
-    myPlane1_4.drawVector(Points[1], [1.5, 0.4], "v\u2081", {strokeColor: "brown"}, {});
-    myPlane1_4.drawVector(Points[3], [2, -1.5], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
-    myPlane1_4.drawVector(Points[1], [2, -1.5], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+    myPlane1_4.drawVector(Points[1], [1.5, 0.5], "v\u2081", {strokeColor: "brown"}, {});
+    myPlane1_4.drawVector(Points[3], [2, -1.6], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+    myPlane1_4.drawVector(Points[1], [2, -1.6], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+
+    // Calculate and draw velocidy variation, deltav
+    const deltavStart = math.add(Points[1], [1.5, 0.5]);
+    const deltavEnd = math.add(Points[1], [2, -1.6]);
+    const deltav = math.subtract(deltavEnd, deltavStart);
+    myPlane1_4.drawVector(deltavStart, deltav, "\u0394v", {strokeColor: "green"}, {corner: "righttop"});
+    
     
     // Draw the path
     myPlane1_4.drawPath(Points, [2, 5.6], "green");
