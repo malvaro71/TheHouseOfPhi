@@ -126,8 +126,9 @@
     const Points = [[1, 5], [3, 6], [5, 6.1], [7, 5], [8, 4]];
 
     // Draw r1 and r2, deltar, v1 and v2
-    myPlane1_4.drawVector([0, 0], Points[1], "r\u2081", {strokeColor: "blue"}, {});
-    myPlane1_4.drawVector([0, 0], Points[3], "r\u2082", {strokeColor: "blue"}, {});
+	const center = [5, 4];
+    myPlane1_4.drawVector(center, Points[1], "r\u2081", {strokeColor: "blue"}, {});
+    myPlane1_4.drawVector(center, Points[3], "r\u2082", {strokeColor: "blue"}, {});
     myPlane1_4.drawVector(Points[1], [1.5, 0.5], "v\u2081", {strokeColor: "brown"}, {});
     myPlane1_4.drawVector(Points[3], [2, -1.6], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     myPlane1_4.drawVector(Points[1], [2, -1.6], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
