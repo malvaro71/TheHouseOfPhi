@@ -124,6 +124,120 @@
                 <p>
                     Suppose that a certain material point P moves in a time interval \(\Delta t\) from a point 1 to a point 2. Characterized respectively by the position vectors \(\vec r_1\) and \(\vec r_2\).
                 </p>
+		        <figure class="centered">
+                    <svg id="svg1_3"></svg >
+                    <figcaption><b>Figura 1.3</b> Position vectors \(\vec r_ 1\) and \(\vec r_ 2\), displacement vector \(\vec \Delta r\) and velocity vectors \(\vec v_1\) and \(\vec v_2\) of a moving object</figcaption>
+                </figure>
+                <p>
+                    The <strong>average velocity</strong> \(\vec v_{avg}\) in the time interval \(\Delta t\) is defined as:
+                </p>
+                <div class="container">
+                    <div  class="center">$$ \vec v_{avg} = \frac{\Delta \vec r}{\Delta t} $$</div>
+                    <div  class="right" id="[1.5]">[1.5]</div>
+                </div>
+                <p>
+                    The <strong>instantaneous velocity</strong> \(\vec v\) is defined as:
+                </p>
+                <div class="container">
+                    <div  class="center">$$ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \frac{d \vec r}{d t} $$</div>
+                    <div  class="right" id="[1.6]">[1.6]</div>
+                </div>
+                <p>That is, as the speed of change of the position vector \(\vec r\) with respect to time.</p>
+                <p>This vector is tangent to the path and its direction is that of movement.</p>
+                <p>
+                    If we refer the instantaneous velocity to the path traveled, or the length of the path, the instantaneous velocity can be expresed in the following way:
+                </p>
+                <div class="container">
+                    <div  class="center">$$ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \frac{\Delta s}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \lim_{\Delta t\to 0} \frac{\Delta s}{\Delta t} $$</div>
+                    <div  class="right" id="[1.7]">[1.7]</div>
+                </div>
+                <p>
+                    To each displacement vector \(\Delta \vec r\) corresponds an interval of the path length \(\Delta s\), for each time interval \(\Delta t\). Normally, \(\Delta s > \vert \Delta \vec r \vert \), but when considering time intervals \(\Delta t\) that tend to zero, both values ​​tend to coincide. That is, if \(\Delta t \to 0\), the arc \(\Delta s \to \) the chord \(\vert \Delta \vec r \vert \). And the first limit will be a vector of unit module, tangent to the path and in the direction of the movement. Vector that we will symbolize by \(\vec \tau\).
+                </p>
+                <p>
+                    The second limit is a scalar and represents the module of the instantaneous velocity \(\vert \vec r \vert\), it is called <strong>celerity</strong> and is represented by \(v\).
+                </p>
+                <p>So,</p>
+                <div class="container">
+                    <div  class="center">$$ \vec v = v\cdot \vec\tau $$</div>
+                    <div  class="right" id="[1.8]">[1.8]</div>
+                </div>
+                <p>
+                    If we refer the instantaneous velocity to the components of the position vector, we can express the instantaneous velocity as follows:
+                </p>
+                <div class="container">
+                    <div  class="center">$$ \vec v = \frac {d\vec r}{dt} = \frac {dx}{dt}\vec i + \frac {dy}{dt}\vec j + \frac {dz}{dt}\vec k $$</div>
+                    <div  class="right" id="[1.9]">[1.9]</div>
+                </div>
+                <p>That is,</p>
+                <div class="container">
+                    <div  class="center">$$ \vec v = v_x\vec i + v_y\vec j + v_z\vec k $$</div>
+                    <div  class="right" id="[1.10]">[1.10]</div>
+                </div>
+                <p>Where the module of the instantaneous speed will be:</p>
+                <div class="container">
+                    <div  class="center">$$ v = \vert \vec v\vert = \sqrt{v_x^2+v_y^2+v_z^2} $$</div>
+                    <div  class="right" id="[1.11]">[1.11]</div>
+                </div>
+            </section>
+            <section><h3>1.5 Acceleration</h3>
+                <p>
+                    <strong>Acceleration</strong>, in general, is the variation in speed over a time interval. Since speed is a vector magnitude, acceleration will be different from zero whenever the speed varies in its magnitude, direction or sense.
+                </p>
+                <p>
+                    To determine the motion of a particle, it is necessary to know how the acceleration changes over time. To do this, we introduce the concepts of average acceleration and instantaneous acceleration.
+                </p>
+                <p>
+                    The <strong>average acceleration</strong> represents how the speed varies in each unit of time, or the vector that results from dividing the speed variation in a given time interval by said interval.
+                </p>
+                <div class="container">
+                    <div  class="center">$$ \vec a = \frac{\Delta\vec v}{\Delta t} = \frac{\Delta v_x}{\Delta t}\vec i +  \frac{\Delta v_y}{\Delta t}\vec j +  \frac{\Delta v_z}{\Delta t}\vec k $$</div>
+                    <div  class="right" id="[1.12]">[1.12]</div>
+                </div>
+                <p>
+                    The <strong>instantaneous acceleration</strong> is the acceleration that the particle has at any instant \(t\), or at any point in the trajectory. Thus, we can express the instantaneous acceleration as the limit value of the average acceleration when the time interval tends to zero.
+                </p>
+                <div class="container">
+                    <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \frac{d \vec v}{d t} = \frac{d^2 \vec r}{d t^2} $$</div>
+                    <div  class="right" id="[1.13]">[1.13]</div>
+                </div>
+                <p>
+                    Average acceleration has little practical value. Whereas instantaneous acceleration is of great importance. Therefore, from now on, we will always refer to instantaneous acceleration when we talk about acceleration.
+                </p>
+                <p>
+                    If we know the function that expresses the position vector as a function of time \(\vec r = f(t)\), we can express the <strong>Cartesian components of acceleration</strong> as:
+                </p>
+                <div class="container">
+                    <div  class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d (v_x\vec i + v_y\vec j + v_z\vec k)}{d t} = \frac{dv_x}{dt}\vec i + \frac{dv_y}{dt}\vec j + \frac{dv_z}{dt}\vec k = a_x\vec i + a_y\vec j + a_z\vec k $$</div>
+                    <div  class="right" id="[1.14]">[1.14]</div>
+                </div>
+                <p>The <strong>acceleration module</strong> will then be:</p>
+                <div class="container">
+                    <div  class="center">$$ \vert \vec a\vert = \sqrt{a_x^2+a_y^2+a_z^2} $$</div>
+                    <div  class="right" id="[1.15]">[1.15]</div>
+                </div>
+                <p>If we know the curve that defines the particle's trajectory and its path traveled as a function of time \(s=f(t)\), we can express the variation in speed \(\Delta \vec v\) between two points on the trajectory, \(P_1\) and \(P_2\), where the particle's speed is \(\vec v_1\) and \(\vec v_2\) respectively, by means of the composition of two vectors: one in the direction of \(\vec v_1\) and another perpendicular to \(\vec v_1\). Then, the variation in speed would be:</p>
+                <div class="container">
+                    <div  class="center">$$ \Delta \vec v = \Delta\vec v_{\tau} + \Delta\vec v_{\mu}  $$</div>
+                    <div  class="right" id="[1.16]">[1.16]</div>
+                </div>
+                <p>La aceleración media sería:</p>
+                <div class="container">
+                    <div  class="center">$$ \frac{\Delta \vec v}{\Delta t} = \frac{\Delta\vec v_{\tau}}{\Delta t} + \frac{\Delta\vec v_{\mu}}{\Delta t}  $$</div>
+                    <div  class="right" id="[1.17]">[1.17]</div>
+                </div>
+                <p>Y la aceleración instantánea sería:</p>
+                <div class="container">
+                    <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\tau}}{\Delta t} + \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\mu}}{\Delta t} = \vec a_{\tau} + \vec a_{\mu} = a_{\tau}\vec {\tau} + a_{\mu}\vec {\mu} $$</div>
+                    <div  class="right" id="[1.18]">[1.18]</div>
+                </div>
+                <p>
+                    Entonces, la aceleración instantánea se puede espresar mediante las <strong>componentes intrínsecas de la aceleración</strong> como la suma de dos aceleraciones, una en la dirección tangente a la trayectoria (<strong>aceleración tangencial</strong>) y otra en la dirección normal a la trayectoria(<strong>aceleración normal</strong>) en cada punto de dicha trayectoria.
+                </p>
+                <figure class="centered">
+                    <svg id="svg1_4"></svg >
+                    <figcaption><b>Figura 1.4</b> Variación de la velocidad en una trayectoria curva.</figcaption>
+                </figure>
             </section>
         </article>
     </body>
