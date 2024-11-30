@@ -6,7 +6,7 @@
         <title>TheHouseOfPhi Cinematica</title>
         <meta name="author" content="Miguel Angel Alvaro">
         <meta name="description"
-            content="Subpage showing information about vectors."
+            content="Subpage showing information about kinematics."
         >
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
         <!--Load math.js library https://mathjs.org/ -->
         <script src="https://unpkg.com/mathjs@13.0.0/lib/browser/math.js"></script>
         
-        <!-- load Mathjax library-->
+        <!-- load Mathjax library -->
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
         <!-- loads page script files-->
@@ -141,19 +141,19 @@
                     <div  class="right" id="[1.6]">[1.6]</div>
                 </div>
                 <p>Es decir, como la rapidez del cambio del vector de posición \(\vec r\) respecto al tiempo.</p>
-                <p>Este vector es tangente a la trayectoria y su sentido es el del movimiento.</p>
+                <p>Podemos observar que \(\Delta \vec r\) está contenido en una recta secante a la trayectoria. Y que, cuando \(\Delta t \) tiende a cero, el límite de las secantes es la tangente que toca la trayectoria en \(\vec r\). Y, en consecuencia, \(\vec v\) es simpre un vector tangente a la trayectoria.</p>
                 <p>
-                    Si referimos la velocidad instantánea al camino recorrido, o la longitud de la trayectoria, la velocidad instantánea puede desarrollarse en la forma siguiente:  
+                    Teniendo esto en cuenta, si referimos la velocidad instantánea al camino recorrido, o a la longitud de la trayectoria, durante \(\Delta t\), la velocidad instantánea puede desarrollarse en la forma siguiente:  
                 </p>
                 <div class="container">
                     <div  class="center">$$ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \frac{\Delta s}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \lim_{\Delta t\to 0} \frac{\Delta s}{\Delta t} $$</div>
                     <div  class="right" id="[1.7]">[1.7]</div>
                 </div>
                 <p>
-                    A cada vector desplazamiento \(\Delta \vec r\) le corresponde un intervalo de la longitud de trayectoria \(\Delta s\), para cada intervalo de tiempo \(\Delta t\). Normalmente, \(\Delta s > \vert \Delta \vec r \vert \), pero al considerar intervalos de tiempo \(\Delta t\) que tienden a cero, ambos valores tienden a coincidir. Es decir, si \(\Delta t \to 0\), el arco \(\Delta s \to \) la cuerda \(\vert \Delta \vec r \vert \). Y el primer límite será un vector de módulo unidad, tangente a la trayectoria y sentido el del movimiento. Vector que simbolizaremos por \(\vec \tau\).
+                    A cada vector desplazamiento \(\Delta \vec r\) le corresponde una longitud de trayectoria \(\Delta s\), para cada intervalo de tiempo \(\Delta t\). Normalmente, \(\Delta s > \vert \Delta \vec r \vert \), pero al considerar intervalos de tiempo \(\Delta t\) que tienden a cero, ambos valores tienden a coincidir. Es decir, si \(\Delta t \to 0\), el arco \(\Delta s \to \) la cuerda \(\vert \Delta \vec r \vert \). Y el primer límite será un vector de módulo unidad, tangente a la trayectoria y sentido el del movimiento. Vector que simbolizaremos por \(\vec \tau\).
                 </p>
                 <p>
-                    El segundo límite es un escalar y representa el módulo de la velocidad instantánea \(\vert \vec r \vert\), se denomina <strong>celeridad</strong> y se representa por \(v\).
+                    El segundo límite es un escalar y representa el módulo de la velocidad instantánea \(\vert \vec v \vert\), se denomina <strong>celeridad</strong> y se representa por \(v\).
                 </p>
                 <p>Así pues,</p>
                 <div class="container">
@@ -161,7 +161,7 @@
                     <div  class="right" id="[1.8]">[1.8]</div>
                 </div>
                 <p>
-                    Si referimos la velocidad instantáne a los componentes del vector posición, podemos expresar la velocidad instantánea de la siguient forma:
+                    Si referimos la velocidad instantánea a los componentes del vector posición, podemos expresar la velocidad instantánea de la siguiente forma:
                 </p>
                 <div class="container">
                     <div  class="center">$$ \vec v = \frac {d\vec r}{dt} = \frac {dx}{dt}\vec i + \frac {dy}{dt}\vec j + \frac {dz}{dt}\vec k $$</div>
@@ -202,6 +202,7 @@
                 <p>
                     La aceleración media tiene escaso valor práctico. Mientras que la aceleración instantánea tiene gran importacia. Por lo que, a partir de ahora, siempre nos referiremos a la aceleración instantánea cuando hablemos de aceleración.
                 </p>
+                <p><u>Componentes Cartesianas de la Aceleración</u></p>
                 <p>
                     Si conocemos la función que expresa el vector posición en función del tiempo \(\vec r = f(t)\), podemos expresar las <strong>componentes cartesianas de la aceleración</strong> como:
                 </p>
@@ -214,7 +215,21 @@
                     <div  class="center">$$ \vert \vec a\vert = \sqrt{a_x^2+a_y^2+a_z^2} $$</div>
                     <div  class="right" id="[1.15]">[1.15]</div>
                 </div>
-                <p>Si conocemos la curva que define trayectoria de la partícula y su camino recorrido en función del tiempo \(s=f(t)\), podemos expresar la variación de la velocidad \(\Delta \vec v\) entre dos puntos de la trayectoria, \(P_1\) y \(P_2\), dondes la velocidad de la partícula es \(\vec v_1\) y \(\vec v_2\) respectivamente, mediante la composición de dos vectores: uno en la dirección de \(\vec v_1\) y otro perpendicular a \(\vec v_1\). Entonces, la variación de la velocidad sería:</p>
+                <p><u>Componentes Intrínsecas de la Aceleración</u></p>
+                <p>Cuando analizamos el movimiento de un objeto a lo largo de una trayectoria curva, resulta muy útil describir su aceleración en términos de un sistema de referencia que se adapte a la forma de esa curva en cada instante. Este sistema de referencia se denomina intrínseco porque está ligado a la propia trayectoria.</p>
+                <p>En cada punto de la trayectoria podemos definir:</p>
+                <ul>
+                    <li><strong>Un punto:</strong> Este es simplemente el punto de la trayectoria que estamos considerando en un momento dado.</li>
+                    <li><strong>Un eje tangente:</strong> Este eje es una línea recta que pasa por el punto y es paralela a la velocidad del objeto en ese instante. Indica la dirección en la que se mueve el objeto.</li>
+                    <li><strong>Un eje normal:</strong> Este eje es una línea recta perpendicular al eje tangente en el punto considerado. Apunta hacia el centro de curvatura de la trayectoria.</li>
+                </ul>
+                <p>Juntos, estos tres elementos forman un sistema de coordenadas local que se mueve y rota a medida que el objeto se desplaza a lo largo de la curva.</p>
+                <p>Al descomponer el vector aceleración en estos ejes, obtenemos dos componentes:</p>
+                <ul>
+                    <li><strong>Aceleración tangencial (at):</strong> Esta componente indica la tasa de cambio del módulo de la velocidad. Si es positiva, el objeto acelera; si es negativa, el objeto frena.</li>
+                    <li><strong>Aceleración normal (an):</strong> Esta componente mide la tasa de cambio de la dirección de la velocidad. Siempre apunta hacia el centro de curvatura y está relacionada con la rapidez con la que el objeto cambia de dirección.</li>
+                </ul>                
+                <p>Si conocemos la curva que define trayectoria de la partícula y su camino recorrido en función del tiempo \(s=f(t)\), podemos expresar la variación de la velocidad \(\Delta \vec v\) entre dos puntos de la trayectoria, \(P_1\) y \(P_2\), donde la velocidad de la partícula es \(\vec v_1\) y \(\vec v_2\) respectivamente, mediante la composición de dos vectores: uno en la dirección de \(\vec v_1\) y otro perpendicular a \(\vec v_1\). Entonces, la variación de la velocidad sería:</p>
                 <div class="container">
                     <div  class="center">$$ \Delta \vec v = \Delta\vec v_{\tau} + \Delta\vec v_{\mu}  $$</div>
                     <div  class="right" id="[1.16]">[1.16]</div>
@@ -226,7 +241,7 @@
                 </div>
                 <p>Y la aceleración instantánea sería:</p>
                 <div class="container">
-                    <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\tau}}{\Delta t} + \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\mu}}{\Delta t} = \vec a_{\tau} + \vec a_{\mu} = a_{\tau}\vec {\tau} + a_{\mu}\vec {\mu} $$</div>
+                    <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\tau}}{\Delta t} + \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\mu}}{\Delta t} = \vec a_{\tau} + \vec a_{\eta} = a_{\tau}\vec {\tau} + a_{\mu}\vec {\eta} $$</div>
                     <div  class="right" id="[1.18]">[1.18]</div>
                 </div>
                 <p>
@@ -236,6 +251,62 @@
                     <svg id="svg1_4"></svg >
                     <figcaption><b>Figura 1.4</b> Variación de la velocidad en una trayectoria curva.</figcaption>
                 </figure>
+                <p>Calculemos ahora los módulos de la aceleración tangencial y de la aceleración normal. Derivando la expresión de la velocidad en base a la trayectoria (1.8)</p>
+                <p>
+                    $$
+                    \begin{align}
+                        \vec a = \frac{d \vec v}{d t} = \frac{d (v\cdot \vec\tau)}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d \vec\tau}{d t} \tag{1.19}
+                    \end{align}   
+                    $$   
+                </p>
+                <p>Relacionando (1.18) y (1.19), se observa que el primer término de 1.19 \(\frac{d v}{d t}\cdot \vec\tau\) es la aceleración tangencial. Y entonces, el <strong>módulo de la aceleración tangencial</strong> es simplemente la derivada temporal del módulo de la velocidad:</p>
+                <p> 
+                    $$
+                    \begin{align}
+                        a_{\tau} = \left \vert \frac{\Delta \vec v}{\Delta t} \right \vert \tag{1.20}
+                    \end{align}   
+                    $$   
+                </p>
+                <p>De igual forma, el segundo término de (1.19) \(v \cdot \frac{d \vec\tau}{d t}\) corresponde con la aceleración normal, representa la tasa de cambio de la <strong>dirección</strong> de la velocidad, y se dirige en la misma dirección que el vector unitario normal \( \vec\eta \).</p>
+                <p> 
+                    $$
+                    \begin{align}
+                        v \cdot \frac{d \vec\tau}{d t} = v \cdot \frac{d (\vert \vec\tau\vert\cdot\vec\eta)}{d t} = v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta \tag{1.21}
+                    \end{align}   
+                    $$   
+                </p>
+                <p>Consideremos un pequeño desplazamiento a lo largo de la trayectoria; tan pequeño que la trayectoria de ese pequeño desplazamiento se aproxima a un arco de circunferencia con un cierto radio R. Entoncer, durante este desplazamiento, el objeto recorre un arco de circunferencia de radio R (llamado radio de curvatura) y subtiende un ángulo \( d\theta \) radianes.</p>
+                <p>De la definición de radián (un radián es el ángulo central de una circunferencia que subtiende un arco de longitud igual al radio de la circunferencia) encontramos que \( d s = R \cdot d\theta \).</p>
+                <p>Para ángulos pequeños, podemos aproximar el cambio del vector unitario tangente \(\vec\tau\) al arco de circunferencia que describe la punta del vector al girar. La longitud de este arco es aproximadamente igual al radio de la circunferencia (que es 1, ya que estamos hablando de un vector unitario) multiplicado por el ángulo \( d \theta \). Por tanto, para pequeños ángulos, podemos escribir \( \vert d\vec\tau \vert \approx d\theta \). Entonces: </p>
+                <p> 
+                    $$
+                    \left.
+                        \begin{align}
+                            d s = R \cdot d\theta   \\
+                            \vert d\vec\tau \vert \approx d\theta
+                        \end{align}
+                    \right \}
+                    \implies d s = \vert d\vec\tau \vert \cdot R
+                    \implies \frac{\vert d\vec\tau \vert}{d s} = { 1 \over R}
+                    $$   
+                </p>
+                <p>Entonces, reescribiendo (1.19) </p>
+                <p>
+                    $$
+                    \begin{align}
+                        \vec a = \frac{d \vec v}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d\tau}{d s}\cdot \frac{d s}{d t}\cdot \vec\eta = \frac{d v}{d t}\cdot \vec\tau + {v^2 \over R}\cdot \vec\eta \tag{1.22}
+                    \end{align}   
+                    $$   
+                </p>
+                <p>Finalmente, comparando con (1.18) obtenemos </p>
+                <p>
+                    $$
+                    \begin{align}
+                        a_{\tau} = \frac{d v}{d t}  \tag{1.23} \\
+                        a_{\eta} = {v^2 \over R}\cdot \tag{1.24}
+                    \end{align}   
+                    $$   
+                </p>
             </section>
         </article>
     </body>
