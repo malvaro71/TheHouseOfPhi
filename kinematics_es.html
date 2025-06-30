@@ -223,7 +223,7 @@
                     <li><strong>Un eje tangente:</strong> Este eje es una línea recta que pasa por el punto considerado de la trayectoria y es paralela a la velocidad del objeto en ese instante. Indica la dirección en la que se mueve el objeto.</li>
                     <li><strong>Un eje normal:</strong> Este eje es una línea recta perpendicular al eje tangente en el punto considerado. Apunta hacia el centro de curvatura de la trayectoria.</li>
                 </ul>
-                <p>Asociado al eje tangente, definimos el <strong>vector tangente unitario, \(\vec {\tau}\)</strong>. Y, asociado al eje normal, definimos el <strong>vector normal unitario, \(\vec {\mu}\)</strong>.</p>
+                <p>Asociado al eje tangente, definimos el <strong>vector tangente unitario, \(\vec {\tau}\)</strong>. Y, asociado al eje normal, definimos el <strong>vector normal unitario, \(\vec {\eta}\)</strong>.</p>
                 <p>Juntos, el punto considerado de la trayectoria, el vector tangente unitario, \(\vec {\tau}\), y el vector normal unitario, \(\vec {\mu}\), forman un sistema de coordenadas local que se mueve y rota a medida que el objeto se desplaza a lo largo de la curva.</p>
                 <p>Al descomponer el vector aceleración en estos ejes, obtenemos dos componentes:</p>
                 <ul>
@@ -232,17 +232,17 @@
                 </ul>                
                 <p>Si conocemos la curva que define la trayectoria de la partícula y su camino recorrido en función del tiempo \(s=f(t)\), podemos expresar la variación de la velocidad \(\Delta \vec v\) entre dos puntos de la trayectoria, \(P_1\) y \(P_2\), donde la velocidad de la partícula es \(\vec v_1\) y \(\vec v_2\) respectivamente, mediante la composición de dos vectores: uno en la dirección de \(\vec v_1\) y otro perpendicular a \(\vec v_1\). Entonces, la variación de la velocidad sería:</p>
                 <div class="container">
-                    <div  class="center">$$ \Delta \vec v = \Delta\vec v_{\tau} + \Delta\vec v_{\mu}  $$</div>
+                    <div  class="center">$$ \Delta \vec v = \Delta\vec v_{\tau} + \Delta\vec v_{\eta}  $$</div>
                     <div  class="right" id="[1.16]">[1.16]</div>
                 </div>
                 <p>La aceleración media sería:</p>
                 <div class="container">
-                    <div  class="center">$$ \frac{\Delta \vec v}{\Delta t} = \frac{\Delta\vec v_{\tau}}{\Delta t} + \frac{\Delta\vec v_{\mu}}{\Delta t}  $$</div>
+                    <div  class="center">$$ \frac{\Delta \vec v}{\Delta t} = \frac{\Delta\vec v_{\tau}}{\Delta t} + \frac{\Delta\vec v_{\eta}}{\Delta t}  $$</div>
                     <div  class="right" id="[1.17]">[1.17]</div>
                 </div>
                 <p>Y la aceleración instantánea sería:</p>
                 <div class="container">
-                    <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\tau}}{\Delta t} + \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\mu}}{\Delta t} = \vec a_{\tau} + \vec a_{\eta} = a_{\tau}\vec {\tau} + a_{\mu}\vec {\eta} $$</div>
+                    <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\tau}}{\Delta t} + \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\eta}}{\Delta t} = \vec a_{\tau} + \vec a_{\eta} = a_{\tau}\vec {\tau} + a_{\mu}\vec {\eta} $$</div>
                     <div  class="right" id="[1.18]">[1.18]</div>
                 </div>
                 <p>
