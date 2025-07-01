@@ -92,9 +92,9 @@
     // set a cartesian plane
 	const myPlane1_3 = new CartesianPlane(svg1_3, 0, 8, 0, 8);
 
-	// set a function to generate a list of points: f(x) = 5 - (x^2)/40
+	// set a function to generate a list of points: f(x) = 5 - (x^2)/25
 	function f1_3(x) {
-	    return 5 - (x * x)/40;
+	    return 5 - (x * x)/25;
 	}
     
     // set a list of points that define the path of movement. 
