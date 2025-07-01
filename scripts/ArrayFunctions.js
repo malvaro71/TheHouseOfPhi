@@ -113,36 +113,3 @@ function angleBetweenVectorsCCW(vector1, vector2) {
 	// Return angle in radians
 	return angleRad;
 }*/
-
-/**
- * Generates an ordered list of 2D points (x, y) for a given mathematical function
- * over a specified interval. The x-coordinates are equally spaced within the interval.
- *
- * @param {function(number): number} func - The mathematical function to evaluate.
- * It should take a single number as input and return a number.
- * @param {number} intervalStart - The inclusive starting point (inferior limit) of the interval.
- * @param {number} intervalEnd - The inclusive ending point (superior limit) of the interval.
- * @param {number} numberOfPoints - The total number of points to generate. Must be an integer greater than or equal to 2.
- * @returns {Array<[number, number]>} An ordered list of points, where each point is an array `[x, y]`.
- * The list starts with the point at `intervalStart` and ends with the point at `intervalEnd`.
- * @throws {Error} If `numberOfPoints` is less than 2, or if `intervalStart` is greater than `intervalEnd`.
- */
-function generateFunctionPoints(func, intervalStart, intervalEnd, numberOfPoints) {
-    if (numberOfPoints < 2) {
-        throw new Error("numberOfPoints must be an integer greater than or equal to 2 to define an interval.");
-    }
-    if (intervalStart > intervalEnd) {
-        throw new Error("intervalStart cannot be greater than intervalEnd.");
-    }
-
-    const points = [];
-    const step = (intervalEnd - intervalStart) / (numberOfPoints - 1);
-
-    for (let i = 0; i < numberOfPoints; i++) {
-        const x = intervalStart + i * step;
-        const y = func(x);
-        points.push([x, y]);
-    }
-
-    return points;
-}
