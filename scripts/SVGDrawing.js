@@ -420,6 +420,7 @@ class CartesianPlane {
 		this.svgElement.appendChild(path);
 	}
 
+	/**
     drawPath(coordinates, controlPoint, color) {
         // https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
         // M x y: moves to absolute coordinate x, y
@@ -461,6 +462,65 @@ class CartesianPlane {
 		// Append the path element to the SVG
 		this.svgElement.appendChild(path);
     }
+    */
+	
+	/**
+	 * Plots a series of 2D points as a continuous line within an SVG element.
+	 * The function generates an SVG <path> element using 'M' (moveto) for the
+	 * first point and 'L' (lineto) for subsequent points, connecting them with
+	 * straight line segments.
+	 *
+	 * @param {SVGElement} svgElement - The SVG element where the path will be drawn.
+	 * @param {Array<[number, number]>} points - An ordered list of 2D points,
+	 * where each point is an array `[x, y]`.
+	 * @param {string} [strokeColor="#3366FF"] - The color of the line stroke. Defaults to a blue.
+	 * @param {number} [strokeWidth=2] - The width of the line stroke in pixels. Defaults to 2.
+	 * @param {string} [fillColor="none"] - The fill color of the path. Defaults to "none" for a line.
+	 * @returns {SVGPathElement} The created SVG <path> element.
+	 * @throws {Error} If the `points` array is empty or not an array.
+	 */
+	drawPath(points, color) {
+	    // Check if there are at least two coordinates
+		if (coordinates.length < 2) {
+			throw new Error('The coordinate list must contain at least two values.');
+		}
+
+		// Validate coordinates
+		for (let i = 0; i < coordinates.length; i++) {
+			validateCoordinates2D(coordinates[i]);
+		}
+
+		// Transform coodinates
+		const svgCoordinates = [[0,0]];
+		for (let i = 0; i < coordinates.length; i++) {
+			svgCoordinates[i] = this.transformCoordinates(coordinates[i]);
+		}
+	        
+	    // Create an SVG path element
+	    const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	
+	    // Construct the 'd' attribute string for the path
+	    // Start with 'M' (moveto) to the first point
+	    let pathData = `M ${coordinates[0][0]},${coordinates[0][1]}`;
+	
+	    // Loop through the rest of the points and add 'L' (lineto) commands
+	    for (let i = 1; i < coordinates.length; i++) {
+	        pathData += ` L ${coordinates[i][0]},${coordinates[i][1]}`;
+	    }
+	
+	    // Set the 'd' attribute with the generated path data
+	    pathElement.setAttribute("d", pathData);
+	
+	    // Set styling attributes
+		pathElement.setAttribute("fill", "none");
+		pathElement.setAttribute("stroke", color);
+		pathElement.setAttribute("stroke-width", "1");
+	
+	    // Append the path element to the provided SVG element
+	    this.svgElement.appendChild(pathElement);
+	
+	    return pathElement;
+	}
 
 	  /**
 	 * Draws a vector in the Cartesian plane using an existing marker created earlier (only for brown, blue or green colors).
