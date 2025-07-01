@@ -505,7 +505,7 @@ class CartesianPlane {
 	
 	    // Loop through the rest of the points and add 'L' (lineto) commands
 	    for (let i = 1; i < svgCoordinates.length; i++) {
-	        pathData += `L ${svgCoordinates[i].join(' ')}`;
+	        pathData += ` L ${svgCoordinates[i].join(' ')}`;
 	    }
 	
 	    // Set the 'd' attribute with the generated path data
