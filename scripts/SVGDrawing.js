@@ -491,7 +491,7 @@ class CartesianPlane {
 		}
 
 		// Transform coodinates
-		const svgCoordinates = [[0,0]];
+		const svgCoordinates = [[0,0,0]];
 		for (let i = 0; i < coordinates.length; i++) {
 			svgCoordinates[i] = this.transformCoordinates(coordinates[i]);
 		}
