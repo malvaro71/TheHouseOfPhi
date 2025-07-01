@@ -102,8 +102,8 @@ function drawCircle(svgElement, centreX, centreY, color, radius) {
 /**
  * Returns an SVG text element with a regular text followed by a subscript text.
  * 
- * @param {string} regular The main text content.
- * @param {string} subscript The subscript text content.
+ * @param {string} regular - The main text content.
+ * @param {string} subscript - The subscript text content.
  * @returns {SVGTextElement} An SVG text element containing the regular text and subscript.
  */
 function TextWithSubscript(regular, subscript) {
@@ -141,7 +141,7 @@ function TextWithSubscript(regular, subscript) {
  * @param {string} fill - The color for filling the text.
  * @param {string} fontWeight - The font weight (e.g., "normal", "bold").
  * @param {string} corner (optional) - The corner of the text element to be positioned at the specified coordinates.
- *                                      - Can be "righttop", "rightbottom", "lefttop", or "leftbottom". Defaults to "rightbottom".
+ *                                   - It can be "righttop", "rightbottom", "lefttop", or "leftbottom". Defaults to "rightbottom".
  *
  * @throws {Error} If an invalid value is provided for the `corner` parameter.
  */
@@ -202,6 +202,19 @@ function writeText(svgElement, text, x, y, fontSize, stroke, fill, fontWeight, c
 	svgElement.appendChild(svgTextElement);
 }
 
+/**
+ * Writes text vertically within an SVG element, applying specified content, positioning, and styling.
+ * The text is rotated -90 degrees and positioned with its end at the specified coordinates,
+ * aligning the bottommost edge of the text box with the baseline.
+ *
+ * @param {SVGElement} svgElement - The SVG element where the vertical text will be written.
+ * @param {string} text - The content of the text element.
+ * @param {number} x - The x-coordinate for the anchor point of the rotated text.
+ * @param {number} y - The y-coordinate for the anchor point of the rotated text.
+ * @param {number} fontSize - The font size of the text in pixels.
+ * @param {string} stroke - The color of the text stroke (outline).
+ * @param {string} fill - The color for filling the text.
+ */
 function writeVerticalText(svgElement, text, x, y, fontSize, stroke, fill) {
 	// Create a group element for transformation
 	var groupElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
