@@ -64,7 +64,7 @@
     const mySpace1_2 = new EuclideanSpace(svg1_2, [0, 0, 0], 10);
     mySpace1_2.drawAxes();
 
-    // set a list of point that define the path of movement. 
+    // set a list of points that define the path of movement. 
     const Points = [[-1, -1, 8], [3, 6, 15], [11, 28, 18], [20, 25, 12]];
 
     // Calculate displacement vector (deltar)
@@ -92,7 +92,7 @@
     // set a cartesian plane
 	const myPlane1_3 = new CartesianPlane(svg1_3, 0, 8, 0, 8);
     
-    // set a list of point that define the path of movement. 
+    // set a list of points that define the path of movement. 
     const Points = [[1, 5], [3, 6], [5, 7], [7, 5], [8, 4]];
 
     // Calculate displacement vector (deltar)
