@@ -518,8 +518,6 @@ class CartesianPlane {
 	
 	    // Append the path element to the provided SVG element
 	    this.svgElement.appendChild(pathElement);
-	
-	    return pathElement;
 	}
 
 	  /**
