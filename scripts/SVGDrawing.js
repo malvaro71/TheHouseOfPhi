@@ -501,11 +501,11 @@ class CartesianPlane {
 	
 	    // Construct the 'd' attribute string for the path
 	    // Start with 'M' (moveto) to the first point
-	    let pathData = `M ${svgCoordinates[0][0]},${svgCoordinates[0][1]}`;
+	    let pathData = `M ${svgCoordinates[0].join(' ')}`;
 	
 	    // Loop through the rest of the points and add 'L' (lineto) commands
 	    for (let i = 1; i < svgCoordinates.length; i++) {
-	        pathData += ` L ${svgCoordinates[i][0]},${svgCoordinates[i][1]}`;
+	        pathData += `L ${svgCoordinates[i].join(' ')}`;
 	    }
 	
 	    // Set the 'd' attribute with the generated path data
