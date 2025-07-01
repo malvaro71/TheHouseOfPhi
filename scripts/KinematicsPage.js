@@ -112,7 +112,8 @@
     myPlane1_3.drawVector(Points[3], [1, -2], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     
     // Draw the path
-    myPlane1_3.drawPath(Points, [2, 5], "green");
+    //myPlane1_3.drawPath(Points, [2, 5], "green");
+	myPlane1_3.drawPath(Points, "green");
 }
 
 // svg1.4 Velocity change in a time interval
