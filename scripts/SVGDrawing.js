@@ -512,7 +512,7 @@ class CartesianPlane {
 	 * @returns {SVGPathElement} The created SVG <path> element.
 	 * @throws {Error} If the `points` array is empty or not an array.
 	 */
-	drawPath(points, color) {
+	drawPath(coordinates, color) {
 	    // Check if there are at least two coordinates
 		if (coordinates.length < 2) {
 			throw new Error('The coordinate list must contain at least two values.');
