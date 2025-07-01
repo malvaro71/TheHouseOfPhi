@@ -91,9 +91,15 @@
 
     // set a cartesian plane
 	const myPlane1_3 = new CartesianPlane(svg1_3, 0, 8, 0, 8);
+
+	// set a function to generate a lis of points: f(x) = 5 - (x^2)/100
+	function grade2Function(x) {
+	    return 5 - (x * x)/100;
+	}
     
     // set a list of points that define the path of movement. 
-    const Points = [[1, 5], [3, 6], [5, 7], [7, 5], [8, 4]];
+    //const Points = [[1, 5], [3, 6], [5, 7], [7, 5], [8, 4]];
+	const Points = generateFunctionPoints(grade2Function, 1, 8, 5);
 
     // Calculate displacement vector (deltar)
     const deltar = math.subtract(Points[3], Points[1]);
