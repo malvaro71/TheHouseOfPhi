@@ -96,22 +96,29 @@
 	function f1_3(x) {
 	    return 5 - (x * x)/25;
 	}
+
+	// set a the derivative of the previous funciton
+	function df1_3(x) {
+		return -2*x/25;
+	}
     
     // set a list of points that define the path of movement. 
     //const Points = [[1, 5], [3, 6], [5, 7], [7, 5], [8, 4]];
 	const Points = generateFunctionPoints(f1_3, 1, 8, 20);
 
-    // Calculate r1, r2 and displacement vector (deltar)
+    // Calculate r1, r2, v1, v2 and displacement vector (deltar)
 	const r1 = [3, f1_3(3)];
 	const r2 = [7, f1_3(7)];
+	const v1 = [1, df1_3(3)];
+	const v2 = [1, df1_3(t)];
     const deltar = math.subtract(r2, r1);
 
     // Draw r1 and r2, deltar, v1 and v2
     myPlane1_3.drawVector([0, 0], r1, "r\u2081", {strokeColor: "blue"}, {});
     myPlane1_3.drawVector([0, 0], r2, "r\u2082", {strokeColor: "blue"}, {});
     myPlane1_3.drawVector(r1, deltar, "\u0394r", {strokeColor: "green"}, {corner: "righttop"});
-    myPlane1_3.drawVector(Points[1], [2,2], "v\u2081", {strokeColor: "brown"}, {});
-    myPlane1_3.drawVector(Points[3], [1, -2], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+    myPlane1_3.drawVector(r1, v1, "v\u2081", {strokeColor: "brown"}, {});
+    myPlane1_3.drawVector(r2, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     
     // Draw the path
     //myPlane1_3.drawPath(Points, [2, 5], "green");
