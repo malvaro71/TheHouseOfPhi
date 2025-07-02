@@ -187,7 +187,7 @@
 	*/
 
     // Calculate and draw velocidy variation, deltav
-	const deltav = math.substract(v2, v1)
+	const deltav = math.substract(v2, v1);
 	myPlane1_4.drawVector(math.add(r1, v1), deltav, "\u0394v", {strokeColor: "green"}, {corner: "leftbottom"});
 	/**
     const deltavStart = math.add(Points[1], [1.5, 0.5]);
@@ -197,5 +197,5 @@
     */
     
     // Draw the path
-    myPlane1_4.drawPath(Points, [2.5, 5.6], "green");
+    //myPlane1_4.drawPath(Points, [2.5, 5.6], "green");
 }
