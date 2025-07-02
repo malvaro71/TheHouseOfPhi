@@ -171,8 +171,8 @@
 	const r2 = [6, f1_4(6)];
 	const v1 = [1, df1_4(3)];
 	const v2 = [2, 2*df1_4(6)];
-	myPlane1_4.drawVector(center, math.substract(r1, center), "r\u2081", {strokeColor: "blue"}, {corner: "righttop"});
-	myPlane1_4.drawVector(center, math.substract(r2, center), "r\u2082", {strokeColor: "blue"});
+	myPlane1_4.drawVector(center, math.subtract(r1, center), "r\u2081", {strokeColor: "blue"}, {corner: "righttop"});
+	myPlane1_4.drawVector(center, math.subtract(r2, center), "r\u2082", {strokeColor: "blue"});
 	myPlane1_4.drawVector(r1, v1, "v\u2081", {strokeColor: "brown"}, {});
 	myPlane1_4.drawVector(r1, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     myPlane1_4.drawVector(r2, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
@@ -187,7 +187,7 @@
 	*/
 
     // Calculate and draw velocidy variation, deltav
-	const deltav = math.substract(v2, v1);
+	const deltav = math.subtract(v2, v1);
 	myPlane1_4.drawVector(math.add(r1, v1), deltav, "\u0394v", {strokeColor: "green"}, {corner: "leftbottom"});
 	/**
     const deltavStart = math.add(Points[1], [1.5, 0.5]);
