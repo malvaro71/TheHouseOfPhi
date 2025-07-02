@@ -50,7 +50,7 @@
     mySpace1_1.drawVector([0, 0, 0], z, "z", {strokeColor: "blue"}, {});
 
 	// set a list of points that define the path of movement. 
-    const Points = [[-1, -1, 8], [6, 9, 15], [11, 28, 18], [20, 25, 12]];
+    const Points = [[-1, -1, 8], [6, 9, 15], [5, 28, 18], [20, 25, 12]];
 
 	// Draw the path
     mySpace1_1.drawPath(Points, [0, 1, 9], "green");
