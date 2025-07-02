@@ -37,17 +37,24 @@
     mySpace1_1.drawSegment(y, [6, 9, 0], {strokeColor: "green", strokeDasharray: "5,5"});
     
 
-    // Labels x1, y1, z1 and P(x1, y1, z1)
+    // Labels x, y, z and P(x(t), y(t), z(t))
     mySpace1_1.drawLabel([6, -0.1, 0], "x", {fill: "green", fontSize: 20});
     mySpace1_1.drawLabel([0, 9.1, 0.1], "y", {fill: "green", fontSize: 20, corner: "leftbottom"});
     mySpace1_1.drawLabel([0, -0.1, 15], "z", {fill: "green", fontSize: 20});
-    mySpace1_1.drawLabel([6, 10, 16], "P(x, y, z)", {fill: "green", corner: "lefttop"});
+    mySpace1_1.drawLabel([6, 10, 16], "P(x(t), y(t), z(t))", {fill: "green", corner: "lefttop"});
 
     // Draw r, xi, yj and zk vectors
-    mySpace1_1.drawVector([0, 0, 0], P, "r", {strokeColor: "blue"}, {});
+    mySpace1_1.drawVector([0, 0, 0], P, "r(t)", {strokeColor: "blue"}, {});
     mySpace1_1.drawVector([0, 0, 0], x, "x", {strokeColor: "blue"}, {});
     mySpace1_1.drawVector([0, 0, 0], y, "y", {strokeColor: "blue"}, {});
     mySpace1_1.drawVector([0, 0, 0], z, "z", {strokeColor: "blue"}, {});
+
+	// set a list of points that define the path of movement. 
+    const Points = [[-1, -1, 8], [6, 9, 15], [11, 28, 18], [20, 25, 12]];
+
+	// Draw the path
+    mySpace1_1.drawPath(Points, [0, 1, 9], "green");
+	
 }
 
 // svg1.2 trajectory and displacement vector
