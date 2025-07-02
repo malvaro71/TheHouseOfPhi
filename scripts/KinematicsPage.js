@@ -144,12 +144,36 @@
 
     // set a cartesian plane
 	const myPlane1_4 = new CartesianPlane(svg1_4, 0, 10, 0, 10);
+
+	// set a function to generate a list of points: f(x) = 5 - (x^2)/25
+	function f1_4(x) {
+	    return 5 + x - (x * x)/25;
+	}
+
+	// set a the derivative of the previous funciton
+	function df1_4(x) {
+		return 1 - 2*x/25;
+	}
+    
+    // set a list of points that define the path of movement. 
+	const Points = generateFunctionPoints(f1_4, 1, 8, 20);
+
     
     // set a list of point that define the path of movement. 
-    const Points = [[2, 5], [3, 6], [4.5, 6.1], [6, 5.5], [7, 4]];
+    // const Points = [[2, 5], [3, 6], [4.5, 6.1], [6, 5.5], [7, 4]];
 
     // Draw r1 and r2, deltar, v1 and v2
     const center = [4.4, 2.5];
+	const r1 = [3, f1_4(3)];
+	const r2 = [6, f1_4(6)];
+	const v1 = [1, df1_4(3)];
+	const v2 = [2, 2*df1_4(6)];
+	myPlane1_4.drawVector(center, r1, "r\u2081", {strokeColor: "blue"}, {corner: "righttop"});
+	myPlane1_4.drawVector(center, r2, "r\u2082", {strokeColor: "blue"});
+	myPlane1_4.drawVector(r1, v1, "v\u2081", {strokeColor: "brown"}, {});
+	myPlane1_4.drawVector(r1, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+    myPlane1_4.drawVector(r2, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+	/**
     const r1End = math.subtract(Points[1], center);
     const r2End = math.subtract(Points[3], center);
     myPlane1_4.drawVector(center, r1End, "R", {strokeColor: "blue"}, {corner: "righttop"});
@@ -157,13 +181,17 @@
     myPlane1_4.drawVector(Points[1], [1.5, 0.5], "v\u2081", {strokeColor: "brown"}, {});
     myPlane1_4.drawVector(Points[3], [2, -1.6], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     myPlane1_4.drawVector(Points[1], [2, -1.6], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
+	*/
 
     // Calculate and draw velocidy variation, deltav
+	const deltav = math.substract(v2, v1)
+	myPlane1_4.drawVector(math.add(r1, v1), deltav, "\u0394v", {strokeColor: "green"}, {corner: "leftbottom"});
+	/**
     const deltavStart = math.add(Points[1], [1.5, 0.5]);
     const deltavEnd = math.add(Points[1], [2, -1.6]);
     const deltav = math.subtract(deltavEnd, deltavStart);
     myPlane1_4.drawVector(deltavStart, deltav, "\u0394v", {strokeColor: "green"}, {corner: "leftbottom"});
-    
+    */
     
     // Draw the path
     myPlane1_4.drawPath(Points, [2.5, 5.6], "green");
