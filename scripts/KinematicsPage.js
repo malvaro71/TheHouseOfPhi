@@ -147,16 +147,19 @@
 
 	// set a function to generate a list of points: f(x) = 5 - (x^2)/25
 	function f1_4(x) {
-	    return 5 + x - (x * x)/25;
+	    return 5 + x - (x * x)/15;
 	}
 
 	// set a the derivative of the previous funciton
 	function df1_4(x) {
-		return 1 - 2*x/25;
+		return 1 - 2*x/15;
 	}
     
     // set a list of points that define the path of movement. 
 	const Points = generateFunctionPoints(f1_4, 1, 8, 20);
+
+	// Draw the path
+	myPlane1_4.drawPath(Points, "green");
 
     
     // set a list of point that define the path of movement. 
@@ -168,8 +171,8 @@
 	const r2 = [6, f1_4(6)];
 	const v1 = [1, df1_4(3)];
 	const v2 = [2, 2*df1_4(6)];
-	myPlane1_4.drawVector(center, r1, "r\u2081", {strokeColor: "blue"}, {corner: "righttop"});
-	myPlane1_4.drawVector(center, r2, "r\u2082", {strokeColor: "blue"});
+	myPlane1_4.drawVector(center, math.substract(r1, center), "r\u2081", {strokeColor: "blue"}, {corner: "righttop"});
+	myPlane1_4.drawVector(center, math.substract(r2, center), "r\u2082", {strokeColor: "blue"});
 	myPlane1_4.drawVector(r1, v1, "v\u2081", {strokeColor: "brown"}, {});
 	myPlane1_4.drawVector(r1, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     myPlane1_4.drawVector(r2, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
