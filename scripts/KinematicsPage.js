@@ -110,7 +110,7 @@
 	const r1 = [3, f1_3(3)];
 	const r2 = [7, f1_3(7)];
 	const v1 = [1, df1_3(3)];
-	const v2 = [1, df1_3(t)];
+	const v2 = [1, df1_3(7)];
     const deltar = math.subtract(r2, r1);
 
     // Draw r1 and r2, deltar, v1 and v2
