@@ -280,11 +280,10 @@
                 </div>
                 <p>De igual forma, el segundo término de <a href="#[1.19]">[1.19]</a> \(v \cdot \frac{d \vec\tau}{d t}\) corresponde con la aceleración normal, representa la tasa de cambio de la <strong>dirección</strong> de la velocidad, y se dirige en la misma dirección que el vector unitario normal \( \vec\eta \).</p>
                 <p> 
-                    $$
-                    \begin{align}
-                        v \cdot \frac{d \vec\tau}{d t} = v \cdot \frac{d (\vert \vec\tau\vert\cdot\vec\eta)}{d t} = v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta \tag{1.21}
-                    \end{align}   
-                    $$   
+                <div class="container">
+                    <div  class="center">$$ v \cdot \frac{d \vec\tau}{d t} = v \cdot \frac{d (\vert \vec\tau\vert\cdot\vec\eta)}{d t} = v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta $$ </div>
+                    <div  class="right" id="[1.21]">[1.21]</div>
+                </div>  
                 </p>
                 <p>Consideremos un pequeño desplazamiento a lo largo de la trayectoria; tan pequeño que la trayectoria de ese pequeño desplazamiento se aproxima a un arco de circunferencia con un cierto radio R. Entoncer, durante este desplazamiento, el objeto recorre un arco de circunferencia de radio R (llamado radio de curvatura) y subtiende un ángulo \( d\theta \) radianes.</p>
                 <p>De la definición de radián (un radián es el ángulo central de una circunferencia que subtiende un arco de longitud igual al radio de la circunferencia) encontramos que \( d s = R \cdot d\theta \).</p>
@@ -301,24 +300,88 @@
                     \implies \frac{\vert d\vec\tau \vert}{d s} = { 1 \over R}
                     $$   
                 </p>
-                <p>Entonces, reescribiendo (1.19) </p>
+                <p>Entonces, reescribiendo <a href="#[1.19]">[1.19]</a> </p>
                 <p>
-                    $$
-                    \begin{align}
-                        \vec a = \frac{d \vec v}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d\tau}{d s}\cdot \frac{d s}{d t}\cdot \vec\eta = \frac{d v}{d t}\cdot \vec\tau + {v^2 \over R}\cdot \vec\eta \tag{1.22}
-                    \end{align}   
-                    $$   
+                    <div class="container">
+                    <div  class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d\tau}{d s}\cdot \frac{d s}{d t}\cdot \vec\eta = \frac{d v}{d t}\cdot \vec\tau + {v^2 \over R}\cdot \vec\eta $$</div>
+                    <div  class="right" id="[1.22]">[1.22]</div>
+                </div>     
                 </p>
-                <p>Finalmente, comparando con (1.18) obtenemos </p>
-                <p>
-                    $$
-                    \begin{align}
-                        a_{\tau} = \frac{d v}{d t}  \tag{1.23} \\
-                        a_{\eta} = {v^2 \over R}\cdot \tag{1.24}
-                    \end{align}   
-                    $$   
-                </p>
-                <p>Que son las coordenadas intrínsecas de la aceleración.</p>
+                <p>Finalmente, comparando con <a href="#[1.18]">[1.18]</a> obtenemos que las coordenadas intrínsecas de la aceleración son: </p>
+                <p><strong>1. Aceleración Tangencial (\(a_{\tau}\)):</strong></p>
+                <p>Esta componente es responsable del <strong>cambio en la magnitud de la velocidad</strong> (es decir, el cambio en la celeridad o rapidez). Es paralela a la dirección del movimiento en cada instante. Su expresión se define como:</p>
+                <div class="container">
+                    <div  class="center">$$ a_{\tau} = \frac{d v}{d t} $$</div>
+                    <div  class="right" id="[1.23]">[1.23]</div>
+                </div>
+                <p>donde \(v\) es la magnitud de la velocidad (celeridad) y \(t\) es el tiempo. Si la partícula acelera, \(a_{\tau}\) será positiva; si desacelera, será negativa.</p>
+                <p><strong>2. Aceleración Normal (\(a_{\eta}\)):</strong></p>
+                <p>Esta componente es responsable del <strong>cambio en la dirección de la velocidad</strong>. Siempre es perpendicular a la trayectoria y apunta hacia el centro de curvatura de la trayectoria en ese punto. Su expresión se define como:</p>
+                <div class="container">
+                    <div  class="center">$$ a_{\eta} = \frac{v^2}{R} $$</div>
+                    <div  class="right" id="[1.24]">[1.24]</div>
+                </div>
+                <p>donde \(v\) es la magnitud de la velocidad (celeridad) y \(R\) es el radio de curvatura de la trayectoria en ese punto. Esta componente es siempre no negativa, ya que siempre se requiere un cambio de dirección para el movimiento curvo.</p>
+                <p>Podemos decir que las coordenadas intrínsecas ofrecen una visión intuitiva de cómo la aceleración afecta tanto la velocidad de la partícula como la forma de su trayectoria.</p>
+            </section>
+            <section><h3>1.6 Movimiento Rectilíneo Uniforme</h3>
+                <p>Un movimiento es rectilíneo y uniforme cuando su velocidad es constante. Esto supone:</p>
+                <ul>
+                    <li>La velocidad es constante en dirección y sentido: la trayectoria es una recta.</li>
+                    <li>La velocidad es constante en módulo: recorre espacios iguales en tiempos iguales.</li>
+                </ul>
+                <p>También se puede definir en función de la aceleración diciendo: Movimiento rectilíneo y uniforme es aquel que no tiene aceleración. Esto supone:</p>
+                <div class="container">
+                    <div  class="center">$$a_{\tau} = \frac{dv}{dt} = 0 \implies v = \text{cte}$$</div>
+                    <div  class="right" id="[1.25]">[1.25]</div>
+                </div>
+
+                <div class="container">
+                    <div  class="center">$$a_{\eta} = \frac{v^2}{R} = 0 \implies R = \infty \quad \text{La trayectoria es una recta.}$$</div>
+                    <div  class="right" id="[1.26]">[1.26]</div>
+                </div>
+                <p>Para deducir la ley que rige este movimiento partimos de la definición de velocidad:</p>
+                <div class="container">
+                    <div  class="center">$$\vec v = \frac{d \vec r}{dt} \implies d \vec r = \vec v dt$$</div>
+                    <div  class="right" id="[1.27]">[1.27]</div>
+                </div>
+
+                <p>Para despejar el vector de posición integramos la ecuación anterior</p>
+                <div class="container">
+                    <div  class="center">$$\vec r(t) = \int \vec v dt = \vec v \int dt = \vec v t + C$$</div>
+                    <div  class="right" id="[1.28]">[1.28]</div>
+                </div>
+
+                <p>Esta función se ha de cumplir para cualquier valor de \(t\). Luego también para \(t = 0\)</p>
+                <div class="container">
+                    <div  class="center">$$\left. \begin{matrix} \vec{r} = \vec v t + C \\ t = 0 \end{matrix} \right\} \implies \vec{r}_0 = C$$</div>
+                    <div  class="right" id="[1.29]">[1.29]</div>
+                </div>
+
+                <p>La constante de integración es la posición inicial \(\vec{r}_0\) y, entonces, la ecuación vectorial del movimiento será:</p>
+                <div class="container">
+                    <div  class="center">$$\vec r (t) = \vec{r}_0 + \vec v t$$</div>
+                    <div  class="right" id="[1.30]">[1.30]</div>
+                </div>
+
+                <p>Para este movimiento podemos elegir un sistema de referencia unidimensional, haciendo que uno de los ejes, el eje \(x\), por ejemplo, coincida con la dirección del movimiento: \( \vec r = (x, 0, 0)\) (Fig. 2.16).</p>
+
+                <p>Así, la ecuación anterior se reduce a una ecuación escalar:</p>
+                <div class="container">
+                    <div  class="center">$$x_t = x_0 + vt \quad \text{ecuación de la posición.}$$</div>
+                    <div  class="right" id="[1.31]">[1.31]</div>
+                </div>
+
+                <p>a) Desplazamiento $$\Delta x = x_t - x_0 = vt \implies \Delta x = s$$</p>
+                <div class="container">
+                    <div  class="center">$$\text{como } \Delta x = s$$
+                    </div>
+                    <div class="text">
+                    <p>Que es la ecuación del espacio.</p>
+                    </div>
+                </div>
+
+                <p>b) Velocidad media: $$v = \frac{\Delta x}{\Delta t} = \frac{s}{t}$$</p>
             </section>
         </article>
     </body>
