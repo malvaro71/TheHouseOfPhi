@@ -15,6 +15,9 @@
 
     <!-- load Mathjax library-->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es5,es6,es7|default"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 
     <!-- loads page script files-->
     <script src="scripts/SelectLanguage.js" defer></script>
@@ -82,6 +85,71 @@
             <div  class="center">\(\tan \alpha = y/x\) </div>
             <div  class="right" id="[4]">[4]</div>
         </div><br>
+    </section>
+    <section><h3>4 Perpendicularidad entre un vector con módulo constante y su variación temporal</h3>
+        <h4>Introducción:</h4>
+            <p>En diversas áreas de la física, la mecánica y la cinemática, nos encontramos con frecuencia con el análisis de <strong>vectores cuyo módulo permanece constante en el tiempo</strong>, aunque su dirección pueda variar. Esto incluye vectores de posición en movimientos restringidos a una superficie esférica o circular, así como vectores unitarios que cambian de orientación, como el vector unitario tangencial en el estudio de trayectorias curvas. En estos escenarios, surge una propiedad geométrica fundamental: <strong>la variación temporal de cualquier vector de módulo constante es siempre perpendicular al vector original</strong>. Esta propiedad, con raíces en la geometría, tiene amplias y significativas aplicaciones en física, facilitando la comprensión de conceptos como la velocidad y la aceleración en movimientos curvilíneos, la descomposición de la aceleración en componentes intrínsecas, y en general, el análisis de sistemas físicos donde ciertas magnitudes vectoriales se conservan constantes. En este artículo, exploraremos y demostraremos esta propiedad esencial, utilizando dos perspectivas complementarias: una demostración geométrica intuitiva basada en el triángulo isósceles y una demostración analítica rigurosa empleando la función paramétrica.</p>
+        <h4>Enfoque Geométrico Intuitivo - El Triángulo Isósceles</h4>
+            <p>Consideremos un vector \( \vec V(t) \) genérico, que varía en el tiempo <em>t</em>, pero cuyo módulo se mantiene constante, es decir, \( |\vec V(t)| = C \), donde C es una constante escalar. Visualicemos el vector \( \vec V(t) \) y un vector \( \vec V(t + \Delta t) \) en un instante de tiempo ligeramente posterior, <em>t + Δt</em>.  Debido a la constancia del módulo, las puntas de estos vectores se moverán restringidas a una superficie esférica (o circular en 2D) de radio C, centrada en el origen.</p>
+
+            <p>[Image of Unit Vectors Changing Direction]</p>
+
+            <p>El cambio en el vector \( \vec V(t) \) durante este pequeño intervalo de tiempo Δt es el vector diferencia \( \Delta \vec V = \vec V(t + \Delta t) - \vec V(t) \). Geométricamente, \( \Delta \vec V \) representa el vector que une la punta de \( \vec V(t) \) con la punta de \( \vec V(t + \Delta t) \).</p>
+
+            <p>[Image of Isosceles Triangle Unit Vectors]</p>
+
+            <p>Si consideramos el triángulo vectorial formado por \( \vec V(t) \), \( \vec V(t + \Delta t) \) y \( \Delta \vec V \) (más precisamente, los vectores \( \vec V(t) \), \( -\vec V(t) \) y \( \vec V(t + \Delta t) \)), notamos que es un triángulo isósceles, ya que \( |\vec V(t)| = |\vec V(t + \Delta t)| = C \). El vector \( \Delta \vec V \)  es la base de este triángulo isósceles, con \( \vec V(t) \) y \( \vec V(t + \Delta t) \) como los lados iguales.</p>
+
+            <p>Consideremos el ángulo Δθ entre \( \vec V(t) \) y \( \vec V(t + \Delta t) \). En el triángulo isósceles, los ángulos opuestos a los lados iguales (adyacentes a \( \Delta \vec V \)) son iguales, llamémoslos α.  La suma de los ángulos internos de un triángulo es \( \pi \) radianes:</p>
+
+            <p>$$2\alpha + \Delta\theta = \pi$$</p>
+
+            <p>De donde obtenemos:</p>
+
+            <p>$$\alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2}$$</p>
+
+            <p>Ahora, analicemos el límite cuando el intervalo de tiempo Δt tiende a cero (Δt → 0, y por tanto Δθ → 0). En este límite, \( \Delta \vec V \) se convierte en el diferencial \( d\vec V \), y Δθ se convierte en dθ.  El ángulo α se aproxima a:</p>
+
+            <p>$$\alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radianes o } 90^\circ.$$</p>
+
+            <p>Esto implica que, en el límite infinitesimal, el ángulo entre el vector de cambio \( d\vec V \) y el vector original \( \vec V(t) \) tiende a 90 grados. Es decir, la variación infinitesimal \( d\vec V \) es perpendicular al vector \( \vec V(t) \). Como la derivada \( d\vec V/dt \) (que representa la tasa de variación temporal) tiene la misma dirección que \( d\vec V \), concluimos geométricamente que la tasa de variación temporal de \( \vec V(t) \) es perpendicular a \( \vec V(t) \) en cada instante, siempre que el módulo de \( \vec V(t) \) se mantenga constante.</p>
+
+        <h4>Enfoque Analítico - Función Paramétrica Generalizada con Parámetro Temporal</h4>
+
+            <p>Para una demostración analítica más general, consideremos un vector \( \vec V(t) \) en tres dimensiones (la demostración es igualmente válida en dos dimensiones), expresado en componentes cartesianas:</p>
+
+            <p>$$\vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k}$$</p>
+
+            <p>La condición de módulo constante \( |\vec V(t)| = C \) = constante, se expresa como:</p>
+
+            <p>$$|\vec V(t)|^2 = V_x(t)^2 + V_y(t)^2 + V_z(t)^2 = C^2$$</p>
+
+            <p>Para que esta condición se mantenga en el tiempo, la derivada temporal de \( |\vec V(t)|^2 \) debe ser cero. Derivamos ambos lados de la ecuación con respecto al tiempo, utilizando la regla de la cadena:</p>
+
+            <p>$$\frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2)$$</p>
+            <p>$$\frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0$$</p>
+            <p>Aplicando la regla de la cadena a cada término:</p>
+            <p>$$2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0$$</p>
+
+            <p>Dividiendo por 2 y reordenando:</p>
+
+            <p>$$V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0$$</p>
+
+            <p>El lado izquierdo de esta ecuación es precisamente el producto escalar del vector \( \vec V(t) \) con su derivada temporal \( \frac{d\vec V}{dt} \):</p>
+
+            <p>$$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = \begin{pmatrix} V_x(t) \\ V_y(t) \\ V_z(t) \end{pmatrix} \cdot \begin{pmatrix} \frac{dV_x(t)}{dt} \\ \frac{dV_y(t)}{dt} \\ \frac{dV_z(t)}{dt} \end{pmatrix} = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt}$$</p>
+
+            <p>Por lo tanto, la condición de módulo constante \( |\vec V(t)| = C \) implica que:</p>
+
+            <p>$$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0$$</p>
+
+            <p>Esto demuestra analíticamente que <strong>el vector \( \vec V(t) \) y su derivada temporal \( \displaystyle\frac{d\vec V(t)}{dt} \) son siempre perpendiculares entre sí</strong>, bajo la condición de que el módulo de \( \vec V(t) \) se mantenga constante. Este resultado es válido para cualquier vector con módulo constante, no solo para vectores de posición.</p>
+
+            <h4>Conclusión</h4>
+
+            <p>Hemos demostrado, a través de dos enfoques complementarios, que <strong>la variación temporal de un vector de módulo constante es intrínsecamente perpendicular al vector original</strong>. Esta propiedad fundamental, visualizada geométricamente y confirmada analíticamente, trasciende el caso particular del vector posición y se aplica a cualquier vector cuyo módulo se conserve constante durante su evolución temporal.</p>
+
+            <p>Esta relación de perpendicularidad es de gran relevancia en física. Permite comprender mejor la naturaleza de la velocidad en movimientos curvilíneos, la dirección de la aceleración normal en términos de cambio de dirección de la velocidad, y proporciona una base sólida para el análisis de sistemas donde la conservación de magnitudes vectoriales, como la longitud de un vector, juega un papel fundamental. La propiedad aquí demostrada no es solo un resultado geométrico, sino una herramienta conceptual poderosa para el análisis y la interpretación de fenómenos físicos diversos en mecánica, electromagnetismo, y otras áreas de la física.</p>
     </section>
     <aside><h4>Referencias</h4>
         <ul>
