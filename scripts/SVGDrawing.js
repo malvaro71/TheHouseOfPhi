@@ -899,7 +899,7 @@ class EuclideanSpace {
 		drawCircle(this.svgElement, xPosition, yPosition, color, 3);
     }
 
-    drawPath(coordinates, controlPoint, color) {
+    drawPath(coordinates, color) {
         // Verify if there are at least three values, point, point and control point for the quadratic bezier curve
         // https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
         // M x y: moves to absolute coordinate x, y
@@ -921,25 +921,29 @@ class EuclideanSpace {
         for (let i = 0; i < coordinates.length; i++) {
             svgCoordinates[i] = this.transformCoordinates(coordinates[i]);
         }
-        let svgControlPoint = this.transformCoordinates(controlPoint);
 
-        // Start the path chain with the movement to the first point and the first Q curve
-        let pathData = `M ${svgCoordinates[0].join(' ')} Q ${svgControlPoint.join(' ')} ${svgCoordinates[1].join(' ')}`;
-
-        // Iterate over the remaining coordinates, using T for subsequent curves.
-        for (let i = 2; i < svgCoordinates.length; i++) {
-            pathData += ` T ${svgCoordinates[i].join(' ')}`;
-        }
-
-        // Create the path element 
-		const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-		path.setAttribute("d", pathData);
-		path.setAttribute("fill", "none");
-		path.setAttribute("stroke", color);
-		path.setAttribute("stroke-width", "1");
-
-		// Append the path element to the SVG
-		this.svgElement.appendChild(path);
+        // Create an SVG path element
+	    const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+	
+	    // Construct the 'd' attribute string for the path
+	    // Start with 'M' (moveto) to the first point
+	    let pathData = `M ${svgCoordinates[0].join(' ')}`;
+	
+	    // Loop through the rest of the points and add 'L' (lineto) commands
+	    for (let i = 1; i < svgCoordinates.length; i++) {
+	        pathData += ` L ${svgCoordinates[i].join(' ')}`;
+	    }
+	
+	    // Set the 'd' attribute with the generated path data
+	    pathElement.setAttribute("d", pathData);
+	
+	    // Set styling attributes
+		pathElement.setAttribute("fill", "none");
+		pathElement.setAttribute("stroke", color);
+		pathElement.setAttribute("stroke-width", "1");
+	
+	    // Append the path element to the provided SVG element
+	    this.svgElement.appendChild(pathElement);
     }
 }
 

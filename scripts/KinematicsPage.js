@@ -71,19 +71,40 @@
     const mySpace1_2 = new EuclideanSpace(svg1_2, [0, 0, 0], 10);
     mySpace1_2.drawAxes();
 
+    function r(t) {
+        // generate the x, y, z values based on time t
+        const x = 4 - t / 10;
+        const y = t*2;
+        const z = 20 - (t * t) / 5;
+
+        return [x, y, z]; // returns r(t) coordinates
+    }
+    
+    
+    // Generate a list of points: r(t) = [x(t), y(t), z(t)] in a time interval
+    const numberOfPoints = 20; // number of points to generate
+    const timeStart = 0; // start time
+    const finalTime = 10; // end time
+    const points = [];
+    const step = (finalTime - timeStart) / (numberOfPoints - 1);
+	for (let i = 0; i < numberOfPoints; i++) {
+        const t = timeStart + i * step;
+        points.push(r(t));
+    }
+    
     // set a list of points that define the path of movement. 
-    const Points = [[-1, -1, 8], [3, 6, 15], [11, 28, 18], [20, 25, 12]];
+    // const Points = [[-1, -1, 8], [0, 2, 13], [3, 6, 15], [11, 28, 18], [20, 25, 12]];
 
     // Calculate displacement vector (deltar)
-    const deltar = math.subtract(Points[2], Points[1]);
+    const deltar = math.subtract(r(6), r(1));
 
-    // Draw r1 and r2 and deltar
-    mySpace1_2.drawVector([0, 0, 0], Points[1], "r1", {strokeColor: "blue"}, {});
-    mySpace1_2.drawVector([0, 0, 0], Points[2], "r2", {strokeColor: "blue"}, {});
-    mySpace1_2.drawVector(Points[1], deltar, "r2-r1", {strokeColor: "green"}, {corner: "righttop"});
+    // Draw r(1), r(4) and deltar
+    mySpace1_2.drawVector([0, 0, 0], r(1), "r1", {strokeColor: "blue"}, {});
+    mySpace1_2.drawVector([0, 0, 0], r(6), "r2", {strokeColor: "blue"}, {});
+    mySpace1_2.drawVector(r(1), deltar, "r2-r1", {strokeColor: "green"}, {corner: "righttop"});
     
     // Draw the path
-    mySpace1_2.drawPath(Points, [0, 1, 9], "green");
+    mySpace1_2.drawPath(points, "green");
 }
 
 // svg1.3 trajectory, displacement vector and velocity 2D
@@ -198,4 +219,72 @@
     
     // Draw the path
     //myPlane1_4.drawPath(Points, [2.5, 5.6], "green");
+}
+
+// svg1.5 trajectory and displacement vector
+{
+    // Get the SVG element from the DOM
+    var svg1_5 = document.getElementById("svg1_5");
+
+    // Set attributes
+    svg1_5.setAttribute("viewBox", "0 0 400 400"); 
+    svg1_5.setAttribute("width", "400"); 
+    svg1_5.setAttribute("height", "400");
+
+    // set a euclidean space
+    const mySpace1_5 = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
+    mySpace1_5.drawAxes();
+
+    function r(t) {
+        const r0 = [-5, -5, 10]; // initial position.
+        const v = [2, 5, -0.3]; // Speed.
+
+        return math.add(r0, math.multiply(v, t));; // returns r(t) = r0 + vt
+    }
+    
+    
+    // Generate a list of points: r(t) = [x(t), y(t), z(t)] in a time interval
+    const numberOfPoints = 10; // number of points to generate
+    const timeStart = 0; // start time
+    const finalTime = 7; // end time
+    const points = [];
+    const step = (finalTime - timeStart) / (numberOfPoints - 1);
+	for (let i = 0; i < numberOfPoints; i++) {
+        const t = timeStart + i * step;
+        points.push(r(t));
+    }
+
+    // Calculate displacement vector (deltar)
+    const deltar = math.subtract(r(5), r(2));
+
+    // Draw r1 and r2 and deltar
+    mySpace1_5.drawVector([0, 0, 0], r(2), "r1", {strokeColor: "blue"}, {});
+    mySpace1_5.drawVector([0, 0, 0], r(5), "r2", {strokeColor: "blue"}, {});
+    mySpace1_5.drawVector(r(2), deltar, "\u0394r", {strokeColor: "green"}, {corner: "righttop"});
+    
+    // Draw the path
+    mySpace1_5.drawPath(points, "green");
+}
+
+// svg1_6. Cartesian plane and cartesian coordinates of a point.
+{
+    // Get the SVG element from the DOM
+    var svg1_6 = document.getElementById("svg1_6");
+
+    // Set attributes
+    svg1_6.setAttribute("viewBox", "0 30 400 300"); 
+    svg1_6.setAttribute("width", "400"); 
+    svg1_6.setAttribute("height", "300");
+
+    // set a cartesian plane
+    const myPlane1_6 = new CartesianPlane(svg1_6, -2, 20, -2, 10);
+    myPlane1_6.drawAxes("", "x", "O");
+    
+    // Draw a point, its label and two segments
+    myPlane1_6.drawPoint([5, 0], "green");
+    myPlane1_6.drawPoint([15, 0], "green");
+    myPlane1_6.drawLabel([5, 0], "x(t\u2081)", {fill: "green", fontSize: 20, corner: "righttop"});
+    myPlane1_6.drawLabel([15, 0], "x(t\u2082)", {fill: "green", fontSize: 20, corner: "lefttop"});
+    myPlane1_6.drawLabel([8, 0], "\u0394x = \u0394s", {fill: "green", fontSize: 20, corner: "leftbottom"});
+    myPlane1_6.drawSegment([5, 0], [15, 0], {strokeColor: "green", strokeWidth: 2});
 }
