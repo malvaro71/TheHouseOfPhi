@@ -149,7 +149,6 @@
     myPlane1_3.drawVector(r2, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     
     // Draw the path
-    //myPlane1_3.drawPath(Points, [2, 5], "green");
 	myPlane1_3.drawPath(Points, "green");
 }
 
@@ -182,10 +181,6 @@
 	// Draw the path
 	myPlane1_4.drawPath(Points, "green");
 
-    
-    // set a list of point that define the path of movement. 
-    // const Points = [[2, 5], [3, 6], [4.5, 6.1], [6, 5.5], [7, 4]];
-
     // Draw r1 and r2, deltar, v1 and v2
     const center = [4.4, 2.5];
 	const r1 = [3, f1_4(3)];
@@ -197,31 +192,14 @@
 	myPlane1_4.drawVector(r1, v1, "v\u2081", {strokeColor: "brown"}, {});
 	myPlane1_4.drawVector(r1, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
     myPlane1_4.drawVector(r2, v2, "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
-	/**
-    const r1End = math.subtract(Points[1], center);
-    const r2End = math.subtract(Points[3], center);
-    myPlane1_4.drawVector(center, r1End, "R", {strokeColor: "blue"}, {corner: "righttop"});
-    myPlane1_4.drawVector(center, r2End, "R", {strokeColor: "blue"}, {});
-    myPlane1_4.drawVector(Points[1], [1.5, 0.5], "v\u2081", {strokeColor: "brown"}, {});
-    myPlane1_4.drawVector(Points[3], [2, -1.6], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
-    myPlane1_4.drawVector(Points[1], [2, -1.6], "v\u2082", {strokeColor: "brown"}, {corner: "righttop"});
-	*/
 
     // Calculate and draw velocidy variation, deltav
 	const deltav = math.subtract(v2, v1);
 	myPlane1_4.drawVector(math.add(r1, v1), deltav, "\u0394v", {strokeColor: "green"}, {corner: "leftbottom"});
-	/**
-    const deltavStart = math.add(Points[1], [1.5, 0.5]);
-    const deltavEnd = math.add(Points[1], [2, -1.6]);
-    const deltav = math.subtract(deltavEnd, deltavStart);
-    myPlane1_4.drawVector(deltavStart, deltav, "\u0394v", {strokeColor: "green"}, {corner: "leftbottom"});
-    */
-    
-    // Draw the path
-    //myPlane1_4.drawPath(Points, [2.5, 5.6], "green");
+	
 }
 
-// svg1.5 trajectory and displacement vector
+// svg1.5 Trajectory, speed and position of a moving object in uniform rectilinear motion.
 {
     // Get the SVG element from the DOM
     var svg1_5 = document.getElementById("svg1_5");
@@ -255,36 +233,95 @@
     }
 
     // Calculate displacement vector (deltar)
-    const deltar = math.subtract(r(5), r(2));
+    const deltar = math.subtract(r(5), r(3));
 
     // Draw r1 and r2 and deltar
-    mySpace1_5.drawVector([0, 0, 0], r(2), "r1", {strokeColor: "blue"}, {});
-    mySpace1_5.drawVector([0, 0, 0], r(5), "r2", {strokeColor: "blue"}, {});
-    mySpace1_5.drawVector(r(2), deltar, "\u0394r", {strokeColor: "green"}, {corner: "righttop"});
+    mySpace1_5.drawVector([0, 0, 0], r(0), "r(t\u2080)", {strokeColor: "blue"}, {corner: "righttop"});
+    mySpace1_5.drawVector(r(0), [2, 5, -0.3], "v", {strokeColor: "blue"}, {});
+    //mySpace1_5.drawVector(r(2), [2, 5, -0.3], "v\u2081", {strokeColor: "blue"}, {});
+    //mySpace1_5.drawVector(r(5), [2, 5, -0.3], "v\u2082", {strokeColor: "blue"}, {});
+    mySpace1_5.drawVector([0, 0, 0], r(3), "r(t\u2081)", {strokeColor: "blue"}, {});
+    mySpace1_5.drawVector([0, 0, 0], r(5), "r(t\u2082)", {strokeColor: "blue"}, {});
+    mySpace1_5.drawVector(r(3), deltar, "\u0394r", {strokeColor: "green"}, {corner: "leftbottom"});
     
     // Draw the path
     mySpace1_5.drawPath(points, "green");
 }
 
-// svg1_6. Cartesian plane and cartesian coordinates of a point.
+// svg1_6. In a rectilinear movement, the direction of movement can be taken as a reference system.
 {
     // Get the SVG element from the DOM
     var svg1_6 = document.getElementById("svg1_6");
 
     // Set attributes
-    svg1_6.setAttribute("viewBox", "0 30 400 300"); 
+    svg1_6.setAttribute("viewBox", "0 0 400 200"); 
     svg1_6.setAttribute("width", "400"); 
-    svg1_6.setAttribute("height", "300");
+    svg1_6.setAttribute("height", "200");
 
     // set a cartesian plane
     const myPlane1_6 = new CartesianPlane(svg1_6, -2, 20, -2, 10);
-    myPlane1_6.drawAxes("", "x", "O");
+    
     
     // Draw a point, its label and two segments
+    myPlane1_6.drawVector([0, 0], [20, 0], "", {strokeColor: "brown"}, {});
+    myPlane1_6.drawPoint([0, 0], "green");
+    myPlane1_6.drawLabel([0, 0], "x(t\u2080)", {fill: "green", fontSize: 20, corner: "lefttop"});
     myPlane1_6.drawPoint([5, 0], "green");
     myPlane1_6.drawPoint([15, 0], "green");
     myPlane1_6.drawLabel([5, 0], "x(t\u2081)", {fill: "green", fontSize: 20, corner: "righttop"});
     myPlane1_6.drawLabel([15, 0], "x(t\u2082)", {fill: "green", fontSize: 20, corner: "lefttop"});
     myPlane1_6.drawLabel([8, 0], "\u0394x = \u0394s", {fill: "green", fontSize: 20, corner: "leftbottom"});
     myPlane1_6.drawSegment([5, 0], [15, 0], {strokeColor: "green", strokeWidth: 2});
+}
+
+// Figure 1.7. Graph of x = f(t) for a uniform rectilinear motion.
+{
+    // Get the SVG element from the DOM
+    const svg1_7 = document.getElementById("svg1_7");
+
+    // Set attributes
+    svg1_7.setAttribute("viewBox", "0 0 400 400"); 
+    svg1_7.setAttribute("width", "400"); 
+    svg1_7.setAttribute("height", "400");
+
+    // set a cartesian plane where the river bank is parallel to x-axis.
+    const myPlane1_7 = new CartesianPlane(svg1_7, -3, 40, -3, 40);
+    myPlane1_7.drawAxes("", "t", "O");
+    myPlane1_7.drawLabel([-2, 37], "x", {corner: "leftbottom", fontSize: 25});
+
+    // set values for the uniform rectilinear motion
+    const x0 = 10; // initial position of the object when t=0
+    const speed = 0.5; // speed of the moving object
+
+    // set a function that describes a uniform rectilinear motion: f(t) = x0 + speed * t
+    function f1_7(t) {
+        // Set the initial values
+        return x0 + speed * t;
+    }
+    
+    // Generate a list of points: (x,t) = [x(t), t] in a time interval
+    const numberOfPoints = 10; // number of points to generate
+    const timeMin = 0; // start time
+    const timeMax = 37; // end time
+    const points = [];
+    const step = (timeMax - timeMin) / (numberOfPoints - 1);
+	for (let i = 0; i < numberOfPoints; i++) {
+        const t = timeMin + i * step;
+        points.push([t, f1_7(t)]);
+    }
+
+    // Draw the path
+    myPlane1_7.drawPath(points, "green");
+
+    // Mark x0
+    myPlane1_7.drawLabel([-3, 12], "x\u2080", {corner: "lefttop", fontSize: 25});
+
+    // Draw an horizontal line at x0
+    myPlane1_7.drawSegment([0, x0], [37, x0], {strokeColor: "green", strokeDasharray: "5,5"});
+
+    //Draw an arc representing an angle in the Cartesian plane
+    myPlane1_7.drawArc([0, x0], [10, 0], [10, f1_7(10) - x0], 5);
+
+    // Mark the angle α
+    myPlane1_7.drawLabel([6, x0 + 0.5], "\u03B1", {fill: "blue", corner: "leftbottom", fontSize: 25}); // alpha
 }

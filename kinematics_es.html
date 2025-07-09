@@ -365,9 +365,9 @@
                 </div>
                 <figure class="centered">
                     <svg id="svg1_5"></svg >
-                    <figcaption><b>Figura 1.5</b> Mostrando la trayectoria de un móvil y su vector desplazamiento entre dos instantes \(t_1\) y \(t_2\) como la diferencia entre los vectores de posición de dichos instantes .</figcaption>
+                    <figcaption><b>Figura 1.5</b> Trayectoria, velocidad y posición de un móvil en un movimiento rectilíneo uniforme.</figcaption>
                 </figure>
-                <p>Para este movimiento podemos elegir un sistema de referencia unidimensional, haciendo que uno de los ejes, el eje \(x\), por ejemplo, coincida con la dirección del movimiento: \( \vec r = (x, 0, 0)\) (Fig. 2.16).</p>
+                <p>Para este tipo de movimiento podemos elegir un sistema de referencia unidimensional, donde la posición del móvil a lo largo de la línea recta puede definirse simplemente mediante un valor escalar \(x\), haciendo que uno de los ejes, el eje \(x\), en este caso, coincida con la dirección del movimiento: \( \vec r = (x, 0, 0)\).</p>
                 <figure class="centered">
                     <svg id="svg1_6"></svg >
                     <figcaption><b>Figura 1.6</b> En un movimiento rectilíneo se puede tomar la dirección de movimiento como sistema de referencia.</figcaption>
@@ -379,14 +379,72 @@
                     <div  class="right" id="[1.31]">[1.31]</div>
                 </div>
 
-                <p>a) Desplazamiento:</p>
+                <p>Entonces, para el movimiento rectilíneo uniforme, expresamos el desplazamiento como un escalar, cuyo valor coincide con la distancia recorrida:</p>
                 <div class="container">
-                    <div  class="center">$$\left. \begin{matrix} \Delta x = x(t_2) - x(t_1) = v\Delta t \\ \Delta x = \Delta s \end{matrix} \right\} \implies s = v\Delta t \quad \text{Que es la ecuación del espacio recorrido.}$$
+                    <div  class="center">$$\left. \begin{matrix} \Delta x = x(t_2) - x(t_1) = v\Delta t \\ \Delta x = \Delta s \end{matrix} \right\} \implies s = v\Delta t \quad $$
                     </div>
-                    <div class="right" id="[1.32]">[1.32]></div>
+                    <div class="right" id="[1.32]">[1.32]</div>
                 </div>
 
-                <p>b) Velocidad media: $$v = \frac{\Delta x}{\Delta t} = \frac{\Delta s}{\Delta t}$$</p>
+                <p>De igual manera, para este tipo de movimientono, podemos representar la velocidad mediante un escalar. Así, la velocidad media es:</p>
+                <div class="container">
+                    <div  class="center">$$v = \frac{\Delta x}{\Delta t} = \frac{\Delta s}{\Delta t}$$</div>
+                    <div class="right" id="[1.33]">[1.33]</div>
+                </div>
+                <p>Al establecer un sistema de referencia unidimensional, resulta sumamente útil emplear un <strong>diagrama x-t</strong> para representar el movimiento. Este diagrama es, por definición, la representación gráfica de la función \(x = f(t)\) que describe el movimiento.</p>
+                <p>Para un movimiento rectilíneo uniforme, donde la posición viene dada por \(x = x_0 + vt\), el diagrama x-t se visualiza como una línea recta. En esta representación, la ordenada en el origen (el punto donde la recta cruza el eje vertical) corresponde a la posición inicial del móvil (\(x_0\)), y la pendiente de esta recta nos indica directamente la velocidad del móvil.</p>
+                <figure class="centered">
+                    <svg id="svg1_7"></svg >
+                    <figcaption><b>Figura 1.7 </b>Gráfica de \(x = f(t)\) para un movimiento rectilíneo uniforme.</figcaption>
+                </figure>
+                <p>En el contexto de un diagrama x-t, la <strong>pendiente</strong> de la recta (o de la tangente a la curva, en casos más generales) es un concepto fundamental, ya que representa la velocidad del móvil.</p> 
+                <strong>Pendiente Media (Velocidad Media):</strong>
+                <p>La pendiente (\(\text{tg } \alpha\)) calculada sobre un intervalo de tiempo determinado se obtiene dividiendo el cambio en la coordenada vertical (que es la posición del móvil) por el cambio en la coordenada horizontal (que es el tiempo transcurrido). En el diagrama x-t, esto corresponde directamente a la <strong>velocidad media</strong> del movimiento durante ese intervalo:</p>
+                <div class="container">
+                    <div  class="center">$$ \text{tg } \alpha = \frac{x_1 - x_0}{t} = v_{\text{media}}$$</div>
+                    <div class="right" id="[1.34]">[1.34]</div>
+                </div>
+                    <!--
+                    <li><strong>Pendiente Instantánea (Velocidad Instantánea):</strong>
+                        <p>Para determinar la velocidad en un instante específico, se calcula la pendiente de la recta tangente a la curva de posición en ese punto. En el caso particular del movimiento rectilíneo uniforme (como el que se muestra en la Figura 1.7), al ser la gráfica una línea recta, la pendiente de la tangente coincide con la pendiente constante de la propia recta. Esta pendiente instantánea es, por definición, la derivada de la posición respecto al tiempo:</p>
+                        <div class="container">
+                            <div  class="center">$$ \text{tg } \alpha = \frac{dx}{dt} = v_{\text{instantánea}} $$</div>
+                            <div class="right" id="[1.34]">[1.34]</div>
+                        </div>
+                    </li>
+                    -->
+                </p>
+            </section>
+            <section><h3>1.6 Movimiento Rectilíneo Uniformemente Acelerado</h3>
+                <p>Se llama <strong>rectilíneo y uniformemente acelerado</strong> a aquel movimiento que no tiene aceleración normal y su aceleración tangencial es constante.</p>
+
+                <p>Si elegimos como sistema de referencia la dirección del movimiento, igual que hicimos en el movimiento rectilíneo y uniforme, todas las magnitudes vectoriales se convierten en escalares.</p>
+
+                <p>Partiendo de la definición de aceleración tangencial e integrando obtenemos la ecuación de la velocidad en cualquier instante:</p>
+                \[ a = \frac{dv}{dt} \Rightarrow dv = a \, dt \Rightarrow v(t) = \int a \, dt = a \int dt = at + C \]
+                <p>Esta función se ha de cumplir para cualquier valor de \(t\). Luego también para \(t = 0\).</p>
+                \[ \left. \begin{matrix} v(t) = at + C \\ t = 0 \end{matrix} \right\} \implies v_0 = C \]
+
+                <p>La constante de integración representa la velocidad inicial.</p>
+                <p>La ecuación del movimiento que permite calcular la velocidad en cualquier instante es:</p>
+                <div class="container">
+                    <div class="center">\[ v(t) = v_0 + at \]</div>
+                    <div class="right" id="[1.35]">[1.35]</div>
+                </div>
+                <p>Para hallar la ecuación de la posición en cualquier instante, partimos de la definición de velocidad e integramos:</p>
+                \[
+                v = \frac{dx}{dt} \Rightarrow dx = v \, dt \Rightarrow x(t) = \int v \, dt = \int (v_0 + at) \, dt \\
+                = \int v_0 \, dt + \int at \, dt = v_0 \int dt + a \int t \, dt = v_0 t + \frac{1}{2} at^2 + C
+                \]
+                <p>Si esta función se ha de cumplir para cualquier valor del tiempo, la constante de integración representa la posición inicial \(C = x_0\).</p>
+                <p>La ecuación que nos da la posición en cualquier instante será:</p>
+
+                <div class="container">
+                    <div class="center">
+                        \[ x(t) = x_0 + v_0 t + \frac{1}{2} at^2 \]
+                    </div>
+                    <div class="right" id="[1.36]">[1.36]</div>
+                </div>
             </section>
         </article>
     </body>
