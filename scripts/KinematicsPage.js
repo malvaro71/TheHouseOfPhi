@@ -332,3 +332,64 @@
 	myPlane1_7.drawLabel([0, f1_7(20)], "x(t\u2081)", {fill: "blue", corner: "rightbottom", fontSize: 25});
 	myPlane1_7.drawLabel([20, 0], "t\u2081", {fill: "blue", corner: "lefttop", fontSize: 25});
 }
+
+// Figure 1.8. Graph of x = f(t) for a uniformly accelerated rectilinear motion.
+{
+    // Get the SVG element from the DOM
+    const svg1_8 = document.getElementById("svg1_8");
+
+    // Set attributes
+    svg1_8.setAttribute("viewBox", "0 0 400 400"); 
+    svg1_8.setAttribute("width", "400"); 
+    svg1_8.setAttribute("height", "400");
+
+    // set a cartesian plane with xMin, xMax, yMin and yMax.
+    const myPlane1_8 = new CartesianPlane(svg1_7, -5, 20, -5, 100);
+    myPlane1_8.drawAxes("", "t", "O");
+    myPlane1_8.drawLabel([-2, 37], "x", {corner: "leftbottom", fontSize: 25});
+
+    // set values for the uniform rectilinear motion
+    const x0 = 10; // initial position of the object when t=0
+	const v0 = 1 // initial speed of the moving object when t=0
+	const a = 0.5; // acceleration of the moving object
+
+    // set a function that describes a uniform rectilinear motion: f(t) = x0 + v0 * t + (1/2)*a*t^2
+    function f1_8(t) {
+        // Set the initial values
+        return x0 + v0 * t + (1/2)*a*t^2;
+    }
+    
+    // Generate a list of points: (x,t) = [x(t), t] in a time interval
+    const numberOfPoints = 20; // number of points to generate
+    const timeMin = 0; // start time
+    const timeMax = 10; // end time
+    const points = [];
+    const step = (timeMax - timeMin) / (numberOfPoints - 1);
+	for (let i = 0; i < numberOfPoints; i++) {
+        const t = timeMin + i * step;
+        points.push([t, f1_8(t)]);
+    }
+
+    // Draw the path
+    myPlane1_8.drawPath(points, "green");
+
+    // Mark x0
+    myPlane1_8.drawLabel([-3, 12], "x\u2080", {fill: "green", corner: "lefttop", fontSize: 25});
+
+    // Draw an horizontal line at x0
+    myPlane1_8.drawSegment([0, x0], [37, x0], {strokeColor: "green", strokeDasharray: "5,5"});
+
+    //Draw an arc representing an angle in the Cartesian plane
+    //myPlane1_8.drawArc([0, x0], [10, 0], [10, f1_8(10) - x0], 5);
+
+    // Mark the angle α
+    //myPlane1_8.drawLabel([6, x0 + 0.5], "\u03B1", {fill: "blue", corner: "leftbottom", fontSize: 25}); // alpha
+
+	// Draw a point
+	//myPlane1_8.drawPoint([20, f1_8(20)], "blue");
+	//myPlane1_8.drawSegment([20, 0], [20, f1_8(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
+	//myPlane1_8.drawSegment([0, f1_8(20)], [20, f1_8(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
+	//myPlane1_8.drawLabel([0, f1_8(20)], "x(t\u2081)", {fill: "blue", corner: "rightbottom", fontSize: 25});
+	//myPlane1_8.drawLabel([20, 0], "t\u2081", {fill: "blue", corner: "lefttop", fontSize: 25});
+}
+
