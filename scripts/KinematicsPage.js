@@ -314,7 +314,7 @@
     myPlane1_7.drawPath(points, "green");
 
     // Mark x0
-    myPlane1_7.drawLabel([-3, 12], "x\u2080", {strokeColor: "green", corner: "lefttop", fontSize: 25});
+    myPlane1_7.drawLabel([-3, 12], "x\u2080", {fill: "green", corner: "lefttop", fontSize: 25});
 
     // Draw an horizontal line at x0
     myPlane1_7.drawSegment([0, x0], [37, x0], {strokeColor: "green", strokeDasharray: "5,5"});
@@ -329,6 +329,6 @@
 	myPlane1_7.drawPoint([20, f1_7(20)], "blue");
 	myPlane1_7.drawSegment([20, 0], [20, f1_7(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
 	myPlane1_7.drawSegment([0, f1_7(20)], [20, f1_7(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
-	myPlane1_7.drawLabel([0, f1_7(20)], "x(t\u2081)", {strokeColor: "blue", corner: "rightbottom", fontSize: 25});
-	myPlane1_7.drawLabel([20, 0], "t\u2081", {strokeColor: "blue", corner: "lefttop", fontSize: 25});
+	myPlane1_7.drawLabel([0, f1_7(20)], "x(t\u2081)", {fill: "blue", corner: "rightbottom", fontSize: 25});
+	myPlane1_7.drawLabel([20, 0], "t\u2081", {fill: "blue", corner: "lefttop", fontSize: 25});
 }
