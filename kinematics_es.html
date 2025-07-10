@@ -330,38 +330,19 @@
                     <li>La velocidad es constante en dirección y sentido: la trayectoria es una recta.</li>
                     <li>La velocidad es constante en módulo: recorre espacios iguales en tiempos iguales.</li>
                 </ul>
-                <p>También se puede definir en función de la aceleración diciendo: Movimiento rectilíneo y uniforme es aquel que no tiene aceleración. Esto supone:</p>
-                <div class="container">
-                    <div  class="center">$$a_{\tau} = \frac{dv}{dt} = 0 \implies v = \text{cte}$$</div>
-                    <div  class="right" id="[1.25]">[1.25]</div>
-                </div>
-
-                <div class="container">
-                    <div  class="center">$$a_{\eta} = \frac{v^2}{R} = 0 \implies R = \infty \quad \text{La trayectoria es una recta.}$$</div>
-                    <div  class="right" id="[1.26]">[1.26]</div>
-                </div>
-                <p>Para deducir la ley que rige este movimiento partimos de la definición de velocidad:</p>
-                <div class="container">
-                    <div  class="center">$$\vec v = \frac{d \vec r}{dt} \implies d \vec r = \vec v dt$$</div>
-                    <div  class="right" id="[1.27]">[1.27]</div>
-                </div>
-
+                <p>También se puede definir en función de la aceleración diciendo: <strong>Movimiento rectilíneo uniforme (MRU)</strong> es aquel que no tiene aceleración. Esto supone:</p>
+                \[ a_{\tau} = \frac{dv}{dt} = 0 \implies v = \text{cte} \]
+				\[ a_{\eta} = \frac{v^2}{R} = 0 \implies R = \infty \quad \text{La trayectoria es una recta.} \]
+                <p>Para deducir la ley que rige este movimiento partimos de la definición de velocidad instantánea <a href="#[1.6]">[1.6]</a>:</p>
+                \[ \vec v = \frac{d \vec r}{dt} \implies d \vec r = \vec v dt \]
                 <p>Para despejar el vector de posición integramos la ecuación anterior</p>
-                <div class="container">
-                    <div  class="center">$$\vec r(t) = \int \vec v dt = \vec v \int dt = \vec v t + C$$</div>
-                    <div  class="right" id="[1.28]">[1.28]</div>
-                </div>
-
+                \[ \vec r (t) = \int \vec v dt = \vec v \int dt = \vec v t + C \]
                 <p>Esta función se ha de cumplir para cualquier valor de \(t\). Luego también para \(t = 0\)</p>
-                <div class="container">
-                    <div  class="center">$$\left. \begin{matrix} \vec{r} = \vec v t + C \\ t = 0 \end{matrix} \right\} \implies \vec{r}_0 = C$$</div>
-                    <div  class="right" id="[1.29]">[1.29]</div>
-                </div>
-
-                <p>La constante de integración es la posición inicial \(\vec{r}_0\) y, entonces, la ecuación vectorial del movimiento será:</p>
+                \[ \left. \begin{matrix} \vec{r} = \vec v t + C \\ t = 0 \end{matrix} \right\} \implies \vec{r}_0 = C \]
+                <p>La constante de integración es la posición inicial \(\vec{r}_0\) y, entonces, la ecuación vectorial del MRU será:</p>
                 <div class="container">
                     <div  class="center">$$\vec r (t) = \vec{r}_0 + \vec v t$$</div>
-                    <div  class="right" id="[1.30]">[1.30]</div>
+                    <div  class="right" id="[1.25]">[1.25]</div>
                 </div>
                 <figure class="centered">
                     <svg id="svg1_5"></svg >
@@ -371,48 +352,24 @@
                 <figure class="centered">
                     <svg id="svg1_6"></svg >
                     <figcaption><b>Figura 1.6</b> En un movimiento rectilíneo se puede tomar la dirección de movimiento como sistema de referencia.</figcaption>
-                </figure>
-                
+                </figure>                
                 <p>Así, la ecuación anterior se reduce a una ecuación escalar:</p>
-                <div class="container">
-                    <div  class="center">$$x(t) = x_0 + vt \quad \text{ecuación de la posición.}$$</div>
-                    <div  class="right" id="[1.31]">[1.31]</div>
-                </div>
-
-                <p>Entonces, para el movimiento rectilíneo uniforme, expresamos el desplazamiento como un escalar, cuyo valor coincide con la distancia recorrida:</p>
-                <div class="container">
-                    <div  class="center">$$\left. \begin{matrix} \Delta x = x(t_2) - x(t_1) = v\Delta t \\ \Delta x = \Delta s \end{matrix} \right\} \implies s = v\Delta t \quad $$
-                    </div>
-                    <div class="right" id="[1.32]">[1.32]</div>
-                </div>
-
+                \[ x(t) = x_0 + vt \quad \text{ecuación de la posición.} \]
+                <p>Entonces, para el MRU, expresamos el desplazamiento como un escalar, cuyo valor coincide con la distancia recorrida:</p>
+                \[ \left. \begin{matrix} \Delta x = x(t_2) - x(t_1) = v\Delta t \\ \Delta x = \Delta s \end{matrix} \right\} \implies s = v\Delta t \quad $$ \]
                 <p>De igual manera, para este tipo de movimientono, podemos representar la velocidad mediante un escalar. Así, la velocidad media es:</p>
-                <div class="container">
-                    <div  class="center">$$v = \frac{\Delta x}{\Delta t} = \frac{\Delta s}{\Delta t}$$</div>
-                    <div class="right" id="[1.33]">[1.33]</div>
-                </div>
+                \[ v = \frac{\Delta x}{\Delta t} = \frac{\Delta s}{\Delta t} \]
                 <p>Al establecer un sistema de referencia unidimensional, resulta sumamente útil emplear un <strong>diagrama x-t</strong> para representar el movimiento. Este diagrama es, por definición, la representación gráfica de la función \(x = f(t)\) que describe el movimiento.</p>
                 <p>Para un movimiento rectilíneo uniforme, donde la posición viene dada por \(x = x_0 + vt\), el diagrama x-t se visualiza como una línea recta. En esta representación, la ordenada en el origen (el punto donde la recta cruza el eje vertical) corresponde a la posición inicial del móvil (\(x_0\)), y la pendiente de esta recta nos indica directamente la velocidad del móvil.</p>
                 <figure class="centered">
                     <svg id="svg1_7"></svg >
                     <figcaption><b>Figura 1.7 </b>Gráfica de \(x = f(t)\) para un movimiento rectilíneo uniforme.</figcaption>
                 </figure>
-                <p>En el contexto de un diagrama x-t, la <strong>pendiente</strong> de la recta (o de la tangente a la curva, en casos más generales) es un concepto fundamental, ya que representa la velocidad del móvil.</p> 
-                <strong>Pendiente Media (Velocidad Media):</strong>
-                <p>La pendiente (\(\text{tg } \alpha\)) calculada sobre un intervalo de tiempo determinado se obtiene dividiendo el cambio en la coordenada vertical (que es la posición del móvil) por el cambio en la coordenada horizontal (que es el tiempo transcurrido). En el diagrama x-t, esto corresponde directamente a la <strong>velocidad media</strong> del movimiento durante ese intervalo:</p>
+                <p>En el diagrama x-t del MRU, la pendiente (\(\text{tg } \alpha\)) de la recta que describe la trayectoria del moviemiento, calculada sobre un intervalo de tiempo determinado, se obtiene dividiendo el cambio en la coordenada vertical (que es la posición del móvil) por el cambio en la coordenada horizontal (que es el tiempo transcurrido). En el diagrama x-t, esto corresponde directamente a la <strong>velocidad media</strong> del movimiento durante ese intervalo:</p>
                 <div class="container">
-                    <div  class="center">$$ \text{tg } \alpha = \frac{x_1 - x_0}{t} = v_{\text{media}}$$</div>
-                    <div class="right" id="[1.34]">[1.34]</div>
+                    <div  class="center">$$ \text{tg } \alpha = \frac{x(t) - x_0}{t} = v_{\text{media}}$$</div>
+                    <div class="right" id="[1.26]">[1.26]</div>
                 </div>
-                    <!--
-                    <li><strong>Pendiente Instantánea (Velocidad Instantánea):</strong>
-                        <p>Para determinar la velocidad en un instante específico, se calcula la pendiente de la recta tangente a la curva de posición en ese punto. En el caso particular del movimiento rectilíneo uniforme (como el que se muestra en la Figura 1.7), al ser la gráfica una línea recta, la pendiente de la tangente coincide con la pendiente constante de la propia recta. Esta pendiente instantánea es, por definición, la derivada de la posición respecto al tiempo:</p>
-                        <div class="container">
-                            <div  class="center">$$ \text{tg } \alpha = \frac{dx}{dt} = v_{\text{instantánea}} $$</div>
-                            <div class="right" id="[1.34]">[1.34]</div>
-                        </div>
-                    </li>
-                    -->
                 </p>
             </section>
             <section><h3>1.6 Movimiento Rectilíneo Uniformemente Acelerado</h3>
@@ -446,7 +403,12 @@
                     <div class="right" id="[1.36]">[1.36]</div>
                 </div>
 				<p>Para representar el movimiento rectilíneo y uniformemente acelerado en un diagrama x-t, representamos la función \(x=f(t)\). </p>
-				\[ x = f(t) \left(x = x_0 + v_0t + \frac{1}{2}at^2\right) \]
+				\[ x(t) = x_0 + v_0t + \frac{1}{2}at^2 \]
+				<p>A diferencia del MRU donde la velocidad es constante, en el MRUA la velocidad varía continuamente. Para comprender la velocidad en un instante específico, recurrimos al concepto de velocidad instantánea. Similar a cómo la tangente en el MRU representa la velocidad constante, en el MRUA, donde la gráfica de posición vs. tiempo ($x$ vs. $t$) es una curva (una parábola), <strong>la velocidad instantánea en cada punto de la curva corresponde a la pendiente de la recta tangente a la curva en ese instante</strong>. Esta pendiente instantánea es, por definición, la derivada de la posición respecto al tiempo:</p>
+<div class="container">
+    <div class="center">$$ \text{tg } \alpha = \frac{dx}{dt} = v_{\text{instantánea}} $$</div>
+    <div class="right" id="[1.34]">[1.34]</div>
+</div>
             </section>
         </article>
     </body>
