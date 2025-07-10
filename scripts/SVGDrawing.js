@@ -130,6 +130,25 @@ function TextWithSubscript(regular, subscript) {
 }
 
 /**
+ * Renders a mathematical expression written in Math.js syntax into an HTML element using MathJax for LaTeX rendering.
+ *
+ * @param {HTMLElement} elementId The HTML element where the mathematical expression will be rendered.
+ * @param {string} expression The mathematical expression to be rendered, written in a format parsable by Math.js (e.g., "x = x_0 + v_0*t + 1/2*a*t^2").
+ * @returns {void}
+ */
+function renderMathExpression(elementId, expression) {
+	// Parse the expression using Math.js
+	const node = math.parse(expression);
+
+	// Convert the parsed expression to LaTeX
+	const latex = node.toTex({parenthesis: 'keep'});
+
+	// Use MathJax to render the LaTeX expression
+	elementId.innerHTML = '';
+	elementId.innerHTML = MathJax.tex2svg(latex).outerHTML;
+}
+
+/**
  * Writes text within an SVG element with specified content, positioning, and styling.
  *
  * @param {SVGElement} svgElement - The SVG element where the text will be written.
@@ -946,16 +965,3 @@ class EuclideanSpace {
 	    this.svgElement.appendChild(pathElement);
     }
 }
-
-function renderMathExpression(elementId, expression) {
-	// Parse the expression using Math.js
-	const node = math.parse(expression);
-
-	// Convert the parsed expression to LaTeX
-	const latex = node.toTex({parenthesis: 'keep'});
-
-	// Use MathJax to render the LaTeX expression
-	elementId.innerHTML = '';
-	elementId.innerHTML = MathJax.tex2svg(latex).outerHTML;
-}
-
