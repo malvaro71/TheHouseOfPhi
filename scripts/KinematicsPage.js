@@ -285,7 +285,7 @@
     svg1_7.setAttribute("height", "400");
 
     // set a cartesian plane where the river bank is parallel to x-axis.
-    const myPlane1_7 = new CartesianPlane(svg1_7, -3, 40, -3, 40);
+    const myPlane1_7 = new CartesianPlane(svg1_7, -5, 40, -5, 40);
     myPlane1_7.drawAxes("", "t", "O");
     myPlane1_7.drawLabel([-2, 37], "x", {corner: "leftbottom", fontSize: 25});
 
