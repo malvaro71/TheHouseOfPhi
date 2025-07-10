@@ -373,7 +373,7 @@
                 </p>
             </section>
             <section><h3>1.6 Movimiento Rectilíneo Uniformemente Acelerado</h3>
-                <p>Se llama <strong>rectilíneo y uniformemente acelerado</strong> a aquel movimiento que no tiene aceleración normal y su aceleración tangencial es constante. </p>
+                <p>Se llama <strong>rectilíneo y uniformemente acelerado (MRUA)</strong> a aquel movimiento que no tiene aceleración normal y su aceleración tangencial es constante. </p>
 
                 <p>Al no tener aceleración normal, la trayectoria de este movimiento describirá una línea recta. Entonces, si elegimos como sistema de referencia la dirección del movimiento, igual que hicimos en el movimiento rectilíneo y uniforme, todas las magnitudes vectoriales se convierten en escalares.</p>
 
@@ -386,7 +386,7 @@
                 <p>La ecuación del movimiento que permite calcular la velocidad en cualquier instante es:</p>
                 <div class="container">
                     <div class="center">\[ v(t) = v_0 + at \]</div>
-                    <div class="right" id="[1.35]">[1.35]</div>
+                    <div class="right" id="[1.27]">[1.27]</div>
                 </div>
                 <p>Para hallar la ecuación de la posición en cualquier instante, partimos de la definición de velocidad e integramos:</p>
                 \[
@@ -395,15 +395,17 @@
                 \]
                 <p>Si esta función se ha de cumplir para cualquier valor del tiempo, la constante de integración representa la posición inicial \(C = x_0\).</p>
                 <p>La ecuación que nos da la posición en cualquier instante será:</p>
-
                 <div class="container">
                     <div class="center">
                         \[ x(t) = x_0 + v_0 t + \frac{1}{2} at^2 \]
                     </div>
-                    <div class="right" id="[1.36]">[1.36]</div>
+                    <div class="right" id="[1.28]">[1.28]</div>
                 </div>
-				<p>Para representar el movimiento rectilíneo y uniformemente acelerado en un diagrama x-t, representamos la función \(x=f(t)\). </p>
-				\[ x(t) = x_0 + v_0t + \frac{1}{2}at^2 \]
+				<p>Para representar el MRUA en un diagrama x-t, representamos la función \(x=f(t)\), donde la posición viene dada por <a href="#[1.28]">[1.28]</a>. El diagrama x-t se visualiza como una parábola, cuya ordenada en el origen corresponde a la posición inicial del móvil (\(x_0\)).</p>
+				<figure class="centered">
+                    <svg id="svg1_8"></svg >
+                    <figcaption><b>Figura 1.8 </b>Gráfica de \(x = f(t)\) para un movimiento rectilíneo uniformemente acelerado.</figcaption>
+                </figure>
 				<p>A diferencia del MRU donde la velocidad es constante, en el MRUA la velocidad varía continuamente. Para comprender la velocidad en un instante específico, recurrimos al concepto de velocidad instantánea. Similar a cómo la tangente en el MRU representa la velocidad constante, en el MRUA, donde la gráfica de posición vs. tiempo ($x$ vs. $t$) es una curva (una parábola), <strong>la velocidad instantánea en cada punto de la curva corresponde a la pendiente de la recta tangente a la curva en ese instante</strong>. Esta pendiente instantánea es, por definición, la derivada de la posición respecto al tiempo:</p>
 <div class="container">
     <div class="center">$$ \text{tg } \alpha = \frac{dx}{dt} = v_{\text{instantánea}} $$</div>
