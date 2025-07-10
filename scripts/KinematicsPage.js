@@ -326,9 +326,9 @@
     myPlane1_7.drawLabel([6, x0 + 0.5], "\u03B1", {fill: "blue", corner: "leftbottom", fontSize: 25}); // alpha
 
 	// Draw a point
-	myPlane1_7.drawPoint([10, f1_7(10)], "blue");
-	myPlane1_7.drawSegment([10, 0], [10, f1_7(10)], {strokeColor: "blue", strokeDasharray: "5,5"});
-	myPlane1_7.drawSegment([0, f1_7(10)], [10, f1_7(10)], {strokeColor: "blue", strokeDasharray: "5,5"});
-	myPlane1_7.drawLabel([0, f1_7(10)], "x\u2081", {corner: "rightbottom", fontSize: 25});
-	myPlane1_7.drawLabel([10, 0], "t", {corner: "lefttop", fontSize: 25});
+	myPlane1_7.drawPoint([20, f1_7(20)], "blue");
+	myPlane1_7.drawSegment([20, 0], [20, f1_7(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
+	myPlane1_7.drawSegment([0, f1_7(20)], [20, f1_7(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
+	myPlane1_7.drawLabel([0, f1_7(20)], "x\u2081", {corner: "rightbottom", fontSize: 25});
+	myPlane1_7.drawLabel([20, 0], "t\u2081", {corner: "lefttop", fontSize: 25});
 }
