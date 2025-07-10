@@ -471,50 +471,6 @@ class CartesianPlane {
 		// Append the path element to the SVG
 		this.svgElement.appendChild(path);
 	}
-
-	/**
-    drawPath(coordinates, controlPoint, color) {
-        // https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
-        // M x y: moves to absolute coordinate x, y
-        // Q x1 y1, x y: Quadratic Bézier curve (x1, y1) is the control point and (x, y) is the last point of the curve.
-        // T x y: Quadratic Bézier curve (x, y) is the last point of the curve, infers control point from previous curve.
-
-        // Check if there are at least two coordinates
-        if (coordinates.length < 2) {
-            throw new Error('The coordinate list must contain at least two values.');
-        }
-
-        // Validate coordinates
-        for (let i = 0; i < coordinates.length; i++) {
-            validateCoordinates2D(coordinates[i]);
-        }
-
-        // Transform coodinates
-        const svgCoordinates = [[0,0,0]];
-        for (let i = 0; i < coordinates.length; i++) {
-            svgCoordinates[i] = this.transformCoordinates(coordinates[i]);
-        }
-        let svgControlPoint = this.transformCoordinates(controlPoint);
-
-        // Start the path chain with the movement to the first point and the first Q curve
-        let pathData = `M ${svgCoordinates[0].join(' ')} Q ${svgControlPoint.join(' ')} ${svgCoordinates[1].join(' ')}`;
-
-        // Iterate over the remaining coordinates, using T for subsequent curves.
-        for (let i = 2; i < svgCoordinates.length; i++) {
-            pathData += ` T ${svgCoordinates[i].join(' ')}`;
-        }
-
-        // Create the path element 
-		const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-		path.setAttribute("d", pathData);
-		path.setAttribute("fill", "none");
-		path.setAttribute("stroke", color);
-		path.setAttribute("stroke-width", "1");
-
-		// Append the path element to the SVG
-		this.svgElement.appendChild(path);
-    }
-    */
 	
 	/**
 	 * Plots a series of 2D points as a continuous line within an SVG element.
