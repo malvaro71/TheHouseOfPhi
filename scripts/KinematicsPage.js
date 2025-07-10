@@ -329,6 +329,6 @@
 	myPlane1_7.drawPoint([20, f1_7(20)], "blue");
 	myPlane1_7.drawSegment([20, 0], [20, f1_7(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
 	myPlane1_7.drawSegment([0, f1_7(20)], [20, f1_7(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
-	myPlane1_7.drawLabel([0, f1_7(20)], "x\u2081", {strokeColor: "blue", corner: "rightbottom", fontSize: 25});
+	myPlane1_7.drawLabel([0, f1_7(20)], "x(t\u2081)", {strokeColor: "blue", corner: "rightbottom", fontSize: 25});
 	myPlane1_7.drawLabel([20, 0], "t\u2081", {strokeColor: "blue", corner: "lefttop", fontSize: 25});
 }
