@@ -6,15 +6,16 @@
  * @throws {TypeError} If the coordinates are not an array.
  * @throws {ValueError} If the coordinates array is not of length 2 or if it contains non-numeric elements or if any of its numeric elements is infinite.
  */
+// eslint-disable-next-line no-unused-vars
 function validateCoordinates2D(coordinates) {
 	if (!Array.isArray(coordinates)) {
 	  throw new TypeError("Invalid coordinates: Expecting an array.");
 	}
 	if (coordinates.length !== 2) {
-	  throw new ValueError("Invalid coordinates: Expecting an array with length 2 (x and y values).");
+	  throw new RangeError("Invalid coordinates: Expecting an array with length 2 (x and y values).");
 	}
 	if (!coordinates.every((element) => typeof element === "number" && isFinite(element))) {
-	  throw new ValueError("Invalid coordinates: Expecting an array containing only finite numbers.");
+	  throw new RangeError("Invalid coordinates: Expecting an array containing only finite numbers.");
 	}
 	// If all conditions pass, the function returns true (implicit return)
 }
