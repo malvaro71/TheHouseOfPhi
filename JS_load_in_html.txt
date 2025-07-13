@@ -1,0 +1,9 @@
+index.html
+<script type="module" src="SelectLanguageIndex.js"></script>
+
+vectors_en.html y vectors_es.html
+<script type="module" src="scripts/vectorsForm.js"></script>
+<script type="module" src="scripts/vectorsPage.js"></script>
+
+kinematics_en.html y kinematics_es.html
+<script type="module" src="scripts/KinematicsPage.js"></script>

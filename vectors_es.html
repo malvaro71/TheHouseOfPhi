@@ -18,11 +18,13 @@
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
         <!-- loads page script files-->
-        <script src="scripts/ArrayFunctions.js"></script> 
+        <!--<script src="scripts/ArrayFunctions.js"></script> 
         <script src="scripts/SVGDrawing.js"></script>
         <script src="scripts/vectorsForm.js"></script>
-        <script src="scripts/vectorsPage.js" defer></script>
-        <script src="scripts/SelectLanguage.js" defer></script>
+        <script src="scripts/vectorsPage.js" defer></script>-->
+        <script type="module" src="scripts/vectorsForm.js"></script>
+        <script type="module" src="scripts/vectorsPage.js"></script>
+        <!--<script src="scripts/SelectLanguage.js" defer></script>-->
     </head>
     <body>
         <!--<select id="langSelector">
@@ -44,11 +46,11 @@
             <section><h3>1.1 Introducción</h3>
 				<p>¿Alguna vez te has preguntado cómo los físicos describen el movimiento de un planeta, el trayecto de un balón o la trayectoria de un cohete? La clave reside en un concepto fundamental: la <strong>posición</strong>. Saber "dónde" se encuentra algo en el universo, en un instante específico y respecto a un punto de referencia, es el punto de partida.</p>
 
-<p>La posición no es solo un dato; es la base sobre la que se construyen pilares de la física como el <strong>desplazamiento</strong>, la <strong>velocidad</strong> y la <strong>aceleración</strong>. Sin ella, sería imposible entender si un objeto se ha movido, en qué dirección o con qué rapidez. Pero su importancia va más allá del movimiento: influye directamente en la <strong>energía potencial</strong>, en cómo se aplican y sienten las <strong>fuerzas</strong>, y en la descripción de <strong>campos</strong> gravitatorios, eléctricos o magnéticos.</p>
+                <p>La posición no es solo un dato; es la base sobre la que se construyen pilares de la física como el <strong>desplazamiento</strong>, la <strong>velocidad</strong> y la <strong>aceleración</strong>. Sin ella, sería imposible entender si un objeto se ha movido, en qué dirección o con qué rapidez. Pero su importancia va más allá del movimiento: influye directamente en la <strong>energía potencial</strong>, en cómo se aplican y sienten las <strong>fuerzas</strong>, y en la descripción de <strong>campos</strong> gravitatorios, eléctricos o magnéticos.</p>
 
-<p>Para manejar esta información de manera precisa, la física recurre a una herramienta matemática indispensable: los <strong>vectores de posición</strong>. Estos no solo nos dicen cuán lejos está un objeto de un origen, sino también en qué dirección y sentido se encuentra. Son la clave para representar ubicaciones en dos o tres dimensiones de forma completa y rigurosa.</p>
+                <p>Para manejar esta información de manera precisa, la física recurre a una herramienta matemática indispensable: los <strong>vectores de posición</strong>. Estos no solo nos dicen cuán lejos está un objeto de un origen, sino también en qué dirección y sentido se encuentra. Son la clave para representar ubicaciones en dos o tres dimensiones de forma completa y rigurosa.</p>
 
-<p>En este primer capítulo, exploraremos a fondo los <strong>vectores</strong> y el <strong>sistema de coordenadas cartesianas</strong>, desentrañando las <strong>operaciones vectoriales</strong> fundamentales como la suma, resta, producto escalar y producto vectorial. Estas herramientas del <strong>álgebra vectorial</strong> no solo simplifican enormemente la resolución de problemas complejos en física e ingeniería, sino que también nos permiten, por ejemplo, calcular la distancia precisa entre dos puntos con una elegancia matemática asombrosa. Prepárate para descubrir el lenguaje que nos permite describir y predecir el mundo físico con una claridad sin precedentes.</p>
+                <p>En este primer capítulo, exploraremos a fondo los <strong>vectores</strong> y el <strong>sistema de coordenadas cartesianas</strong>, desentrañando las <strong>operaciones vectoriales</strong> fundamentales como la suma, resta, producto escalar y producto vectorial. Estas herramientas del <strong>álgebra vectorial</strong> no solo simplifican enormemente la resolución de problemas complejos en física e ingeniería, sino que también nos permiten, por ejemplo, calcular la distancia precisa entre dos puntos con una elegancia matemática asombrosa. Prepárate para descubrir el lenguaje que nos permite describir y predecir el mundo físico con una claridad sin precedentes.</p>
                 
             </section>
             <section><h3>1.2 Vectores</h3>
@@ -185,7 +187,7 @@
                 
                 <p>
                     Haz click en el botón para abrir la aplicación qeu calcula magnitud y dirección de un vector dadas sus componentes. 
-                    <br><button onclick="openForm('coordToMagDir')">Calcula magnitud y dirección de un vector</button>
+                    <br><button id="openFormButton">Calcula magnitud y dirección de un vector</button>
                 </p>
                 <form id="coordToMagDir" style="display: none">
                     <h2>Calcula magnitud y dirección de un vector dadas sus coordenadas.</h2>
@@ -202,11 +204,8 @@
                         <output id="direction" name="direction" for="xCoordinate yCoordinate"></output>
                     º<br>
                     </label>                    
-                    <button type='button' onclick="closeForm('coordToMagDir')">Cierra</button><br>
+                    <button type='button' id="closeFormButton">Cierra</button><br>
                     <canvas id="myCanvasEng" width="400" height="400" style="border:1px solid grey"></canvas>
-                    <script>
-                        manageCanvas ("myCanvasEng", "xCoordinate", "yCoordinate", "magnitude", "direction");
-                    </script>
                 </form>
             </section>
             <section><h3>1.7 Suma de vectores y multiplicación por un escalar usando sus componentes</h3>
@@ -599,11 +598,7 @@
                     Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de <span id="2_1normvPropelled1"></span> Km/h y en una dirección que forme <span style="display: inline;" id="2_1phi2"></span>º con el río.
                 </p>
                 <figure class="centered">
-                    <svg id="svg2_1">
-                        <script>
-                            drawSvg2_1("svg2_1");
-                        </script>
-                    </svg>
+                    <svg id="svg2_1"></svg>
                     <figcaption><b>Figura 2.1</b>, mostrando plano de coordenadas, \(\vec v_r\) como la velocidad del agua del río y \(\vec v\) como la velocidad con la que se propulsa el bote.</figcaption>
                 </figure>
                 <aside><!--References-->
@@ -806,9 +801,9 @@
                 <p>
                     &emsp;$$\vec v = \vec w \times \vec r = \begin{vmatrix}\vec i & \vec j & \vec k \\ 1 & 1 & 1 \\ 2 & -2 & 1\\ \end{vmatrix} = \begin{vmatrix} 1 & 1 \\ -2 & 1 \\ \end{vmatrix} \vec i - \begin{vmatrix} 1 & 1 \\ 2 & 1\\ \end{vmatrix} \vec j + \begin{vmatrix} 1 & 1 \\ 2 & -2 \\ \end{vmatrix}\vec k = (1+2)\vec i -(1-2)\vec j + (-2-2)\vec k = 3\vec i + \vec j -4\vec k$$
                 </p>
-                <p>O \(\vec v\) = (<span id="2_7v"></span>)</p>
+                <p>Que se puede escribir de una manera más simple como sigue:</p>
                 <p> \(\vec v = \vec w \times \vec r =\) <span id="2_7_1" style="display: inline-block;"></span> = <span id="2_7_2"></span></p>
-                <p> \(\vec v = \vec w \times \vec r =\) <span id="2_7_3" style="display: inline-block;"></span> = <span id="2_7_4"></span></p> 
+                <!--<p> \(\vec v = \vec w \times \vec r =\) <span id="2_7_3" style="display: inline-block;"></span> = <span id="2_7_4"></span></p>-->
             </section>
             <section><h3>Ejercicio 8</h3>
                 <p>

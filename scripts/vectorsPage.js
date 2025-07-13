@@ -1,24 +1,54 @@
 
+// Importaciones
+import { createMarkerArrow,
+    textWithSubscript,
+    renderMathExpression
+} from './SVGDrawing.js';
+
+// Import the CartesianPlane class
+import CartesianPlane from './CartesianPlane.js';
+
+// Import the EuclideanSpace class
+import EuclideanSpace from './EuclideanSpace.js';
+
+// Import the math library 
+// import * as math from 'mathjs'; lo dejamos en paso hasta que integremos mathjs en el proyecto.
+// Cuando lo integremos, recordar añadir node_modules/ al archivo .gitignore en la raíz del proyecto.
+
+
 // svg1_1. A vector is represented by a directed line segment from its initial point A to its terminal point B.
 {
     // Get the SVG element from the DOM
     const svg1_1 = document.getElementById("svg1_1");
 
-    // Add the marker to the SVG
+    //Create arrow markers
     const brownMarker = createMarkerArrow("Brownarrow", "brown");
+    const blueMarker = createMarkerArrow("Bluearrow", "blue");
+    const greenMarker = createMarkerArrow("Greenarrow", "green");
+
+    // Add the marker to the SVG
     svg1_1.appendChild(brownMarker);
+    svg1_1.appendChild(blueMarker); 
+    svg1_1.appendChild(greenMarker);
 
     // Set attributes
     svg1_1.setAttribute("viewBox", "0 0 180 220"); 
     svg1_1.setAttribute("width", "180"); 
     svg1_1.setAttribute("height", "220");
 
-    // Draws a vector using existing marker already created and added to this SVG:
-    drawSegment(svg1_1, 24, 210, 150, 5, "brown", 2, "none", true);
+    // set a cartesian plane
+    const myPlane1_1 = new CartesianPlane(svg1_1, -3, 25, 0, 25);
+
+    // Define two points A and B
+    const pointA = [0, 0];
+    const pointB = [20, 20];
+
+    // Draws a vector from point A to point B
+    myPlane1_1.drawVector(pointA, pointB, "", {}, {});
     
-    //Draws a text
-    writeText(svg1_1, "A", 0, 205, 25, "brown", "brown", "bold", "leftbottom");
-    writeText(svg1_1, "B", 160, 5, 25, "brown", "brown", "bold", "lefttop");
+    //Draw labels for points A and B
+    myPlane1_1.drawLabel(pointA, "A", {fill: "brown", fontSize: 20});
+    myPlane1_1.drawLabel(pointB, "B", {fill: "brown", fontSize: 20, corner: "lefttop"});
 }
 
 // svg1_2. Vector addition. Graphical method
@@ -32,14 +62,14 @@
     svg1_2.setAttribute("height", "240");
 
     //Create arrow markers
-    const brownMarker = createMarkerArrow("Brownarrow", "brown");
-    const blueMarker = createMarkerArrow("Bluearrow", "blue");
-    const greenMarker = createMarkerArrow("Greenarrow", "green");
+    //const brownMarker = createMarkerArrow("Brownarrow", "brown");
+    //const blueMarker = createMarkerArrow("Bluearrow", "blue");
+    //const greenMarker = createMarkerArrow("Greenarrow", "green");
 
     // Add the marker to the SVG
-    svg1_2.appendChild(brownMarker); 
-    svg1_2.appendChild(blueMarker); 
-    svg1_2.appendChild(greenMarker); 
+    //svg1_2.appendChild(brownMarker); 
+    //svg1_2.appendChild(blueMarker); 
+    //svg1_2.appendChild(greenMarker); 
 
     // set a cartesian plane
     const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
@@ -78,7 +108,7 @@
     
     // Draw a point, its label and two segments
     myPlane1_3.drawPoint([5, 10], "green");
-        myPlane1_3.drawLabel([6, 10], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
+    myPlane1_3.drawLabel([6, 10], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
     myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
     myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
 }
@@ -302,11 +332,11 @@ function writeValue(elementId, value) {
     const initialPoint = [0, 0];
 
     // Draw Vr
-    const Vr = TextWithSubscript("V", "r");
+    const Vr = textWithSubscript("V", "r");
     myPlane2_1.drawVector(initialPoint, vRiver, Vr, {strokeColor: "green"}, {corner: "righttop"});
 
     // Draw Vp
-    const Vp = TextWithSubscript("V", "p");
+    const Vp = textWithSubscript("V", "p");
     myPlane2_1.drawVector(initialPoint, vPropelled, Vp, {strokeColor: "blue"}, {corner: "righttop"});
 
     // Draw V components
@@ -417,11 +447,11 @@ function writeValue(elementId, value) {
 	myPlane2_3.drawSegment([0, sailboatSpeedY], [sailboatSpeedX, sailboatSpeedY], {strokeColor: "blue", strokeDasharray: "5, 5"});
 
 	// Draw Vx vector
-	const Vx = TextWithSubscript("V", "x");
+	const Vx = textWithSubscript("V", "x");
 	myPlane2_3.drawVector(origin, [sailboatSpeedX, 0], Vx, {strokeColor: "green"}, {corner: "lefttop"});
 
 	// Draw Vy vector
-	const Vy = TextWithSubscript("V", "y");
+	const Vy = textWithSubscript("V", "y");
 	myPlane2_3.drawVector(origin, [0, sailboatSpeedY], Vy, {strokeColor: "green"}, {corner: "rightbottom"});
 
 	// Draw angle between Vx and V
@@ -529,7 +559,7 @@ function writeValue(elementId, value) {
 	myPlane2_6.drawVector(origin, V, "V", {strokeColor: "green"}, {corner: "lefttop"});
 
 	// Draw `proj_Evecv`
-	const projEVText = TextWithSubscript("proj", "E");
+	const projEVText = textWithSubscript("proj", "E");
 	const textNode = document.createTextNode("V");
     projEVText.appendChild(textNode);
 	myPlane2_6.drawVector(origin, projEV, projEVText, {strokeColor: "green"}, {corner: "lefttop"});
@@ -552,37 +582,27 @@ function writeValue(elementId, value) {
     const r = [2, -2, 1] // m.
 
     // Calculate the cross product
-    const v = math.cross(w, r);
+    //const v = math.cross(w, r);
 
     //Write exercise values in HTML elements
-    writeValue("2_7v", v);
+    //writeValue("2_7v", v);
 
-    // Get the HTML element
-    const expressionElement = document.getElementById("2_7_1");
-	const resultElement = document.getElementById("2_7_2");
+    // Get the HTML element where the expression will be rendered
+    const div271 = document.getElementById("2_7_1");
+    // Get the HTML element where the result will be displayed
+	const div272 = document.getElementById("2_7_2");
 
-    // Define the expression
-    const expr = 'cross([1, 1, 1], [2, -2, 1])';
+    // The expression is the cross product of vectors w and r
+    // Using JSON.stringify to ensure the vectors are properly formatted
+    // This will create a string representation of the cross product expression
+    const expr = `cross(${JSON.stringify(w)}, ${JSON.stringify(r)})`;
 
-	renderMathExpression(expressionElement, expr);
+    // Render the expression using Math.js in the HTML element
+	renderMathExpression(div271, expr);
 
 	// Evaluate and display the result
 	const result = math.evaluate(expr);
-	resultElement.textContent = math.format(result); // Use textContent for plain text output
-
-	// Parse the expression using Math.js
-    const node = math.parse(expr);
-
-    // Convert the parsed expression to LaTeX
-    const latex = node.toTex({parenthesis: 'keep'});
-
-    // Get the HTML element
-    const div273 = document.getElementById("2_7_3");
-
-    // Use MathJax to render the LaTeX expression
-    div273.innerHTML = '';
-    div273.innerHTML = MathJax.tex2svg(latex).outerHTML;
-
+	div272.textContent = math.format(result); // Use textContent for plain text output
 }
 
 // Exercise 2_8

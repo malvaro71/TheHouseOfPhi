@@ -1,3 +1,18 @@
+// Importaciones
+import { createMarkerArrow,
+    generateFunctionPoints
+} from './SVGDrawing.js';
+
+// Import the CartesianPlane class
+import CartesianPlane from './CartesianPlane.js';
+
+// Import the EuclideanSpace class
+import EuclideanSpace from './EuclideanSpace.js';
+
+// Import the math library 
+// import * as math from 'mathjs'; lo dejamos en paso hasta que integremos mathjs en el proyecto.
+// Cuando lo integremos, recordar añadir node_modules/ al archivo .gitignore en la raíz del proyecto.
+
 // svg1.1 point P, with coordinates (x1, y1, z1)
 {
     // Get the SVG element from the DOM

@@ -18,11 +18,13 @@
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
         <!-- loads page script files-->
-        <script src="scripts/ArrayFunctions.js"></script> 
+        <!--<script src="scripts/ArrayFunctions.js"></script> 
         <script src="scripts/SVGDrawing.js"></script>
         <script src="scripts/vectorsForm.js"></script>
-        <script src="scripts/vectorsPage.js" defer></script>
-        <script src="scripts/SelectLanguage.js" defer></script>
+        <script src="scripts/vectorsPage.js" defer></script>-->
+        <script type="module" src="scripts/vectorsForm.js"></script>
+        <script type="module" src="scripts/vectorsPage.js"></script>
+        <!--<script src="scripts/SelectLanguage.js" defer></script>-->
     </head>
     <body>
         <!--<select id="langSelector">
@@ -184,9 +186,9 @@
                 
                 <p>
                     Click in the button to open an app that finds vector magnitude and direction given its components. 
-                    <br><button onclick="openForm('coordToMagDirEng')">Calculate vector magnitude and direction</button>
+                    <br><button id="openFormButton">Calculate vector magnitude and direction</button>
                 </p>
-                <form id="coordToMagDirEng" style="display: none">
+                <form id="coordToMagDir" style="display: none">
                     <h2>Calculate vector magnitude and direction from given coordinates.</h2>
                     <label>Vector X Coordinate:
                         <input id="xCoordinate" type="number" name="xCoordEng" value="0" step="0.1">
@@ -201,11 +203,8 @@
                         <output id="direction" name="direction" for="xCoordinate yCoordinate"></output>
                     º<br>
                     </label>                    
-                    <button type='button' onclick="closeForm('coordToMagDirEng')">Close</button><br>
+                    <button type='button' id="closeFormButton">Close</button><br>
                     <canvas id="myCanvasEng" width="400" height="400" style="border:1px solid grey"></canvas>
-                    <script>
-                        manageCanvas ("myCanvasEng", "xCoordinate", "yCoordinate", "magnitude", "direction");
-                    </script>
                 </form>
             </section>
             <section><h3>1.7 Vector addition and scalar multiplication using vector components</h3>

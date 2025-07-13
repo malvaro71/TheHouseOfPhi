@@ -93,4 +93,26 @@
         xInput.oninput = function () { updateMagnitudeAndDirection(xInput, yInput, magID, dirID, canvas) };
         yInput.oninput = function () { updateMagnitudeAndDirection(xInput, yInput, magID, dirID, canvas) };
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('openFormButton');
+        if (button) {
+            button.addEventListener('click', () => openForm('coordToMagDir'));
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const closeButton = document.getElementById('closeFormButton');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => closeForm('coordToMagDir'));
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Solo inicializa el canvas si existe en la página actual
+        const canvas = document.getElementById("myCanvasEng");
+        if (canvas) {
+            manageCanvas("myCanvasEng", "xCoordinate", "yCoordinate", "magnitude", "direction");
+        }
+    });
 }

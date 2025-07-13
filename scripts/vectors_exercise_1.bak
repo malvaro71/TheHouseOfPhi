@@ -203,11 +203,11 @@ myPlane2_1.drawLabel([7, 33], "Vb = <0, 36> Km/h", {corner: "lefttop", fontSize:
 const initialPoint = [0, 0];
 
 // Draw Vr
-const Vr = TextWithSubscript("V", "r");
+const Vr = textWithSubscript("V", "r");
 myPlane2_1.drawVector(initialPoint, vRiver, Vr, {strokeColor: "green"}, {corner: "righttop"});
 
 // Draw Vp
-const Vp = TextWithSubscript("V", "p");
+const Vp = textWithSubscript("V", "p");
 myPlane2_1.drawVector(initialPoint, vPropelled, Vp, {strokeColor: "blue"}, {corner: "righttop"});
 
 // Draw V components
