@@ -19,6 +19,7 @@ export default defineConfig([
             globals: {
                 ...globals.browser, // Añade todas las variables globales del navegador (window, document, etc.)
                 math: "readonly",   // Añade 'math' como global de solo lectura si la cargas vía <script>
+                MathJax: "readonly", // Añade 'MathJax' como global de solo lectura si la cargas vía <script>
             },
         },
     },

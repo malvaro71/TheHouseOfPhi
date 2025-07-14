@@ -85,10 +85,10 @@ class EuclideanSpace {
         throw new TypeError("Invalid coordinates: Expecting an array.");
         }
         if (coordinates.length !== 3) {
-        throw new ValueError("Invalid coordinates: Expecting an array with length 3 (x, y and z values).");
+        throw new RangeError("Invalid coordinates: Expecting an array with length 3 (x, y and z values).");
         }
         if (!coordinates.every((element) => typeof element === "number" && isFinite(element))) {
-        throw new ValueError("Invalid coordinates: Expecting an array containing only finite numbers.");
+        throw new RangeError("Invalid coordinates: Expecting an array containing only finite numbers.");
         }
         // If all conditions pass, the function returns true (implicit return)
     }
@@ -173,7 +173,6 @@ class EuclideanSpace {
 
 		// Destructure lineAttributes and textAttributes, and set its default values
 		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
-		const {corner = "rightbottom", fill} = textAttributes;
 
 		//Calculate vector endpoint using initial point and vector components.
 		const endPoint = math.add(initialPoint, vectorComponents);

@@ -292,7 +292,6 @@ class CartesianPlane {
 
 		// Destructure the object and set default values
 		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
-		const { corner = "rightbottom"} = textAttributes;
 
 		//Calculate vector endpoint using initial point and vector components.
 		const endPoint = math.add(initialPoint, vectorComponents);
