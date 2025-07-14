@@ -62,17 +62,15 @@
                 <p>
                     Vector calculus, which is the study of operations performed on vectors, is based on free vectors, since two given free vectors are equivalent to a given sliding vector or a given bound vector, as long as we keep in mind the physical meaning of the vector under analysis. From now on, <strong>we'll talk about free vectors if not mentioned otherwise</strong>.
                 </p>
-                <p style="margin-bottom: 7px;">
-                    A vector is characterized:
-                    <ul>
-                        <li>
-                            by its <strong>magnitude (or module)</strong>, which is equal to the length of the segment \(\overline{AB}\) and is denoted by \(\Vert\vec v\Vert\),
-                        </li>
-                        <li>
-                            and by its <strong>direction</strong>: from A to B.
-                        </li>
-                    </ul>
-                </p>
+                <p class="intro-paragraph">A vector is characterized:</p>
+                <ul>
+                    <li>
+                        by its <strong>magnitude (or module)</strong>, which is equal to the length of the segment \(\overline{AB}\) and is denoted by \(\Vert\vec v\Vert\),
+                    </li>
+                    <li>
+                        and by its <strong>direction</strong>: from A to B.
+                    </li>
+                </ul>   
             </section>
             <section><h3>1.3 Vector Addition, Graphical Method:</h3>    
                 <p>
@@ -182,7 +180,7 @@
                     Click in the button to open an app that finds vector magnitude and direction given its components. 
                     <br><button id="openFormButton">Calculate vector magnitude and direction</button>
                 </p>
-                <form id="coordToMagDir" style="display: none">
+                <form id="coordToMagDir">
                     <h2>Calculate vector magnitude and direction from given coordinates.</h2>
                     <label>Vector X Coordinate:
                         <input id="xCoordinate" type="number" name="xCoordEng" value="0" step="0.1">
@@ -198,7 +196,7 @@
                     º<br>
                     </label>                    
                     <button type='button' id="closeFormButton">Close</button><br>
-                    <canvas id="myCanvasEng" width="400" height="400" style="border:1px solid grey"></canvas>
+                    <canvas id="myCanvasEng" width="400" height="400" class="canvas-border"></canvas>
                 </form>
             </section>
             <section><h3>1.7 Vector addition and scalar multiplication using vector components</h3>
@@ -556,8 +554,8 @@
         <br>
         <article><!-- 2. VECTOR OPERATIONS EXERCISES-->
             <div class="header-container">
-                <h2 id="Vector Operations Exercises" style="margin-right: 10px;">2. VECTOR OPERATIONS EXERCISES</h2>
-                <a href="#Top">Back to the top.</a>
+                <h2 id="Vector Operations Exercises">2. VECTOR OPERATIONS EXERCISES</h2>
+                <a href="#Top" class="right">Back to the top.</a>
             </div>
             <section><h3>Exercise 1</h3>
                 <p>
@@ -594,10 +592,10 @@
                     &emsp; $$\phi = \arccos\frac{\Vert\vec v_p\Vert\cdot\Vert\vec v_r\Vert}{\vec v_p\cdot\vec v_r}$$ 
                 </p>
                 <p>
-                    &emsp; &phi; = <span style="display: inline;" id="2_1phi1"></span>º
+                    &emsp; \(\phi = \)<span id="2_1phi1"></span>º
                 </p>
                 <p>
-                    So, the answer to the exercise is that the boat must be propeled at a speed of <span id="2_1normvPropelled1"></span> Km/h and in a direction that forms <span style="display: inline;" id="2_1phi2"></span>º with the river.
+                    So, the answer to the exercise is that the boat must be propeled at a speed of <span id="2_1normvPropelled1"></span> Km/h and in a direction that forms <span id="2_1phi2"></span>º with the river.
                 </p>
                 <figure class="centered">
                     <svg id="svg2_1"></svg>
@@ -823,8 +821,7 @@
                     &emsp;$$\vec v = \vec w \times \vec r = \begin{vmatrix}\vec i & \vec j & \vec k \\ 1 & 1 & 1 \\ 2 & -2 & 1\\ \end{vmatrix} = \begin{vmatrix} 1 & 1 \\ -2 & 1 \\ \end{vmatrix} \vec i - \begin{vmatrix} 1 & 1 \\ 2 & 1\\ \end{vmatrix} \vec j + \begin{vmatrix} 1 & 1 \\ 2 & -2 \\ \end{vmatrix}\vec k = (1+2)\vec i -(1-2)\vec j + (-2-2)\vec k = 3\vec i + \vec j -4\vec k$$
                 </p>
                 <p>Or \(\vec v\) = (<span id="2_7v"></span>)</p>
-                <p> \(\vec v = \vec w \times \vec r =\) <span id="2_7_1" style="display: inline-block;"></span> = <span id="2_7_2"></span></p>
-                <p> \(\vec v = \vec w \times \vec r =\) <span id="2_7_3" style="display: inline-block;"></span> = <span id="2_7_4"></span></p>
+                <p> \(\vec v = \vec w \times \vec r =\) <span id="2_7_1" class ="math-inline-block"></span> = <span id="2_7_2"></span></p>
             </section>
             <section><h3>Exercise 8</h3>
                 <p>
