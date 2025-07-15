@@ -361,7 +361,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     // set a cartesian plane with xMin, xMax, yMin and yMax.
     const myPlane1_8 = new CartesianPlane(svg1_8, -5, 20, -5, 100);
     myPlane1_8.drawAxes("", "t", "O");
-    myPlane1_8.drawLabel([-2, 37], "x", {corner: "leftbottom", fontSize: 25});
+    myPlane1_8.drawLabel([-2, 80], "x", {corner: "leftbottom", fontSize: 25});
 
     // set values for the uniform rectilinear motion
     const x0 = 10; // initial position of the object when t=0
@@ -405,18 +405,7 @@ import EuclideanSpace from './EuclideanSpace.js';
 
     // Draw an horizontal line at x0
     myPlane1_8.drawSegment([0, x0], [37, x0], {strokeColor: "green", strokeDasharray: "5,5"});
-
-    //Draw an arc representing an angle in the Cartesian plane
-    //myPlane1_8.drawArc([0, x0], [10, 0], [10, f1_8(10) - x0], 5);
-
-    // Mark the angle α
-    //myPlane1_8.drawLabel([6, x0 + 0.5], "\u03B1", {fill: "blue", corner: "leftbottom", fontSize: 25}); // alpha
-
-	// Draw a point
-	//myPlane1_8.drawPoint([20, f1_8(20)], "blue");
-	//myPlane1_8.drawSegment([20, 0], [20, f1_8(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
-	//myPlane1_8.drawSegment([0, f1_8(20)], [20, f1_8(20)], {strokeColor: "blue", strokeDasharray: "5,5"});
-	//myPlane1_8.drawLabel([0, f1_8(20)], "x(t\u2081)", {fill: "blue", corner: "rightbottom", fontSize: 25});
-	//myPlane1_8.drawLabel([20, 0], "t\u2081", {fill: "blue", corner: "lefttop", fontSize: 25});
 }
+
+    
 
