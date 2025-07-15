@@ -355,7 +355,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     svg1_8.setAttribute("height", "400");
 
     // set a cartesian plane with xMin, xMax, yMin and yMax.
-    const myPlane1_8 = new CartesianPlane(svg1_8, -5, 20, -5, 100);
+    const myPlane1_8 = new CartesianPlane(svg1_8, -3, 20, -10, 100);
     myPlane1_8.drawAxes("", "t", "O");
     myPlane1_8.drawLabel([-2, 80], "x", {corner: "leftbottom", fontSize: 25});
 
@@ -370,9 +370,9 @@ import EuclideanSpace from './EuclideanSpace.js';
     }
     
     // Generate a list of points: (x,t) = [x(t), t] in a time interval
-    const numberOfPoints = 20; // number of points to generate
+    const numberOfPoints = 30; // number of points to generate
     const timeMin = 0; // start time
-    const timeMax = 10; // end time
+    const timeMax = 15; // end time
     const points = [];
     const step = (timeMax - timeMin) / (numberOfPoints - 1);
 	for (let i = 0; i < numberOfPoints; i++) {
@@ -385,7 +385,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     myPlane1_8.drawPath(points, "green");
 
     // Mark x0
-    myPlane1_8.drawLabel([-3, 12], "x\u2080", {fill: "green", corner: "lefttop", fontSize: 25});
+    myPlane1_8.drawLabel([0, x0], "x\u2080", {fill: "green", corner: "lefttop", fontSize: 25});
 
     // Draw an horizontal line at x0
     myPlane1_8.drawSegment([0, x0], [37, x0], {strokeColor: "green", strokeDasharray: "5,5"});
