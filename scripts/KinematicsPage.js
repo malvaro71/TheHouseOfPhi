@@ -383,6 +383,9 @@ import EuclideanSpace from './EuclideanSpace.js';
         const t = timeMin + i * step;
         points.push([t, f1_8(t)]);
     }
+	
+	// to check the values
+	console.log(points);
 
     // Draw the path
     myPlane1_8.drawPath(points, "green");
