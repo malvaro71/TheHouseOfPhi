@@ -370,7 +370,7 @@ import EuclideanSpace from './EuclideanSpace.js';
 
     // set a function that describes a uniform rectilinear motion: f(t) = x0 + v0 * t + (1/2)*a*t^2
     function f1_8(t) {
-        return x0 + v0 * t + (1/2)*a*t^2;
+        return x0 + v0 * t + (1/2)*a*t*t;
     }
     
     // Generate a list of points: (x,t) = [x(t), t] in a time interval
