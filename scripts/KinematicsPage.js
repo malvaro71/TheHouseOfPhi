@@ -389,6 +389,20 @@ import EuclideanSpace from './EuclideanSpace.js';
 
     // Draw an horizontal line at x0
     myPlane1_8.drawSegment([0, x0], [37, x0], {strokeColor: "green", strokeDasharray: "5,5"});
+
+	// set a second function as the derivative of the first one df(t) = v0 + a*t
+	function df1_8(t) {
+        return v0 + a*t;
+    }
+
+	// define the position and speed at a given time
+	const t1 = 7; //time
+	const x1 = f1_8(t1); // position a this time
+	const v1 = df1_8(t1); // speed a this time
+	myplane1_8.drawPoint([t1, x1], "blue"); // mark this position in the trayectory
+	myplane1_8.drawSegment([t1, x1], [t1+5, x1+5*v1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw a tangent segment to this point
+	myplane1_8.drawSegment([t1, x1], [t1+5, x1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw an horizontal segment to the same point
+    myPlane1_7.drawArc([t1, x1], [5, 0], [0, 5*v1], 5); //Draw an arc representing the angle of the trayectory at this point
 }
 
     
