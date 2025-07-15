@@ -381,10 +381,20 @@ import EuclideanSpace from './EuclideanSpace.js';
     const step = (timeMax - timeMin) / (numberOfPoints - 1);
 	for (let i = 0; i < numberOfPoints; i++) {
         const t = timeMin + i * step;
-        points.push([t, f1_8(t)]);
+        const position = f1_8(t); // Calculate the position for the current 't'
+        points.push([t, position]);
+
+        // Log the values for each step
+        console.log(`--- Step ${i + 1} ---`);
+        console.log(`x0: ${x0}`);
+        console.log(`v0: ${v0}`);
+        console.log(`a: ${a}`);
+        console.log(`t: ${t}`);
+        console.log(`f1_8(t) (calculated position): ${position}`);
     }
 	
-	// to check the values
+	// This will show the final array of all points after the loop completes
+	console.log("\n--- Final Points Array ---");
 	console.log(points);
 
     // Draw the path
