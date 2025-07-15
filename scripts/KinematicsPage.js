@@ -370,7 +370,6 @@ import EuclideanSpace from './EuclideanSpace.js';
 
     // set a function that describes a uniform rectilinear motion: f(t) = x0 + v0 * t + (1/2)*a*t^2
     function f1_8(t) {
-        // Set the initial values
         return x0 + v0 * t + (1/2)*a*t^2;
     }
     
