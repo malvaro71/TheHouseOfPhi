@@ -107,9 +107,6 @@ import EuclideanSpace from './EuclideanSpace.js';
         points.push(r(t));
     }
     
-    // set a list of points that define the path of movement. 
-    // const Points = [[-1, -1, 8], [0, 2, 13], [3, 6, 15], [11, 28, 18], [20, 25, 12]];
-
     // Calculate displacement vector (deltar)
     const deltar = math.subtract(r(6), r(1));
 
@@ -146,7 +143,6 @@ import EuclideanSpace from './EuclideanSpace.js';
 	}
     
     // set a list of points that define the path of movement. 
-    //const Points = [[1, 5], [3, 6], [5, 7], [7, 5], [8, 4]];
 	const Points = generateFunctionPoints(f1_3, 1, 8, 20);
 
     // Calculate r1, r2, v1, v2 and displacement vector (deltar)
@@ -368,9 +364,9 @@ import EuclideanSpace from './EuclideanSpace.js';
 	const v0 = 1 // initial speed of the moving object when t=0
 	const a = 0.5; // acceleration of the moving object
 
-    // set a function that describes a uniform rectilinear motion: f(t) = x0 + v0 * t + (1/2)*a*t^2
+    // set a function that describes a uniform rectilinear motion: f(t) = x0 + v0 * t + (1/2)*a*t**2
     function f1_8(t) {
-        return x0 + v0 * t + (1/2)*a*t*t;
+        return x0 + v0*t + (1/2)*a*t**2;
     }
     
     // Generate a list of points: (x,t) = [x(t), t] in a time interval
@@ -383,19 +379,7 @@ import EuclideanSpace from './EuclideanSpace.js';
         const t = timeMin + i * step;
         const position = f1_8(t); // Calculate the position for the current 't'
         points.push([t, position]);
-
-        // Log the values for each step
-        console.log(`--- Step ${i + 1} ---`);
-        console.log(`x0: ${x0}`);
-        console.log(`v0: ${v0}`);
-        console.log(`a: ${a}`);
-        console.log(`t: ${t}`);
-        console.log(`f1_8(t) (calculated position): ${position}`);
     }
-	
-	// This will show the final array of all points after the loop completes
-	console.log("\n--- Final Points Array ---");
-	console.log(points);
 
     // Draw the path
     myPlane1_8.drawPath(points, "green");
