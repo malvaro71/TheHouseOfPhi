@@ -403,6 +403,7 @@ import EuclideanSpace from './EuclideanSpace.js';
 	myplane1_8.drawSegment([t1, x1], [t1+5, x1+5*v1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw a tangent segment to this point
 	myplane1_8.drawSegment([t1, x1], [t1+5, x1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw an horizontal segment to the same point
     myPlane1_7.drawArc([t1, x1], [5, 0], [0, 5*v1], 5); //Draw an arc representing the angle of the trayectory at this point
+    myPlane1_7.drawLabel([t1+2, x1+1], "\u03B1", {fill: "blue", corner: "leftbottom", fontSize: 25}); // Mark the angle α
 }
 
     
