@@ -396,7 +396,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     }
 
 	// define the position and speed at a given time
-	const t1 = 7; //time
+	const t1 = 17; //time
 	const x1 = f1_8(t1); // position a this time
 	const v1 = df1_8(t1); // speed a this time
 	myPlane1_8.drawPoint([t1, x1], "blue"); // mark this position in the trayectory
