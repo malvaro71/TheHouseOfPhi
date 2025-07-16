@@ -456,6 +456,47 @@
                 <p>Al sustituir las expresiones para \(x(t)\) e \(y(t)\), obtenemos el vector de posición para el Movimiento Circular Uniforme:</p>
                 \[ \boxed{\vec{r}(t) = (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j}} \]
                 <p>Esta ecuación nos permite conocer la ubicación exacta de un objeto en MCU en cualquier instante de tiempo, a partir de su radio, velocidad angular constante y posición angular inicial.</p>
+                <h4>El Vector Velocidad en Coordenadas Cartesianas</h4>
+                <p>Una vez que tenemos el vector de posición \(\vec{r}(t)\), podemos obtener el <b>vector velocidad</b> \(\vec{v}(t)\) derivando \(\vec{r}(t)\) con respecto al tiempo:</p>
+                \[ \vec{v}(t) = \frac{d\vec{r}(t)}{dt} = \frac{d}{dt} \left[ (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \right] \]
+                <p>Derivando componente a componente:</p>
+                \[ v_x(t) = \frac{d}{dt} (R \cos(\omega t + \theta_0)) = -R \sin(\omega t + \theta_0) \cdot \omega = -R\omega \sin(\omega t + \theta_0) \]
+                \[ v_y(t) = \frac{d}{dt} (R \sin(\omega t + \theta_0)) = R \cos(\omega t + \theta_0) \cdot \omega = R\omega \cos(\omega t + \theta_0) \]
+                <p>Por lo tanto, el vector velocidad es:</p>
+                \[ \vec{v}(t) = (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \]
+                <p>Ahora, calculemos el <b>módulo (magnitud) de este vector velocidad</b> para verificar que coincide con la rapidez constante \(v = R\omega\):</p>
+                \[ \|\vec{v}(t)\| = \sqrt{v_x(t)^2 + v_y(t)^2} \]
+                \[ \|\vec{v}(t)\| = \sqrt{(-R\omega \sin(\omega t + \theta_0))^2 + (R\omega \cos(\omega t + \theta_0))^2} \]
+                \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 \sin^2(\omega t + \theta_0) + R^2\omega^2 \cos^2(\omega t + \theta_0)} \]
+                \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 (\sin^2(\omega t + \theta_0) + \cos^2(\omega t + \theta_0))} \]
+                <p>Dado que \(\sin^2(x) + \cos^2(x) = 1\):</p>
+                \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 \cdot 1} = \sqrt{R^2\omega^2} = |R\omega| \]
+                <p>Como \(R\) y \(\omega\) son magnitudes positivas, el módulo de la velocidad es:</p>
+                \[ \|\vec{v}(t)\| = R\omega \]
+                <p>Esto confirma que la magnitud del vector velocidad es la rapidez constante \(R\omega\), como esperábamos para el MCU.</p>
+                <h4>El Vector Aceleración en Coordenadas Cartesianas</h4>
+                <p>Para obtener el <b>vector aceleración</b> \(\vec{a}(t)\), derivamos el vector velocidad \(\vec{v}(t)\) con respecto al tiempo:</p>
+                \[ \vec{a}(t) = \frac{d\vec{v}(t)}{dt} = \frac{d}{dt} \left[ (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \right] \]
+                <p>Derivando componente a componente:</p>
+                \[ a_x(t) = \frac{d}{dt} (-R\omega \sin(\omega t + \theta_0)) = -R\omega \cos(\omega t + \theta_0) \cdot \omega = -R\omega^2 \cos(\omega t + \theta_0) \]
+                \[ a_y(t) = \frac{d}{dt} (R\omega \cos(\omega t + \theta_0)) = -R\omega \sin(\omega t + \theta_0) \cdot \omega = -R\omega^2 \sin(\omega t + \theta_0) \]
+                <p>Por lo tanto, el vector aceleración es:</p>
+                \[ \vec{a}(t) = (-R\omega^2 \cos(\omega t + \theta_0)) \hat{i} + (-R\omega^2 \sin(\omega t + \theta_0)) \hat{j} \]
+                <p>Podemos factorizar \(-R\omega^2\) de la expresión:</p>
+                \[ \vec{a}(t) = -R\omega^2 [ (\cos(\omega t + \theta_0)) \hat{i} + (\sin(\omega t + \theta_0)) \hat{j} ] \]
+                <p>Observa que la expresión entre corchetes es precisamente el vector de posición \(\vec{r}(t)\) dividido por \(R\), es decir, el vector unitario en la dirección del radio, \(\hat{u}_r = \frac{\vec{r}(t)}{R}\). Esto significa que la aceleración siempre apunta en la dirección opuesta al vector de posición (hacia el centro del círculo), lo cual es coherente con la aceleración centrípeta.</p>
+                \[ \vec{a}(t) = -\omega^2 \vec{r}(t) \]
+                <p>Finalmente, calculemos el <b>módulo del vector aceleración</b>:</p>
+                \[ \|\vec{a}(t)\| = \sqrt{a_x(t)^2 + a_y(t)^2} \]
+                \[ \|\vec{a}(t)\| = \sqrt{(-R\omega^2 \cos(\omega t + \theta_0))^2 + (-R\omega^2 \sin(\omega t + \theta_0))^2} \]
+                \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 \cos^2(\omega t + \theta_0) + R^2\omega^4 \sin^2(\omega t + \theta_0)} \]
+                \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 (\cos^2(\omega t + \theta_0) + \sin^2(\omega t + \theta_0))} \]
+                \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 \cdot 1} = \sqrt{R^2\omega^4} = |R\omega^2| \]
+                <p>Como \(R\) y \(\omega\) son positivos, el módulo de la aceleración es:</p>
+                \[ \|\vec{a}(t)\| = R\omega^2 \]
+                <p>Recordando que la rapidez lineal \(v = R\omega\), podemos sustituir \(\omega = v/R\) en la expresión de la aceleración:</p>
+                \[ \|\vec{a}(t)\| = R \left(\frac{v}{R}\right)^2 = R \frac{v^2}{R^2} = \frac{v^2}{R} \]
+                <p>Esto confirma que el módulo del vector aceleración es precisamente la <b>aceleración centrípeta (\(a_n\))</b> que definimos al principio, lo cual es coherente con la ausencia de aceleración tangencial en el MCU. La aceleración total es puramente centrípeta, encargándose solo de cambiar la dirección del vector velocidad.</p>
             </section>
         </article>
     </body>
