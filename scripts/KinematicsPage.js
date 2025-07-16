@@ -357,7 +357,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     // set a cartesian plane with xMin, xMax, yMin and yMax.
     const myPlane1_8 = new CartesianPlane(svg1_8, -3, 20, -10, 100);
     myPlane1_8.drawAxes("", "t", "O");
-    myPlane1_8.drawLabel([-2, 80], "x", {corner: "leftbottom", fontSize: 25});
+    myPlane1_8.drawLabel([-0.5, 90], "x", {corner: "leftbottom", fontSize: 25});
 
     // set values for the uniform rectilinear motion
     const x0 = 10; // initial position of the object when t=0
@@ -385,7 +385,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     myPlane1_8.drawPath(points, "green");
 
     // Mark x0
-    myPlane1_8.drawLabel([0, x0], "x\u2080", {fill: "green", corner: "lefttop", fontSize: 25});
+    myPlane1_8.drawLabel([0, x0], "x\u2080", {fill: "green", corner: "rightbottom", fontSize: 25});
 
     // Draw an horizontal line at x0
     myPlane1_8.drawSegment([0, x0], [37, x0], {strokeColor: "green", strokeDasharray: "5,5"});
