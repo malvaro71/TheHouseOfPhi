@@ -362,7 +362,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     // set values for the uniform rectilinear motion
     const x0 = 10; // initial position of the object when t=0
 	const v0 = 1 // initial speed of the moving object when t=0
-	const a = 0.2; // acceleration of the moving object
+	const a = 0.005; // acceleration of the moving object
 
     // set a function that describes a uniform rectilinear motion: f(t) = x0 + v0 * t + (1/2)*a*t**2
     function f1_8(t) {
@@ -372,7 +372,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     // Generate a list of points: (x,t) = [x(t), t] in a time interval
     const numberOfPoints = 30; // number of points to generate
     const timeMin = 0; // start time
-    const timeMax = 15; // end time
+    const timeMax = 80; // end time
     const points = [];
     const step = (timeMax - timeMin) / (numberOfPoints - 1);
 	for (let i = 0; i < numberOfPoints; i++) {
