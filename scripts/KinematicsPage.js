@@ -362,7 +362,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     // set values for the uniform rectilinear motion
     const x0 = 10; // initial position of the object when t=0
 	const v0 = 0.1 // initial speed of the moving object when t=0
-	const a = 0.014; // acceleration of the moving object
+	const a = 0.016; // acceleration of the moving object
 
     // set a function that describes a uniform rectilinear motion: f(t) = x0 + v0 * t + (1/2)*a*t**2
     function f1_8(t) {
@@ -403,7 +403,7 @@ import EuclideanSpace from './EuclideanSpace.js';
 	myPlane1_8.drawSegment([t1, x1], [t1+45, x1+45*v1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw a tangent segment to this point
 	myPlane1_8.drawSegment([t1, x1], [t1+45, x1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw an horizontal segment to the same point
     myPlane1_8.drawArc([t1, x1], [25, 0], [25, 25*v1], 5); //Draw an arc representing the angle α between an horizontal line and the tangent to the trayectory at this point
-    myPlane1_8.drawLabel([t1+7, x1+1], "\u03B1", {fill: "blue", corner: "leftbottom", fontSize: 25}); // Mark the angle α
+    myPlane1_8.drawLabel([t1+7, x1], "\u03B1", {fill: "blue", corner: "leftbottom", fontSize: 25}); // Mark the angle α
     myPlane1_8.drawSegment([t1, x1], [t1, 0], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw vertical line from the point to t-axys
     myPlane1_8.drawSegment([t1, x1], [0, x1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw horizontal line from the point to x-axys
     myPlane1_8.drawLabel([0, x1], "x\u2081", {fill: "blue", corner: "rightbottom", fontSize: 20}); // Mark x1
