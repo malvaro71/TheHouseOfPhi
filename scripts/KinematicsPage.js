@@ -361,7 +361,7 @@ import EuclideanSpace from './EuclideanSpace.js';
 
     // set values for the uniform rectilinear motion
     const x0 = 10; // initial position of the object when t=0
-	const v0 = 1 // initial speed of the moving object when t=0
+	const v0 = 0.1 // initial speed of the moving object when t=0
 	const a = 0.005; // acceleration of the moving object
 
     // set a function that describes a uniform rectilinear motion: f(t) = x0 + v0 * t + (1/2)*a*t**2
