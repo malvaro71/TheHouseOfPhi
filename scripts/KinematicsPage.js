@@ -355,7 +355,7 @@ import EuclideanSpace from './EuclideanSpace.js';
     svg1_8.setAttribute("height", "400");
 
     // set a cartesian plane with xMin, xMax, yMin and yMax.
-    const myPlane1_8 = new CartesianPlane(svg1_8, -3, 20, -10, 100);
+    const myPlane1_8 = new CartesianPlane(svg1_8, -10, 100, -10, 100);
     myPlane1_8.drawAxes("", "t", "O");
     myPlane1_8.drawLabel([-1, 90], "x", {corner: "leftbottom", fontSize: 20});
 
