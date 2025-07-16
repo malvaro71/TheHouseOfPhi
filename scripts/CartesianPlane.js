@@ -161,6 +161,49 @@ class CartesianPlane {
     }
 
 	/**
+	 * Draws a circunference in the Cartesian plane.
+	 * 
+	 * @param {number[]} coordinates - The coordinates of the center in the Cartesian plane ([x, y]).
+	 * @param {radius} radius - The radius of the circunference
+	 * @param {object} lineAttributes - An object containing style attributes for the line segment (default values are applied if omitted).
+	 *                 * `strokeColor` (string): The color of the line (default: "brown").
+	 *                 * `strokeWidth` (number): The width of the line in pixels (default: 2).
+	 *                 * `strokeDasharray` (string): The dash pattern for the line (default: "none").
+	 * 
+	 * @throws {TypeError} If coordinates is not a number array of length 2.
+	 * @throws {ValueError} If any element in coordinates is not a number.
+	 */
+    drawCircunference(coordinates, radius, lineAttributes = {}) {
+		//validate coordinates
+		this.validateCoordinates2D(coordinates);
+
+		// Validate lineAttributes
+		validateObject(lineAttributes);
+
+		// Destructure the lineAttributes and set its default values
+		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none"} = lineAttributes;
+
+		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
+		const [xPosition, yPosition] = this.transformCoordinates(coordinates);
+
+		// Create a new circle element.
+		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+		// Set attributes for the circle.
+		//circleElement.setAttribute("id", id);
+		circleElement.setAttribute("cx", xPosition);
+		circleElement.setAttribute("cy", yPosition);
+		circleElement.setAttribute("r", radius);
+		circleElement.setAttribute("fill", "none");
+		circleElement.setAttribute("stroke", strokeColor);
+		circleElement.setAttribute("stroke-width", strokeWidth);
+		circleElement.setAttribute("stroke-dasharray", strokeDasharray);
+
+		// Append the circle element to the SVG.
+		this.svgElement.appendChild(circleElement);
+    }
+
+	/**
 	 * Draws an arc representing an angle in the Cartesian plane, counter-clockwise from the initial side to the terminal side.
 	 * 
 	 * @param {number[]} vertex - The coordinates of the vertex of the angle ([x, y]).
