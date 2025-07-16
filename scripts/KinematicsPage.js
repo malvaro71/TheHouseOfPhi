@@ -402,8 +402,12 @@ import EuclideanSpace from './EuclideanSpace.js';
 	myPlane1_8.drawPoint([t1, x1], "blue"); // mark this position in the trayectory
 	myPlane1_8.drawSegment([t1, x1], [t1+5, x1+5*v1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw a tangent segment to this point
 	myPlane1_8.drawSegment([t1, x1], [t1+5, x1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw an horizontal segment to the same point
-    myPlane1_8.drawArc([t1, x1], [5, 0], [0, 5*v1], 5); //Draw an arc representing the angle of the trayectory at this point
+    myPlane1_8.drawArc([t1, x1], [5, 0], [5, 5*v1], 1); //Draw an arc representing the angle α between an horizontal line and the tangent to the trayectory at this point
     myPlane1_8.drawLabel([t1+2, x1+1], "\u03B1", {fill: "blue", corner: "leftbottom", fontSize: 25}); // Mark the angle α
+    myPlane1_8.drawSegment([t1, x1], [t1, 0], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw vertical line from the point to t-axys
+    myPlane1_8.drawSegment([t1, x1], [0, x1], {strokeColor: "blue", strokeDasharray: "5,5"}); // draw horizontal line from the point to x-axys
+    myPlane1_8.drawLabel([0, x1], "x\u2081", {fill: "blue", corner: "rightbottom", fontSize: 25}); // Mark x1
+    myPlane1_8.drawLabel([t1, 0], "t\u2081", {fill: "blue", corner: "righttop", fontSize: 25}); // Mark t1
 }
 
     
