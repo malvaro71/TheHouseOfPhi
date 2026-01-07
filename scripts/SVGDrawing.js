@@ -31,6 +31,25 @@ export function createMarkerArrow(id, fillColor) {
 }
 
 /**
+ * Ensure a single hidden SVG with shared <defs> exists in the document containing
+ * the arrow marker definitions. Safe to call multiple times (idempotent).
+ */
+export function ensureSharedMarkerDefs() {
+	if (document.getElementById('shared-svg-markers')) return;
+	const NS = 'http://www.w3.org/2000/svg';
+	const sharedSvg = document.createElementNS(NS, 'svg');
+	sharedSvg.id = 'shared-svg-markers';
+	sharedSvg.setAttribute('style', 'position:absolute;width:0;height:0;overflow:hidden;pointer-events:none');
+	const defs = document.createElementNS(NS, 'defs');
+	defs.appendChild(createMarkerArrow('Brownarrow', 'brown'));
+	defs.appendChild(createMarkerArrow('Bluearrow', 'blue'));
+	defs.appendChild(createMarkerArrow('Greenarrow', 'green'));
+	sharedSvg.appendChild(defs);
+	const appendToBody = () => document.body.appendChild(sharedSvg);
+	if (document.body) appendToBody(); else document.addEventListener('DOMContentLoaded', appendToBody, {once:true});
+}
+
+/**
  * Draws a line segment in an SVG element with specified styling.
  *
  * This function creates an SVG line element and sets its attributes based on the provided parameters.
@@ -147,6 +166,23 @@ export function renderMathExpression(elementId, expression) {
 	// Use MathJax to render the LaTeX expression
 	elementId.innerHTML = '';
 	elementId.innerHTML = MathJax.tex2svg(latex).outerHTML;
+}
+
+/**
+ * Writes a value to an element's innerHTML.
+ * If the value is an array, joins its elements with commas and spaces.
+ * Otherwise, sets the innerHTML to the value directly.
+ * @param {string} elementId - The ID of the element to update.
+ * @param {Array|string|number} value - The value to write to the element.
+ */
+export function writeValue(elementId, value) {
+	const element = document.getElementById(elementId);
+	if (!element) return;
+	if (Array.isArray(value)) {
+		element.innerHTML = value.join(", ");
+	} else {
+		element.innerHTML = value;
+	}
 }
 
 /**

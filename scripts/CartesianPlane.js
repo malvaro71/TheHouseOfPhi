@@ -11,54 +11,66 @@ import { validateObject,
 // Cuando lo integremos, recordar añadir node_modules/ al archivo .gitignore en la raíz del proyecto.
 
 /**
- * Class to manage the graphical representation of a Cartesian plane within an SVG element.
- */
-class CartesianPlane {
+* Class to manage the graphical representation of a Cartesian plane within an SVG element.
+*/
+
+class CartesianPlane { 
 	/**
-	 * Create a new CartesianPlane instance.
-	 * 
-	 * @param {SVGElement} svgElement - The SVG element where the Cartesian plane will be drawn.
-	 * @param {number} xMin - The minimum value on the x-axis.
-	 * @param {number} xMax - The maximum value on the x-axis (must be greater than xMin).
-	 * @param {number} yMin - The minimum value on the y-axis.
-	 * @param {number} yMax - The maximum value on the y-axis (must be greater than yMin).
-	 * 
-	 * @throws {Error} If xMin is greater than xMax or yMin is greater than yMax.
-	 */
-	constructor(svgElement, xMin, xMax, yMin, yMax) {
+	* Create a new CartesianPlane instance.
+	* 
+	* @param {SVGElement} svgElement - The SVG element where the Cartesian plane will be drawn.
+	* @param {number} xMin - The minimum value on the x-axis.
+	* @param {number} xMax - The maximum value on the x-axis (must be greater than xMin).
+	* @param {number} yMin - The minimum value on the y-axis.
+	* @param {number} yMax - The maximum value on the y-axis (must be greater than yMin).
+	* @param {number} [desiredScale=16] - Pixels per unit for the plane scale. Default is 16 pixels per unit.
+    *
+	* @throws {Error} If xMin is greater than xMax or yMin is greater than yMax.
+	*/
+	
+	constructor(svgElement, xMin, xMax, yMin, yMax, desiredScale = 16) {
+        this.svgElement = svgElement;
 
-        // Define the svg element where the cartesian plane will be represented
-		this.svgElement = svgElement;
+        if (xMin > xMax) {
+            throw new Error("Invalid plane dimensions: xMin cannot be greater than xMax.");
+        }
+        if (yMin > yMax) {
+            throw new Error("Invalid plane dimensions: yMin cannot be greater than yMax.");
+        }
 
-		// Validate minimum and maximum values
-		if (xMin > xMax) {
-			throw new Error("Invalid plane dimensions: xMin cannot be greater than xMax.");
-		}
-		if (yMin > yMax) {
-			throw new Error("Invalid plane dimensions: xMin cannot be greater than xMax.");
-		}
+        this.xMin = xMin;
+        this.yMin = yMin;
+        this.xMax = xMax;
+        this.yMax = yMax;
 
-		// Define the cartesian plane coordinates range to be displayed in the svg element.
-		this.xMin = xMin;
-  		this.yMin = yMin;
-  		this.xMax = xMax;
-  		this.yMax = yMax;
+		// desiredScale is provided as a constructor parameter (pixels per unit)
 
-		// Get the width and height of the SVG element as strings
-		const svgWidth = this.svgElement.getAttribute("width");
-		const svgHeight = this.svgElement.getAttribute("height");
+        // Calculate SVG dimensions based on the Cartesian range and desired scale
+        this.svgWidthNum = (xMax - xMin) * desiredScale;
+        this.svgHeightNum = (yMax - yMin) * desiredScale;
 
-		// Convert strings to numbers
-		this.svgWidthNum = parseFloat(svgWidth);
-		this.svgHeightNum = parseFloat(svgHeight);
-	  
-		// Set the position of the origin of coordinates.
-		this.OriginX = this.svgWidthNum * (-xMin / (xMax - xMin));
-		this.OriginY = this.svgHeightNum *(1- (-yMin / (yMax - yMin)));
-	  
-		// Set the scale; that is, the number of pixels that correspond to a unit of length in the plane.
-		this.planeScaleX = this.svgWidthNum / (xMax - xMin);
-		this.planeScaleY = this.svgHeightNum / (yMax - yMin);
+        // Set the SVG element's width and height attributes
+        this.svgElement.setAttribute("width", this.svgWidthNum);
+        this.svgElement.setAttribute("height", this.svgHeightNum);
+
+        // Optionally, set the viewBox to match the SVG's pixel dimensions directly
+        // This effectively means 1 SVG unit = 1 pixel.
+        // The viewBox min-x and min-y would be 0, 0 because transformCoordinates handles the origin shift.
+        this.svgElement.setAttribute("viewBox", `0 0 ${this.svgWidthNum} ${this.svgHeightNum}`);
+
+        // Set the scales (they will be equal if desiredScale is used for both)
+        this.planeScaleX = desiredScale; // This will be the desiredScale
+        this.planeScaleY = desiredScale; // This will be the desiredScale
+
+        // Set the position of the origin of coordinates within the SVG's (0,0) to (svgWidth, svgHeight) coordinate system
+        // SVG's Y-axis points down, so we need to adjust for that.
+        // OriginX: xMin maps to 0 in SVG, so the origin (0) is at -xMin * planeScaleX
+        this.OriginX = -this.xMin * this.planeScaleX;
+        // OriginY: yMax maps to 0 in SVG, so the origin (0) is at yMax * planeScaleY
+        // Or, more precisely, yMin maps to svgHeight and yMax maps to 0.
+        // So y_svg = svgHeight - (y - yMin) * planeScaleY
+        // When y = 0, y_svg = svgHeight - (-yMin) * planeScaleY = svgHeight + yMin * planeScaleY
+        this.OriginY = this.svgHeightNum + this.yMin * this.planeScaleY;
     }
 
     /**
@@ -186,6 +198,10 @@ class CartesianPlane {
 		// Transform point coordinates to draw it in the SVG element and destructure the coordinates array.
 		const [xPosition, yPosition] = this.transformCoordinates(coordinates);
 
+        // Transform the radius to the SVG element scale.
+        // The radius is multiplied by the planeScaleX because the SVG element is scaled in the x direction
+		const transformedRadius = radius * this.planeScaleX;
+
 		// Create a new circle element.
 		const circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle");
 
@@ -193,7 +209,7 @@ class CartesianPlane {
 		//circleElement.setAttribute("id", id);
 		circleElement.setAttribute("cx", xPosition);
 		circleElement.setAttribute("cy", yPosition);
-		circleElement.setAttribute("r", radius);
+		circleElement.setAttribute("r", transformedRadius);
 		circleElement.setAttribute("fill", "none");
 		circleElement.setAttribute("stroke", strokeColor);
 		circleElement.setAttribute("stroke-width", strokeWidth);

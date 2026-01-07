@@ -1,8 +1,9 @@
 
 // Importaciones
-import { createMarkerArrow,
+import { ensureSharedMarkerDefs,
     textWithSubscript,
-    renderMathExpression
+    renderMathExpression,
+    writeValue
 } from './SVGDrawing.js';
 
 // Import the CartesianPlane class
@@ -15,33 +16,22 @@ import EuclideanSpace from './EuclideanSpace.js';
 // import * as math from 'mathjs'; lo dejamos en paso hasta que integremos mathjs en el proyecto.
 // Cuando lo integremos, recordar añadir node_modules/ al archivo .gitignore en la raíz del proyecto.
 
+// Ensure shared marker definitions are present once for the whole document
+ensureSharedMarkerDefs();
+// Markers are provided globally via the hidden shared <defs>; no need to
+// append them into any additional SVG.
 
 // svg1_1. A vector is represented by a directed line segment from its initial point A to its terminal point B.
 {
     // Get the SVG element from the DOM
     const svg1_1 = document.getElementById("svg1_1");
 
-    //Create arrow markers
-    const brownMarker = createMarkerArrow("Brownarrow", "brown");
-    const blueMarker = createMarkerArrow("Bluearrow", "blue");
-    const greenMarker = createMarkerArrow("Greenarrow", "green");
-
-    // Add the marker to the SVG
-    svg1_1.appendChild(brownMarker);
-    svg1_1.appendChild(blueMarker); 
-    svg1_1.appendChild(greenMarker);
-
-    // Set attributes
-    svg1_1.setAttribute("viewBox", "0 0 180 220"); 
-    svg1_1.setAttribute("width", "180"); 
-    svg1_1.setAttribute("height", "220");
-
     // set a cartesian plane
-    const myPlane1_1 = new CartesianPlane(svg1_1, -3, 25, 0, 25);
+    const myPlane1_1 = new CartesianPlane(svg1_1, -3, 23, 0, 10);
 
     // Define two points A and B
     const pointA = [0, 0];
-    const pointB = [20, 20];
+    const pointB = [20, 10];
 
     // Draws a vector from point A to point B
     myPlane1_1.drawVector(pointA, pointB, "", {}, {});
@@ -56,23 +46,8 @@ import EuclideanSpace from './EuclideanSpace.js';
     // Get the SVG element from the DOM
     const svg1_2 = document.getElementById("svg1_2");
 
-    // Set attributes
-    svg1_2.setAttribute("viewBox", "0 0 230 240"); 
-    svg1_2.setAttribute("width", "230"); 
-    svg1_2.setAttribute("height", "240");
-
-    //Create arrow markers
-    //const brownMarker = createMarkerArrow("Brownarrow", "brown");
-    //const blueMarker = createMarkerArrow("Bluearrow", "blue");
-    //const greenMarker = createMarkerArrow("Greenarrow", "green");
-
-    // Add the marker to the SVG
-    //svg1_2.appendChild(brownMarker); 
-    //svg1_2.appendChild(blueMarker); 
-    //svg1_2.appendChild(greenMarker); 
-
     // set a cartesian plane
-    const myPlane1_2 = new CartesianPlane(svg1_2, 0, 23, 0, 24);
+    const myPlane1_2 = new CartesianPlane(svg1_2, 0, 19, 0, 18);
 
     // define two vectors and calculate its vector addition
     const pointA = [0, 0];
@@ -97,20 +72,15 @@ import EuclideanSpace from './EuclideanSpace.js';
     // Get the SVG element from the DOM
     var svg1_3 = document.getElementById("svg1_3");
 
-    // Set attributes
-    svg1_3.setAttribute("viewBox", "0 0 400 400"); 
-    svg1_3.setAttribute("width", "400"); 
-    svg1_3.setAttribute("height", "400");
-
     // set a cartesian plane
-    const myPlane1_3 = new CartesianPlane(svg1_3, -20, 20, -20, 20);
+    const myPlane1_3 = new CartesianPlane(svg1_3, -10, 11, -10, 10);
     myPlane1_3.drawAxes("y-axis", "x-axis", "O");
     
     // Draw a point, its label and two segments
-    myPlane1_3.drawPoint([5, 10], "green");
-    myPlane1_3.drawLabel([6, 10], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
-    myPlane1_3.drawSegment([5, 0], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
-    myPlane1_3.drawSegment([0, 10], [5, 10], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+    myPlane1_3.drawPoint([5, 8], "green");
+    myPlane1_3.drawLabel([6, 8], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
+    myPlane1_3.drawSegment([5, 0], [5, 8], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+    myPlane1_3.drawSegment([0, 8], [5, 8], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
 }
 
 // svg1.5 point P, with coordinates (x1, y1, z1)
@@ -153,13 +123,8 @@ import EuclideanSpace from './EuclideanSpace.js';
 	// Get the SVG element from the DOM
 	var svg1_6 = document.getElementById("svg1_6");
 
-	// Set attributes
-	svg1_6.setAttribute("viewBox", "0 0 300 210"); 
-	svg1_6.setAttribute("width", "300"); 
-	svg1_6.setAttribute("height", "210");
-
 	// set a cartesian plane
-	const myPlane1_6 = new CartesianPlane(svg1_6, 0, 30, 0, 21);
+	const myPlane1_6 = new CartesianPlane(svg1_6, 0, 21, 0, 14);
 
 	// set some coordinates
 	const origin = [2, 2];
@@ -260,23 +225,8 @@ import EuclideanSpace from './EuclideanSpace.js';
 	mySpace1_9.drawSegment(dashed1, dashed2, {strokeColor: "green", strokeDasharray: "5,5"});
 }
 
-/**
- * Writes a value to an element's innerHTML.
- *
- * If the value is an array, joins its elements with commas and spaces.
- * Otherwise, sets the innerHTML to the value directly.
- *
- * @param {string} elementId - The ID of the element to update.
- * @param {Array|string|number} value - The value to write to the element.
- */
-function writeValue(elementId, value) {
-    const element = document.getElementById(elementId);
-    if (Array.isArray(value)) {
-    element.innerHTML = value.join(", "); // Join elements for arrays
-    } else {
-    element.innerHTML = value; // Set single value directly
-    }
-};
+
+// `writeValue` provided by `SVGDrawing.js`
 
 // Exercise 2_1
 {
@@ -313,13 +263,8 @@ function writeValue(elementId, value) {
     // Get the SVG element from the DOM
     const svg2_1 = document.getElementById("svg2_1");
 
-    // Set attributes
-    svg2_1.setAttribute("viewBox", "0 0 400 400"); 
-    svg2_1.setAttribute("width", "400"); 
-    svg2_1.setAttribute("height", "400");
-
     // set a cartesian plane where the river bank is parallel to x-axis.
-    const myPlane2_1 = new CartesianPlane(svg2_1, -23, 23, -6, 40);
+    const myPlane2_1 = new CartesianPlane(svg2_1, -23, 23, -6, 40, 9);
     myPlane2_1.drawAxes("y-axis", "x-axis", "O");
 
     // Write exercise data
@@ -364,17 +309,12 @@ function writeValue(elementId, value) {
 	// Get the SVG element from the DOM
 	var svg2_2 = document.getElementById("svg2_2");
 
-	// Set attributes
-	svg2_2.setAttribute("viewBox", "0 0 440 320"); 
-	svg2_2.setAttribute("width", "440"); 
-	svg2_2.setAttribute("height", "320");
-
 	// set a cartesian plane to represent the vectors.
 	const xMin = -1;
 	const xMax = 10;
 	const yMin = -3;
 	const yMax = 5;
-	const myPlane2_2 = new CartesianPlane(svg2_2, xMin, xMax, yMin, yMax);
+	const myPlane2_2 = new CartesianPlane(svg2_2, xMin, xMax, yMin, yMax, 34);
 	myPlane2_2.drawAxes("y-axis", "x-axis", "O");
 
 	// Draw horizontal and vertical lines to better show plane coordinates
@@ -419,16 +359,16 @@ function writeValue(elementId, value) {
 	var svg2_3 = document.getElementById("svg2_3");
 
 	// Set attributes
-	svg2_3.setAttribute("viewBox", "0 0 400 400"); 
-	svg2_3.setAttribute("width", "400"); 
-	svg2_3.setAttribute("height", "400");
+	//svg2_3.setAttribute("viewBox", "0 0 400 400"); 
+	//svg2_3.setAttribute("width", "400"); 
+	//svg2_3.setAttribute("height", "400");
 
 	// set a cartesian plane
 	const xMin = -5;
 	const xMax = 5;
-	const yMin = -5;
+	const yMin = -1;
 	const yMax = 5;
-	const myPlane2_3 = new CartesianPlane(svg2_3, xMin, xMax, yMin, yMax);
+	const myPlane2_3 = new CartesianPlane(svg2_3, xMin, xMax, yMin, yMax, 48);
 	myPlane2_3.drawAxes("", "E", "O");
 	myPlane2_3.drawLabel([-0.3, yMax], "N", {corner: "righttop"});
 	
@@ -543,9 +483,9 @@ function writeValue(elementId, value) {
 	// set a cartesian plane
 	const xMin = -700;
 	const xMax = 700;
-	const yMin = -700;
+	const yMin = -100;
 	const yMax = 700;
-	const myPlane2_6 = new CartesianPlane(svg2_6, xMin, xMax, yMin, yMax);
+	const myPlane2_6 = new CartesianPlane(svg2_6, xMin, xMax, yMin, yMax, 0.3);
 	myPlane2_6.drawAxes("", "E", "O");
 	myPlane2_6.drawLabel([-15, yMax], "N", {corner: "righttop"});
 	

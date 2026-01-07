@@ -1,5 +1,5 @@
 // Importaciones
-import { createMarkerArrow,
+import { ensureSharedMarkerDefs,
     generateFunctionPoints
 } from './SVGDrawing.js';
 
@@ -13,6 +13,9 @@ import EuclideanSpace from './EuclideanSpace.js';
 // import * as math from 'mathjs'; lo dejamos en paso hasta que integremos mathjs en el proyecto.
 // Cuando lo integremos, recordar añadir node_modules/ al archivo .gitignore en la raíz del proyecto.
 
+// Ensure shared marker definitions are present in the document
+ensureSharedMarkerDefs();
+
 // svg1.1 point P, with coordinates (x1, y1, z1)
 {
     // Get the SVG element from the DOM
@@ -22,16 +25,6 @@ import EuclideanSpace from './EuclideanSpace.js';
     svg1_1.setAttribute("viewBox", "0 0 400 400"); 
     svg1_1.setAttribute("width", "400"); 
     svg1_1.setAttribute("height", "400");
-
-    //Create arrow markers
-    const brownMarker = createMarkerArrow("Brownarrow", "brown");
-    const blueMarker = createMarkerArrow("Bluearrow", "blue");
-    const greenMarker = createMarkerArrow("Greenarrow", "green");
-
-    // Add the marker to the SVG
-    svg1_1.appendChild(brownMarker); 
-    svg1_1.appendChild(blueMarker); 
-    svg1_1.appendChild(greenMarker);
 
     // set a euclidean space
     const mySpace1_1 = new EuclideanSpace(svg1_1, [0, 0, 0], 10);
