@@ -317,7 +317,16 @@
                 <p>donde \(v\) es la magnitud de la velocidad (celeridad) y \(R\) es el radio de curvatura de la trayectoria en ese punto. Esta componente es siempre no negativa, ya que siempre se requiere un cambio de dirección para el movimiento curvo.</p>
                 <p>Podemos decir que las coordenadas intrínsecas ofrecen una visión intuitiva de cómo la aceleración afecta tanto la velocidad de la partícula como la forma de su trayectoria.</p>
             </section>
-            <section><h3>1.6 Movimiento Rectilíneo Uniforme</h3>
+            <section><h3>1.6 Cinemática de algunos tipos de Movimiento</h3>
+                <p>Apliquemos los concepto expuestos hasta ahora a algunos de los movimientos más importantes:</p>
+                <ul>
+                    <li>Movimiento Rectilíneo Uniforme (MRU).</li>
+                    <li>Movimiento Rectilíneo Uniformemente Acelerado (MRUA).</li>
+                    <li>Movimiento Circular Uniforme</li>
+                    <li>Movimiento Circular Uniformemente Acelerado</li>
+                </ul>
+            </section>
+            <section><h3>1.6.1 Movimiento Rectilíneo Uniforme (MRU)</h3>
                 <p>Un movimiento es rectilíneo y uniforme cuando su velocidad es constante. Esto supone:</p>
                 <ul>
                     <li>La velocidad es constante en dirección y sentido: la trayectoria es una recta.</li>
@@ -349,7 +358,7 @@
                 <p>Así, la ecuación anterior se reduce a una ecuación escalar:</p>
                 \[ x(t) = x_0 + vt \quad \text{ecuación de la posición.} \]
                 <p>Entonces, para el MRU, expresamos el desplazamiento como un escalar, cuyo valor coincide con la distancia recorrida:</p>
-                \[ \left. \begin{matrix} \Delta x = x(t_2) - x(t_1) = v\Delta t \\ \Delta x = \Delta s \end{matrix} \right\} \implies s = v\Delta t \quad $$ \]
+                \[ \left. \begin{matrix} \Delta x = x(t_2) - x(t_1) = v\Delta t \\ \Delta x = \Delta s \end{matrix} \right \} \implies \Delta s = v\Delta t  \]
                 <p>De igual manera, para este tipo de movimientono, podemos representar la velocidad mediante un escalar. Así, la velocidad media es:</p>
                 \[ v = \frac{\Delta x}{\Delta t} = \frac{\Delta s}{\Delta t} \]
                 <p>Al establecer un sistema de referencia unidimensional, resulta sumamente útil emplear un <strong>diagrama x-t</strong> para representar el movimiento. Este diagrama es, por definición, la representación gráfica de la función \(x = f(t)\) que describe el movimiento.</p>
@@ -365,7 +374,7 @@
                 </div>
                 </p>
             </section>
-            <section><h3>1.6 Movimiento Rectilíneo Uniformemente Acelerado</h3>
+            <section><h3>1.6.2 Movimiento Rectilíneo Uniformemente Acelerado</h3>
                 <p>Se llama <strong>rectilíneo y uniformemente acelerado (MRUA)</strong> a aquel movimiento que no tiene aceleración normal y su aceleración tangencial es constante. </p>
 
                 <p>Al no tener aceleración normal, la trayectoria de este movimiento describirá una línea recta. Entonces, si elegimos como sistema de referencia la dirección del movimiento, igual que hicimos en el movimiento rectilíneo y uniforme, todas las magnitudes vectoriales se convierten en escalares.</p>
@@ -405,9 +414,9 @@
 				    <div class="right" id="[1.34]">[1.34]</div>
 				</div>
             </section>
-			<section><h3>Movimiento Circular Uniforme (MCU)</h3>
+            <section><h3>1.6.3 Movimiento Circular Uniforme (MCU)</h3>
                 <p>El Movimiento Circular Uniforme (MCU) describe el movimiento de un objeto que se desplaza en una trayectoria circular a una <b>rapidez constante</b>. Para entender cómo llegamos a la ecuación que define su posición en cualquier momento, partimos de las características clave de su aceleración.</p>
-                <h4>Las Aceleraciones en el MCU</h4>
+                <h4><u>Las Aceleraciones en el MCU</u></h4>
                 <p>Como ya sabemos, la aceleración de un objeto en movimiento puede descomponerse en dos componentes intrínsecas: la aceleración tangencial (\(a_t\)) y la aceleración normal (o centrípeta, \(a_n\)).</p>
                 <ul>
                     <li><b>Aceleración Tangencial (\(a_t\)):</b> Esta componente de la aceleración actúa en la dirección del movimiento (tangente a la trayectoria) y es la responsable de cambiar la <b>magnitud de la velocidad</b> (la rapidez) del objeto. En el MCU, la rapidez es, por definición, constante. Por lo tanto, no hay cambio en la magnitud de la velocidad, lo que significa que la <b>aceleración tangencial es nula (\(a_t = 0\))</b>.</li>
@@ -415,7 +424,7 @@
                     \[ a_n = \frac{v^2}{R} \]
                     Dado que la rapidez (\(v\)) y el radio (\(R\)) son constantes en el MCU, la magnitud de la aceleración normal (\(a_n\)) también lo es.</li>
                 </ul>
-                <h4>La Posición del Móvil: Introducción a las Coordenadas Polares y el Radián</h4>
+                <h4><u>La Posición del Móvil: Introducción a las Coordenadas Polares y el Radián</u></h4>
                 <p>Para describir la posición de un móvil en una trayectoria circular, el sistema de <b>coordenadas polares</b> \((r, \theta)\) es el más natural y conveniente.</p>
                 <ul>
                     <li><b>El Radio (\(r\)):</b> Para una trayectoria circular con su centro en el origen, el radio \(r\) es simplemente el radio constante de la circunferencia, que denotamos como \(R\). Así, la primera coordenada polar es \(r=R\).</li>
@@ -426,15 +435,13 @@
                 <p>De esta definición, podemos deducir una relación fundamental: la longitud de un arco (\(s\)) en una circunferencia es igual al radio (\(R\)) multiplicado por el ángulo (\(\theta\)) que subtiende ese arco (medido en radianes). Para un cambio infinitesimal en la posición angular \(d\theta\), la longitud del arco infinitesimal \(ds\) es:</p>
                 \[ ds = R d\theta \]
                 <p>Esta relación conecta la distancia recorrida a lo largo de la trayectoria (una cantidad lineal) con el cambio en la posición angular (una cantidad angular).</p>
-                    
-                
-                <h4>La Velocidad Angular (\(\omega\)) como Constante Fundamental</h4>
+                <h4><u>La Velocidad Angular (\(\omega\)) como Constante del MCU</u></h4>
                 <p>A partir de la aceleración tangencial nula (\(a_t=0\)), confirmamos que la <b>rapidez lineal (\(v = ds/dt\)) es constante</b>. Utilizando la relación \(ds = R d\theta\), podemos expresar la rapidez lineal como:</p>
                 \[ v = \frac{ds}{dt} = \frac{R d\theta}{dt} = R \frac{d\theta}{dt} \]
                 <p>La cantidad \(\frac{d\theta}{dt}\) es la <b>velocidad angular (\(\omega\))</b>, que representa la rapidez con la que el ángulo \(\theta\) cambia con el tiempo. Por lo tanto, tenemos:</p>
                 \[ v = \omega R \]
                 <p>Dado que \(v\) es constante y \(R\) (el radio de la circunferencia) también lo es, se deduce que la <b>velocidad angular (\(\omega\)) también debe ser constante</b> para el MCU. Esta constante \(\omega\) (medida en radianes por segundo) es la piedra angular para describir la posición en el tiempo.</p>
-                <h4>Ecuación de Movimiento para la Posición Angular e Integración</h4>
+                <h4><u>Ecuación de Movimiento para la Posición Angular e Integración</u></h4>
                 <p>La definición de velocidad angular como la tasa de cambio de la posición angular nos da la siguiente ecuación diferencial:</p>
                 \[ \omega = \frac{d\theta}{dt} \]
                 <p>Dado que \(\omega\) es constante en el MCU, podemos resolver esta sencilla ecuación diferencial mediante integración. Multiplicamos por \(dt\) para separar las variables:</p>
@@ -445,7 +452,7 @@
                 \[ \theta(t) - \theta_0 = \omega (t - 0) \]
                 \[ \theta(t) = \omega t + \theta_0 \]
                 <p>Esta ecuación nos da la <b>posición angular</b> del móvil en cualquier instante de tiempo \(t\). Así, la posición del móvil en coordenadas polares en cualquier instante \(t\) es \((R, \omega t + \theta_0)\).</p>
-                <h4>Transformación a Coordenadas Cartesianas: El Vector de Posición</h4>
+                <h4><u>Transformación a Coordenadas Cartesianas: El Vector de Posición</u></h4>
                 <p>Finalmente, para expresar la posición del móvil en un sistema de <b>coordenadas cartesianas</b> \((x, y)\), utilizamos las relaciones trigonométricas que conectan las coordenadas polares con las cartesianas:</p>
                 \[ x = r \cos(\theta) \]
                 \[ y = r \sin(\theta) \]
@@ -457,7 +464,7 @@
                 <p>Al sustituir las expresiones para \(x(t)\) e \(y(t)\), obtenemos el vector de posición para el Movimiento Circular Uniforme:</p>
                 \[ \boxed{\vec{r}(t) = (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j}} \]
                 <p>Esta ecuación nos permite conocer la ubicación exacta de un objeto en MCU en cualquier instante de tiempo, a partir de su radio, velocidad angular constante y posición angular inicial.</p>
-                <h4>El Vector Velocidad en Coordenadas Cartesianas</h4>
+                <h4><u>El Vector Velocidad en Coordenadas Cartesianas</u></h4>
                 <p>Una vez que tenemos el vector de posición \(\vec{r}(t)\), podemos obtener el <b>vector velocidad</b> \(\vec{v}(t)\) derivando \(\vec{r}(t)\) con respecto al tiempo:</p>
                 \[ \vec{v}(t) = \frac{d\vec{r}(t)}{dt} = \frac{d}{dt} \left[ (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \right] \]
                 <p>Derivando componente a componente:</p>
@@ -475,7 +482,7 @@
                 <p>Como \(R\) y \(\omega\) son magnitudes positivas, el módulo de la velocidad es:</p>
                 \[ \|\vec{v}(t)\| = R\omega \]
                 <p>Esto confirma que la magnitud del vector velocidad es la rapidez constante \(R\omega\), como esperábamos para el MCU.</p>
-                <h4>El Vector Aceleración en Coordenadas Cartesianas</h4>
+                <h4><u>El Vector Aceleración en Coordenadas Cartesianas</u></h4>
                 <p>Para obtener el <b>vector aceleración</b> \(\vec{a}(t)\), derivamos el vector velocidad \(\vec{v}(t)\) con respecto al tiempo:</p>
                 \[ \vec{a}(t) = \frac{d\vec{v}(t)}{dt} = \frac{d}{dt} \left[ (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \right] \]
                 <p>Derivando componente a componente:</p>

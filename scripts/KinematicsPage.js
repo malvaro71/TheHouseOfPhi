@@ -117,22 +117,17 @@ ensureSharedMarkerDefs();
     // Get the SVG element from the DOM
     var svg1_3 = document.getElementById("svg1_3");
 
-    // Set attributes
-    svg1_3.setAttribute("viewBox", "0 0 400 400"); 
-    svg1_3.setAttribute("width", "400"); 
-    svg1_3.setAttribute("height", "400");
-
     // set a cartesian plane
-	const myPlane1_3 = new CartesianPlane(svg1_3, 0, 8, 0, 8);
+	const myPlane1_3 = new CartesianPlane(svg1_3, 0, 8, 0, 5, 30);
 
 	// set a function to generate a list of points: f(x) = 5 - (x^2)/25
 	function f1_3(x) {
-	    return 5 - (x * x)/25;
+	    return 5 - (x * x)/15;
 	}
 
 	// set a the derivative of the previous funciton
 	function df1_3(x) {
-		return -2*x/25;
+		return -2*x/15;
 	}
     
     // set a list of points that define the path of movement. 
@@ -161,13 +156,13 @@ ensureSharedMarkerDefs();
     // Get the SVG element from the DOM
     var svg1_4 = document.getElementById("svg1_4");
 
-    // Set attributes
-    svg1_4.setAttribute("viewBox", "0 0 400 400"); 
-    svg1_4.setAttribute("width", "400"); 
-    svg1_4.setAttribute("height", "400");
-
     // set a cartesian plane
-	const myPlane1_4 = new CartesianPlane(svg1_4, 0, 10, 0, 10);
+    const xMin = 0;
+	const xMax = 10;
+	const yMin = 2;
+	const yMax = 9.1;
+    const desiredScale = 40; // desired scale in pixels per unit
+	const myPlane1_4 = new CartesianPlane(svg1_4, xMin, xMax, yMin, yMax, desiredScale);
 
 	// set a function to generate a list of points: f(x) = 5 - (x^2)/25
 	function f1_4(x) {
@@ -224,7 +219,6 @@ ensureSharedMarkerDefs();
         return math.add(r0, math.multiply(v, t));; // returns r(t) = r0 + vt
     }
     
-    
     // Generate a list of points: r(t) = [x(t), y(t), z(t)] in a time interval
     const numberOfPoints = 10; // number of points to generate
     const timeStart = 0; // start time
@@ -257,14 +251,14 @@ ensureSharedMarkerDefs();
     // Get the SVG element from the DOM
     var svg1_6 = document.getElementById("svg1_6");
 
-    // Set attributes
-    svg1_6.setAttribute("viewBox", "0 0 400 200"); 
-    svg1_6.setAttribute("width", "400"); 
-    svg1_6.setAttribute("height", "200");
-
     // set a cartesian plane
-    const myPlane1_6 = new CartesianPlane(svg1_6, -2, 20, -2, 10);
-    
+    const xMin = -2;
+	const xMax = 20;
+	const yMin = -2;
+	const yMax = 4;
+    // desiredScale = 16 by default. desired scale in pixels per unit
+    const myPlane1_6 = new CartesianPlane(svg1_6, xMin, xMax, yMin, yMax);
+
     
     // Draw a point, its label and two segments
     myPlane1_6.drawVector([0, 0], [20, 0], "", {strokeColor: "brown"}, {});
@@ -283,13 +277,13 @@ ensureSharedMarkerDefs();
     // Get the SVG element from the DOM
     const svg1_7 = document.getElementById("svg1_7");
 
-    // Set attributes
-    svg1_7.setAttribute("viewBox", "0 0 400 400"); 
-    svg1_7.setAttribute("width", "400"); 
-    svg1_7.setAttribute("height", "400");
-
-    // set a cartesian plane where the river bank is parallel to x-axis.
-    const myPlane1_7 = new CartesianPlane(svg1_7, -5, 40, -5, 40);
+    // Set a cartesian plane with xMin, xMax, yMin and yMax.
+    const xMin = -6;
+	const xMax = 40;
+	const yMin = -5;
+	const yMax = 40;
+    const desiredScale = 8; // desired scale in pixels per unit
+    const myPlane1_7 = new CartesianPlane(svg1_7, xMin, xMax, yMin, yMax, desiredScale);
     myPlane1_7.drawAxes("", "t", "O");
     myPlane1_7.drawLabel([-2, 37], "x", {corner: "leftbottom", fontSize: 25});
 
@@ -342,13 +336,13 @@ ensureSharedMarkerDefs();
     // Get the SVG element from the DOM
     const svg1_8 = document.getElementById("svg1_8");
 
-    // Set attributes
-    svg1_8.setAttribute("viewBox", "0 0 400 400"); 
-    svg1_8.setAttribute("width", "400"); 
-    svg1_8.setAttribute("height", "400");
-
-    // set a cartesian plane with xMin, xMax, yMin and yMax.
-    const myPlane1_8 = new CartesianPlane(svg1_8, -10, 100, -10, 100);
+    // Set a cartesian plane with xMin, xMax, yMin and yMax and desired scale, that fits the motion path.
+    const xMin = -10;
+	const xMax = 100;
+	const yMin = -10;
+	const yMax = 100;
+    const desiredScale = 3.5; // desired scale in pixels per unit
+    const myPlane1_8 = new CartesianPlane(svg1_8, xMin, xMax, yMin, yMax, desiredScale);
     myPlane1_8.drawAxes("", "t", "O");
     myPlane1_8.drawLabel([-1, 90], "x", {corner: "rightbottom", fontSize: 20});
 

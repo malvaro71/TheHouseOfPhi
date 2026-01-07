@@ -475,11 +475,6 @@ ensureSharedMarkerDefs();
 	// Get the SVG element from the DOM
 	var svg2_6 = document.getElementById("svg2_6");
 
-	// Set attributes
-	svg2_6.setAttribute("viewBox", "0 0 400 400"); 
-	svg2_6.setAttribute("width", "400"); 
-	svg2_6.setAttribute("height", "400");
-
 	// set a cartesian plane
 	const xMin = -700;
 	const xMax = 700;
