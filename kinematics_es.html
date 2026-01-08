@@ -415,32 +415,32 @@
 				</div>
             </section>
             <section><h3>1.6.3 Movimiento Circular Uniforme (MCU)</h3>
-                <p>El Movimiento Circular Uniforme (MCU) describe el movimiento de un objeto que se desplaza en una trayectoria circular a una <b>rapidez constante</b>. Para entender cómo llegamos a la ecuación que define su posición en cualquier momento, partimos de las características clave de su aceleración.</p>
+                <p>El Movimiento Circular Uniforme (MCU) describe el movimiento de un objeto que se desplaza en una trayectoria circular a una <strong>rapidez constante</strong>. Para entender cómo llegamos a la ecuación que define su posición en cualquier momento, partimos de las características clave de su aceleración.</p>
                 <h4><u>Las Aceleraciones en el MCU</u></h4>
                 <p>Como ya sabemos, la aceleración de un objeto en movimiento puede descomponerse en dos componentes intrínsecas: la aceleración tangencial (\(a_t\)) y la aceleración normal (o centrípeta, \(a_n\)).</p>
                 <ul>
-                    <li><b>Aceleración Tangencial (\(a_t\)):</b> Esta componente de la aceleración actúa en la dirección del movimiento (tangente a la trayectoria) y es la responsable de cambiar la <b>magnitud de la velocidad</b> (la rapidez) del objeto. En el MCU, la rapidez es, por definición, constante. Por lo tanto, no hay cambio en la magnitud de la velocidad, lo que significa que la <b>aceleración tangencial es nula (\(a_t = 0\))</b>.</li>
-                    <li><b>Aceleración Normal o Centrípeta (\(a_n\)):</b> Esta componente actúa perpendicular a la velocidad y siempre apunta hacia el centro de la curvatura de la trayectoria. Es la responsable de cambiar la <b>dirección de la velocidad</b>. Para que un objeto se mueva en un círculo, la dirección de su velocidad debe cambiar continuamente. En el MCU, la trayectoria es una circunferencia de radio \(R\), y la magnitud de la aceleración normal se mantiene constante, dada por la fórmula:
+                    <li><strong>Aceleración Tangencial (\(a_t\)):</strong> Esta componente de la aceleración actúa en la dirección del movimiento (tangente a la trayectoria) y es la responsable de cambiar la <strong>magnitud de la velocidad</strong> (la rapidez) del objeto. En el MCU, la rapidez es, por definición, constante. Por lo tanto, no hay cambio en la magnitud de la velocidad, lo que significa que la <strong>aceleración tangencial es nula (\(a_t = 0\))</strong>.</li>
+                    <li><strong>Aceleración Normal o Centrípeta (\(a_n\)):</strong> Esta componente actúa perpendicular a la velocidad y siempre apunta hacia el centro de la curvatura de la trayectoria. Es la responsable de cambiar la <strong>dirección de la velocidad</strong>. Para que un objeto se mueva en un círculo, la dirección de su velocidad debe cambiar continuamente. En el MCU, la trayectoria es una circunferencia de radio \(R\), y la magnitud de la aceleración normal se mantiene constante, dada por la fórmula:
                     \[ a_n = \frac{v^2}{R} \]
                     Dado que la rapidez (\(v\)) y el radio (\(R\)) son constantes en el MCU, la magnitud de la aceleración normal (\(a_n\)) también lo es.</li>
                 </ul>
                 <h4><u>La Posición del Móvil: Introducción a las Coordenadas Polares y el Radián</u></h4>
-                <p>Para describir la posición de un móvil en una trayectoria circular, el sistema de <b>coordenadas polares</b> \((r, \theta)\) es el más natural y conveniente.</p>
+                <p>Para describir la posición de un móvil en una trayectoria circular, el sistema de <strong>coordenadas polares</strong> \((r, \theta)\) es el más natural y conveniente.</p>
                 <ul>
-                    <li><b>El Radio (\(r\)):</b> Para una trayectoria circular con su centro en el origen, el radio \(r\) es simplemente el radio constante de la circunferencia, que denotamos como \(R\). Así, la primera coordenada polar es \(r=R\).</li>
-                    <li><b>El Ángulo (\(\theta\)):</b> La segunda coordenada polar es el ángulo \(\theta\), que representa la posición angular del móvil respecto a un eje de referencia (usualmente el eje \(x\) positivo). Este ángulo se mide en <b>radianes</b>.</li>
+                    <li><strong>El Radio (\(r\)):</strong> Para una trayectoria circular con su centro en el origen, el radio \(r\) es simplemente el radio constante de la circunferencia, que denotamos como \(R\). Así, la primera coordenada polar es \(r=R\).</li>
+                    <li><strong>El Ángulo (\(\theta\)):</strong> La segunda coordenada polar es el ángulo \(\theta\), que representa la posición angular del móvil respecto a un eje de referencia (usualmente el eje \(x\) positivo). Este ángulo se mide en <strong>radianes</strong>.</li>
                 </ul>
-                <p><b>Definición de Radián:</b> Un radián es la unidad de medida de un ángulo que subtiende un arco de longitud igual al radio de un círculo. Si el arco de una circunferencia mide \(s\) y el radio de la circunferencia es \(R\), entonces el ángulo \(\theta\) (en radianes) subtendido por ese arco es:</p>
+                <p><strong>Definición de Radián:</strong> Un radián es la unidad de medida de un ángulo que subtiende un arco de longitud igual al radio de un círculo. Si el arco de una circunferencia mide \(s\) y el radio de la circunferencia es \(R\), entonces el ángulo \(\theta\) (en radianes) subtendido por ese arco es:</p>
                 \[ \theta = \frac{s}{R} \]
                 <p>De esta definición, podemos deducir una relación fundamental: la longitud de un arco (\(s\)) en una circunferencia es igual al radio (\(R\)) multiplicado por el ángulo (\(\theta\)) que subtiende ese arco (medido en radianes). Para un cambio infinitesimal en la posición angular \(d\theta\), la longitud del arco infinitesimal \(ds\) es:</p>
                 \[ ds = R d\theta \]
                 <p>Esta relación conecta la distancia recorrida a lo largo de la trayectoria (una cantidad lineal) con el cambio en la posición angular (una cantidad angular).</p>
                 <h4><u>La Velocidad Angular (\(\omega\)) como Constante del MCU</u></h4>
-                <p>A partir de la aceleración tangencial nula (\(a_t=0\)), confirmamos que la <b>rapidez lineal (\(v = ds/dt\)) es constante</b>. Utilizando la relación \(ds = R d\theta\), podemos expresar la rapidez lineal como:</p>
+                <p>A partir de la aceleración tangencial nula (\(a_t=0\)), confirmamos que la <strong>rapidez lineal (\(v = ds/dt\)) es constante</strong>. Utilizando la relación \(ds = R d\theta\), podemos expresar la rapidez lineal como:</p>
                 \[ v = \frac{ds}{dt} = \frac{R d\theta}{dt} = R \frac{d\theta}{dt} \]
-                <p>La cantidad \(\frac{d\theta}{dt}\) es la <b>velocidad angular (\(\omega\))</b>, que representa la rapidez con la que el ángulo \(\theta\) cambia con el tiempo. Por lo tanto, tenemos:</p>
+                <p>La cantidad \(\frac{d\theta}{dt}\) es la <strong>velocidad angular (\(\omega\))</strong>, que representa la rapidez con la que el ángulo \(\theta\) cambia con el tiempo. Por lo tanto, tenemos:</p>
                 \[ v = \omega R \]
-                <p>Dado que \(v\) es constante y \(R\) (el radio de la circunferencia) también lo es, se deduce que la <b>velocidad angular (\(\omega\)) también debe ser constante</b> para el MCU. Esta constante \(\omega\) (medida en radianes por segundo) es la piedra angular para describir la posición en el tiempo.</p>
+                <p>Dado que \(v\) es constante y \(R\) (el radio de la circunferencia) también lo es, se deduce que la <strong>velocidad angular (\(\omega\)) también debe ser constante</strong> para el MCU. Esta constante \(\omega\) (medida en radianes por segundo) es la piedra angular para describir la posición en el tiempo.</p>
                 <h4><u>Ecuación de Movimiento para la Posición Angular e Integración</u></h4>
                 <p>La definición de velocidad angular como la tasa de cambio de la posición angular nos da la siguiente ecuación diferencial:</p>
                 \[ \omega = \frac{d\theta}{dt} \]
@@ -451,28 +451,28 @@
                 \[ [\theta]_{\theta_0}^{\theta(t)} = \omega [t]_{0}^{t} \]
                 \[ \theta(t) - \theta_0 = \omega (t - 0) \]
                 \[ \theta(t) = \omega t + \theta_0 \]
-                <p>Esta ecuación nos da la <b>posición angular</b> del móvil en cualquier instante de tiempo \(t\). Así, la posición del móvil en coordenadas polares en cualquier instante \(t\) es \((R, \omega t + \theta_0)\).</p>
+                <p>Esta ecuación nos da la <strong>posición angular</strong> del móvil en cualquier instante de tiempo \(t\). Así, la posición del móvil en coordenadas polares en cualquier instante \(t\) es \((R, \omega t + \theta_0)\).</p>
                 <h4><u>Transformación a Coordenadas Cartesianas: El Vector de Posición</u></h4>
-                <p>Finalmente, para expresar la posición del móvil en un sistema de <b>coordenadas cartesianas</b> \((x, y)\), utilizamos las relaciones trigonométricas que conectan las coordenadas polares con las cartesianas:</p>
+                <p>Finalmente, para expresar la posición del móvil en un sistema de <strong>coordenadas cartesianas</strong> \((x, y)\), utilizamos las relaciones trigonométricas que conectan las coordenadas polares con las cartesianas:</p>
                 \[ x = r \cos(\theta) \]
                 \[ y = r \sin(\theta) \]
                 <p>Sustituyendo \(r=R\) y la expresión de \(\theta(t)\) que acabamos de derivar:</p>
                 \[ x(t) = R \cos(\omega t + \theta_0) \]
                 \[ y(t) = R \sin(\omega t + \theta_0) \]
-                <p>El <b>vector de posición</b> \(\vec{r}(t)\) se construye usando los vectores unitarios \(\hat{i}\) (para la dirección \(x\)) y \(\hat{j}\) (para la dirección \(y\)):</p>
+                <p>El <strong>vector de posición</strong> \(\vec{r}(t)\) se construye usando los vectores unitarios \(\hat{i}\) (para la dirección \(x\)) y \(\hat{j}\) (para la dirección \(y\)):</p>
                 \[ \vec{r}(t) = x(t) \hat{i} + y(t) \hat{j} \]
                 <p>Al sustituir las expresiones para \(x(t)\) e \(y(t)\), obtenemos el vector de posición para el Movimiento Circular Uniforme:</p>
                 \[ \boxed{\vec{r}(t) = (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j}} \]
                 <p>Esta ecuación nos permite conocer la ubicación exacta de un objeto en MCU en cualquier instante de tiempo, a partir de su radio, velocidad angular constante y posición angular inicial.</p>
                 <h4><u>El Vector Velocidad en Coordenadas Cartesianas</u></h4>
-                <p>Una vez que tenemos el vector de posición \(\vec{r}(t)\), podemos obtener el <b>vector velocidad</b> \(\vec{v}(t)\) derivando \(\vec{r}(t)\) con respecto al tiempo:</p>
+                <p>Una vez que tenemos el vector de posición \(\vec{r}(t)\), podemos obtener el <strong>vector velocidad</strong> \(\vec{v}(t)\) derivando \(\vec{r}(t)\) con respecto al tiempo:</p>
                 \[ \vec{v}(t) = \frac{d\vec{r}(t)}{dt} = \frac{d}{dt} \left[ (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \right] \]
                 <p>Derivando componente a componente:</p>
                 \[ v_x(t) = \frac{d}{dt} (R \cos(\omega t + \theta_0)) = -R \sin(\omega t + \theta_0) \cdot \omega = -R\omega \sin(\omega t + \theta_0) \]
                 \[ v_y(t) = \frac{d}{dt} (R \sin(\omega t + \theta_0)) = R \cos(\omega t + \theta_0) \cdot \omega = R\omega \cos(\omega t + \theta_0) \]
                 <p>Por lo tanto, el vector velocidad es:</p>
                 \[ \vec{v}(t) = (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \]
-                <p>Ahora, calculemos el <b>módulo (magnitud) de este vector velocidad</b> para verificar que coincide con la rapidez constante \(v = R\omega\):</p>
+                <p>Ahora, calculemos el <strong>módulo (magnitud) de este vector velocidad</strong> para verificar que coincide con la rapidez constante \(v = R\omega\):</p>
                 \[ \|\vec{v}(t)\| = \sqrt{v_x(t)^2 + v_y(t)^2} \]
                 \[ \|\vec{v}(t)\| = \sqrt{(-R\omega \sin(\omega t + \theta_0))^2 + (R\omega \cos(\omega t + \theta_0))^2} \]
                 \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 \sin^2(\omega t + \theta_0) + R^2\omega^2 \cos^2(\omega t + \theta_0)} \]
@@ -483,7 +483,7 @@
                 \[ \|\vec{v}(t)\| = R\omega \]
                 <p>Esto confirma que la magnitud del vector velocidad es la rapidez constante \(R\omega\), como esperábamos para el MCU.</p>
                 <h4><u>El Vector Aceleración en Coordenadas Cartesianas</u></h4>
-                <p>Para obtener el <b>vector aceleración</b> \(\vec{a}(t)\), derivamos el vector velocidad \(\vec{v}(t)\) con respecto al tiempo:</p>
+                <p>Para obtener el <strong>vector aceleración</strong> \(\vec{a}(t)\), derivamos el vector velocidad \(\vec{v}(t)\) con respecto al tiempo:</p>
                 \[ \vec{a}(t) = \frac{d\vec{v}(t)}{dt} = \frac{d}{dt} \left[ (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \right] \]
                 <p>Derivando componente a componente:</p>
                 \[ a_x(t) = \frac{d}{dt} (-R\omega \sin(\omega t + \theta_0)) = -R\omega \cos(\omega t + \theta_0) \cdot \omega = -R\omega^2 \cos(\omega t + \theta_0) \]
@@ -494,7 +494,7 @@
                 \[ \vec{a}(t) = -R\omega^2 [ (\cos(\omega t + \theta_0)) \hat{i} + (\sin(\omega t + \theta_0)) \hat{j} ] \]
                 <p>Observa que la expresión entre corchetes es precisamente el vector de posición \(\vec{r}(t)\) dividido por \(R\), es decir, el vector unitario en la dirección del radio, \(\hat{u}_r = \frac{\vec{r}(t)}{R}\). Esto significa que la aceleración siempre apunta en la dirección opuesta al vector de posición (hacia el centro del círculo), lo cual es coherente con la aceleración centrípeta.</p>
                 \[ \vec{a}(t) = -\omega^2 \vec{r}(t) \]
-                <p>Finalmente, calculemos el <b>módulo del vector aceleración</b>:</p>
+                <p>Finalmente, calculemos el <strong>módulo del vector aceleración</strong>:</p>
                 \[ \|\vec{a}(t)\| = \sqrt{a_x(t)^2 + a_y(t)^2} \]
                 \[ \|\vec{a}(t)\| = \sqrt{(-R\omega^2 \cos(\omega t + \theta_0))^2 + (-R\omega^2 \sin(\omega t + \theta_0))^2} \]
                 \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 \cos^2(\omega t + \theta_0) + R^2\omega^4 \sin^2(\omega t + \theta_0)} \]
@@ -504,7 +504,7 @@
                 \[ \|\vec{a}(t)\| = R\omega^2 \]
                 <p>Recordando que la rapidez lineal \(v = R\omega\), podemos sustituir \(\omega = v/R\) en la expresión de la aceleración:</p>
                 \[ \|\vec{a}(t)\| = R \left(\frac{v}{R}\right)^2 = R \frac{v^2}{R^2} = \frac{v^2}{R} \]
-                <p>Esto confirma que el módulo del vector aceleración es precisamente la <b>aceleración centrípeta (\(a_n\))</b> que definimos al principio, lo cual es coherente con la ausencia de aceleración tangencial en el MCU. La aceleración total es puramente centrípeta, encargándose solo de cambiar la dirección del vector velocidad.</p>
+                <p>Esto confirma que el módulo del vector aceleración es precisamente la <strong>aceleración centrípeta (\(a_n\))</strong> que definimos al principio, lo cual es coherente con la ausencia de aceleración tangencial en el MCU. La aceleración total es puramente centrípeta, encargándose solo de cambiar la dirección del vector velocidad.</p>
             </section>
         </article>
     </body>
