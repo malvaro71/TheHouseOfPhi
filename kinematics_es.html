@@ -341,7 +341,7 @@
                 \[ \vec r (t) = \int \vec v dt = \vec v \int dt = \vec v t + C \]
                 <p>Esta función se ha de cumplir para cualquier valor de \(t\). Luego también para \(t = 0\)</p>
                 \[ \left. \begin{matrix} \vec{r} = \vec v t + C \\ t = 0 \end{matrix} \right\} \implies \vec{r}_0 = C \]
-                <p>La constante de integración es la posición inicial \(\vec{r}_0\) y, entonces, la ecuación vectorial del MRU será:</p>
+                <p>La constante de integración es la posición inicial \(\vec{r}_0\) y, entonces, la <strong>ecuación vectorial del MRU</strong> será:</p>
                 <div class="container">
                     <div  class="center">$$\vec r (t) = \vec{r}_0 + \vec v t$$</div>
                     <div  class="right" id="[1.25]">[1.25]</div>
@@ -367,7 +367,7 @@
                     <svg id="svg1_7"></svg >
                     <figcaption><b>Figura 1.7 </b>Gráfica de \(x = f(t)\) para un movimiento rectilíneo uniforme.</figcaption>
                 </figure>
-                <p>En el diagrama x-t del MRU, la pendiente (\(\text{tg } \alpha\)) de la recta que describe la trayectoria del moviemiento, calculada sobre un intervalo de tiempo determinado, se obtiene dividiendo el cambio en la coordenada vertical (que es la posición del móvil) por el cambio en la coordenada horizontal (que es el tiempo transcurrido). En el diagrama x-t, esto corresponde directamente a la <strong>velocidad media</strong> del movimiento durante ese intervalo:</p>
+                <p>En el diagrama x-t del MRU, <strong>la pendiente (\(\text{tg } \alpha\))</strong>  de la recta que describe la trayectoria del moviemiento, calculada sobre un intervalo de tiempo determinado, se obtiene dividiendo el cambio en la coordenada vertical (que es la posición del móvil) por el cambio en la coordenada horizontal (que es el tiempo transcurrido). En el diagrama x-t, esto corresponde directamente a la <strong>velocidad media</strong> del movimiento durante ese intervalo:</p>
                 <div class="container">
                     <div  class="center">$$ \text{tg } \alpha = \frac{x(t_1) - x_0}{t_1} = v_{\text{media}}$$</div>
                     <div class="right" id="[1.26]">[1.26]</div>
@@ -396,7 +396,7 @@
                 = \int v_0 \, dt + \int at \, dt = v_0 \int dt + a \int t \, dt = v_0 t + \frac{1}{2} at^2 + C
                 \]
                 <p>Si esta función se ha de cumplir para cualquier valor del tiempo, la constante de integración representa la posición inicial \(C = x_0\).</p>
-                <p>La ecuación que nos da la posición en cualquier instante será:</p>
+                <p>La <strong>ecuación escalar del MRUA</strong>, que nos da la posición en cualquier instante será:</p>
                 <div class="container">
                     <div class="center">
                         \[ x(t) = x_0 + v_0 t + \frac{1}{2} at^2 \]
@@ -505,6 +505,71 @@
                 <p>Recordando que la rapidez lineal \(v = R\omega\), podemos sustituir \(\omega = v/R\) en la expresión de la aceleración:</p>
                 \[ \|\vec{a}(t)\| = R \left(\frac{v}{R}\right)^2 = R \frac{v^2}{R^2} = \frac{v^2}{R} \]
                 <p>Esto confirma que el módulo del vector aceleración es precisamente la <strong>aceleración centrípeta (\(a_n\))</strong> que definimos al principio, lo cual es coherente con la ausencia de aceleración tangencial en el MCU. La aceleración total es puramente centrípeta, encargándose solo de cambiar la dirección del vector velocidad.</p>
+            </section>
+            <section><h3>1.6.4 Movimiento Circular Uniformemente Acelerado (MCUA)</h3>
+
+                <p>El <strong>MCUA</strong> es aquel movimiento de trayectoria circular en el que la aceleración angular se mantiene constante en el tiempo <strong>(\(\alpha = \text{cte} \neq 0\))</strong>. Esto implica que la velocidad angular $\omega$ aumenta o disminuye de manera uniforme.</p>
+
+                <h4>Comportamiento de las componentes intrínsecas</h4>
+                <p>Dado que ya conocemos la naturaleza vectorial de la aceleración, en el MCUA sus componentes se comportan de la siguiente manera:</p>
+                <ul>
+                    <li><strong>Aceleración Tangencial (\( a_t \)):</strong> Es <strong>constante</strong>. Al ser \( \alpha \) constante y el radio \( R \) fijo, el ritmo al que varía el módulo de la velocidad es uniforme:
+                        $$a_t = \alpha \cdot R = \text{cte}$$
+                    </li>
+                    <li><strong>Aceleración Normal (\( a_n \)):</strong> Es <strong>variable</strong>. Aunque \( R \) sea constante, la velocidad angular \( \omega \) cambia con el tiempo. Por tanto, la aceleración necesaria para curvar la trayectoria aumenta con el cuadrado de la velocidad:
+                        $$a_n(t) = \omega(t)^2 \cdot R$$
+                    </li>
+                </ul>
+
+                
+
+                <h4>Deducción de las ecuaciones por integración</h4>
+                <p>Para obtener las ecuaciones de movimiento, partimos de la relación lineal entre la aceleración tangencial y la angular: \( \alpha = a_t / R \). Dado que \( a_t \) es constante, \( \alpha \) también lo es.</p>
+
+                <p><strong>1. Ecuación de la velocidad angular (\( \omega \)):</strong><br>
+                Definimos la aceleración angular como la derivada de la velocidad angular respecto al tiempo e integramos:</p>
+                $$\alpha = \frac{d\omega}{dt} \implies \int_{\omega_0}^{\omega} d\omega = \alpha \int_{0}^{t} dt$$
+                $$\omega(t) = \omega_0 + \alpha t$$
+
+                <p><strong>2. Ecuación de la posición angular (\( \varphi \)):</strong><br>
+                Definimos la velocidad angular como la derivada de la posición e integramos la expresión obtenida anteriormente:</p>
+                $$\omega = \frac{d\varphi}{dt} \implies d\varphi = (\omega_0 + \alpha t) dt$$
+                $$\int_{\varphi_0}^{\varphi} d\varphi = \int_{0}^{t} (\omega_0 + \alpha t) dt$$
+                $$\varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2} \alpha t^2$$
+
+                <h4>Relación independiente del tiempo</h4>
+                <p>Para relacionar la velocidad angular con el ángulo girado sin depender del tiempo, aplicamos la regla de la cadena a la aceleración angular:</p>
+                $$\alpha = \frac{d\omega}{dt} = \frac{d\omega}{d\varphi} \cdot \frac{d\varphi}{dt} = \omega \frac{d\omega}{d\varphi}$$
+                <p>Separando variables e integrando, obtenemos:</p>
+                $$\alpha \int_{\varphi_0}^{\varphi} d\varphi = \int_{\omega_0}^{\omega} \omega \, d\omega \implies \alpha \Delta\varphi = \frac{1}{2}\omega^2 - \frac{1}{2}\omega_0^2$$
+                $$\omega^2 - \omega_0^2 = 2 \alpha \Delta\varphi$$
+
+                <h4>Resumen de ecuaciones del MCUA</h4>
+                <table border="1" style="width:100%; border-collapse: collapse; text-align: center;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2;">
+                            <th>Magnitud</th>
+                            <th>Ecuación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Aceleración angular</strong></td>
+                            <td>\( \alpha = \text{cte} \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocidad angular</strong></td>
+                            <td>\( \omega(t) = \omega_0 + \alpha t \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Posición angular</strong></td>
+                            <td>\( \varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2}\alpha t^2 \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relación independiente del tiempo</strong></td>
+                            <td>\( \omega^2 - \omega_0^2 = 2\alpha\Delta\varphi \)</td>
+                        </tr>
+                    </tbody>
             </section>
         </article>
     </body>
