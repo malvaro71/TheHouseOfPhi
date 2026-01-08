@@ -505,6 +505,37 @@
                 <p>Recordando que la rapidez lineal \(v = R\omega\), podemos sustituir \(\omega = v/R\) en la expresión de la aceleración:</p>
                 \[ \|\vec{a}(t)\| = R \left(\frac{v}{R}\right)^2 = R \frac{v^2}{R^2} = \frac{v^2}{R} \]
                 <p>Esto confirma que el módulo del vector aceleración es precisamente la <strong>aceleración centrípeta (\(a_n\))</strong> que definimos al principio, lo cual es coherente con la ausencia de aceleración tangencial en el MCU. La aceleración total es puramente centrípeta, encargándose solo de cambiar la dirección del vector velocidad.</p>
+                <h4>Resumen de ecuaciones del MCU</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Magnitud</th>
+                            <th>Ecuación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Velocidad angular</strong></td>
+                            <td>\( \omega = \text{cte},\; \omega = \dfrac{d\theta}{dt} \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Posición angular</strong></td>
+                            <td>\( \theta(t) = \omega t + \theta_0 \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Coordenadas cartesianas</strong></td>
+                            <td>\( x(t)=R\cos(\omega t+\theta_0),\; y(t)=R\sin(\omega t+\theta_0) \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vector velocidad</strong></td>
+                            <td>\( \vec{v}(t) = -R\omega\sin(\omega t+\theta_0)\,\hat{i} + R\omega\cos(\omega t+\theta_0)\,\hat{j},\; \|\vec{v}\|=R\omega \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vector aceleración</strong></td>
+                            <td>\( \vec{a}(t) = -R\omega^2\cos(\omega t+\theta_0)\,\hat{i} - R\omega^2\sin(\omega t+\theta_0)\,\hat{j},\; \|\vec{a}\|=R\omega^2 = \dfrac{v^2}{R} \)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
             <section><h3>1.6.4 Movimiento Circular Uniformemente Acelerado (MCUA)</h3>
 
@@ -520,9 +551,7 @@
                         $$a_n(t) = \omega(t)^2 \cdot R$$
                     </li>
                 </ul>
-
                 
-
                 <h4>Deducción de las ecuaciones por integración</h4>
                 <p>Para obtener las ecuaciones de movimiento, partimos de la relación lineal entre la aceleración tangencial y la angular: \( \alpha = a_t / R \). Dado que \( a_t \) es constante, \( \alpha \) también lo es.</p>
 
@@ -545,31 +574,32 @@
                 $$\omega^2 - \omega_0^2 = 2 \alpha \Delta\varphi$$
 
                 <h4>Resumen de ecuaciones del MCUA</h4>
-                <table border="1" style="width:100%; border-collapse: collapse; text-align: center;">
+                <table>
                     <thead>
-                        <tr style="background-color: #f2f2f2;">
+                        <tr>
                             <th>Magnitud</th>
                             <th>Ecuación</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Aceleración angular</strong></td>
+                            <td><strong>Aceleración angular:</strong></td>
                             <td>\( \alpha = \text{cte} \)</td>
                         </tr>
                         <tr>
-                            <td><strong>Velocidad angular</strong></td>
+                            <td><strong>Velocidad angular:</strong></td>
                             <td>\( \omega(t) = \omega_0 + \alpha t \)</td>
                         </tr>
                         <tr>
-                            <td><strong>Posición angular</strong></td>
+                            <td><strong>Posición angular:</strong></td>
                             <td>\( \varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2}\alpha t^2 \)</td>
                         </tr>
                         <tr>
-                            <td><strong>Relación independiente del tiempo</strong></td>
+                            <td><strong>Relación independiente del tiempo:</strong></td>
                             <td>\( \omega^2 - \omega_0^2 = 2\alpha\Delta\varphi \)</td>
                         </tr>
                     </tbody>
+                </table>
             </section>
         </article>
     </body>
