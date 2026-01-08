@@ -380,7 +380,10 @@
                     <div class="right" id="[1.26]">[1.26]</div>
                 </div>
                 <h4>Resumen de ecuaciones del MRU</h4>
-                <table>
+                <table class="table-type1">
+                    <caption>
+                        Tabla 1.1: Resumen de ecuaciones del MRU.
+                    </caption>
                     <thead>
                         <tr>
                             <th>Magnitud</th>
@@ -449,10 +452,13 @@
 				<p>A diferencia del MRU donde la velocidad es constante, en el MRUA la velocidad varía continuamente. Para comprender la velocidad en un instante específico, recurrimos al concepto de velocidad instantánea. Similar a cómo la tangente en el MRU representa la velocidad constante, en el MRUA, donde la gráfica de posición vs. tiempo (\(x\) vs. \(t\)) es una curva (una parábola), <strong>la velocidad instantánea en cada punto de la curva corresponde a la pendiente de la recta tangente a la curva en ese instante</strong>. Esta pendiente instantánea es, por definición, la derivada de la posición respecto al tiempo:</p>
 				<div class="container">
 				    <div class="center">$$ \text{tg } \alpha = \frac{dx}{dt} = v_{\text{instantánea}} $$</div>
-				    <div class="right" id="[1.34]">[1.34]</div>
+				    <div class="right" id="[1.29]">[1.29]</div>
 				</div>
                 <h4>Resumen de ecuaciones del MRUA</h4>
-                <table>
+                <table class="table-type1">
+                    <caption>
+                        Tabla 1.2: Resumen de ecuaciones del MRUA.
+                    </caption>
                     <thead>
                         <tr>
                             <th>Magnitud</th>
@@ -483,7 +489,10 @@
                 <ul>
                     <li><strong>Aceleración Tangencial (\(a_t\)):</strong> Esta componente de la aceleración actúa en la dirección del movimiento (tangente a la trayectoria) y es la responsable de cambiar la <strong>magnitud de la velocidad</strong> (la rapidez) del objeto. En el MCU, la rapidez es, por definición, constante. Por lo tanto, no hay cambio en la magnitud de la velocidad, lo que significa que la <strong>aceleración tangencial es nula (\(a_t = 0\))</strong>.</li>
                     <li><strong>Aceleración Normal o Centrípeta (\(a_n\)):</strong> Esta componente actúa perpendicular a la velocidad y siempre apunta hacia el centro de la curvatura de la trayectoria. Es la responsable de cambiar la <strong>dirección de la velocidad</strong>. Para que un objeto se mueva en un círculo, la dirección de su velocidad debe cambiar continuamente. En el MCU, la trayectoria es una circunferencia de radio \(R\), y la magnitud de la aceleración normal se mantiene constante, dada por la fórmula:
-                    \[ a_n = \frac{v^2}{R} \]
+                    <div class="container">
+                        <div class="center">\[ a_n = \frac{v^2}{R} \]</div>
+                        <div class="right" id="[1.30]">[1.30]</div>
+                    </div>
                     Dado que la rapidez (\(v\)) y el radio (\(R\)) son constantes en el MCU, la magnitud de la aceleración normal (\(a_n\)) también lo es.</li>
                 </ul>
                 <h4><u>La Posición del Móvil: Introducción a las Coordenadas Polares y el Radián</u></h4>
@@ -493,7 +502,10 @@
                     <li><strong>El Ángulo (\(\theta\)):</strong> La segunda coordenada polar es el ángulo \(\theta\), que representa la posición angular del móvil respecto a un eje de referencia (usualmente el eje \(x\) positivo). Este ángulo se mide en <strong>radianes</strong>.</li>
                 </ul>
                 <p><strong>Definición de Radián:</strong> Un radián es la unidad de medida de un ángulo que subtiende un arco de longitud igual al radio de un círculo. Si el arco de una circunferencia mide \(s\) y el radio de la circunferencia es \(R\), entonces el ángulo \(\theta\) (en radianes) subtendido por ese arco es:</p>
-                \[ \theta = \frac{s}{R} \]
+                <div class="container">
+                        <div class="center">\[ \theta = \frac{s}{R} \]</div>
+                        <div class="right" id="[1.31]">[1.31]</div>
+                </div>
                 <p>De esta definición, podemos deducir una relación fundamental: la longitud de un arco (\(s\)) en una circunferencia es igual al radio (\(R\)) multiplicado por el ángulo (\(\theta\)) que subtiende ese arco (medido en radianes). Para un cambio infinitesimal en la posición angular \(d\theta\), la longitud del arco infinitesimal \(ds\) es:</p>
                 \[ ds = R d\theta \]
                 <p>Esta relación conecta la distancia recorrida a lo largo de la trayectoria (una cantidad lineal) con el cambio en la posición angular (una cantidad angular).</p>
@@ -501,19 +513,28 @@
                 <p>A partir de la aceleración tangencial nula (\(a_t=0\)), confirmamos que la <strong>rapidez lineal (\(v = ds/dt\)) es constante</strong>. Utilizando la relación \(ds = R d\theta\), podemos expresar la rapidez lineal como:</p>
                 \[ v = \frac{ds}{dt} = \frac{R d\theta}{dt} = R \frac{d\theta}{dt} \]
                 <p>La cantidad \(\frac{d\theta}{dt}\) es la <strong>velocidad angular (\(\omega\))</strong>, que representa la rapidez con la que el ángulo \(\theta\) cambia con el tiempo. Por lo tanto, tenemos:</p>
-                \[ v = \omega R \]
+                <div class="container">
+                        <div class="center">\[ v = \omega R \]</div>
+                        <div class="right" id="[1.32]">[1.32]</div>
+                </div>
                 <p>Dado que \(v\) es constante y \(R\) (el radio de la circunferencia) también lo es, se deduce que la <strong>velocidad angular (\(\omega\)) también debe ser constante</strong> para el MCU. Esta constante \(\omega\) (medida en radianes por segundo) es la piedra angular para describir la posición en el tiempo.</p>
                 <h4><u>Ecuación de Movimiento para la Posición Angular e Integración</u></h4>
                 <p>La definición de velocidad angular como la tasa de cambio de la posición angular nos da la siguiente ecuación diferencial:</p>
-                \[ \omega = \frac{d\theta}{dt} \]
+                <div class="container">
+                        <div class="center"> \[ \omega = \frac{d\theta}{dt} \]</div>
+                        <div class="right" id="[1.33]">[1.33]</div>
+                </div>
                 <p>Dado que \(\omega\) es constante en el MCU, podemos resolver esta sencilla ecuación diferencial mediante integración. Multiplicamos por \(dt\) para separar las variables:</p>
                 \[ d\theta = \omega dt \]
                 <p>Ahora, integramos ambos lados. Si en el instante inicial \(t=0\) la posición angular es \(\theta_0\), y en un instante \(t\) la posición angular es \(\theta(t)\):</p>
                 \[ \int_{\theta_0}^{\theta(t)} d\theta = \int_{0}^{t} \omega dt \]
                 \[ [\theta]_{\theta_0}^{\theta(t)} = \omega [t]_{0}^{t} \]
                 \[ \theta(t) - \theta_0 = \omega (t - 0) \]
-                \[ \theta(t) = \omega t + \theta_0 \]
-                <p>Esta ecuación nos da la <strong>posición angular</strong> del móvil en cualquier instante de tiempo \(t\). Así, la posición del móvil en coordenadas polares en cualquier instante \(t\) es \((R, \omega t + \theta_0)\).</p>
+                <div class="container">
+                        <div class="center">\[ \theta(t) = \omega t + \theta_0 \]</div>
+                        <div class="right" id="[1.34]">[1.34]</div>
+                </div>
+                <p>La ecuación <a href="#[1.34]">[1.34]</a> nos da la <strong>posición angular</strong> del móvil en cualquier instante de tiempo \(t\). Así, la posición del móvil en coordenadas polares en cualquier instante \(t\) es \((R, \omega t + \theta_0)\).</p>
                 <h4><u>Transformación a Coordenadas Cartesianas: El Vector de Posición</u></h4>
                 <p>Finalmente, para expresar la posición del móvil en un sistema de <strong>coordenadas cartesianas</strong> \((x, y)\), utilizamos las relaciones trigonométricas que conectan las coordenadas polares con las cartesianas:</p>
                 \[ x = r \cos(\theta) \]
@@ -523,9 +544,12 @@
                 \[ y(t) = R \sin(\omega t + \theta_0) \]
                 <p>El <strong>vector de posición</strong> \(\vec{r}(t)\) se construye usando los vectores unitarios \(\hat{i}\) (para la dirección \(x\)) y \(\hat{j}\) (para la dirección \(y\)):</p>
                 \[ \vec{r}(t) = x(t) \hat{i} + y(t) \hat{j} \]
-                <p>Al sustituir las expresiones para \(x(t)\) e \(y(t)\), obtenemos el vector de posición para el Movimiento Circular Uniforme:</p>
-                \[ \boxed{\vec{r}(t) = (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j}} \]
-                <p>Esta ecuación nos permite conocer la ubicación exacta de un objeto en MCU en cualquier instante de tiempo, a partir de su radio, velocidad angular constante y posición angular inicial.</p>
+                <p>Al sustituir las expresiones para \(x(t)\) e \(y(t)\), obtenemos el <strong>vector de posición para el MCU</strong> :</p>
+                <div class="container">
+                        <div class="center">\[ \vec{r}(t) = (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \]</div>
+                        <div class="right" id="[1.35]">[1.35]</div>
+                </div>
+                <p>La ecuación <a href="#[1.35]">[1.35]</a> nos permite conocer la ubicación exacta de un objeto en MCU en cualquier instante de tiempo, a partir de su radio, velocidad angular constante y posición angular inicial.</p>
                 <h4><u>El Vector Velocidad en Coordenadas Cartesianas</u></h4>
                 <p>Una vez que tenemos el vector de posición \(\vec{r}(t)\), podemos obtener el <strong>vector velocidad</strong> \(\vec{v}(t)\) derivando \(\vec{r}(t)\) con respecto al tiempo:</p>
                 \[ \vec{v}(t) = \frac{d\vec{r}(t)}{dt} = \frac{d}{dt} \left[ (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \right] \]
@@ -542,7 +566,10 @@
                 <p>Dado que \(\sin^2(x) + \cos^2(x) = 1\):</p>
                 \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 \cdot 1} = \sqrt{R^2\omega^2} = |R\omega| \]
                 <p>Como \(R\) y \(\omega\) son magnitudes positivas, el módulo de la velocidad es:</p>
-                \[ \|\vec{v}(t)\| = R\omega \]
+                <div class="container">
+                        <div class="center">\[ \|\vec{v}(t)\| = R\omega \]</div>
+                        <div class="right" id="[1.36]">[1.36]</div>
+                </div>
                 <p>Esto confirma que la magnitud del vector velocidad es la rapidez constante \(R\omega\), como esperábamos para el MCU.</p>
                 <h4><u>El Vector Aceleración en Coordenadas Cartesianas</u></h4>
                 <p>Para obtener el <strong>vector aceleración</strong> \(\vec{a}(t)\), derivamos el vector velocidad \(\vec{v}(t)\) con respecto al tiempo:</p>
@@ -563,12 +590,21 @@
                 \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 (\cos^2(\omega t + \theta_0) + \sin^2(\omega t + \theta_0))} \]
                 \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 \cdot 1} = \sqrt{R^2\omega^4} = |R\omega^2| \]
                 <p>Como \(R\) y \(\omega\) son positivos, el módulo de la aceleración es:</p>
-                \[ \|\vec{a}(t)\| = R\omega^2 \]
+                <div class="container">
+                        <div class="center">\[ \|\vec{a}(t)\| = R\omega^2 \]</div>
+                        <div class="right" id="[1.37]">[1.37]</div>
+                </div>
                 <p>Recordando que la rapidez lineal \(v = R\omega\), podemos sustituir \(\omega = v/R\) en la expresión de la aceleración:</p>
-                \[ \|\vec{a}(t)\| = R \left(\frac{v}{R}\right)^2 = R \frac{v^2}{R^2} = \frac{v^2}{R} \]
+                <div class="container">
+                        <div class="center">\[ \|\vec{a}(t)\| = R \left(\frac{v}{R}\right)^2 = R \frac{v^2}{R^2} = \frac{v^2}{R} \]</div>
+                        <div class="right" id="[1.38]">[1.38]</div>
+                </div>
                 <p>Esto confirma que el módulo del vector aceleración es precisamente la <strong>aceleración centrípeta (\(a_n\))</strong> que definimos al principio, lo cual es coherente con la ausencia de aceleración tangencial en el MCU. La aceleración total es puramente centrípeta, encargándose solo de cambiar la dirección del vector velocidad.</p>
                 <h4>Resumen de ecuaciones del MCU</h4>
-                <table>
+                <table class="table-type1">
+                    <caption>
+                        Tabla 1.3: Resumen de ecuaciones del MCU.
+                    </caption>
                     <thead>
                         <tr>
                             <th>Magnitud</th>
@@ -621,23 +657,34 @@
                 <p><strong>1. Ecuación de la velocidad angular (\( \omega \)):</strong><br>
                 Definimos la aceleración angular como la derivada de la velocidad angular respecto al tiempo e integramos:</p>
                 $$\alpha = \frac{d\omega}{dt} \implies \int_{\omega_0}^{\omega} d\omega = \alpha \int_{0}^{t} dt$$
-                $$\omega(t) = \omega_0 + \alpha t$$
+                <div class="container">
+                        <div class="center">\[ \omega(t) = \omega_0 + \alpha t \]</div>
+                        <div class="right" id="[1.39]">[1.39]</div>
+                </div>
 
                 <p><strong>2. Ecuación de la posición angular (\( \varphi \)):</strong><br>
                 Definimos la velocidad angular como la derivada de la posición e integramos la expresión obtenida anteriormente:</p>
                 $$\omega = \frac{d\varphi}{dt} \implies d\varphi = (\omega_0 + \alpha t) dt$$
                 $$\int_{\varphi_0}^{\varphi} d\varphi = \int_{0}^{t} (\omega_0 + \alpha t) dt$$
-                $$\varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2} \alpha t^2$$
+                <div class="container">
+                        <div class="center">\[ \varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2} \alpha t^2 \]</div>
+                        <div class="right" id="[1.40]">[1.40]</div>
+                </div>
 
                 <h4>Relación independiente del tiempo</h4>
                 <p>Para relacionar la velocidad angular con el ángulo girado sin depender del tiempo, aplicamos la regla de la cadena a la aceleración angular:</p>
                 $$\alpha = \frac{d\omega}{dt} = \frac{d\omega}{d\varphi} \cdot \frac{d\varphi}{dt} = \omega \frac{d\omega}{d\varphi}$$
                 <p>Separando variables e integrando, obtenemos:</p>
                 $$\alpha \int_{\varphi_0}^{\varphi} d\varphi = \int_{\omega_0}^{\omega} \omega \, d\omega \implies \alpha \Delta\varphi = \frac{1}{2}\omega^2 - \frac{1}{2}\omega_0^2$$
-                $$\omega^2 - \omega_0^2 = 2 \alpha \Delta\varphi$$
+                <div class="container">
+                        <div class="center">\[ \omega^2 - \omega_0^2 = 2 \alpha \Delta\varphi \]</div>
+                        <div class="right" id="[1.41]">[1.41]</div>
+                </div>
 
-                <h4>Resumen de ecuaciones del MCUA</h4>
-                <table>
+                <table class="table-type1">
+                    <caption>
+                        Tabla 1.4: Resumen de ecuaciones del MCUA.
+                    </caption>
                     <thead>
                         <tr>
                             <th>Magnitud</th>
@@ -690,6 +737,75 @@
                     <li>El análisis del movimiento de un objeto soltado por un pasajero dentro de un vehículo en marcha (tren, ascensor, etc.).</li>
                     <li>La trayectoria de una pelota lanzada verticalmente que es desviada por el viento.</li>
                 </ul>
+            </section>
+            <section id="movimiento-parabolico">
+                <h3>1.8 Movimiento Parabólico (Lanzamiento de Proyectiles)</h3>
+
+                <p>El movimiento parabólico es un caso práctico fundamental de la <strong>composición de movimientos</strong>. Se produce cuando lanzamos un objeto con una velocidad inicial \( \vec{v}_0 \) que forma un ángulo \( \theta \) respecto a la horizontal. Al despreciar el rozamiento con el aire, el movimiento resultante es la superposición de dos movimientos independientes:</p>
+
+                <ul>
+                    <li><strong>En el eje horizontal (Eje X):</strong> Un Movimiento Rectilíneo Uniforme (MRU), ya que no existe ninguna aceleración en esta dirección.</li>
+                    <li><strong>En el eje vertical (Eje Y):</strong> Un Movimiento Rectilíneo Uniformemente Acelerado (MRUA), sujeto a la aceleración de la gravedad \( g \approx 9,8 \, \text{m/s}^2 \), que apunta siempre hacia el centro de la Tierra.</li>
+                </ul>
+
+                <h4>Descomposición de la velocidad inicial</h4>
+                <p>Partiendo de las coordenadas polares de la velocidad inicial, obtenemos sus componentes cartesianas:</p>
+                <ul>
+                    <li>\( v_{0x} = v_0 \cdot \cos(\theta) \)</li>
+                    <li>\( v_{0y} = v_0 \cdot \sin(\theta) \)</li>
+                </ul>
+
+                <h4>Ecuaciones del movimiento</h4>
+                <p>Aplicando el <strong>principio de superposición</strong>, sumamos vectorialmente las posiciones y velocidades de ambos ejes:</p>
+
+                <p><strong>1. Ecuaciones de la velocidad:</strong></p>
+                <p>En el eje X la velocidad permanece constante, mientras que en el eje Y varía uniformemente:</p>
+                <ul>
+                    <li>\( v_x(t) = v_{0x} = v_0 \cdot \cos(\theta) \)</li>
+                    <li>\( v_y(t) = v_{0y} - g \cdot t = v_0 \cdot \sin(\theta) - g \cdot t \)</li>
+                </ul>
+
+                <p><strong>2. Ecuaciones de la posición:</strong></p>
+                <p>Integrando las expresiones de la velocidad respecto al tiempo (considerando el origen en el suelo, \( x_0=0, y_0=0 \)):</p>
+                <ul>
+                    <li><strong>Eje X (Horizontal):</strong> \( x(t) = v_{0x} \cdot t = (v_0 \cdot \cos\theta) \cdot t \)</li>
+                    <li><strong>Eje Y (Vertical):</strong> \( y(t) = v_{0y} \cdot t - \frac{1}{2}g \cdot t^2 = (v_0 \cdot \sin\theta) \cdot t - \frac{1}{2}g \cdot t^2 \)</li>
+                </ul>
+
+                <h4>Ecuación de la trayectoria</h4>
+                <p>Si despejamos el tiempo \( t \) en la ecuación de la posición horizontal y lo sustituimos en la vertical, obtenemos la relación \( y = f(x) \):</p>
+                $$y(x) = \tan(\theta) \cdot x - \frac{g}{2 v_0^2 \cos^2(\theta)} \cdot x^2$$
+                <p>Esta expresión corresponde matemáticamente a una <strong>parábola</strong>, lo que confirma la geometría de este movimiento compuesto.</p>
+
+                <table class="table-type1">
+                    <caption>
+                        Tabla 1.5: Resumen del movimiento parabólico como sistema compuesto por un MRU horizontal y un MRUA vertical.
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Magnitud</th>
+                            <th>Eje X (MRU)</th>
+                            <th>Eje Y (MRUA)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Aceleración</strong></td>
+                            <td>\( a_x = 0 \)</td>
+                            <td>\( a_y = -g \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocidad</strong></td>
+                            <td>\( v_x = v_{0x} \)</td>
+                            <td>\( v_y = v_{0y} - gt \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Posición</strong></td>
+                            <td>\( x = v_{0x}t \)</td>
+                            <td>\( y = v_{0y}t - \frac{1}{2}gt^2 \)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
         </article>
     </body>
