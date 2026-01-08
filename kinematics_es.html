@@ -206,6 +206,10 @@
                     <div  class="center">$$ \vec a = \frac{\Delta\vec v}{\Delta t} = \frac{\Delta v_x}{\Delta t}\vec i +  \frac{\Delta v_y}{\Delta t}\vec j +  \frac{\Delta v_z}{\Delta t}\vec k $$</div>
                     <div  class="right" id="[1.12]">[1.12]</div>
                 </div>
+                <figure class="centered">
+                    <svg id="svg1_4"></svg >
+                    <figcaption><b>Figura 1.4</b> Variación de la velocidad en una trayectoria curva.</figcaption>
+                </figure>
                 <p>
                     La <strong>aceleración instantánea</strong> es la aceleración que tiene la partícula en cualquier instante \(t\), o en cualquier punto de la trayectoria. De modo que podemos expresar la aceleración instantánea como el valor límite de la aceleración media cuando el intervalo de tiempo tiende a cero.
                 </p>
@@ -262,10 +266,6 @@
                 <p>
                     Entonces, la aceleración instantánea de un móvil se puede expresar, en cada punto de dicha trayectoria, mediante las <strong>componentes intrínsecas de la aceleración</strong>; esto es, como la suma de dos aceleraciones: una en la dirección tangente a la trayectoria (<strong>aceleración tangencial</strong>) y otra en la dirección normal a la trayectoria (<strong>aceleración normal</strong>).
                 </p>
-                <figure class="centered">
-                    <svg id="svg1_4"></svg >
-                    <figcaption><b>Figura 1.4</b> Variación de la velocidad en una trayectoria curva.</figcaption>
-                </figure>
                 <p>Calculemos ahora los módulos de la aceleración tangencial y de la aceleración normal. Derivando la expresión de la velocidad en base a la trayectoria <a href="#[1.8]">[1.8]</a>.</p>
                 <div class="container">
                     <div  class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d (v\cdot \vec\tau)}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d \vec\tau}{d t} $$ </div>
@@ -328,8 +328,8 @@
                 <ul>
                     <li>Movimiento Rectilíneo Uniforme (MRU).</li>
                     <li>Movimiento Rectilíneo Uniformemente Acelerado (MRUA).</li>
-                    <li>Movimiento Circular Uniforme</li>
-                    <li>Movimiento Circular Uniformemente Acelerado</li>
+                    <li>Movimiento Circular Uniforme (MCU).</li>
+                    <li>Movimiento Circular Uniformemente Acelerado (MCUA)</li>
                 </ul>
             </section>
             <section id="mru">
@@ -379,7 +379,7 @@
                     <div  class="center">$$ \text{tg } \alpha = \frac{x(t_1) - x_0}{t_1} = v_{\text{media}}$$</div>
                     <div class="right" id="[1.26]">[1.26]</div>
                 </div>
-                <h4>Resumen de ecuaciones del MRU</h4>
+                
                 <table class="table-type1">
                     <caption>
                         Tabla 1.1: Resumen de ecuaciones del MRU.
@@ -776,6 +776,41 @@
                 <p>Si despejamos el tiempo \( t \) en la ecuación de la posición horizontal y lo sustituimos en la vertical, obtenemos la relación \( y = f(x) \):</p>
                 $$y(x) = \tan(\theta) \cdot x - \frac{g}{2 v_0^2 \cos^2(\theta)} \cdot x^2$$
                 <p>Esta expresión corresponde matemáticamente a una <strong>parábola</strong>, lo que confirma la geometría de este movimiento compuesto.</p>
+
+                <h4>Altura máxima y alcance horizontal</h4>
+                <p>Para completar el estudio del lanzamiento de proyectiles, es fundamental calcular dos parámetros que definen la geometría del disparo: la altura máxima y el alcance horizontal.</p>
+
+                <h5><strong>A) Altura Máxima (\( H_{max} \))</strong></h5>
+                <p>Se alcanza cuando el proyectil agota su impulso vertical y comienza a descender. En este punto cumbre, la componente vertical de la velocidad es nula: \( v_y = 0 \).</p>
+                
+                <p>1. Usamos la ecuación de la velocidad en el eje Y para hallar el <strong>tiempo de subida</strong> (\( t_s \)):</p>
+                \[ 0 = v_0 \sin\theta - g t_s \implies t_s = \frac{v_0 \sin\theta}{g} \]
+                
+                <p>2. Sustituimos este tiempo en la ecuación de la posición vertical (\( y \)):</p>
+                \[ H_{max} = (v_0 \sin\theta) \left( \frac{v_0 \sin\theta}{g} \right) - \frac{1}{2}g \left( \frac{v_0 \sin\theta}{g} \right)^2 \]
+                
+                <p>3. Tras simplificar los términos, obtenemos la expresión final:</p>
+                <div class="container">
+                    <div class="center">\[ H_{max} = \frac{v_0^2 \sin^2\theta}{2g} \]</div>
+                    <div class="right" id="[1.42]">[1.42]</div>
+                </div>
+
+                <h5><strong>B) Alcance Horizontal (\( R \))</strong></h5>
+                <p>Es la distancia total recorrida en el eje X cuando el objeto regresa al nivel de lanzamiento (\( y = 0 \)).</p>
+                
+                <p>1. En un lanzamiento simétrico, el <strong>tiempo de vuelo</strong> (\( t_v \)) es el doble del tiempo de subida:</p>
+                \[ t_v = 2 t_s = \frac{2 v_0 \sin\theta}{g} \]
+                
+                <p>2. Sustituimos el tiempo de vuelo en la ecuación de la posición horizontal (\( x \)):</p>
+                \[ R = (v_0 \cos\theta) \left( \frac{2 v_0 \sin\theta}{g} \right) = \frac{v_0^2 (2 \sin\theta \cos\theta)}{g} \]
+                
+                <p>3. Aplicando la identidad trigonométrica del ángulo doble (\( 2 \sin\theta \cos\theta = \sin(2\theta) \)), llegamos a:</p>
+                <div class="container">
+                    <div class="center">\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]</div>
+                    <div class="right" id="[1.43]">[1.43]</div>
+                </div>
+
+                <p><strong>Análisis:</strong> El alcance máximo se logra cuando \( \sin(2\theta) = 1 \). Esto ocurre cuando \( 2\theta = 90^\circ \), es decir, para un ángulo de disparo de <strong>45°</strong>.</p>
 
                 <table class="table-type1">
                     <caption>

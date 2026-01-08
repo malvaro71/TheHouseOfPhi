@@ -187,6 +187,10 @@
                     <div  class="center">$$ \vec a = \frac{\Delta\vec v}{\Delta t} = \frac{\Delta v_x}{\Delta t}\vec i +  \frac{\Delta v_y}{\Delta t}\vec j +  \frac{\Delta v_z}{\Delta t}\vec k $$</div>
                     <div  class="right" id="[1.12]">[1.12]</div>
                 </div>
+                <figure class="centered">
+                    <svg id="svg1_4"></svg >
+                    <figcaption><b>Figure 1.4</b> Variation of velocity in a curved path.</figcaption>
+                </figure>
                 <p>
                     The <strong>instantaneous acceleration</strong> is the acceleration that the particle has at any instant \(t\), or at any point in the trajectory. Thus, we can express the instantaneous acceleration as the limit value of the average acceleration when the time interval tends to zero.
                 </p>
@@ -242,11 +246,611 @@
                 <p>
                     Then, the instantaneous acceleration can be expressed by the <strong>intrinsic components of acceleration</strong> as the sum of two accelerations, one in the direction tangent to the trajectory (<strong>tangential acceleration</strong>) and the other in the direction normal to the trajectory (<strong>normal acceleration</strong>) at each point of said trajectory.
                 </p>
-                <figure class="centered">
-                    <svg id="svg1_4"></svg >
-                    <figcaption><b>Figure 1.4</b> Variation of velocity in a curved path.</figcaption>
-                </figure>
+                <p>Let us now calculate the magnitudes of the tangential acceleration and the normal acceleration. By differentiating the expression of velocity based on the trajectory <a href="#[1.8]">[1.8]</a>:</p>
+                <div class="container">
+                    <div class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d (v\cdot \vec\tau)}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d \vec\tau}{d t} $$ </div>
+                    <div class="right" id="[1.19]">[1.19]</div>
+                </div>
+                <p>Relating <a href="#[1.18]">[1.18]</a> and <a href="#[1.19]">[1.19]</a>, it can be observed that the first term of 1.19 \(\frac{d v}{d t}\cdot \vec\tau\) is the tangential acceleration. Thus, the <strong>magnitude of the tangential acceleration</strong> is simply the time derivative of the magnitude of the velocity (speed):</p>
+                <div class="container">
+                    <div class="center"> $$ a_{\tau} = \left \vert \frac{\Delta \vec v}{\Delta t} \right \vert $$ </div>
+                    <div class="right" id="[1.20]">[1.20]</div>
+                </div>
+                <p>Similarly, the second term of <a href="#[1.19]">[1.19]</a> \(v \cdot \frac{d \vec\tau}{d t}\) corresponds to the normal acceleration; it represents the rate of change of the <strong>direction</strong> of the velocity and is directed in the same direction as the normal unit vector \( \vec\eta \).</p>
+                <p> 
+                <div class="container">
+                    <div class="center">$$ v \cdot \frac{d \vec\tau}{d t} = v \cdot \frac{d (\vert \vec\tau\vert\cdot\vec\eta)}{d t} = v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta $$ </div>
+                    <div class="right" id="[1.21]">[1.21]</div>
+                </div>  
+                </p>
+                <p>Let us consider a small displacement along the trajectory; so small that the path of this displacement approximates a circular arc with a certain radius R. Therefore, during this displacement, the object travels along a circular arc of radius R (called the radius of curvature) and subtends an angle \( d\theta \) radians.</p>
+                <p>From the definition of a radian (a radian is the central angle of a circle that subtends an arc equal in length to the radius of the circle), we find that \( d s = R \cdot d\theta \).</p>
+                <p>For small angles, we can approximate the change in the tangent unit vector \(\vec\tau\) to the circular arc described by the tip of the vector as it rotates. The length of this arc is approximately equal to the radius of the circle (which is 1, since we are talking about a unit vector) multiplied by the angle \( d \theta \). Therefore, for small angles, we can write \( \vert d\vec\tau \vert \approx d\theta \). Then: </p>
+                <p> 
+                    $$
+                    \left.
+                        \begin{align}
+                            d s = R \cdot d\theta   \\
+                            \vert d\vec\tau \vert \approx d\theta
+                        \end{align}
+                    \right \}
+                    \implies d s = \vert d\vec\tau \vert \cdot R
+                    \implies \frac{\vert d\vec\tau \vert}{d s} = { 1 \over R}
+                    $$   
+                </p>
+                <p>Thus, rewriting <a href="#[1.19]">[1.19]</a>: </p>
+                <p>
+                    <div class="container">
+                    <div class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d\tau}{d s}\cdot \frac{d s}{d t}\cdot \vec\eta = \frac{d v}{d t}\cdot \vec\tau + {v^2 \over R}\cdot \vec\eta $$</div>
+                    <div class="right" id="[1.22]">[1.22]</div>
+                </div>     
+                </p>
+                <p>Finally, comparing with <a href="#[1.18]">[1.18]</a>, we find that the intrinsic coordinates of acceleration are: </p>
+                <p><strong>1. Tangential Acceleration (\(a_{\tau}\)):</strong></p>
+                <p>This component is responsible for the <strong>change in the magnitude of the velocity</strong> (i.e., the change in speed). It is parallel to the direction of motion at every instant. Its expression is defined as:</p>
+                <div class="container">
+                    <div class="center">$$ a_{\tau} = \frac{d v}{d t} $$</div>
+                    <div class="right" id="[1.23]">[1.23]</div>
+                </div>
+                <p>where \(v\) is the magnitude of the velocity (speed) and \(t\) is time. If the particle speeds up, \(a_{\tau}\) will be positive; if it slows down, it will be negative.</p>
+                <p><strong>2. Normal Acceleration (\(a_{\eta}\)):</strong></p>
+                <p>This component is responsible for the <strong>change in the direction of the velocity</strong>. It is always perpendicular to the trajectory and points toward the center of curvature of the path at that point. Its expression is defined as:</p>
+                <div class="container">
+                    <div class="center">$$ a_{\eta} = \frac{v^2}{R} $$</div>
+                    <div class="right" id="[1.24]">[1.24]</div>
+                </div>
+                <p>where \(v\) is the magnitude of the velocity (speed) and \(R\) is the radius of curvature of the trajectory at that point. This component is always non-negative, as a change in direction is always required for curved motion.</p>
+                <p>We can say that intrinsic coordinates offer an intuitive view of how acceleration affects both the particle's speed and the shape of its trajectory.</p>
             </section>
+            <section id="types_of_motion">
+                <h3>1.6 Kinematics of some types of Motion</h3>
+                <p>Let us apply the concepts presented so far to some of the most important types of motion:</p>
+                <ul>
+                    <li>Uniform Rectilinear Motion (URM).</li>
+                    <li>Uniformly Accelerated Rectilinear Motion (UARM).</li>
+                    <li>Uniform Circular Motion (UCM).</li>
+                    <li>Uniformly Accelerated Circular Motion (UACM).</li>
+                </ul>
+            </section>
+            <section id="mru">
+                <h3>1.6.1 Uniform Rectilinear Motion (URM)</h3>
+                <p>A motion is rectilinear and uniform when its velocity is constant. This implies:</p>
+                <ul>
+                    <li>The velocity is constant in direction and sense: the trajectory is a straight line.</li>
+                    <li>The velocity is constant in magnitude: it covers equal distances in equal time intervals.</li>
+                </ul>
+                <p>It can also be defined in terms of acceleration by stating: <strong>Uniform Rectilinear Motion (URM)</strong> is one that has no acceleration. This implies:</p>
+                \[ a_{\tau} = \frac{dv}{dt} = 0 \implies v = \text{constant} \]
+                \[ a_{\eta} = \frac{v^2}{R} = 0 \implies R = \infty \quad \text{The trajectory is a straight line.} \]
+
+                <p>To derive the law governing this motion, we start from the definition of instantaneous velocity <a href="#[1.6]">[1.6]</a>:</p>
+                \[ \vec v = \frac{d \vec r}{dt} \implies d \vec r = \vec v dt \]
+
+                <p>To solve for the position vector, we integrate the previous equation:</p>
+                \[ \vec r (t) = \int \vec v dt = \vec v \int dt = \vec v t + C \]
+
+                <p>This function must hold for any value of \(t\). Therefore, it must also hold for \(t = 0\):</p>
+                \[ \left. \begin{matrix} \vec{r} = \vec v t + C \\ t = 0 \end{matrix} \right\} \implies \vec{r}_0 = C \]
+
+                <p>The integration constant is the initial position \(\vec{r}_0\), and therefore, the <strong>vector equation of URM</strong> will be:</p>
+                <div class="container">
+                    <div class="center">$$\vec r (t) = \vec{r}_0 + \vec v t$$</div>
+                    <div class="right" id="[1.25]">[1.25]</div>
+                </div>
+
+                <figure class="centered">
+                    <svg id="svg1_5"></svg>
+                    <figcaption><b>Figure 1.5</b> Trajectory, velocity, and position of a particle in uniform rectilinear motion.</figcaption>
+                </figure>
+
+                <p>For this type of motion, we can choose a one-dimensional reference system, where the position of the particle along the straight line can be defined simply by a scalar value \(x\), making one of the axes—the \(x\)-axis, in this case—coincide with the direction of motion: \( \vec r = (x, 0, 0)\).</p>
+
+                <figure class="centered">
+                    <svg id="svg1_6"></svg>
+                    <figcaption><b>Figure 1.6</b> In rectilinear motion, the direction of motion can be taken as the reference system.</figcaption>
+                </figure>
+
+                <p>Thus, the previous equation reduces to a scalar equation:</p>
+                \[ x(t) = x_0 + vt \quad \text{position equation.} \]
+
+                <p>Therefore, for URM, we express displacement as a scalar, whose value coincides with the distance traveled:</p>
+                \[ \left. \begin{matrix} \Delta x = x(t_2) - x(t_1) = v\Delta t \\ \Delta x = \Delta s \end{matrix} \right \} \implies \Delta s = v\Delta t  \]
+
+                <p>Similarly, for this type of motion, we can represent velocity using a scalar. Thus, the average velocity is:</p>
+                \[ v = \frac{\Delta x}{\Delta t} = \frac{\Delta s}{\Delta t} \]
+
+                <p>By establishing a one-dimensional reference system, it is extremely useful to employ an <strong>x-t diagram</strong> to represent the motion. This diagram is, by definition, the graphical representation of the function \(x = f(t)\) describing the motion.</p>
+
+                <p>For uniform rectilinear motion, where the position is given by \(x = x_0 + vt\), the x-t diagram is visualized as a straight line. In this representation, the y-intercept (the point where the line crosses the vertical axis) corresponds to the initial position of the particle (\(x_0\)), and the slope of this line directly indicates the velocity of the particle.</p>
+
+                <figure class="centered">
+                    <svg id="svg1_7"></svg>
+                    <figcaption><b>Figure 1.7 </b>Graph of \(x = f(t)\) for uniform rectilinear motion.</figcaption>
+                </figure>
+
+                <p>In the URM x-t diagram, the <strong>slope (\(\tan \alpha\))</strong> of the line describing the motion, calculated over a specific time interval, is obtained by dividing the change in the vertical coordinate (the particle's position) by the change in the horizontal coordinate (the elapsed time). In the x-t diagram, this corresponds directly to the <strong>average velocity</strong> of the motion during that interval:</p>
+                <div class="container">
+                    <div class="center">$$ \tan \alpha = \frac{x(t_1) - x_0}{t_1} = v_{\text{avg}}$$</div>
+                    <div class="right" id="[1.26]">[1.26]</div>
+                </div>
+
+                <table class="table-type1">
+                    <caption>
+                        Table 1.1: Summary of URM equations.
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Magnitude</th>
+                            <th>Equation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Position vector:</strong></td>
+                            <td>\( \vec{r}(t) = \vec{r}_0 + \vec{v} \; t \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Position (scalar):</strong></td>
+                            <td>\( x(t) = x_0 + v t \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocity:</strong></td>
+                            <td>\( v = \text{constant} \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Displacement:</strong></td>
+                            <td>\( \Delta x = v \Delta t,\; \Delta s = v \Delta t \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>x-t Diagram:</strong></td>
+                            <td>Slope \( = v \) (straight line: \( x = x_0 + v t \))</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="uarm">
+                <h3>1.6.2 Uniformly Accelerated Rectilinear Motion (UARM)</h3>
+                <p>A motion is called <strong>uniformly accelerated rectilinear motion (UARM)</strong> when it has no normal acceleration and its tangential acceleration is constant.</p>
+
+                <p>Since it has no normal acceleration, the trajectory of this motion describes a straight line. Therefore, if we choose the direction of motion as our reference system, as we did for uniform rectilinear motion, all vector magnitudes become scalars.</p>
+
+                <p>Starting from the definition of tangential acceleration and integrating, we obtain the velocity equation at any instant:</p>
+                \[ a = \frac{dv}{dt} \Rightarrow dv = a \, dt \Rightarrow v(t) = \int a \, dt = a \int dt = at + C \]
+                <p>This function must hold for any value of \(t\). Therefore, it must also hold for \(t = 0\).</p>
+                \[ \left. \begin{matrix} v(t) = at + C \\ t = 0 \end{matrix} \right\} \implies v_0 = C \]
+
+                <p>The integration constant represents the initial velocity.</p>
+                <p>The equation of motion that allows calculating the velocity at any instant is:</p>
+                <div class="container">
+                    <div class="center">\[ v(t) = v_0 + at \]</div>
+                    <div class="right" id="[1.27]">[1.27]</div>
+                </div>
+                <p>To find the position equation at any instant, we start from the definition of velocity and integrate:</p>
+                \[
+                v = \frac{dx}{dt} \Rightarrow dx = v \, dt \Rightarrow x(t) = \int v \, dt = \int (v_0 + at) \, dt \\
+                = \int v_0 \, dt + \int at \, dt = v_0 \int dt + a \int t \, dt = v_0 t + \frac{1}{2} at^2 + C
+                \]
+                <p>If this function must hold for any value of time, the integration constant represents the initial position \(C = x_0\).</p>
+                <p>The <strong>scalar equation of UARM</strong>, which gives us the position at any instant, will be:</p>
+                <div class="container">
+                    <div class="center">
+                        \[ x(t) = x_0 + v_0 t + \frac{1}{2} at^2 \]
+                    </div>
+                    <div class="right" id="[1.28]">[1.28]</div>
+                </div>
+                <p>To represent UARM on an x-t diagram, we plot the function \(x=f(t)\), where the position is given by <a href="#[1.28]">[1.28]</a>. The x-t diagram is visualized as a parabola, whose y-intercept corresponds to the initial position of the moving object (\(x_0\)).</p>
+                <figure class="centered">
+                    <svg id="svg1_8"></svg >
+                    <figcaption><b>Figure 1.8 </b>Graph of \(x = f(t)\) for uniformly accelerated rectilinear motion.</figcaption>
+                </figure>
+                <p>Unlike URM where velocity is constant, in UARM the velocity varies continuously. To understand the velocity at a specific instant, we turn to the concept of instantaneous velocity. Similar to how the tangent in URM represents constant velocity, in UARM, where the position vs. time graph (\(x\) vs. \(t\)) is a curve (a parabola), <strong>the instantaneous velocity at each point of the curve corresponds to the slope of the tangent line to the curve at that instant</strong>. This instantaneous slope is, by definition, the derivative of position with respect to time:</p>
+                <div class="container">
+                    <div class="center">$$ \tan \alpha = \frac{dx}{dt} = v_{\text{instantaneous}} $$</div>
+                    <div class="right" id="[1.29]">[1.29]</div>
+                </div>
+                <h4>Summary of UARM equations</h4>
+                <table class="table-type1">
+                    <caption>
+                        Table 1.2: Summary of UARM equations.
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Magnitude</th>
+                            <th>Equation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Acceleration:</strong></td>
+                            <td>\( a = \text{constant} \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocity:</strong></td>
+                            <td>\( v(t) = v_0 + a t \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Position:</strong></td>
+                            <td>\( x(t) = x_0 + v_0 t + \tfrac{1}{2} a t^2 \)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="mcu">
+                <h3>1.6.3 Uniform Circular Motion (UCM)</h3>
+                <p>Uniform Circular Motion (UCM) describes the motion of an object traveling in a circular path at a <strong>constant speed</strong>. To understand how we derive the equation that defines its position at any given time, we begin with the key characteristics of its acceleration.</p>
+                
+                
+
+                <h4><u>Accelerations in UCM</u></h4>
+                <p>As we already know, the acceleration of a moving object can be decomposed into two intrinsic components: tangential acceleration (\(a_t\)) and normal acceleration (or centripetal acceleration, \(a_n\)).</p>
+                <ul>
+                    <li><strong>Tangential Acceleration (\(a_t\)):</strong> This component of acceleration acts in the direction of motion (tangent to the trajectory) and is responsible for changing the <strong>magnitude of velocity</strong> (the speed) of the object. In UCM, the speed is, by definition, constant. Therefore, there is no change in the magnitude of velocity, which means that the <strong>tangential acceleration is zero (\(a_t = 0\))</strong>.</li>
+                    <li><strong>Normal or Centripetal Acceleration (\(a_n\)):</strong> This component acts perpendicular to the velocity and always points toward the center of curvature of the trajectory. It is responsible for changing the <strong>direction of velocity</strong>. For an object to move in a circle, the direction of its velocity must change continuously. In UCM, the trajectory is a circle of radius \(R\), and the magnitude of the normal acceleration remains constant, given by the formula:
+                    <div class="container">
+                        <div class="center">\[ a_n = \frac{v^2}{R} \]</div>
+                        <div class="right" id="[1.30]">[1.30]</div>
+                    </div>
+                    Since speed (\(v\)) and radius (\(R\)) are constant in UCM, the magnitude of the normal acceleration (\(a_n\)) is also constant.</li>
+                </ul>
+
+                <h4><u>Particle Position: Introduction to Polar Coordinates and the Radian</u></h4>
+                <p>To describe the position of a particle on a circular trajectory, the <strong>polar coordinate</strong> system \((r, \theta)\) is the most natural and convenient.</p>
+                <ul>
+                    <li><strong>The Radius (\(r\)):</strong> For a circular path centered at the origin, the radius \(r\) is simply the constant radius of the circle, which we denote as \(R\). Thus, the first polar coordinate is \(r=R\).</li>
+                    <li><strong>The Angle (\(\theta\)):</strong> The second polar coordinate is the angle \(\theta\), representing the angular position of the particle relative to a reference axis (usually the positive \(x\)-axis). This angle is measured in <strong>radians</strong>.</li>
+                </ul>
+
+                
+
+                <p><strong>Definition of Radian:</strong> A radian is the unit of measure for an angle that subtends an arc equal in length to the radius of a circle. If the arc of a circle measures \(s\) and the radius of the circle is \(R\), then the angle \(\theta\) (in radians) subtended by that arc is:</p>
+                <div class="container">
+                        <div class="center">\[ \theta = \frac{s}{R} \]</div>
+                        <div class="right" id="[1.31]">[1.31]</div>
+                </div>
+                <p>From this definition, we can deduce a fundamental relationship: the arc length (\(s\)) on a circle is equal to the radius (\(R\)) multiplied by the angle (\(\theta\)) subtended by that arc (measured in radians). For an infinitesimal change in angular position \(d\theta\), the infinitesimal arc length \(ds\) is:</p>
+                \[ ds = R d\theta \]
+                <p>This relationship connects the distance traveled along the trajectory (a linear quantity) with the change in angular position (an angular quantity).</p>
+
+                <h4><u>Angular Velocity (\(\omega\)) as a Constant in UCM</u></h4>
+                <p>Given that the tangential acceleration is zero (\(a_t=0\)), we confirm that the <strong>linear speed (\(v = ds/dt\)) is constant</strong>. Using the relationship \(ds = R d\theta\), we can express the linear speed as:</p>
+                \[ v = \frac{ds}{dt} = \frac{R d\theta}{dt} = R \frac{d\theta}{dt} \]
+                <p>The quantity \(\frac{d\theta}{dt}\) is the <strong>angular velocity (\(\omega\))</strong>, which represents how fast the angle \(\theta\) changes with time. Therefore, we have:</p>
+                <div class="container">
+                        <div class="center">\[ v = \omega R \]</div>
+                        <div class="right" id="[1.32]">[1.32]</div>
+                </div>
+                <p>Since \(v\) is constant and \(R\) (the radius of the circle) is also constant, it follows that the <strong>angular velocity (\(\omega\)) must also be constant</strong> for UCM. This constant \(\omega\) (measured in radians per second) is the cornerstone for describing position over time.</p>
+
+                <h4><u>Equation of Motion for Angular Position and Integration</u></h4>
+                <p>The definition of angular velocity as the rate of change of angular position gives us the following differential equation:</p>
+                <div class="container">
+                        <div class="center"> \[ \omega = \frac{d\theta}{dt} \]</div>
+                        <div class="right" id="[1.33]">[1.33]</div>
+                </div>
+                <p>Since \(\omega\) is constant in UCM, we can solve this simple differential equation through integration. We multiply by \(dt\) to separate the variables:</p>
+                \[ d\theta = \omega dt \]
+                <p>Now, we integrate both sides. If at the initial instant \(t=0\) the angular position is \(\theta_0\), and at an instant \(t\) the angular position is \(\theta(t)\):</p>
+                \[ \int_{\theta_0}^{\theta(t)} d\theta = \int_{0}^{t} \omega dt \]
+                \[ [\theta]_{\theta_0}^{\theta(t)} = \omega [t]_{0}^{t} \]
+                \[ \theta(t) - \theta_0 = \omega (t - 0) \]
+                <div class="container">
+                        <div class="center">\[ \theta(t) = \omega t + \theta_0 \]</div>
+                        <div class="right" id="[1.34]">[1.34]</div>
+                </div>
+                <p>Equation <a href="#[1.34]">[1.34]</a> gives us the <strong>angular position</strong> of the particle at any instant of time \(t\). Thus, the position of the particle in polar coordinates at any instant \(t\) is \((R, \omega t + \theta_0)\).</p>
+
+                <h4><u>Transformation to Cartesian Coordinates: The Position Vector</u></h4>
+                <p>Finally, to express the particle's position in a <strong>Cartesian coordinate</strong> system \((x, y)\), we use the trigonometric relationships connecting polar and Cartesian coordinates:</p>
+                \[ x = r \cos(\theta) \]
+                \[ y = r \sin(\theta) \]
+                <p>Substituting \(r=R\) and the expression for \(\theta(t)\) we just derived:</p>
+                \[ x(t) = R \cos(\omega t + \theta_0) \]
+                \[ y(t) = R \sin(\omega t + \theta_0) \]
+                <p>The <strong>position vector</strong> \(\vec{r}(t)\) is built using the unit vectors \(\hat{i}\) (for the \(x\) direction) and \(\hat{j}\) (for the \(y\) direction):</p>
+                \[ \vec{r}(t) = x(t) \hat{i} + y(t) \hat{j} \]
+                <p>By substituting the expressions for \(x(t)\) and \(y(t)\), we obtain the <strong>position vector for UCM</strong>:</p>
+                <div class="container">
+                        <div class="center">\[ \vec{r}(t) = (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \]</div>
+                        <div class="right" id="[1.35]">[1.35]</div>
+                </div>
+                <p>Equation <a href="#[1.35]">[1.35]</a> allows us to know the exact location of an object in UCM at any instant of time, based on its radius, constant angular velocity, and initial angular position.</p>
+
+                <h4><u>The Velocity Vector in Cartesian Coordinates</u></h4>
+                <p>Once we have the position vector \(\vec{r}(t)\), we can obtain the <strong>velocity vector</strong> \(\vec{v}(t)\) by differentiating \(\vec{r}(t)\) with respect to time:</p>
+                \[ \vec{v}(t) = \frac{d\vec{r}(t)}{dt} = \frac{d}{dt} \left[ (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \right] \]
+                <p>Differentiating component by component:</p>
+                \[ v_x(t) = \frac{d}{dt} (R \cos(\omega t + \theta_0)) = -R \sin(\omega t + \theta_0) \cdot \omega = -R\omega \sin(\omega t + \theta_0) \]
+                \[ v_y(t) = \frac{d}{dt} (R \sin(\omega t + \theta_0)) = R \cos(\omega t + \theta_0) \cdot \omega = R\omega \cos(\omega t + \theta_0) \]
+                <p>Therefore, the velocity vector is:</p>
+                \[ \vec{v}(t) = (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \]
+                <p>Now, let us calculate the <strong>magnitude of this velocity vector</strong> to verify it matches the constant speed \(v = R\omega\):</p>
+                \[ \|\vec{v}(t)\| = \sqrt{v_x(t)^2 + v_y(t)^2} \]
+                \[ \|\vec{v}(t)\| = \sqrt{(-R\omega \sin(\omega t + \theta_0))^2 + (R\omega \cos(\omega t + \theta_0))^2} \]
+                \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 \sin^2(\omega t + \theta_0) + R^2\omega^2 \cos^2(\omega t + \theta_0)} \]
+                \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 (\sin^2(\omega t + \theta_0) + \cos^2(\omega t + \theta_0))} \]
+                <p>Since \(\sin^2(x) + \cos^2(x) = 1\):</p>
+                \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 \cdot 1} = \sqrt{R^2\omega^2} = |R\omega| \]
+                <p>As \(R\) and \(\omega\) are positive magnitudes, the magnitude of the velocity is:</p>
+                <div class="container">
+                        <div class="center">\[ \|\vec{v}(t)\| = R\omega \]</div>
+                        <div class="right" id="[1.36]">[1.36]</div>
+                </div>
+                <p>This confirms that the magnitude of the velocity vector is the constant speed \(R\omega\), as expected for UCM.</p>
+
+                <h4><u>The Acceleration Vector in Cartesian Coordinates</u></h4>
+                <p>To obtain the <strong>acceleration vector</strong> \(\vec{a}(t)\), we differentiate the velocity vector \(\vec{v}(t)\) with respect to time:</p>
+                \[ \vec{a}(t) = \frac{d\vec{v}(t)}{dt} = \frac{d}{dt} \left[ (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \right] \]
+                <p>Differentiating component by component:</p>
+                \[ a_x(t) = \frac{d}{dt} (-R\omega \sin(\omega t + \theta_0)) = -R\omega \cos(\omega t + \theta_0) \cdot \omega = -R\omega^2 \cos(\omega t + \theta_0) \]
+                \[ a_y(t) = \frac{d}{dt} (R\omega \cos(\omega t + \theta_0)) = -R\omega \sin(\omega t + \theta_0) \cdot \omega = -R\omega^2 \sin(\omega t + \theta_0) \]
+                <p>Therefore, the acceleration vector is:</p>
+                \[ \vec{a}(t) = (-R\omega^2 \cos(\omega t + \theta_0)) \hat{i} + (-R\omega^2 \sin(\omega t + \theta_0)) \hat{j} \]
+                <p>We can factor out \(-R\omega^2\) from the expression:</p>
+                \[ \vec{a}(t) = -R\omega^2 [ (\cos(\omega t + \theta_0)) \hat{i} + (\sin(\omega t + \theta_0)) \hat{j} ] \]
+                <p>Notice that the expression in brackets is exactly the position vector \(\vec{r}(t)\) divided by \(R\), which is the unit vector in the radial direction, \(\hat{u}_r = \frac{\vec{r}(t)}{R}\). This means the acceleration always points in the opposite direction of the position vector (toward the center of the circle), which is consistent with centripetal acceleration.</p>
+                \[ \vec{a}(t) = -\omega^2 \vec{r}(t) \]
+                <p>Finally, let us calculate the <strong>magnitude of the acceleration vector</strong>:</p>
+                \[ \|\vec{a}(t)\| = \sqrt{a_x(t)^2 + a_y(t)^2} \]
+                \[ \|\vec{a}(t)\| = \sqrt{(-R\omega^2 \cos(\omega t + \theta_0))^2 + (-R\omega^2 \sin(\omega t + \theta_0))^2} \]
+                \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 \cos^2(\omega t + \theta_0) + R^2\omega^4 \sin^2(\omega t + \theta_0)} \]
+                \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 (\cos^2(\omega t + \theta_0) + \sin^2(\omega t + \theta_0))} \]
+                \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 \cdot 1} = \sqrt{R^2\omega^4} = |R\omega^2| \]
+                <p>Since \(R\) and \(\omega\) are positive, the magnitude of the acceleration is:</p>
+                <div class="container">
+                        <div class="center">\[ \|\vec{a}(t)\| = R\omega^2 \]</div>
+                        <div class="right" id="[1.37]">[1.37]</div>
+                </div>
+                <p>Recalling that linear speed \(v = R\omega\), we can substitute \(\omega = v/R\) into the acceleration expression:</p>
+                <div class="container">
+                        <div class="center">\[ \|\vec{a}(t)\| = R \left(\frac{v}{R}\right)^2 = R \frac{v^2}{R^2} = \frac{v^2}{R} \]</div>
+                        <div class="right" id="[1.38]">[1.38]</div>
+                </div>
+                <p>This confirms that the magnitude of the acceleration vector is precisely the <strong>centripetal acceleration (\(a_n\))</strong> we defined at the beginning, which is consistent with the absence of tangential acceleration in UCM. The total acceleration is purely centripetal, responsible only for changing the direction of the velocity vector.</p>
+
+                <table class="table-type1">
+                    <caption>
+                        Table 1.3: Summary of UCM equations.
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Magnitude</th>
+                            <th>Equation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Angular velocity</strong></td>
+                            <td>\( \omega = \text{const},\; \omega = \dfrac{d\theta}{dt} \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Angular position</strong></td>
+                            <td>\( \theta(t) = \omega t + \theta_0 \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cartesian coordinates</strong></td>
+                            <td>\( x(t)=R\cos(\omega t+\theta_0),\; y(t)=R\sin(\omega t+\theta_0) \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocity vector</strong></td>
+                            <td>\( \vec{v}(t) = -R\omega\sin(\omega t+\theta_0)\,\hat{i} + R\omega\cos(\omega t+\theta_0)\,\hat{j},\; \|\vec{v}\|=R\omega \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Acceleration vector</strong></td>
+                            <td>\( \vec{a}(t) = -R\omega^2\cos(\omega t+\theta_0)\,\hat{i} - R\omega^2\sin(\omega t+\theta_0)\,\hat{j},\; \|\vec{a}\|=R\omega^2 = \dfrac{v^2}{R} \)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="uacm">
+                <h3>1.6.4 Uniformly Accelerated Circular Motion (UACM)</h3>
+
+                <p><strong>UACM</strong> is a motion along a circular path in which the angular acceleration remains constant over time <strong>(\(\alpha = \text{const} \neq 0\))</strong>. This implies that the angular velocity \(\omega\) increases or decreases uniformly.</p>
+
+                <h4>Behavior of Intrinsic Components</h4>
+                <p>Since we already know the vector nature of acceleration, in UACM its components behave as follows:</p>
+                <ul>
+                    <li><strong>Tangential Acceleration (\( a_t \)):</strong> It is <strong>constant</strong>. Since \( \alpha \) is constant and the radius \( R \) is fixed, the rate at which the magnitude of the velocity varies is uniform:
+                        $$a_t = \alpha \cdot R = \text{const}$$
+                    </li>
+                    <li><strong>Normal Acceleration (\( a_n \)):</strong> It is <strong>variable</strong>. Although \( R \) is constant, the angular velocity \( \omega \) changes over time. Therefore, the acceleration required to curve the trajectory increases with the square of the velocity:
+                        $$a_n(t) = \omega(t)^2 \cdot R$$
+                    </li>
+                </ul>
+                
+                <h4>Derivation of Equations by Integration</h4>
+                <p>To obtain the equations of motion, we start from the linear relationship between tangential and angular acceleration: \( \alpha = a_t / R \). Since \( a_t \) is constant, \( \alpha \) is also constant.</p>
+
+                <p><strong>1. Angular Velocity Equation (\( \omega \)):</strong><br>
+                We define angular acceleration as the derivative of angular velocity with respect to time and integrate:</p>
+                $$\alpha = \frac{d\omega}{dt} \implies \int_{\omega_0}^{\omega} d\omega = \alpha \int_{0}^{t} dt$$
+                <div class="container">
+                        <div class="center">\[ \omega(t) = \omega_0 + \alpha t \]</div>
+                        <div class="right" id="[1.39]">[1.39]</div>
+                </div>
+
+                <p><strong>2. Angular Position Equation (\( \varphi \)):</strong><br>
+                We define angular velocity as the derivative of position and integrate the expression obtained previously:</p>
+                $$\omega = \frac{d\varphi}{dt} \implies d\varphi = (\omega_0 + \alpha t) dt$$
+                $$\int_{\varphi_0}^{\varphi} d\varphi = \int_{0}^{t} (\omega_0 + \alpha t) dt$$
+                <div class="container">
+                        <div class="center">\[ \varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2} \alpha t^2 \]</div>
+                        <div class="right" id="[1.40]">[1.40]</div>
+                </div>
+
+                <h4>Time-Independent Relationship</h4>
+                <p>To relate the angular velocity to the angle rotated without depending on time, we apply the chain rule to the angular acceleration:</p>
+                $$\alpha = \frac{d\omega}{dt} = \frac{d\omega}{d\varphi} \cdot \frac{d\varphi}{dt} = \omega \frac{d\omega}{d\varphi}$$
+                <p>Separating variables and integrating, we obtain:</p>
+                $$\alpha \int_{\varphi_0}^{\varphi} d\varphi = \int_{\omega_0}^{\omega} \omega \, d\omega \implies \alpha \Delta\varphi = \frac{1}{2}\omega^2 - \frac{1}{2}\omega_0^2$$
+                <div class="container">
+                        <div class="center">\[ \omega^2 - \omega_0^2 = 2 \alpha \Delta\varphi \]</div>
+                        <div class="right" id="[1.41]">[1.41]</div>
+                </div>
+
+                <table class="table-type1">
+                    <caption>
+                        Table 1.4: Summary of UACM equations.
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Magnitude</th>
+                            <th>Equation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Angular acceleration:</strong></td>
+                            <td>\( \alpha = \text{const} \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Angular velocity:</strong></td>
+                            <td>\( \omega(t) = \omega_0 + \alpha t \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Angular position:</strong></td>
+                            <td>\( \varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2}\alpha t^2 \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Time-independent relationship:</strong></td>
+                            <td>\( \omega^2 - \omega_0^2 = 2\alpha\Delta\varphi \)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="composition-of-motions">
+                <h3>1.7 Composition of Motions</h3>
+
+                <p>Any complex motion can be decomposed into three independent motions located along the Cartesian axes. Similarly, the composition of independent motions results in a single resultant motion.</p>
+
+                <h4>The Principle of Superposition</h4>
+                <p>The generalization of this idea constitutes the <strong>principle of superposition</strong>, which states that if a particle is simultaneously subjected to several independent elementary motions, the resulting motion is obtained by vectorially adding these partial motions.</p>
+                
+                
+
+                <p>For the practical application of this principle, the following vector magnitudes must be added separately:</p>
+                <ul>
+                    <li>Positions.</li>
+                    <li>Displacements.</li>
+                    <li>Velocities.</li>
+                    <li>Accelerations.</li>
+                </ul>
+
+                <h4>Galileo's Principle of Independence</h4>
+                <p>The principle of superposition is based on <strong>Galileo's principle of independence</strong>. This postulates that when a point is endowed with two simultaneous motions, its change in position is independent of whether both motions act successively or simultaneously.</p>
+
+                <h4>Practical Applications</h4>
+                <p>This principle allows for the resolution of many specific kinematic problems, such as:</p>
+                <ul>
+                    <li>The study of a swimmer crossing a river while being carried by the current.</li>
+                    
+                    <li>The analysis of the motion of an object dropped by a passenger inside a moving vehicle (train, elevator, etc.).</li>
+                    <li>The trajectory of a ball thrown vertically that is deflected by the wind.</li>
+                </ul>
+            </section>
+            <section id="projectile-motion">
+                <h3>1.8 Projectile Motion (Parabolic Motion)</h3>
+
+                <p>Projectile motion is a fundamental practical case of the <strong>composition of motions</strong>. It occurs when we launch an object with an initial velocity \( \vec{v}_0 \) that forms an angle \( \theta \) with respect to the horizontal. By neglecting air resistance, the resulting motion is the superposition of two independent motions:</p>
+
+                <ul>
+                    <li><strong>On the horizontal axis (X-axis):</strong> A Uniform Rectilinear Motion (URM), since no acceleration exists in this direction.</li>
+                    <li><strong>On the vertical axis (Y-axis):</strong> A Uniformly Accelerated Rectilinear Motion (UARM), subject to the acceleration of gravity \( g \approx 9.8 \, \text{m/s}^2 \), which always points toward the center of the Earth.</li>
+                </ul>
+
+                <h4>Decomposition of Initial Velocity</h4>
+                <p>Starting from the polar coordinates of the initial velocity, we obtain its Cartesian components:</p>
+                <ul>
+                    <li>\( v_{0x} = v_0 \cdot \cos(\theta) \)</li>
+                    <li>\( v_{0y} = v_0 \cdot \sin(\theta) \)</li>
+                </ul>
+
+                <h4>Equations of Motion</h4>
+                <p>Applying the <strong>principle of superposition</strong>, we vectorially add the positions and velocities of both axes:</p>
+
+                <p><strong>1. Velocity Equations:</strong></p>
+                <p>On the X-axis, the velocity remains constant, while on the Y-axis, it varies uniformly:</p>
+                <ul>
+                    <li>\( v_x(t) = v_{0x} = v_0 \cdot \cos(\theta) \)</li>
+                    <li>\( v_y(t) = v_{0y} - g \cdot t = v_0 \cdot \sin(\theta) - g \cdot t \)</li>
+                </ul>
+
+                <p><strong>2. Position Equations:</strong></p>
+                <p>Integrating the velocity expressions with respect to time (considering the origin at ground level, \( x_0=0, y_0=0 \)):</p>
+                <ul>
+                    <li><strong>X-axis (Horizontal):</strong> \( x(t) = v_{0x} \cdot t = (v_0 \cdot \cos\theta) \cdot t \)</li>
+                    <li><strong>Y-axis (Vertical):</strong> \( y(t) = v_{0y} \cdot t - \frac{1}{2}g \cdot t^2 = (v_0 \cdot \sin\theta) \cdot t - \frac{1}{2}g \cdot t^2 \)</li>
+                </ul>
+
+                <h4>Trajectory Equation</h4>
+                <p>If we solve for time \( t \) in the horizontal position equation and substitute it into the vertical one, we obtain the relationship \( y = f(x) \):</p>
+                $$y(x) = \tan(\theta) \cdot x - \frac{g}{2 v_0^2 \cos^2(\theta)} \cdot x^2$$
+                <p>This expression mathematically corresponds to a <strong>parabola</strong>, confirming the geometry of this compound motion.</p>
+
+                <h4>Maximum Height and Horizontal Range</h4>
+                <p>To complete the study of projectile motion, it is essential to calculate two parameters that define the geometry of the trajectory: the maximum height and the horizontal range.</p>
+
+                <h5><strong>A) Maximum Height (\( H_{max} \))</strong></h5>
+                <p>It is reached when the projectile exhausts its vertical momentum and begins to descend. At this peak point, the vertical component of the velocity is zero: \( v_y = 0 \).</p>
+                
+                <p>1. We use the velocity equation for the Y-axis to find the <strong>time of ascent</strong> (\( t_s \)):</p>
+                \[ 0 = v_0 \sin\theta - g t_s \implies t_s = \frac{v_0 \sin\theta}{g} \]
+                
+                <p>2. We substitute this time into the vertical position equation (\( y \)):</p>
+                \[ H_{max} = (v_0 \sin\theta) \left( \frac{v_0 \sin\theta}{g} \right) - \frac{1}{2}g \left( \frac{v_0 \sin\theta}{g} \right)^2 \]
+                
+                <p>3. After simplifying the terms, we obtain the final expression:</p>
+                <div class="container">
+                    <div class="center">\[ H_{max} = \frac{v_0^2 \sin^2\theta}{2g} \]</div>
+                    <div class="right" id="[1.42]">[1.42]</div>
+                </div>
+
+                <h5><strong>B) Horizontal Range (\( R \))</strong></h5>
+                <p>It is the total distance traveled along the X-axis when the object returns to the launch level (\( y = 0 \)).</p>               
+
+                <p>1. In a symmetrical launch, the <strong>time of flight</strong> (\( t_v \)) is twice the time of ascent:</p>
+                \[ t_v = 2 t_s = \frac{2 v_0 \sin\theta}{g} \]
+                
+                <p>2. We substitute the time of flight into the horizontal position equation (\( x \)):</p>
+                \[ R = (v_0 \cos\theta) \left( \frac{2 v_0 \sin\theta}{g} \right) = \frac{v_0^2 (2 \sin\theta \cos\theta)}{g} \]
+                
+                <p>3. Applying the double-angle trigonometric identity (\( 2 \sin\theta \cos\theta = \sin(2\theta) \)), we arrive at:</p>
+                <div class="container">
+                    <div class="center">\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]</div>
+                    <div class="right" id="[1.43]">[1.43]</div>
+                </div>
+
+                <p><strong>Analysis:</strong> The maximum range is achieved when \( \sin(2\theta) = 1 \). This occurs when \( 2\theta = 90^\circ \), that is, for a launch angle of <strong>45°</strong>.</p>
+
+                <table class="table-type1">
+                    <caption>
+                        Table 1.5: Summary of projectile motion as a system composed of a horizontal URM and a vertical UARM.
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Magnitude</th>
+                            <th>X-axis (URM)</th>
+                            <th>Y-axis (UARM)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Acceleration</strong></td>
+                            <td>\( a_x = 0 \)</td>
+                            <td>\( a_y = -g \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocity</strong></td>
+                            <td>\( v_x = v_{0x} \)</td>
+                            <td>\( v_y = v_{0y} - gt \)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Position</strong></td>
+                            <td>\( x = v_{0x}t \)</td>
+                            <td>\( y = v_{0y}t - \frac{1}{2}gt^2 \)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>                                                
         </article>
     </body>
 </html>
