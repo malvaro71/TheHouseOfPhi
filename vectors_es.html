@@ -179,10 +179,6 @@
 						\theta = \arctan (y/x) \label{eq:6_2}
 					\end{flalign}
 				</p>
-                <div class="container">
-                    <div  class="center">\(\theta = \arctan (y/x)\)</div>
-                    <div  class="right" id="[1.3]">[1.3]</div>
-                </div>
                 <p>
                     Dadas la magnitud y dirección de un vector \(vec v\), su <strong>componente x</strong> se calcula   mediante
                 </p>
@@ -191,10 +187,6 @@
 						x = \Vert\vec v\Vert\cos\theta \label{eq:6_3}
 					\end{flalign}
 				</p>
-                <div class="container">
-                    <div  class="center">\(x = \Vert\vec v\Vert\cos\theta\)</div>
-                    <div  class="right" id="[1.4]">[1.4]</div>
-                </div>
                 <p>
                     y su <strong>componente y</strong> se calcula   mediante
                 </p>
@@ -203,10 +195,6 @@
 						y = \Vert\vec v\Vert\sin\theta \label{eq:6_4}
 					\end{flalign}
 				</p>
-                <div class="container">
-                    <div  class="center">\(y = \Vert\vec v\Vert\sin\theta\)</div>
-                    <div  class="right" id="[1.5]">[1.5]</div>
-                </div>
                 
                 <p>
                     Haz click en el botón para abrir la aplicación qeu calcula magnitud y dirección de un vector dadas sus componentes. 
@@ -236,54 +224,59 @@
                 <p>
                     La suma de dos vectores expresados mediante sus componentes, \(\vec v = (x_1, y_1)\) y \(\vec w = (x_2, y_2)\), se define como
                 </p>
-                <div class="container">
-                    <div  class="center">\( \vec v + \vec w = (x_1 + x_2, y_1 + y_2) \)</div>
-                    <div  class="right" id="[1.6]">[1.6]</div>
-                </div>
+				<p>
+					\begin{flalign}
+						\vec v + \vec w = (x_1 + x_2, y_1 + y_2) \label{eq:7_1}
+					\end{flalign}
+				</p>
                 <p>
                     El producto de un scalar \( \lambda \) por un vector \( \vec v \), expresado mediante sus componentes,
                     \( \vec v = (x, y) \), se define como
                 </p>
-                <div class="container">
-                    <div  class="center">\( \lambda\vec v = (\lambda x, \lambda y) \)</div>
-                    <div  class="right" id="[1.7]">[1.7]</div>
-                </div>    
+				<p>
+					\begin{flalign}
+						\lambda\vec v = (\lambda x, \lambda y) \label{eq:7_2}
+					\end{flalign}
+				</p>    
             </section>
             <section id="El vector unitario">
 				<h3>1.1.8 El vector unitario</h3>
                 <p>
                     El <strong>vector unitario</strong> \(\vec u_v\) de un vector distinto de cero \(\vec v\) es un vector que tiene la misma dirección que \(\vec v\) pero una magnitud de 1. El vector unitario se calcula mediante 
                 </p>
-                <div class="container">
-                    <div  class="center">\(\vec u_v = \vec v/\Vert\vec v\Vert \)</div>
-                    <div  class="right" id="[1.8]">[1.8]</div>
-                </div>
+				<p>
+					\begin{flalign}
+						\vec u_v = \vec v/\Vert\vec v\Vert \label{eq:8_1}
+					\end{flalign}
+				</p>
                 <p>
                     Obsérvese que la magnitud \(\Vert\vec v\Vert\) es un escalar, y dividir por un escalar es lo mismo que multiplicar por el recíproco del escalar \(1/\Vert\vec v\Vert \).
                 </p>
             </section>
             <section id="Representación de vectores mediante sus vectores unitarios">
-				<h3>1.1.9 Representación de vectores mediante sus vectores unitarios \(\vec i\), \(\vec j\) y \(\vec k\)</h3>
+				<h3>1.1.9 Representación de vectores mediante sus vectores unitarios \(\hat{\imath}\), \(\hat{\jmath}\) y \(\hat{k}\)</h3>
                 <p>
-                    En un espacio bidimensional, un vector se puede representar mediante los vectores unitarios \(\vec i\) and \(\vec j\). El vector unitario \(\vec i\) es un vector de longitud 1 a lo largo del eje x, y el vector unitario (\vec j\) es un vector de longitud 1 a lo largo del eje y.
+                    En un espacio bidimensional, un vector se puede representar mediante los vectores unitarios \(\hat{\imath}\) and \(\hat{\jmath}\). El vector unitario \(\hat{\imath}\) es un vector de longitud 1 a lo largo del eje x, y el vector unitario \(\hat{\jmath}\) es un vector de longitud 1 a lo largo del eje y.
                 </p>
                 <p>
                     Si tenemos un vector dado por sus componentes \(\vec v = (x, y)\), se puede representar como:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\vec v =  x\vec i + y\vec j\)</div>
-                    <div  class="right" id="[1.9]">[1.9]</div>
-                </div>
+				<p>
+					\begin{flalign}
+						\vec v =  x\hat{\imath} + y\hat{\jmath} \label{eq:9_1}
+					\end{flalign}
+				</p>
                 <p>
-                    En un espacio tridimensional, un vector se puede representar mediante vectores unitarios \(\vec i\), \(\vec j\), y \(\vec k\). El vector unitario \(\vec i\) es un vector de longitud 1 a lo largo del eje x, el vector unitario (\vec j\) es un vector de longitud 1 a lo largo del eje y, y el vector unitario \(\vec k\) es un vector de longitud 1 a lo largo del eje z.
+                    En un espacio tridimensional, un vector se puede representar mediante vectores unitarios \(\hat{\imath}\), \(\hat{\jmath}\), y \(\hat{k}\). El vector unitario \(\hat{\imath}\) es un vector de longitud 1 a lo largo del eje x, el vector unitario \(\hat{\jmath}\) es un vector de longitud 1 a lo largo del eje y, y el vector unitario \(\hat{k}\) es un vector de longitud 1 a lo largo del eje z.
                 </p>
                 <p>
                     Si tenemos un vector expresado mediante sus componentes \(\vec v = (x, y, z)\), se puede representar como:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\vec v =  x\vec i + y\vec j + z\vec k\)</div>
-                    <div  class="right" id="[1.10]">[1.10]</div>
-                </div>
+				<p>
+					\begin{flalign}
+						\(\vec v =  x\hat{\imath} + y\hat{\jmath} + z\hat{k}\) \label{eq:9_2}
+					\end{flalign}
+				</p>
                 <p>
                     Esta suma vectorial se denomina <strong>combinación lineal</strong> de los vectores \(\vec i\), \(\vec j\) y \(\vec k\).
                 </p>
@@ -296,27 +289,30 @@
                 <p>
                     Si \(\vec v = (x_1, y_1, z_1)\) y \(\vec w = (x_2, y_2, z_2)\) son dos vectores, entonces su producto escalar se calcula mediante:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\vec v\cdot\vec w = x_1\cdot x_2 + y_1\cdot y_2 + z_1\cdot z_2\)</div>
-                    <div  class="right" id="[1.11]">[1.11]</div>
-                </div>
+				<p>
+					\begin{flalign}
+						\(\vec v\cdot\vec w = x_1\cdot x_2 + y_1\cdot y_2 + z_1\cdot z_2\) \label{eq:10_1}
+					\end{flalign}
+				</p>
                 <p>
                     En términos de magnitud y dirección, el producto escalar también se puede definir como:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\vec v\cdot\vec w = \Vert\vec v\Vert\cdot\Vert\vec w\Vert\cos\theta\)</div>
-                    <div  class="right" id="[1.12]">[1.12]</div>
-                </div>
+				<p>
+					\begin{flalign}
+						\(\vec v\cdot\vec w = \Vert\vec v\Vert\cdot\Vert\vec w\Vert\cos\theta\) \label{eq:10_2}
+					\end{flalign}
+				</p>
                 <p>
-                    Done \(\theta\) is the angle between \(\vec v\) y \(\vec w\).
+                    Donde \(\theta\) es el ángulo subtendido desde \(\vec v\) a \(\vec w\).
                 </p>
                 <p>
-                    Usando <a href="[1.12]">[1.12]</a>, podemos expresar `theta` como.
+                    Usando \eqref{eq:10_2}, podemos expresar `theta` como.
                 </p>
-                <div class="container">
-                    <div  class="center">$$\theta = \arccos\frac{\vec v\cdot\vec w}{\Vert\vec v\Vert\cdot\Vert\vec w\Vert}$$</div>
-                    <div  class="right" id="[1.13]">[1.13]</div>
-                </div>
+				<p>
+					\begin{flalign}
+						\theta = \arccos\frac{\vec v\cdot\vec w}{\Vert\vec v\Vert\cdot\Vert\vec w\Vert} \label{eq:10_3}
+					\end{flalign}
+				</p>
                 <p>
                     Cuando el producto escalar de dos vectores es cero, se dice que ambos vectores son <strong>ortogonales</strong> o perpendiculares. 
                 </p>
@@ -348,7 +344,7 @@
                     Donde \(\theta\) es el ángulo entre \(\vec v\) y \(\vec w\).
                 </p>
                 <p>
-                    Ahora bien, si consideramos la expresión [1.12] del producto escalar de \(\vec v\) y \(\vec w\), la magnitud de \(proj_v \vec w\) también puede expresarse como:
+                    Ahora bien, si consideramos la expresión \eqref{eq:10_2} del producto escalar de \(\vec v\) y \(\vec w\), la magnitud de \(proj_v \vec w\) también puede expresarse como:
                 </p>
                 <div class="container">
                     <div  class="center">$$\Vert proj_v \vec w\Vert = \frac{\vec w\cdot\vec v}{\Vert\vec v\Vert} = \vec w\cdot\vec u_v$$</div>
@@ -632,7 +628,7 @@
                     &emsp; \(\Vert\vec v_p\Vert = \sqrt{v_x^2 + v_y^2} = \sqrt{9^2 + 36^2} = \sqrt{81+1296} = \sqrt {1377}\) = <span id="2_1normvPropelled"></span> Km/h.
                 </p>
                 <p>
-                    El valor del ángulo  &phi; es la dirección en la que se impulsa el bote, corresponde con la orientación de \(\vec v_p\) y según <a href="#[1.13]">[1.13]</a>, se calcula como:
+                    El valor del ángulo  &phi; es la dirección en la que se impulsa el bote, corresponde con la orientación de \(\vec v_p\) y según \eqref{eq:10_3}, se calcula como:
                 </p>
                 <p>
 					\begin{flalign}
@@ -731,7 +727,7 @@
                     Para resolver este ejercicio, utilicemos las noción de <a href="#Componentes de un Vector">componentes de un vector</a> y la <a href="#Relación entre las componentes de un vector, su módulo y su dirección">relación entre las componentes de un vector, su módulo y su dirección</a>.
                 </p>
                 <p >
-                    Entonces calculamos el valor de la componente \(\vec V_x\) de \(\vec V\) mediante la expresión \eqref{eq:6_3} <a href="#[1.4]">[1.4]</a>, el valor de \(\vec V_y\) mediante la expresión \eqref{eq:6_4} <a href="#[1.5]">[1.5]</a>. Siendo \(\Vert\vec V\Vert\) = 4 km/h y &theta; = 67.5º`.
+                    Entonces calculamos el valor de la componente \(\vec V_x\) de \(\vec V\) mediante la expresión \eqref{eq:6_3}, el valor de \(\vec V_y\) mediante la expresión \eqref{eq:6_4}. Siendo \(\Vert\vec V\Vert\) = 4 km/h y &theta; = 67.5º`.
                 </p>
                 <p>&emsp; \(\vec V_x = 4\cdot\cos 65,7º\)= <span id="2_3Vx"></span> km/h</p>
                 <p>&emsp; \(\vec V_y = 4\cdot\sin65,7º\)= <span id="2_3Vy"></span> km/h</p>
@@ -754,7 +750,7 @@
                     Un objeto se mueve de tal manera que su velocidad en un instante determinado es de <span id="2_4Speed1"></span> m/s y forma un ángulo de <span id="2_4orientation1"></span>º con la horizontal. Halla las componentes horizontal y vertical de la velocidad. Expresa el vector velocidad en función de sus componentes.
                 </p>
                 <p>
-                    The formulas to calculate the components of a vector \(\vec v\) given its magnitude \(\Vert\vec v\Vert\) and direction &theta; vienen definidas por las expresiones \eqref{eq:6_3} <a href="#[1.4]">[1.4]</a> y \eqref{eq:6_4} <a href="#[1.5]">[1.5]</a>:
+                    The formulas to calculate the components of a vector \(\vec v\) given its magnitude \(\Vert\vec v\Vert\) and direction &theta; vienen definidas por las expresiones \eqref{eq:6_3} y \eqref{eq:6_4}:
                 </p>
                 <p>&emsp; \(\vec v_x = \Vert\vec v\Vert\\cos \theta \cdot\vec i\) </p>
                 <p>&emsp; \(\vec v_y = \Vert\vec v\Vert\\sin \theta \cdot\vec j\) </p>
@@ -797,11 +793,11 @@
                     Calcula el producto escalar de los vectores \(\vec v = 5\vec i - 3\vec j + 2\vec k\) y \(\vec w = -2\vec i + \vec j + 3\vec k\), y el ángulo que forman.
                 </p>
                 <p>
-                    El <a href="#Producto escalar de dos vectores">producto escalar de dos vectores</a> \(\vec v\) y \(\vec w\), dadas sus componentes, es según se mustra en <a href="#[1.11]">[1.11]</a>,
+                    El <a href="#Producto escalar de dos vectores">producto escalar de dos vectores</a> \(\vec v\) y \(\vec w\), dadas sus componentes, es según se mustra en \eqref{eq:10_1},
                 </p>
                 <p>&emsp;\(\vec v\cdot\vec w = v_x\cdot w_x + v_y\cdot w_y + v_z\cdot w_z\)</p>
                 <p>
-                    Para calcular el angulo  &theta; que forman dos vetores \( \vec v\) y \(\vec w\), usamos la expresión <a href="#[1.12]">[1.12]</a> y despejamos \(\cos\theta\).
+                    Para calcular el angulo  &theta; que forman dos vetores \( \vec v\) y \(\vec w\), usamos la expresión \eqref{eq:10_2} y despejamos \(\cos\theta\).
                 </p>
                 <p>&emsp; $$\cos\theta  = \frac{\vec v\cdot\vec w}{\vert\vec v\vert\cdot\vert\vec w\vert}$$</p>
                 <p>Entonces,</p>
