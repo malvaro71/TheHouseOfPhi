@@ -329,34 +329,38 @@
                 <p>
                     Dado que la proyección de \(\vec w\) sobre \(\vec v\) está alineada con \(\vec v\):
                 </p>
-                <div class="container">
-                    <div  class="center">\(proj_v \vec w = \Vert proj_v \vec w\Vert\cdot\vec u_v\)</div>
-                    <div  class="right" id="[1.14]">[1.14]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        proj_v \vec w = \Vert proj_v \vec w\Vert\cdot\vec u_v \label{eq:11_1}
+                    \end{flalign}
+                </p>
                 <p>
                     De la definición de <a href="geometry.html#[2.3]" target="_blank"> coseno</a> se deduce que la magnitud de este vector de proyección se puede calcular como:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\Vert proj_v \vec w\Vert = \Vert\vec w\Vert\cos\theta\)</div>
-                    <div  class="right" id="[1.15]">[1.15]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \Vert proj_v \vec w\Vert = \Vert\vec w\Vert\cos\theta \label{eq:11_2}
+                    \end{flalign}
+                </p>
                 <p>
                     Donde \(\theta\) es el ángulo entre \(\vec v\) y \(\vec w\).
                 </p>
                 <p>
                     Ahora bien, si consideramos la expresión \eqref{eq:10_2} del producto escalar de \(\vec v\) y \(\vec w\), la magnitud de \(proj_v \vec w\) también puede expresarse como:
                 </p>
-                <div class="container">
-                    <div  class="center">$$\Vert proj_v \vec w\Vert = \frac{\vec w\cdot\vec v}{\Vert\vec v\Vert} = \vec w\cdot\vec u_v$$</div>
-                    <div  class="right" id="[1.16]">[1.16]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \Vert proj_v \vec w\Vert = \frac{\vec w\cdot\vec v}{\Vert\vec v\Vert} = \vec w\cdot\vec u_v \label{eq:11_3}
+                    \end{flalign}
+                </p>
                 <p>
                     Entonces, usando las coordenadas de \(\vec v\), \( (x_1, y_1, z_1)\) y de \(\vec w\), \( (x_2, y_2, z_2) \) para calcular su producto escalar:
                 </p>
-                <div class="container">
-                    <div  class="center">$$\Vert proj_v \vec w\Vert = \frac{x_1\cdot x_2 + y_1\cdot y_2 + z_1\cdot z_2}{\sqrt{x_1^2+y_1^2+z_1^2}}$$</div>
-                    <div  class="right" id="[1.17]">[1.17]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \Vert proj_v \vec w\Vert = \frac{x_1\cdot x_2 + y_1\cdot y_2 + z_1\cdot z_2}{\sqrt{x_1^2+y_1^2+z_1^2}} \label{eq:11_4}
+                    \end{flalign}
+                </p>
             </section>
             <section id="Producto vectorial">
 				<h3>1.1.12 Producto vectorial.</h3>
@@ -369,10 +373,11 @@
                 <p>
                     Si \(\vec v\) y \(\vec w\) son dos vectores, y θ es el ángulo entre ellos, la magnitud de su producto vectorial viene dada por:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\Vert\vec v \times \vec w\Vert = \Vert\vec v\Vert\cdot\Vert\vec w\Vert\sin\theta\)</div>
-                    <div  class="right" id="[1.18]">[1.18]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \Vert\vec v \times \vec w\Vert = \Vert\vec v\Vert\cdot\Vert\vec w\Vert\sin\theta \label{eq:12_1}
+                    \end{flalign}
+                </p>
                 <p>
                     Entonces, la magnitud (o longitud) del producto vectorial se puede interpretar como el área del paralelogramo que abarcan los dos vectores que se multiplican.
                 </p>
@@ -410,17 +415,19 @@
                 <p>
                     Según sus componentes, si \(\vec v = (x_1, y_1, z_1)\) y \(\vec w = (x_2, y_2, z_2)\),  el producto vectorial `vecv xx vecw` es un vector definido como:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\vec v \times \vec w = (y_1 \cdot z_2 - z_1 \cdot y_2, z_1 \cdot x_2 - x_1 \cdot z_2, x_1 \cdot y_2 - y_1 \cdot x_2)\)</div>
-                    <div  class="right" id="[1.19]">[1.19]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \vec v \times \vec w = (y_1 \cdot z_2 - z_1 \cdot y_2, z_1 \cdot x_2 - x_1 \cdot z_2, x_1 \cdot y_2 - y_1 \cdot x_2) \label{eq:12_2}
+                    \end{flalign}
+                </p>
                 <p>
                     Cada componente de este vector resultante es el determinante de una matriz de 2x2 formada eliminando la fila y la columna del componente correspondiente de una matriz de 3x3 que contiene los vectores unitarios \(\vec i\), \(\vec j\) y \(\vec k\) en la primera fila, los componentes de \(\vec v\) en la segunda fila, y los componentes de \(\vec w\) en la tercera fila.
                 </p>
-                <div class="container">
-                    <div  class="center">$$\begin{vmatrix}\vec i & \vec j & \vec k \\ x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2\\ \end{vmatrix} = \begin{vmatrix} y_1 & z_1 \\ y_2 & z_2 \\ \end{vmatrix} \vec i - \begin{vmatrix} x_1 & z_1 \\ x_2 & z_2\\ \end{vmatrix} \vec j + \begin{vmatrix} x_1 & y_1 \\ x_2 & y_2 \\ \end{vmatrix}\vec k$$</div>
-                    <div  class="right" id="[1.20]">[1.20]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \begin{vmatrix}\vec i & \vec j & \vec k \\ x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2\\ \end{vmatrix} = \begin{vmatrix} y_1 & z_1 \\ y_2 & z_2 \\ \end{vmatrix} \vec i - \begin{vmatrix} x_1 & z_1 \\ x_2 & z_2\\ \end{vmatrix} \vec j + \begin{vmatrix} x_1 & y_1 \\ x_2 & y_2 \\ \end{vmatrix}\vec k \label{eq:12_3}
+                    \end{flalign}
+                </p>
                 <p>
                     Propiedades del producto vectorial:
                     <ul>
@@ -438,10 +445,11 @@
                     El <strong>momento de un vector deslizante</strong> \(\vec v\) respecto a un punto P se calcula mediante el producto vectorial de  \(\vec r\) por \(\vec v\). Siendo \(\vec r\) el vector de posición de  \(\vec v\) respecto a P.
                 </p>
                 <p>&emsp; </p>
-                <div class="container">
-                    <div  class="center">\(\vec M = \vec r \times \vec v\)</div>
-                    <div  class="right" id="[1.21]">[1.21]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \vec M = \vec r \times \vec v \label{eq:13_1}
+                    \end{flalign}
+                </p>
                 <p>
                     Donde el vector de posición,\(\vec r\), se extiende desde el punto de interés P hasta el origen de \(\vec v\).
                 </p>
@@ -477,22 +485,25 @@
                     </ol>
                     Esto es:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\Vert\vec M_l\Vert = \vec u_l \cdot (\vec r \times \vec v)\)</div>
-                    <div  class="right" id="[1.22]">[1.22]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \Vert\vec M_l\Vert = \vec u_l \cdot (\vec r \times \vec v) \label{eq:14_1}
+                    \end{flalign}
+                </p>
                 <p>
                     Para simplificar aún más los cálculos, matemáticamente podemos combinar el producto vectorial y escalar en lo que se conoce como un <strong>producto mixto</strong>. En el producto mixto escribimos el producto como un determinante con la forma:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\Vert\vec M_l\Vert = \vec u_l \cdot (\vec r \times \vec v) = \begin{vmatrix}u_{lx} & u_{ly} & u_{lz} \\ r_x & r_y & r_z \\ v_x & v_y & v_z\\ \end{vmatrix} = u_{lx}\cdot\begin{vmatrix} r_y & r_z \\ v_y & v_z \\ \end{vmatrix} - u_{ly}\cdot\begin{vmatrix} r_x & r_z \\ v_x & v_z \\ \end{vmatrix} + u_{lz}\cdot\begin{vmatrix} r_x & r_y \\ v_x & v_y \\ \end{vmatrix}\)</div>
-                    <div  class="right" id="[1.23]">[1.23]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \Vert\vec M_l\Vert = \vec u_l \cdot (\vec r \times \vec v) = \begin{vmatrix}u_{lx} & u_{ly} & u_{lz} \\ r_x & r_y & r_z \\ v_x & v_y & v_z\\ \end{vmatrix} = u_{lx}\cdot\begin{vmatrix} r_y & r_z \\ v_y & v_z \\ \end{vmatrix} - u_{ly}\cdot\begin{vmatrix} r_x & r_z \\ v_x & v_z \\ \end{vmatrix} + u_{lz}\cdot\begin{vmatrix} r_x & r_y \\ v_x & v_y \\ \end{vmatrix} \label{eq:14_2}
+                    \end{flalign}
+                </p>
                 <p>Finalmente, como un vector se puede expresar como el producto de su módulo por su vecotr unitario, tenemos que:</p>
-                <div class="container">
-                    <div  class="center">\(\vec M_l = \Vert\vec M_l\Vert \cdot \vec u_l\)</div>
-                    <div  class="right" id="[1.24]">[1.24]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \vec M_l = \Vert\vec M_l\Vert \cdot \vec u_l \label{eq:14_3}
+                    \end{flalign}
+                </p>
             </section>
             <section id="Funciones Vectoriales">
 				<h3>1.1.15 Funciones Vectoriales</h3>
@@ -502,10 +513,11 @@
                 <p>
                     Por ejemplo, un tipo común de función vectorial es aquella que depende de un único parámetro real t y produce un vector  \(\vec f(t)\) como resultado. En términos de los vectores unitarios están \(\vec i\), \(\vec j\), \(\vec k\) del espacio cartesiano 3D, estos tipos específicos de funciones con valores vectoriales vienen dados por expresiones como:
                 </p>
-                <div class="container">
-                    <div  class="center">\(\vec f(t) = f_x(t)\vec i + f_y(t)\vec j + f_z(t)\vec k\)</div>
-                    <div  class="right" id="[1.25]">[1.25]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \vec f(t) = f_x(t)\vec i + f_y(t)\vec j + f_z(t)\vec k \label{eq:15_1}
+                    \end{flalign}
+                </p>
                 <p>
                     Donde \(f_x(t)\), \(f_y(t)\), y \(f_z(t)\) son las funciones de coordenadas del parámetro t, y el dominio de esta función vectorial es la intersección de los dominios de las funciones \(f_x(t)\), \(f_y(t)\), y \(f_z(t)\).
                 </p>
@@ -515,10 +527,11 @@
                 <p>
                     La <strong>derivada de una función vectorial</strong> es casi idéntica a la definición de derivada de una función real de una variable. Sin embargo, debido a que el rango de una función con valores vectoriales consta de vectores, lo mismo ocurre con el rango de la derivada de una función con valores vectoriales. Es decir:
                 </p>
-                <div class="container">
-                    <div  class="center">$$\vec f'(t) = \frac{d\vec f}{dt} = \frac{df_x}{dt}\vec i + \frac{df_y}{dt}\vec j +\frac{df_z}{dt}\vec k$$</div>
-                    <div  class="right" id="[1.26]">[1.26]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \vec f'(t) = \frac{d\vec f}{dt} = \frac{df_x}{dt}\vec i + \frac{df_y}{dt}\vec j +\frac{df_z}{dt}\vec k \label{eq:16_1}
+                    \end{flalign}
+                </p>
             </section>
             <section>
 				<h3>1.1.17 Derivada parcial de una función y su derivada total.</h3>
@@ -528,27 +541,30 @@
                 <p>
                     La derivada parcial de una función \(f(x,y,z)\) respecto a una de sus variables, x, se representa como:
                 </p>
-                <div class="container">
-                    <div  class="center"> $$\frac{\partial f}{\partial x}$$</div>
-                    <div  class="right" id="[1.27]">[1.27]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \frac{\partial f}{\partial x} \label{eq:17_1}
+                    \end{flalign}
+                </p>
                 <p>
                     La <strong>derivada total</strong> de una función \(f(x,y,z)\) se puede calcular mediante la expresión:
                 </p>
-                <div class="container">
-                    <div  class="center">$$df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy + \frac{\partial f}{\partial z}dz$$</div>
-                    <div  class="right" id="[1.28]">[1.28]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy + \frac{\partial f}{\partial z}dz \label{eq:17_2}
+                    \end{flalign}
+                </p>
             </section>
             <section id="Integral de una función vectorial">
 				<h3>1.1.18 Integral de una función vectorial</h3>
                 <p>
                     La <strong>integral de una función vectorial</strong> es otra función vectorial en la que sus funciones coordenadas son las integrales de la funciones coordenadas de la función vectorial inicial. Es decir, si  \(\vec f(t) = f_x(t)\vec i + f_y(t)\vec j + f_z(t)\vec k = (f_x(t), f_y(t), f_z(t)) \), su integral es:  
                 </p>
-                <div class="container">
-                    <div  class="center">$$ \int \vec f(t) dt = \int (f_x(t), f_y(t), f_z(t)) dt = \left( \int f_x(t)dt, \int f_y(t)dt, \int f_z(t)dt \right) $$</div>
-                    <div  class="right" id="[1.29]">[1.29]</div>
-                </div>
+                <p>
+                    \begin{flalign}
+                        \int \vec f(t) dt = \int (f_x(t), f_y(t), f_z(t)) dt = \left( \int f_x(t)dt, \int f_y(t)dt, \int f_z(t)dt \right) \label{eq:18_1}
+                    \end{flalign}
+                </p>
             </section>
             <aside id="Referencias">
 				<h3>Referencias</h3>
@@ -841,7 +857,7 @@
                     <figcaption><b>Figura 2.6</b>, mostrando el ángulo formado entre E y NE, así como la \( proj_E \vec v\).</figcaption>
                 </figure>
                 <p>
-                    Para calcular la proyección de la velocidad en la dirección este, usamos la expresión <a href="#[1.14]">[1.14]</a>.
+                    Para calcular la proyección de la velocidad en la dirección este, usamos la expresión \(\eqref{eq:11_1}\).
                 </p>
                 <p> &emsp; \(\vert proj_E \vec v\vert = \vert\vec v\vert\cos\theta\)</p>
                 <p>
@@ -866,7 +882,7 @@
                     Un cuerpo rígido gira con una velocidad angular \(\vec w\) dada por el vector \(\vec w = \vec i + \vec j + \vec k\) rad/s. Calcula la velocidad lineal \(\vec v\) con que se mueve un punto P del cuerpo, cuyo vector de posición es \(\vec r = 2\vec i - 2\vec j + \vec k\) m., sabiendo que \(\vec v = \vec w \times \vec r\).
                 </p>
                 <p>
-                    Para resolver este ejercicio, utilicemos las noción de <a href="#Producto vectorial">producto vectorial</a> y la expresión<a href="#[1.18]">[1.18]</a>. Entonces
+                    Para resolver este ejercicio, utilicemos las noción de <a href="#Producto vectorial">producto vectorial</a> y la expresión \(\eqref{eq:12_1}\). Entonces
                 </p>
                 <p>
                     &emsp;$$\vec v = \vec w \times \vec r = \begin{vmatrix}\vec i & \vec j & \vec k \\ 1 & 1 & 1 \\ 2 & -2 & 1\\ \end{vmatrix} = \begin{vmatrix} 1 & 1 \\ -2 & 1 \\ \end{vmatrix} \vec i - \begin{vmatrix} 1 & 1 \\ 2 & 1\\ \end{vmatrix} \vec j + \begin{vmatrix} 1 & 1 \\ 2 & -2 \\ \end{vmatrix}\vec k = (1+2)\vec i -(1-2)\vec j + (-2-2)\vec k = 3\vec i + \vec j -4\vec k$$
@@ -880,7 +896,7 @@
                     Calcula el área de un triángulo \(\triangle ABC\), siendo las coordenadas cartesianas de los vértices, A = (<span id="2_8A"></span>) m., B = (<span id="2_8B"></span>) m. y C = (<span id="2_8C"></span>) m.
                 </p>
                 <p>
-                    Para resolver este ejercicio, utilicemos las noción de <a href="#Producto vectorial">producto vectorial</a> y la expresión<a href="#[1.18]">[1.18]</a>. Ya que la magnitud (o longitud) del producto vectorial se puede interpretar como el área del paralelogramo que abarcan los dos vectores que se multiplican. Entonces, el área del triángulo \(\triangle ABC\) sería la mitad del área de dicho paralelogramo.
+                    Para resolver este ejercicio, utilicemos las noción de <a href="#Producto vectorial">producto vectorial</a> y la expresión \(\eqref{eq:12_1}\). Ya que la magnitud (o longitud) del producto vectorial se puede interpretar como el área del paralelogramo que abarcan los dos vectores que se multiplican. Entonces, el área del triángulo \(\triangle ABC\) sería la mitad del área de dicho paralelogramo.
                 </p>
                 <p>
                     Así que definimos el vector \(\vec{AB}\) como aquel que va del punto A hasta el punto B, y el vector \(\vec{AC}\) como aquel que va del punto A hasta el punto C, y calculamos sus coordenadas 
