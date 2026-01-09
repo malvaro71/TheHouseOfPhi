@@ -50,9 +50,10 @@ a:visited {
 }
 
 /* Cambia el color de todas las referencias a ecuaciones */
-.MathJax_ref {
-    fill: green !important;   /* relleno */
-    stroke: green !important; /* contorno */
+mjx-container[jax="SVG"] svg a.MathJax_ref,
+mjx-container[jax="SVG"] a.MathJax_ref g {
+    fill: green !important;   /* Tu color elegido */
+    stroke: green !important; /* Tu color elegido */
 }
 
 .centered {
@@ -137,3 +138,4 @@ a:visited {
     color: #555;
 
 }
+
