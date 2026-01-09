@@ -49,6 +49,12 @@ a:visited {
     color: green;
 }
 
+/* Cambia el color de todas las referencias a ecuaciones */
+.MathJax_ref {
+    fill: green !important;   /* relleno */
+    stroke: green !important; /* contorno */
+}
+
 .centered {
     text-align: center;
 }
@@ -129,4 +135,5 @@ a:visited {
     padding-top: 10px;
     font-style: italic;
     color: #555;
+
 }
