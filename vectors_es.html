@@ -23,18 +23,19 @@
     </head>
     <body>
         <header id="Arriba">
-            <h1 >VECTORES</h1>
+            <h1>1. VECTORES</h1>
         </header>
         <nav>
 			<ul>
             	<li><a href="index.html">Inicio</a></li>
-            	<li><a href="#Teoría">1. Teoría</a></li>
-            	<li><a href="#Ejercicios con vectores">2. Ejercicios con vectores</a></li>
+            	<li><a href="#Teoría">1.1 Teoría</a></li>
+            	<li><a href="#Ejercicios con vectores">1.2 Ejercicios con vectores</a></li>
         	</ul>
 		</nav>
-        <article><header><h2 id="Teoría">1. Teoría y Conceptos Clave</h2>
-            </header>
-            <section><h3>1.1 Introducción</h3>
+        <article id="Teoría">
+			<header><h2>1.1 Teoría y Conceptos Clave</h2></header>
+            <section id="Introducción">
+				<h3>1.1.1 Introducción</h3>
 				<p>¿Alguna vez te has preguntado cómo los físicos describen el movimiento de un planeta, el trayecto de un balón o la trayectoria de un cohete? La clave reside en un concepto fundamental: la <strong>posición</strong>. Saber "dónde" se encuentra algo en el universo, en un instante específico y respecto a un punto de referencia, es el punto de partida.</p>
 
                 <p>La posición no es solo un dato; es la base sobre la que se construyen pilares de la física como el <strong>desplazamiento</strong>, la <strong>velocidad</strong> y la <strong>aceleración</strong>. Sin ella, sería imposible entender si un objeto se ha movido, en qué dirección o con qué rapidez. Pero su importancia va más allá del movimiento: influye directamente en la <strong>energía potencial</strong>, en cómo se aplican y sienten las <strong>fuerzas</strong>, y en la descripción de <strong>campos</strong> gravitatorios, eléctricos o magnéticos.</p>
@@ -44,7 +45,8 @@
                 <p>En este primer capítulo, exploraremos a fondo los <strong>vectores</strong> y el <strong>sistema de coordenadas cartesianas</strong>, desentrañando las <strong>operaciones vectoriales</strong> fundamentales como la suma, resta, producto escalar y producto vectorial. Estas herramientas del <strong>álgebra vectorial</strong> no solo simplifican enormemente la resolución de problemas complejos en física e ingeniería, sino que también nos permiten, por ejemplo, calcular la distancia precisa entre dos puntos con una elegancia matemática asombrosa. Prepárate para descubrir el lenguaje que nos permite describir y predecir el mundo físico con una claridad sin precedentes.</p>
                 
             </section>
-            <section><h3>1.2 Vectores</h3>
+            <section id="vectores">
+				<h3>1.1.2 Vectores</h3>
                 <p>
                     Un <strong>vector </strong> es un segmento dirigido, uno de cuyos extremos (el punto A) se dice que es el origen, mientras que el otro (el punto B) se dice que es el final del vector. Tal vector puede ser denotado por <b><i>v</i></b>, \(\vec v\) or \(\overrightarrow{AB}\). Un vector cuyo origen y fin coinciden se dice que es un <strong>vector cero</strong>, y generalmente se denota por \(\vec0\). El vector \(\overrightarrow{BA}\) se dice que es el <strong>vector opuesto</strong> a \(\overrightarrow{AB}\). Un vector con una longitud igual a uno se denomina vector unitario. Cualquier dirección puede ser asignada a un vector cero.
                 </p>    
@@ -79,7 +81,8 @@
                     </li>
                 </ul>  
             </section>
-            <section><h3>1.3 Suma de Vectores, Método Gráfico:</h3>    
+            <section id="Suma de Vectores, Método Gráfico">
+				<h3>1.1.3 Suma de Vectores, Método Gráfico:</h3>    
                 <p>
                     La suma de dos vectores \(\vec a\) y \(\vec b\), o suma de vectores, produce un tercer vector \(\overrightarrow{a+b}\). 
                 </p>
@@ -94,7 +97,8 @@
                     Un <strong>escalar</strong> es una cantidad que tiene magnitud pero no dirección. O, en otras palabras, una cantidad que se puede expresar con un número (real).
                 </p>
             </section>
-            <section><h3>1.4 Sistema de coordenadas cartesianas</h3>               
+            <section id="Sistema de coordenadas cartesianas">
+				<h3>1.1.4 Sistema de coordenadas cartesianas</h3>               
                 <p>
                     Para especificar la magnitud y la dirección de un vector necesitamos un sistema de coordenadas. Hay tres sistemas de coordenadas comúnmente utilizados: cartesiano, cilíndrico y esférico. En esta sección describimos el sistema de coordenadas cartesianas.
                 </p>
@@ -132,7 +136,8 @@
                     <figcaption><b>Figura 1.5</b> Para trazar el punto P, con coordenadas \((x_1, y_1, z_1)\), desplazarse \(x_1\) unidades a lo largo del eje x, entonces ir \(y_1\) unidades en la dirección del eje Y, luego desplazarse \(z_1\) unidades en la dirección del eje z.</figcaption>
                 </figure>
             </section>
-            <section id="Componentes de un Vector"><h3>1.5 Componentes de un Vector</h3>
+            <section id="Componentes de un Vector">
+				<h3>1.1.5 Componentes de un Vector</h3>
                 <p>
                     Cuando el punto inicial de un vector coincide con el origen del sistema de coordenadas, llamamos al vector <strong>vector de posición estándar</strong>. Debido a que se sabe que el punto inicial de cualquier vector en posición estándar es (0,0), podemos describir el vector tomando sólo las coordenadas de su punto terminal. Por lo tanto, si el vector \(vec v\) tiene su punto inicial en el origen y su punto terminal en (x, y), escribimos el vector mediante sus componentes como
                 </p>
@@ -144,7 +149,8 @@
                     Cuando un vector se escribe de esta manera, los escalares x e y se denominan <strong>componentes</strong> de \(vec v\). Cuando necesitamos realizar cálculos con vectores, solemos describirlos como vectores de posición estándar porque es más fácil realizar tales cálculos.
                 </p>
             </section>
-            <section id="Relación entre las componentes de un vector, su módulo y su dirección"><h3>1.6 Relación entre las componentes de un vector, su módulo y su dirección</h3>
+            <section id="Relación entre las componentes de un vector, su módulo y su dirección">
+				<h3>1.1.6 Relación entre las componentes de un vector, su módulo y su dirección</h3>
                 <p>
                     Para hallar la magnitud de un vector a partir de sus componentes, utilizamos el Teorema de Pitágoras. Y para encontrar su dirección Usamos la función tangente inversa.
                 </p>
@@ -200,7 +206,8 @@
                     <canvas id="myCanvasEng" width="400" height="400" class="canvas-border"></canvas>
                 </form>
             </section>
-            <section><h3>1.7 Suma de vectores y multiplicación por un escalar usando sus componentes</h3>
+            <section id="Suma de vectores y multiplicación por un escalar usando sus componentes">
+				<h3>1.1.7 Suma de vectores y multiplicación por un escalar usando sus componentes</h3>
                 <p>
                     La suma de dos vectores expresados mediante sus componentes, \(\vec v = (x_1, y_1)\) y \(\vec w = (x_2, y_2)\), se define como
                 </p>
@@ -217,7 +224,8 @@
                     <div  class="right" id="[1.7]">[1.7]</div>
                 </div>    
             </section>
-            <section><h3>1.8 El vector unitario</h3>
+            <section id="El vector unitario">
+				<h3>1.1.8 El vector unitario</h3>
                 <p>
                     El <strong>vector unitario</strong> \(\vec u_v\) de un vector distinto de cero \(\vec v\) es un vector que tiene la misma dirección que \(\vec v\) pero una magnitud de 1. El vector unitario se calcula mediante 
                 </p>
@@ -229,7 +237,8 @@
                     Obsérvese que la magnitud \(\Vert\vec v\Vert\) es un escalar, y dividir por un escalar es lo mismo que multiplicar por el recíproco del escalar \(1/\Vert\vec v\Vert \).
                 </p>
             </section>
-            <section><h3>1.9 Representación de vectores mediante sus vectores unitarios \(\vec i\), \(\vec j\) y \(\vec k\)</h3>
+            <section id="Representación de vectores mediante sus vectores unitarios">
+				<h3>1.1.9 Representación de vectores mediante sus vectores unitarios \(\vec i\), \(\vec j\) y \(\vec k\)</h3>
                 <p>
                     En un espacio bidimensional, un vector se puede representar mediante los vectores unitarios \(\vec i\) and \(\vec j\). El vector unitario \(\vec i\) es un vector de longitud 1 a lo largo del eje x, y el vector unitario (\vec j\) es un vector de longitud 1 a lo largo del eje y.
                 </p>
@@ -254,7 +263,8 @@
                     Esta suma vectorial se denomina <strong>combinación lineal</strong> de los vectores \(\vec i\), \(\vec j\) y \(\vec k\).
                 </p>
             </section>
-            <section id="Producto escalar de dos vectores"><h3 >1.10 Producto escalar de dos vectores</h3>
+            <section id="Producto escalar de dos vectores">
+				<h3>1.1.10 Producto escalar de dos vectores</h3>
                 <p>
                     El <strong>producto escalar</strong> de dos vectores es un número (escalar) que se obtiene multiplicando los componentes correspondientes de los dos vectores y luego sumando dichos productos.
                 </p>
@@ -286,7 +296,8 @@
                     Cuando el producto escalar de dos vectores es cero, se dice que ambos vectores son <strong>ortogonales</strong> o perpendiculares. 
                 </p>
             </section>
-            <section><h3>1.11 Proyección de un vector.</h3>
+            <section id="Proyección de un vector">
+				<h3>1.1.11 Proyección de un vector.</h3>
                 <p>
                     La <strong>provección de \(\vec w\)</strong> sobre \(\vec v\) o sobre la línea que contiene a \(\vec v\), se denota como \(proj_v \vec w\), es un vector que se encuentra en \(\vec v\) tiene la misma dirección que \(\vec w\) (si el ángulo entre \(\vec v\) y \(\vec w\) es inferior a 90 grados) u opuesto a \(\vec v\) (si el ángulo entre \(\vec v\) y \(\vec w\ es mayor de 90 grados). 
                 </p>
@@ -326,7 +337,8 @@
                     <div  class="right" id="[1.17]">[1.17]</div>
                 </div>
             </section>
-            <section id="Producto vectorial"><h3>1.12 Producto vectorial.</h3>
+            <section id="Producto vectorial">
+				<h3>1.1.12 Producto vectorial.</h3>
                 <p>
                     El <strong>producto vectorial</strong> de dos vectores es una operación binaria sobre dos vectores en un espacio tridimensional y se escribe como <strong>\(\vec v \times \vec w\)</strong>. El resultado de este producto vectorial es un tercer vector perpendicular (u ortogonal) a los vectores que se multiplican o dicho de otra forma, normal al plano que los contiene.
                 </p>
@@ -399,7 +411,8 @@
                     </ul>
                 </p>
             </section>
-            <section><h3>1.13 Momento de un Vector Deslizante respecto a un Punto</h3>
+            <section id="Momento de un Vector Deslizante respecto a un Punto">
+				<h3>1.1.13 Momento de un Vector Deslizante respecto a un Punto</h3>
                 <p>
                     El <strong>momento de un vector deslizante</strong> \(\vec v\) respecto a un punto P se calcula mediante el producto vectorial de  \(\vec r\) por \(\vec v\). Siendo \(\vec r\) el vector de posición de  \(\vec v\) respecto a P.
                 </p>
@@ -425,7 +438,8 @@
                     Este concepto es fundamental en física e ingeniería, ya que nos ayuda a comprender y calcular los efectos de las fuerzas en la rotación de los objetos.
                 </p>
             </section>
-            <section><h3>1.14 MMomento de un Vector Deslizante respecto de una Línea</h3>
+            <section id="Momento de un Vector Deslizante respecto de una Línea">
+				<h3>1.1.14 Momento de un Vector Deslizante respecto de una Línea</h3>
                 <p>
                     El momento de un vector deslizante alrededor de una recta de interés l es la proyección sobre dicha recta del momento del vector con respecto a cualquier punto de la recta.
                 </p>
@@ -459,7 +473,8 @@
                     <div  class="right" id="[1.24]">[1.24]</div>
                 </div>
             </section>
-            <section><h3>1.15 Funciones Vectoriales</h3>
+            <section id="Funciones Vectoriales">
+				<h3>1.1.15 Funciones Vectoriales</h3>
                 <p>
                     Una <strong>función vectorial</strong> es una función matemática de una o más variables cuyo rango es un conjunto de vectores.
                 </p>
@@ -474,7 +489,8 @@
                     Donde \(f_x(t)\), \(f_y(t)\), y \(f_z(t)\) son las funciones de coordenadas del parámetro t, y el dominio de esta función vectorial es la intersección de los dominios de las funciones \(f_x(t)\), \(f_y(t)\), y \(f_z(t)\).
                 </p>
             </section>
-            <section><h3>1.16 Derivada de una función vectorial</h3>
+            <section id="Derivada de una función vectorial">
+				<h3>1.1.16 Derivada de una función vectorial</h3>
                 <p>
                     La <strong>derivada de una función vectorial</strong> es casi idéntica a la definición de derivada de una función real de una variable. Sin embargo, debido a que el rango de una función con valores vectoriales consta de vectores, lo mismo ocurre con el rango de la derivada de una función con valores vectoriales. Es decir:
                 </p>
@@ -483,7 +499,8 @@
                     <div  class="right" id="[1.26]">[1.26]</div>
                 </div>
             </section>
-            <section><h3>1.17 Derivada parcial de una función y su derivada total.</h3>
+            <section>
+				<h3>1.1.17 Derivada parcial de una función y su derivada total.</h3>
                 <p>
                     Si una función depende de más de una variable, su <strong>derivada parcial</strong> es la derivada con respecto a una de esas variables manteniendo las otras como constantes.
                 </p>
@@ -502,7 +519,8 @@
                     <div  class="right" id="[1.28]">[1.28]</div>
                 </div>
             </section>
-            <section><h3>1.18 Integral de una función vectorial</h3>
+            <section id="Integral de una función vectorial">
+				<h3>1.1.18 Integral de una función vectorial</h3>
                 <p>
                     La <strong>integral de una función vectorial</strong> es otra función vectorial en la que sus funciones coordenadas son las integrales de la funciones coordenadas de la función vectorial inicial. Es decir, si  \(\vec f(t) = f_x(t)\vec i + f_y(t)\vec j + f_z(t)\vec k = (f_x(t), f_y(t), f_z(t)) \), su integral es:  
                 </p>
@@ -511,7 +529,8 @@
                     <div  class="right" id="[1.29]">[1.29]</div>
                 </div>
             </section>
-            <aside><h3>Referencias</h3>
+            <aside id="Referencias">
+				<h3>Referencias</h3>
                 <ul>
                     <li>
                         <a href="https://openstax.org/books/prec%C3%A1lculo-2ed/pages/8-8-vectores" 
@@ -552,12 +571,14 @@
             </aside>
         </article>
         <br>
-        <article><!-- 2. EJERCIOS CON VECTORES-->
+		<!-- 2. EJERCIOS CON VECTORES-->
+        <article id="Ejercicios con vectores">
             <div class="header-container">
-                <h2 id="Ejercicios con vectores">2. EJERCIOS CON VECTORES</h2>
+                <h2>1.2. EJERCIOS CON VECTORES</h2>
                 <a href="#Arriba" class="center">Regreso al Inicio.</a>
             </div>
-            <section><h3>Ejercicio 1</h3>
+            <section id="Ejercicio 1">
+				<h3>Ejercicio 1</h3>
                 <p>
                     Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de <span id="2_1avgSpeed"></span> km/h. El agua del río fluye a una velocidad de <span id="2_1riverSpeed"></span> km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
                 </p>
@@ -643,7 +664,8 @@
                     </ul>
                 </aside>
             </section>
-            <section><h3>Ejercicio 2</h3>
+            <section id="Ejercicio 2">
+				<h3>Ejercicio 2</h3>
                 <p class="lang lang-es" lang="es">
                     Dibuja, uno a continuación del otro, los vectores \(\vec a = 2\vec i + 3\vec j\),  \(\vec b = 4\vec i - 2\vec j\), \(\vec c = 3\vec i - 2\vec j\) y \(\vec d = -9\vec i + \vec j\). Calcula el vector resultante de la suma de todos ellos y su magnitud. 
                 </p>
@@ -666,7 +688,8 @@
                     </ul>    
                 </aside>
             </section>
-            <section><h3>Ejercicio 3</h3>
+            <section id="Ejercicio 3">
+				<h3>Ejercicio 3</h3>
                 <p>
                     Un barco de vela se mueve con una velocidad de <span id="2_3sailboatSpeed"></span> km/h en la dirección NNE (nornoreste). ¿Cuáles son las componentes de la velocidad del barco en dirección Norte y en dirección Este? 
                 </p>
@@ -698,7 +721,8 @@
                     </ul>    
                 </aside>   
             </section>
-            <section><h3>Ejercicio 4</h3>
+            <section id="Ejercicio 4">
+				<h3>Ejercicio 4</h3>
                 <p>
                     Un objeto se mueve de tal manera que su velocidad en un instante determinado es de <span id="2_4Speed1"></span> m/s y forma un ángulo de <span id="2_4orientation1"></span>º con la horizontal. Halla las componentes horizontal y vertical de la velocidad. Expresa el vector velocidad en función de sus componentes.
                 </p>
@@ -740,7 +764,8 @@
                     </ul>
                 </aside>
             </section>
-            <section><h3>Ejercicio 5</h3>
+            <section id="Ejercicio 5">
+				<h3>Ejercicio 5</h3>
                 <p>
                     Calcula el producto escalar de los vectores \(\vec v = 5\vec i - 3\vec j + 2\vec k\) y \(\vec w = -2\vec i + \vec j + 3\vec k\), y el ángulo que forman.
                 </p>
@@ -780,7 +805,8 @@
                     </ul>
                 </aside>  
             </section>
-            <section><h3>Ejercicio 6</h3>
+            <section id="Ejercicio 6">
+				<h3>Ejercicio 6</h3>
                 <p>
                     Un avión se desplaza a una velocidad de <span id="2_6speed1"></span> km/h en dirección NE. Halla la proyección de su velocidad en la dirección este.
                 </p>
@@ -811,7 +837,8 @@
                     </ul>
                 </aside>
             </section>
-            <section><h3>Ejercicio 7</h3>
+            <section id="Ejercicio 7">
+				<h3>Ejercicio 7</h3>
                 <p>
                     Un cuerpo rígido gira con una velocidad angular \(\vec w\) dada por el vector \(\vec w = \vec i + \vec j + \vec k\) rad/s. Calcula la velocidad lineal \(\vec v\) con que se mueve un punto P del cuerpo, cuyo vector de posición es \(\vec r = 2\vec i - 2\vec j + \vec k\) m., sabiendo que \(\vec v = \vec w \times \vec r\).
                 </p>
@@ -824,7 +851,8 @@
                 <p>Que se puede escribir de una manera más simple como sigue:</p>
                 <p> \(\vec v = \vec w \times \vec r =\) <span id="2_7_1" class ="math-inline-block"></span> = <span id="2_7_2"></span></p>
             </section>
-            <section><h3>Ejercicio 8</h3>
+            <section id="Ejercicio 8">
+				<h3>Ejercicio 8</h3>
                 <p>
                     Calcula el área de un triángulo \(\triangle ABC\), siendo las coordenadas cartesianas de los vértices, A = (<span id="2_8A"></span>) m., B = (<span id="2_8B"></span>) m. y C = (<span id="2_8C"></span>) m.
                 </p>
@@ -843,23 +871,14 @@
                     <svg id="svg2_8"> </svg>
                     <figcaption><b>Figura 2.8</b>, Paralelogramo definido por los vectores \(\vec {AB}\) y \(\vec {BC}\), y triángulo \(\triangle\)ABC como mitad the dicho paralelogramo.</figcaption>
                 </figure>
-                
-
-
                 <aside>
-                    <h4>References</h3>
-                    <h4>Referencias</h3>
+                    <h4>Referencias</h4>
                     <ul>
                         <li>
                             <a href="https://es.wikipedia.org/wiki/Tri%C3%A1ngulo" 
                                 target="_blank"
                                 rel="noopener noreferrer">
                                 Triángulo.
-                            </a>
-                            <a href="https://en.wikipedia.org/wiki/Triangle" 
-                                target="_blank"
-                                rel="noopener noreferrer">
-                                Triangle.
                             </a>
                         </li>
                     </ul>  
