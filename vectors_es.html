@@ -50,8 +50,7 @@
 
                 <p>Para manejar esta información de manera precisa, la física recurre a una herramienta matemática indispensable: los <strong>vectores de posición</strong>. Estos no solo nos dicen cuán lejos está un objeto de un origen, sino también en qué dirección y sentido se encuentra. Son la clave para representar ubicaciones en dos o tres dimensiones de forma completa y rigurosa.</p>
 
-                <p>En este primer capítulo, exploraremos a fondo los <strong>vectores</strong> y el <strong>sistema de coordenadas cartesianas</strong>, desentrañando las <strong>operaciones vectoriales</strong> fundamentales como la suma, resta, producto escalar y producto vectorial. Estas herramientas del <strong>álgebra vectorial</strong> no solo simplifican enormemente la resolución de problemas complejos en física e ingeniería, sino que también nos permiten, por ejemplo, calcular la distancia precisa entre dos puntos con una elegancia matemática asombrosa. Prepárate para descubrir el lenguaje que nos permite describir y predecir el mundo físico con una claridad sin precedentes.</p>
-                
+                <p>En este primer capítulo, exploraremos a fondo los <strong>vectores</strong> y el <strong>sistema de coordenadas cartesianas</strong>, desentrañando las <strong>operaciones vectoriales</strong> fundamentales como la suma, resta, producto escalar y producto vectorial. Estas herramientas del <strong>álgebra vectorial</strong> no solo simplifican enormemente la resolución de problemas complejos en física e ingeniería, sino que también nos permiten, por ejemplo, calcular la distancia precisa entre dos puntos con una elegancia matemática asombrosa. Prepárate para descubrir el lenguaje que nos permite describir y predecir el mundo físico con una claridad sin precedentes.</p>  
             </section>
             <section id="vectores">
 				<h3>1.1.2 Vectores</h3>
@@ -267,7 +266,7 @@
 					\end{flalign}
 				</p>
                 <p>
-                    En un espacio tridimensional, un vector se puede representar mediante vectores unitarios \(\hat{\imath}\), \(\hat{\jmath}\), y \(\hat{k}\). El vector unitario \(\hat{\imath}\) es un vector de longitud 1 a lo largo del eje x, el vector unitario \(\hat{\jmath}\) es un vector de longitud 1 a lo largo del eje y, y el vector unitario \(\hat{k}\) es un vector de longitud 1 a lo largo del eje z.
+                    En un espacio tridimensional, un vector se puede representar mediante vectores unitarios \(\hat{\imath}\), \(\hat{\jmath}\) y \(\hat{k}\). El vector unitario \(\hat{\imath}\) es un vector de longitud 1 a lo largo del eje x, el vector unitario \(\hat{\jmath}\) es un vector de longitud 1 a lo largo del eje y, y el vector unitario \(\hat{k}\) es un vector de longitud 1 a lo largo del eje z.
                 </p>
                 <p>
                     Si tenemos un vector expresado mediante sus componentes \(\vec v = (x, y, z)\), se puede representar como:
@@ -278,7 +277,7 @@
 					\end{flalign}
 				</p>
                 <p>
-                    Esta suma vectorial se denomina <strong>combinación lineal</strong> de los vectores \(\vec i\), \(\vec j\) y \(\vec k\).
+                    Esta suma vectorial se denomina <strong>combinación lineal</strong> de los vectores \(\hat{\imath}\), \(\hat{\jmath}\) y \(\hat{k}\).
                 </p>
             </section>
             <section id="Producto escalar de dos vectores">
@@ -306,7 +305,7 @@
                     Donde \(\theta\) es el ángulo subtendido desde \(\vec v\) a \(\vec w\).
                 </p>
                 <p>
-                    Usando \eqref{eq:10_2}, podemos expresar `theta` como.
+                    Usando \eqref{eq:10_2}, podemos expresar `theta` como:
                 </p>
 				<p>
 					\begin{flalign}
@@ -320,7 +319,7 @@
             <section id="Proyección de un vector">
 				<h3>1.1.11 Proyección de un vector.</h3>
                 <p>
-                    La <strong>provección de \(\vec w\)</strong> sobre \(\vec v\) o sobre la línea que contiene a \(\vec v\), se denota como \(proj_v \vec w\), es un vector que se encuentra en \(\vec v\) tiene la misma dirección que \(\vec w\) (si el ángulo entre \(\vec v\) y \(\vec w\) es inferior a 90 grados) u opuesto a \(\vec v\) (si el ángulo entre \(\vec v\) y \(\vec w\ es mayor de 90 grados). 
+                    La <strong>provección de \(\vec w\)</strong> sobre \(\vec v\) o sobre la línea que contiene a \(\vec v\), se denota como \(proj_v \vec w\), es un vector que se encuentra en \(\vec v\) tiene la misma dirección que \(\vec w\) (si el ángulo entre \(\vec v\) y \(\vec w\) es inferior a 90 grados) u opuesto a \(\vec v\) (si el ángulo entre \(\vec v\) y \(\vec w\) es mayor de 90 grados). 
                 </p>
                 <figure class="centered"> <!--Projection of `vecv` onto `vecw`-->
                     <svg id= "svg1_6"></svg>
@@ -421,11 +420,11 @@
                     \end{flalign}
                 </p>
                 <p>
-                    Cada componente de este vector resultante es el determinante de una matriz de 2x2 formada eliminando la fila y la columna del componente correspondiente de una matriz de 3x3 que contiene los vectores unitarios \(\vec i\), \(\vec j\) y \(\vec k\) en la primera fila, los componentes de \(\vec v\) en la segunda fila, y los componentes de \(\vec w\) en la tercera fila.
+                    Cada componente de este vector resultante es el determinante de una matriz de 2x2 formada eliminando la fila y la columna del componente correspondiente de una matriz de 3x3 que contiene los vectores unitarios \(\hat{\imath}\), \(\hat{\jmath}\) y \(\hat{k}\) en la primera fila, los componentes de \(\vec v\) en la segunda fila, y los componentes de \(\vec w\) en la tercera fila.
                 </p>
                 <p>
                     \begin{flalign}
-                        \begin{vmatrix}\vec i & \vec j & \vec k \\ x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2\\ \end{vmatrix} = \begin{vmatrix} y_1 & z_1 \\ y_2 & z_2 \\ \end{vmatrix} \vec i - \begin{vmatrix} x_1 & z_1 \\ x_2 & z_2\\ \end{vmatrix} \vec j + \begin{vmatrix} x_1 & y_1 \\ x_2 & y_2 \\ \end{vmatrix}\vec k \label{eq:12_3}
+                        \begin{vmatrix}\vec i & \vec j & \vec k \\ x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2\\ \end{vmatrix} = \begin{vmatrix} y_1 & z_1 \\ y_2 & z_2 \\ \end{vmatrix} \hat{\imath} - \begin{vmatrix} x_1 & z_1 \\ x_2 & z_2\\ \end{vmatrix} \hat{\jmath} + \begin{vmatrix} x_1 & y_1 \\ x_2 & y_2 \\ \end{vmatrix}\hat{k} \label{eq:12_3}
                     \end{flalign}
                 </p>
                 <p>
@@ -444,7 +443,6 @@
                 <p>
                     El <strong>momento de un vector deslizante</strong> \(\vec v\) respecto a un punto P se calcula mediante el producto vectorial de  \(\vec r\) por \(\vec v\). Siendo \(\vec r\) el vector de posición de  \(\vec v\) respecto a P.
                 </p>
-                <p>&emsp; </p>
                 <p>
                     \begin{flalign}
                         \vec M = \vec r \times \vec v \label{eq:13_1}
@@ -511,11 +509,11 @@
                     Una <strong>función vectorial</strong> es una función matemática de una o más variables cuyo rango es un conjunto de vectores.
                 </p>
                 <p>
-                    Por ejemplo, un tipo común de función vectorial es aquella que depende de un único parámetro real t y produce un vector  \(\vec f(t)\) como resultado. En términos de los vectores unitarios están \(\vec i\), \(\vec j\), \(\vec k\) del espacio cartesiano 3D, estos tipos específicos de funciones con valores vectoriales vienen dados por expresiones como:
+                    Por ejemplo, un tipo común de función vectorial es aquella que depende de un único parámetro real t y produce un vector  \(\vec f(t)\) como resultado. En términos de los vectores unitarios están \(\hat{\imath}\), \(\hat{\jmath}\), \(\hat{k}\) del espacio cartesiano 3D, estos tipos específicos de funciones con valores vectoriales vienen dados por expresiones como:
                 </p>
                 <p>
                     \begin{flalign}
-                        \vec f(t) = f_x(t)\vec i + f_y(t)\vec j + f_z(t)\vec k \label{eq:15_1}
+                        \vec f(t) = f_x(t)\hat{\imath} + f_y(t)\hat{\jmath} + f_z(t)\hat{k} \label{eq:15_1}
                     \end{flalign}
                 </p>
                 <p>
@@ -529,11 +527,11 @@
                 </p>
                 <p>
                     \begin{flalign}
-                        \vec f'(t) = \frac{d\vec f}{dt} = \frac{df_x}{dt}\vec i + \frac{df_y}{dt}\vec j +\frac{df_z}{dt}\vec k \label{eq:16_1}
+                        \vec f'(t) = \frac{d\vec f}{dt} = \frac{df_x}{dt}\hat{\imath} + \frac{df_y}{dt}\hat{\jmath} +\frac{df_z}{dt}\hat{k} \label{eq:16_1}
                     \end{flalign}
                 </p>
             </section>
-            <section>
+            <section id="Derivada parcial de una función y su derivada total">
 				<h3>1.1.17 Derivada parcial de una función y su derivada total.</h3>
                 <p>
                     Si una función depende de más de una variable, su <strong>derivada parcial</strong> es la derivada con respecto a una de esas variables manteniendo las otras como constantes.
