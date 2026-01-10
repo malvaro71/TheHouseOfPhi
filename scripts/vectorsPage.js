@@ -228,7 +228,7 @@ ensureSharedMarkerDefs();
 
 // `writeValue` provided by `SVGDrawing.js`
 
-// Exercise 2_1
+// Exercise e_1
 {
     // Exercise enunciate
     /*A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of 36 km / h. The river water flows with a speed of 9 km / h. How fast should the boat be propelled? In what direction?*/
@@ -247,30 +247,30 @@ ensureSharedMarkerDefs();
 
     
     //Write exercise values in HTML elements
-    writeValue("2_1avgSpeed", vBoat[1]);
-    writeValue("2_1riverSpeed", vRiver[0]);
-    writeValue("2_1vBoat", vBoat);
-    writeValue("2_1vRiver", vRiver);
-    writeValue("2_1vBoat1", vBoat);
-    writeValue("2_1vRiver1", vRiver);
-    writeValue("2_1vPropelled", vPropelled);
-    writeValue("2_1normvPropelled", normvPropelled.toFixed(1));
-    writeValue("2_1phi1", phi.toFixed(1));
-    writeValue("2_1normvPropelled1", normvPropelled.toFixed(1));
-    writeValue("2_1phi2", phi.toFixed(1));
+    writeValue("e_1avgSpeed", vBoat[1]);
+    writeValue("e_1riverSpeed", vRiver[0]);
+    writeValue("e_1vBoat", vBoat);
+    writeValue("e_1vRiver", vRiver);
+    writeValue("e_1vBoat1", vBoat);
+    writeValue("e_1vRiver1", vRiver);
+    writeValue("e_1vPropelled", vPropelled);
+    writeValue("e_1normvPropelled", normvPropelled.toFixed(1));
+    writeValue("e_1phi1", phi.toFixed(1));
+    writeValue("e_1normvPropelled1", normvPropelled.toFixed(1));
+    writeValue("e_1phi2", phi.toFixed(1));
 
 
     // Get the SVG element from the DOM
-    const svg2_1 = document.getElementById("svg2_1");
+    const svge_1 = document.getElementById("svge_1");
 
     // set a cartesian plane where the river bank is parallel to x-axis.
-    const myPlane2_1 = new CartesianPlane(svg2_1, -23, 23, -6, 40, 9);
-    myPlane2_1.drawAxes("y-axis", "x-axis", "O");
+    const myPlanee_1 = new CartesianPlane(svge_1, -23, 23, -6, 40, 9);
+    myPlanee_1.drawAxes("y-axis", "x-axis", "O");
 
     // Write exercise data
-    myPlane2_1.drawLabel([7, 39], "Data:", {corner: "lefttop", fontSize: 15});
-    myPlane2_1.drawLabel([7, 36], "Vr = <9, 0> Km/h", {corner: "lefttop", fontSize: 15});
-    myPlane2_1.drawLabel([7, 33], "Vb = <0, 36> Km/h", {corner: "lefttop", fontSize: 15});
+    myPlanee_1.drawLabel([7, 39], "Data:", {corner: "lefttop", fontSize: 15});
+    myPlanee_1.drawLabel([7, 36], "Vr = <9, 0> Km/h", {corner: "lefttop", fontSize: 15});
+    myPlanee_1.drawLabel([7, 33], "Vb = <0, 36> Km/h", {corner: "lefttop", fontSize: 15});
 
 
     // Set a common initial point for the vectors at the origin of coordinates 
@@ -278,27 +278,27 @@ ensureSharedMarkerDefs();
 
     // Draw Vr
     const Vr = textWithSubscript("V", "r");
-    myPlane2_1.drawVector(initialPoint, vRiver, Vr, {strokeColor: "green"}, {corner: "righttop"});
+    myPlanee_1.drawVector(initialPoint, vRiver, Vr, {strokeColor: "green"}, {corner: "righttop"});
 
     // Draw Vp
     const Vp = textWithSubscript("V", "p");
-    myPlane2_1.drawVector(initialPoint, vPropelled, Vp, {strokeColor: "blue"}, {corner: "righttop"});
+    myPlanee_1.drawVector(initialPoint, vPropelled, Vp, {strokeColor: "blue"}, {corner: "righttop"});
 
     // Draw V components
-    myPlane2_1.drawSegment(vPropelled, math.multiply(-1, vRiver), {strokeColor: "green", strokeDasharray: "5,5"});
-    myPlane2_1.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx", {strokeColor: "green"}, {corner: "righttop"});
-    myPlane2_1.drawSegment(vPropelled, vBoat, {strokeColor: "green", strokeDasharray: "5,5"});
-    myPlane2_1.drawVector(initialPoint, vBoat, "Vy = Vby", {strokeColor: "green"}, {corner: "lefttop"});
-    myPlane2_1.drawArc(initialPoint, vRiver, vPropelled, 3);
-    myPlane2_1.drawLabel([3,3], "φ", {fill: "blue", corner: "leftbottom"}); // phi
+    myPlanee_1.drawSegment(vPropelled, math.multiply(-1, vRiver), {strokeColor: "green", strokeDasharray: "5,5"});
+    myPlanee_1.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx", {strokeColor: "green"}, {corner: "righttop"});
+    myPlanee_1.drawSegment(vPropelled, vBoat, {strokeColor: "green", strokeDasharray: "5,5"});
+    myPlanee_1.drawVector(initialPoint, vBoat, "Vy = Vby", {strokeColor: "green"}, {corner: "lefttop"});
+    myPlanee_1.drawArc(initialPoint, vRiver, vPropelled, 3);
+    myPlanee_1.drawLabel([3,3], "φ", {fill: "blue", corner: "leftbottom"}); // phi
 
     // Write the solutions
-    myPlane2_1.drawLabel([7, 30], "Solution:", {corner: "lefttop", fontSize: 15});
-    myPlane2_1.drawLabel([7, 27], "φ = " + phi.toFixed(1).toString() + "º", {corner: "lefttop", fontSize: 15});
-    myPlane2_1.drawLabel([7, 24], "|Vp| = " + normvPropelled.toFixed(1).toString() + " Km/h", {corner: "lefttop", fontSize: 15});
+    myPlanee_1.drawLabel([7, 30], "Solution:", {corner: "lefttop", fontSize: 15});
+    myPlanee_1.drawLabel([7, 27], "φ = " + phi.toFixed(1).toString() + "º", {corner: "lefttop", fontSize: 15});
+    myPlanee_1.drawLabel([7, 24], "|Vp| = " + normvPropelled.toFixed(1).toString() + " Km/h", {corner: "lefttop", fontSize: 15});
 }
 
-// Exercise 2_2: sum of vectors a, b, c and d using the graphical method
+// Exercise e_2: sum of vectors a, b, c and d using the graphical method
 {
     // Exercise data
 	const vectorA = [2, 3];
@@ -307,22 +307,22 @@ ensureSharedMarkerDefs();
 	const vectorD = [-9, 1];
 
 	// Get the SVG element from the DOM
-	var svg2_2 = document.getElementById("svg2_2");
+	var svge_2 = document.getElementById("svge_2");
 
 	// set a cartesian plane to represent the vectors.
 	const xMin = -1;
 	const xMax = 10;
 	const yMin = -3;
 	const yMax = 5;
-	const myPlane2_2 = new CartesianPlane(svg2_2, xMin, xMax, yMin, yMax, 34);
-	myPlane2_2.drawAxes("y-axis", "x-axis", "O");
+	const myPlanee_2 = new CartesianPlane(svge_2, xMin, xMax, yMin, yMax, 34);
+	myPlanee_2.drawAxes("y-axis", "x-axis", "O");
 
 	// Draw horizontal and vertical lines to better show plane coordinates
     for (let x = xMin; x <= xMax; x++) {
-        myPlane2_2.drawSegment([x, yMin], [x, yMax], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+        myPlanee_2.drawSegment([x, yMin], [x, yMax], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
     }
 	for (let y = yMin; y <= yMax; y++) {
-        myPlane2_2.drawSegment([xMin, y], [xMax, y], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
+        myPlanee_2.drawSegment([xMin, y], [xMax, y], {strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1});
     }
 
 	// Draw vectors
@@ -330,12 +330,12 @@ ensureSharedMarkerDefs();
 	const vectorList = [vectorA, vectorB, vectorC, vectorD];
 	const vectorNames = ["a", "b", "c", "d"];
 	for(let v = 0; v < vectorList.length; v++){
-		myPlane2_2.drawVector(initialPoint, vectorList[v], vectorNames[v], {}, {});
+		myPlanee_2.drawVector(initialPoint, vectorList[v], vectorNames[v], {}, {});
 		initialPoint = math.add(initialPoint, vectorList[v]);
 	}
 } 
 
-// Exercise 2_3:  NNE direction, velocity V and its components Vx and Vy
+// Exercise e_3:  NNE direction, velocity V and its components Vx and Vy
 {
 	// Exercise enunciate
     /*A sailboat is moving with a speed of 4 km/h in the NNE (north-northeast) direction. What are the components of the speed of the ship in the North direction and in the East direction? */
@@ -350,56 +350,56 @@ ensureSharedMarkerDefs();
 	const sailboatVelocity = [sailboatSpeedX, sailboatSpeedY];
 
     //Write exercise values in HTML elements
-    writeValue("2_3sailboatSpeed", sailboatSpeed);
-    writeValue("2_3Vx", sailboatSpeedX.toFixed(2));
-    writeValue("2_3Vy", sailboatSpeedY.toFixed(2));
+    writeValue("e_3sailboatSpeed", sailboatSpeed);
+    writeValue("e_3Vx", sailboatSpeedX.toFixed(2));
+    writeValue("e_3Vy", sailboatSpeedY.toFixed(2));
 
     /* Draw a representation of the exercise */
     // Get the SVG element from the DOM
-	var svg2_3 = document.getElementById("svg2_3");
+	var svge_3 = document.getElementById("svge_3");
 
 	// Set attributes
-	//svg2_3.setAttribute("viewBox", "0 0 400 400"); 
-	//svg2_3.setAttribute("width", "400"); 
-	//svg2_3.setAttribute("height", "400");
+	//svge_3.setAttribute("viewBox", "0 0 400 400"); 
+	//svge_3.setAttribute("width", "400"); 
+	//svge_3.setAttribute("height", "400");
 
 	// set a cartesian plane
 	const xMin = -5;
 	const xMax = 5;
 	const yMin = -1;
 	const yMax = 5;
-	const myPlane2_3 = new CartesianPlane(svg2_3, xMin, xMax, yMin, yMax, 48);
-	myPlane2_3.drawAxes("", "E", "O");
-	myPlane2_3.drawLabel([-0.3, yMax], "N", {corner: "righttop"});
+	const myPlanee_3 = new CartesianPlane(svge_3, xMin, xMax, yMin, yMax, 48);
+	myPlanee_3.drawAxes("", "E", "O");
+	myPlanee_3.drawLabel([-0.3, yMax], "N", {corner: "righttop"});
 	
 	// Draw NE and NNE arrows
 	const origin = [0, 0];
 	const NNEextreme = [xMax*Math.cos(NNE), yMax*Math.sin(NNE)];
-	myPlane2_3.drawVector(origin, NNEextreme);
-	myPlane2_3.drawLabel(NNEextreme, "NNE", {corner: "lefttop"});
+	myPlanee_3.drawVector(origin, NNEextreme);
+	myPlanee_3.drawLabel(NNEextreme, "NNE", {corner: "lefttop"});
 
 	
     // Draw sailboat velocity
-	myPlane2_3.drawVector(origin, sailboatVelocity, "V", {strokeColor: "green"});
+	myPlanee_3.drawVector(origin, sailboatVelocity, "V", {strokeColor: "green"});
 	
 	//Draw dashed lines
-	myPlane2_3.drawSegment([sailboatSpeedX, 0], [sailboatSpeedX, sailboatSpeedY], {strokeColor: "blue", strokeDasharray: "5, 5"});
-	myPlane2_3.drawSegment([0, sailboatSpeedY], [sailboatSpeedX, sailboatSpeedY], {strokeColor: "blue", strokeDasharray: "5, 5"});
+	myPlanee_3.drawSegment([sailboatSpeedX, 0], [sailboatSpeedX, sailboatSpeedY], {strokeColor: "blue", strokeDasharray: "5, 5"});
+	myPlanee_3.drawSegment([0, sailboatSpeedY], [sailboatSpeedX, sailboatSpeedY], {strokeColor: "blue", strokeDasharray: "5, 5"});
 
 	// Draw Vx vector
 	const Vx = textWithSubscript("V", "x");
-	myPlane2_3.drawVector(origin, [sailboatSpeedX, 0], Vx, {strokeColor: "green"}, {corner: "lefttop"});
+	myPlanee_3.drawVector(origin, [sailboatSpeedX, 0], Vx, {strokeColor: "green"}, {corner: "lefttop"});
 
 	// Draw Vy vector
 	const Vy = textWithSubscript("V", "y");
-	myPlane2_3.drawVector(origin, [0, sailboatSpeedY], Vy, {strokeColor: "green"}, {corner: "rightbottom"});
+	myPlanee_3.drawVector(origin, [0, sailboatSpeedY], Vy, {strokeColor: "green"}, {corner: "rightbottom"});
 
 	// Draw angle between Vx and V
-	myPlane2_3.drawArc(origin, [sailboatSpeedX, 0], sailboatVelocity, 0.5);
-	myPlane2_3.drawLabel([0.5*Math.cos(Math.PI*3/16), 0.5*Math.sin(Math.PI*3/16)], "θ=67.5º", {stroke: "blue", corner: "leftbottom", fontSize: 16, fontWeight: "lighter"});
+	myPlanee_3.drawArc(origin, [sailboatSpeedX, 0], sailboatVelocity, 0.5);
+	myPlanee_3.drawLabel([0.5*Math.cos(Math.PI*3/16), 0.5*Math.sin(Math.PI*3/16)], "θ=67.5º", {stroke: "blue", corner: "leftbottom", fontSize: 16, fontWeight: "lighter"});
 }
 
-// Exercise 2_4
+// Exercise e_4
 {
     // Exercise enunciate
     /*An object moves in such a way that its speed at a certain instant is 120 m/s and forms an angle of 30º with the horizontal. Find the horizontal and vertical components of the velocity. Express the velocity vector as a function of its components.*/
@@ -414,17 +414,17 @@ ensureSharedMarkerDefs();
 	const Vy = speed*Math.sin(orientationRad); // Vertical component
 
     //Write exercise values in HTML elements
-    writeValue("2_4Speed1", speed);
-    writeValue("2_4orientation1", orientationDeg);
-    writeValue("2_4Speed2", speed);
-    writeValue("2_4orientation2", orientationDeg);
-    writeValue("2_4Vx1", Vx.toFixed(1));
-    writeValue("2_4Vy1", Vy.toFixed(1));
-    writeValue("2_4Vx2", Vx.toFixed(1));
-    writeValue("2_4Vy2", Vy.toFixed(1));
+    writeValue("e_4Speed1", speed);
+    writeValue("e_4orientation1", orientationDeg);
+    writeValue("e_4Speed2", speed);
+    writeValue("e_4orientation2", orientationDeg);
+    writeValue("e_4Vx1", Vx.toFixed(1));
+    writeValue("e_4Vy1", Vy.toFixed(1));
+    writeValue("e_4Vx2", Vx.toFixed(1));
+    writeValue("e_4Vy2", Vy.toFixed(1));
 }
 
-// Exercise 2_5
+// Exercise e_5
 {
     // Exercise enunciate
     /* Find the scalar product of the vectors v = (5, - 3, 2) and w = (-2, 1, 3), and the angle they form. */
@@ -442,11 +442,11 @@ ensureSharedMarkerDefs();
     const angleDeg = angleRad * 180 / math.PI;
 
     //Write exercise values in HTML elements
-    writeValue("2_5escProd1", scalarProduct);
-    writeValue("2_5angle1", angleDeg.toFixed(2));
+    writeValue("e_5escProd1", scalarProduct);
+    writeValue("e_5angle1", angleDeg.toFixed(2));
 }
 
-// Execise 2_6: showing angle between E and NE and `proj_Evecv`
+// Execise e_6: showing angle between E and NE and `proj_Evecv`
 {
 	// Exercise enunciate
     /* An airplane is moving with a speed of 600 km/h in the NE direction. Find the projection of its velocity onto the east direction.*/
@@ -466,48 +466,48 @@ ensureSharedMarkerDefs();
     const normProjEV = math.norm(projEV);
 
     //Write exercise values in HTML elements
-    writeValue("2_6speed1", planeSpeed);
-    writeValue("2_6angle1", angleNEDeg.toFixed(0));
-    writeValue("2_6speed2", planeSpeed);
-    writeValue("2_6angle2", angleNEDeg.toFixed(0));
-    writeValue("2_6projection", normProjEV.toFixed(0));
+    writeValue("e_6speed1", planeSpeed);
+    writeValue("e_6angle1", angleNEDeg.toFixed(0));
+    writeValue("e_6speed2", planeSpeed);
+    writeValue("e_6angle2", angleNEDeg.toFixed(0));
+    writeValue("e_6projection", normProjEV.toFixed(0));
 
 	// Get the SVG element from the DOM
-	var svg2_6 = document.getElementById("svg2_6");
+	var svge_6 = document.getElementById("svge_6");
 
 	// set a cartesian plane
 	const xMin = -700;
 	const xMax = 700;
 	const yMin = -100;
 	const yMax = 700;
-	const myPlane2_6 = new CartesianPlane(svg2_6, xMin, xMax, yMin, yMax, 0.3);
-	myPlane2_6.drawAxes("", "E", "O");
-	myPlane2_6.drawLabel([-15, yMax], "N", {corner: "righttop"});
+	const myPlanee_6 = new CartesianPlane(svge_6, xMin, xMax, yMin, yMax, 0.3);
+	myPlanee_6.drawAxes("", "E", "O");
+	myPlanee_6.drawLabel([-15, yMax], "N", {corner: "righttop"});
 	
 	// Draw NE arrow
 	const origin = [0, 0];
 	const NE = [xMax*Math.cos(angleNERad), yMax*Math.sin(angleNERad)];
-	myPlane2_6.drawVector(origin, NE);
-	myPlane2_6.drawLabel(NE, "NE", {corner: "lefttop"});
+	myPlanee_6.drawVector(origin, NE);
+	myPlanee_6.drawLabel(NE, "NE", {corner: "lefttop"});
 
 	// Draw V vector
-	myPlane2_6.drawVector(origin, V, "V", {strokeColor: "green"}, {corner: "lefttop"});
+	myPlanee_6.drawVector(origin, V, "V", {strokeColor: "green"}, {corner: "lefttop"});
 
 	// Draw `proj_Evecv`
 	const projEVText = textWithSubscript("proj", "E");
 	const textNode = document.createTextNode("V");
     projEVText.appendChild(textNode);
-	myPlane2_6.drawVector(origin, projEV, projEVText, {strokeColor: "green"}, {corner: "lefttop"});
+	myPlanee_6.drawVector(origin, projEV, projEVText, {strokeColor: "green"}, {corner: "lefttop"});
 
 	//Draw dashed line
-	myPlane2_6.drawSegment(projEV, V, {strokeColor: "blue", strokeDasharray: "5, 5"});
+	myPlanee_6.drawSegment(projEV, V, {strokeColor: "blue", strokeDasharray: "5, 5"});
 
 	// Draw angle
-	myPlane2_6.drawArc(origin, projEV, V, 100);
-	myPlane2_6.drawLabel([120*Math.cos(Math.PI*3/16), 120*Math.sin(Math.PI*3/16)], "θ=45º", {stroke: "blue", corner: "lefttop", fontSize: 16, fontWeight: "lighter"});
+	myPlanee_6.drawArc(origin, projEV, V, 100);
+	myPlanee_6.drawLabel([120*Math.cos(Math.PI*3/16), 120*Math.sin(Math.PI*3/16)], "θ=45º", {stroke: "blue", corner: "lefttop", fontSize: 16, fontWeight: "lighter"});
 }
 
-// Execise 2_7
+// Execise e_7
 {
     // Exercise enunciate
     /* A rigid body rotates with an angular velocity w given by the vector (1, 1, 1) rad/s. Calculate the linear velocity v with which a point P of the body moves, whose position vector is (2, -2, 1) m., knowing that v = w x r */
@@ -520,12 +520,12 @@ ensureSharedMarkerDefs();
     //const v = math.cross(w, r);
 
     //Write exercise values in HTML elements
-    //writeValue("2_7v", v);
+    //writeValue("e_7v", v);
 
     // Get the HTML element where the expression will be rendered
-    const div271 = document.getElementById("2_7_1");
+    const div271 = document.getElementById("e_7_1");
     // Get the HTML element where the result will be displayed
-	const div272 = document.getElementById("2_7_2");
+	const div272 = document.getElementById("e_7_2");
 
     // The expression is the cross product of vectors w and r
     // Using JSON.stringify to ensure the vectors are properly formatted
