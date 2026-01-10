@@ -14,13 +14,21 @@
         <!--Load math.js library https://mathjs.org/ -->
         <script src="https://unpkg.com/mathjs@13.0.0/lib/browser/math.js"></script>
 
-		<script>
-  			window.MathJax = {
-    			tex: {
-      				tags: 'ams'  // 'ams' permite numeración automática y uso de \label / \ref
-    			}
-  			};
-		</script>
+        <script>
+            window.MathJax = {
+                loader: {
+                load: ['[tex]/tagformat'] // Carga el componente necesario para personalizar etiquetas
+                },
+                tex: {
+                packages: {'[+]': ['tagformat']}, // Añade el paquete a la configuración de TeX
+                tags: 'ams',
+                tagformat: {
+                    tag: (tag) => '[' + tag + ']',      // Formato al lado de la ecuación
+                    eqref: (tag) => '[' + tag + ']'    // Formato de la llamada \eqref
+                }
+                }
+            };
+        </script>
 		
         <!-- load Mathjax library-->
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>

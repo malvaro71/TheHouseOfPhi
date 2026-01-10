@@ -15,12 +15,20 @@
         <script src="https://unpkg.com/mathjs@13.0.0/lib/browser/math.js"></script>
 
         <script>
-  			window.MathJax = {
-    			tex: {
-      				tags: 'ams'  // 'ams' permite numeración automática y uso de \label / \ref
-    			}
-  			};
-		</script>
+            window.MathJax = {
+                loader: {
+                load: ['[tex]/tagformat'] // Carga el componente necesario para personalizar etiquetas
+                },
+                tex: {
+                packages: {'[+]': ['tagformat']}, // Añade el paquete a la configuración de TeX
+                tags: 'ams',
+                tagformat: {
+                    tag: (tag) => '[' + tag + ']',      // Formato al lado de la ecuación
+                    eqref: (tag) => '[' + tag + ']'    // Formato de la llamada \eqref
+                }
+                }
+            };
+        </script>
         
         <!-- load Mathjax library-->
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
@@ -310,7 +318,7 @@
                     Where \(\theta\) is the angle between \(\vec v\) and \(\vec w\).
                 </p>
                 <p>
-                    From <a href="[1.12]">[1.12]</a> we can express \(\theta\) as:
+                    From \eqref{eq:10_2} we can express \(\theta\) as:
                 </p>
                 <p>
 					\begin{flalign}
@@ -616,7 +624,8 @@
                 <h2 id="Vector Operations Exercises">2. VECTOR OPERATIONS EXERCISES</h2>
                 <a href="#Top" class="right">Back to the top.</a>
             </div>
-            <section><h3>Exercise 1</h3>
+            <section id="Exercise 1">
+                <h3>Exercise 1</h3>
                 <p>
                     A boatman is rowing on the boat, wanting to always stay perpendicular to the river bank and crossing with an average speed of <span id="2_1avgSpeed"></span> km/h. The river water flows with a speed of <span id="2_1riverSpeed"></span> km/h. How fast should the boat be propelled? In what direction?
                 </p>
@@ -661,8 +670,7 @@
                     <figcaption><b>Figure 2.1</b>, showing coordinate-plane, \(\vec v_r\) as the water velocity and \(\vec v\) as the velocity with which the boat is propelled.</figcaption>
                 </figure>
                 <aside><!--References-->
-                    <!-- references to concepts used in this problem target="_blank" will display the link in a new tab. -->
-                    <h4  >References</h4>
+                    <h4>References</h4>
                     <ul>
                         <li>
                             <a href="https://www.mathsisfun.com/definitions/coordinate-plane.html" 
@@ -702,7 +710,8 @@
                     </ul>
                 </aside>
             </section>
-            <section><h3>Exercise 2</h3>
+            <section id="Exercise 2">
+                <h3>Exercise 2</h3>
                 <p>
                     Draw, one after the other, the vectors \(\vec a = 2\vec i + 3\vec j\),  \(\vec b = 4\vec i - 2\vec j\), \(\vec c = 3\vec i - 2\vec j\) and \(\vec d = -9\vec i + \vec j\). Calculate the vector resulting from the sum of all of them and its magnitude.
                 </p>
@@ -713,7 +722,8 @@
                 <p>
                     It can be seen that the origin of \(\vec a\) coincides with the end of (\vec d\). So the vector resulting from said sum is the vector (\vec 0\), and its magnitude is zero.
                 </p>
-                <aside><h4>References</h4>
+                <aside>
+                    <h4>References</h4>
                     <ul>
                         <li>
                             <a href="https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods"
@@ -725,7 +735,8 @@
                     </ul>    
                 </aside>
             </section>
-            <section><h3>Exercise 3</h3>
+            <section id="Exercise 3">
+                <h3>Exercise 3</h3>
                 <p>
                     A sailboat is moving with a speed of <span id="2_3sailboatSpeed"></span> km/h in the NNE (north-northeast) direction. What are the components of the speed of the ship in the North direction and in the East direction?
                 </p>
@@ -740,7 +751,7 @@
                     To solve this exercise, we use the concept of <a href="#Vector components">vector components</a> and the <a href="#Relationship between vector components and its magnitude and orientation">relationship between vector components and its magnitude and orientation</a>.
                 </p>
                 <p>
-                    Then, to calculate the value of the component \(\vec V_x\) of \(\vec V\) we use the expresion \eqref{eq:6_4} and to calculate the value of \(\vec V_y\) we use the expresion \eqref{eq:6_5}. With \(\Vert\vec V\Vert\) = 4 km/h and &theta; = 67.5º`.
+                    Then, to calculate the value of the component \(\vec V_x\) of \(\vec V\) we use the expresion \eqref{eq:6_3} and to calculate the value of \(\vec V_y\) we use the expresion \eqref{eq:6_4}. With \(\Vert\vec V\Vert\) = 4 km/h and &theta; = 67.5º`.
                 </p>
                 <p>&emsp; \(\vec V_x = 4\cdot\cos 65,7º\)= <span id="2_3Vx"></span> km/h</p>
                 <p>&emsp; \(\vec V_y = 4\cdot\sin65,7º\)= <span id="2_3Vy"></span> km/h</p>
@@ -757,12 +768,13 @@
                     </ul>    
                 </aside>
             </section>
-            <section><h3>Exercise 4</h3>
+            <section id="Exercise 4">
+                <h3>Exercise 4</h3>
                 <p>
                     An object moves in such a way that its speed at a certain instant is <span id="2_4Speed1"></span> m/s and forms an angle of <span id="2_4orientation1"></span>º with the horizontal. Find the horizontal and vertical components of the velocity. Express the velocity vector as a function of its components.
                 </p>
                 <p>
-                    The formulas to calculate the components of a vector \(\vec v\) given its magnitude \(\Vert\vec v\Vert\) and direction &theta; are given by the expresions \eqref{eq:6_4} and \eqref{eq:6_5}:
+                    The formulas to calculate the components of a vector \(\vec v\) given its magnitude \(\Vert\vec v\Vert\) and direction &theta; are given by the expresions \eqref{eq:6_3} and \eqref{eq:6_4}:
                 </p>
                 <p>&emsp; \(\vec v_x = \Vert\vec v\Vert\\cos \theta \cdot\vec i\) </p>
                 <p>&emsp; \(\vec v_y = \Vert\vec v\Vert\\sin \theta \cdot\vec j\) </p>
@@ -772,7 +784,8 @@
 			    <p>&emsp; \(\vec v_y = 120\sin30º = 120\cdot1/2\) = <span id="2_4Vy1"></span> m/s </p>
                 <p>And</p>
                 <p>&emsp; \(\vec v\) = <span id="2_4Vx2"></span>\(\cdot\vec i\) + <span id="2_4Vy2"></span>\(\cdot\vec j\) m/s</p>
-                <aside><h4>References</h4>
+                <aside>
+                    <h4>References</h4>
                     <ul>
                         <li>
                             <a href="https://openstax.org/books/precalculus/pages/8-8-vectors" 
@@ -799,7 +812,8 @@
                     </ul>
                 </aside>
             </section>
-            <section><h3>Exercise 5</h3>
+            <section id="Exercise 6">
+                <h3>Exercise 5</h3>
                 <p>
                     Find the scalar product of the vectors \(\vec v = 5\vec i - 3\vec j + 2\vec k\) and \(\vec w = -2\vec i + \vec j + 3\vec k\), and the angle they form.
                 </p>
@@ -808,7 +822,7 @@
                 </p>
                 <p>&emsp;\(\vec v\cdot\vec w = v_x\cdot w_x + v_y\cdot w_y + v_z\cdot w_z\)</p>
                 <p>
-                    To find the angle between the two vectors, &theta;, use the expression <a href="#[1.12]">[1.12]</a> and solve for \(\cos \theta\).<br />
+                    To find the angle between the two vectors, &theta;, use the expression \eqref{eq:10_2} and solve for \(\cos \theta\).<br />
                 </p>
                 <p>&emsp; $$\cos\theta  = \frac{\vec v\cdot\vec w}{\vert\vec v\vert\cdot\vert\vec w\vert}$$</p>
                 <p>Then</p>
@@ -838,7 +852,8 @@
                     </ul>
                 </aside>    
             </section>
-            <section><h3>Exercise 6</h3>
+            <section id="Exercise 6">
+                <h3>Exercise 6</h3>
                 <p>
                     An airplane is moving with a speed of <span id="2_6speed1"></span> km/h in the NE direction. Find the projection of its velocity onto the east direction.
                 </p>
@@ -869,12 +884,13 @@
                     </ul>
                 </aside>
             </section>
-            <section><h3>Exercise 7</h3>
+            <section id="Exercise 7">
+                <h3>Exercise 7</h3>
                 <p>
                     A rigid body rotates with an angular velocity \(\vec w\) given by the vector \(\vec w = \vec i + \vec j + \vec k\) rad/s. Calculate the linear velocity \(\vec v\) with which a point P of the body moves, whose position vector is \(\vec r = 2\vec i - 2\vec j + \vec k\) m., knowing that \(\vec v = \vec w \times \vec r\).
                 </p>
                 <p>
-                    To solve this exercise, we use the concept of <a href="#Vector cross product">vector cross product</a> and the expression<a href="#[1.18]">[1.18]</a>. Then
+                    To solve this exercise, we use the concept of <a href="#Vector cross product">vector cross product</a> and the expression \(\eqref{eq:12_1}\). Then
                 </p>
                 <p>
                     &emsp;$$\vec v = \vec w \times \vec r = \begin{vmatrix}\vec i & \vec j & \vec k \\ 1 & 1 & 1 \\ 2 & -2 & 1\\ \end{vmatrix} = \begin{vmatrix} 1 & 1 \\ -2 & 1 \\ \end{vmatrix} \vec i - \begin{vmatrix} 1 & 1 \\ 2 & 1\\ \end{vmatrix} \vec j + \begin{vmatrix} 1 & 1 \\ 2 & -2 \\ \end{vmatrix}\vec k = (1+2)\vec i -(1-2)\vec j + (-2-2)\vec k = 3\vec i + \vec j -4\vec k$$
@@ -882,7 +898,8 @@
                 <p>Or \(\vec v\) = (<span id="2_7v"></span>)</p>
                 <p> \(\vec v = \vec w \times \vec r =\) <span id="2_7_1" class ="math-inline-block"></span> = <span id="2_7_2"></span></p>
             </section>
-            <section><h3>Exercise 8</h3>
+            <section id="Exercise 8">
+                <h3>Exercise 8</h3>
                 <p>
                     Calculate the area of a triangle \(\triangle ABC\), where the Cartesian coordinates of the vertices are, A = (<span id="2_8A"></span>) m., B = (<span id="2_8B"></span>) m. and C = (<span id="2_8C"></span>) m.
                 </p>
