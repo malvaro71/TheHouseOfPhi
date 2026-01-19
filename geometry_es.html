@@ -13,184 +13,327 @@
 	<!--To set the viewport of the page, which will give the browser instructions on how to control the page's dimensions and scaling.-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- load Mathjax library-->
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <!--Load math.js library https://mathjs.org/ -->
+    <script src="https://unpkg.com/mathjs@13.0.0/lib/browser/math.js"></script>
 
+    <script>
+        window.MathJax = {
+            loader: {
+            load: ['[tex]/tagformat'] // Carga el componente necesario para personalizar etiquetas
+            },
+            tex: {
+            packages: {'[+]': ['tagformat']}, // Añade el paquete a la configuración de TeX
+            tags: 'ams',
+            tagformat: {
+                tag: (tag) => '[' + tag + ']',      // Formato al lado de la ecuación
+                eqref: (tag) => '[' + tag + ']'    // Formato de la llamada \eqref
+            }
+            }
+        };
+    </script>
+		
+    <!-- load Mathjax library-->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
     <!-- loads page script files-->
-    <!--<script src="scripts/SelectLanguage.js" defer></script>-->
+    <script type="module" src="scripts/geometryPage.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1 id="Home">GEOMETRÍA</h1>
-    </header>
-    </div>
-		<!--<select id="langSelector">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-        </select>-->
-    <div>
+    <article id="Anexo_Geometria">
+        <header id="Home">
+            <h1>Anexo 1: Fundamentos Geométricos para la Física</h1>
+        </header>
+        <nav> <!--Navigation bar. Links to the site's main sections-->
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#Geometry">Geometría</a></li>
+            </ul>
+	    </nav>
 
-	<nav> <!--Navigation bar. Links to the site's main sections-->
-		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="#Geometry">Geometría</a></li>
-		</ul>
-	</nav>
+        <h2>Introducción</h2>
+            <p>
+                La física y la geometría son disciplinas inseparables. Mientras la primera busca comprender las leyes naturales que rigen el universo, la segunda proporciona el lenguaje y el marco estructural necesario para cuantificar el espacio donde ocurren estos fenómenos.
+            </p>
+            
+            <h3>Importancia de la geometría como base para la física</h3>
+            <p>
+                Desde el estudio de la caída de un grave hasta la descripción de las órbitas planetarias, todo movimiento sigue una trayectoria definida por propiedades geométricas. El dominio de la trigonometría es esencial para la descomposición de magnitudes vectoriales, mientras que el conocimiento de las cónicas es la clave para entender la gravitación universal. Este anexo actúa como una "caja de herramientas" técnica a la que el lector puede acudir para facilitar la transición entre la intuición física y la resolución matemática precisa.
+            </p>
 
-    <section><h3 id="Introducción">1 Introducción</h3>
-        <p>
-            En este capítulo, mostramos conceptos sobre geometría que se utilizarán a lo largo del sitio web.
-        </p>
-    </section>
-    <section><h3>2Teorema de Pitágoras</h3>
-        <p>
-            En cualquier triángulo rectángulo \(\triangle ABC\), donde c es la longitud de la hipotenusa y a y b son las longitudes de los catetos,
-        </p>
-        <p class="centered">
-        </p>
-        <div class="container">
-            <div  class="center">\(a^2 + b^2 = c^2\)</div>
-            <div  class="right" id="[1]">[2]</div>
-        </div>
-        <figure class="centered"><!--Right triangle with hypotenuse c and legs a and b.-->
-            <img src="images\RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
-            <figcaption><b>Figura 1</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
-        </figure>
-    </section>
-    <section><h3>3 Definiciones gráficas de las funciones seno, coseno y tangente</h3>
-        <p>
-            Consideremos una circunferencia con radio de longitud r con centro en el origen <i>O</i> en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos &alpha; a el ángulo entre el eje x y el segmento \(\overline {OP}\), según se muestra en la siguiente figura. Entonces, \(\sin \alpha\) es el cociente y/r.
-        </p>
-        <figure class="centered"><!--Circunference of radius r with a point P and angle &alpha; with x-axis.-->
-            <img src="images\Circunference_and_coordinates.svg" 
-                width="300" 
-                height="300" 
-                alt="Diagrama de una circunferencia con punto P y triángulo rectángulo inscrito."/>
-            <figcaption class="lang lang-es" lang="es"><b>Figure 2.2</b> Circunferencia de radio r con un punto P y su ángulo &alpha; con el eje x.
-            </figcaption>
-        </figure>
-        <p>
-            Entonce, definimos las funicones seno, coseno y tengente como:
-        </p>
-        <div class="container">
-            <div  class="center">\(\sin \alpha  = y/r\)</div>
-            <div  class="right" id="[2]">[2]</div>
-        </div><br>
-        <div class="container">
-            <div  class="center">\(\cos \alpha = x/r\) </div>
-            <div  class="right" id="[3]">[3]</div>
-        </div><br>
-        <div class="container">
-            <div  class="center">\(\tan \alpha = y/x\) </div>
-            <div  class="right" id="[4]">[4]</div>
-        </div><br>
-    </section>
-    <section><h3>4 Perpendicularidad entre un vector con módulo constante y su variación temporal</h3>
-        <h4>Introducción:</h4>
-            <p>En diversas áreas de la física, la mecánica y la cinemática, nos encontramos con frecuencia con el análisis de <strong>vectores cuyo módulo permanece constante en el tiempo</strong>, aunque su dirección pueda variar. Esto incluye vectores de posición en movimientos restringidos a una superficie esférica o circular, así como vectores unitarios que cambian de orientación, como el vector unitario tangencial en el estudio de trayectorias curvas. En estos escenarios, surge una propiedad geométrica fundamental: <strong>la variación temporal de cualquier vector de módulo constante es siempre perpendicular al vector original</strong>. Esta propiedad, con raíces en la geometría, tiene amplias y significativas aplicaciones en física, facilitando la comprensión de conceptos como la velocidad y la aceleración en movimientos curvilíneos, la descomposición de la aceleración en componentes intrínsecas, y en general, el análisis de sistemas físicos donde ciertas magnitudes vectoriales se conservan constantes. En este artículo, exploraremos y demostraremos esta propiedad esencial, utilizando dos perspectivas complementarias: una demostración geométrica intuitiva basada en el triángulo isósceles y una demostración analítica rigurosa empleando la función paramétrica.</p>
-        <h4>Enfoque Geométrico Intuitivo - El Triángulo Isósceles</h4>
-            <p>Consideremos un vector \( \vec V(t) \) genérico, que varía en el tiempo <em>t</em>, pero cuyo módulo se mantiene constante, es decir, \( |\vec V(t)| = C \), donde C es una constante escalar. Visualicemos el vector \( \vec V(t) \) y un vector \( \vec V(t + \Delta t) \) en un instante de tiempo ligeramente posterior, <em>t + Δt</em>.  Debido a la constancia del módulo, las puntas de estos vectores se moverán restringidas a una superficie esférica (o circular en 2D) de radio C, centrada en el origen.</p>
+            <h3>Bloques fundamentales del anexo</h3>
+            <p>Este recurso se organiza en los siguientes bloques de consulta:</p>
+            <ul>
+                <li><strong>A1.1 Geometría del triángulo:</strong> Propiedades básicas y teoremas fundamentales (Pitágoras, Seno y Coseno).</li>
+                <li><strong>A1.2 Razones trigonométricas en el triángulo rectángulo:</strong> Definiciones, identidades y aplicaciones.</li>
+                <li><strong>A1.3 Geometría del círculo:</strong> Elementos del círculo y la definición del radián.</li>
+                <li><strong>A1.4 Funciones trigonométricas en la circunferencia:</strong> El círculo unitario, gráficas y periodicidad.</li>
+                <li><strong>A1.5 Sistema de coordenadas cartesianas:</strong> Representación de puntos, rectas y funciones en el plano.</li>
+                <li><strong>A1.6 Cónicas (Parábola y Elipse):</strong> Definición y aplicaciones en física.</li>
+                <li><strong>A1.7 Sistema de coordenadas polares:</strong> Localización mediante radio y ángulo.</li>
+            </ul>
+        </section>
+        <section id="A1_1_Geometria_Triangulo">
+        <h2>A1.1 Geometría del triángulo</h2>
+            <p>
+                El triángulo es el polígono más simple y la unidad fundamental para la descomposición de casi cualquier magnitud física vectorial en el plano.
+            </p>
 
-            <p>[Image of Unit Vectors Changing Direction]</p>
+            <h3>A1.1.1 Elementos básicos del triángulo y nomenclatura</h3>
+            <p>
+                Un triángulo es un polígono de tres lados que encierra una región del plano. Sus elementos fundamentales son los vértices, los lados y los ángulos. Para facilitar la resolución de problemas, se utiliza una <strong>nomenclatura clásica</strong> que relaciona estos elementos entre sí:
+            </p>
 
-            <p>El cambio en el vector \( \vec V(t) \) durante este pequeño intervalo de tiempo Δt es el vector diferencia \( \Delta \vec V = \vec V(t + \Delta t) - \vec V(t) \). Geométricamente, \( \Delta \vec V \) representa el vector que une la punta de \( \vec V(t) \) con la punta de \( \vec V(t + \Delta t) \).</p>
+            <ul>
+                <li>
+                    <strong>Vértices:</strong> Son los puntos de intersección de los lados. Se representan con letras mayúsculas: \(A\), \(B\) y \(C\).
+                </li>
+                <li>
+                    <strong>Lados:</strong> Son los segmentos que unen los vértices. Se representan con letras minúsculas: \(a\), \(b\) y \(c\). La convención dicta que <strong>el lado \(a\) es el opuesto al vértice \(A\)</strong>, el lado \(b\) es el opuesto al vértice \(B\), y así sucesivamente.
+                </li>
+                <li>
+                    <strong>Ángulos:</strong> Son las aperturas entre dos lados contiguos. Se pueden nombrar usando letras griegas (\(\alpha\), \(\beta\), \(\gamma\)) o mediante el nombre del vértice con un acento circunflejo (\(\hat{A}\), \(\hat{B}\), \(\hat{C}\)). Al igual que los lados, el ángulo \(\alpha\) (o \(\hat{A}\)) se localiza en el vértice \(A\).
+                </li>
+            </ul>
 
-            <p>[Image of Isosceles Triangle Unit Vectors]</p>
+            <p>
+                Una propiedad ineludible en geometría euclidiana es que la suma de los ángulos internos de cualquier triángulo siempre es constante:
+            </p>
+            <p>
+                \begin{flalign}
+                    \alpha + \beta + \gamma = 180^\circ = \pi \text{ rad} \label{eq:A1_1_1_1}
+                \end{flalign}
+            </p>
+            <figure class="centered">
+                <svg id="svgA1_1_1"></svg>
+                <figcaption><b>Figura 1.1</b> Triángulo \(\triangle ABC\) con sus vértices, lados y ángulos.</figcaption>
+            </figure>
+            <ul>
+                <li><strong>Clasificación por lados:</strong> Equilátero (3 lados iguales), Isósceles (2 iguales) y Escaleno (3 distintos).</li>
+                <li><strong>Clasificación por ángulos:</strong> Rectángulo (un ángulo de 90º), Acutángulo (todos &lt; 90º) y Obtusángulo (uno &gt; 90º).</li>
+            </ul>
 
-            <p>Si consideramos el triángulo vectorial formado por \( \vec V(t) \), \( \vec V(t + \Delta t) \) y \( \Delta \vec V \) (más precisamente, los vectores \( \vec V(t) \), \( -\vec V(t) \) y \( \vec V(t + \Delta t) \)), notamos que es un triángulo isósceles, ya que \( |\vec V(t)| = |\vec V(t + \Delta t)| = C \). El vector \( \Delta \vec V \)  es la base de este triángulo isósceles, con \( \vec V(t) \) y \( \vec V(t + \Delta t) \) como los lados iguales.</p>
+            <h4>Semejanza de triángulos</h4>
+            <p>
+                Dos triángulos son semejantes si tienen ángulos iguales y lados proporcionales. Esta propiedad es vital en física para resolver problemas de óptica, sombras y diagramas de fuerzas mediante razones de proporcionalidad.
+            </p>
 
-            <p>Consideremos el ángulo Δθ entre \( \vec V(t) \) y \( \vec V(t + \Delta t) \). En el triángulo isósceles, los ángulos opuestos a los lados iguales (adyacentes a \( \Delta \vec V \)) son iguales, llamémoslos α.  La suma de los ángulos internos de un triángulo es \( \pi \) radianes:</p>
+            <h3>A1.1.2 Teorema de Pitágoras</h3>
+            <p>
+                Establece que en un triángulo rectángulo, el cuadrado de la hipotenusa (\(c\)) es igual a la suma de los cuadrados de los catetos (\(a\) y \(b\)):
+            </p>
+            <p>
+                El <strong>teorema de Pitágoras</strong> establece que en cualquier triángulo rectángulo \(\triangle ABC\), donde \(c\) es la longitud de la hipotenusa y \(a\) y \(b\) son las longitudes de los catetos,
+            </p>
+            <p>
+                \begin{flalign}
+                    c^2 = a^2 + b^2 \label{eq:A1_1_2_1}
+                \end{flalign}
+            </p>
+            <figure class="centered"><!--Right triangle with hypotenuse c and legs a and b.-->
+                <img src="images\RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
+                <figcaption><b>Figura 1</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
+            </figure>
 
-            <p>$$2\alpha + \Delta\theta = \pi$$</p>
+            <h3>A1.1.3 Teorema del seno y teorema del coseno</h3>
+            <p>
+                Cuando el triángulo no es rectángulo, utilizamos relaciones más generales para determinar lados o ángulos desconocidos.
+            </p>
+            <p>
+                <strong>Teorema del Coseno:</strong> Se aplica cuando conocemos dos lados y el ángulo que forman (\(C\)). Es la base de la ley del paralelogramo en la suma de vectores.
+            </p>
+            <p>
+                \begin{flalign}
+                    c^2 = a^2 + b^2 - 2ab \cdot \cos(C) \label{eq:A1_1_3_1}
+                \end{flalign}
+            </p>
+            <p>
+                <strong>Teorema del Seno:</strong> Establece la proporción entre los lados y los senos de sus ángulos opuestos:
+            </p>
+            <p>
+                \begin{flalign}
+                    \frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} \label{eq:A1_1_3_2}
+                \end{flalign}
+            </p>
+        </section>
+        <section id="Sistema_Cartesiano_2D">
+            <h2>A1.2 Sistema de Coordenadas Cartesianas en dos dimensiones</h2>
+            <p>
+                El <strong>sistema de coordenadas cartesianas</strong> (o sistema de coordenadas rectangulares) en dos dimensiones es un marco de referencia que permite localizar cualquier punto en un plano de manera unívoca.
+            </p>
+            <p>
+                Está constituido por dos rectas numéricas perpendiculares entre sí, denominadas <strong>ejes de coordenadas</strong>, que se cortan en un punto llamado <strong>origen (O)</strong>.
+            </p>
+            <ul>
+                <li><strong>Eje de abscisas (Eje x):</strong> Es la recta horizontal. Los valores positivos se encuentran a la derecha del origen.</li>
+                <li><strong>Eje de ordenadas (Eje y):</strong> Es la recta vertical. Los valores positivos se encuentran por encima del origen.</li>
+            </ul>
+            <p>
+                Cualquier punto \(P\) en el plano se describe mediante un par ordenado de números \((x, y)\), llamados <strong>coordenadas</strong>:
+            </p>
+            <p>
+                \begin{flalign}
+                    P = (x, y) \label{eq:A1_2_1}
+                \end{flalign}
+            </p>
+            <p>
+                Donde \(x\) representa la distancia perpendicular al eje \(y\), y \(y\) representa la distancia perpendicular al eje \(x\). Estos dos ejes dividen al plano en cuatro regiones llamadas <strong>cuadrantes</strong>, numerados del I al IV en sentido antihorario partiendo del cuadrante superior derecho.
+            </p>
+            <figure class="centered">
+                <svg id="svgA1_X"></svg>
+                <figcaption><b>Figura x</b> Plano cartesiano y coordenadas cartesianas de un punto.</figcaption>
+            </figure>  
+        </section>
+        <section id="Teorema de Pitágoras">
+            <h3>A1.2 Teorema de Pitágoras</h3>
+            <p>
+                En cualquier triángulo rectángulo \(\triangle ABC\), donde c es la longitud de la hipotenusa y a y b son las longitudes de los catetos,
+            </p>
+            <p class="centered">
+            </p>
+            <div class="container">
+                <div  class="center">\(a^2 + b^2 = c^2\)</div>
+                <div  class="right" id="[1]">[2]</div>
+            </div>
+            <figure class="centered"><!--Right triangle with hypotenuse c and legs a and b.-->
+                <img src="images\RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
+                <figcaption><b>Figura 1</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
+            </figure>
+        </section>
+        <section><h3>3 Definiciones gráficas de las funciones seno, coseno y tangente</h3>
+            <p>
+                Consideremos una circunferencia con radio de longitud r con centro en el origen <i>O</i> en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos &alpha; a el ángulo entre el eje x y el segmento \(\overline {OP}\), según se muestra en la siguiente figura. Entonces, \(\sin \alpha\) es el cociente y/r.
+            </p>
+            <figure class="centered"><!--Circunference of radius r with a point P and angle &alpha; with x-axis.-->
+                <img src="images\Circunference_and_coordinates.svg" 
+                    width="300" 
+                    height="300" 
+                    alt="Diagrama de una circunferencia con punto P y triángulo rectángulo inscrito."/>
+                <figcaption class="lang lang-es" lang="es"><b>Figure 2.2</b> Circunferencia de radio r con un punto P y su ángulo &alpha; con el eje x.
+                </figcaption>
+            </figure>
+            <p>
+                Entonce, definimos las funicones seno, coseno y tengente como:
+            </p>
+            <div class="container">
+                <div  class="center">\(\sin \alpha  = y/r\)</div>
+                <div  class="right" id="[2]">[2]</div>
+            </div><br>
+            <div class="container">
+                <div  class="center">\(\cos \alpha = x/r\) </div>
+                <div  class="right" id="[3]">[3]</div>
+            </div><br>
+            <div class="container">
+                <div  class="center">\(\tan \alpha = y/x\) </div>
+                <div  class="right" id="[4]">[4]</div>
+            </div><br>
+        </section>
+        <section><h3>4 Perpendicularidad entre un vector con módulo constante y su variación temporal</h3>
+            <h4>Introducción:</h4>
+                <p>En diversas áreas de la física, la mecánica y la cinemática, nos encontramos con frecuencia con el análisis de <strong>vectores cuyo módulo permanece constante en el tiempo</strong>, aunque su dirección pueda variar. Esto incluye vectores de posición en movimientos restringidos a una superficie esférica o circular, así como vectores unitarios que cambian de orientación, como el vector unitario tangencial en el estudio de trayectorias curvas. En estos escenarios, surge una propiedad geométrica fundamental: <strong>la variación temporal de cualquier vector de módulo constante es siempre perpendicular al vector original</strong>. Esta propiedad, con raíces en la geometría, tiene amplias y significativas aplicaciones en física, facilitando la comprensión de conceptos como la velocidad y la aceleración en movimientos curvilíneos, la descomposición de la aceleración en componentes intrínsecas, y en general, el análisis de sistemas físicos donde ciertas magnitudes vectoriales se conservan constantes. En este artículo, exploraremos y demostraremos esta propiedad esencial, utilizando dos perspectivas complementarias: una demostración geométrica intuitiva basada en el triángulo isósceles y una demostración analítica rigurosa empleando la función paramétrica.</p>
+            <h4>Enfoque Geométrico Intuitivo - El Triángulo Isósceles</h4>
+                <p>Consideremos un vector \( \vec V(t) \) genérico, que varía en el tiempo <em>t</em>, pero cuyo módulo se mantiene constante, es decir, \( |\vec V(t)| = C \), donde C es una constante escalar. Visualicemos el vector \( \vec V(t) \) y un vector \( \vec V(t + \Delta t) \) en un instante de tiempo ligeramente posterior, <em>t + Δt</em>.  Debido a la constancia del módulo, las puntas de estos vectores se moverán restringidas a una superficie esférica (o circular en 2D) de radio C, centrada en el origen.</p>
 
-            <p>De donde obtenemos:</p>
+                <p>[Image of Unit Vectors Changing Direction]</p>
 
-            <p>$$\alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2}$$</p>
+                <p>El cambio en el vector \( \vec V(t) \) durante este pequeño intervalo de tiempo Δt es el vector diferencia \( \Delta \vec V = \vec V(t + \Delta t) - \vec V(t) \). Geométricamente, \( \Delta \vec V \) representa el vector que une la punta de \( \vec V(t) \) con la punta de \( \vec V(t + \Delta t) \).</p>
 
-            <p>Ahora, analicemos el límite cuando el intervalo de tiempo Δt tiende a cero (Δt → 0, y por tanto Δθ → 0). En este límite, \( \Delta \vec V \) se convierte en el diferencial \( d\vec V \), y Δθ se convierte en dθ.  El ángulo α se aproxima a:</p>
+                <p>[Image of Isosceles Triangle Unit Vectors]</p>
 
-            <p>$$\alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radianes o } 90^\circ.$$</p>
+                <p>Si consideramos el triángulo vectorial formado por \( \vec V(t) \), \( \vec V(t + \Delta t) \) y \( \Delta \vec V \) (más precisamente, los vectores \( \vec V(t) \), \( -\vec V(t) \) y \( \vec V(t + \Delta t) \)), notamos que es un triángulo isósceles, ya que \( |\vec V(t)| = |\vec V(t + \Delta t)| = C \). El vector \( \Delta \vec V \)  es la base de este triángulo isósceles, con \( \vec V(t) \) y \( \vec V(t + \Delta t) \) como los lados iguales.</p>
 
-            <p>Esto implica que, en el límite infinitesimal, el ángulo entre el vector de cambio \( d\vec V \) y el vector original \( \vec V(t) \) tiende a 90 grados. Es decir, la variación infinitesimal \( d\vec V \) es perpendicular al vector \( \vec V(t) \). Como la derivada \( d\vec V/dt \) (que representa la tasa de variación temporal) tiene la misma dirección que \( d\vec V \), concluimos geométricamente que la tasa de variación temporal de \( \vec V(t) \) es perpendicular a \( \vec V(t) \) en cada instante, siempre que el módulo de \( \vec V(t) \) se mantenga constante.</p>
+                <p>Consideremos el ángulo Δθ entre \( \vec V(t) \) y \( \vec V(t + \Delta t) \). En el triángulo isósceles, los ángulos opuestos a los lados iguales (adyacentes a \( \Delta \vec V \)) son iguales, llamémoslos α.  La suma de los ángulos internos de un triángulo es \( \pi \) radianes:</p>
 
-        <h4>Enfoque Analítico - Función Paramétrica Generalizada con Parámetro Temporal</h4>
+                <p>$$2\alpha + \Delta\theta = \pi$$</p>
 
-            <p>Para una demostración analítica más general, consideremos un vector \( \vec V(t) \) en tres dimensiones (la demostración es igualmente válida en dos dimensiones), expresado en componentes cartesianas:</p>
+                <p>De donde obtenemos:</p>
 
-            <p>$$\vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k}$$</p>
+                <p>$$\alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2}$$</p>
 
-            <p>La condición de módulo constante \( |\vec V(t)| = C \) = constante, se expresa como:</p>
+                <p>Ahora, analicemos el límite cuando el intervalo de tiempo Δt tiende a cero (Δt → 0, y por tanto Δθ → 0). En este límite, \( \Delta \vec V \) se convierte en el diferencial \( d\vec V \), y Δθ se convierte en dθ.  El ángulo α se aproxima a:</p>
 
-            <p>$$|\vec V(t)|^2 = V_x(t)^2 + V_y(t)^2 + V_z(t)^2 = C^2$$</p>
+                <p>$$\alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radianes o } 90^\circ.$$</p>
 
-            <p>Para que esta condición se mantenga en el tiempo, la derivada temporal de \( |\vec V(t)|^2 \) debe ser cero. Derivamos ambos lados de la ecuación con respecto al tiempo, utilizando la regla de la cadena:</p>
+                <p>Esto implica que, en el límite infinitesimal, el ángulo entre el vector de cambio \( d\vec V \) y el vector original \( \vec V(t) \) tiende a 90 grados. Es decir, la variación infinitesimal \( d\vec V \) es perpendicular al vector \( \vec V(t) \). Como la derivada \( d\vec V/dt \) (que representa la tasa de variación temporal) tiene la misma dirección que \( d\vec V \), concluimos geométricamente que la tasa de variación temporal de \( \vec V(t) \) es perpendicular a \( \vec V(t) \) en cada instante, siempre que el módulo de \( \vec V(t) \) se mantenga constante.</p>
 
-            <p>$$\frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2)$$</p>
-            <p>$$\frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0$$</p>
-            <p>Aplicando la regla de la cadena a cada término:</p>
-            <p>$$2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0$$</p>
+            <h4>Enfoque Analítico - Función Paramétrica Generalizada con Parámetro Temporal</h4>
 
-            <p>Dividiendo por 2 y reordenando:</p>
+                <p>Para una demostración analítica más general, consideremos un vector \( \vec V(t) \) en tres dimensiones (la demostración es igualmente válida en dos dimensiones), expresado en componentes cartesianas:</p>
 
-            <p>$$V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0$$</p>
+                <p>$$\vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k}$$</p>
 
-            <p>El lado izquierdo de esta ecuación es precisamente el producto escalar del vector \( \vec V(t) \) con su derivada temporal \( \frac{d\vec V}{dt} \):</p>
+                <p>La condición de módulo constante \( |\vec V(t)| = C \) = constante, se expresa como:</p>
 
-            <p>$$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = \begin{pmatrix} V_x(t) \\ V_y(t) \\ V_z(t) \end{pmatrix} \cdot \begin{pmatrix} \frac{dV_x(t)}{dt} \\ \frac{dV_y(t)}{dt} \\ \frac{dV_z(t)}{dt} \end{pmatrix} = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt}$$</p>
+                <p>$$|\vec V(t)|^2 = V_x(t)^2 + V_y(t)^2 + V_z(t)^2 = C^2$$</p>
 
-            <p>Por lo tanto, la condición de módulo constante \( |\vec V(t)| = C \) implica que:</p>
+                <p>Para que esta condición se mantenga en el tiempo, la derivada temporal de \( |\vec V(t)|^2 \) debe ser cero. Derivamos ambos lados de la ecuación con respecto al tiempo, utilizando la regla de la cadena:</p>
 
-            <p>$$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0$$</p>
+                <p>$$\frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2)$$</p>
+                <p>$$\frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0$$</p>
+                <p>Aplicando la regla de la cadena a cada término:</p>
+                <p>$$2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0$$</p>
 
-            <p>Esto demuestra analíticamente que <strong>el vector \( \vec V(t) \) y su derivada temporal \( \displaystyle\frac{d\vec V(t)}{dt} \) son siempre perpendiculares entre sí</strong>, bajo la condición de que el módulo de \( \vec V(t) \) se mantenga constante. Este resultado es válido para cualquier vector con módulo constante, no solo para vectores de posición.</p>
+                <p>Dividiendo por 2 y reordenando:</p>
 
-            <h4>Conclusión</h4>
+                <p>$$V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0$$</p>
 
-            <p>Hemos demostrado, a través de dos enfoques complementarios, que <strong>la variación temporal de un vector de módulo constante es intrínsecamente perpendicular al vector original</strong>. Esta propiedad fundamental, visualizada geométricamente y confirmada analíticamente, trasciende el caso particular del vector posición y se aplica a cualquier vector cuyo módulo se conserve constante durante su evolución temporal.</p>
+                <p>El lado izquierdo de esta ecuación es precisamente el producto escalar del vector \( \vec V(t) \) con su derivada temporal \( \frac{d\vec V}{dt} \):</p>
 
-            <p>Esta relación de perpendicularidad es de gran relevancia en física. Permite comprender mejor la naturaleza de la velocidad en movimientos curvilíneos, la dirección de la aceleración normal en términos de cambio de dirección de la velocidad, y proporciona una base sólida para el análisis de sistemas donde la conservación de magnitudes vectoriales, como la longitud de un vector, juega un papel fundamental. La propiedad aquí demostrada no es solo un resultado geométrico, sino una herramienta conceptual poderosa para el análisis y la interpretación de fenómenos físicos diversos en mecánica, electromagnetismo, y otras áreas de la física.</p>
-    </section>
-    <aside><h4>Referencias</h4>
-        <ul>
-            <li>
-                <a href="https://openstax.org/books/prealgebra-2e/pages/9-3-use-properties-of-angles-triangles-and-the-pythagorean-theorem#:~:text=of%20the%20hypotenuse.-,THE%20PYTHAGOREAN%20THEOREM,-In%20any%20right"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    The Pitagorean Theorem. Prealgebra 2e. 9.3. Openstax.
-                </a>
-            </li>
-            <li>
-                <a href="http://encyclopediaofmath.org/index.php?title=Pythagorean_theorem&oldid=40035"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Pythagorean theorem. Encyclopedia of Mathematics.
-                </a>
-            </li>
-            <li>
-                <a href="https://encyclopediaofmath.org/wiki/Sine#:~:text=the%20hyperbolic%20sine.-,Comments,-Of%20course%2C"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Sine. Encyclopedia of Mathematics.
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mathsisfun.com/algebra/trigonometry.html#:~:text=gives%20the%20answers!-,Sine%2C%20Cosine%20and%20Tangent,-The%20main%20functions"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Sine, Cosine and Tangent. Mathisfun.
-                </a>
-            </li>
-            <li>
-                <a href="https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry#:~:text=Using%20Right%20Triangles%20to%20Evaluate%20Trigonometric%20Functions"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Using Right Triangles to Evaluate Trigonometric Functions. Openstax.
-                </a>
-            </li>
-        </ul>
-    </aside>
+                <p>$$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = \begin{pmatrix} V_x(t) \\ V_y(t) \\ V_z(t) \end{pmatrix} \cdot \begin{pmatrix} \frac{dV_x(t)}{dt} \\ \frac{dV_y(t)}{dt} \\ \frac{dV_z(t)}{dt} \end{pmatrix} = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt}$$</p>
+
+                <p>Por lo tanto, la condición de módulo constante \( |\vec V(t)| = C \) implica que:</p>
+
+                <p>$$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0$$</p>
+
+                <p>Esto demuestra analíticamente que <strong>el vector \( \vec V(t) \) y su derivada temporal \( \displaystyle\frac{d\vec V(t)}{dt} \) son siempre perpendiculares entre sí</strong>, bajo la condición de que el módulo de \( \vec V(t) \) se mantenga constante. Este resultado es válido para cualquier vector con módulo constante, no solo para vectores de posición.</p>
+
+                <h4>Conclusión</h4>
+
+                <p>Hemos demostrado, a través de dos enfoques complementarios, que <strong>la variación temporal de un vector de módulo constante es intrínsecamente perpendicular al vector original</strong>. Esta propiedad fundamental, visualizada geométricamente y confirmada analíticamente, trasciende el caso particular del vector posición y se aplica a cualquier vector cuyo módulo se conserve constante durante su evolución temporal.</p>
+
+                <p>Esta relación de perpendicularidad es de gran relevancia en física. Permite comprender mejor la naturaleza de la velocidad en movimientos curvilíneos, la dirección de la aceleración normal en términos de cambio de dirección de la velocidad, y proporciona una base sólida para el análisis de sistemas donde la conservación de magnitudes vectoriales, como la longitud de un vector, juega un papel fundamental. La propiedad aquí demostrada no es solo un resultado geométrico, sino una herramienta conceptual poderosa para el análisis y la interpretación de fenómenos físicos diversos en mecánica, electromagnetismo, y otras áreas de la física.</p>
+        </section>
+        <aside>
+            <h4>Referencias</h4>
+            <ul>
+                <li>
+                    <a href="https://openstax.org/books/prealgebra-2e/pages/9-3-use-properties-of-angles-triangles-and-the-pythagorean-theorem#:~:text=of%20the%20hypotenuse.-,THE%20PYTHAGOREAN%20THEOREM,-In%20any%20right"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        The Pitagorean Theorem. Prealgebra 2e. 9.3. Openstax.
+                    </a>
+                </li>
+                <li>
+                    <a href="http://encyclopediaofmath.org/index.php?title=Pythagorean_theorem&oldid=40035"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Pythagorean theorem. Encyclopedia of Mathematics.
+                    </a>
+                </li>
+                <li>
+                    <a href="https://encyclopediaofmath.org/wiki/Sine#:~:text=the%20hyperbolic%20sine.-,Comments,-Of%20course%2C"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Sine. Encyclopedia of Mathematics.
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.mathsisfun.com/algebra/trigonometry.html#:~:text=gives%20the%20answers!-,Sine%2C%20Cosine%20and%20Tangent,-The%20main%20functions"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Sine, Cosine and Tangent. Mathisfun.
+                    </a>
+                </li>
+                <li>
+                    <a href="https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry#:~:text=Using%20Right%20Triangles%20to%20Evaluate%20Trigonometric%20Functions"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Using Right Triangles to Evaluate Trigonometric Functions. Openstax.
+                    </a>
+                </li>
+            </ul>
+        </aside>
+    </article>    
 </body>
 
 </html>
