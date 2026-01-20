@@ -226,14 +226,24 @@ class CartesianPlane {
 	 * @param {number[]} initialSide - The initial side vector of the angle ([x, y]).
 	 * @param {number[]} terminalSide - The terminal side vector of the angle ([x, y]).
 	 * @param {number} radius - The radius of the arc.
+	 * @param {object} lineAttributes - An object containing style attributes for the line segment (default values are applied if omitted).
+	 *                 * `strokeColor` (string): The color of the line (default: "brown").
+	 *                 * `strokeWidth` (number): The width of the line in pixels (default: 2).
+	 *                 * `strokeDasharray` (string): The dash pattern for the line (default: "none").
 	 * 
 	 * @throws {TypeError} If vertex, initialSide, or terminalSide is not a number array of length 2.
 	 * @throws {ValueError} If any element in vertex, initialSide, or terminalSide is not a number.
 	 */
-	drawArc(vertex, initialSide, terminalSide, radius) {
+	drawArc(vertex, initialSide, terminalSide, radius, lineAttributes = {}) {
 		
 		// Check if initialPoint and vectorComponents are number arrays of length 2.
 		[vertex, initialSide, terminalSide].every(arr => this.validateCoordinates2D(arr));
+
+		// Validate lineAttributes
+		validateObject(lineAttributes);
+
+		// Destructure the lineAttributes and set its default values
+		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none"} = lineAttributes;
 
 		// Declare block values
 		let initialPoint = [initialSide[0]/math.norm(initialSide)*radius, initialSide[1]/math.norm(initialSide)*radius];
@@ -261,8 +271,9 @@ class CartesianPlane {
 		const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 		path.setAttribute("d", pathData);
 		path.setAttribute("fill", "none");
-		path.setAttribute("stroke", "blue");
-		path.setAttribute("stroke-width", "2");
+		path.setAttribute("stroke", strokeColor);
+		path.setAttribute("stroke-width", strokeWidth);
+		path.setAttribute("stroke-dasharray", strokeDasharray);
 
 		// Append the path element to the SVG
 		this.svgElement.appendChild(path);
