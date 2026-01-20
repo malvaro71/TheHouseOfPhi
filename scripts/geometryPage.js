@@ -61,9 +61,9 @@ ensureSharedMarkerDefs();
     myPlaneA1_2_1.drawSegment([12, 0], [0, 0], {strokeColor: "brown", strokeWidth: 1});
     
     // Calculate midpoints for side labels
-    const midAB = [(0 + 14) / 2, (0 + 12) / 2];
-    const midBC = [(14 + 14) / 2, (12 + 0) / 2];
-    const midCA = [(14 + 0) / 2, (0 + 0) / 2];
+    const midAB = [(0 + 12) / 2, (0 + 11) / 2];
+    const midBC = [(12 + 12) / 2, (11 + 0) / 2];
+    const midCA = [(12 + 0) / 2, (0 + 0) / 2];
     
     // Draw side labels
     myPlaneA1_2_1.drawLabel(midAB, "Hyp", {fill: "brown", fontSize: 20, corner: "rightbottom"});
@@ -72,7 +72,7 @@ ensureSharedMarkerDefs();
     
     // Draw angle arcs and angle labels
     myPlaneA1_2_1.drawArc([0, 0], midCA, midAB, 2, {strokeColor: "green", strokeWidth: 1});
-    myPlaneA1_2_1.drawLabel([1.6, 2.7], "\u03B8", {fill: "green", fontSize: 20, corner: "lefttop"});
+    myPlaneA1_2_1.drawLabel([1.8, 1.7], "\u03B8", {fill: "green", fontSize: 20, corner: "lefttop"});
 }
 
 
