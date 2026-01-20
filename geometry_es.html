@@ -108,10 +108,6 @@
                 <svg id="svgA1_1_1"></svg>
                 <figcaption><b>Figura 1.1</b> Triángulo \(\triangle ABC\) con sus vértices, lados y ángulos.</figcaption>
             </figure>
-            <ul>
-                <li><strong>Clasificación por lados:</strong> Equilátero (3 lados iguales), Isósceles (2 iguales) y Escaleno (3 distintos).</li>
-                <li><strong>Clasificación por ángulos:</strong> Rectángulo (un ángulo de 90º), Acutángulo (todos &lt; 90º) y Obtusángulo (uno &gt; 90º).</li>
-            </ul>
 
             <h4>Semejanza de triángulos</h4>
             <p>
@@ -132,7 +128,7 @@
             </p>
             <figure class="centered"><!--Right triangle with hypotenuse c and legs a and b.-->
                 <img src="images\RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
-                <figcaption><b>Figura 1</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
+                <figcaption><b>Figura 1.2</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
             </figure>
 
             <h3>A1.1.3 Teorema del seno y teorema del coseno</h3>
@@ -156,6 +152,86 @@
                 \end{flalign}
             </p>
         </section>
+		<section id="A1_2_Razones_Trigonometricas">
+	        <h2>A1.2 Razones trigonométricas en el triángulo rectángulo</h2>
+	        <p>
+	            En un triángulo rectángulo, las relaciones entre los ángulos y las longitudes de sus lados no son arbitrarias; se rigen por proporciones constantes denominadas <strong>razones trigonométricas</strong>. Estas razones permiten determinar distancias inaccesibles y son la base de la descomposición de vectores.
+	        </p>
+	
+	        <h3>A1.2.1 Definición de seno, coseno y tangente</h3>
+	        <p>
+	            Considerando un triángulo rectángulo con un ángulo agudo \(\theta\), definimos las razones principales respecto a dicho ángulo:
+	        </p>
+	        <ul>
+	            <li><strong>Hipotenusa (\(h\)):</strong> El lado más largo, opuesto al ángulo recto.</li>
+	            <li><strong>Cateto opuesto (\(c_o\)):</strong> El lado que se encuentra frente al ángulo \(\theta\).</li>
+	            <li><strong>Cateto contiguo o adyacente (\(c_a\)):</strong> El lado que forma parte del ángulo \(\theta\) (junto a la hipotenusa).</li>
+	        </ul>
+	        <p>Las razones se definen como:</p>
+	        <p>
+	            \begin{flalign}
+	                \sin \theta = \frac{\text{cateto opuesto}}{\text{hipotenusa}} = \frac{c_o}{h} \label{eq:A1_2_1_1}
+	            \end{flalign}
+	        </p>
+	        <p>
+	            \begin{flalign}
+	                \cos \theta = \frac{\text{cateto contiguo}}{\text{hipotenusa}} = \frac{c_a}{h} \label{eq:A1_2_1_2}
+	            \end{flalign}
+	        </p>
+	        <p>
+	            \begin{flalign}
+	                \tan \theta = \frac{\text{cateto opuesto}}{\text{cateto contiguo}} = \frac{c_o}{c_a} \label{eq:A1_2_1_3}
+	            \end{flalign}
+	        </p>
+	
+	        <h4>Interpretación geométrica intuitiva</h4>
+	        <p>
+	            Podemos imaginar las razones trigonométricas como "factores de escala": el <strong>coseno</strong> nos indica qué fracción de la hipotenusa se proyecta sobre el eje horizontal, mientras que el <strong>seno</strong> indica qué fracción se proyecta sobre el eje vertical. La <strong>tangente</strong>, por su parte, define la pendiente o inclinación de la hipotenusa respecto a la base.
+	        </p>
+	
+	        <h3>A1.2.2 Identidades fundamentales</h3>
+	        <p>
+	            Existen relaciones matemáticas que siempre se cumplen, independientemente del tamaño del triángulo:
+	        </p>
+	        
+	        <h4>Identidad pitagórica</h4>
+	        <p>
+	            Derivada directamente del Teorema de Pitágoras \eqref{eq:A1_1_2_1}, es la identidad más importante de la trigonometría:
+	        </p>
+	        <p>
+	            \begin{flalign}
+	                \sin^2 \theta + \cos^2 \theta = 1 \label{eq:A1_2_2_1}
+	            \end{flalign}
+	        </p>
+	
+	        <h4>Relación entre razones</h4>
+	        <p>La tangente puede expresarse siempre como el cociente entre el seno y el coseno:</p>
+	        <p>
+	            \begin{flalign}
+	                \tan \theta = \frac{\sin \theta}{\cos \theta} \label{eq:A1_2_2_2}
+	            \end{flalign}
+	        </p>
+	
+	        <h4>Ángulos complementarios</h4>
+	        <p>
+	            Dado que la suma de los ángulos agudos en un triángulo rectángulo es 90º, se cumple que el seno de un ángulo es igual al coseno de su complementario:
+	        </p>
+	        <p>
+	            \begin{flalign}
+	                \sin \theta = \cos(90^\circ - \theta) \label{eq:A1_2_2_3}
+	            \end{flalign}
+	        </p>
+	
+	        <h3>A1.2.3 Aplicaciones</h3>
+	        <p>
+	            En física, la trigonometría no es solo una herramienta de cálculo, sino un método para entender cómo se distribuyen las magnitudes en el espacio.
+	        </p>
+	        <ul>
+	            <li><strong>Cálculo de alturas y distancias:</strong> Permite hallar la altura de un proyectil o la distancia a un objeto conociendo solo el ángulo de observación y una base medida.</li>
+	            <li><strong>Planos inclinados:</strong> Es fundamental para descomponer la fuerza del peso (\(P = mg\)) en una componente paralela al plano (\(mg \sin \theta\)) que genera movimiento, y una componente normal (\(mg \cos \theta\)) que genera rozamiento.</li>
+	            <li><strong>Descomposición de fuerzas:</strong> Cualquier fuerza ejercida con un ángulo inclinado (como la tensión de una cuerda) se divide en una componente horizontal y una vertical mediante el uso de \eqref{eq:A1_2_1_1} y \eqref{eq:A1_2_1_2}.</li>
+	        </ul>
+    	</section>
         <section id="Sistema_Cartesiano_2D">
             <h2>A1.2 Sistema de Coordenadas Cartesianas en dos dimensiones</h2>
             <p>
