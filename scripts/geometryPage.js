@@ -72,7 +72,7 @@ ensureSharedMarkerDefs();
     
     // Draw angle arcs and angle labels
     myPlaneA1_2_1.drawArc([0, 0], midCA, midAB, 2, {strokeColor: "green", strokeWidth: 1});
-    myPlaneA1_2_1.drawLabel([1.8, 1.7], "\u03B8", {fill: "green", fontSize: 20, corner: "lefttop"});
+    myPlaneA1_2_1.drawLabel([2, 1.7], "\u03B8", {fill: "green", fontSize: 20, corner: "lefttop"});
 }
 
 
