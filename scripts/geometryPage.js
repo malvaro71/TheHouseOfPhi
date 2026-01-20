@@ -19,24 +19,26 @@ ensureSharedMarkerDefs();
     const myPlaneA1_1_1 = new CartesianPlane(svgA1_1_1, -3, 15, -3, 15);
 
     // Draw triangle segments
-    //myPlaneA1_1_1.drawPoint([5, 8], "green");
-    //myPlaneA1_1_1.drawLabel([6, 8], "P(x\u2081, y\u2081)", {fill: "green", fontSize: 20, corner: "leftbottom"});
     myPlaneA1_1_1.drawSegment([0, 0],  [6, 12], {strokeColor: "brown", strokeWidth: 1});
     myPlaneA1_1_1.drawSegment([6, 12], [14, 4], {strokeColor: "brown", strokeWidth: 1});
     myPlaneA1_1_1.drawSegment([14, 4], [0, 0], {strokeColor: "brown", strokeWidth: 1});
+    
     // Draw triangle vertices
     myPlaneA1_1_1.drawLabel([0, 0],   "A", {fill: "brown", fontSize: 20, corner: "righttop"});
     myPlaneA1_1_1.drawLabel([6, 12],  "B", {fill: "brown", fontSize: 20, corner: "leftbottom"});
     myPlaneA1_1_1.drawLabel([14, 4], "C", {fill: "brown", fontSize: 20, corner: "lefttop"});
+    
     // Calculate midpoints for side labels
     const midAB = [(0 + 6) / 2, (0 + 12) / 2];
     const midBC = [(6 + 14) / 2, (12 + 4) / 2];
     const midCA = [(14 + 0) / 2, (4 + 0) / 2];
+    
     // Draw side labels
-    myPlaneA1_1_1.drawLabel(midAB, "c", {fill: "red", fontSize: 20, corner: "rightbottom"});
-    myPlaneA1_1_1.drawLabel(midBC, "a", {fill: "red", fontSize: 20, corner: "leftbottom"});
-    myPlaneA1_1_1.drawLabel(midCA, "b", {fill: "red", fontSize: 20, corner: "leftbottom"});
-    // Draw angle arcs and labels
+    myPlaneA1_1_1.drawLabel(midAB, "c", {fill: "brown", fontSize: 20, corner: "rightbottom"});
+    myPlaneA1_1_1.drawLabel(midBC, "a", {fill: "brown", fontSize: 20, corner: "leftbottom"});
+    myPlaneA1_1_1.drawLabel(midCA, "b", {fill: "brown", fontSize: 20, corner: "leftbottom"});
+    
+    // Draw angle arcs and angle labels
     myPlaneA1_1_1.drawArc([0, 0], midCA, midAB, 2, {strokeColor: "green", strokeWidth: 1});
     myPlaneA1_1_1.drawLabel([1.6, 2.7], "\u03B1", {fill: "green", fontSize: 20, corner: "lefttop"});
     myPlaneA1_1_1.drawArc([6, 12], math.multiply(-1, midAB), math.subtract(midBC, [6, 12]), 2, {strokeColor: "green", strokeWidth: 1});
