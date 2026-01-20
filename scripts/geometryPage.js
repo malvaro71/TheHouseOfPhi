@@ -33,15 +33,15 @@ ensureSharedMarkerDefs();
     const midBC = [(6 + 14) / 2, (12 + 4) / 2];
     const midCA = [(14 + 0) / 2, (4 + 0) / 2];
     // Draw side labels
-    myPlaneA1_1_1.drawLabel(midAB, "c", {fill: "blue", fontSize: 20, corner: "rightbottom"});
-    myPlaneA1_1_1.drawLabel(midBC, "a", {fill: "blue", fontSize: 20, corner: "leftbottom"});
-    myPlaneA1_1_1.drawLabel(midCA, "b", {fill: "blue", fontSize: 20, corner: "leftbottom"});
+    myPlaneA1_1_1.drawLabel(midAB, "c", {fill: "red", fontSize: 20, corner: "rightbottom"});
+    myPlaneA1_1_1.drawLabel(midBC, "a", {fill: "red", fontSize: 20, corner: "leftbottom"});
+    myPlaneA1_1_1.drawLabel(midCA, "b", {fill: "red", fontSize: 20, corner: "leftbottom"});
     // Draw angle arcs and labels
-    myPlaneA1_1_1.drawArc([0, 0], midCA, midAB, 2, {strokeColor: "red", strokeWidth: 1});
+    myPlaneA1_1_1.drawArc([0, 0], midCA, midAB, 2, {strokeColor: "green", strokeWidth: 1});
     myPlaneA1_1_1.drawLabel([1.6, 2.7], "\u03B1", {fill: "green", fontSize: 20, corner: "lefttop"});
-    myPlaneA1_1_1.drawArc([6, 12], math.multiply(-1, midAB), math.subtract(midBC, [6, 12]), 2, {strokeColor: "red", strokeWidth: 1});
+    myPlaneA1_1_1.drawArc([6, 12], math.multiply(-1, midAB), math.subtract(midBC, [6, 12]), 2, {strokeColor: "green", strokeWidth: 1});
     myPlaneA1_1_1.drawLabel([6.8, 10], "\u03B2", {fill: "green", fontSize: 20, corner: "righttop"});
-    myPlaneA1_1_1.drawArc([14, 4], math.subtract(midBC, [14, 4]), math.multiply(-1, midCA), 2, {strokeColor: "red", strokeWidth: 1});
+    myPlaneA1_1_1.drawArc([14, 4], math.subtract(midBC, [14, 4]), math.multiply(-1, midCA), 2, {strokeColor: "green", strokeWidth: 1});
     myPlaneA1_1_1.drawLabel([11.9, 4.5], "\u03B3", {fill: "green", fontSize: 20, corner: "rightbottom"});
 }
 
