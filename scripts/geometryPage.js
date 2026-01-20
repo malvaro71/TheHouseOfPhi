@@ -47,6 +47,35 @@ ensureSharedMarkerDefs();
     myPlaneA1_1_1.drawLabel([11.9, 4.5], "\u03B3", {fill: "green", fontSize: 20, corner: "rightbottom"});
 }
 
+// svgA1_2_1. Triangle rectangle showing angle, hypotnenuse, adjacent leg and opposite leg.
+{
+    // Get the SVG element from the DOM
+    var svgA1_2_1 = document.getElementById("svgA1_2_1");
+
+    // set a cartesian plane
+    const myPlaneA1_2_1 = new CartesianPlane(svgA1_2_1, -3, 15, -3, 15);
+
+    // Draw triangle segments
+    myPlaneA1_2_1.drawSegment([0, 0],  [14, 12], {strokeColor: "brown", strokeWidth: 1});
+    myPlaneA1_2_1.drawSegment([14, 12], [14, 0], {strokeColor: "brown", strokeWidth: 1});
+    myPlaneA1_1_1.drawSegment([14, 0], [0, 0], {strokeColor: "brown", strokeWidth: 1});
+    
+    // Calculate midpoints for side labels
+    const midAB = [(0 + 14) / 2, (0 + 12) / 2];
+    const midBC = [(14 + 14) / 2, (12 + 0) / 2];
+    const midCA = [(14 + 0) / 2, (0 + 0) / 2];
+    
+    // Draw side labels
+    myPlaneA1_2_1.drawLabel(midAB, "Hyp", {fill: "brown", fontSize: 20, corner: "rightbottom"});
+    myPlaneA1_2_1.drawLabel(midBC, "Opp", {fill: "brown", fontSize: 20, corner: "leftbottom"});
+    myPlaneA1_2_1.drawLabel(midCA, "Adj", {fill: "brown", fontSize: 20, corner: "leftbottom"});
+    
+    // Draw angle arcs and angle labels
+    myPlaneA1_2_1.drawArc([0, 0], midCA, midAB, 2, {strokeColor: "green", strokeWidth: 1});
+    myPlaneA1_2_1.drawLabel([1.6, 2.7], "\u03B8", {fill: "green", fontSize: 20, corner: "lefttop"});
+}
+
+
 // svgA1_X. Cartesian plane and cartesian coordinates of a point.
 {
     // Get the SVG element from the DOM
