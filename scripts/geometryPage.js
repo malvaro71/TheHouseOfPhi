@@ -75,6 +75,43 @@ ensureSharedMarkerDefs();
     myPlaneA1_2_1.drawLabel([2, 1.7], "\u03B8", {fill: "green", fontSize: 20, corner: "lefttop"});
 }
 
+// svgA1_3_1. Some circle elements: radius (r), diameter (d), chord and arc.
+{
+    // Get the SVG element from the DOM
+    var svgA1_3_1 = document.getElementById("svgA1_3_1");
+
+    // set a cartesian plane
+    const myPlaneA1_3_1 = new CartesianPlane(svgA1_2_1, -10, 10, -10, 10);
+
+    // set circunference and radius center
+    const center = [5, 5];
+    const radius = 4;
+
+    // Draw circunference
+    myPlaneA1_3_1.drawCircunference(center, radius);
+
+    // Label circunference center
+     myPlaneA1_3_1.drawLabel(center, "C", {fill: "brown", fontSize: 20, corner: "righttop"});
+
+    // set some circunference points
+    // const PointA = math.add( , );
+    // const PointB = math.add( , );
+    // const PointC = math.add(center, [radius, 0]);
+
+    // Draw radius and label it
+    myPlaneA1_3_1.drawSegment(center,  PointC, {strokeColor: "brown", strokeWidth: 1});
+    const getMidpoint1 = (center, PointC) => {
+    	return [
+        	(center[0] + PointC[0]) / 2, // Average of X-coordinates (index 0)
+        	(center[1] + PointC[1]) / 2  // Average of Y-coordinates (index 1)
+      	];
+    };
+    myPlaneA1_3_1.drawLabel(getMidpoint1, "r", {fill: "brown", fontSize: 20, corner: "leftbottom"});
+
+    // Draw diameter and label it
+    myPlaneA1_3_1.drawSegment([5, 9], [5, 1], {strokeColor: "blue", strokeWidth: 1});
+    myPlaneA1_3_1.drawLabel([5, 7], "d", {fill: "blue", fontSize: 20, corner: "leftbottom"});
+}
 
 // svgA1_X. Cartesian plane and cartesian coordinates of a point.
 {
