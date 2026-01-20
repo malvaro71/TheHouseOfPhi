@@ -53,12 +53,12 @@ ensureSharedMarkerDefs();
     var svgA1_2_1 = document.getElementById("svgA1_2_1");
 
     // set a cartesian plane
-    const myPlaneA1_2_1 = new CartesianPlane(svgA1_2_1, -3, 15, -3, 15);
+    const myPlaneA1_2_1 = new CartesianPlane(svgA1_2_1, -3, 15, -3, 11);
 
     // Draw triangle segments
-    myPlaneA1_2_1.drawSegment([0, 0],  [14, 12], {strokeColor: "brown", strokeWidth: 1});
-    myPlaneA1_2_1.drawSegment([14, 12], [14, 0], {strokeColor: "brown", strokeWidth: 1});
-    myPlaneA1_2_1.drawSegment([14, 0], [0, 0], {strokeColor: "brown", strokeWidth: 1});
+    myPlaneA1_2_1.drawSegment([0, 0],  [12, 11], {strokeColor: "brown", strokeWidth: 1});
+    myPlaneA1_2_1.drawSegment([12, 11], [12, 0], {strokeColor: "brown", strokeWidth: 1});
+    myPlaneA1_2_1.drawSegment([12, 0], [0, 0], {strokeColor: "brown", strokeWidth: 1});
     
     // Calculate midpoints for side labels
     const midAB = [(0 + 14) / 2, (0 + 12) / 2];
