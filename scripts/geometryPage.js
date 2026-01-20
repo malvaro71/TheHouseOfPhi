@@ -58,7 +58,7 @@ ensureSharedMarkerDefs();
     // Draw triangle segments
     myPlaneA1_2_1.drawSegment([0, 0],  [14, 12], {strokeColor: "brown", strokeWidth: 1});
     myPlaneA1_2_1.drawSegment([14, 12], [14, 0], {strokeColor: "brown", strokeWidth: 1});
-    myPlaneA1_1_1.drawSegment([14, 0], [0, 0], {strokeColor: "brown", strokeWidth: 1});
+    myPlaneA1_2_1.drawSegment([14, 0], [0, 0], {strokeColor: "brown", strokeWidth: 1});
     
     // Calculate midpoints for side labels
     const midAB = [(0 + 14) / 2, (0 + 12) / 2];
