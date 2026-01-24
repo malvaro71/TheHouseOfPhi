@@ -1,4 +1,0 @@
-Primary endpoint:
-https://malvaro71.z13.web.core.windows.net/
-Secondary endpoint:
-https://malvaro71-secondary.z13.web.core.windows.net/

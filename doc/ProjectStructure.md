@@ -10,7 +10,14 @@ The structure is designed to be clean, scalable, and aligned with the dependency
 
 ```
 TheHouseOfPhi/
-│
+|   .gitignore
+|   eslint.config.mjs
+│   index.html
+|   package-lock.json
+|   package.json
+|   README.md
+|   vite.config.js
+|
 ├── .github
 │       copilot-instructions.md
 |
@@ -22,8 +29,6 @@ TheHouseOfPhi/
 |       ProjectDependencies.md
 |       ProjectStructure.md
 |
-├── images
-|       ...
 ├── node_modules
 |       ...
 |
@@ -36,32 +41,38 @@ TheHouseOfPhi/
 │       vectors_es.html
 |       vectors.html
 │
-├── src/
-|   │
-|   ├── core/
-|   │   ├── SVGDrawing.js
-|   │   ├── CartesianPlane.js
-|   │   └── EuclideanSpace.js
-|   │
-|   ├── pages/
-|   │   ├── indexPage.js
-|   │   ├── geometryPage.js
-|   │   ├── vectorsPage.js
-|   │   └── kinematicsPage.js
-|   │
-|   ├── forms/
-|   │   ├── indexForm.js
-|   │   ├── vectorsForm.js
-|   │   ├── geometryForm.js      (future)
-|   │   └── kinematicsForm.js    (future)
-|   │
-|   ├── utils/
-|   │   └── (empty for now)
-|   │
-|   └── main.js   (optional)
-|
-└── styles
-        styles.css
+└── src/
+   │
+   ├── core/
+   │   ├── SVGDrawing.js
+   │   ├── CartesianPlane.js
+   │   └── EuclideanSpace.js
+   │
+   ├── forms/
+   │   ├── indexForm.js
+   │   ├── vectorsForm.js
+   │   ├── geometryForm.js      (future)
+   │   └── kinematicsForm.js    (future)
+   │
+   ├── images
+   |    ...
+   |
+   ├── pages/
+   │   ├── indexPage.js
+   │   ├── geometryPage.js
+   │   ├── vectorsPage.js
+   │   └── kinematicsPage.js
+   │
+   ├── styles
+   │       styles.css
+   │
+   ├── utils/
+   │   └── (empty for now)
+   │
+   └── main.js   (optional)
+
+
+        
 
 ```
 
