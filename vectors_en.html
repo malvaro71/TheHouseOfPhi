@@ -8,11 +8,8 @@
         <meta name="description"
             content="Subpage showing information about vectors."
         >
-        
+        <!--To set the viewport of the page, which will give the browser instructions on how to control the page's dimensions and scaling.-->       
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!--Load math.js library https://mathjs.org/ -->
-        <script src="https://unpkg.com/mathjs@13.0.0/lib/browser/math.js"></script>
 
         <script>
             window.MathJax = {
@@ -32,10 +29,6 @@
         
         <!-- load Mathjax library-->
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
-        <!-- loads page script files-->
-        <script type="module" src="scripts/vectorsForm.js"></script>
-        <script type="module" src="scripts/vectorsPage.js"></script>
     </head>
     <body>
         <header><h1>1. VECTORS</h1></header>
@@ -932,5 +925,8 @@
                     </ul>  
                 </aside>
         </article> 
+        <!--Load the JavaScript file for the vectors page -->
+        <script type="module" src="./src/pages/vectorsPage.js"></script>     
+        <script type="module" src="./src/forms/vectorsForm.js"></script>  
     </body>
 </html>

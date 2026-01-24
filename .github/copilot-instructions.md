@@ -39,7 +39,7 @@ npm run lint (when configured)  # ESLint via eslint.config.mjs
 - **3D Coordinate System** - Use EuclideanSpace; origin calculated as: `OriginX/Y = svgDim * sin/cos(45°) ± scale*coordinate`
 - **Vector Visualization** - `plane.drawVector(startPoint, vector/endPoint, label, strokeOptions, labelOptions)`
 - **Language Variants** - Mirror HTML/CSS structure with `lang-en` and `lang-es` classes; store preference in localStorage
-- **Styling** - See [styles/styles.css](styles/styles.css) for layout; inline SVG attributes via options objects
+- **Styling** - See [styles/styles.css](../styles/styles.css) for layout; inline SVG attributes via options objects
 
 ## Project Conventions
 

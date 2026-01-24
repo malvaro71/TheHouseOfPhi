@@ -1,4 +1,8 @@
 
+// src/drawing/SVGDrawing.js
+
+// Import mathjs for mathematical expression parsing and conversion to LaTeX
+import * as math from "mathjs";
 
 /**
  * Creates an SVG marker element with a given ID and fill color.

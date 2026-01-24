@@ -11,9 +11,6 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--Load math.js library https://mathjs.org/ -->
-        <script src="https://unpkg.com/mathjs@13.0.0/lib/browser/math.js"></script>
-
         <script>
             window.MathJax = {
                 loader: {
@@ -32,10 +29,6 @@
 		
         <!-- load Mathjax library-->
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
-        <!-- loads page script files-->
-        <script type="module" src="scripts/vectorsForm.js"></script>
-        <script type="module" src="scripts/vectorsPage.js"></script>
     </head>
     <body>
         <header id="Arriba">
@@ -929,6 +922,9 @@
                     </ul>  
                 </aside>
             </section>
-        </article> 
+        </article>
+        <!--Load the JavaScript file for the vectors page -->
+        <script type="module" src="./src/pages/vectorsPage.js"></script>
+        <script type="module" src="./src/forms/vectorsForm.js"></script>
     </body>
 </html>

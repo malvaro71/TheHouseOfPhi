@@ -1,5 +1,6 @@
 // imports necessary for the CartesianPlane class
-import { validateObject,
+import { 
+    validateObject,
     writeText,
     writeVerticalText,
     drawCircle,
@@ -7,14 +8,15 @@ import { validateObject,
 } from './SVGDrawing.js';
 
 // Import the math library 
-// import * as math from 'mathjs'; lo dejamos en paso hasta que integremos mathjs en el proyecto.
+import * as math from 'mathjs';
+// Note: mathjs must be installed via npm to use this import statement.
 // Cuando lo integremos, recordar añadir node_modules/ al archivo .gitignore en la raíz del proyecto.
 
 /**
 * Class to manage the graphical representation of a Cartesian plane within an SVG element.
 */
 
-class CartesianPlane { 
+export class CartesianPlane { 
 	/**
 	* Create a new CartesianPlane instance.
 	* 
@@ -435,8 +437,8 @@ class CartesianPlane {
 			writeVerticalText(this.svgElement, yAxisText, this.OriginX - 5, 0, 20, "brown", "brown");
 
 		// x-axis
-			const planeWidht = this.xMax - this.xMin;
-			this.drawVector([this.xMin, 0], [planeWidht, 0]);
+			const planeWidth = this.xMax - this.xMin;
+			this.drawVector([this.xMin, 0], [planeWidth, 0]);
 			
 			// Create a new text element
 			const xAxisTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");	
@@ -462,5 +464,3 @@ class CartesianPlane {
     }
 }
 
-// Exports CartesianPlane class by default
-export default CartesianPlane;

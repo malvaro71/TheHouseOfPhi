@@ -6,13 +6,13 @@ import { validateObject,
 } from './SVGDrawing.js';
 
 // Import the math library 
-// import * as math from 'mathjs'; lo dejamos en paso hasta que integremos mathjs en el proyecto.
+import * as math from 'mathjs';
 // Cuando lo integremos, recordar añadir node_modules/ al archivo .gitignore en la raíz del proyecto.
 
 /**
 	Represents a Euclidean space within an SVG element. 
 */
-class EuclideanSpace {
+export class EuclideanSpace {
 	/**
 		Constants used throughout the class based on the x-axis skew angle. 
 	*/ 
@@ -54,19 +54,19 @@ class EuclideanSpace {
 	// Draw x, y, z axes and origin in euclidean space.
 	drawAxes() {
 		const planeHeight = this.svgHeightNum/this.spaceScale;
-		const planeWidht = this.svgWidthNum/this.spaceScale;
+		const planeWidth = this.svgWidthNum/this.spaceScale;
 
 		// x-axis
-		this.drawVector([-planeWidht/6, 0, 0], [planeWidht*5/8, 0, 0]);
-		this.drawLabel([planeWidht*4/9, 0, planeWidht/100], "x", {});
+		this.drawVector([-planeWidth/6, 0, 0], [planeWidth*5/8, 0, 0]);
+		this.drawLabel([planeWidth*4/9, 0, planeWidth/100], "x", {});
 
 		// y-axis
 		this.drawVector([0, -planeHeight/6, 0], [0, planeHeight*3/4, 0]);
-		this.drawLabel([0, planeHeight*5/9, planeWidht/100], "y", {});
+		this.drawLabel([0, planeHeight*5/9, planeWidth/100], "y", {});
 
 		//z-axis
-		this.drawVector([0, 0, -planeWidht/6], [0, 0, planeWidht*3/4]);
-		this.drawLabel([0, -planeWidht/100, planeWidht*5/9], "z", {corner: "righttop"});
+		this.drawVector([0, 0, -planeWidth/6], [0, 0, planeWidth*3/4]);
+		this.drawLabel([0, -planeWidth/100, planeWidth*5/9], "z", {corner: "righttop"});
 		
 		// Origin.
 		this.drawLabel([0, 0-0.1, 0], "O", {});
@@ -166,7 +166,7 @@ class EuclideanSpace {
 	drawVector(initialPoint, vectorComponents, textContent = "", lineAttributes = {}, textAttributes = {}
 	) {
 		// Validate coordinates1 and coordinates2.
-		[initialPoint, vectorComponents].every(arr => (arr));
+        [initialPoint, vectorComponents].every(arr => this.validateCoordinates3D(arr));
 
 		// Validate lineAttributes and textAttributes
 		[lineAttributes, textAttributes].every(arr	=> validateObject(arr));
@@ -265,7 +265,7 @@ class EuclideanSpace {
         }
 
         // Transform coodinates
-        const svgCoordinates = [[0,0,0]];
+        const svgCoordinates = [];
         for (let i = 0; i < coordinates.length; i++) {
             svgCoordinates[i] = this.transformCoordinates(coordinates[i]);
         }
@@ -294,6 +294,3 @@ class EuclideanSpace {
 	    this.svgElement.appendChild(pathElement);
     }
 }
-
-// Exports EuclideanSpace class by default
-export default EuclideanSpace;

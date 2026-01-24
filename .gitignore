@@ -1,13 +1,23 @@
-# Ignorar la carpeta de módulos de Node.js
+# Node modules
 node_modules/
 
-# Ignorar archivos específicos de configuración de VS Code
+# Vite build output
+dist/
+
+# Vite cache
+.vite/
+
+# VS Code settings
 .vscode/
 
-# Ignorar archivos de log y temporales (ejemplos comunes)
+# Logs and temporary files
 *.log
 *.tmp
-.DS_Store # Archivos de macOS
 
-# Ignorar variables de entorno (si las tuvieras en el futuro)
+# macOS system files
+.DS_Store
+
+# Environment variables
 .env
+
+# End of .gitignore

@@ -8,16 +8,30 @@
     <meta name="author" content="Miguel Angel Alvaro">
     <meta name="description"
         content="Subpage showing information about vectors. / 
-				Subpágina mostrando información sobre cinemática.">
+				Subpágina mostrando información sobre cinemática."
+    >
    
 	<!--To set the viewport of the page, which will give the browser instructions on how to control the page's dimensions and scaling.-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+        window.MathJax = {
+            loader: {
+            load: ['[tex]/tagformat'] // Carga el componente necesario para personalizar etiquetas
+            },
+            tex: {
+            packages: {'[+]': ['tagformat']}, // Añade el paquete a la configuración de TeX
+            tags: 'ams',
+            tagformat: {
+                tag: (tag) => '[' + tag + ']',      // Formato al lado de la ecuación
+                eqref: (tag) => '[' + tag + ']'    // Formato de la llamada \eqref
+            }
+            }
+        };
+    </script>
 
     <!-- load Mathjax library-->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
-    <!-- loads page script files-->
-    <!--<script src="scripts/SelectLanguage.js" defer></script>-->
 </head>
 
 <body>
@@ -130,6 +144,8 @@
             </li>
         </ul>
     </aside>
+    <!--Load the JavaScript file for the geometry page -->
+    <script type="module" src="./src/pages/geometryPage.js"></script>        
 </body>
 
 </html>
