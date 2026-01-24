@@ -9,29 +9,59 @@ The structure is designed to be clean, scalable, and aligned with the dependency
 
 
 ```
-src/
+TheHouseOfPhi/
 │
-├── core/
-│   ├── SVGDrawing.js
-│   ├── CartesianPlane.js
-│   └── EuclideanSpace.js
+├── .github
+│       copilot-instructions.md
+|
+├── .vscode
+|       settings.json
+|
+├── doc
+|       ModuleReference.md
+|       ProjectDependencies.md
+|       ProjectStructure.md
+|
+├── images
+|       ...
+├── node_modules
+|       ...
+|
+├── public/          ← scondary HTML's
+│       404.html
+|       geometry_es.html
+│       geometry.html
+│       kinematics_es.html
+│       kinematics.html
+│       vectors_es.html
+|       vectors.html
 │
-├── pages/
-│   ├── indexPage.js
-│   ├── geometryPage.js
-│   ├── vectorsPage.js
-│   └── kinematicsPage.js
-│
-├── forms/
-│   ├── indexForm.js
-│   ├── vectorsForm.js
-│   ├── geometryForm.js      (future)
-│   └── kinematicsForm.js    (future)
-│
-├── utils/
-│   └── (empty for now)
-│
-└── main.js   (optional)
+├── src/
+|   │
+|   ├── core/
+|   │   ├── SVGDrawing.js
+|   │   ├── CartesianPlane.js
+|   │   └── EuclideanSpace.js
+|   │
+|   ├── pages/
+|   │   ├── indexPage.js
+|   │   ├── geometryPage.js
+|   │   ├── vectorsPage.js
+|   │   └── kinematicsPage.js
+|   │
+|   ├── forms/
+|   │   ├── indexForm.js
+|   │   ├── vectorsForm.js
+|   │   ├── geometryForm.js      (future)
+|   │   └── kinematicsForm.js    (future)
+|   │
+|   ├── utils/
+|   │   └── (empty for now)
+|   │
+|   └── main.js   (optional)
+|
+└── styles
+        styles.css
 
 ```
 
