@@ -1,83 +1,122 @@
-<!DOCTYPE html>
+---
+/*
+  geometry_es.astro
+  Migración desde geometry_es.html
+  Mantiene MathJax, estilos, estructura y semántica original.
+*/
+---
+
 <html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/src/styles/styles.css">
+    <head>
+    <meta charset="utf-8" />
     <title>TheHouseOfPhi Geometría</title>
-    <meta name="author" content="Miguel Angel Alvaro">
-    <meta name="description"
-        content="Subpage showing information about vectors. / 
-				Subpágina mostrando información sobre cinemática.">
-   
-	<!--To set the viewport of the page, which will give the browser instructions on how to control the page's dimensions and scaling.-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="author" content="Miguel Angel Alvaro" />
+    <meta
+      name="description"
+      content="Subpágina mostrando información sobre geometría."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/styles.css" />
+    <!-- MathJax configuration -->
     <script>
-        window.MathJax = {
-            loader: {
-            load: ['[tex]/tagformat'] // Carga el componente necesario para personalizar etiquetas
-            },
-            tex: {
-            packages: {'[+]': ['tagformat']}, // Añade el paquete a la configuración de TeX
-            tags: 'ams',
-            tagformat: {
-                tag: (tag) => '[' + tag + ']',      // Formato al lado de la ecuación
-                eqref: (tag) => '[' + tag + ']'    // Formato de la llamada \eqref
-            }
-            }
-        };
+      // Configuración básica para MathJax 3, solo delimitadores estándar
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
     </script>
-		
-    <!-- load Mathjax library-->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head>
+    <!-- MathJax library -->
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+  </head>
 
-<body>
+  <body>
     <article id="Anexo_Geometria">
         <header id="Home">
             <h1>Anexo 1: Fundamentos Geométricos para la Física</h1>
         </header>
-        <nav> <!--Navigation bar. Links to the site's main sections-->
+
+        <nav>
             <ul>
-                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="/">Inicio</a></li>
                 <li><a href="#Geometry">Geometría</a></li>
             </ul>
-	    </nav>
+        </nav>
 
-        <h2>Introducción</h2>
+      
+        <section id="A1_0_Introduccion">
+            <h2>Introducción</h2>
             <p>
-                La física y la geometría son disciplinas inseparables. Mientras la primera busca comprender las leyes naturales que rigen el universo, la segunda proporciona el lenguaje y el marco estructural necesario para cuantificar el espacio donde ocurren estos fenómenos.
+                La física y la geometría son disciplinas inseparables. Mientras la
+                primera busca comprender las leyes naturales que rigen el universo, la
+                segunda proporciona el lenguaje y el marco estructural necesario para
+                cuantificar el espacio donde ocurren estos fenómenos.
             </p>
-            
+
             <h3>Importancia de la geometría como base para la física</h3>
             <p>
-                Desde el estudio de la caída de un grave hasta la descripción de las órbitas planetarias, todo movimiento sigue una trayectoria definida por propiedades geométricas. El dominio de la trigonometría es esencial para la descomposición de magnitudes vectoriales, mientras que el conocimiento de las cónicas es la clave para entender la gravitación universal. Este anexo actúa como una "caja de herramientas" técnica a la que el lector puede acudir para facilitar la transición entre la intuición física y la resolución matemática precisa.
+                Desde el estudio de la caída de un grave hasta la descripción de las
+                órbitas planetarias, todo movimiento sigue una trayectoria definida por
+                propiedades geométricas. El dominio de la trigonometría es esencial para
+                la descomposición de magnitudes vectoriales, mientras que el
+                conocimiento de las cónicas es la clave para entender la gravitación
+                universal. Este anexo actúa como una "caja de herramientas" técnica a la
+                que el lector puede acudir para facilitar la transición entre la
+                intuición física y la resolución matemática precisa.
             </p>
 
             <h3>Bloques fundamentales del anexo</h3>
             <p>Este recurso se organiza en los siguientes bloques de consulta:</p>
             <ul>
-                <li><strong>A1.1 Geometría del triángulo:</strong> Propiedades básicas y teoremas fundamentales (Pitágoras, Seno y Coseno).</li>
-                <li><strong>A1.2 Razones trigonométricas en el triángulo rectángulo:</strong> Definiciones, identidades y aplicaciones.</li>
-                <li><strong>A1.3 Geometría del círculo:</strong> Elementos del círculo y la definición del radián.</li>
-                <li><strong>A1.4 Funciones trigonométricas en la circunferencia:</strong> El círculo unitario, gráficas y periodicidad.</li>
-                <li><strong>A1.5 Sistema de coordenadas cartesianas:</strong> Representación de puntos, rectas y funciones en el plano.</li>
-                <li><strong>A1.6 Cónicas (Parábola y Elipse):</strong> Definición y aplicaciones en física.</li>
-                <li><strong>A1.7 Sistema de coordenadas polares:</strong> Localización mediante radio y ángulo.</li>
+                <li>
+                <strong>A1.1 Geometría del triángulo:</strong> Propiedades básicas y
+                teoremas fundamentales (Pitágoras, Seno y Coseno).
+                </li>
+                <li>
+                <strong>A1.2 Razones trigonométricas en el triángulo
+                rectángulo:</strong> Definiciones, identidades y aplicaciones.
+                </li>
+                <li>
+                <strong>A1.3 Geometría del círculo:</strong> Elementos del círculo y
+                la definición del radián.
+                </li>
+                <li>
+                <strong>A1.4 Funciones trigonométricas en la
+                circunferencia:</strong> El círculo unitario, gráficas y periodicidad.
+                </li>
+                <li>
+                <strong>A1.5 Sistema de coordenadas cartesianas:</strong>
+                Representación de puntos, rectas y funciones en el plano.
+                </li>
+                <li>
+                <strong>A1.6 Cónicas (Parábola y Elipse):</strong> Definición y
+                aplicaciones en física.
+                </li>
+                <li>
+                <strong>A1.7 Sistema de coordenadas polares:</strong> Localización
+                mediante radio y ángulo.
+                </li>
             </ul>
         </section>
+         
         <section id="A1_1_Geometria_Triangulo">
-        <h2>A1.1 Geometría del triángulo</h2>
+            <h2>A1.1 Geometría del triángulo</h2>
             <p>
-                El triángulo es el polígono más simple y la unidad fundamental para la descomposición de casi cualquier magnitud física vectorial en el plano.
+            El triángulo es el polígono más simple y la unidad fundamental para la descomposición de casi cualquier magnitud física vectorial en el plano.
             </p>
-
             <h3>A1.1.1 Elementos básicos del triángulo y nomenclatura</h3>
             <p>
-                Un triángulo es un polígono de tres lados que encierra una región del plano. Sus elementos fundamentales son los vértices, los lados y los ángulos. Para facilitar la resolución de problemas, se utiliza una <strong>nomenclatura clásica</strong> que relaciona estos elementos entre sí:
+            Un triángulo es un polígono de tres lados que encierra una región del plano. Sus elementos fundamentales son los vértices, los lados y los ángulos. Para facilitar la resolución de problemas, se utiliza una <strong>nomenclatura clásica</strong> que relaciona estos elementos entre sí:
             </p>
-
             <ul>
                 <li>
                     <strong>Vértices:</strong> Son los puntos de intersección de los lados. Se representan con letras mayúsculas: \(A\), \(B\) y \(C\).
@@ -86,67 +125,59 @@
                     <strong>Lados:</strong> Son los segmentos que unen los vértices. Se representan con letras minúsculas: \(a\), \(b\) y \(c\). La convención dicta que <strong>el lado \(a\) es el opuesto al vértice \(A\)</strong>, el lado \(b\) es el opuesto al vértice \(B\), y así sucesivamente.
                 </li>
                 <li>
-                    <strong>Ángulos:</strong> Son las aperturas entre dos lados contiguos. Se pueden nombrar usando letras griegas (\(\alpha\), \(\beta\), \(\gamma\)) o mediante el nombre del vértice con un acento circunflejo (\(\hat{A}\), \(\hat{B}\), \(\hat{C}\)). Al igual que los lados, el ángulo \(\alpha\) (o \(\hat{A}\)) se localiza en el vértice \(A\).
+                    <strong>Ángulos:</strong> Son las aperturas entre dos lados contiguos. Se pueden nombrar usando letras griegas (\(\alpha\), \(\beta\), \(\gamma\)) o mediante el nombre del vértice con un acento circunflejo (\(\hat A\), \(\hat B\), \(\hat C\)). Al igual que los lados, el ángulo \(\alpha\) (o \(\hat A \)) se localiza en el vértice \(A\).
                 </li>
             </ul>
-
+            
             <p>
-                Una propiedad ineludible en geometría euclidiana es que la suma de los ángulos internos de cualquier triángulo siempre es constante:
+            Una propiedad ineludible en geometría euclidiana es que la suma de los ángulos internos de cualquier triángulo siempre es constante:
             </p>
             <p>
-                \begin{flalign}
-                    \alpha + \beta + \gamma = 180^\circ = \pi \text{ rad} \label{eq:A1_1_1_1}
-                \end{flalign}
+            \[
+            \alpha + \beta + \gamma = 180^\circ = \pi\ 
+            \] rad
             </p>
+            
             <figure class="centered">
-                <svg id="svgA1_1_1"></svg>
-                <figcaption><b>Figura 1.1</b> Triángulo \(\triangle ABC\) con sus vértices, lados y ángulos.</figcaption>
+            <svg id="svgA1_1_1"></svg>
+            <figcaption><b>Figura 1.1</b> Triángulo \(\triangle ABC\) con sus vértices, lados y ángulos.</figcaption>
             </figure>
-
             <h4>Semejanza de triángulos</h4>
             <p>
-                Dos triángulos son semejantes si tienen ángulos iguales y lados proporcionales. Esta propiedad es vital en física para resolver problemas de óptica, sombras y diagramas de fuerzas mediante razones de proporcionalidad.
+            Dos triángulos son semejantes si tienen ángulos iguales y lados proporcionales. Esta propiedad es vital en física para resolver problemas de óptica, sombras y diagramas de fuerzas mediante razones de proporcionalidad.
             </p>
-
             <h3>A1.1.2 Teorema de Pitágoras</h3>
             <p>
-                Establece que en un triángulo rectángulo, el cuadrado de la hipotenusa (\(c\)) es igual a la suma de los cuadrados de los catetos (\(a\) y \(b\)):
+            Establece que en un triángulo rectángulo, el cuadrado de la hipotenusa (\(c\)) es igual a la suma de los cuadrados de los catetos (\(a\) y \(b\)):
             </p>
             <p>
-                El <strong>teorema de Pitágoras</strong> establece que en cualquier triángulo rectángulo \(\triangle ABC\), donde \(c\) es la longitud de la hipotenusa y \(a\) y \(b\) son las longitudes de los catetos,
+            El <strong>teorema de Pitágoras</strong> establece que en cualquier triángulo rectángulo \(\triangle ABC\), donde \(c\) es la longitud de la hipotenusa y \(a\) y \(b\) son las longitudes de los catetos,
             </p>
             <p>
-                \begin{flalign}
-                    c^2 = a^2 + b^2 \label{eq:A1_1_2_1}
-                \end{flalign}
+            $$c^2 = a^2 + b^2$$
             </p>
-            <figure class="centered"><!--Right triangle with hypotenuse c and legs a and b.-->
-                <img src="/src/images/RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
-                <figcaption><b>Figura 1.2</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
+            <figure class="centered">
+            <img src="/images/RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
+            <figcaption><b>Figura 1.2</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
             </figure>
-
             <h3>A1.1.3 Teorema del seno y teorema del coseno</h3>
             <p>
-                Cuando el triángulo no es rectángulo, utilizamos relaciones más generales para determinar lados o ángulos desconocidos.
+            Cuando el triángulo no es rectángulo, utilizamos relaciones más generales para determinar lados o ángulos desconocidos.
             </p>
             <p>
-                <strong>Teorema del Coseno:</strong> Se aplica cuando conocemos dos lados y el ángulo que forman (\(C\)). Es la base de la ley del paralelogramo en la suma de vectores.
+            <strong>Teorema del Coseno:</strong> Se aplica cuando conocemos dos lados y el ángulo que forman (\(C\)). Es la base de la ley del paralelogramo en la suma de vectores.
             </p>
             <p>
-                \begin{flalign}
-                    c^2 = a^2 + b^2 - 2ab \cdot \cos(C) \label{eq:A1_1_3_1}
-                \end{flalign}
+            $$c^2 = a^2 + b^2 - 2ab \cdot \cos(C)$$
             </p>
             <p>
-                <strong>Teorema del Seno:</strong> Establece la proporción entre los lados y los senos de sus ángulos opuestos:
+            <strong>Teorema del Seno:</strong> Establece la proporción entre los lados y los senos de sus ángulos opuestos:
             </p>
-            <p>
-                \begin{flalign}
-                    \frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} \label{eq:A1_1_3_2}
-                \end{flalign}
-            </p>
+            <div is:raw>
+            $$\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)}$$
+            </div>
         </section>
-		<section id="A1_2_Razones_Trigonometricas">
+        <section id="A1_2_Razones_Trigonometricas">
 	        <h2>A1.2 Razones trigonométricas en el triángulo rectángulo</h2>
 	        <p>
 	            En un triángulo rectángulo, las relaciones entre los ángulos y las longitudes de sus lados no son arbitrarias; se rigen por proporciones constantes denominadas <strong>razones trigonométricas</strong>. Estas razones permiten determinar distancias inaccesibles y son la base de la descomposición de vectores.
@@ -176,22 +207,16 @@
                 <strong>Regla de oro para física:</strong> Nunca memorices que el seno es "vertical" o el coseno "horizontal". Siempre pregúntate: "¿Este cateto está enfrente de mi ángulo (seno) o lo está tocando (coseno)?".
             </p>
 	        <p>Las razones principales (respecto al ángulo elegido) se definen como:</p>
-	        <p>
-	            \begin{flalign}
-	                \sin \theta = \frac{\text{cateto opuesto}}{\text{hipotenusa}} = \frac{c_o}{h} \label{eq:A1_2_1_1}
-	            \end{flalign}
-	        </p>
-	        <p>
-	            \begin{flalign}
-	                \cos \theta = \frac{\text{cateto contiguo}}{\text{hipotenusa}} = \frac{c_a}{h} \label{eq:A1_2_1_2}
-	            \end{flalign}
-	        </p>
-	        <p>
-	            \begin{flalign}
-	                \tan \theta = \frac{\text{cateto opuesto}}{\text{cateto contiguo}} = \frac{c_o}{c_a} \label{eq:A1_2_1_3}
-	            \end{flalign}
-	        </p>
-	
+	        <div is:raw>
+	            $$\sin \theta = \frac{\text{cateto opuesto}}{\text{hipotenusa}} = \frac{c_o}{h}$$
+	        </div>
+	        <div is:raw>
+	            $$\cos \theta = \frac{\text{cateto contiguo}}{\text{hipotenusa}} = \frac{c_a}{h}$$
+	        </div>
+	        <div is:raw>
+	            $$\tan \theta = \frac{\text{cateto opuesto}}{\text{cateto contiguo}} = \frac{c_o}{c_a}$$
+	        </div>
+
 	        <h4>Interpretación geométrica intuitiva</h4>
 	        <p>
 	            Podemos imaginar las razones trigonométricas como "factores de escala": el <strong>coseno</strong> nos indica qué fracción de la hipotenusa se proyecta sobre el eje horizontal, mientras que el <strong>seno</strong> indica qué fracción se proyecta sobre el eje vertical. La <strong>tangente</strong>, por su parte, define la pendiente o inclinación de la hipotenusa respecto a la base.
@@ -204,30 +229,24 @@
 	        
 	        <h4>Identidad pitagórica</h4>
 	        <p>
-	            Derivada directamente del Teorema de Pitágoras \eqref{eq:A1_1_2_1}, es la identidad más importante de la trigonometría:
+	            Derivada directamente del Teorema de Pitágoras, es la identidad más importante de la trigonometría:
 	        </p>
 	        <p>
-	            \begin{flalign}
-	                \sin^2 \theta + \cos^2 \theta = 1 \label{eq:A1_2_2_1}
-	            \end{flalign}
+	            $$ \sin^2 \theta + \cos^2 \theta = 1 $$
 	        </p>
 	
 	        <h4>Relación entre razones</h4>
 	        <p>La tangente puede expresarse siempre como el cociente entre el seno y el coseno:</p>
-	        <p>
-	            \begin{flalign}
-	                \tan \theta = \frac{\sin \theta}{\cos \theta} \label{eq:A1_2_2_2}
-	            \end{flalign}
-	        </p>
-	
+	        <div is:raw>
+	            $$ \tan \theta = \frac{\sin \theta}{\cos \theta} $$
+	        </div>
+
 	        <h4>Ángulos complementarios</h4>
 	        <p>
 	            Dado que la suma de los ángulos agudos en un triángulo rectángulo es 90º, se cumple que el seno de un ángulo es igual al coseno de su complementario:
 	        </p>
 	        <p>
-	            \begin{flalign}
-	                \sin \theta = \cos(90^\circ - \theta) \label{eq:A1_2_2_3}
-	            \end{flalign}
+	            $$ \sin \theta = \cos(90^\circ - \theta) $$
 	        </p>
 	
 	        <h3>A1.2.3 Aplicaciones</h3>
@@ -237,7 +256,7 @@
 	        <ul>
 	            <li><strong>Cálculo de alturas y distancias:</strong> Permite hallar la altura de un proyectil o la distancia a un objeto conociendo solo el ángulo de observación y una base medida.</li>
 	            <li><strong>Planos inclinados:</strong> Es fundamental para descomponer la fuerza del peso (\(P = mg\)) en una componente paralela al plano (\(mg \sin \theta\)) que genera movimiento, y una componente normal (\(mg \cos \theta\)) que genera rozamiento.</li>
-	            <li><strong>Descomposición de fuerzas:</strong> Cualquier fuerza ejercida con un ángulo inclinado (como la tensión de una cuerda) se divide en una componente horizontal y una vertical mediante el uso de \eqref{eq:A1_2_1_1} y \eqref{eq:A1_2_1_2}.</li>
+	            <li><strong>Descomposición de fuerzas:</strong> Cualquier fuerza ejercida con un ángulo inclinado (como la tensión de una cuerda) se divide en una componente horizontal y una vertical mediante el uso de  y .</li>
 	        </ul>
     	</section>
 		<section id="A1_3_Geometria_Circulo">
@@ -265,16 +284,12 @@
 	            La relación entre la longitud de una circunferencia (\(L\)) y su diámetro es una constante universal llamada <strong>\(\pi\) (pi)</strong>. De forma intuitiva, \(\pi\) (aprox. 3.14159...) representa cuántas veces cabe el diámetro en el perímetro de su círculo.
 	        </p>
 	        <p>
-	            \begin{flalign}
-	                L = 2\pi r \label{eq:A1_3_1_1}
-	            \end{flalign}
+	            $$ L = 2\pi r $$
 	        </p>
-	        <p>
-	            \begin{flalign}
-	                \text{Área} = \pi r^2 \label{eq:A1_3_1_2}
-	            \end{flalign}
-	        </p>
-	
+	        <div is:raw>
+	            $$ \text{Área} = \pi r^2 $$
+	        </div>
+
 	        <h3>A1.3.2 Ángulos en la circunferencia</h3>
 	        <p>En el análisis de movimientos rotatorios, es fundamental distinguir cómo medimos los ángulos:</p>
 	        <ul>
@@ -299,20 +314,16 @@
 	        <p>
 	            Puesto que una vuelta completa (360°) equivale a la longitud total de la circunferencia (\(2\pi r\)), la equivalencia fundamental es:
 	        </p>
-	        <p>
-	            \begin{flalign}
-	                360^\circ = 2\pi \text{ rad} \implies 180^\circ = \pi \text{ rad} \label{eq:A1_3_3_1}
-	            \end{flalign}
-	        </p>
-	
+	        <div is:raw>
+	            $$ 360^\circ = 2\pi \text{ rad} \implies 180^\circ = \pi \text{ rad} $$
+	        </div>
+
 	        <h4>¿Por qué en física se usan radianes?</h4>
 	        <p>
 	            El uso del radián no es caprichoso. Su principal ventaja es que simplifica las ecuaciones de movimiento, ya que permite relacionar directamente magnitudes lineales y angulares sin factores de conversión extraños. Por ejemplo, la longitud de un arco se calcula simplemente como:
 	        </p>
 	        <p>
-	            \begin{flalign}
-	                s = \theta \cdot r \label{eq:A1_3_3_2}
-	            \end{flalign}
+	            $$ s = \theta \cdot r $$
 	        </p>
 	        <p>
 	            Esta relación solo es válida si el ángulo \(\theta\) está expresado en <strong>radianes</strong>.
@@ -334,9 +345,7 @@
                 Cualquier punto \(P\) en el plano se describe mediante un par ordenado de números \((x, y)\), llamados <strong>coordenadas</strong>:
             </p>
             <p>
-                \begin{flalign}
-                    P = (x, y) \label{eq:A1_2_1}
-                \end{flalign}
+                $$ P = (x, y) $$
             </p>
             <p>
                 Donde \(x\) representa la distancia perpendicular al eje \(y\), y \(y\) representa la distancia perpendicular al eje \(x\). Estos dos ejes dividen al plano en cuatro regiones llamadas <strong>cuadrantes</strong>, numerados del I al IV en sentido antihorario partiendo del cuadrante superior derecho.
@@ -351,23 +360,20 @@
             <p>
                 En cualquier triángulo rectángulo \(\triangle ABC\), donde c es la longitud de la hipotenusa y a y b son las longitudes de los catetos,
             </p>
-            <p class="centered">
+            <p id="eq-pitagoras-theorem1">
+                $$a^2 + b^2 = c^2$$
             </p>
-            <div class="container">
-                <div  class="center">\(a^2 + b^2 = c^2\)</div>
-                <div  class="right" id="[1]">[2]</div>
-            </div>
-            <figure class="centered"><!--Right triangle with hypotenuse c and legs a and b.-->
-                <img src="/src/images/RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
+            <figure class="centered">
+                <img src="/images/RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
                 <figcaption><b>Figura 1</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
             </figure>
         </section>
         <section><h3>3 Definiciones gráficas de las funciones seno, coseno y tangente</h3>
             <p>
-                Consideremos una circunferencia con radio de longitud r con centro en el origen <i>O</i> en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos &alpha; a el ángulo entre el eje x y el segmento \(\overline {OP}\), según se muestra en la siguiente figura. Entonces, \(\sin \alpha\) es el cociente y/r.
+                Consideremos una circunferencia con radio de longitud r con centro en el origen <i>O</i> en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos &alpha; a el ángulo entre el eje x y el segmento OP, según se muestra en la siguiente figura. Entonces, \(\sin \alpha\) es el cociente y/r.
             </p>
-            <figure class="centered"><!--Circunference of radius r with a point P and angle &alpha; with x-axis.-->
-                <img src="/src/images/Circunference_and_coordinates.svg" 
+            <figure class="centered">
+                <img src="/images/Circunference_and_coordinates.svg" 
                     width="300" 
                     height="300" 
                     alt="Diagrama de una circunferencia con punto P y triángulo rectángulo inscrito."/>
@@ -410,11 +416,15 @@
 
                 <p>De donde obtenemos:</p>
 
-                <p>$$\alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2}$$</p>
+                <div is:raw>
+                    $$\alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2}$$
+                </div>
 
                 <p>Ahora, analicemos el límite cuando el intervalo de tiempo Δt tiende a cero (Δt → 0, y por tanto Δθ → 0). En este límite, \( \Delta \vec V \) se convierte en el diferencial \( d\vec V \), y Δθ se convierte en dθ.  El ángulo α se aproxima a:</p>
 
-                <p>$$\alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radianes o } 90^\circ.$$</p>
+                <div is:raw>
+                    $$\alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radianes o } 90^\circ.$$
+                </div>
 
                 <p>Esto implica que, en el límite infinitesimal, el ángulo entre el vector de cambio \( d\vec V \) y el vector original \( \vec V(t) \) tiende a 90 grados. Es decir, la variación infinitesimal \( d\vec V \) es perpendicular al vector \( \vec V(t) \). Como la derivada \( d\vec V/dt \) (que representa la tasa de variación temporal) tiene la misma dirección que \( d\vec V \), concluimos geométricamente que la tasa de variación temporal de \( \vec V(t) \) es perpendicular a \( \vec V(t) \) en cada instante, siempre que el módulo de \( \vec V(t) \) se mantenga constante.</p>
 
@@ -422,7 +432,9 @@
 
                 <p>Para una demostración analítica más general, consideremos un vector \( \vec V(t) \) en tres dimensiones (la demostración es igualmente válida en dos dimensiones), expresado en componentes cartesianas:</p>
 
-                <p>$$\vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k}$$</p>
+                <div is:raw>
+                    $$\vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k}$$
+                </div>
 
                 <p>La condición de módulo constante \( |\vec V(t)| = C \) = constante, se expresa como:</p>
 
@@ -430,24 +442,36 @@
 
                 <p>Para que esta condición se mantenga en el tiempo, la derivada temporal de \( |\vec V(t)|^2 \) debe ser cero. Derivamos ambos lados de la ecuación con respecto al tiempo, utilizando la regla de la cadena:</p>
 
-                <p>$$\frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2)$$</p>
-                <p>$$\frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0$$</p>
+                <div is:raw>
+                    $$\frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2)$$
+                </div>
+                <div is:raw>
+                    $$\frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0$$
+                </div>
                 <p>Aplicando la regla de la cadena a cada término:</p>
-                <p>$$2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0$$</p>
+                <div is:raw>
+                    $$2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0$$
+                </div>
 
                 <p>Dividiendo por 2 y reordenando:</p>
 
-                <p>$$V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0$$</p>
+                <div is:raw>
+                    $$V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0$$
+                </div>
 
-                <p>El lado izquierdo de esta ecuación es precisamente el producto escalar del vector \( \vec V(t) \) con su derivada temporal \( \frac{d\vec V}{dt} \):</p>
+                <p>El lado izquierdo de esta ecuación es precisamente el producto escalar del vector \( \vec V(t) \) con su derivada temporal <span is:raw>\( \displaystyle\frac{d\vec V}{dt} \)</span> </p>
 
-                <p>$$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = \begin{pmatrix} V_x(t) \\ V_y(t) \\ V_z(t) \end{pmatrix} \cdot \begin{pmatrix} \frac{dV_x(t)}{dt} \\ \frac{dV_y(t)}{dt} \\ \frac{dV_z(t)}{dt} \end{pmatrix} = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt}$$</p>
+                <div is:raw>
+                    $$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = \left( V_x(t), V_y(t), V_z(t) \right) \cdot \left( \frac{dV_x(t)}{dt}, \frac{dV_y(t)}{dt}, \frac{dV_z(t)}{dt} \right) = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt}$$
+                </div>
 
                 <p>Por lo tanto, la condición de módulo constante \( |\vec V(t)| = C \) implica que:</p>
 
-                <p>$$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0$$</p>
+                <div is:raw>
+                    $$\vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0$$
+                </div>
 
-                <p>Esto demuestra analíticamente que <strong>el vector \( \vec V(t) \) y su derivada temporal \( \displaystyle\frac{d\vec V(t)}{dt} \) son siempre perpendiculares entre sí</strong>, bajo la condición de que el módulo de \( \vec V(t) \) se mantenga constante. Este resultado es válido para cualquier vector con módulo constante, no solo para vectores de posición.</p>
+                <p>Esto demuestra analíticamente que <strong>el vector \( \vec V(t) \) y su derivada temporal <span is:raw>\( \displaystyle\frac{d\vec V(t)}{dt} \)</span>  son siempre perpendiculares entre sí</strong>, bajo la condición de que el módulo de \( \vec V(t) \) se mantenga constante. Este resultado es válido para cualquier vector con módulo constante, no solo para vectores de posición.</p>
 
                 <h4>Conclusión</h4>
 
@@ -496,8 +520,9 @@
             </ul>
         </aside>
     </article>
-    <!--Load the JavaScript file for the geometry page -->
-    <script type="module" src="/src/pages/geometryPage.js"></script>    
-</body>
 
+    <!-- Script de la página -->
+    <script type="module" src="/src/scripts/pages/geometryPage.js"></script>
+  </body>
 </html>
+

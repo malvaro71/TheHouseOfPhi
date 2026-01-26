@@ -2,16 +2,34 @@
 <html lang="es">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/src/styles/styles.css">
         <title>TheHouseOfPhi Cinematica</title>
         <meta name="author" content="Miguel Angel Alvaro">
         <meta name="description"
             content="Subpage showing information about kinematics."
         >       
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <!-- load Mathjax library -->
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Styles -->
+        <link rel="stylesheet" href="/src/styles/styles.css" />
+        <!-- MathJax configuration -->
+        <script>
+        // Configuración básica para MathJax 3, solo delimitadores estándar
+        window.MathJax = {
+            tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+            fontCache: 'global'
+            }
+        };
+        </script>
+        <!-- MathJax library -->
+        <script
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+        ></script>
     </head>
     <body>
         <header><h1>CINEMÁTICA</h1></header>
@@ -63,14 +81,17 @@
                 <p>
                     El extremo del vector posición \(\vec r\) dibuja en el espacio una línea descrita por el punto material en su movimiento. Esta ruta o camino que sigue el punto móvil a lo largo del tiempo se denominada <strong>trayectoria</strong>. Podemos imaginar la trayectoria como una línea que marca el camino exacto del objeto.
                 </p>
-                <div class="container">
-                    <div  class="center">\( \vec r(t) = x(t)\vec i + y(t)\vec j + z(t)\vec k = (x(t), y(t), z(t)) \)</div>
-                    <div  class="right" id="[1.1]">[1.1]</div>
+                <div is:raw>
+                    <div  class="center" is:raw is:raw>\( \vec r(t) = x(t)\vec i + y(t)\vec j + z(t)\vec k = (x(t), y(t), z(t)) \)</div>
                 </div>
+                <p>
+                    donde \(x(t)\), \(y(t)\) y \(z(t)\) son las coordenadas del punto en función del tiempo, y \(\vec i\), \(\vec j\) y \(\vec k\) son los vectores unitarios en las direcciones de los ejes X, Y y Z, respectivamente.
+                </p>
                 <figure class="centered">
                     <svg id="svg1_1"></svg >
                     <figcaption><b>Figura 1.1</b> Vector de posición \(\vec r\), indicando la trayectoria de un objeto y su posición en un instante, t, respecto a un sistema de coordenadas dado.</figcaption>
                 </figure>
+
                 <p>
                     Si conocoemos la trayectoria del punto móvil (por ejemplo, una línea recta, una circunferencia, etc.), entonces el problema de describir su movimiento se simplifica mucho. Lo único que necesitamos encontrar es una ecuación que nos diga en qué punto de esa trayectoria se encuentra el objeto en cada instante de tiempo. Si llamamos <strong>s</strong> al <strong>camino recorrido</strong> o <strong>longitud de la trayectoria</strong>, el problema cinemático se reduce por tanto a conocer s = f(t). 
                 </p>
@@ -93,21 +114,18 @@
                     Entonces, para representar el cambio de posición del punto material, definimos el <strong>vector desplazamiento</strong> \(\Delta \vec r\) en el intervalo de tiempo [\(t_1\), \(t_2\)] como un vector cuyo origen es la posición del punto en el instante \(t_1\) y cuyo extremo es la posición en el instante \(t_2\).
                 </p>
                 <p> De este modo,</p>
-                <div class="container">
-                    <div  class="center">\(\Delta\vec r = \vec r(t_2) - \vec r(t_1)\)</div>
-                    <div  class="right" id="[1.2]">[1.2]</div>
+                <div is:raw>
+                    <div  class="center" is:raw is:raw is:raw is:raw is:raw is:raw is:raw is:raw is:raw>\(\Delta\vec r = \vec r(t_2) - \vec r(t_1)\)</div>
                 </div>
                 <p>Si llamamos \(\Delta t\) al intervalo de tiempo transcurrido, podemos escribir</p>
                 <p>&emsp; \(t_1 = t\)</p>
                 <p>&emsp; \(t_2 = t + \Delta t\)</p>
-                <div class="container">
-                    <div  class="center">\(\Delta\vec r = \vec r(t + \Delta t) - \vec r(t)\)</div>
-                    <div  class="right" id="[1.3]">[1.3]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>\(\Delta\vec r = \vec r(t + \Delta t) - \vec r(t)\)</div>
                 </div>
                 <p>que puede expresarse también como</p>
-                <div class="container">
-                    <div  class="center">\(\Delta\vec r = \Delta x\vec i + \Delta y\vec j + \Delta z\vec k\)</div>
-                    <div  class="right" id="[1.4]">[1.4]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>\(\Delta\vec r = \Delta x\vec i + \Delta y\vec j + \Delta z\vec k\)</div>
                 </div>
                 <p>
                     donde \(\Delta x\), \(\Delta y\) y \(\Delta z\) representan cómo varían las coordenadas del punto en el intervalo de tiempo considerado.
@@ -133,27 +151,24 @@
                     <figcaption><b>Figura 1.3</b> Vectores de posición \(\vec r_1\) y \(\vec r_2\), vector desplazamiento \(\vec \Delta r\) y vectores velocidad \(\vec v_1\) y \(\vec v_2\) de un móvil.</figcaption>
                 </figure>
                 <p>
-                    Se define la <strong>velocidad media</strong> \(\vec v_{med}\) en el intervalo de tiempo \(\Delta t\) como:
+                    Se define la <strong>velocidad media</strong> <span is:raw>\(\vec v_{med}\)</span> en el intervalo de tiempo \(\Delta t\) como:
                 </p>
-                <div class="container">
-                    <div  class="center">$$ \vec v_{med} = \frac{\Delta \vec r}{\Delta t} $$</div>
-                    <div  class="right" id="[1.5]">[1.5]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec v_{med} = \frac{\Delta \vec r}{\Delta t} $$</div>
                 </div>
                 <p>
                     La <strong>velocidad instantánea</strong> \(\vec v\) se define como:
                 </p>
-                <div class="container">
-                    <div  class="center">$$ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \frac{d \vec r}{d t} $$</div>
-                    <div  class="right" id="[1.6]">[1.6]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \frac{d \vec r}{d t} $$</div>
                 </div>
                 <p>Es decir, como la rapidez del cambio del vector de posición \(\vec r\) respecto al tiempo.</p>
                 <p>Podemos observar que \(\Delta \vec r\) está contenido en una recta secante a la trayectoria. Y que, cuando \(\Delta t \) tiende a cero, el límite de las secantes es la tangente que toca la trayectoria en \(\vec r\). Y, en consecuencia, \(\vec v\) es simpre un vector tangente a la trayectoria.</p>
                 <p>
                     Teniendo esto en cuenta, si referimos la velocidad instantánea al camino recorrido, o a la longitud de la trayectoria, durante \(\Delta t\), la velocidad instantánea puede desarrollarse en la forma siguiente:  
                 </p>
-                <div class="container">
-                    <div  class="center">$$ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \frac{\Delta s}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \lim_{\Delta t\to 0} \frac{\Delta s}{\Delta t} $$</div>
-                    <div  class="right" id="[1.7]">[1.7]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \frac{\Delta s}{\Delta t} = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta s}\cdot \lim_{\Delta t\to 0} \frac{\Delta s}{\Delta t} $$</div>
                 </div>
                 <p>
                     A cada vector desplazamiento \(\Delta \vec r\) le corresponde una longitud de trayectoria \(\Delta s\), para cada intervalo de tiempo \(\Delta t\). Normalmente, \(\Delta s > \vert \Delta \vec r \vert \), pero al considerar intervalos de tiempo \(\Delta t\) que tienden a cero, ambos valores tienden a coincidir. Es decir, si \(\Delta t \to 0\), el arco \(\Delta s \to \) la cuerda \(\vert \Delta \vec r \vert \). Y el primer límite será un vector de módulo unidad, tangente a la trayectoria y sentido el del movimiento. Vector que simbolizaremos por \(\vec \tau\).
@@ -162,26 +177,22 @@
                     El segundo límite es un escalar y representa el módulo de la velocidad instantánea \(\vert \vec v \vert\), se denomina <strong>celeridad</strong> y se representa por \(v\).
                 </p>
                 <p>Así pues,</p>
-                <div class="container">
-                    <div  class="center">$$ \vec v = v\cdot \vec\tau $$</div>
-                    <div  class="right" id="[1.8]">[1.8]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec v = v\cdot \vec\tau $$</div>
                 </div>
                 <p>
                     Si referimos la velocidad instantánea a los componentes del vector posición, podemos expresar la velocidad instantánea de la siguiente forma:
                 </p>
-                <div class="container">
-                    <div  class="center">$$ \vec v = \frac {d\vec r}{dt} = \frac {dx}{dt}\vec i + \frac {dy}{dt}\vec j + \frac {dz}{dt}\vec k $$</div>
-                    <div  class="right" id="[1.9]">[1.9]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec v = \frac {d\vec r}{dt} = \frac {dx}{dt}\vec i + \frac {dy}{dt}\vec j + \frac {dz}{dt}\vec k $$</div>
                 </div>
                 <p>O sea,</p>
-                <div class="container">
-                    <div  class="center">$$ \vec v = v_x\vec i + v_y\vec j + v_z\vec k $$</div>
-                    <div  class="right" id="[1.10]">[1.10]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec v = v_x\vec i + v_y\vec j + v_z\vec k $$</div>
                 </div>
                 <p>Donde el módulo de la velocidad instantánea será:</p>
-                <div class="container">
-                    <div  class="center">$$ v = \vert \vec v\vert = \sqrt{v_x^2+v_y^2+v_z^2} $$</div>
-                    <div  class="right" id="[1.11]">[1.11]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ v = \vert \vec v\vert = \sqrt{v_x^2+v_y^2+v_z^2} $$</div>
                 </div>
             </section>
             <section id="acceleration"><!-- Added id for navigation -->
@@ -195,9 +206,8 @@
                 <p>
                     La <strong>aceleración media</strong> representa lo que varía la velocidad en cada unidad de tiempo, o el vector que resulta de dividir la variación de velocidad en un intervalo de tiempo dado entre dicho intervalo.
                 </p>
-                <div class="container">
-                    <div  class="center">$$ \vec a = \frac{\Delta\vec v}{\Delta t} = \frac{\Delta v_x}{\Delta t}\vec i +  \frac{\Delta v_y}{\Delta t}\vec j +  \frac{\Delta v_z}{\Delta t}\vec k $$</div>
-                    <div  class="right" id="[1.12]">[1.12]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec a = \frac{\Delta\vec v}{\Delta t} = \frac{\Delta v_x}{\Delta t}\vec i +  \frac{\Delta v_y}{\Delta t}\vec j +  \frac{\Delta v_z}{\Delta t}\vec k $$</div>
                 </div>
                 <figure class="centered">
                     <svg id="svg1_4"></svg >
@@ -206,9 +216,9 @@
                 <p>
                     La <strong>aceleración instantánea</strong> es la aceleración que tiene la partícula en cualquier instante \(t\), o en cualquier punto de la trayectoria. De modo que podemos expresar la aceleración instantánea como el valor límite de la aceleración media cuando el intervalo de tiempo tiende a cero.
                 </p>
-                <div class="container">
-                    <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \frac{d \vec v}{d t} = \frac{d^2 \vec r}{d t^2} $$</div>
-                    <div  class="right" id="[1.13]">[1.13]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \frac{d \vec v}{d t} = \frac{d^2 \vec r}{d t^2} $$</div>
+                </div>
                 </div>
                 <p>
                     La aceleración media tiene escaso valor práctico. Mientras que la aceleración instantánea tiene gran importacia. Por lo que, a partir de ahora, siempre nos referiremos a la aceleración instantánea cuando hablemos de aceleración.
@@ -217,14 +227,12 @@
                 <p>
                     Si conocemos la función que expresa el vector posición en función del tiempo \(\vec r = f(t)\), podemos expresar las <strong>componentes cartesianas de la aceleración</strong> como:
                 </p>
-                <div class="container">
-                    <div  class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d (v_x\vec i + v_y\vec j + v_z\vec k)}{d t} = \frac{dv_x}{dt}\vec i + \frac{dv_y}{dt}\vec j + \frac{dv_z}{dt}\vec k = a_x\vec i + a_y\vec j + a_z\vec k $$</div>
-                    <div  class="right" id="[1.14]">[1.14]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec a = \frac{d \vec v}{d t} = \frac{d (v_x\vec i + v_y\vec j + v_z\vec k)}{d t} = \frac{dv_x}{dt}\vec i + \frac{dv_y}{dt}\vec j + \frac{dv_z}{dt}\vec k = a_x\vec i + a_y\vec j + a_z\vec k $$</div>
                 </div>
                 <p>El <strong>módulo de la aceleración</strong> será entonces:</p>
-                <div class="container">
-                    <div  class="center">$$ \vert \vec a\vert = \sqrt{a_x^2+a_y^2+a_z^2} $$</div>
-                    <div  class="right" id="[1.15]">[1.15]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vert \vec a\vert = \sqrt{a_x^2+a_y^2+a_z^2} $$</div>
                 </div>
                 <p><u>Componentes Intrínsecas de la Aceleración</u></p>
                 <p>Cuando analizamos el movimiento de un objeto a lo largo de una trayectoria curva, resulta muy útil describir su aceleración en términos de un sistema de referencia que se adapte a la forma de esa curva en cada instante. Este sistema de referencia se denomina intrínseco porque está ligado a la propia trayectoria.</p>
@@ -234,52 +242,46 @@
                     <li><strong>Un eje tangente:</strong> Este eje es una línea recta que pasa por el punto considerado de la trayectoria y es paralela a la velocidad del objeto en ese instante. Indica la dirección en la que se mueve el objeto.</li>
                     <li><strong>Un eje normal:</strong> Este eje es una línea recta perpendicular al eje tangente en el punto considerado. Apunta hacia el centro de curvatura de la trayectoria.</li>
                 </ul>
-                <p>Asociado al eje tangente, definimos el <strong>vector tangente unitario, \(\vec {\tau}\)</strong>. Y, asociado al eje normal, definimos el <strong>vector normal unitario, \(\vec {\eta}\)</strong>.</p>
-                <p>Juntos, el punto considerado de la trayectoria, el vector tangente unitario, \(\vec {\tau}\), y el vector normal unitario, \(\vec {\mu}\), forman un sistema de coordenadas local que se mueve y rota a medida que el objeto se desplaza a lo largo de la curva.</p>
+                <p>Asociado al eje tangente, definimos el <strong>vector tangente unitario, <span is:raw>\(\vec {\tau}\)</span></strong>. Y, asociado al eje normal, definimos el <strong>vector normal unitario, <span is:raw>\(\vec {\eta}\)</span></strong>.</p>
+                <p>Juntos, el punto considerado de la trayectoria, el vector tangente unitario, <span is:raw>\(\vec {\tau}\)</span>, y el vector normal unitario, <span is:raw>\(\vec {\eta}\)</span>, forman un sistema de coordenadas local que se mueve y rota a medida que el objeto se desplaza a lo largo de la curva.</p>
                 <p>Al descomponer el vector aceleración en estos ejes, obtenemos dos componentes:</p>
                 <ul>
-                    <li><strong>Aceleración tangencial (\(a_{\tau}\)):</strong> Esta componente indica la tasa de cambio del módulo de la velocidad. Si es positiva, el objeto acelera; si es negativa, el objeto frena.</li>
-                    <li><strong>Aceleración normal (\(a_{\eta}\)):</strong> Esta componente mide la tasa de cambio de la dirección de la velocidad. Siempre apunta hacia el centro de curvatura y está relacionada con la rapidez con la que el objeto cambia de dirección.</li>
+                    <li><strong>Aceleración tangencial <span is:raw>\(a_{\tau}\)</span>:</strong> Esta componente indica la tasa de cambio del módulo de la velocidad. Si es positiva, el objeto acelera; si es negativa, el objeto frena.</li>
+                    <li><strong>Aceleración normal <span is:raw>\(a_{\eta}\)</span>:</strong> Esta componente mide la tasa de cambio de la dirección de la velocidad. Siempre apunta hacia el centro de curvatura y está relacionada con la rapidez con la que el objeto cambia de dirección.</li>
                 </ul>                
                 <p>Si conocemos la curva que define la trayectoria de la partícula y su camino recorrido en función del tiempo \(s=f(t)\), podemos expresar la variación de la velocidad \(\Delta \vec v\) entre dos puntos de la trayectoria, \(P_1\) y \(P_2\), donde la velocidad de la partícula es \(\vec v_1\) y \(\vec v_2\) respectivamente, mediante la composición de dos vectores: uno en la dirección de \(\vec v_1\) y otro perpendicular a \(\vec v_1\). Entonces, la variación de la velocidad sería:</p>
-                <div class="container">
-                    <div  class="center">$$ \Delta \vec v = \Delta\vec v_{\tau} + \Delta\vec v_{\eta}  $$</div>
-                    <div  class="right" id="[1.16]">[1.16]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \Delta \vec v = \Delta\vec v_{\tau} + \Delta\vec v_{\eta}  $$</div>
                 </div>
                 <p>La aceleración media sería:</p>
-                <div class="container">
-                    <div  class="center">$$ \frac{\Delta \vec v}{\Delta t} = \frac{\Delta\vec v_{\tau}}{\Delta t} + \frac{\Delta\vec v_{\eta}}{\Delta t}  $$</div>
-                    <div  class="right" id="[1.17]">[1.17]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \frac{\Delta \vec v}{\Delta t} = \frac{\Delta\vec v_{\tau}}{\Delta t} + \frac{\Delta\vec v_{\eta}}{\Delta t}  $$</div>
                 </div>
                 <p>Y la aceleración instantánea sería:</p>
-                <div class="container">
-                    <div  class="center">$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\tau}}{\Delta t} + \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\eta}}{\Delta t} = \vec a_{\tau} + \vec a_{\eta} = a_{\tau}\vec {\tau} + a_{\mu}\vec {\eta} $$</div>
-                    <div  class="right" id="[1.18]">[1.18]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\tau}}{\Delta t} + \lim_{\Delta t\to 0}\frac{\Delta\vec v_{\eta}}{\Delta t} = \vec a_{\tau} + \vec a_{\eta} = a_{\tau}\vec {\tau} + a_{\eta}\vec {\eta} $$</div>
                 </div>
                 <p>
                     Entonces, la aceleración instantánea de un móvil se puede expresar, en cada punto de dicha trayectoria, mediante las <strong>componentes intrínsecas de la aceleración</strong>; esto es, como la suma de dos aceleraciones: una en la dirección tangente a la trayectoria (<strong>aceleración tangencial</strong>) y otra en la dirección normal a la trayectoria (<strong>aceleración normal</strong>).
                 </p>
                 <p>Calculemos ahora los módulos de la aceleración tangencial y de la aceleración normal. Derivando la expresión de la velocidad en base a la trayectoria <a href="#[1.8]">[1.8]</a>.</p>
-                <div class="container">
-                    <div  class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d (v\cdot \vec\tau)}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d \vec\tau}{d t} $$ </div>
-                    <div  class="right" id="[1.19]">[1.19]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec a = \frac{d \vec v}{d t} = \frac{d (v\cdot \vec\tau)}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d \vec\tau}{d t} $$ </div>
                 </div>
-                <p>Relacionando <a href="#[1.18]">[1.18]</a> y <a href="#[1.19]">[1.19]</a>, se observa que el primer término de 1.19 \(\frac{d v}{d t}\cdot \vec\tau\) es la aceleración tangencial. Y entonces, el <strong>módulo de la aceleración tangencial</strong> es simplemente la derivada temporal del módulo de la velocidad:</p>
-                <div class="container">
-                    <div  class="center"> $$ a_{\tau} = \left \vert \frac{\Delta \vec v}{\Delta t} \right \vert $$ </div>
-                    <div  class="right" id="[1.20]">[1.20]</div>
+                <p>Relacionando <a href="#[1.18]">[1.18]</a> y <a href="#[1.19]">[1.19]</a>, se observa que el primer término de 1.19 <span is:raw>\(\frac{d v}{d t}\cdot \vec\tau\)</span> es la aceleración tangencial. Y entonces, el <strong>módulo de la aceleración tangencial</strong> es simplemente la derivada temporal del módulo de la velocidad:</p>
+                <div is:raw>
+                    <div  class="center" is:raw> $$ a_{\tau} = \left \vert \frac{\Delta \vec v}{\Delta t} \right \vert $$ </div>
                 </div>
-                <p>De igual forma, el segundo término de <a href="#[1.19]">[1.19]</a> \(v \cdot \frac{d \vec\tau}{d t}\) corresponde con la aceleración normal, representa la tasa de cambio de la <strong>dirección</strong> de la velocidad, y se dirige en la misma dirección que el vector unitario normal \( \vec\eta \).</p>
+                <p>De igual forma, el segundo término de <a href="#[1.19]">[1.19]</a> <span is:raw>\(v \cdot \frac{d \vec\tau}{d t}\)</span> corresponde con la aceleración normal, representa la tasa de cambio de la <strong>dirección</strong> de la velocidad, y se dirige en la misma dirección que el vector unitario normal <span is:raw>\( \vec\eta \)</span>.</p>
                 <p> 
-                <div class="container">
-                    <div  class="center">$$ v \cdot \frac{d \vec\tau}{d t} = v \cdot \frac{d (\vert \vec\tau\vert\cdot\vec\eta)}{d t} = v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta $$ </div>
-                    <div  class="right" id="[1.21]">[1.21]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ v \cdot \frac{d \vec\tau}{d t} = v \cdot \frac{d (\vert \vec\tau\vert\cdot\vec\eta)}{d t} = v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta $$ </div>
                 </div>  
                 </p>
                 <p>Consideremos un pequeño desplazamiento a lo largo de la trayectoria; tan pequeño que la trayectoria de ese pequeño desplazamiento se aproxima a un arco de circunferencia con un cierto radio R. Entoncer, durante este desplazamiento, el objeto recorre un arco de circunferencia de radio R (llamado radio de curvatura) y subtiende un ángulo \( d\theta \) radianes.</p>
                 <p>De la definición de radián (un radián es el ángulo central de una circunferencia que subtiende un arco de longitud igual al radio de la circunferencia) encontramos que \( d s = R \cdot d\theta \).</p>
                 <p>Para ángulos pequeños, podemos aproximar el cambio del vector unitario tangente \(\vec\tau\) al arco de circunferencia que describe la punta del vector al girar. La longitud de este arco es aproximadamente igual al radio de la circunferencia (que es 1, ya que estamos hablando de un vector unitario) multiplicado por el ángulo \( d \theta \). Por tanto, para pequeños ángulos, podemos escribir \( \vert d\vec\tau \vert \approx d\theta \). Entonces: </p>
-                <p> 
+                <p is:raw> 
                     $$
                     \left.
                         \begin{align}
@@ -293,24 +295,21 @@
                 </p>
                 <p>Entonces, reescribiendo <a href="#[1.19]">[1.19]</a> </p>
                 <p>
-                    <div class="container">
-                    <div  class="center">$$ \vec a = \frac{d \vec v}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d\tau}{d s}\cdot \frac{d s}{d t}\cdot \vec\eta = \frac{d v}{d t}\cdot \vec\tau + {v^2 \over R}\cdot \vec\eta $$</div>
-                    <div  class="right" id="[1.22]">[1.22]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \vec a = \frac{d \vec v}{d t} = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{\vert d\vec\tau\vert}{d t}\cdot\vec\eta = \frac{d v}{d t}\cdot \vec\tau + v \cdot \frac{d\tau}{d s}\cdot \frac{d s}{d t}\cdot \vec\eta = \frac{d v}{d t}\cdot \vec\tau + {v^2 \over R}\cdot \vec\eta $$</div>
                 </div>     
                 </p>
                 <p>Finalmente, comparando con <a href="#[1.18]">[1.18]</a> obtenemos que las coordenadas intrínsecas de la aceleración son: </p>
-                <p><strong>1. Aceleración Tangencial (\(a_{\tau}\)):</strong></p>
+                <p><strong>1. Aceleración Tangencial <span is:raw>\(a_{\tau}\)</span>:</strong></p>
                 <p>Esta componente es responsable del <strong>cambio en la magnitud de la velocidad</strong> (es decir, el cambio en la celeridad o rapidez). Es paralela a la dirección del movimiento en cada instante. Su expresión se define como:</p>
-                <div class="container">
-                    <div  class="center">$$ a_{\tau} = \frac{d v}{d t} $$</div>
-                    <div  class="right" id="[1.23]">[1.23]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ a_{\tau} = \frac{d v}{d t} $$</div>
                 </div>
-                <p>donde \(v\) es la magnitud de la velocidad (celeridad) y \(t\) es el tiempo. Si la partícula acelera, \(a_{\tau}\) será positiva; si desacelera, será negativa.</p>
-                <p><strong>2. Aceleración Normal (\(a_{\eta}\)):</strong></p>
+                <p>donde \(v\) es la magnitud de la velocidad (celeridad) y \(t\) es el tiempo. Si la partícula acelera, <span is:raw>\(a_{\tau}\)</span> será positiva; si desacelera, será negativa.</p>
+                <p><strong>2. Aceleración Normal <span is:raw>\(a_{\eta}\)</span>:</strong></p>
                 <p>Esta componente es responsable del <strong>cambio en la dirección de la velocidad</strong>. Siempre es perpendicular a la trayectoria y apunta hacia el centro de curvatura de la trayectoria en ese punto. Su expresión se define como:</p>
-                <div class="container">
-                    <div  class="center">$$ a_{\eta} = \frac{v^2}{R} $$</div>
-                    <div  class="right" id="[1.24]">[1.24]</div>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ a_{\eta} = \frac{v^2}{R} $$</div>
                 </div>
                 <p>donde \(v\) es la magnitud de la velocidad (celeridad) y \(R\) es el radio de curvatura de la trayectoria en ese punto. Esta componente es siempre no negativa, ya que siempre se requiere un cambio de dirección para el movimiento curvo.</p>
                 <p>Podemos decir que las coordenadas intrínsecas ofrecen una visión intuitiva de cómo la aceleración afecta tanto la velocidad de la partícula como la forma de su trayectoria.</p>
@@ -333,18 +332,23 @@
                     <li>La velocidad es constante en módulo: recorre espacios iguales en tiempos iguales.</li>
                 </ul>
                 <p>También se puede definir en función de la aceleración diciendo: <strong>Movimiento rectilíneo uniforme (MRU)</strong> es aquel que no tiene aceleración. Esto supone:</p>
-                \[ a_{\tau} = \frac{dv}{dt} = 0 \implies v = \text{cte} \]
-				\[ a_{\eta} = \frac{v^2}{R} = 0 \implies R = \infty \quad \text{La trayectoria es una recta.} \]
+                <div  is:raw>
+                    \[ a_{\tau} = \frac{dv}{dt} = 0 \implies v = \text{cte} \]
+				    \[ a_{\eta} = \frac{v^2}{R} = 0 \implies R = \infty \quad \text{La trayectoria es una recta.} \]
+                </div>
                 <p>Para deducir la ley que rige este movimiento partimos de la definición de velocidad instantánea <a href="#[1.6]">[1.6]</a>:</p>
-                \[ \vec v = \frac{d \vec r}{dt} \implies d \vec r = \vec v dt \]
+                <div is:raw>
+                    \[ \vec v = \frac{d \vec r}{dt} \implies d \vec r = \vec v dt \]
+                </div>
                 <p>Para despejar el vector de posición integramos la ecuación anterior</p>
                 \[ \vec r (t) = \int \vec v dt = \vec v \int dt = \vec v t + C \]
                 <p>Esta función se ha de cumplir para cualquier valor de \(t\). Luego también para \(t = 0\)</p>
+                <div is:raw>
                 \[ \left. \begin{matrix} \vec{r} = \vec v t + C \\ t = 0 \end{matrix} \right\} \implies \vec{r}_0 = C \]
-                <p>La constante de integración es la posición inicial \(\vec{r}_0\) y, entonces, la <strong>ecuación vectorial del MRU</strong> será:</p>
-                <div class="container">
-                    <div  class="center">$$\vec r (t) = \vec{r}_0 + \vec v t$$</div>
-                    <div  class="right" id="[1.25]">[1.25]</div>
+                </div>
+                <p>La constante de integración es la posición inicial <span is:raw>\(\vec{r}_0\)</span> y, entonces, la <strong>ecuación vectorial del MRU</strong> será:</p>
+                <div is:raw>
+                    <div  class="center" is:raw>$$\vec r (t) = \vec{r}_0 + \vec v t$$</div>
                 </div>
                 <figure class="centered">
                     <svg id="svg1_5"></svg >
@@ -356,21 +360,26 @@
                     <figcaption><b>Figura 1.6</b> En un movimiento rectilíneo se puede tomar la dirección de movimiento como sistema de referencia.</figcaption>
                 </figure>                
                 <p>Así, la ecuación anterior se reduce a una ecuación escalar:</p>
+                <div is:raw>
                 \[ x(t) = x_0 + vt \quad \text{ecuación de la posición.} \]
+                </div>
                 <p>Entonces, para el MRU, expresamos el desplazamiento como un escalar, cuyo valor coincide con la distancia recorrida:</p>
+                <div is:raw>
                 \[ \left. \begin{matrix} \Delta x = x(t_2) - x(t_1) = v\Delta t \\ \Delta x = \Delta s \end{matrix} \right \} \implies \Delta s = v\Delta t  \]
+                </div>
                 <p>De igual manera, para este tipo de movimientono, podemos representar la velocidad mediante un escalar. Así, la velocidad media es:</p>
+                <div is:raw>
                 \[ v = \frac{\Delta x}{\Delta t} = \frac{\Delta s}{\Delta t} \]
+                </div>
                 <p>Al establecer un sistema de referencia unidimensional, resulta sumamente útil emplear un <strong>diagrama x-t</strong> para representar el movimiento. Este diagrama es, por definición, la representación gráfica de la función \(x = f(t)\) que describe el movimiento.</p>
                 <p>Para un movimiento rectilíneo uniforme, donde la posición viene dada por \(x = x_0 + vt\), el diagrama x-t se visualiza como una línea recta. En esta representación, la ordenada en el origen (el punto donde la recta cruza el eje vertical) corresponde a la posición inicial del móvil (\(x_0\)), y la pendiente de esta recta nos indica directamente la velocidad del móvil.</p>
                 <figure class="centered">
                     <svg id="svg1_7"></svg >
                     <figcaption><b>Figura 1.7 </b>Gráfica de \(x = f(t)\) para un movimiento rectilíneo uniforme.</figcaption>
                 </figure>
-                <p>En el diagrama x-t del MRU, <strong>la pendiente (\(\text{tg } \alpha\))</strong>  de la recta que describe la trayectoria del moviemiento, calculada sobre un intervalo de tiempo determinado, se obtiene dividiendo el cambio en la coordenada vertical (que es la posición del móvil) por el cambio en la coordenada horizontal (que es el tiempo transcurrido). En el diagrama x-t, esto corresponde directamente a la <strong>velocidad media</strong> del movimiento durante ese intervalo:</p>
-                <div class="container">
-                    <div  class="center">$$ \text{tg } \alpha = \frac{x(t_1) - x_0}{t_1} = v_{\text{media}}$$</div>
-                    <div class="right" id="[1.26]">[1.26]</div>
+                <p>En el diagrama x-t del MRU, <strong>la pendiente <span is:raw>(\(\text{tg } \alpha\))</span></strong>  de la recta que describe la trayectoria del moviemiento, calculada sobre un intervalo de tiempo determinado, se obtiene dividiendo el cambio en la coordenada vertical (que es la posición del móvil) por el cambio en la coordenada horizontal (que es el tiempo transcurrido). En el diagrama x-t, esto corresponde directamente a la <strong>velocidad media</strong> del movimiento durante ese intervalo:</p>
+                <div is:raw>
+                    <div  class="center" is:raw>$$ \text{tg } \alpha = \frac{x(t_1) - x_0}{t_1} = v_{\text{media}}$$</div>
                 </div>
                 
                 <table class="table-type1">
@@ -386,7 +395,7 @@
                     <tbody>
                         <tr>
                             <td><strong>Vector de posición:</strong></td>
-                            <td>\( \vec{r}(t) = \vec{r}_0 + \vec{v} \; t \)</td>
+                            <td is:raw>\( \vec{r}(t) = \vec{r}_0 + \vec{v} \; t \)</td>
                         </tr>
                         <tr>
                             <td><strong>Posición (escalar):</strong></td>
@@ -394,7 +403,7 @@
                         </tr>
                         <tr>
                             <td><strong>Velocidad:</strong></td>
-                            <td>\( v = \text{cte} \)</td>
+                            <td is:raw>\( v = \text{cte} \)</td>
                         </tr>
                         <tr>
                             <td><strong>Desplazamiento:</strong></td>
@@ -414,28 +423,31 @@
                 <p>Al no tener aceleración normal, la trayectoria de este movimiento describirá una línea recta. Entonces, si elegimos como sistema de referencia la dirección del movimiento, igual que hicimos en el movimiento rectilíneo y uniforme, todas las magnitudes vectoriales se convierten en escalares.</p>
 
                 <p>Partiendo de la definición de aceleración tangencial e integrando obtenemos la ecuación de la velocidad en cualquier instante:</p>
+                <div is:raw>
                 \[ a = \frac{dv}{dt} \Rightarrow dv = a \, dt \Rightarrow v(t) = \int a \, dt = a \int dt = at + C \]
+                </div>
                 <p>Esta función se ha de cumplir para cualquier valor de \(t\). Luego también para \(t = 0\).</p>
+                <div is:raw>
                 \[ \left. \begin{matrix} v(t) = at + C \\ t = 0 \end{matrix} \right\} \implies v_0 = C \]
-
+                </div>
                 <p>La constante de integración representa la velocidad inicial.</p>
                 <p>La ecuación del movimiento que permite calcular la velocidad en cualquier instante es:</p>
-                <div class="container">
+                <div is:raw>
                     <div class="center">\[ v(t) = v_0 + at \]</div>
-                    <div class="right" id="[1.27]">[1.27]</div>
                 </div>
                 <p>Para hallar la ecuación de la posición en cualquier instante, partimos de la definición de velocidad e integramos:</p>
+                <div is:raw>
                 \[
                 v = \frac{dx}{dt} \Rightarrow dx = v \, dt \Rightarrow x(t) = \int v \, dt = \int (v_0 + at) \, dt \\
                 = \int v_0 \, dt + \int at \, dt = v_0 \int dt + a \int t \, dt = v_0 t + \frac{1}{2} at^2 + C
                 \]
+                </div>
                 <p>Si esta función se ha de cumplir para cualquier valor del tiempo, la constante de integración representa la posición inicial \(C = x_0\).</p>
                 <p>La <strong>ecuación escalar del MRUA</strong>, que nos da la posición en cualquier instante será:</p>
-                <div class="container">
+                <div is:raw>
                     <div class="center">
                         \[ x(t) = x_0 + v_0 t + \frac{1}{2} at^2 \]
                     </div>
-                    <div class="right" id="[1.28]">[1.28]</div>
                 </div>
 				<p>Para representar el MRUA en un diagrama x-t, representamos la función \(x=f(t)\), donde la posición viene dada por <a href="#[1.28]">[1.28]</a>. El diagrama x-t se visualiza como una parábola, cuya ordenada en el origen corresponde a la posición inicial del móvil (\(x_0\)).</p>
 				<figure class="centered">
@@ -443,9 +455,8 @@
                     <figcaption><b>Figura 1.8 </b>Gráfica de \(x = f(t)\) para un movimiento rectilíneo uniformemente acelerado.</figcaption>
                 </figure>
 				<p>A diferencia del MRU donde la velocidad es constante, en el MRUA la velocidad varía continuamente. Para comprender la velocidad en un instante específico, recurrimos al concepto de velocidad instantánea. Similar a cómo la tangente en el MRU representa la velocidad constante, en el MRUA, donde la gráfica de posición vs. tiempo (\(x\) vs. \(t\)) es una curva (una parábola), <strong>la velocidad instantánea en cada punto de la curva corresponde a la pendiente de la recta tangente a la curva en ese instante</strong>. Esta pendiente instantánea es, por definición, la derivada de la posición respecto al tiempo:</p>
-				<div class="container">
+				<div is:raw>
 				    <div class="center">$$ \text{tg } \alpha = \frac{dx}{dt} = v_{\text{instantánea}} $$</div>
-				    <div class="right" id="[1.29]">[1.29]</div>
 				</div>
                 <h4>Resumen de ecuaciones del MRUA</h4>
                 <table class="table-type1">
@@ -461,7 +472,7 @@
                     <tbody>
                         <tr>
                             <td><strong>Aceleración:</strong></td>
-                            <td>\( a = \text{cte} \)</td>
+                            <td is:raw>\( a = \text{cte} \)</td>
                         </tr>
                         <tr>
                             <td><strong>Velocidad:</strong></td>
@@ -482,9 +493,8 @@
                 <ul>
                     <li><strong>Aceleración Tangencial (\(a_t\)):</strong> Esta componente de la aceleración actúa en la dirección del movimiento (tangente a la trayectoria) y es la responsable de cambiar la <strong>magnitud de la velocidad</strong> (la rapidez) del objeto. En el MCU, la rapidez es, por definición, constante. Por lo tanto, no hay cambio en la magnitud de la velocidad, lo que significa que la <strong>aceleración tangencial es nula (\(a_t = 0\))</strong>.</li>
                     <li><strong>Aceleración Normal o Centrípeta (\(a_n\)):</strong> Esta componente actúa perpendicular a la velocidad y siempre apunta hacia el centro de la curvatura de la trayectoria. Es la responsable de cambiar la <strong>dirección de la velocidad</strong>. Para que un objeto se mueva en un círculo, la dirección de su velocidad debe cambiar continuamente. En el MCU, la trayectoria es una circunferencia de radio \(R\), y la magnitud de la aceleración normal se mantiene constante, dada por la fórmula:
-                    <div class="container">
+                    <div is:raw>
                         <div class="center">\[ a_n = \frac{v^2}{R} \]</div>
-                        <div class="right" id="[1.30]">[1.30]</div>
                     </div>
                     Dado que la rapidez (\(v\)) y el radio (\(R\)) son constantes en el MCU, la magnitud de la aceleración normal (\(a_n\)) también lo es.</li>
                 </ul>
@@ -495,37 +505,38 @@
                     <li><strong>El Ángulo (\(\theta\)):</strong> La segunda coordenada polar es el ángulo \(\theta\), que representa la posición angular del móvil respecto a un eje de referencia (usualmente el eje \(x\) positivo). Este ángulo se mide en <strong>radianes</strong>.</li>
                 </ul>
                 <p><strong>Definición de Radián:</strong> Un radián es la unidad de medida de un ángulo que subtiende un arco de longitud igual al radio de un círculo. Si el arco de una circunferencia mide \(s\) y el radio de la circunferencia es \(R\), entonces el ángulo \(\theta\) (en radianes) subtendido por ese arco es:</p>
-                <div class="container">
+                <div is:raw>
                         <div class="center">\[ \theta = \frac{s}{R} \]</div>
-                        <div class="right" id="[1.31]">[1.31]</div>
                 </div>
                 <p>De esta definición, podemos deducir una relación fundamental: la longitud de un arco (\(s\)) en una circunferencia es igual al radio (\(R\)) multiplicado por el ángulo (\(\theta\)) que subtiende ese arco (medido en radianes). Para un cambio infinitesimal en la posición angular \(d\theta\), la longitud del arco infinitesimal \(ds\) es:</p>
                 \[ ds = R d\theta \]
                 <p>Esta relación conecta la distancia recorrida a lo largo de la trayectoria (una cantidad lineal) con el cambio en la posición angular (una cantidad angular).</p>
                 <h4><u>La Velocidad Angular (\(\omega\)) como Constante del MCU</u></h4>
                 <p>A partir de la aceleración tangencial nula (\(a_t=0\)), confirmamos que la <strong>rapidez lineal (\(v = ds/dt\)) es constante</strong>. Utilizando la relación \(ds = R d\theta\), podemos expresar la rapidez lineal como:</p>
+                <div is:raw>
                 \[ v = \frac{ds}{dt} = \frac{R d\theta}{dt} = R \frac{d\theta}{dt} \]
-                <p>La cantidad \(\frac{d\theta}{dt}\) es la <strong>velocidad angular (\(\omega\))</strong>, que representa la rapidez con la que el ángulo \(\theta\) cambia con el tiempo. Por lo tanto, tenemos:</p>
-                <div class="container">
+                </div>
+                <p>La cantidad <span is:raw>\( \frac{d\theta}{dt} \)</span> es la <strong>velocidad angular (\(\omega\))</strong>, que representa la rapidez con la que el ángulo \(\theta\) cambia con el tiempo. Por lo tanto, tenemos:</p>
+                <div is:raw>
                         <div class="center">\[ v = \omega R \]</div>
-                        <div class="right" id="[1.32]">[1.32]</div>
                 </div>
                 <p>Dado que \(v\) es constante y \(R\) (el radio de la circunferencia) también lo es, se deduce que la <strong>velocidad angular (\(\omega\)) también debe ser constante</strong> para el MCU. Esta constante \(\omega\) (medida en radianes por segundo) es la piedra angular para describir la posición en el tiempo.</p>
                 <h4><u>Ecuación de Movimiento para la Posición Angular e Integración</u></h4>
                 <p>La definición de velocidad angular como la tasa de cambio de la posición angular nos da la siguiente ecuación diferencial:</p>
-                <div class="container">
+                <div is:raw>
                         <div class="center"> \[ \omega = \frac{d\theta}{dt} \]</div>
-                        <div class="right" id="[1.33]">[1.33]</div>
                 </div>
                 <p>Dado que \(\omega\) es constante en el MCU, podemos resolver esta sencilla ecuación diferencial mediante integración. Multiplicamos por \(dt\) para separar las variables:</p>
                 \[ d\theta = \omega dt \]
                 <p>Ahora, integramos ambos lados. Si en el instante inicial \(t=0\) la posición angular es \(\theta_0\), y en un instante \(t\) la posición angular es \(\theta(t)\):</p>
+                <div is:raw>
                 \[ \int_{\theta_0}^{\theta(t)} d\theta = \int_{0}^{t} \omega dt \]
                 \[ [\theta]_{\theta_0}^{\theta(t)} = \omega [t]_{0}^{t} \]
                 \[ \theta(t) - \theta_0 = \omega (t - 0) \]
-                <div class="container">
+                </div>
+                <p>Despejando \(\theta(t)\), obtenemos la expresión para la posición angular en cualquier instante \(t\):</p>
+                <div is:raw>
                         <div class="center">\[ \theta(t) = \omega t + \theta_0 \]</div>
-                        <div class="right" id="[1.34]">[1.34]</div>
                 </div>
                 <p>La ecuación <a href="#[1.34]">[1.34]</a> nos da la <strong>posición angular</strong> del móvil en cualquier instante de tiempo \(t\). Así, la posición del móvil en coordenadas polares en cualquier instante \(t\) es \((R, \omega t + \theta_0)\).</p>
                 <h4><u>Transformación a Coordenadas Cartesianas: El Vector de Posición</u></h4>
@@ -535,62 +546,82 @@
                 <p>Sustituyendo \(r=R\) y la expresión de \(\theta(t)\) que acabamos de derivar:</p>
                 \[ x(t) = R \cos(\omega t + \theta_0) \]
                 \[ y(t) = R \sin(\omega t + \theta_0) \]
-                <p>El <strong>vector de posición</strong> \(\vec{r}(t)\) se construye usando los vectores unitarios \(\hat{i}\) (para la dirección \(x\)) y \(\hat{j}\) (para la dirección \(y\)):</p>
+                <p>El <strong>vector de posición</strong> <span is:raw>\(\vec{r}(t)\)</span> se construye usando los vectores unitarios <span is:raw>\(\hat{i}\)</span> (para la dirección \(x\)) y <span is:raw>\(\hat{j}\)</span> (para la dirección \(y\)):</p>
+                <div is:raw>
                 \[ \vec{r}(t) = x(t) \hat{i} + y(t) \hat{j} \]
+                </div>
                 <p>Al sustituir las expresiones para \(x(t)\) e \(y(t)\), obtenemos el <strong>vector de posición para el MCU</strong> :</p>
-                <div class="container">
+                <div is:raw>
                         <div class="center">\[ \vec{r}(t) = (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \]</div>
-                        <div class="right" id="[1.35]">[1.35]</div>
                 </div>
                 <p>La ecuación <a href="#[1.35]">[1.35]</a> nos permite conocer la ubicación exacta de un objeto en MCU en cualquier instante de tiempo, a partir de su radio, velocidad angular constante y posición angular inicial.</p>
                 <h4><u>El Vector Velocidad en Coordenadas Cartesianas</u></h4>
-                <p>Una vez que tenemos el vector de posición \(\vec{r}(t)\), podemos obtener el <strong>vector velocidad</strong> \(\vec{v}(t)\) derivando \(\vec{r}(t)\) con respecto al tiempo:</p>
+                <p>Una vez que tenemos el vector de posición <span is:raw>\(\vec{r}(t)\)</span>, podemos obtener el <strong>vector velocidad</strong> <span is:raw>\(\vec{v}(t)\)</span> derivando <span is:raw>\(\vec{r}(t)\)</span> con respecto al tiempo:</p>
+                <div is:raw>
                 \[ \vec{v}(t) = \frac{d\vec{r}(t)}{dt} = \frac{d}{dt} \left[ (R \cos(\omega t + \theta_0)) \hat{i} + (R \sin(\omega t + \theta_0)) \hat{j} \right] \]
+                </div>
                 <p>Derivando componente a componente:</p>
+                <div is:raw>
                 \[ v_x(t) = \frac{d}{dt} (R \cos(\omega t + \theta_0)) = -R \sin(\omega t + \theta_0) \cdot \omega = -R\omega \sin(\omega t + \theta_0) \]
                 \[ v_y(t) = \frac{d}{dt} (R \sin(\omega t + \theta_0)) = R \cos(\omega t + \theta_0) \cdot \omega = R\omega \cos(\omega t + \theta_0) \]
+                </div>
                 <p>Por lo tanto, el vector velocidad es:</p>
+                <div is:raw>
                 \[ \vec{v}(t) = (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \]
+                </div>
                 <p>Ahora, calculemos el <strong>módulo (magnitud) de este vector velocidad</strong> para verificar que coincide con la rapidez constante \(v = R\omega\):</p>
+                <div is:raw>
                 \[ \|\vec{v}(t)\| = \sqrt{v_x(t)^2 + v_y(t)^2} \]
                 \[ \|\vec{v}(t)\| = \sqrt{(-R\omega \sin(\omega t + \theta_0))^2 + (R\omega \cos(\omega t + \theta_0))^2} \]
                 \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 \sin^2(\omega t + \theta_0) + R^2\omega^2 \cos^2(\omega t + \theta_0)} \]
                 \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 (\sin^2(\omega t + \theta_0) + \cos^2(\omega t + \theta_0))} \]
+                </div>
                 <p>Dado que \(\sin^2(x) + \cos^2(x) = 1\):</p>
+                <div is:raw>
                 \[ \|\vec{v}(t)\| = \sqrt{R^2\omega^2 \cdot 1} = \sqrt{R^2\omega^2} = |R\omega| \]
+                </div>
                 <p>Como \(R\) y \(\omega\) son magnitudes positivas, el módulo de la velocidad es:</p>
-                <div class="container">
+                <div is:raw>
                         <div class="center">\[ \|\vec{v}(t)\| = R\omega \]</div>
-                        <div class="right" id="[1.36]">[1.36]</div>
                 </div>
                 <p>Esto confirma que la magnitud del vector velocidad es la rapidez constante \(R\omega\), como esperábamos para el MCU.</p>
                 <h4><u>El Vector Aceleración en Coordenadas Cartesianas</u></h4>
-                <p>Para obtener el <strong>vector aceleración</strong> \(\vec{a}(t)\), derivamos el vector velocidad \(\vec{v}(t)\) con respecto al tiempo:</p>
+                <p>Para obtener el <strong>vector aceleración</strong> <span is:raw>\(\vec{a}(t)\)</span>, derivamos el vector velocidad <span is:raw>\(\vec{v}(t)\)</span> con respecto al tiempo:</p>
+                <div is:raw>
                 \[ \vec{a}(t) = \frac{d\vec{v}(t)}{dt} = \frac{d}{dt} \left[ (-R\omega \sin(\omega t + \theta_0)) \hat{i} + (R\omega \cos(\omega t + \theta_0)) \hat{j} \right] \]
+                </div>
                 <p>Derivando componente a componente:</p>
+                <div is:raw>
                 \[ a_x(t) = \frac{d}{dt} (-R\omega \sin(\omega t + \theta_0)) = -R\omega \cos(\omega t + \theta_0) \cdot \omega = -R\omega^2 \cos(\omega t + \theta_0) \]
                 \[ a_y(t) = \frac{d}{dt} (R\omega \cos(\omega t + \theta_0)) = -R\omega \sin(\omega t + \theta_0) \cdot \omega = -R\omega^2 \sin(\omega t + \theta_0) \]
+                </div>
                 <p>Por lo tanto, el vector aceleración es:</p>
+                <div is:raw>
                 \[ \vec{a}(t) = (-R\omega^2 \cos(\omega t + \theta_0)) \hat{i} + (-R\omega^2 \sin(\omega t + \theta_0)) \hat{j} \]
+                </div>
                 <p>Podemos factorizar \(-R\omega^2\) de la expresión:</p>
+                <div is:raw>
                 \[ \vec{a}(t) = -R\omega^2 [ (\cos(\omega t + \theta_0)) \hat{i} + (\sin(\omega t + \theta_0)) \hat{j} ] \]
-                <p>Observa que la expresión entre corchetes es precisamente el vector de posición \(\vec{r}(t)\) dividido por \(R\), es decir, el vector unitario en la dirección del radio, \(\hat{u}_r = \frac{\vec{r}(t)}{R}\). Esto significa que la aceleración siempre apunta en la dirección opuesta al vector de posición (hacia el centro del círculo), lo cual es coherente con la aceleración centrípeta.</p>
+                </div>
+                <p>Observa que la expresión entre corchetes es precisamente el vector de posición <span is:raw>\(\vec{r}(t)\)</span> dividido por \(R\), es decir, el vector unitario en la dirección del radio, <span is:raw>\(\hat{u}_r = \frac{\vec{r}(t)}{R}\)</span>. Esto significa que la aceleración siempre apunta en la dirección opuesta al vector de posición (hacia el centro del círculo), lo cual es coherente con la aceleración centrípeta.</p>
+                <div is:raw>
                 \[ \vec{a}(t) = -\omega^2 \vec{r}(t) \]
+                </div>
                 <p>Finalmente, calculemos el <strong>módulo del vector aceleración</strong>:</p>
+                <div is:raw>
                 \[ \|\vec{a}(t)\| = \sqrt{a_x(t)^2 + a_y(t)^2} \]
                 \[ \|\vec{a}(t)\| = \sqrt{(-R\omega^2 \cos(\omega t + \theta_0))^2 + (-R\omega^2 \sin(\omega t + \theta_0))^2} \]
                 \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 \cos^2(\omega t + \theta_0) + R^2\omega^4 \sin^2(\omega t + \theta_0)} \]
                 \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 (\cos^2(\omega t + \theta_0) + \sin^2(\omega t + \theta_0))} \]
                 \[ \|\vec{a}(t)\| = \sqrt{R^2\omega^4 \cdot 1} = \sqrt{R^2\omega^4} = |R\omega^2| \]
+                </div>
                 <p>Como \(R\) y \(\omega\) son positivos, el módulo de la aceleración es:</p>
-                <div class="container">
+                <div is:raw>
                         <div class="center">\[ \|\vec{a}(t)\| = R\omega^2 \]</div>
-                        <div class="right" id="[1.37]">[1.37]</div>
                 </div>
                 <p>Recordando que la rapidez lineal \(v = R\omega\), podemos sustituir \(\omega = v/R\) en la expresión de la aceleración:</p>
-                <div class="container">
+                <div is:raw>
                         <div class="center">\[ \|\vec{a}(t)\| = R \left(\frac{v}{R}\right)^2 = R \frac{v^2}{R^2} = \frac{v^2}{R} \]</div>
-                        <div class="right" id="[1.38]">[1.38]</div>
                 </div>
                 <p>Esto confirma que el módulo del vector aceleración es precisamente la <strong>aceleración centrípeta (\(a_n\))</strong> que definimos al principio, lo cual es coherente con la ausencia de aceleración tangencial en el MCU. La aceleración total es puramente centrípeta, encargándose solo de cambiar la dirección del vector velocidad.</p>
                 <h4>Resumen de ecuaciones del MCU</h4>
@@ -607,7 +638,7 @@
                     <tbody>
                         <tr>
                             <td><strong>Velocidad angular</strong></td>
-                            <td>\( \omega = \text{cte},\; \omega = \dfrac{d\theta}{dt} \)</td>
+                            <td is:raw>\( \omega = \text{cte},\; \omega = \dfrac{d\theta}{dt} \)</td>
                         </tr>
                         <tr>
                             <td><strong>Posición angular</strong></td>
@@ -619,11 +650,11 @@
                         </tr>
                         <tr>
                             <td><strong>Vector velocidad</strong></td>
-                            <td>\( \vec{v}(t) = -R\omega\sin(\omega t+\theta_0)\,\hat{i} + R\omega\cos(\omega t+\theta_0)\,\hat{j},\; \|\vec{v}\|=R\omega \)</td>
+                            <td is:raw>\( \vec{v}(t) = -R\omega\sin(\omega t+\theta_0)\,\hat{i} + R\omega\cos(\omega t+\theta_0)\,\hat{j},\; \|\vec{v}\|=R\omega \)</td>
                         </tr>
                         <tr>
                             <td><strong>Vector aceleración</strong></td>
-                            <td>\( \vec{a}(t) = -R\omega^2\cos(\omega t+\theta_0)\,\hat{i} - R\omega^2\sin(\omega t+\theta_0)\,\hat{j},\; \|\vec{a}\|=R\omega^2 = \dfrac{v^2}{R} \)</td>
+                            <td is:raw>\( \vec{a}(t) = -R\omega^2\cos(\omega t+\theta_0)\,\hat{i} - R\omega^2\sin(\omega t+\theta_0)\,\hat{j},\; \|\vec{a}\|=R\omega^2 = \dfrac{v^2}{R} \)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -631,13 +662,15 @@
             <section id="mcua">
                 <h3>1.6.4 Movimiento Circular Uniformemente Acelerado (MCUA)</h3>
 
-                <p>El <strong>MCUA</strong> es aquel movimiento de trayectoria circular en el que la aceleración angular se mantiene constante en el tiempo <strong>(\(\alpha = \text{cte} \neq 0\))</strong>. Esto implica que la velocidad angular $\omega$ aumenta o disminuye de manera uniforme.</p>
+                <p>El <strong>MCUA</strong> es aquel movimiento de trayectoria circular en el que la aceleración angular se mantiene constante en el tiempo <strong><span is:raw>(\(\alpha = \text{cte} \neq 0\))</span></strong>. Esto implica que la velocidad angular $\omega$ aumenta o disminuye de manera uniforme.</p>
 
                 <h4>Comportamiento de las componentes intrínsecas</h4>
                 <p>Dado que ya conocemos la naturaleza vectorial de la aceleración, en el MCUA sus componentes se comportan de la siguiente manera:</p>
                 <ul>
                     <li><strong>Aceleración Tangencial (\( a_t \)):</strong> Es <strong>constante</strong>. Al ser \( \alpha \) constante y el radio \( R \) fijo, el ritmo al que varía el módulo de la velocidad es uniforme:
+                        <div is:raw>
                         $$a_t = \alpha \cdot R = \text{cte}$$
+                        </div>
                     </li>
                     <li><strong>Aceleración Normal (\( a_n \)):</strong> Es <strong>variable</strong>. Aunque \( R \) sea constante, la velocidad angular \( \omega \) cambia con el tiempo. Por tanto, la aceleración necesaria para curvar la trayectoria aumenta con el cuadrado de la velocidad:
                         $$a_n(t) = \omega(t)^2 \cdot R$$
@@ -649,29 +682,34 @@
 
                 <p><strong>1. Ecuación de la velocidad angular (\( \omega \)):</strong><br>
                 Definimos la aceleración angular como la derivada de la velocidad angular respecto al tiempo e integramos:</p>
-                $$\alpha = \frac{d\omega}{dt} \implies \int_{\omega_0}^{\omega} d\omega = \alpha \int_{0}^{t} dt$$
-                <div class="container">
-                        <div class="center">\[ \omega(t) = \omega_0 + \alpha t \]</div>
-                        <div class="right" id="[1.39]">[1.39]</div>
+                <div is:raw>
+                    $$\alpha = \frac{d\omega}{dt} \implies \int_{\omega_0}^{\omega} d\omega = \alpha \int_{0}^{t} dt$$
+                </div>
+                <div is:raw>
+                    <div class="center">\[ \omega(t) = \omega_0 + \alpha t \]</div>
                 </div>
 
                 <p><strong>2. Ecuación de la posición angular (\( \varphi \)):</strong><br>
                 Definimos la velocidad angular como la derivada de la posición e integramos la expresión obtenida anteriormente:</p>
+                <div is:raw>
                 $$\omega = \frac{d\varphi}{dt} \implies d\varphi = (\omega_0 + \alpha t) dt$$
                 $$\int_{\varphi_0}^{\varphi} d\varphi = \int_{0}^{t} (\omega_0 + \alpha t) dt$$
-                <div class="container">
+                </div>
+                <div  is:raw>
                         <div class="center">\[ \varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2} \alpha t^2 \]</div>
-                        <div class="right" id="[1.40]">[1.40]</div>
                 </div>
 
                 <h4>Relación independiente del tiempo</h4>
                 <p>Para relacionar la velocidad angular con el ángulo girado sin depender del tiempo, aplicamos la regla de la cadena a la aceleración angular:</p>
+                <div is:raw>
                 $$\alpha = \frac{d\omega}{dt} = \frac{d\omega}{d\varphi} \cdot \frac{d\varphi}{dt} = \omega \frac{d\omega}{d\varphi}$$
+                </div>
                 <p>Separando variables e integrando, obtenemos:</p>
+                <div is:raw>
                 $$\alpha \int_{\varphi_0}^{\varphi} d\varphi = \int_{\omega_0}^{\omega} \omega \, d\omega \implies \alpha \Delta\varphi = \frac{1}{2}\omega^2 - \frac{1}{2}\omega_0^2$$
-                <div class="container">
+                </div>
+                <div is:raw>
                         <div class="center">\[ \omega^2 - \omega_0^2 = 2 \alpha \Delta\varphi \]</div>
-                        <div class="right" id="[1.41]">[1.41]</div>
                 </div>
 
                 <table class="table-type1">
@@ -687,7 +725,7 @@
                     <tbody>
                         <tr>
                             <td><strong>Aceleración angular:</strong></td>
-                            <td>\( \alpha = \text{cte} \)</td>
+                            <td is:raw>\( \alpha = \text{cte} \)</td>
                         </tr>
                         <tr>
                             <td><strong>Velocidad angular:</strong></td>
@@ -695,7 +733,7 @@
                         </tr>
                         <tr>
                             <td><strong>Posición angular:</strong></td>
-                            <td>\( \varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2}\alpha t^2 \)</td>
+                            <td is:raw>\( \varphi(t) = \varphi_0 + \omega_0 t + \frac{1}{2}\alpha t^2 \)</td>
                         </tr>
                         <tr>
                             <td><strong>Relación independiente del tiempo:</strong></td>
@@ -734,18 +772,18 @@
             <section id="movimiento-parabolico">
                 <h3>1.8 Movimiento Parabólico (Lanzamiento de Proyectiles)</h3>
 
-                <p>El movimiento parabólico es un caso práctico fundamental de la <strong>composición de movimientos</strong>. Se produce cuando lanzamos un objeto con una velocidad inicial \( \vec{v}_0 \) que forma un ángulo \( \theta \) respecto a la horizontal. Al despreciar el rozamiento con el aire, el movimiento resultante es la superposición de dos movimientos independientes:</p>
+                <p>El movimiento parabólico es un caso práctico fundamental de la <strong>composición de movimientos</strong>. Se produce cuando lanzamos un objeto con una velocidad inicial <span is:raw>\( \vec{v}_0 \)</span> que forma un ángulo \( \theta \) respecto a la horizontal. Al despreciar el rozamiento con el aire, el movimiento resultante es la superposición de dos movimientos independientes:</p>
 
                 <ul>
                     <li><strong>En el eje horizontal (Eje X):</strong> Un Movimiento Rectilíneo Uniforme (MRU), ya que no existe ninguna aceleración en esta dirección.</li>
-                    <li><strong>En el eje vertical (Eje Y):</strong> Un Movimiento Rectilíneo Uniformemente Acelerado (MRUA), sujeto a la aceleración de la gravedad \( g \approx 9,8 \, \text{m/s}^2 \), que apunta siempre hacia el centro de la Tierra.</li>
+                    <li><strong>En el eje vertical (Eje Y):</strong> Un Movimiento Rectilíneo Uniformemente Acelerado (MRUA), sujeto a la aceleración de la gravedad <span is:raw>\( g \approx 9,8 \, \text{m/s}^2 \)</span>, que apunta siempre hacia el centro de la Tierra.</li>
                 </ul>
 
                 <h4>Descomposición de la velocidad inicial</h4>
                 <p>Partiendo de las coordenadas polares de la velocidad inicial, obtenemos sus componentes cartesianas:</p>
                 <ul>
-                    <li>\( v_{0x} = v_0 \cdot \cos(\theta) \)</li>
-                    <li>\( v_{0y} = v_0 \cdot \sin(\theta) \)</li>
+                    <li is:raw>\( v_{0x} = v_0 \cdot \cos(\theta) \)</li>
+                    <li is:raw>\( v_{0y} = v_0 \cdot \sin(\theta) \)</li>
                 </ul>
 
                 <h4>Ecuaciones del movimiento</h4>
@@ -754,53 +792,60 @@
                 <p><strong>1. Ecuaciones de la velocidad:</strong></p>
                 <p>En el eje X la velocidad permanece constante, mientras que en el eje Y varía uniformemente:</p>
                 <ul>
-                    <li>\( v_x(t) = v_{0x} = v_0 \cdot \cos(\theta) \)</li>
-                    <li>\( v_y(t) = v_{0y} - g \cdot t = v_0 \cdot \sin(\theta) - g \cdot t \)</li>
+                    <li is:raw>\( v_x(t) = v_{0x} = v_0 \cdot \cos(\theta) \)</li>
+                    <li is:raw>\( v_y(t) = v_{0y} - g \cdot t = v_0 \cdot \sin(\theta) - g \cdot t \)</li>
                 </ul>
 
                 <p><strong>2. Ecuaciones de la posición:</strong></p>
                 <p>Integrando las expresiones de la velocidad respecto al tiempo (considerando el origen en el suelo, \( x_0=0, y_0=0 \)):</p>
                 <ul>
-                    <li><strong>Eje X (Horizontal):</strong> \( x(t) = v_{0x} \cdot t = (v_0 \cdot \cos\theta) \cdot t \)</li>
-                    <li><strong>Eje Y (Vertical):</strong> \( y(t) = v_{0y} \cdot t - \frac{1}{2}g \cdot t^2 = (v_0 \cdot \sin\theta) \cdot t - \frac{1}{2}g \cdot t^2 \)</li>
+                    <li><strong>Eje X (Horizontal):</strong> <span is:raw>\( x(t) = v_{0x} \cdot t = (v_0 \cdot \cos\theta) \cdot t \)</span></li>
+                    <li><strong>Eje Y (Vertical):</strong> <span is:raw>\( y(t) = v_{0y} \cdot t - \frac{1}{2}g \cdot t^2 = (v_0 \cdot \sin\theta) \cdot t - \frac{1}{2}g \cdot t^2 \)</span></li>
                 </ul>
 
                 <h4>Ecuación de la trayectoria</h4>
                 <p>Si despejamos el tiempo \( t \) en la ecuación de la posición horizontal y lo sustituimos en la vertical, obtenemos la relación \( y = f(x) \):</p>
+                <div is:raw>
                 $$y(x) = \tan(\theta) \cdot x - \frac{g}{2 v_0^2 \cos^2(\theta)} \cdot x^2$$
+                </div>
                 <p>Esta expresión corresponde matemáticamente a una <strong>parábola</strong>, lo que confirma la geometría de este movimiento compuesto.</p>
 
                 <h4>Altura máxima y alcance horizontal</h4>
                 <p>Para completar el estudio del lanzamiento de proyectiles, es fundamental calcular dos parámetros que definen la geometría del disparo: la altura máxima y el alcance horizontal.</p>
 
-                <h5><strong>A) Altura Máxima (\( H_{max} \))</strong></h5>
+                <h5><strong>A) Altura Máxima <span is:raw>\( H_{max} \)</span></strong></h5>
                 <p>Se alcanza cuando el proyectil agota su impulso vertical y comienza a descender. En este punto cumbre, la componente vertical de la velocidad es nula: \( v_y = 0 \).</p>
                 
                 <p>1. Usamos la ecuación de la velocidad en el eje Y para hallar el <strong>tiempo de subida</strong> (\( t_s \)):</p>
+                <div is:raw>
                 \[ 0 = v_0 \sin\theta - g t_s \implies t_s = \frac{v_0 \sin\theta}{g} \]
+                </div>
                 
                 <p>2. Sustituimos este tiempo en la ecuación de la posición vertical (\( y \)):</p>
+                <div is:raw>
                 \[ H_{max} = (v_0 \sin\theta) \left( \frac{v_0 \sin\theta}{g} \right) - \frac{1}{2}g \left( \frac{v_0 \sin\theta}{g} \right)^2 \]
+                </div>
                 
                 <p>3. Tras simplificar los términos, obtenemos la expresión final:</p>
-                <div class="container">
+                <div is:raw>
                     <div class="center">\[ H_{max} = \frac{v_0^2 \sin^2\theta}{2g} \]</div>
-                    <div class="right" id="[1.42]">[1.42]</div>
                 </div>
 
                 <h5><strong>B) Alcance Horizontal (\( R \))</strong></h5>
                 <p>Es la distancia total recorrida en el eje X cuando el objeto regresa al nivel de lanzamiento (\( y = 0 \)).</p>
                 
                 <p>1. En un lanzamiento simétrico, el <strong>tiempo de vuelo</strong> (\( t_v \)) es el doble del tiempo de subida:</p>
+                <div is:raw>
                 \[ t_v = 2 t_s = \frac{2 v_0 \sin\theta}{g} \]
-                
+                </div>
                 <p>2. Sustituimos el tiempo de vuelo en la ecuación de la posición horizontal (\( x \)):</p>
+                <div is:raw>
                 \[ R = (v_0 \cos\theta) \left( \frac{2 v_0 \sin\theta}{g} \right) = \frac{v_0^2 (2 \sin\theta \cos\theta)}{g} \]
-                
+                </div>
+
                 <p>3. Aplicando la identidad trigonométrica del ángulo doble (\( 2 \sin\theta \cos\theta = \sin(2\theta) \)), llegamos a:</p>
-                <div class="container">
+                <div is:raw>
                     <div class="center">\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]</div>
-                    <div class="right" id="[1.43]">[1.43]</div>
                 </div>
 
                 <p><strong>Análisis:</strong> El alcance máximo se logra cuando \( \sin(2\theta) = 1 \). Esto ocurre cuando \( 2\theta = 90^\circ \), es decir, para un ángulo de disparo de <strong>45°</strong>.</p>
@@ -824,19 +869,19 @@
                         </tr>
                         <tr>
                             <td><strong>Velocidad</strong></td>
-                            <td>\( v_x = v_{0x} \)</td>
-                            <td>\( v_y = v_{0y} - gt \)</td>
+                            <td is:raw>\( v_x = v_{0x} \)</td>
+                            <td is:raw>\( v_y = v_{0y} - gt \)</td>
                         </tr>
                         <tr>
                             <td><strong>Posición</strong></td>
-                            <td>\( x = v_{0x}t \)</td>
-                            <td>\( y = v_{0y}t - \frac{1}{2}gt^2 \)</td>
+                            <td is:raw>\( x = v_{0x}t \)</td>
+                            <td is:raw>\( y = v_{0y}t - \frac{1}{2}gt^2 \)</td>
                         </tr>
                     </tbody>
                 </table>
             </section>
         </article>
         <!--Load the JavaScript file for the vectors page -->
-        <script type="module" src="/src/pages/kinematicsPage.js"></script>
+        <script type="module" src="/src/scripts/pages/kinematicsPage.js"></script>
     </body>
 </html>

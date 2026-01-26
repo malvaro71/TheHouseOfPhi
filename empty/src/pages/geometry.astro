@@ -1,0 +1,178 @@
+---
+/* 
+  geometry.astro
+  Página migrada desde geometry.html
+  Mantiene estructura, estilos, MathJax y módulos ES.
+*/
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>TheHouseOfPhi Geometry</title>
+    <meta name="author" content="Miguel Angel Alvaro" />
+    <meta
+      name="description"
+      content="Subpage showing information about geometry."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/styles.css" />
+
+    <!-- MathJax configuration -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["$$", "$$"]],
+        },
+        svg: {
+          fontCache: "global",
+        },
+      };
+    </script>
+
+    <!-- MathJax library -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1 id="Home">2. GEOMETRY</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#Geometry">Geometry</a></li>
+      </ul>
+    </nav>
+
+    <section>
+      <h3 id="Introduction">1.1 Introduction</h3>
+      <p>
+        In this chapter, we show concepts about Geometry that will be used along the website.
+      </p>
+    </section>
+
+    <section>
+      <h3>2.2 Pythagorean theorem</h3>
+      <p>
+        In any right triangle \(\triangle ABC\), where c is the length of the hypotenuse and a and b are the lengths of the legs,
+      </p>
+
+      <div class="container">
+        <div class="center">\(a^2 + b^2 = c^2\)</div>
+        <div class="right" id="[2.1]">[2.2]</div>
+      </div>
+
+      <figure class="centered">
+        <img
+          src="/images/RightTriangle.svg"
+          width="300"
+          height="225"
+          alt="Right triangle diagram"
+        />
+        <figcaption>
+          <b>Figure 2.1</b> Right triangle with hypotenuse c and legs a and b.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h3>2.3 Graphical definitions of sine, cosine and tangent functions</h3>
+
+      <p>
+        Let's consider a circunference with radius of length r with centre at the origin <i>O</i> in a
+        rectangular coordinate system, and a point P with coordinates (x,y) in the circunference. And let's name &alpha; the angle between the x-axis and the segment OP, as shown in figure below. Then, \(\sin \alpha\) is the ratio y/r, `cos alpha` is the ratio x/r and \(\tan \alpha\) is the ratio y/x.
+      </p>
+
+      <figure class="centered">
+        <img
+          src="/images/Circunference_and_coordinates.svg"
+          width="300"
+          height="300"
+          alt="Diagram of a circle with point P and inscribed right triangle."
+        />
+        <figcaption>
+          <b>Figure 2.2</b> Circunference of radius r with a point P and angle &alpha; with x-axis.
+        </figcaption>
+      </figure>
+
+      <p>Then, we define the sine, cosine and tangent functions as:</p>
+
+      <div class="container">
+        <div class="center">\(\sin \alpha = y/r\)</div>
+        <div class="right" id="[2.2]">[2.2]</div>
+      </div>
+      <br />
+
+      <div class="container">
+        <div class="center">\(\cos \alpha = x/r\)</div>
+        <div class="right" id="[2.3]">[2.3]</div>
+      </div>
+      <br />
+
+      <div class="container">
+        <div class="center">\(\tan \alpha = y/x\)</div>
+        <div class="right" id="[2.4]">[2.4]</div>
+      </div>
+      <br />
+    </section>
+
+    <aside>
+      <h4>References</h4>
+      <ul>
+        <li>
+          <a
+            href="https://openstax.org/books/prealgebra-2e/pages/9-3-use-properties-of-angles-triangles-and-the-pythagorean-theorem"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            The Pitagorean Theorem. Prealgebra 2e. 9.3. Openstax.
+          </a>
+        </li>
+        <li>
+          <a
+            href="http://encyclopediaofmath.org/index.php?title=Pythagorean_theorem&oldid=40035"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pythagorean theorem. Encyclopedia of Mathematics.
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://encyclopediaofmath.org/wiki/Sine"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Sine. Encyclopedia of Mathematics.
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.mathsisfun.com/algebra/trigonometry.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Sine, Cosine and Tangent. Mathisfun.
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Using Right Triangles to Evaluate Trigonometric Functions. Openstax.
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Load your geometry page JS module -->
+    <script type="module" src="/src/scripts/pages/geometryPage.js"></script>
+  </body>
+</html>

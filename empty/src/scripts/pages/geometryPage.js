@@ -4,8 +4,8 @@
 // ===============================
 
 // Import core modules
-import { ensureSharedMarkerDefs } from '../core/SVGDrawing.js';
-import { CartesianPlane } from '../core/CartesianPlane.js';
+import { ensureSharedMarkerDefs } from '/src/scripts/core/SVGDrawing.js';
+import { CartesianPlane } from '/src/scripts/core/CartesianPlane.js';
 import * as math from 'mathjs';
 
 // Initialize shared SVG markers once

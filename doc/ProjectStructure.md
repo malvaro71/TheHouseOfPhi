@@ -10,37 +10,53 @@ The structure is designed to be clean, scalable, and aligned with the dependency
 
 ```
 TheHouseOfPhi/
-|   .gitignore
-|   eslint.config.mjs
-│   index.html
-|   package-lock.json
-|   package.json
-|   README.md
-|   vite.config.js
+|   ├── .gitignore
+|   ├── eslint.config.mjs
+│   ├── index.html
+|   ├── package-lock.json
+|   ├── package.json
+|   ├── README.md
+|   ├── vite.config.js
 |
 ├── .github
-│       copilot-instructions.md
+│    └── copilot-instructions.md
 |
 ├── .vscode
-|       settings.json
+|    └── settings.json
 |
 ├── doc
-|       ModuleReference.md
-|       ProjectDependencies.md
-|       ProjectStructure.md
+|   ├── ModuleReference.md
+|   ├── ProjectDependencies.md
+|   └── ProjectStructure.md
 |
 ├── node_modules
 |       ...
 |
-├── public/          ← scondary HTML's
-│       404.html
-|       geometry_es.html
-│       geometry.html
-│       kinematics_es.html
-│       kinematics.html
-│       vectors_es.html
-|       vectors.html
-│
+├── public/          ← secondary HTML's
+│   ├── 404.html
+|   ├── geometry_es.html        <-- Access: /geometry_es.html
+│   ├── geometry.html
+│   ├── kinematics_es.html
+│   ├── kinematics.html
+│   ├── vectors_es.html
+|   ├── vectors.html
+|   ├── forms/
+|   │   ├── indexForm.js        <-- Access: /forms/indexForm.js
+|   │   ├── vectorsForm.js
+|   │   ├── geometryForm.js      (future)
+|   │   └── kinematicsForm.js    (future)
+|   ├── images
+|   |   ├── CuriousMonkey.jpg   <-- Access: /images/CuriousMonkey.jpg
+|   |   └── ...
+|   |
+|   ├── pages/
+|   │   ├── indexPage.js        <-- Access: /pages/indexPage.js
+|   │   ├── geometryPage.js
+|   │   ├── vectorsPage.js
+|   │   └── kinematicsPage.js
+|   │
+|   └── styles
+|       └── styles.css          <-- Access: /styles/styles.css
 └── src/
    │
    ├── core/
@@ -48,31 +64,43 @@ TheHouseOfPhi/
    │   ├── CartesianPlane.js
    │   └── EuclideanSpace.js
    │
-   ├── forms/
-   │   ├── indexForm.js
-   │   ├── vectorsForm.js
-   │   ├── geometryForm.js      (future)
-   │   └── kinematicsForm.js    (future)
-   │
-   ├── images
-   |    ...
-   |
-   ├── pages/
-   │   ├── indexPage.js
-   │   ├── geometryPage.js
-   │   ├── vectorsPage.js
-   │   └── kinematicsPage.js
-   │
-   ├── styles
-   │       styles.css
-   │
    ├── utils/
    │   └── (empty for now)
    │
-   └── main.js   (optional)
+   └── main.js   (optional)       
 
 
-        
+/
+├─ public/
+│   ├─ images/
+│   ├─ svg/
+│   └─ cualquier archivo estático
+│
+├─ src/
+│   ├─ pages/
+│   │   ├─ index.astro
+│   │   ├─ geometry.astro
+│   │   ├─ geometry_es.astro
+│   │   └─ … resto de páginas
+│   │
+│   ├─ scripts/
+│   │   ├─ geometryPage.js
+│   │   ├─ vectorsPage.js
+│   │   ├─ kinematicsPage.js
+│   │   └─ utils.js
+│   │
+│   ├─ styles/
+│   │   └─ styles.css
+│   │
+│   ├─ components/
+│   │   └─ (si quieres modularizar)
+│   │
+│   └─ assets/
+│       └─ imágenes internas si las necesitas
+│
+├─ astro.config.mjs
+├─ package.json
+└─ tsconfig.json
 
 ```
 
