@@ -154,23 +154,55 @@ export function textWithSubscript(regular, subscript) {
 }
 
 /**
- * Renders a mathematical expression written in Math.js syntax into an HTML element using MathJax for LaTeX rendering.
+ * Renders a mathematical expression written in Math.js syntax into an HTML element using MathJax v3.
+ * This function assumes MathJax.startup.promise has already resolved.
  *
- * @param {HTMLElement} elementId The HTML element where the mathematical expression will be rendered.
- * @param {string} expression The mathematical expression to be rendered, written in a format parsable by Math.js (e.g., "x = x_0 + v_0*t + 1/2*a*t^2").
- * @returns {void}
- */
-export function renderMathExpression(elementId, expression) {
-	// Parse the expression using Math.js
-	const node = math.parse(expression);
+ * @param {HTMLElement} element The HTML element where the mathematical expression will be rendered.
+ * @param {string} expression The mathematical expression to be rendered, written in Math.js syntax.
+ *
+ */ 
+export async function renderMathExpression(element, expression) {
+    // Parse the expression using Math.js
+    const node = math.parse(expression);
 
-	// Convert the parsed expression to LaTeX
-	const latex = node.toTex({parenthesis: 'keep'});
+    // Convert the parsed expression to LaTeX
+    const latex = node.toTex({ parenthesis: 'keep' });
 
-	// Use MathJax to render the LaTeX expression
-	elementId.innerHTML = '';
-	elementId.innerHTML = MathJax.tex2svg(latex).outerHTML;
+    // Clear previous content
+    element.innerHTML = '';
+
+    // Render using MathJax v3 (asynchronous)
+    const svgNode = await MathJax.tex2svgPromise(latex);
+
+    // Convert the internal MathJax node to an actual SVG string
+    const svgString = MathJax.startup.adaptor.outerHTML(svgNode);
+
+    // Insert into the DOM
+    element.innerHTML = svgString;
 }
+
+/** 
+ * Renders a LaTeX math expression into an SVG using MathJax v3.
+ * This function assumes MathJax.startup.promise has already resolved.
+ * 
+ * @param {string} elementId - The ID of the HTML element where the SVG will be inserted.  
+ * @param {string} latex - The LaTeX expression to render. 
+ */ 
+
+export function renderMathExpressionSVG(elementId, latex) {
+    // Convert the LaTeX string into an SVG using MathJax v3. 
+    // tex2svg returns a DOM element containing the SVG. 
+    const svg = MathJax.tex2svg(latex).querySelector("svg"); 
+    
+    // Get the target element where the SVG will be placed. 
+    const container = document.getElementById(elementId); 
+    
+    // Clear any previous content to avoid duplicate renderings. 
+    container.innerHTML = ""; 
+    
+    // Insert the generated SVG into the page. 
+    container.appendChild(svg); }
+
 
 /**
  * Writes a value to an element's innerHTML.

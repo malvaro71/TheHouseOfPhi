@@ -593,6 +593,7 @@ function renderExerciseE6() {
 
 renderExerciseE6();
 
+
 // ======================================================
 // Exercise e_7 — Linear velocity v = w × r
 // ======================================================
@@ -633,7 +634,16 @@ function renderExerciseE7() {
     divResult.textContent = math.format(result);
 }
 
-renderExerciseE7();
+// Wait for MathJax to finish loading and initializing.
+// MathJax.startup.promise resolves ONLY when MathJax is fully ready.
+// This prevents errors like "MathJax.tex2svgPromise is not a function".
+MathJax.startup.promise.then(() => {
+
+    // Once MathJax is ready, call your page-specific rendering logic.
+    // For example, rendering Exercise E7.
+    renderExerciseE7();
+
+});
 
 // ======================================================
 // Exercise 2_8 — Area of triangle ABC in 3D

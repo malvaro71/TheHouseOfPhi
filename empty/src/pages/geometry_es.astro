@@ -1,45 +1,8 @@
 ---
-/*
-  geometry_es.astro
-  Migración desde geometry_es.html
-  Mantiene MathJax, estilos, estructura y semántica original.
-*/
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="es">
-    <head>
-    <meta charset="utf-8" />
-    <title>TheHouseOfPhi Geometría</title>
-    <meta name="author" content="Miguel Angel Alvaro" />
-    <meta
-      name="description"
-      content="Subpágina mostrando información sobre geometría."
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Styles -->
-    <link rel="stylesheet" href="/src/styles/styles.css" />
-    <!-- MathJax configuration -->
-    <script>
-      // Configuración básica para MathJax 3, solo delimitadores estándar
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']]
-        },
-        svg: {
-          fontCache: 'global'
-        }
-      };
-    </script>
-    <!-- MathJax library -->
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-    ></script>
-  </head>
-
-  <body>
+<BaseLayout title="TheHouseOfPhi Geometría">
     <article id="Anexo_Geometria">
         <header id="Home">
             <h1>Anexo 1: Fundamentos Geométricos para la Física</h1>
@@ -521,8 +484,8 @@
         </aside>
     </article>
 
-    <!-- Script de la página -->
-    <script type="module" src="/src/scripts/pages/geometryPage.js"></script>
-  </body>
-</html>
+    <script type="module">
+        import "/src/scripts/pages/geometryPage.js";
+    </script>
+</BaseLayout>
 

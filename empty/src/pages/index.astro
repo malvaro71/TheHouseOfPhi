@@ -1,70 +1,65 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-        
-        <title>The House of Phi</title>
-        <meta name="author" content="Miguel Angel Alvaro">
-        <meta name="description"
-            content="The Pre-Universitary Physics Area aims to provide Physics students with the necessary information to start a universitary Physics course. Making enphasys in example exercises where main Physics and Mathematics concepts are used. And providing references to these concepts">
-        <link rel="stylesheet" href="/src/styles/styles.css">           
-	</head>
-    <body>
-        <header>
-            <h1 class="lang lang-en" lang="en">WELCOME TO THE HOUSE OF PHI</h1>
-            <h1 class="lang lang-es" lang="es">BIENVENIDO A LA CASA DE PHI</h1>
-        </header>
-        <main>
-            <figure>
-                <img src="/images/CuriousMonkey.jpg" alt="A curious monkey" width="320" height="227">
-            </figure>
-            <label class="lang lang-en" lang="en" for="langSelector">Select Language:</label>
-            <label class="lang lang-es" lang="es" for="langSelector">Selecciona un Idioma:</label>
-            <select id="langSelector">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-            </select>
-            <nav>
-                <ul class="lang lang-en" lang="en">
-                    <li><a href="/vectors">1. Vectors</a></li>
-                    <li><a href="/kinematics">2. Kinematics</a></li>
-                    <li><a href="/geometry">A1. Geometry</a></li>
-                </ul>
-                <ul class="lang lang-es" lang="es">
-                    <li><a href="/vectors_es">1. Vectores</a></li>
-                    <li><a href="/kinematics_es">3. Cinemática</a></li>
-                    <li><a href="/geometry_es">A1. Geometría</a></li>
-                </ul>
-            </nav>
-        </main>
-        <footer>
-            <p class="lang lang-en" lang="en">Made by M.A. Álvaro.</p>
-            <p class="lang lang-es" lang="es">Hecho por M.A. Álvaro.</p>
+<BaseLayout title="The House of Phi">
+    <header>
+        <h1 class="lang lang-en" lang="en">WELCOME TO THE HOUSE OF PHI</h1>
+        <h1 class="lang lang-es" lang="es">BIENVENIDO A LA CASA DE PHI</h1>
+    </header>
 
-            <p class="lang lang-en" lang="en">
-                Website code in 
-                <a href="https://github.com/malvaro71/TheHouseOfPhi"
-                target="_blank" rel="noopener noreferrer">
-                    my GitHub repository</a>.
-            </p>
+    <main>
+        <figure>
+        <img src="/images/CuriousMonkey.jpg" alt="A curious monkey" width="320" height="227" />
+        </figure>
 
-            <p class="lang lang-es" lang="es">
-                El código de este sitio está disponible en 
-                <a href="https://github.com/malvaro71/TheHouseOfPhi"
-                target="_blank" rel="noopener noreferrer">
-                    mi repositorio GitHub</a>.
-            </p>
-        </footer>
-        <script type="module" src="/src/scripts/forms/indexForm.js"></script>
-    </body>
-</html>
+        <label class="lang lang-en" lang="en" for="langSelector">Select Language:</label>
+        <label class="lang lang-es" lang="es" for="langSelector">Selecciona un Idioma:</label>
+
+        <select id="langSelector">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        </select>
+
+        <nav>
+        <ul class="lang lang-en" lang="en">
+            <li><a href="/vectors">1. Vectors</a></li>
+            <li><a href="/kinematics">2. Kinematics</a></li>
+            <li><a href="/geometry">A1. Geometry</a></li>
+        </ul>
+
+        <ul class="lang lang-es" lang="es">
+            <li><a href="/vectors_es">1. Vectores</a></li>
+            <li><a href="/kinematics_es">3. Cinemática</a></li>
+            <li><a href="/geometry_es">A1. Geometría</a></li>
+        </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <p class="lang lang-en" lang="en">Made by M.A. Álvaro.</p>
+        <p class="lang lang-es" lang="es">Hecho por M.A. Álvaro.</p>
+
+        <p class="lang lang-en" lang="en">
+        Website code in
+        <a href="https://github.com/malvaro71/TheHouseOfPhi" target="_blank" rel="noopener noreferrer">
+            my GitHub repository
+        </a>.
+        </p>
+
+        <p class="lang lang-es" lang="es">
+        El código de este sitio está disponible en
+        <a href="https://github.com/malvaro71/TheHouseOfPhi" target="_blank" rel="noopener noreferrer">
+            mi repositorio GitHub
+        </a>.
+        </p>
+    </footer>
+
+    <script type="module">
+        import "/src/scripts/forms/indexForm.js";
+    </script>
+
+</BaseLayout>
 
 
 
