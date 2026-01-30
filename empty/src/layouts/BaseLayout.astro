@@ -1,29 +1,23 @@
 ---
-const { title = "The House of Phi" } = Astro.props;
-import "../styles/styles.css";
+import 'katex/dist/katex.min.css';
+import '../styles/styles.css';
+
+const { frontmatter } = Astro.props;
+const title = Astro.props.title || frontmatter?.title || "TheHouseOfPhi";
+const lang = Astro.props.lang || frontmatter?.lang || "es";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']]
-        },
-        svg: {
-          fontCache: 'global'
-        }
-      };
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
-  </head>
-
-  <body>
-    <slot />
-  </body>
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="TheHouseOfPhi - Proyecto didáctico de física" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
 </html>
