@@ -1,0 +1,36 @@
+---
+const { id, viewBox = "0 0 400 400", width = "100%", height = "400" } = Astro.props;
+---
+
+<svg id={id} viewBox={viewBox} width={width} height={height}></svg>
+
+<script>
+    import { geometryDrawings } from '../scripts/pages/geometryPage.js';
+    import { ensureSharedMarkerDefs } from '../scripts/core/SVGDrawing.js';
+
+    const initDrawings = () => {
+        console.log("VectorCanvas: Iniciando renderizado de gráficos...");
+        // Asegurar que los marcadores (flechas) estén definidos
+        ensureSharedMarkerDefs();
+
+        for (const [id, drawFunc] of Object.entries(geometryDrawings)) {
+            const svg = document.getElementById(id);
+            // Verificamos si existe, es función y si NO ha sido dibujado ya (para evitar duplicados)
+            if (svg && typeof drawFunc === 'function' && !svg.hasAttribute('data-drawn')) {
+                try {
+                    drawFunc(svg);
+                    svg.setAttribute('data-drawn', 'true'); // Marcamos como dibujado
+                    console.log(`✅ Gráfico ${id} dibujado.`);
+                } catch (e) {
+                    console.error(`❌ Error dibujando ${id}:`, e);
+                }
+            }
+        }
+    };
+
+    // Ejecutar inmediatamente (los scripts module se ejecutan tras el parseo del HTML)
+    initDrawings();
+    
+    // Soporte opcional por si activas View Transitions en el futuro
+    document.addEventListener('astro:after-swap', initDrawings);
+</script>

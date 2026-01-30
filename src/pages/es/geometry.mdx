@@ -1,0 +1,352 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: TheHouseOfPhi Geometría
+lang: es
+---
+import VectorCanvas from '../../components/VectorCanvas.astro';
+
+<article id="Anexo_Geometria">
+    <header id="Home">
+        # Anexo 1: Fundamentos Geométricos para la Física
+    </header>
+
+    <nav>
+        <ul>
+            <li>[Inicio](/)</li>
+            <li>[Geometría](#Geometry)</li>
+        </ul>
+    </nav>
+
+    <section id="A1_0_Introduccion">
+        ## Introducción
+        La física y la geometría son disciplinas inseparables. Mientras la primera busca comprender las leyes naturales que rigen el universo, la segunda proporciona el lenguaje y el marco estructural necesario para cuantificar el espacio donde ocurren estos fenómenos.
+
+        ### Importancia de la geometría como base para la física
+        Desde el estudio de la caída de un grave hasta la descripción de las órbitas planetarias, todo movimiento sigue una trayectoria definida por propiedades geométricas. El dominio de la trigonometría es esencial para la descomposición de magnitudes vectoriales, mientras que el conocimiento de las cónicas es la clave para entender la gravitación universal. Este anexo actúa como una "caja de herramientas" técnica a la que el lector puede acudir para facilitar la transición entre la intuición física y la resolución matemática precisa.
+
+        ### Bloques fundamentales del anexo
+        Este recurso se organiza en los siguientes bloques de consulta:
+        - **A1.1 Geometría del triángulo:** Propiedades básicas y teoremas fundamentales (Pitágoras, Seno y Coseno).
+        - **A1.2 Razones trigonométricas en el triángulo rectángulo:** Definiciones, identidades y aplicaciones.
+        - **A1.3 Geometría del círculo:** Elementos del círculo y la definición del radián.
+        - **A1.4 Funciones trigonométricas en la circunferencia:** El círculo unitario, gráficas y periodicidad.
+        - **A1.5 Sistema de coordenadas cartesianas:** Representación de puntos, rectas y funciones en el plano.
+        - **A1.6 Cónicas (Parábola y Elipse):** Definición y aplicaciones en física.
+        - **A1.7 Sistema de coordenadas polares:** Localización mediante radio y ángulo.
+    </section>
+
+    <section id="A1_1_Geometria_Triangulo">
+        ## A1.1 Geometría del triángulo
+        El triángulo es el polígono más simple y la unidad fundamental para la descomposición de casi cualquier magnitud física vectorial en el plano.
+
+        ### A1.1.1 Elementos básicos del triángulo y nomenclatura
+        Un triángulo es un polígono de tres lados que encierra una región del plano. Sus elementos fundamentales son los vértices, los lados y los ángulos. Para facilitar la resolución de problemas, se utiliza una **nomenclatura clásica** que relaciona estos elementos entre sí:
+
+        - **Vértices:** Son los puntos de intersección de los lados. Se representan con letras mayúsculas: $A$, $B$ y $C$.
+        - **Lados:** Son los segmentos que unen los vértices. Se representan con letras minúsculas: $a$, $b$ y $c$. La convención dicta que **el lado $a$ es el opuesto al vértice $A$**, el lado $b$ es el opuesto al vértice $B$, y así sucesivamente.
+        - **Ángulos:** Son las aperturas entre dos lados contiguos. Se pueden nombrar usando letras griegas ($\alpha$, $\beta$, $\gamma$) o mediante el nombre del vértice con un acento circunflejo ($\hat A$, $\hat B$, $\hat C$). Al igual que los lados, el ángulo $\alpha$ (o $\hat A $) se localiza en el vértice $A$.
+
+        Una propiedad ineludible en geometría euclidiana es que la suma de los ángulos internos de cualquier triángulo siempre es constante:
+
+        $$
+        \alpha + \beta + \gamma = 180^\circ = \pi \text{ rad}
+        $$
+
+        <figure className="centered">
+            <VectorCanvas id="svgA1_1_1" />
+            <figcaption><b>Figura 1.1</b> Triángulo $\triangle ABC$ con sus vértices, lados y ángulos.</figcaption>
+        </figure>
+
+        #### Semejanza de triángulos
+        Dos triángulos son semejantes si tienen ángulos iguales y lados proporcionales. Esta propiedad es vital en física para resolver problemas de óptica, sombras y diagramas de fuerzas mediante razones de proporcionalidad.
+
+        ### A1.1.2 Teorema de Pitágoras
+        Establece que en un triángulo rectángulo, el cuadrado de la hipotenusa ($c$) es igual a la suma de los cuadrados de los catetos ($a$ y $b$):
+
+        El **teorema de Pitágoras** establece que en cualquier triángulo rectángulo $\triangle ABC$, donde $c$ es la longitud de la hipotenusa y $a$ y $b$ son las longitudes de los catetos,
+
+        $$c^2 = a^2 + b^2$$
+
+        <figure className="centered">
+            <img src="/images/RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
+            <figcaption><b>Figura 1.2</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
+        </figure>
+
+        ### A1.1.3 Teorema del seno y teorema del coseno
+        Cuando el triángulo no es rectángulo, utilizamos relaciones más generales para determinar lados o ángulos desconocidos.
+
+        **Teorema del Coseno:** Se aplica cuando conocemos dos lados y el ángulo que forman ($C$). Es la base de la ley del paralelogramo en la suma de vectores.
+
+        $$c^2 = a^2 + b^2 - 2ab \cdot \cos(C)$$
+
+        **Teorema del Seno:** Establece la proporción entre los lados y los senos de sus ángulos opuestos:
+
+        $$
+        \frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)}
+        $$
+    </section>
+
+    <section id="A1_2_Razones_Trigonometricas">
+        ## A1.2 Razones trigonométricas en el triángulo rectángulo
+        En un triángulo rectángulo, las relaciones entre los ángulos y las longitudes de sus lados no son arbitrarias; se rigen por proporciones constantes denominadas **razones trigonométricas**. Estas razones permiten determinar distancias inaccesibles y son la base de la descomposición de vectores.
+
+        ### A1.2.1 Definición de seno, coseno y tangente
+        Considerando un triángulo rectángulo con un ángulo agudo $\theta$, definimos las razones principales respecto a dicho ángulo:
+
+        - **Hipotenusa ($h$):** El lado más largo, opuesto al ángulo recto.
+        - **Cateto opuesto ($c_o$):** El lado que se encuentra frente al ángulo $\theta$.
+        - **Cateto contiguo o adyacente ($c_a$):** El lado que forma parte del ángulo $\theta$ (junto a la hipotenusa).
+
+        <figure className="centered">
+            <VectorCanvas id="svgA1_2_1" />
+            <figcaption><b>Figura 2.1</b> Posición del cateto contiguo o adyacente y del cateto opuesto, respecto del ángulo $\theta$.</figcaption>
+        </figure>
+
+        #### ⚠️ Importante: Los catetos dependen del ángulo elegido
+        Es crucial entender que los términos "opuesto" y "contiguo" **no son fijos**; dependen enteramente de qué ángulo agudo estemos utilizando como referencia.
+
+        Si en lugar del ángulo $\theta$ (en la base) usáramos el otro ángulo agudo (el superior), los papeles se invertirían: el lado que antes era "opuesto" pasaría a ser el "contiguo" a ese nuevo ángulo, y viceversa. La hipotenusa, sin embargo, nunca cambia.
+
+        **Regla de oro para física:** Nunca memorices que el seno es "vertical" o el coseno "horizontal". Siempre pregúntate: "¿Este cateto está enfrente de mi ángulo (seno) o lo está tocando (coseno)?".
+
+        Las razones principales (respecto al ángulo elegido) se definen como:
+
+        $$\sin \theta = \frac{\text{cateto opuesto}}{\text{hipotenusa}} = \frac{c_o}{h}$$
+
+        $$\cos \theta = \frac{\text{cateto contiguo}}{\text{hipotenusa}} = \frac{c_a}{h}$$
+
+        $$\tan \theta = \frac{\text{cateto opuesto}}{\text{cateto contiguo}} = \frac{c_o}{c_a}$$
+
+        #### Interpretación geométrica intuitiva
+        Podemos imaginar las razones trigonométricas como "factores de escala": el **coseno** nos indica qué fracción de la hipotenusa se proyecta sobre el eje horizontal, mientras que el **seno** indica qué fracción se proyecta sobre el eje vertical. La **tangente**, por su parte, define la pendiente o inclinación de la hipotenusa respecto a la base.
+
+        ### A1.2.2 Identidades fundamentales
+        Existen relaciones matemáticas que siempre se cumplen, independientemente del tamaño del triángulo:
+
+        #### Identidad pitagórica
+        Derivada directamente del Teorema de Pitágoras, es la identidad más importante de la trigonometría:
+
+        $$ \sin^2 \theta + \cos^2 \theta = 1 $$
+
+        #### Relación entre razones
+        La tangente puede expresarse siempre como el cociente entre el seno y el coseno:
+
+        $$ \tan \theta = \frac{\sin \theta}{\cos \theta} $$
+
+        #### Ángulos complementarios
+        Dado que la suma de los ángulos agudos en un triángulo rectángulo es 90º, se cumple que el seno de un ángulo es igual al coseno de su complementario:
+
+        $$ \sin \theta = \cos(90^\circ - \theta) $$
+
+        ### A1.2.3 Aplicaciones
+        En física, la trigonometría no es solo una herramienta de cálculo, sino un método para entender cómo se distribuyen las magnitudes en el espacio.
+        - **Cálculo de alturas y distancias:** Permite hallar la altura de un proyectil o la distancia a un objeto conociendo solo el ángulo de observación y una base medida.
+        - **Planos inclinados:** Es fundamental para descomponer la fuerza del peso ($P = mg$) en una componente paralela al plano ($mg \sin \theta$) que genera movimiento, y una componente normal ($mg \cos \theta$) que genera rozamiento.
+        - **Descomposición de fuerzas:** Cualquier fuerza ejercida con un ángulo inclinado (como la tensión de una cuerda) se divide en una componente horizontal y una vertical mediante el uso de seno y coseno.
+    </section>
+
+    <section id="A1_3_Geometria_Circulo">
+        ## A1.3 Geometría del círculo
+        El círculo es una de las figuras más presentes en la física, desde el estudio de las órbitas y motores hasta la propagación de ondas. Mientras que la **circunferencia** es la línea curva cerrada donde todos los puntos están a la misma distancia del centro, el **círculo** es la superficie contenida dentro de ella.
+
+        ### A1.3.1 Elementos del círculo
+        Para describir un círculo y sus partes, utilizamos los siguientes conceptos:
+        - **Radio ($r$):** Segmento que une el centro con cualquier punto de la circunferencia.
+        - **Diámetro ($d$):** Segmento que une dos puntos de la circunferencia pasando por el centro. Su longitud es el doble del radio ($d = 2r$).
+        - **Cuerda:** Segmento que une dos puntos de la circunferencia sin necesidad de pasar por el centro.
+        - **Arco ($s$):** Porción de la circunferencia comprendida entre dos puntos.
+        - **Sector circular:** "Porción de tarta" del círculo delimitada por dos radios y un arco.
+
+        <figure className="centered">
+            <VectorCanvas id="svgA1_3_1" />
+            <figcaption><b>Figura 3.1</b> Elementos del círculo.</figcaption>
+        </figure>
+
+        #### Longitud de la circunferencia y área
+        La relación entre la longitud de una circunferencia ($L$) y su diámetro es una constante universal llamada **$\pi$ (pi)**. De forma intuitiva, $\pi$ (aprox. 3.14159...) representa cuántas veces cabe el diámetro en el perímetro de su círculo.
+
+        $$ L = 2\pi r $$
+
+        $$ \text{Área} = \pi r^2 $$
+
+        ### A1.3.2 Ángulos en la circunferencia
+        En el análisis de movimientos rotatorios, es fundamental distinguir cómo medimos los ángulos:
+        - **Ángulo central:** Es aquel cuyo vértice está en el centro de la circunferencia y sus lados son dos radios. La medida del arco interceptado es directamente proporcional a este ángulo.
+        - **Ángulo inscrito:** Es aquel cuyo vértice está en un punto de la circunferencia y sus lados son dos cuerdas.
+
+        **Relación fundamental:** Para un mismo arco, el ángulo central mide exactamente el doble que el ángulo inscrito.
+
+        ### A1.3.3 Radianes
+        Aunque en la vida cotidiana usamos los grados sexagesimales (0° a 360°), en física la unidad natural de medida es el **radián (rad)**.
+
+        #### Definición
+        Un radián es el ángulo central subtendido por un arco cuya longitud ($s$) es igual al radio ($r$) de la circunferencia.
+
+        #### Conversión grados ↔ radianes
+        Puesto que una vuelta completa (360°) equivale a la longitud total de la circunferencia ($2\pi r$), la equivalencia fundamental es:
+
+        $$ 360^\circ = 2\pi \text{ rad} \implies 180^\circ = \pi \text{ rad} $$
+
+        #### ¿Por qué en física se usan radianes?
+        El uso del radián no es caprichoso. Su principal ventaja es que simplifica las ecuaciones de movimiento, ya que permite relacionar directamente magnitudes lineales y angulares sin factores de conversión extraños. Por ejemplo, la longitud de un arco se calcula simplemente como:
+
+        $$ s = \theta \cdot r $$
+
+        Esta relación solo es válida si el ángulo $\theta$ está expresado en **radianes**.
+    </section>
+
+    <section id="Sistema_Cartesiano_2D">
+        ## A1.2 Sistema de Coordenadas Cartesianas en dos dimensiones
+        El **sistema de coordenadas cartesianas** (o sistema de coordenadas rectangulares) en dos dimensiones es un marco de referencia que permite localizar cualquier punto en un plano de manera unívoca.
+
+        Está constituido por dos rectas numéricas perpendiculares entre sí, denominadas **ejes de coordenadas**, que se cortan en un punto llamado **origen (O)**.
+
+        - **Eje de abscisas (Eje x):** Es la recta horizontal. Los valores positivos se encuentran a la derecha del origen.
+        - **Eje de ordenadas (Eje y):** Es la recta vertical. Los valores positivos se encuentran por encima del origen.
+
+        Cualquier punto $P$ en el plano se describe mediante un par ordenado de números $(x, y)$, llamados **coordenadas**:
+
+        $$ P = (x, y) $$
+
+        Donde $x$ representa la distancia perpendicular al eje $y$, y $y$ representa la distancia perpendicular al eje $x$. Estos dos ejes dividen al plano en cuatro regiones llamadas **cuadrantes**, numerados del I al IV en sentido antihorario partiendo del cuadrante superior derecho.
+
+        <figure className="centered">
+            <VectorCanvas id="svgA1_X" />
+            <figcaption><b>Figura x</b> Plano cartesiano y coordenadas cartesianas de un punto.</figcaption>
+        </figure>
+    </section>
+
+    <section id="Teorema de Pitágoras">
+        ### A1.2 Teorema de Pitágoras
+        En cualquier triángulo rectángulo $\triangle ABC$, donde c es la longitud de la hipotenusa y a y b son las longitudes de los catetos,
+
+        <p id="eq-pitagoras-theorem1">
+            $$a^2 + b^2 = c^2$$
+        </p>
+
+        <figure className="centered">
+            <img src="/images/RightTriangle.svg" width="300" height="225" alt="Diagrama de un triángulo rectángulo"/>
+            <figcaption><b>Figura 1</b> Triángulo rectángulo con catetos a y b, e hipotenusa c.</figcaption>
+        </figure>
+    </section>
+
+    <section>
+        ### 3 Definiciones gráficas de las funciones seno, coseno y tangente
+        Consideremos una circunferencia con radio de longitud r con centro en el origen *O* en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos $\alpha$ a el ángulo entre el eje x y el segmento OP, según se muestra en la siguiente figura. Entonces, $\sin \alpha$ es el cociente y/r.
+
+        <figure className="centered">
+            <img src="/images/Circunference_and_coordinates.svg" width="300" height="300" alt="Diagrama de una circunferencia con punto P y triángulo rectángulo inscrito."/>
+            <figcaption className="lang lang-es" lang="es"><b>Figure 2.2</b> Circunferencia de radio r con un punto P y su ángulo $\alpha$ con el eje x.</figcaption>
+        </figure>
+
+        Entonce, definimos las funicones seno, coseno y tengente como:
+
+        <div className="container">
+            <div className="center">$\sin \alpha  = y/r$</div>
+            <div className="right" id="[2]">[2]</div>
+        </div><br />
+        <div className="container">
+            <div className="center">$\cos \alpha = x/r$ </div>
+            <div className="right" id="[3]">[3]</div>
+        </div><br />
+        <div className="container">
+            <div className="center">$\tan \alpha = y/x$ </div>
+            <div className="right" id="[4]">[4]</div>
+        </div><br />
+    </section>
+
+    <section>
+        ### 4 Perpendicularidad entre un vector con módulo constante y su variación temporal
+        #### Introducción:
+        En diversas áreas de la física, la mecánica y la cinemática, nos encontramos con frecuencia con el análisis de **vectores cuyo módulo permanece constante en el tiempo**, aunque su dirección pueda variar. Esto incluye vectores de posición en movimientos restringidos a una superficie esférica o circular, así como vectores unitarios que cambian de orientación, como el vector unitario tangencial en el estudio de trayectorias curvas. En estos escenarios, surge una propiedad geométrica fundamental: **la variación temporal de cualquier vector de módulo constante es siempre perpendicular al vector original**. Esta propiedad, con raíces en la geometría, tiene amplias y significativas aplicaciones en física, facilitando la comprensión de conceptos como la velocidad y la aceleración en movimientos curvilíneos, la descomposición de la aceleración en componentes intrínsecas, y en general, el análisis de sistemas físicos donde ciertas magnitudes vectoriales se conservan constantes. En este artículo, exploraremos y demostraremos esta propiedad esencial, utilizando dos perspectivas complementarias: una demostración geométrica intuitiva basada en el triángulo isósceles y una demostración analítica rigurosa empleando la función paramétrica.
+
+        #### Enfoque Geométrico Intuitivo - El Triángulo Isósceles
+        Consideremos un vector $\vec V(t)$ genérico, que varía en el tiempo *t*, pero cuyo módulo se mantiene constante, es decir, $|\vec V(t)| = C$, donde C es una constante escalar. Visualicemos el vector $\vec V(t)$ y un vector $\vec V(t + \Delta t)$ en un instante de tiempo ligeramente posterior, *t + Δt*. Debido a la constancia del módulo, las puntas de estos vectores se moverán restringidas a una superficie esférica (o circular en 2D) de radio C, centrada en el origen.
+
+        [Image of Unit Vectors Changing Direction]
+
+        El cambio en el vector $\vec V(t)$ durante este pequeño intervalo de tiempo Δt es el vector diferencia $\Delta \vec V = \vec V(t + \Delta t) - \vec V(t)$. Geométricamente, $\Delta \vec V$ representa el vector que une la punta de $\vec V(t)$ con la punta de $\vec V(t + \Delta t)$.
+
+        [Image of Isosceles Triangle Unit Vectors]
+
+        Si consideramos el triángulo vectorial formado por $\vec V(t)$, $\vec V(t + \Delta t)$ y $\Delta \vec V$ (más precisamente, los vectores $\vec V(t)$, $-\vec V(t)$ y $\vec V(t + \Delta t)$), notamos que es un triángulo isósceles, ya que $|\vec V(t)| = |\vec V(t + \Delta t)| = C$. El vector $\Delta \vec V$ es la base de este triángulo isósceles, con $\vec V(t)$ y $\vec V(t + \Delta t)$ como los lados iguales.
+
+        Consideremos el ángulo Δθ entre $\vec V(t)$ y $\vec V(t + \Delta t)$. En el triángulo isósceles, los ángulos opuestos a los lados iguales (adyacentes a $\Delta \vec V$) son iguales, llamémoslos α. La suma de los ángulos internos de un triángulo es $\pi$ radianes:
+
+        $$2\alpha + \Delta\theta = \pi$$
+
+        De donde obtenemos:
+
+        $$
+        \alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2}
+        $$
+
+        Ahora, analicemos el límite cuando el intervalo de tiempo Δt tiende a cero (Δt → 0, y por tanto Δθ → 0). En este límite, $\Delta \vec V$ se convierte en el diferencial $d\vec V$, y Δθ se convierte en dθ. El ángulo α se aproxima a:
+
+        $$
+        \alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radianes o } 90^\circ.
+        $$
+
+        Esto implica que, en el límite infinitesimal, el ángulo entre el vector de cambio $d\vec V$ y el vector original $\vec V(t)$ tiende a 90 grados. Es decir, la variación infinitesimal $d\vec V$ es perpendicular al vector $\vec V(t)$. Como la derivada $d\vec V/dt$ (que representa la tasa de variación temporal) tiene la misma dirección que $d\vec V$, concluimos geométricamente que la tasa de variación temporal de $\vec V(t)$ es perpendicular a $\vec V(t)$ en cada instante, siempre que el módulo de $\vec V(t)$ se mantenga constante.
+
+        #### Enfoque Analítico - Función Paramétrica Generalizada con Parámetro Temporal
+        Para una demostración analítica más general, consideremos un vector $\vec V(t)$ en tres dimensiones (la demostración es igualmente válida en dos dimensiones), expresado en componentes cartesianas:
+
+        $$
+        \vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k}
+        $$
+
+        La condición de módulo constante $|\vec V(t)| = C$ = constante, se expresa como:
+
+        $$|\vec V(t)|^2 = V_x(t)^2 + V_y(t)^2 + V_z(t)^2 = C^2$$
+
+        Para que esta condición se mantenga en el tiempo, la derivada temporal de $|\vec V(t)|^2$ debe ser cero. Derivamos ambos lados de la ecuación con respecto al tiempo, utilizando la regla de la cadena:
+
+        $$
+        \frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2)
+        $$
+        $$
+        \frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0
+        $$
+
+        Aplicando la regla de la cadena a cada término:
+
+        $$
+        2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0
+        $$
+
+        Dividiendo por 2 y reordenando:
+
+        $$
+        V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0
+        $$
+
+        El lado izquierdo de esta ecuación es precisamente el producto escalar del vector $\vec V(t)$ con su derivada temporal $\displaystyle\frac{d\vec V}{dt}$
+
+        $$
+        \vec V(t) \cdot \frac{d\vec V(t)}{dt} = \left( V_x(t), V_y(t), V_z(t) \right) \cdot \left( \frac{dV_x(t)}{dt}, \frac{dV_y(t)}{dt}, \frac{dV_z(t)}{dt} \right) = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt}
+        $$
+
+        Por lo tanto, la condición de módulo constante $|\vec V(t)| = C$ implica que:
+
+        $$
+        \vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0
+        $$
+
+        Esto demuestra analíticamente que **el vector $\vec V(t)$ y su derivada temporal $\displaystyle\frac{d\vec V(t)}{dt}$ son siempre perpendiculares entre sí**, bajo la condición de que el módulo de $\vec V(t)$ se mantenga constante. Este resultado es válido para cualquier vector con módulo constante, no solo para vectores de posición.
+
+        #### Conclusión
+        Hemos demostrado, a través de dos enfoques complementarios, que **la variación temporal de un vector de módulo constante es intrínsecamente perpendicular al vector original**. Esta propiedad fundamental, visualizada geométricamente y confirmada analíticamente, trasciende el caso particular del vector posición y se aplica a cualquier vector cuyo módulo se conserve constante durante su evolución temporal.
+
+        Esta relación de perpendicularidad es de gran relevancia en física. Permite comprender mejor la naturaleza de la velocidad en movimientos curvilíneos, la dirección de la aceleración normal en términos de cambio de dirección de la velocidad, y proporciona una base sólida para el análisis de sistemas donde la conservación de magnitudes vectoriales, como la longitud de un vector, juega un papel fundamental. La propiedad aquí demostrada no es solo un resultado geométrico, sino una herramienta conceptual poderosa para el análisis y la interpretación de fenómenos físicos diversos en mecánica, electromagnetismo, y otras áreas de la física.
+    </section>
+
+    <aside>
+        #### Referencias
+        - [The Pitagorean Theorem. Prealgebra 2e. 9.3. Openstax.](https://openstax.org/books/prealgebra-2e/pages/9-3-use-properties-of-angles-triangles-and-the-pythagorean-theorem#:~:text=of%20the%20hypotenuse.-,THE%20PYTHAGOREAN%20THEOREM,-In%20any%20right)
+        - [Pythagorean theorem. Encyclopedia of Mathematics.](http://encyclopediaofmath.org/index.php?title=Pythagorean_theorem&oldid=40035)
+        - [Sine. Encyclopedia of Mathematics.](https://encyclopediaofmath.org/wiki/Sine#:~:text=the%20hyperbolic%20sine.-,Comments,-Of%20course%2C)
+        - [Sine, Cosine and Tangent. Mathisfun.](https://www.mathsisfun.com/algebra/trigonometry.html#:~:text=gives%20the%20answers!-,Sine%2C%20Cosine%20and%20Tangent,-The%20main%20functions)
+        - [Using Right Triangles to Evaluate Trigonometric Functions. Openstax.](https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry#:~:text=Using%20Right%20Triangles%20to%20Evaluate%20Trigonometric%20Functions)
+    </aside>
+</article>

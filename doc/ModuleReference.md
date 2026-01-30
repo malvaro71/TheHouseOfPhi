@@ -161,19 +161,25 @@ Draws the x-, y-, and z-axes with labels.
 
 # 🧠 5. How an AI Agent Should Use These Modules
 
-## 5.1. Always initialize markers first
-```js
-ensureSharedMarkerDefs();
-```
+## 5.1. The "VectorCanvas" Pattern
+In the Astro/MDX architecture, we do not manipulate the DOM directly in the global scope. Instead, we define drawing functions in a script file and map them to IDs.
 
-## 5.2. Create an SVG element
-The SVG must have width and height attributes, but the classes read them automatically.
+### Step 1: Define the drawing logic (e.g., `src/scripts/pages/myPage.js`)
+Export a dictionary named `geometryDrawings` (or similar) where keys are SVG IDs and values are functions that accept the SVG element.
 
 ```js
-const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-svg.setAttribute("width", 600);
-svg.setAttribute("height", 600);
-document.body.appendChild(svg);
+import { CartesianPlane } from '/src/scripts/core/CartesianPlane.js';
+
+export const geometryDrawings = {
+    "mySvgId": (svg) => {
+        const plane = new CartesianPlane(svg, -5, 5, -5, 5);
+        plane.drawVector([0,0], [3,2], "v");
+        plane.drawAxes("y", "x", "O");
+    },
+    "anotherSvgId": (svg) => {
+        // ... another drawing
+    }
+};
 ```
 
 ## 5.3. Use the engines without manual transforms
@@ -217,4 +223,3 @@ This training document equips an AI agent with:
 - the relationships between modules  
 
 With this knowledge, the agent can safely and correctly generate SVG-based geometric visualizations using the House of Phi drawing engine.
-

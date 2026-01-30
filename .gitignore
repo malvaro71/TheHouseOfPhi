@@ -1,23 +1,24 @@
-# Node modules
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
 node_modules/
 
-# Vite build output
-dist/
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Vite cache
-.vite/
 
-# VS Code settings
-.vscode/
+# environment variables
+.env
+.env.production
 
-# Logs and temporary files
-*.log
-*.tmp
-
-# macOS system files
+# macOS-specific files
 .DS_Store
 
-# Environment variables
-.env
-
-# End of .gitignore
+# jetbrains setting folder
+.idea/

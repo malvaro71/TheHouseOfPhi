@@ -1,106 +1,51 @@
 # 📁 Project Structure — The House of Phi
 
-This document describes the internal organization of the codebase inside the `src/` directory after migrating the project to **npm + Vite**.  
+This document describes the internal organization of the codebase inside the `src/` directory after migrating the project to **Astro + MDX**.  
 The structure is designed to be clean, scalable, and aligned with the dependency graph of the application.
 
 ---
 
 ## 🧱 Overview
 
-
-```
-TheHouseOfPhi/
-|   ├── .gitignore
-|   ├── eslint.config.mjs
-│   ├── index.html
-|   ├── package-lock.json
-|   ├── package.json
-|   ├── README.md
-|   ├── vite.config.js
-|
-├── .github
-│    └── copilot-instructions.md
-|
-├── .vscode
-|    └── settings.json
-|
-├── doc
-|   ├── ModuleReference.md
-|   ├── ProjectDependencies.md
-|   └── ProjectStructure.md
-|
-├── node_modules
-|       ...
-|
-├── public/          ← secondary HTML's
-│   ├── 404.html
-|   ├── geometry_es.html        <-- Access: /geometry_es.html
-│   ├── geometry.html
-│   ├── kinematics_es.html
-│   ├── kinematics.html
-│   ├── vectors_es.html
-|   ├── vectors.html
-|   ├── forms/
-|   │   ├── indexForm.js        <-- Access: /forms/indexForm.js
-|   │   ├── vectorsForm.js
-|   │   ├── geometryForm.js      (future)
-|   │   └── kinematicsForm.js    (future)
-|   ├── images
-|   |   ├── CuriousMonkey.jpg   <-- Access: /images/CuriousMonkey.jpg
-|   |   └── ...
-|   |
-|   ├── pages/
-|   │   ├── indexPage.js        <-- Access: /pages/indexPage.js
-|   │   ├── geometryPage.js
-|   │   ├── vectorsPage.js
-|   │   └── kinematicsPage.js
-|   │
-|   └── styles
-|       └── styles.css          <-- Access: /styles/styles.css
+```text
+TheHouseOfPhi-1/
+├── .gitignore
+├── astro.config.mjs
+├── package.json
+├── tsconfig.json
+├── doc/
+│   ├── Backlog.md
+│   ├── InternationalizationArchitecture.md
+│   ├── MathematicalExpressions.md
+│   ├── ModuleReference.md
+│   ├── ProjectDependencies.md
+│   └── ProjectStructure.md
+├── public/
+│   ├── favicon.svg
+│   └── images/
+│       └── ...
 └── src/
-   │
-   ├── core/
-   │   ├── SVGDrawing.js
-   │   ├── CartesianPlane.js
-   │   └── EuclideanSpace.js
-   │
-   ├── utils/
-   │   └── (empty for now)
-   │
-   └── main.js   (optional)       
-
-
-/
-├─ public/
-│   ├─ images/
-│   ├─ svg/
-│   └─ cualquier archivo estático
-│
-├─ src/
-│   ├─ pages/
-│   │   ├─ index.astro
-│   │   ├─ geometry.astro
-│   │   ├─ geometry_es.astro
-│   │   └─ … resto de páginas
-│   │
-│   ├─ scripts/
-│   │   ├─ geometryPage.js
-│   │   ├─ vectorsPage.js
-│   │   ├─ kinematicsPage.js
-│   │   └─ utils.js
-│   │
-│   ├─ styles/
-│   │   └─ styles.css
-│   │
-│   ├─ components/
-│   │   └─ (si quieres modularizar)
-│   │
-│   └─ assets/
-│       └─ imágenes internas si las necesitas
-│
-├─ astro.config.mjs
-├─ package.json
-└─ tsconfig.json
+    ├── components/
+    │   └── VectorCanvas.astro   <-- Reusable SVG container
+    ├── layouts/
+    │   └── BaseLayout.astro     <-- Global HTML shell
+    ├── pages/
+    │   ├── index.astro          <-- Root redirector
+    │   ├── en/
+    │   │   ├── geometry.mdx
+    │   │   └── index.mdx
+    │   └── es/
+    │       ├── geometry.mdx
+    │       └── index.mdx
+    ├── scripts/
+    │   ├── core/                <-- Reusable math/drawing logic
+    │   │   ├── CartesianPlane.js
+    │   │   ├── EuclideanSpace.js
+    │   │   └── SVGDrawing.js
+    │   └── pages/               <-- Page-specific drawing logic
+    │       └── geometryPage.js
+    └── styles/
+        └── styles.css
 
 ```
 
@@ -109,7 +54,7 @@ TheHouseOfPhi/
 
 ## 🧩 Folder Descriptions
 
-### **core/**
+### **src/scripts/core/**
 Fundamental, reusable modules.  
 They do not depend on page controllers or form handlers.
 
@@ -124,59 +69,28 @@ They do not depend on page controllers or form handlers.
 
 ---
 
-### **pages/**
-Page controllers for each HTML page.  
-They orchestrate logic, import modules from `core/`, and use math.js when needed.
+### **src/pages/**
+Astro file-system routing.
 
-- **indexPage.js**  
-  Controller for the home page. Handles general initialization and future homepage logic.
+- **index.astro**: Handles automatic language redirection.
+- **[lang]/*.mdx**: Content pages written in Markdown + JSX. They import components like `VectorCanvas` to render graphics.
 
-- **geometryPage.js**  
-- **vectorsPage.js**  
+---
+
+### **src/scripts/pages/**
+Drawing logic and controllers for specific pages.
+Instead of running automatically, these modules export dictionaries of functions (e.g., `geometryDrawings`) that are invoked by the `VectorCanvas` component when the MDX page loads.
+
+- **geometryPage.js**
+- **vectorsPage.js**
 - **kinematicsPage.js**
 
-Each controller prepares the plane, draws elements, and solves example problems displayed on the corresponding HTML page.
-
 ---
 
-### **forms/**
-Modules that connect HTML inputs with the logic in the page controllers.  
-They handle DOM events, validate user input, and trigger updates in the corresponding page controller.
+### **src/components/**
+Reusable Astro components.
 
-- **indexForm.js**  
-  Handles the language selector on the homepage.
-
-- **vectorsForm.js**  
-  Connects coordinate inputs with vector drawing and magnitude/direction calculations.
-
-- **geometryForm.js** *(future)*  
-- **kinematicsForm.js** *(future)*
-
----
-
-### **utils/**
-Optional folder for helper functions that do not belong in `core/`, `pages/`, or `forms/`.
-
-Useful for:
-
-- generic validation  
-- converters  
-- math helpers  
-- formatting utilities  
-
-Currently empty.
-
----
-
-### **main.js** *(optional)*
-General entry point used during the migration phase.  
-Useful for:
-
-- testing modules  
-- verifying imports  
-- debugging Vite integration  
-
-It may be removed or repurposed later.
+- **VectorCanvas.astro**: A wrapper for SVG elements. It handles the lifecycle of the scripts, ensuring graphics are drawn correctly upon page load or navigation.
 
 ---
 

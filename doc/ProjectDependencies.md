@@ -2,11 +2,11 @@
 
 The overall logic of the project follows a clear, layered structure:
 
-**HTML → Forms → Pages → Core → SVG**
+**MDX Page → VectorCanvas Component → Page Script → Core → SVG**
 
-- Each **HTML page** loads one *form module* and one *page controller*.
-- The **form module** listens to user interactions (inputs, buttons, selectors) and forwards the relevant data to the page controller.
-- The **page controller** processes the data, performs calculations, and prepares the graphical output.
+- Each **MDX page** (e.g., `geometry.mdx`) contains content and `VectorCanvas` components.
+- The **VectorCanvas** component imports a specific *Page Script* (e.g., `geometryPage.js`).
+- The **Page Script** exports a dictionary of drawing functions. It does not run automatically.
 - The controller relies on the **core modules** (`CartesianPlane`, `EuclideanSpace`, `SVGDrawing`) to handle geometry, coordinate transformations, and SVG rendering.
 - The **core layer** uses low‑level drawing utilities to produce the final SVG elements displayed on the page.
 
@@ -14,74 +14,42 @@ This structure keeps responsibilities separated, ensures modularity, and makes t
 
 # Dependency Diagram (Simplified)
 
-HTML Pages
+MDX Pages (src/pages/[lang]/)
 │
-├── index.html
-│   ├── src/pages/indexPage.js
-│   └── src/forms/indexForm.js
+├── index.mdx
 │
-├── vectors_en.html
-│   ├── src/pages/vectorsPage.js
-│   └── src/forms/vectorsForm.js
+├── geometry.mdx
+│   └── imports <VectorCanvas />
+│       └── imports src/scripts/pages/geometryPage.js
 │
-├── vectors_es.html
-│   ├── src/pages/vectorsPage.js
-│   └── src/forms/vectorsForm.js
-│
-├── geometry_en.html
-│   └── src/pages/geometryPage.js
-│
-├── geometry_es.html
-│   └── src/pages/geometryPage.js
-│
-├── kinematics_en.html
-│   └── src/pages/kinematicsPage.js
-│
-└── kinematics_es.html
-    └── src/pages/kinematicsPage.js
+└── kinematics.mdx
+    └── imports <VectorCanvas />
+        └── imports src/scripts/pages/kinematicsPage.js
 
 # Dependency Diagram (Detailed)
 
-## HTML → Forms & Pages
+## MDX → Components
 
-index.html
-│
-├── indexPage.js
-└── indexForm.js
+src/pages/es/geometry.mdx
+    └── uses: src/components/VectorCanvas.astro
 
-vectors_en.html / vectors_es.html
-│
-├── vectorsPage.js
-└── vectorsForm.js
+## Components → Scripts
 
-geometry_en.html / geometry_es.html
-│
-└── geometryPage.js
+VectorCanvas.astro
+    └── imports: src/scripts/pages/geometryPage.js
+    └── executes: geometryDrawingsid
 
-kinematics_en.html / kinematics_es.html
-│
-└── kinematicsPage.js
-
-
-## Pages → Core
-
-indexPage.js
-    (currently no imports from core)
+## Scripts → Core
 
 geometryPage.js
     └── imports:
         - CartesianPlane.js
+        - SVGDrawing.js
 
-vectorsPage.js
+vectorsPage.js / kinematicsPage.js
     └── imports:
         - CartesianPlane.js
         - EuclideanSpace.js
-
-kinematicsPage.js
-    └── imports:
-        - CartesianPlane.js
-        - EuclideanSpace.js
-
 
 ## Core → Internal Logic
 
@@ -95,22 +63,3 @@ CartesianPlane.js
 EuclideanSpace.js
     └── imports:
         - SVGDrawing.js
-
-
-## Forms → Pages
-
-indexForm.js
-    └── interacts with:
-        - indexPage.js
-
-vectorsForm.js
-    └── interacts with:
-        - vectorsPage.js
-
-geometryForm.js (future)
-    └── will interact with:
-        - geometryPage.js
-
-kinematicsForm.js (future)
-    └── will interact with:
-        - kinematicsPage.js

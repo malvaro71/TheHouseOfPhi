@@ -15,6 +15,7 @@ src/pages/
 └── es/
     ├── index.mdx       # Homepage (Spanish)
     └── geometry.mdx    # Geometry lesson (Spanish)
+```
 
 ## 2. Localization Workflow
 
