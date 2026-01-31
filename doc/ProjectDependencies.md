@@ -2,9 +2,10 @@
 
 The overall logic of the project follows a clear, layered structure:
 
-**MDX Page → VectorCanvas Component → Page Script → Core → SVG**
+**MDX Page → Rehype Plugin → VectorCanvas Component → Page Script → Core → SVG**
 
-- Each **MDX page** (e.g., `geometry.mdx`) contains content and `VectorCanvas` components.
+- Each **MDX page** (e.g., `geometry.mdx`) contains content and references to dynamic graphics using the `vector:` protocol in standard image syntax.
+- The **Rehype Plugin** (`rehype-vector-canvas`) transforms these image tags into `VectorCanvas` components during the build process.
 - The **VectorCanvas** component imports a specific *Page Script* (e.g., `geometryPage.js`).
 - The **Page Script** exports a dictionary of drawing functions. It does not run automatically.
 - The controller relies on the **core modules** (`CartesianPlane`, `EuclideanSpace`, `SVGDrawing`) to handle geometry, coordinate transformations, and SVG rendering.
@@ -19,19 +20,24 @@ MDX Pages (src/pages/[lang]/)
 ├── index.mdx
 │
 ├── geometry.mdx
-│   └── imports <VectorCanvas />
-│       └── imports src/scripts/pages/geometryPage.js
+│   └── uses `vector:` protocol
+│       └── transformed by `rehype-vector-canvas`
+│           └── imports <VectorCanvas />
+│               └── imports src/scripts/pages/geometryPage.js
 │
 └── kinematics.mdx
-    └── imports <VectorCanvas />
-        └── imports src/scripts/pages/kinematicsPage.js
+    └── uses `vector:` protocol
+        └── transformed by `rehype-vector-canvas`
+            └── imports <VectorCanvas />
+                └── imports src/scripts/pages/kinematicsPage.js
 
 # Dependency Diagram (Detailed)
 
 ## MDX → Components
 
 src/pages/es/geometry.mdx
-    └── uses: src/components/VectorCanvas.astro
+    └── processed by: src/plugins/rehype-vector-canvas.mjs
+        └── generates: src/components/VectorCanvas.astro
 
 ## Components → Scripts
 

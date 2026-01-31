@@ -4,7 +4,6 @@
 // ===============================
 
 // Import core modules
-import { ensureSharedMarkerDefs } from '/src/scripts/core/SVGDrawing.js';
 import { CartesianPlane } from '/src/scripts/core/CartesianPlane.js';
 import * as math from 'mathjs';
 

@@ -16,8 +16,8 @@ TheHouseOfPhi-1/
 ├── doc/
 │   ├── Backlog.md
 │   ├── InternationalizationArchitecture.md
-│   ├── MathematicalExpressions.md
-│   ├── ModuleReference.md
+│   ├── MDXAuthoringGuide.md
+│   ├── DrawingEngineReference.md
 │   ├── ProjectDependencies.md
 │   └── ProjectStructure.md
 ├── public/
@@ -37,15 +37,19 @@ TheHouseOfPhi-1/
     │   └── es/
     │       ├── geometry.mdx
     │       └── index.mdx
+    ├── plugins/
+    │   └── rehype-vector-canvas.mjs <-- Custom Rehype plugin
     ├── scripts/
     │   ├── core/                <-- Reusable math/drawing logic
     │   │   ├── CartesianPlane.js
     │   │   ├── EuclideanSpace.js
     │   │   └── SVGDrawing.js
     │   └── pages/               <-- Page-specific drawing logic
-    │       └── geometryPage.js
-    └── styles/
-        └── styles.css
+    │       ├── geometryPage.js
+    │       └── vectorsPage.js
+    ├── styles/
+    │   └── styles.css
+    └── rehype-figure.d.ts       <-- Type declaration
 
 ```
 

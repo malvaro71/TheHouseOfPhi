@@ -1,14 +1,8 @@
-# 📘 Drawing Engine Reference — Training Guide for AI Agents  
+# 📘 Drawing Engine Reference
 ### (SVGDrawing.js · CartesianPlane.js · EuclideanSpace.js)
 
-This document teaches an AI agent how to correctly use the drawing engine of the *House of Phi* project.  
-It covers the three core modules:
-
-- **SVGDrawing.js** — low‑level SVG primitives  
-- **CartesianPlane.js** — 2D coordinate plane engine  
-- **EuclideanSpace.js** — 3D Euclidean space with isometric projection  
-
-The goal is to give the agent a precise operational model of how to draw geometric objects in 2D and 3D using SVG.
+This document serves as the technical API reference for the drawing engine of the *House of Phi* project.
+It covers the three core modules used to generate geometric visualizations programmatically.
 
 ---
 
@@ -70,20 +64,9 @@ new CartesianPlane(svgElement, xMin, xMax, yMin, yMax, scale)
 - Computes scaling factors  
 - Computes the SVG coordinates of the origin  
 
-The agent **must not** set SVG width/height manually.
-
 ---
 
-## 3.2. Coordinate Transform  
-### `transformCoordinates()`  
-This method converts Cartesian coordinates into SVG coordinates.
-
-**The agent must NOT call this method directly.**  
-All drawing methods call it internally.
-
----
-
-## 3.3. Drawing Methods
+## 3.2. Drawing Methods
 
 ### `drawPoint([x, y], color)`
 Draws a point.
@@ -123,20 +106,10 @@ new EuclideanSpace(svgElement, centerPoint3D, scale)
 
 - Reads SVG width/height automatically  
 - Computes the projected origin using a 45° skew  
-- No manual coordinate transforms required  
 
 ---
 
-## 4.2. Coordinate Transform  
-### `transformCoordinates()`  
-Projects 3D coordinates into 2D.
-
-**The agent must NOT call this method directly.**  
-All drawing methods call it internally.
-
----
-
-## 4.3. Drawing Methods
+## 4.2. Drawing Methods
 
 ### `drawPoint([x, y, z], color)`
 Draws a 3D point.
@@ -156,70 +129,3 @@ Writes a label at a projected 3D coordinate.
 
 ### `drawAxes()`
 Draws the x-, y-, and z-axes with labels.
-
----
-
-# 🧠 5. How an AI Agent Should Use These Modules
-
-## 5.1. The "VectorCanvas" Pattern
-In the Astro/MDX architecture, we do not manipulate the DOM directly in the global scope. Instead, we define drawing functions in a script file and map them to IDs.
-
-### Step 1: Define the drawing logic (e.g., `src/scripts/pages/myPage.js`)
-Export a dictionary named `geometryDrawings` (or similar) where keys are SVG IDs and values are functions that accept the SVG element.
-
-```js
-import { CartesianPlane } from '/src/scripts/core/CartesianPlane.js';
-
-export const geometryDrawings = {
-    "mySvgId": (svg) => {
-        const plane = new CartesianPlane(svg, -5, 5, -5, 5);
-        plane.drawVector([0,0], [3,2], "v");
-        plane.drawAxes("y", "x", "O");
-    },
-    "anotherSvgId": (svg) => {
-        // ... another drawing
-    }
-};
-```
-
-## 5.3. Use the engines without manual transforms
-
-### For 2D:
-```js
-const plane = new CartesianPlane(svg, -5, 5, -5, 5, 40);
-plane.drawVector([0,0], [3,2], "v");
-plane.drawPoint([2,1], "red");
-plane.drawAxes("y", "x", "O");
-```
-
-### For 3D:
-```js
-const space = new EuclideanSpace(svg, [0,0,0], 40);
-space.drawVector([0,0,0], [2,1,3], "u");
-space.drawPoint([1,1,1], "blue");
-space.drawAxes();
-```
-
-## 5.4. The agent must NOT:
-- call `transformCoordinates()`  
-- compute SVG coordinates manually  
-- set SVG width/height dynamically  
-- bypass validation methods  
-
-The classes handle all coordinate conversions internally.
-
----
-
-# 🏁 6. Summary
-
-This training document equips an AI agent with:
-
-- a complete understanding of the drawing primitives  
-- the 2D Cartesian drawing engine  
-- the 3D Euclidean projection engine  
-- the correct initialization sequence  
-- the correct usage patterns  
-- the expected parameter formats  
-- the relationships between modules  
-
-With this knowledge, the agent can safely and correctly generate SVG-based geometric visualizations using the House of Phi drawing engine.
