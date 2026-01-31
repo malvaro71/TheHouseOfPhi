@@ -113,22 +113,6 @@ figure.centered figcaption {
     margin-bottom: 5px; /* O el valor que desees, por ejemplo, 0px si quieres que sea mínimo */
 }
 
-/*
- * Styles for the coordinate-to-magnitude-direction calculation form.
- * This rule initially hides the form.
- */
-#coordToMagDir {
-    display: none;
-}
-
-/*
- * Styles for canvas elements.
- * Applies a grey border to the canvas.
- */
-.canvas-border {
-    border: 1px solid grey;
-}
-
 /* Estiles for table type 1 */
 .table-type1 {
     width: 100%;
@@ -150,4 +134,11 @@ figure.centered figcaption {
     font-style: italic;
     color: #555;
 
+}
+
+/* Styles for interactive details elements */
+summary {
+    cursor: pointer;
+    color: var(--bold-color);
+    margin-block: 1rem;
 }

@@ -1,0 +1,117 @@
+---
+// No props needed for now
+---
+
+<div class="vector-converter">
+    <div class="controls">
+        <h3>Calculadora de Vectores</h3>
+        <label>
+            Coordenada X:
+            <input type="number" class="x-input" value="50" />
+        </label>
+        <label>
+            Coordenada Y:
+            <input type="number" class="y-input" value="50" />
+        </label>
+        <div class="results">
+            <p>Módulo: <span class="mag-output">70.71</span></p>
+            <p>Dirección: <span class="dir-output">45.00</span>°</p>
+        </div>
+    </div>
+
+    <svg class="vector-svg" width="300" height="300" viewBox="0 0 300 300">
+        <!-- Grid/Axes -->
+        <line x1="0" y1="150" x2="300" y2="150" stroke="green" stroke-width="1"></line>
+        <line x1="150" y1="0" x2="150" y2="300" stroke="green" stroke-width="1"></line>
+        <text x="285" y="145" fill="brown" font-size="12">X</text>
+        <text x="155" y="15" fill="brown" font-size="12">Y</text>
+
+        <!-- Marker definition -->
+        <defs>
+            <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" 
+                    refX="10" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="blue"></polygon>
+            </marker>
+        </defs>
+
+        <line class="vector-line" x1="150" y1="150" x2="200" y2="100" 
+              stroke="blue" stroke-width="3" marker-end="url(#arrowhead-blue)"></line>
+    </svg>
+</div>
+
+<style>
+    .vector-converter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--text-color);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        background-color: transparent;
+        border-radius: 8px;
+        color: var(--text-color);
+    }
+
+    .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        min-width: 200px;
+    }
+
+    .controls h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.2rem;
+        color: brown;
+    }
+
+    .controls label {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+    }
+
+    .controls input {
+        width: 80px;
+        padding: 4px;
+        background-color: var(--base-color);
+        color: var(--text-color);
+        border: 1px solid var(--text-color);
+    }
+
+    .results p {
+        margin: 0.5rem 0;
+        font-size: 1.1em;
+    }
+
+    .results span {
+        font-weight: bold;
+        color: var(--bold-color);
+    }
+
+    svg {
+        background: transparent;
+        border: 1px solid var(--text-color);
+        border-radius: 4px;
+        box-shadow: none;
+    }
+</style>
+
+<script>
+    import { VectorConverterLogic } from '../scripts/components/VectorConverterLogic.js';
+
+    // Inicializar todos los convertidores presentes en la página
+    const initConverters = () => {
+        document.querySelectorAll('.vector-converter').forEach(el => {
+            // Evitar doble inicialización
+            if (!el.hasAttribute('data-initialized')) {
+                new VectorConverterLogic(el);
+                el.setAttribute('data-initialized', 'true');
+            }
+        });
+    };
+
+    initConverters();
+</script>

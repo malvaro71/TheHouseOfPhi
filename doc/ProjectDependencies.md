@@ -24,6 +24,8 @@ MDX Pages (src/pages/[lang]/)
 │       └── transformed by `rehype-vector-canvas`
 │           └── imports <VectorCanvas />
 │               └── imports src/scripts/pages/geometryPage.js
+│           └── imports <VectorConverter />
+│               └── imports src/scripts/components/VectorConverterLogic.js
 │
 └── kinematics.mdx
     └── uses `vector:` protocol
@@ -39,11 +41,17 @@ src/pages/es/geometry.mdx
     └── processed by: src/plugins/rehype-vector-canvas.mjs
         └── generates: src/components/VectorCanvas.astro
 
+src/pages/es/vectors.mdx
+    └── uses: src/components/VectorConverter.astro
+
 ## Components → Scripts
 
 VectorCanvas.astro
     └── imports: src/scripts/pages/geometryPage.js
     └── executes: geometryDrawingsid
+
+VectorConverter.astro
+    └── imports: src/scripts/components/VectorConverterLogic.js
 
 ## Scripts → Core
 

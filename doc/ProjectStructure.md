@@ -40,6 +40,8 @@ TheHouseOfPhi-1/
     ├── plugins/
     │   └── rehype-vector-canvas.mjs <-- Custom Rehype plugin
     ├── scripts/
+    │   ├── components/          <-- Logic for interactive UI components
+    │   │   └── VectorConverterLogic.js
     │   ├── core/                <-- Reusable math/drawing logic
     │   │   ├── CartesianPlane.js
     │   │   ├── EuclideanSpace.js
@@ -91,10 +93,20 @@ Instead of running automatically, these modules export dictionaries of functions
 
 ---
 
+### **src/scripts/components/**
+Logic for interactive UI components (Islands).
+These scripts are instantiated by Astro components to handle client-side interactivity and SVG updates.
+
+- **VectorConverterLogic.js**
+
+---
+
 ### **src/components/**
 Reusable Astro components.
 
 - **VectorCanvas.astro**: A wrapper for SVG elements. It handles the lifecycle of the scripts, ensuring graphics are drawn correctly upon page load or navigation.
+
+- **VectorConverter.astro**: An interactive form with real-time SVG feedback for vector calculations.
 
 ---
 

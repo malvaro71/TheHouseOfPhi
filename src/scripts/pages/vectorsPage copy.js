@@ -34,11 +34,18 @@ export const vectorsDrawings = {
     plane.drawLabel(pointB, "B", { fill: "brown", fontSize: 20, corner: "lefttop" });
     },
 
+// ======================================================
+// svg1_2 — Vector addition (graphical method)
+// ======================================================
+const svg1_2 = document.getElementById("svg1_2");
+if (svg1_2) {
     // ======================================================
     // svg1_2 — Vector addition (graphical method)
     // ======================================================
     "svg1_2": (svg) => {
         const plane = new CartesianPlane(svg, 0, 19, 0, 18);
+
+    const plane = new CartesianPlane(svg1_2, 0, 19, 0, 18);
 
     const pointA = [0, 0];
     const vectorA = [4, 12];
@@ -68,9 +75,18 @@ export const vectorsDrawings = {
     plane.drawVector(vectorB, vectorA, "a",
         { strokeColor: "green" },
         { fontSize: 22, fill: "green" }
+    );
+}
         );
     },
 
+// ======================================================
+// svg1_3 — Cartesian coordinates of a point
+// ======================================================
+const svg1_3 = document.getElementById("svg1_3");
+if (svg1_3) {
+
+    const plane = new CartesianPlane(svg1_3, -10, 11, -10, 10);
     // ======================================================
     // svg1_3 — Cartesian coordinates of a point
     // ======================================================
@@ -83,8 +99,14 @@ export const vectorsDrawings = {
 
     plane.drawSegment([5, 0], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
     plane.drawSegment([0, 8], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
+}
     },
 
+// ======================================================
+// svg1_5 — Point P(x1, y1, z1) in Euclidean space
+// ======================================================
+const svg1_5 = document.getElementById("svg1_5");
+if (svg1_5) {
     // ======================================================
     // svg1_5 — Point P(x1, y1, z1) in Euclidean space
     // ======================================================
@@ -93,6 +115,11 @@ export const vectorsDrawings = {
         svg.setAttribute("width", "400");
         svg.setAttribute("height", "400");
 
+    svg1_5.setAttribute("viewBox", "0 0 400 400");
+    svg1_5.setAttribute("width", "400");
+    svg1_5.setAttribute("height", "400");
+
+    const space = new EuclideanSpace(svg1_5, [0, 0, 0], 10);
         const space = new EuclideanSpace(svg, [0, 0, 0], 10);
     space.drawAxes();
 
@@ -112,15 +139,21 @@ export const vectorsDrawings = {
     space.drawLabel([0, 9.1, 0.1], "y₁", { fill: "green", fontSize: 20, corner: "leftbottom" });
     space.drawLabel([0, -0.1, 15], "z₁", { fill: "green", fontSize: 20 });
     space.drawLabel([6, 10, 16], "P(x₁, y₁, z₁)", { fill: "green", corner: "lefttop" });
-    }
-};
-/*
+}
+    },
 
+// ======================================================
+// svg1_6 — Projection of W onto V
+// ======================================================
+const svg1_6 = document.getElementById("svg1_6");
+if (svg1_6) {
     // ======================================================
     // svg1_6 — Projection of W onto V
     // ======================================================
     "svg1_6": (svg) => {
         const plane = new CartesianPlane(svg, 0, 21, 0, 14);
+
+    const plane = new CartesianPlane(svg1_6, 0, 21, 0, 14);
 
     const origin = [2, 2];
     const vectorW = [14, 12];
@@ -158,9 +191,16 @@ export const vectorsDrawings = {
         math.add(origin, vectorW),
         math.add(origin, projW_on_V),
         { strokeColor: "green", strokeDasharray: "5,5" }
+    );
+}
         );
     },
 
+// ======================================================
+// svg1_8 — Moment of a sliding vector v about point P
+// ======================================================
+const svg1_8 = document.getElementById("svg1_8");
+if (svg1_8) {
     // ======================================================
     // svg1_8 — Moment of a sliding vector v about point P
     // ======================================================
@@ -169,6 +209,11 @@ export const vectorsDrawings = {
         svg.setAttribute("width", "400");
         svg.setAttribute("height", "410");
 
+    svg1_8.setAttribute("viewBox", "0 0 400 400");
+    svg1_8.setAttribute("width", "400");
+    svg1_8.setAttribute("height", "410");
+
+    const space = new EuclideanSpace(svg1_8, [0, 0, 0], 10);
         const space = new EuclideanSpace(svg, [0, 0, 0], 10);
     space.drawAxes();
 
@@ -187,9 +232,16 @@ export const vectorsDrawings = {
     space.drawVector(pointP, vectorM, "m",
         { strokeColor: "green" },
         { corner: "righttop" }
+    );
+}
         );
     },
 
+// ======================================================
+// svg1_9 — Moment of v about a line l
+// ======================================================
+const svg1_9 = document.getElementById("svg1_9");
+if (svg1_9) {
     // ======================================================
     // svg1_9 — Moment of v about a line l
     // ======================================================
@@ -198,6 +250,11 @@ export const vectorsDrawings = {
         svg.setAttribute("width", "400");
         svg.setAttribute("height", "410");
 
+    svg1_9.setAttribute("viewBox", "0 0 400 400");
+    svg1_9.setAttribute("width", "400");
+    svg1_9.setAttribute("height", "410");
+
+    const space = new EuclideanSpace(svg1_9, [0, 0, 0], 10);
         const space = new EuclideanSpace(svg, [0, 0, 0], 10);
     space.drawAxes();
 
@@ -240,8 +297,13 @@ export const vectorsDrawings = {
     space.drawSegment(dashed1, dashed2,
         { strokeColor: "green", strokeDasharray: "5,5" }
     );
+}
     },
 
+// ======================================================
+// Exercise e_1
+// ======================================================
+function renderExerciseE1() {
     // ======================================================
     // Exercise e_1
     // ======================================================
@@ -274,6 +336,11 @@ export const vectorsDrawings = {
     writeValue("e_1normvPropelled1", normvPropelled.toFixed(1));
     writeValue("e_1phi2", phi.toFixed(1));
 
+    // SVG
+    const svg = document.getElementById("svge_1");
+    if (!svg) return;
+
+    const plane = new CartesianPlane(svg, -23, 23, -6, 40, 9);
         const plane = new CartesianPlane(svg, -23, 23, -6, 40, 9);
     plane.drawAxes("y-axis", "x-axis", "O");
 
@@ -323,7 +390,16 @@ export const vectorsDrawings = {
     plane.drawLabel([7, 30], "Solution:", { corner: "lefttop", fontSize: 15 });
     plane.drawLabel([7, 27], `φ = ${phi.toFixed(1)}º`, { corner: "lefttop", fontSize: 15 });
     plane.drawLabel([7, 24], `|Vp| = ${normvPropelled.toFixed(1)} Km/h`, { corner: "lefttop", fontSize: 15 });
+}
     },
+
+renderExerciseE1();
+
+
+// ======================================================
+// Exercise e_2 — Graphical sum of vectors a, b, c, d
+// ======================================================
+function renderExerciseE2() {
 
     // ======================================================
     // Exercise e_2 — Graphical sum of vectors a, b, c, d
@@ -333,6 +409,9 @@ export const vectorsDrawings = {
     const vectorB = [4, -2];
     const vectorC = [3, -2];
     const vectorD = [-9, 1];
+
+    const svg = document.getElementById("svge_2");
+    if (!svg) return;
 
     const xMin = -1, xMax = 10, yMin = -3, yMax = 5;
 
@@ -361,7 +440,15 @@ export const vectorsDrawings = {
         plane.drawVector(initialPoint, vectors[i], names[i]);
         initialPoint = math.add(initialPoint, vectors[i]);
     }
+}
     },
+
+renderExerciseE2();
+
+// ======================================================
+// Exercise e_3 — NNE direction, velocity components
+// ======================================================
+function renderExerciseE3() {
 
     // ======================================================
     // Exercise e_3 — NNE direction, velocity components
@@ -379,6 +466,9 @@ export const vectorsDrawings = {
     writeValue("e_3sailboatSpeed", sailboatSpeed);
     writeValue("e_3Vx", sailboatSpeedX.toFixed(2));
     writeValue("e_3Vy", sailboatSpeedY.toFixed(2));
+
+    const svg = document.getElementById("svge_3");
+    if (!svg) return;
 
     const xMin = -5, xMax = 5, yMin = -1, yMax = 5;
 
@@ -432,7 +522,15 @@ export const vectorsDrawings = {
         "θ = 67.5º",
         { stroke: "blue", corner: "leftbottom", fontSize: 16, fontWeight: "lighter" }
     );
+}
     },
+
+renderExerciseE3();
+
+// ======================================================
+// Exercise e_4 — Components of velocity at 30º
+// ======================================================
+function renderExerciseE4() {
 
     // ======================================================
     // Exercise e_4 — Components of velocity at 30º
@@ -452,7 +550,15 @@ export const vectorsDrawings = {
     writeValue("e_4Vy1", Vy.toFixed(1));
     writeValue("e_4Vx2", Vx.toFixed(1));
     writeValue("e_4Vy2", Vy.toFixed(1));
+}
     },
+
+renderExerciseE4();
+
+// ======================================================
+// Exercise e_5 — Scalar product and angle
+// ======================================================
+function renderExerciseE5() {
 
     // ======================================================
     // Exercise e_5 — Scalar product and angle
@@ -469,7 +575,15 @@ export const vectorsDrawings = {
 
     writeValue("e_5escProd1", scalarProduct);
     writeValue("e_5angle1", angleDeg.toFixed(2));
+}
     },
+
+renderExerciseE5();
+
+// ======================================================
+// Exercise e_6 — Projection of NE velocity onto East
+// ======================================================
+function renderExerciseE6() {
 
     // ======================================================
     // Exercise e_6 — Projection of NE velocity onto East
@@ -499,6 +613,10 @@ export const vectorsDrawings = {
     writeValue("e_6speed2", planeSpeed);
     writeValue("e_6angle2", angleNEDeg);
     writeValue("e_6projection", normProjEV.toFixed(0));
+
+    // SVG
+    const svg = document.getElementById("svge_6");
+    if (!svg) return;
 
     const xMin = -700, xMax = 700, yMin = -100, yMax = 700;
 
@@ -544,7 +662,16 @@ export const vectorsDrawings = {
     plane.drawLabel(angleLabelPos, "θ = 45º",
         { stroke: "blue", corner: "lefttop", fontSize: 16, fontWeight: "lighter" }
     );
+}
     },
+
+renderExerciseE6();
+
+
+// ======================================================
+// Exercise e_7 — Linear velocity v = w × r
+// ======================================================
+function renderExerciseE7() {
 
     // ======================================================
     // Exercise e_7 — Linear velocity v = w × r
@@ -583,8 +710,26 @@ export const vectorsDrawings = {
     // Display the result as plain text.
     // math.format ensures the vector is shown cleanly, e.g. "[4, 1, -4]"
     divResult.textContent = math.format(result);
+}
     },
 
+// Wait for MathJax to finish loading and initializing.
+// MathJax.startup.promise resolves ONLY when MathJax is fully ready.
+// This prevents errors like "MathJax.tex2svgPromise is not a function".
+MathJax.startup.promise.then(() => {
+
+    // Once MathJax is ready, call your page-specific rendering logic.
+    // For example, rendering Exercise E7.
+    renderExerciseE7();
+
+});
+
+// ======================================================
+// Exercise 2_8 — Area of triangle ABC in 3D
+// ======================================================
+function renderExercise2_8() {
+
+    // --------------------------------------------------
     // ======================================================
     // Exercise 2_8 — Area of triangle ABC in 3D
     // ======================================================
@@ -628,6 +773,9 @@ export const vectorsDrawings = {
     // --------------------------------------------------
     // 5. Preparar el SVG
     // --------------------------------------------------
+    const svg = document.getElementById("svg2_8");
+    if (!svg) return;
+
     svg.setAttribute("viewBox", "0 0 400 400");
     svg.setAttribute("width", "400");
     svg.setAttribute("height", "410");
@@ -680,6 +828,8 @@ export const vectorsDrawings = {
     space.drawSegment(C, BplusAC,
         { strokeColor: "blue", strokeDasharray: "5,5" }
     );
+}
+
+renderExercise2_8();
     }
 };
-*/

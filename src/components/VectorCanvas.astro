@@ -6,14 +6,17 @@ const { id, viewBox = "0 0 400 400", width = "100%", height = "400" } = Astro.pr
 
 <script>
     import { geometryDrawings } from '../scripts/pages/geometryPage.js';
+    import { vectorsDrawings } from '../scripts/pages/vectorsPage.js';
     import { ensureSharedMarkerDefs } from '../scripts/core/SVGDrawing.js';
+
+    const allDrawings = { ...geometryDrawings, ...vectorsDrawings };
 
     const initDrawings = () => {
         console.log("VectorCanvas: Iniciando renderizado de gráficos...");
         // Asegurar que los marcadores (flechas) estén definidos
         ensureSharedMarkerDefs();
 
-        for (const [id, drawFunc] of Object.entries(geometryDrawings)) {
+        for (const [id, drawFunc] of Object.entries(allDrawings)) {
             const svg = document.getElementById(id);
             // Verificamos si existe, es función y si NO ha sido dibujado ya (para evitar duplicados)
             if (svg && typeof drawFunc === 'function' && !svg.hasAttribute('data-drawn')) {

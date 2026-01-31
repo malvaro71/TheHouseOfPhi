@@ -1,0 +1,114 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: Vectores - The House of Phi
+lang: es
+---
+import VectorCanvas from '../../components/VectorCanvas.astro';
+import VectorConverter from '../../components/VectorConverter.astro';
+import * as math from 'mathjs';
+
+# Vectores
+
+<nav>
+    [Inicio](/) > [Vectores](#)
+</nav>
+
+## 1. Introducción
+¿Alguna vez te has preguntado cómo los físicos describen el movimiento de un planeta, el trayecto de un balón o la trayectoria de un cohete? La clave reside en un concepto fundamental: la **posición**. Saber "dónde" se encuentra algo en el universo, en un instante específico y respecto a un punto de referencia, es el punto de partida.
+
+La posición no es solo un dato; es la base sobre la que se construyen pilares de la física como el **desplazamiento**, la **velocidad** y la **aceleración**. Sin ella, sería imposible entender si un objeto se ha movido, en qué dirección o con qué rapidez. Pero su importancia va más allá del movimiento: influye directamente en la **energía potencial**, en cómo se aplican y sienten las **fuerzas**, y en la descripción de **campos** gravitatorios, eléctricos o magnéticos.
+
+Para manejar esta información de manera precisa, la física recurre a una herramienta matemática indispensable: los **vectores de posición**. Estos no solo nos dicen cuán lejos está un objeto de un origen, sino también en qué dirección y sentido se encuentra. Son la clave para representar ubicaciones en dos o tres dimensiones de forma completa y rigurosa.
+
+En este primer capítulo, exploraremos a fondo los **vectores** y el **sistema de coordenadas cartesianas**, desentrañando las **operaciones vectoriales** fundamentales como la suma, resta, producto escalar y producto vectorial. Estas herramientas del **álgebra vectorial** no solo simplifican enormemente la resolución de problemas complejos en física e ingeniería, sino que también nos permiten, por ejemplo, calcular la distancia precisa entre dos puntos con una elegancia matemática asombrosa. Prepárate para descubrir el lenguaje que nos permite describir y predecir el mundo físico con una claridad sin precedentes.
+
+## 2. Vectores
+Un **vector** es un segmento dirigido, uno de cuyos extremos (el punto A) se dice que es el origen, mientras que el otro (el punto B) se dice que es el final del vector. Tal vector puede ser denotado por **_v_**, $\vec v$ o $\overrightarrow{AB}$. Un vector cuyo origen y fin coinciden se dice que es un **vector cero**, y generalmente se denota por $\vec0$. El vector $\overrightarrow{BA}$ se dice que es el **vector opuesto** a $\overrightarrow{AB}$. Un vector con una longitud igual a uno se denomina vector unitario. Cualquier dirección puede ser asignada a un vector cero.
+
+El origen del vector también se denomina punto inicial o punto de aplicación.
+
+![Un vector está representado por un segmento de línea dirigida desde su punto inicial A hasta su punto terminal B.](vector:svg1_1 "Figura 1.1: Un vector está representado por un segmento de línea dirigida desde su punto inicial A hasta su punto terminal B.")
+
+Un vector geométrico, como se ha definido anteriormente, también se denomina **vector fijo** o **vector ligado**. Porque tiene un punto de partida único. En física se utiliza, por ejemplo, para especificar la acción de la fuerza sobre un cuerpo deformable o no rígido. En este caso, las fuerzas y deformaciones dentro del cuerpo dependen del punto de aplicación de la fuerza, así como de la magnitud y la línea de acción.
+
+Se dice que una clase de vectores iguales que se encuentran en la misma línea recta es un **vector deslizante**. Un ejemplo de vector deslizante es la acción de una fuerza sobre un cuerpo rígido. Entonces, en este caso, el punto de aplicación se puede mover a lo largo de la línea determinada por la dirección del vector.
+
+Si los vectores solo se caracterizan por la magnitud y la dirección, entonces se denominan **vectores libres**. Ejemplos de vectores libres en física son el desplazamiento, la velocidad y la intensidad del campo magnético o eléctrico. En estos casos, el vector se puede mover a cualquier punto del espacio.
+
+El cálculo vectorial, que es el estudio de las operaciones realizadas sobre vectores, se basa en vectores libres, ya que dos vectores libres dados son equivalente a un vector deslizante dado o a un vector ligado dado, siempre y cuando tengamos en cuenta el valor físico y el significado del vector analizado. A partir de ahora, **hablaremos de vectores libres si no se menciona lo contrario**.
+
+Un vector está caracterizado:
+
+- por su **magnitud (o módulo)**, que es igual a la longitud del segmento $\overline{AB}$ y se denota por $\|\vec v\|$,
+- y por su **dirección**: de A hacia B.
+
+## 3. Suma de Vectores, Método Gráfico
+La suma de dos vectores $\vec a$ y $\vec b$, o suma de vectores, produce un tercer vector $\overrightarrow{a+b}$.
+
+Para encontrar $\overrightarrow{a+b}$, primero dibujamos el vector $\vec a$, y desde el final de $\vec a$, dibujamos $\vec b$. En otras palabras, hacemos que el origen de $\vec b$ coincida con el final $\vec a$. Esta posición corresponde a la noción de que nos movemos a lo largo del primer vector y luego, desde su punto terminal, nos movemos a lo largo del segundo vector. La suma vectorial tiene la propiedad conmutativa; Entonces, si primero dibujamos un vector $\vec b$, y desde el final de $\vec b$, dibujamos el vector $\vec a$, obtendremos $\overrightarrow{b+a}$, que es igual a $\overrightarrow{a+b}$.
+
+![Suma de vectores. Método Gráfico.](vector:svg1_2 "Figura 1.2: Suma de vectores. Método Gráfico.")
+
+Un **escalar** es una cantidad que tiene magnitud pero no dirección. O, en otras palabras, una cantidad que se puede expresar con un número (real).
+
+## 4. Sistema de coordenadas cartesianas
+Para especificar la magnitud y la dirección de un vector necesitamos un sistema de coordenadas. Hay tres sistemas de coordenadas comúnmente utilizados: cartesiano, cilíndrico y esférico. En esta sección describimos el sistema de coordenadas cartesianas.
+
+Un **sistema de coordenadas cartesianas en dos dimensiones** se define mediante un par ordenado de líneas perpendiculares (ejes), una sola unidad de longitud para ambos ejes y una orientación para cada eje. El punto donde se encuentran los ejes se toma como origen de ambos, convirtiendo así cada eje en una recta numérica.
+
+Para cualquier punto P, se dibuja una línea a través de P perpendicular a cada eje, y la posición en la que se encuentra con el eje se interpreta como un número. Los dos números, en ese orden elegido, son las coordenadas cartesianas (x, y) de P.
+
+![Plano cartesiano y coordenadas cartesianas de un punto.](vector:svg1_3 "Figura 1.3: Plano cartesiano y coordenadas cartesianas de un punto.")
+
+Un **Sistema de coordenadas cartesianas en tres dimensiones** consta de tres ejes perpendiculares: el eje x, el eje y y el eje z que se cruzan en un punto común (el origen 0). Debido a que cada eje es una recta numérica que representa todos los números reales en $\mathbb{R}$, el sistema tridimensional a menudo se denota por $\mathbb{R}^3$.
+
+El sistema de coordenadas cartesianas también se denomina **sistema de coordenadas rectangulares** o **sistema de coordenadas ortogonales**.
+
+En la Figura 1.4 (a), el eje z positivo se muestra sobre el plano que contiene los ejes x e y. El sistema que se muestra sigue la regla de la mano derecha. Si tomamos nuestra mano derecha y alineamos los dedos con el eje x positivo, luego dobla los dedos para que apunten en la dirección del eje y positivo, nuestro pulgar apunta en la dirección del eje z positivo. En este sitio web, siempre trabajamos con sistemas de coordenadas configurados de acuerdo con la regla de la mano derecha. Algunos sistemas siguen una regla de la mano izquierda, pero la regla de la mano derecha se considera la representación estándar.
+
+![Sistema de coordenadas rectangulares tridimensionales con el eje x, el eje y y el eje z.](/images/3DCoordSystAndRightHandRule.svg "Figura 1.4: (a) Sistema de coordenadas rectangulares tridimensionales con el eje x, el eje y y el eje z. (b) La regla de la mano derecha se utiliza para determinar la ubicación de los ejes de coordenadas en la norma Plano Cartesiano.")
+
+Describimos un punto P en el sistema de coordenadas rectangulares tridimensionales con las coordenadas $(x_1, y_1, z_1)$. Cada coordenada describe cómo se alinea el punto con el eje correspondiente.
+
+![Para trazar el punto P, con coordenadas (x1, y1, z1), desplazarse x1 unidades a lo largo del eje x, entonces ir y1 unidades en la dirección del eje Y, luego desplazarse z1 unidades en la dirección del eje z.](vector:svg1_5 "Figura 1.5: Para trazar el punto P, con coordenadas (x1, y1, z1), desplazarse x1 unidades a lo largo del eje x, entonces ir y1 unidades en la dirección del eje Y, luego desplazarse z1 unidades en la dirección del eje z.")
+
+## 5. Componentes de un Vector
+Cuando el punto inicial de un vector coincide con el origen del sistema de coordenadas, llamamos al vector **vector de posición estándar**. Debido a que se sabe que el punto inicial de cualquier vector en posición estándar es (0,0), podemos describir el vector tomando sólo las coordenadas de su punto terminal. Por lo tanto, si el vector $\vec v$ tiene su punto inicial en el origen y su punto terminal en (x, y), escribimos el vector mediante sus componentes como
+
+$$
+\vec v = (x, y) \tag{1}
+$$
+
+Cuando un vector se escribe de esta manera, los escalares x e y se denominan **componentes** de $\vec v$. Cuando necesitamos realizar cálculos con vectores, solemos describirlos como vectores de posición estándar porque es más fácil realizar tales cálculos.
+
+## 6. Relación entre las componentes de un vector, su módulo y su dirección
+Para hallar la magnitud de un vector a partir de sus componentes, utilizamos el Teorema de Pitágoras. Y para encontrar su dirección Usamos la función tangente inversa.
+
+Dado un vector de posición $\vec v = (x, y)$, su **magnitud (o módulo)** se calcula mediante
+
+$$
+\|\vec v\| = \sqrt{x^2+y^2} \tag{2}
+$$
+
+Y su **dirección** se calcula mediante
+
+$$
+\theta = \arctan (y/x) \tag{3}
+$$
+
+Dadas la magnitud y dirección de un vector $\vec v$, su **componente x** se calcula mediante
+
+$$
+x = \|\vec v\|\cos\theta \tag{4}
+$$
+
+y su **componente y** se calcula mediante
+
+$$
+y = \|\vec v\|\sin\theta \tag{5}
+$$
+
+<details>
+    <summary>Haz click aquí para abrir la calculadora de vectores</summary>
+    <VectorConverter />
+</details>
