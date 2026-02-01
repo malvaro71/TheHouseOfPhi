@@ -145,6 +145,13 @@ export const geometryDrawings = {
 *   **Do not** call `transformCoordinates()` manually. The engines handle this.
 *   **Do not** set SVG width/height manually. The `VectorCanvas` component handles sizing.
 
+**Math in Graphics:**
+You can render LaTeX expressions inside the SVG using `drawMath`.
+*   **Requirement:** The MDX page must load the MathJax script.
+    ```html
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    ```
+
 #### 2. Insert the Graphic (MDX)
 Use the `vector:` protocol followed by the ID defined in your page script.
 
@@ -156,17 +163,20 @@ Where:
 *   **X**: The number of the current Level 2 section (`##`).
 *   **Y**: A sequential number starting at 1, which resets for each new Level 2 section.
 
-## 5. Computed Values (Math.js)
+## 5. Computed Values and Solved Exercises
 
-Do not hardcode results of calculations in the text. Perform calculations in the **Frontmatter** and inject the variables. This ensures accuracy if input data changes.
+For exercises where values are calculated and displayed dynamically, we use a strategy that mixes JavaScript logic with MDX content. This ensures accuracy and consistency.
 
-**Step 1: Frontmatter Calculation**
+### 5.1. Defining Logic (MDX)
+Place your calculation logic inside the MDX file, before the specific exercise. Use `export const` to ensure variables are accessible in the template.
+
 ```js
----
-// ... imports
-const radius = 5;
-const area = math.pi * math.pow(radius, 2);
----
+import * as math from 'mathjs';
+
+// Define constants and calculations
+export const vRiver = [9, 0];
+export const vBoat = [0, 36];
+export const vResult = math.add(vRiver, vBoat);
 ```
 
 **Step 2: Usage in Content**
@@ -175,8 +185,9 @@ You can use curly braces `{}` to output the value.
 ```md
 Given a circle with radius {radius} m, the area is:
 
-$$ A = \pi r^2 = {area.toFixed(2)} \text{ m}^2 $$
+$ A = \pi r^2 =$ {area.toFixed(2)} $\text{ m}^2 $
 ```
+**Important**: Variable interpolation {} only works when interleaved with inline math ($) or plain text. It does not work inside block math ($$).
 
 ## 6. Navigation
 

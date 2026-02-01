@@ -28,7 +28,7 @@ export const vectorsDrawings = {
     // Vector = B - A
     const vectorAB = math.subtract(pointB, pointA);
 
-    plane.drawVector(pointA, vectorAB);
+    plane.drawVectorB(pointA, vectorAB, "\\overrightarrow{AB}",{}, { dx: -18, dy: -33 });
 
     plane.drawLabel(pointA, "A", { fill: "brown", fontSize: 20 });
     plane.drawLabel(pointB, "B", { fill: "brown", fontSize: 20, corner: "lefttop" });
@@ -45,29 +45,29 @@ export const vectorsDrawings = {
     const vectorB = [15, 6];
     const vectorAPlusB = math.add(vectorA, vectorB);
 
-    plane.drawVector(pointA, vectorA, "a",
+    plane.drawVectorB(pointA, vectorA, "\\vec{a}",
         { strokeColor: "green" },
-        { fontSize: 22, fill: "green" }
+        { scale: 1.2, color: "green", dx: -14, dy: -24}
     );
 
-    plane.drawVector(vectorA, vectorB, "b",
+    plane.drawVectorB(vectorA, vectorB, "\\vec{b}",
         { strokeColor: "blue" },
-        { fontSize: 22, fill: "blue" }
+        { scale: 1.2, color: "blue", dx: -14, dy: -22 }
     );
 
-    plane.drawVector(pointA, vectorAPlusB, "a+b",
+    plane.drawVectorB(pointA, vectorAPlusB, "\\overrightarrow{a + b}",
         { strokeColor: "brown" },
-        { fontSize: 22, corner: "lefttop" }
+        { scale: 1.2, color: "brown", dx: -50, dy: -30 }
     );
 
-    plane.drawVector(pointA, vectorB, "b",
+    plane.drawVectorB(pointA, vectorB, "\\vec{b}",
         { strokeColor: "blue" },
-        { fontSize: 22, fill: "blue" }
+        { scale: 1.2, color: "blue", dx: -14, dy: -22 }
     );
 
-    plane.drawVector(vectorB, vectorA, "a",
+    plane.drawVectorB(vectorB, vectorA, "\\vec{a}",
         { strokeColor: "green" },
-        { fontSize: 22, fill: "green" }
+        { scale: 1.2, color: "green", dx: -14, dy: -14 }
         );
     },
 
@@ -278,92 +278,74 @@ export const vectorsDrawings = {
             { strokeColor: "green", strokeDasharray: "5,5" }
         );
     },
-};
-/*
+
+
 
     // ======================================================
     // Exercise e_1
     // ======================================================
     "svge_1": (svg) => {
 
-    // Exercise data
-    const vRiver = [9, 0];
-    const vBoat = [0, 36];
+        // Exercise data
+        const vRiver = [9, 0];
+        const vBoat = [0, 36];
 
-    // vPropelled = vBoat – vRiver
-    const vPropelled = math.subtract(vBoat, vRiver);
-    const normvPropelled = math.norm(vPropelled);
-
-    // Angle φ between vRiver and vPropelled
-    const phi = math.acos(
-        math.dot(vRiver, vPropelled) /
-        (math.norm(vRiver) * normvPropelled)
-    ) * 180 / math.pi;
-
-    // Write values in HTML
-    writeValue("e_1avgSpeed", vBoat[1]);
-    writeValue("e_1riverSpeed", vRiver[0]);
-    writeValue("e_1vBoat", vBoat);
-    writeValue("e_1vRiver", vRiver);
-    writeValue("e_1vBoat1", vBoat);
-    writeValue("e_1vRiver1", vRiver);
-    writeValue("e_1vPropelled", vPropelled);
-    writeValue("e_1normvPropelled", normvPropelled.toFixed(1));
-    writeValue("e_1phi1", phi.toFixed(1));
-    writeValue("e_1normvPropelled1", normvPropelled.toFixed(1));
-    writeValue("e_1phi2", phi.toFixed(1));
+        // vPropelled = vBoat – vRiver
+        const vPropelled = math.subtract(vBoat, vRiver);
+        const normvPropelled = math.norm(vPropelled);
+    
+        // Angle φ between vRiver and vPropelled
+        const phi = math.acos(
+            math.dot(vRiver, vPropelled) /
+            (math.norm(vRiver) * normvPropelled)
+        ) * 180 / math.pi;
 
         const plane = new CartesianPlane(svg, -23, 23, -6, 40, 9);
-    plane.drawAxes("y-axis", "x-axis", "O");
+        plane.drawAxes("y-axis", "x-axis", "O");
 
-    // Labels
-    plane.drawLabel([7, 39], "Data:", { corner: "lefttop", fontSize: 15 });
-    plane.drawLabel([7, 36], "Vr = <9, 0> Km/h", { corner: "lefttop", fontSize: 15 });
-    plane.drawLabel([7, 33], "Vb = <0, 36> Km/h", { corner: "lefttop", fontSize: 15 });
+        // Labels
+        plane.drawLabel([7, 39], "Data:", { corner: "lefttop", fontSize: 15 });
+        plane.drawMath([7, 36], "\\vec{v}_r = \\langle 9, 0 \\rangle \\text{ Km/h}", {});
+        plane.drawMath([7, 33], "\\vec{v}_b = \\langle 0, 36 \\rangle \\text{ Km/h}", {});
 
-    const initialPoint = [0, 0];
+        const initialPoint = [0, 0];
 
-    // Vr
-    plane.drawVector(initialPoint, vRiver, textWithSubscript("V", "r"),
-        { strokeColor: "green" },
-        { corner: "righttop" }
-    );
+        // Vr
+        plane.drawVectorB(initialPoint, vRiver, "\\vec{V}_r", { strokeColor: "blue" }, {scale: 1.3});
 
-    // Vp
-    plane.drawVector(initialPoint, vPropelled, textWithSubscript("V", "p"),
-        { strokeColor: "blue" },
-        { corner: "righttop" }
-    );
+        // Vp
+        plane.drawVectorB(initialPoint, vPropelled, "\\vec{V}_p", { strokeColor: "blue" }, {scale: 1.3, color: "blue", dx: 4, dy: -4});
 
-    // Components
-    plane.drawSegment(vPropelled, math.multiply(-1, vRiver),
-        { strokeColor: "green", strokeDasharray: "5,5" }
-    );
+        // Components
+        plane.drawSegment(vPropelled, math.multiply(-1, vRiver),
+            { strokeColor: "green", strokeDasharray: "5,5" }
+        );
 
-    plane.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx",
-        { strokeColor: "green" },
-        { corner: "righttop" }
-    );
+        plane.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx",
+            { strokeColor: "green" },
+            { corner: "righttop" }
+        );
 
-    plane.drawSegment(vPropelled, vBoat,
-        { strokeColor: "green", strokeDasharray: "5,5" }
-    );
+        plane.drawSegment(vPropelled, vBoat,
+            { strokeColor: "green", strokeDasharray: "5,5" }
+        );
 
-    plane.drawVector(initialPoint, vBoat, "Vy = Vby",
-        { strokeColor: "green" },
-        { corner: "lefttop" }
-    );
+        plane.drawVector(initialPoint, vBoat, "Vy = Vby",
+            { strokeColor: "green" },
+            { corner: "lefttop" }
+        );
 
-    // Angle
-    plane.drawArc(initialPoint, vRiver, vPropelled, 3);
-    plane.drawLabel([3, 3], "φ", { fill: "blue", corner: "leftbottom" });
+        // Angle
+        plane.drawArc(initialPoint, vRiver, vPropelled, 3);
+        plane.drawLabel([3, 3], "φ", { fill: "blue", corner: "leftbottom" });
 
-    // Solutions
-    plane.drawLabel([7, 30], "Solution:", { corner: "lefttop", fontSize: 15 });
-    plane.drawLabel([7, 27], `φ = ${phi.toFixed(1)}º`, { corner: "lefttop", fontSize: 15 });
-    plane.drawLabel([7, 24], `|Vp| = ${normvPropelled.toFixed(1)} Km/h`, { corner: "lefttop", fontSize: 15 });
+        // Solutions
+        plane.drawLabel([7, 30], "Solution:", { corner: "lefttop", fontSize: 15 });
+        plane.drawLabel([7, 27], `φ = ${phi.toFixed(1)}º`, { corner: "lefttop", fontSize: 15 });
+        plane.drawLabel([7, 24], `|Vp| = ${normvPropelled.toFixed(1)} Km/h`, { corner: "lefttop", fontSize: 15 });
     },
-
+};
+/*
     // ======================================================
     // Exercise e_2 — Graphical sum of vectors a, b, c, d
     // ======================================================

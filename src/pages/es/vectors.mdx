@@ -7,6 +7,9 @@ import VectorCanvas from '../../components/VectorCanvas.astro';
 import VectorConverter from '../../components/VectorConverter.astro';
 import * as math from 'mathjs';
 
+{/* Cargar MathJax para renderizado dinámico en SVGs. Sin 'async' para asegurar que cargue antes que los scripts del canvas */}
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
 # Vectores
 
 <nav>
@@ -335,3 +338,65 @@ $$
 - [Vector algebra. Encyclopedia of Mathematics.](http://encyclopediaofmath.org/index.php?title=Vector_algebra&oldid=49132)
 - [Cartesian orthogonal coordinate system. Encyclopedia of Mathematics.](https://encyclopediaofmath.org/wiki/Cartesian_orthogonal_coordinate_system)
 - [5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.](https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods)
+
+## 19. Ejercicios con vectores
+
+{/* --- Lógica para Ejercicio 1 --- */}
+export const vRiver_e1 = [9, 0];
+export const vBoat_e1 = [0, 36];
+
+{/* vPropelled = vBoat – vRiver */}
+export const vPropelled_e1 = math.subtract(vBoat_e1, vRiver_e1);
+export const normvPropelled_e1 = math.norm(vPropelled_e1);
+
+{/* Ángulo φ entre vRiver y vPropelled */}
+export const dotProduct_e1 = math.dot(vRiver_e1, vPropelled_e1);
+export const normRiver_e1 = math.norm(vRiver_e1);
+export const cosPhi_e1 = dotProduct_e1 / (normRiver_e1 * normvPropelled_e1);
+export const phi_e1 = math.acos(cosPhi_e1) * 180 / math.pi;
+
+### Ejercicio 1
+Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de {vBoat_e1[1]} km/h. El agua del río fluye a una velocidad de {vRiver_e1[0]} km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
+
+La velocidad del bote $\vec v_b$ es la suma de la velocidad con la que el barquero propulsa el bote $\vec v_p$ más la velocidad del agua del río $\vec v_r$. Entonces:
+
+$$
+\vec v_p = \vec v_b - \vec v_r
+$$
+
+Si elegimos el plano de coordenadas de manera que el eje x tenga la misma dirección que el río:
+
+<div>
+    $\vec v_b = ($ {vBoat_e1.join(', ')} $) \text{ Km/h}$
+</div>
+
+<div>
+    $\vec v_r = ($ {vRiver_e1.join(', ')} $) \text{ Km/h}$
+</div>
+
+<div>
+    $\vec v_p = ($ {vBoat_e1.join(', ')} $) - ($ {vRiver_e1.join(', ')} $) = ($ {vPropelled_e1.join(', ')} $) \text{ Km/h}$
+</div>
+
+La magnitud del vector $\vec v_p$ es la velocidad a la que se impulsa el bote, se expresa como $\|\vec v_p\|$ y, según [6.1], se calcula como:
+
+<div>
+    $\|\vec v_p\| = \sqrt{v_x^2 + v_y^2} = \sqrt{9^2 + 36^2} = \sqrt{81+1296} = \sqrt {1377} =$ {normvPropelled_e1.toFixed(1)} $\text{ Km/h}$
+</div>
+
+El valor del ángulo $\phi$ es la dirección en la que se impulsa el bote, corresponde con la orientación de $\vec v_p$ y según [10.3], se calcula como:
+
+<div class="centered">
+    $\displaystyle \phi = \arccos \left( \frac{\vec v_p \cdot \vec v_r}{\|\vec v_p\| \cdot \|\vec v_r\|} \right) =$ {phi_e1.toFixed(1)}$^\circ$
+</div>
+
+Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de {normvPropelled_e1.toFixed(1)} Km/h y en una dirección que forme {phi_e1.toFixed(1)}º con el río.
+
+![Figura 19.1: Plano de coordenadas, vr como la velocidad del agua del río y v como la velocidad con la que se propulsa el bote.](vector:svge_1 "Plano de coordenadas, vr como la velocidad del agua del río y v como la velocidad con la que se propulsa el bote.")
+
+#### Referencias
+- [Coordinate Plane. Mathisfun.](https://www.mathsisfun.com/definitions/coordinate-plane.html)
+- [Vectors. Mathisfun.](https://www.mathsisfun.com/algebra/vectors.html)
+- [Speed and Velocity. Mathisfun.](https://www.mathsisfun.com/measure/speed-velocity.html)
+- [Sine, Cosine and Tangent in Four Quadrants. Mathisfun.](https://www.mathsisfun.com/algebra/trig-four-quadrants.html)
+- [Dot Product. Mathisfun.](https://www.mathsisfun.com/algebra/vectors-dot-product.html)

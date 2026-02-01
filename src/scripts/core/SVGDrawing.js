@@ -201,7 +201,8 @@ export function renderMathExpressionSVG(elementId, latex) {
     container.innerHTML = ""; 
     
     // Insert the generated SVG into the page. 
-    container.appendChild(svg); }
+    container.appendChild(svg); 
+}
 
 
 /**
@@ -218,6 +219,40 @@ export function writeValue(elementId, value) {
 		element.innerHTML = value.join(", ");
 	} else {
 		element.innerHTML = value;
+	}
+}
+
+/**
+ * Writes a LaTeX math expression within an SVG element at specified coordinates.
+ *
+ * @param {SVGElement} svgElement - The SVG element where the math will be drawn.
+ * @param {string} latex - The LaTeX expression.
+ * @param {number} x - The x-coordinate.
+ * @param {number} y - The y-coordinate.
+ * @param {number} [scale=1] - Scaling factor.
+ * @param {string} [color="black"] - Fill color.
+ * @param {number} [dx=0] - Horizontal offset in pixels.
+ * @param {number} [dy=0] - Vertical offset in pixels.
+ */
+export function writeMath(svgElement, latex, x, y, scale = 1, color = "brown", dx = 0, dy = 0) {
+	if (typeof MathJax === 'undefined') {
+		console.error("MathJax is not loaded.");
+		return;
+	}
+
+	try {
+		const container = MathJax.tex2svg(latex);
+		const svg = container.querySelector("svg");
+
+		if (svg) {
+			const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+			g.setAttribute("transform", `translate(${x + dx}, ${y + dy}) scale(${scale})`);
+			g.style.color = color;
+			g.appendChild(svg);
+			svgElement.appendChild(g);
+		}
+	} catch (e) {
+		console.error("Error rendering math:", e);
 	}
 }
 

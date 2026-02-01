@@ -4,7 +4,8 @@ import {
     writeText,
     writeVerticalText,
     drawCircle,
-    drawSegment
+    drawSegment,
+    writeMath
 } from './SVGDrawing.js';
 
 // Import the math library 
@@ -384,6 +385,60 @@ export class CartesianPlane {
 		}
 	}
 	
+	/**
+	 * Draws a vector in the Cartesian plane using an existing marker created earlier (only for brown, blue or green colors).
+	 * This method allows rendering a LaTeX expression as a label using MathJax.
+	 * 
+	 * @param {number[]} initialPoint - The starting point coordinates of the vector in the Cartesian plane ([x, y]).
+	 * @param {number[]} vectorComponents - The components of the vector in the Cartesian plane ([x, y]).
+	 * @param {string} latexExpression - The LaTeX expression for the label (default: "").
+	 * @param {object} lineAttributes - An object containing style attributes for the vector (default values are applied if omitted).
+	 *                 * `strokeColor` (string): The color of the line (default: "brown").
+	 *                 * `strokeWidth` (number): The width of the line in pixels (default: 2).
+	 *                 * `strokeDasharray` (string): The dash pattern for the line (default: "none").
+	 *                 * `showArrow` (boolean): Whether to draw an arrowhead at the end of the line (default: true).
+	 * @param {object} mathAttributes - An object containing style attributes for the math label (default values are applied if omitted).
+	 *                 * `scale` (number): Scaling factor (default: 1).
+	 *                 * `color` (string): Fill color (default: "brown").
+	 * 
+	 * @throws {TypeError} If either initialPoint or vectorComponents is not a number array of length 2.
+	 * @throws {ValueError} If any element in initialPoint or vectorComponents is not a number.
+	 * @throws {TypeError} If either lineAttributes or mathAttributes is not an object.
+	 */
+	drawVectorB(initialPoint, vectorComponents, latexExpression = "", lineAttributes = {}, mathAttributes = {}) {
+		// Validate coordinates1 and coordinates2.
+		[initialPoint, vectorComponents].every(arr => this.validateCoordinates2D(arr));
+
+		// Validate lineAttributes and mathAttributes
+		[lineAttributes, mathAttributes].every(arr => validateObject(arr));
+
+		// Destructure the object and set default values
+		const {strokeColor = "brown", strokeWidth = 2, strokeDasharray = "none", showArrow = true} = lineAttributes;
+
+		//Calculate vector endpoint using initial point and vector components.
+		const endPoint = math.add(initialPoint, vectorComponents);
+
+		// Transform points coordinates to draw it in the SVG element and destructure the coordinates array
+		const [initialXTransformed, initialYTransformed] = this.transformCoordinates(initialPoint);
+		const [endXTransformed, endYTransformed] = this.transformCoordinates(endPoint);
+
+		// Draw the vector
+		drawSegment(this.svgElement, initialXTransformed, initialYTransformed, endXTransformed, endYTransformed, strokeColor, strokeWidth, strokeDasharray, showArrow);
+
+		// Draw math label if defined
+		if (latexExpression != "") {
+			// Calculate the midpoint of the vector to position the label
+			const half = vectorComponents.map(element => element / 2);
+			const position = math.add(initialPoint, half);
+			
+			// Set the color of the math expression to match the vector color
+			mathAttributes.color = strokeColor;
+			
+			// Draw the math expression using drawMath
+			this.drawMath(position, latexExpression, mathAttributes);
+		}
+	}
+
 	  /**
 	 * Draws the label of an element giving coordinates of a baseline point, the label text, 
 	 * the corner parameter: "righttop", "rightbottom", "lefttop" or "leftbottom"
@@ -419,6 +474,37 @@ export class CartesianPlane {
 		writeText(this.svgElement, textContent, xPosition, yPosition, fontSize, stroke, fill, fontWeight, corner);
 	}
 
+	/**
+	 * Draws a LaTeX math expression at a specified point.
+	 * 
+	 * @param {number[]} baselinePoint - The coordinates of the point in the Cartesian plane ([x, y]).
+	 * @param {string} latex - The LaTeX expression.
+	 * @param {object} mathAttributes - An object containing style attributes (default values are applied if omitted).
+	 *                 * `scale` (number): Scaling factor (default: 1).
+	 *                 * `color` (string): Fill color (default: "brown").
+	 *                 * `dx` (number): Horizontal offset (default: 0).
+	 *                 * `dy` (number): Vertical offset (default: 0).
+	 * 
+	 * @throws {TypeError} If baselinePoint is not a number array of length 2.
+	 * @throws {ValueError} If any element in baselinePoint is not a number.
+	 * @throws {TypeError} If mathAttributes is not an object.
+	 */
+	drawMath(baselinePoint, latex, mathAttributes = {}) {
+		// Validate baselinePoint
+		this.validateCoordinates2D(baselinePoint);
+
+		// Validate mathAttributes
+		validateObject(mathAttributes);
+
+		// Destructure mathAttributes and set default values
+		const { scale = 1, color = "brown", dx = 0, dy = 0 } = mathAttributes;
+
+		// Transform point coordinates
+		const [xPosition, yPosition] = this.transformCoordinates(baselinePoint);
+
+		// Write the math
+		writeMath(this.svgElement, latex, xPosition, yPosition, scale, color, dx, dy);
+	}
 	
 
 	/**
@@ -463,4 +549,3 @@ export class CartesianPlane {
 			this.drawLabel([0-0.2, 0], originText, {fontSize: 22, fill: "brown"});
     }
 }
-

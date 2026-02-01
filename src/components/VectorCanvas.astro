@@ -9,12 +9,24 @@ const { id, viewBox = "0 0 400 400", width = "100%", height = "400" } = Astro.pr
     import { vectorsDrawings } from '../scripts/pages/vectorsPage.js';
     import { ensureSharedMarkerDefs } from '../scripts/core/SVGDrawing.js';
 
+    // Declarar MathJax para evitar errores de TypeScript (se carga globalmente)
+    declare const MathJax: any;
+
     const allDrawings = { ...geometryDrawings, ...vectorsDrawings };
 
-    const initDrawings = () => {
+    const initDrawings = async () => {
         console.log("VectorCanvas: Iniciando renderizado de gráficos...");
         // Asegurar que los marcadores (flechas) estén definidos
         ensureSharedMarkerDefs();
+
+        // Si MathJax está cargado, esperamos a que esté listo para renderizar
+        if (typeof MathJax !== 'undefined' && MathJax.startup) {
+            try {
+                await MathJax.startup.promise;
+            } catch (e) {
+                console.error("Error esperando a MathJax:", e);
+            }
+        }
 
         for (const [id, drawFunc] of Object.entries(allDrawings)) {
             const svg = document.getElementById(id);
