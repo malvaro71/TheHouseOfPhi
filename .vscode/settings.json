@@ -3,15 +3,16 @@
     // Esta línea es crucial: le dice a VS Code que ejecute las correcciones de ESLint
     // automáticamente cada vez que guardes un archivo.
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "true"
+        "source.fixAll.eslint": "explicit"
     },
     // Opcional: Esto asegura que el plugin de ESLint se active para tus archivos JavaScript.
     "eslint.validate": [
-        "javascript"
-        // Si en algún momento incluyes código JSX (como en React) o TypeScript:
-        // "javascriptreact",
-        // "typescript",
-        // "typescriptreact"
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "astro",
+        "mdx"
     ],
     // Opcional: Si tienes varios formateadores instalados (por ejemplo, Prettier),
     // esto asegura que ESLint sea el formateador predeterminado para archivos JS.
