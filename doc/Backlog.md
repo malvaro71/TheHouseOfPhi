@@ -13,3 +13,6 @@
 - [ ] Considerar si se manteines el uso de mathjs o se implementan los métodos que se necesiten en CartesianPlane y EuclideanSpace.
 - [ ] Crear archivo SVGDrawings.md, definiendo cómo se escriben las imágenes .svg en el proyecto.
 - [ ] Comprobar si la función renderMathExpressionSVG funciona para renderizado en SVG.
+- [ ] Hacer un readme.md del proyecto.
+- [ ] Actualizar copilot-instructions.md
+- [ ] Analizar y decidir si creo un agente único que ayude en el desarrollo del proyecto. O creo un agente centrado en las tareas de arquitectura del proyecto y un segundo agente centrado en la edición del contenido.

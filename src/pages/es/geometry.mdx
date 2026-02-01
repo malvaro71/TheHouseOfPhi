@@ -41,10 +41,10 @@ Un triángulo es un polígono de tres lados que encierra una región del plano. 
 Una propiedad ineludible en geometría euclidiana es que la suma de los ángulos internos de cualquier triángulo siempre es constante:
 
 $$
-\alpha + \beta + \gamma = 180^\circ = \pi \text{ rad}
+\alpha + \beta + \gamma = 180^\circ = \pi \text{ rad} \eqtag{2.1}
 $$
 
-![Triángulo ABC con sus vértices, lados y ángulos.](vector:svgA1_1_1 "Figura 1.1: Triángulo ABC con sus vértices, lados y ángulos.")
+![Figura 2.1: Triángulo ABC con sus vértices, lados y ángulos.](vector:svgA1_1_1 "Triángulo ABC con sus vértices, lados y ángulos.")
 
 #### Semejanza de triángulos
 Dos triángulos son semejantes si tienen ángulos iguales y lados proporcionales. Esta propiedad es vital en física para resolver problemas de óptica, sombras y diagramas de fuerzas mediante razones de proporcionalidad.
@@ -54,21 +54,25 @@ Establece que en un triángulo rectángulo, el cuadrado de la hipotenusa ($c$) e
 
 El **teorema de Pitágoras** establece que en cualquier triángulo rectángulo $\triangle ABC$, donde $c$ es la longitud de la hipotenusa y $a$ y $b$ son las longitudes de los catetos,
 
-$$c^2 = a^2 + b^2$$
+$$
+c^2 = a^2 + b^2 \eqtag{2.2}
+$$
 
-![Diagrama de un triángulo rectángulo](/images/RightTriangle.svg "Figura 1.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.")
+![Figura 2.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.](/images/RightTriangle.svg "Diagrama de un triángulo rectángulo")
 
 ### 2.3. Teorema del seno y teorema del coseno
 Cuando el triángulo no es rectángulo, utilizamos relaciones más generales para determinar lados o ángulos desconocidos.
 
 **Teorema del Coseno:** Se aplica cuando conocemos dos lados y el ángulo que forman ($C$). Es la base de la ley del paralelogramo en la suma de vectores.
 
-$$c^2 = a^2 + b^2 - 2ab \cdot \cos(C)$$
+$$
+c^2 = a^2 + b^2 - 2ab \cdot \cos(C) \eqtag{2.3}
+$$
 
 **Teorema del Seno:** Establece la proporción entre los lados y los senos de sus ángulos opuestos:
 
 $$
-\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)}
+\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} \eqtag{2.4}
 $$
 
 ## 3. Razones trigonométricas en el triángulo rectángulo
@@ -81,7 +85,7 @@ Considerando un triángulo rectángulo con un ángulo agudo $\theta$, definimos 
  - **Cateto opuesto ($c_o$):** El lado que se encuentra frente al ángulo $\theta$.
  - **Cateto contiguo o adyacente ($c_a$):** El lado que forma parte del ángulo $\theta$ (junto a la hipotenusa).
 
-![Posición del cateto contiguo o adyacente y del cateto opuesto.](vector:svgA1_2_1 "Figura 2.1: Posición del cateto contiguo o adyacente y del cateto opuesto, respecto del ángulo θ.")
+![Figura 3.1: Posición del cateto contiguo o adyacente y del cateto opuesto, respecto del ángulo θ.](vector:svgA1_2_1 "Posición del cateto contiguo o adyacente y del cateto opuesto.")
 
 #### ⚠️ Importante: Los catetos dependen del ángulo elegido
 Es crucial entender que los términos "opuesto" y "contiguo" **no son fijos**; dependen enteramente de qué ángulo agudo estemos utilizando como referencia.
@@ -92,11 +96,17 @@ Si en lugar del ángulo $\theta$ (en la base) usáramos el otro ángulo agudo (e
 
 Las razones principales (respecto al ángulo elegido) se definen como:
 
-$$\sin \theta = \frac{\text{cateto opuesto}}{\text{hipotenusa}} = \frac{c_o}{h}$$
+$$
+\sin \theta = \frac{\text{cateto opuesto}}{\text{hipotenusa}} = \frac{c_o}{h} \eqtag{3.1}
+$$
 
-$$\cos \theta = \frac{\text{cateto contiguo}}{\text{hipotenusa}} = \frac{c_a}{h}$$
+$$
+\cos \theta = \frac{\text{cateto contiguo}}{\text{hipotenusa}} = \frac{c_a}{h} \eqtag{3.2}
+$$
 
-$$\tan \theta = \frac{\text{cateto opuesto}}{\text{cateto contiguo}} = \frac{c_o}{c_a}$$
+$$
+\tan \theta = \frac{\text{cateto opuesto}}{\text{cateto contiguo}} = \frac{c_o}{c_a} \eqtag{3.3}
+$$
 
 #### Interpretación geométrica intuitiva
 Podemos imaginar las razones trigonométricas como "factores de escala": el **coseno** nos indica qué fracción de la hipotenusa se proyecta sobre el eje horizontal, mientras que el **seno** indica qué fracción se proyecta sobre el eje vertical. La **tangente**, por su parte, define la pendiente o inclinación de la hipotenusa respecto a la base.
@@ -107,17 +117,23 @@ Existen relaciones matemáticas que siempre se cumplen, independientemente del t
 #### Identidad pitagórica
 Derivada directamente del Teorema de Pitágoras, es la identidad más importante de la trigonometría:
 
-$$ \sin^2 \theta + \cos^2 \theta = 1 $$
+$$
+\sin^2 \theta + \cos^2 \theta = 1 \eqtag{3.4}
+$$
 
 #### Relación entre razones
 La tangente puede expresarse siempre como el cociente entre el seno y el coseno:
 
-$$ \tan \theta = \frac{\sin \theta}{\cos \theta} $$
+$$
+\tan \theta = \frac{\sin \theta}{\cos \theta} \eqtag{3.5}
+$$
 
 #### Ángulos complementarios
 Dado que la suma de los ángulos agudos en un triángulo rectángulo es 90º, se cumple que el seno de un ángulo es igual al coseno de su complementario:
 
-$$ \sin \theta = \cos(90^\circ - \theta) $$
+$$
+\sin \theta = \cos(90^\circ - \theta) \eqtag{3.6}
+$$
 
 ### 3.3. Aplicaciones
 En física, la trigonometría no es solo una herramienta de cálculo, sino un método para entender cómo se distribuyen las magnitudes en el espacio.
@@ -136,14 +152,18 @@ Para describir un círculo y sus partes, utilizamos los siguientes conceptos:
 - **Arco ($s$):** Porción de la circunferencia comprendida entre dos puntos.
 - **Sector circular:** "Porción de tarta" del círculo delimitada por dos radios y un arco.
 
-![Elementos del círculo.](vector:svgA1_3_1 "Figura 3.1: Elementos del círculo.")
+![Figura 4.1: Elementos del círculo.](vector:svgA1_3_1 "Elementos del círculo.")
 
 #### Longitud de la circunferencia y área
 La relación entre la longitud de una circunferencia ($L$) y su diámetro es una constante universal llamada **$\pi$ (pi)**. De forma intuitiva, $\pi$ (aprox. 3.14159...) representa cuántas veces cabe el diámetro en el perímetro de su círculo.
 
-$$ L = 2\pi r $$
+$$
+L = 2\pi r \eqtag{4.1}
+$$
 
-$$ \text{Área} = \pi r^2 $$
+$$
+\text{Área} = \pi r^2 \eqtag{4.2}
+$$
 
 ### 4.2. Ángulos en la circunferencia
 En el análisis de movimientos rotatorios, es fundamental distinguir cómo medimos los ángulos:
@@ -161,12 +181,16 @@ Un radián es el ángulo central subtendido por un arco cuya longitud ($s$) es i
 #### Conversión grados ↔ radianes
 Puesto que una vuelta completa (360°) equivale a la longitud total de la circunferencia ($2\pi r$), la equivalencia fundamental es:
 
-$$ 360^\circ = 2\pi \text{ rad} \implies 180^\circ = \pi \text{ rad} $$
+$$
+360^\circ = 2\pi \text{ rad} \implies 180^\circ = \pi \text{ rad} \eqtag{4.3}
+$$
 
 #### ¿Por qué en física se usan radianes?
 El uso del radián no es caprichoso. Su principal ventaja es que simplifica las ecuaciones de movimiento, ya que permite relacionar directamente magnitudes lineales y angulares sin factores de conversión extraños. Por ejemplo, la longitud de un arco se calcula simplemente como:
 
-$$ s = \theta \cdot r $$
+$$
+s = \theta \cdot r \eqtag{4.4}
+$$
 
 Esta relación solo es válida si el ángulo $\theta$ está expresado en **radianes**.
 
@@ -184,34 +208,34 @@ $$ P = (x, y) $$
 
 Donde $x$ representa la distancia perpendicular al eje $y$, y $y$ representa la distancia perpendicular al eje $x$. Estos dos ejes dividen al plano en cuatro regiones llamadas **cuadrantes**, numerados del I al IV en sentido antihorario partiendo del cuadrante superior derecho.
 
-![Plano cartesiano y coordenadas cartesianas de un punto.](vector:svgA1_X "Figura x: Plano cartesiano y coordenadas cartesianas de un punto.")
+![Figura 5.1: Plano cartesiano y coordenadas cartesianas de un punto.](vector:svgA1_X "Plano cartesiano y coordenadas cartesianas de un punto.")
 
 ### 5.1. Teorema de Pitágoras
 En cualquier triángulo rectángulo $\triangle ABC$, donde c es la longitud de la hipotenusa y a y b son las longitudes de los catetos,
 
 $$
-a^2 + b^2 = c^2 \tag{1}
+a^2 + b^2 = c^2 \eqtag{5.1}
 $$
 
-![Diagrama de un triángulo rectángulo](/images/RightTriangle.svg "Figura 1: Triángulo rectángulo con catetos a y b, e hipotenusa c.")
+![Figura 5.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.](/images/RightTriangle.svg "Diagrama de un triángulo rectángulo")
 
 ### 5.2. Definiciones gráficas de las funciones seno, coseno y tangente
 Consideremos una circunferencia con radio de longitud r con centro en el origen *O* en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos $\alpha$ a el ángulo entre el eje x y el segmento OP, según se muestra en la siguiente figura. Entonces, $\sin \alpha$ es el cociente y/r.
 
-![Diagrama de una circunferencia con punto P y triángulo rectángulo inscrito.](/images/Circunference_and_coordinates.svg "Figura 2.2: Circunferencia de radio r con un punto P y su ángulo α con el eje x.")
+![Figura 5.3: Circunferencia de radio r con un punto P y su ángulo α con el eje x.](/images/Circunference_and_coordinates.svg "Diagrama de una circunferencia con punto P y triángulo rectángulo inscrito.")
 
 Entonce, definimos las funicones seno, coseno y tengente como:
 
 $$
-\sin \alpha  = y/r \tag{2}
+\sin \alpha  = y/r \eqtag{5.2}
 $$
 
 $$
-\cos \alpha = x/r \tag{3}
+\cos \alpha = x/r \eqtag{5.3}
 $$
 
 $$
-\tan \alpha = y/x \tag{4}
+\tan \alpha = y/x \eqtag{5.4}
 $$
 
 ### 5.3. Perpendicularidad entre un vector con módulo constante y su variación temporal
@@ -231,18 +255,20 @@ Si consideramos el triángulo vectorial formado por $\vec V(t)$, $\vec V(t + \De
 
 Consideremos el ángulo Δθ entre $\vec V(t)$ y $\vec V(t + \Delta t)$. En el triángulo isósceles, los ángulos opuestos a los lados iguales (adyacentes a $\Delta \vec V$) son iguales, llamémoslos α. La suma de los ángulos internos de un triángulo es $\pi$ radianes:
 
-$$2\alpha + \Delta\theta = \pi$$
+$$
+2\alpha + \Delta\theta = \pi \eqtag{5.5}
+$$
 
 De donde obtenemos:
 
 $$
-\alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2}
+\alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2} \eqtag{5.6}
 $$
 
 Ahora, analicemos el límite cuando el intervalo de tiempo Δt tiende a cero (Δt → 0, y por tanto Δθ → 0). En este límite, $\Delta \vec V$ se convierte en el diferencial $d\vec V$, y Δθ se convierte en dθ. El ángulo α se aproxima a:
 
 $$
-\alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radianes o } 90^\circ.
+\alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radianes o } 90^\circ. \eqtag{5.7}
 $$
 
 Esto implica que, en el límite infinitesimal, el ángulo entre el vector de cambio $d\vec V$ y el vector original $\vec V(t)$ tiende a 90 grados. Es decir, la variación infinitesimal $d\vec V$ es perpendicular al vector $\vec V(t)$. Como la derivada $d\vec V/dt$ (que representa la tasa de variación temporal) tiene la misma dirección que $d\vec V$, concluimos geométricamente que la tasa de variación temporal de $\vec V(t)$ es perpendicular a $\vec V(t)$ en cada instante, siempre que el módulo de $\vec V(t)$ se mantenga constante.
@@ -251,44 +277,46 @@ Esto implica que, en el límite infinitesimal, el ángulo entre el vector de cam
 Para una demostración analítica más general, consideremos un vector $\vec V(t)$ en tres dimensiones (la demostración es igualmente válida en dos dimensiones), expresado en componentes cartesianas:
 
 $$
-\vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k}
+\vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k} \eqtag{5.8}
 $$
 
 La condición de módulo constante $|\vec V(t)| = C$ = constante, se expresa como:
 
-$$|\vec V(t)|^2 = V_x(t)^2 + V_y(t)^2 + V_z(t)^2 = C^2$$
+$$
+|\vec V(t)|^2 = V_x(t)^2 + V_y(t)^2 + V_z(t)^2 = C^2 \eqtag{5.9}
+$$
 
 Para que esta condición se mantenga en el tiempo, la derivada temporal de $|\vec V(t)|^2$ debe ser cero. Derivamos ambos lados de la ecuación con respecto al tiempo, utilizando la regla de la cadena:
 
 $$
-\frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2)
+\frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2) \eqtag{5.10}
 $$
 $$
-\frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0
+\frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0 \eqtag{5.11}
 $$
 
 Aplicando la regla de la cadena a cada término:
 
 $$
-2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0
+2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0 \eqtag{5.12}
 $$
 
 Dividiendo por 2 y reordenando:
 
 $$
-V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0
+V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0 \eqtag{5.13}
 $$
 
 El lado izquierdo de esta ecuación es precisamente el producto escalar del vector $\vec V(t)$ con su derivada temporal $\displaystyle\frac{d\vec V}{dt}$
 
 $$
-\vec V(t) \cdot \frac{d\vec V(t)}{dt} = \left( V_x(t), V_y(t), V_z(t) \right) \cdot \left( \frac{dV_x(t)}{dt}, \frac{dV_y(t)}{dt}, \frac{dV_z(t)}{dt} \right) = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt}
+\vec V(t) \cdot \frac{d\vec V(t)}{dt} = \left( V_x(t), V_y(t), V_z(t) \right) \cdot \left( \frac{dV_x(t)}{dt}, \frac{dV_y(t)}{dt}, \frac{dV_z(t)}{dt} \right) = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} \eqtag{5.14}
 $$
 
 Por lo tanto, la condición de módulo constante $|\vec V(t)| = C$ implica que:
 
 $$
-\vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0
+\vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0 \eqtag{5.15}
 $$
 
 Esto demuestra analíticamente que **el vector $\vec V(t)$ y su derivada temporal $\displaystyle\frac{d\vec V(t)}{dt}$ son siempre perpendiculares entre sí**, bajo la condición de que el módulo de $\vec V(t)$ se mantenga constante. Este resultado es válido para cualquier vector con módulo constante, no solo para vectores de posición.

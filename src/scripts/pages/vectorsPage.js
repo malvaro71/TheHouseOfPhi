@@ -112,9 +112,7 @@ export const vectorsDrawings = {
     space.drawLabel([0, 9.1, 0.1], "y₁", { fill: "green", fontSize: 20, corner: "leftbottom" });
     space.drawLabel([0, -0.1, 15], "z₁", { fill: "green", fontSize: 20 });
     space.drawLabel([6, 10, 16], "P(x₁, y₁, z₁)", { fill: "green", corner: "lefttop" });
-    }
-};
-/*
+    },
 
     // ======================================================
     // svg1_6 — Projection of W onto V
@@ -162,6 +160,45 @@ export const vectorsDrawings = {
     },
 
     // ======================================================
+    // svg1_7 — Cross product area (Parallelogram)
+    // ======================================================
+    "svg1_7": (svg) => {
+        // ViewBox 0 0 500 170 approx from original
+        // We use CartesianPlane to draw it cleanly.
+        // Origin at (0,0). W along X. V at angle.
+        const plane = new CartesianPlane(svg, -1, 12, -1, 5, 40);
+        
+        const origin = [0, 0];
+        const vectorW = [6, 0];
+        const vectorV = [4, 3];
+        const sumVW = math.add(vectorV, vectorW);
+
+        // Vectors
+        plane.drawVector(origin, vectorV, "v", { strokeColor: "blue" }, { fill: "blue", fontSize: 25, fontWeight: "bold" });
+        plane.drawVector(origin, vectorW, "w", { strokeColor: "brown" }, { fill: "brown", fontSize: 25, fontWeight: "bold" });
+
+        // Parallelogram sides (dashed)
+        plane.drawSegment(vectorV, sumVW, { strokeColor: "brown", strokeDasharray: "5,5", strokeWidth: 2 });
+        plane.drawSegment(vectorW, sumVW, { strokeColor: "blue", strokeDasharray: "5,5", strokeWidth: 2 });
+
+        // Height (h = |v|sin(theta))
+        // Projection of V onto X-axis is (4,0). Height is from (4,0) to (4,3).
+        const projV_on_X = [4, 0];
+        plane.drawSegment(projV_on_X, vectorV, { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 2 });
+
+        // Label for height
+        plane.drawLabel([4.2, 1.5], "||v||·sin(θ)", { fill: "green", fontSize: 20 });
+
+        // Angle theta
+        plane.drawArc(origin, vectorW, vectorV, 1.5, { strokeColor: "green" });
+        const angleLabelPos = [
+            1.8 * math.cos(math.atan2(3, 4) / 2),
+            1.8 * math.sin(math.atan2(3, 4) / 2)
+        ];
+        plane.drawLabel(angleLabelPos, "θ", { fill: "green", fontSize: 20 });
+    },
+
+    // ======================================================
     // svg1_8 — Moment of a sliding vector v about point P
     // ======================================================
     "svg1_8": (svg) => {
@@ -199,48 +236,50 @@ export const vectorsDrawings = {
         svg.setAttribute("height", "410");
 
         const space = new EuclideanSpace(svg, [0, 0, 0], 10);
-    space.drawAxes();
+        space.drawAxes();
 
-    const pointP = [16, 9, 2];
-    const vectorR = [0, 6, 2];
-    const vectorV = [-5, -1, 0];
+        const pointP = [16, 9, 2];
+        const vectorR = [0, 6, 2];
+        const vectorV = [-5, -1, 0];
 
-    const unitL = [0, 0, 1]; // line parallel to z-axis
-    const lineL1 = [16, 9, -2];
-    const lineL2 = [16, 9, 40];
+        const unitL = [0, 0, 1]; // line parallel to z-axis
+        const lineL1 = [16, 9, -2];
+        const lineL2 = [16, 9, 40];
 
-    space.drawPoint(pointP, "green");
-    space.drawVector(pointP, vectorR, "r", { strokeColor: "blue" });
+        space.drawPoint(pointP, "green");
+        space.drawVector(pointP, vectorR, "r", { strokeColor: "blue" });
 
-    const initialPoint = math.add(pointP, vectorR);
-    space.drawVector(initialPoint, vectorV, "v", { strokeColor: "blue" });
+        const initialPoint = math.add(pointP, vectorR);
+        space.drawVector(initialPoint, vectorV, "v", { strokeColor: "blue" });
 
-    // Moment m = r × v
-    const vectorM = math.cross(vectorR, vectorV);
-    space.drawVector(pointP, vectorM, "M",
-        { strokeColor: "green" },
-        { corner: "righttop" }
-    );
+        // Moment m = r × v
+        const vectorM = math.cross(vectorR, vectorV);
+        space.drawVector(pointP, vectorM, "M",
+            { strokeColor: "green" },
+            { corner: "righttop" }
+        );
 
-    // Draw line l
-    space.drawSegment(lineL1, lineL2, { strokeColor: "blue" });
+        // Draw line l
+        space.drawSegment(lineL1, lineL2, { strokeColor: "blue" });
 
-    // Projection of M onto l
-    const projM_on_L = math.multiply(math.dot(vectorM, unitL), unitL);
+        // Projection of M onto l
+        const projM_on_L = math.multiply(math.dot(vectorM, unitL), unitL);
 
-    space.drawVector(pointP, projM_on_L, "Mₗ",
-        { strokeColor: "green", strokeDasharray: "5,5" },
-        { corner: "leftbottom" }
-    );
+        space.drawVector(pointP, projM_on_L, "Mₗ",
+            { strokeColor: "green", strokeDasharray: "5,5" },
+            { corner: "leftbottom" }
+        );
 
-    // Dashed segment illustrating projection
-    const dashed1 = math.add(pointP, vectorM);
-    const dashed2 = math.add(pointP, projM_on_L);
+        // Dashed segment illustrating projection
+        const dashed1 = math.add(pointP, vectorM);
+        const dashed2 = math.add(pointP, projM_on_L);
 
-    space.drawSegment(dashed1, dashed2,
-        { strokeColor: "green", strokeDasharray: "5,5" }
-    );
+        space.drawSegment(dashed1, dashed2,
+            { strokeColor: "green", strokeDasharray: "5,5" }
+        );
     },
+};
+/*
 
     // ======================================================
     // Exercise e_1

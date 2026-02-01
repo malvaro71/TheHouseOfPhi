@@ -12,6 +12,10 @@ export default defineConfig({
     // Habilita la sintaxis de LaTeX ($...$)
     remarkPlugins: [remarkMath],
     // Renderiza el LaTeX a HTML y SVG usando KaTeX, procesa figuras y luego inyecta VectorCanvas
-    rehypePlugins: [rehypeKatex, [rehypeFigure, { className: 'centered' }], rehypeVectorCanvas]
+    rehypePlugins: [
+      [rehypeKatex, { macros: { "\\eqtag": "\\tag*{[#1]}" } }], 
+      [rehypeFigure, { className: 'centered' }], 
+      rehypeVectorCanvas
+    ]
   })]
 });
