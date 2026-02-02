@@ -70,30 +70,20 @@ export class CartesianPlane {
     /**
 	 * Draws the x and y axes of the Cartesian plane within the SVG element, along with axis labels and an optional origin label.
 	 * 
-	 * @param yAxisText - The text to display for the y-axis label.
-	 * @param xAxisText - The text to display for the x-axis label.
+	 * @param yAxisText - a string representing the text to display for the y-axis label.
+	 * @param xAxisText - a string representing the text to display for the x-axis label.
 	 * @param originText - The text to display at the origin (optional).
 	 */
     drawAxes(yAxisText: string, xAxisText: string, originText: string) {
         // y-axis
         const planeHeight = this.yMax - this.yMin;
         this.drawVector([0, this.yMin], [0, planeHeight]);
-        this.drawMath([0, planeHeight], `\\text{${yAxisText}}`, { color: "brown", scale: 1.2, dx: -10, dy: 15 });
+        this.drawMath([0, this.yMax], yAxisText, { color: "brown", scale: 1.2, dx: -15, dy: 10 });
         // x-axis
         const planeWidth = this.xMax - this.xMin;
         this.drawVector([this.xMin, 0], [planeWidth, 0]);
 
-        const xAxisTextElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        xAxisTextElement.textContent = xAxisText;
-        xAxisTextElement.setAttribute("x", this.svgWidthNum.toString());
-        xAxisTextElement.setAttribute("y", (this.OriginY + 5).toString());
-        xAxisTextElement.setAttribute("text-anchor", "end");
-        xAxisTextElement.setAttribute("dominant-baseline", "text-before-edge");
-        xAxisTextElement.setAttribute("font-size", "20");
-        xAxisTextElement.setAttribute("stroke", "brown");
-        xAxisTextElement.setAttribute("fill", "brown");
-        xAxisTextElement.setAttribute("font-weight", "normal");
-        this.svgElement.appendChild(xAxisTextElement);
+        this.drawMath([this.xMax, 0], xAxisText, { color: "brown", scale: 1.2, dx: -10, dy: 10 });
 
         // Origin
         if (originText) {
