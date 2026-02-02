@@ -68,18 +68,17 @@ export class EuclideanSpace {
 
         // x-axis
         this.drawVector([-planeWidth / 6, 0, 0], [planeWidth * 5 / 8, 0, 0]);
-        this.drawLabel([planeWidth * 4 / 9, 0, planeWidth / 100], "x", {});
+        this.drawMath([planeWidth * 4 / 9, 0, planeWidth / 100], "\\text{x}", {scale: 1.2, dx: -10, dy: -15});
 
         // y-axis
         this.drawVector([0, -planeHeight / 6, 0], [0, planeHeight * 3 / 4, 0]);
-        this.drawLabel([0, planeHeight * 5 / 9, planeWidth / 100], "y", {});
+        this.drawMath([0, planeHeight * 5 / 9, planeWidth / 100], "\\text{y}", {scale: 1.2, dx: -10, dy: 15});
 
         //z-axis
         this.drawVector([0, 0, -planeWidth / 6], [0, 0, planeWidth * 3 / 4]);
-        this.drawLabel([0, -planeWidth / 100, planeWidth * 5 / 9], "z", { corner: "righttop" });
-
+        this.drawMath([0, -planeWidth / 100, planeWidth * 5 / 9], "\\text{z}", {scale: 1.2, dx: -10, dy: 4});
         // Origin.
-        this.drawLabel([0, -0.1, 0], "O", {});
+        this.drawMath([0, -0.1, 0], "O", {scale: 1.2, dx: -18, dy: -19});
     }
 
     /**

@@ -110,10 +110,10 @@ export const vectorsDrawings = {
     space.drawSegment([6, 0, 15], [6, 9, 15], { strokeColor: "green", strokeDasharray: "5,5" });
     space.drawSegment([6, 0, 0], [6, 0, 15], { strokeColor: "green", strokeDasharray: "5,5" });
 
-    space.drawLabel([6, -0.1, 0], "x₁", { fill: "green", fontSize: 20 });
-    space.drawLabel([0, 9.1, 0.1], "y₁", { fill: "green", fontSize: 20, corner: "leftbottom" });
-    space.drawLabel([0, -0.1, 15], "z₁", { fill: "green", fontSize: 20 });
-    space.drawLabel([6, 10, 16], "P(x₁, y₁, z₁)", { fill: "green", corner: "lefttop" });
+    space.drawMath([6, -0.1, 0], "x₁", { color: "green", scale: 1.2 });
+    space.drawMath([0, 9.1, 0.1], "y₁", { color: "green", scale: 1.2 });
+    space.drawMath([0, -0.1, 15], "z₁", { color: "green", scale: 1.2 });
+    space.drawMath([6, 10, 16], "P(x₁, y₁, z₁)", { color: "green", scale: 1.2 });
     },
 
     // ======================================================
