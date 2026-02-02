@@ -1,7 +1,5 @@
 # Backlog
 
-- [x] limpiar vite
-- [x] Crear archivo MathematicalExpresions.md, definiendo cómo se escriben las expresiones matemáticas en el proyecto.
 - [ ] mover el contenido de vectors_es.astro a en/vectors.mdx
 - [ ] revisar MDXAuthoringGuide.md tras mover los ejercicios de vectores.
 - [ ] Actualizar ProjectStructure.md tras mover los ejercicios de vectores.
@@ -16,3 +14,4 @@
 - [ ] Hacer un readme.md del proyecto.
 - [ ] Actualizar copilot-instructions.md
 - [ ] Analizar y decidir si creo un agente único que ayude en el desarrollo del proyecto. O creo un agente centrado en las tareas de arquitectura del proyecto y un segundo agente centrado en la edición del contenido.
+- [ ] Revisar la redacción de la introducción en geometry.mdx, vectors.mdx y kinematics.mdx conforme a las instrucciones de MDXAuthoringGuide.md.

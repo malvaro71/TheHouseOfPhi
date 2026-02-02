@@ -6,6 +6,9 @@ lang: es
 import VectorCanvas from '../../components/VectorCanvas.astro';
 import * as math from 'mathjs';
 
+{/* Cargar MathJax para renderizado dinámico en SVGs. Sin 'async' para asegurar que cargue antes que los scripts del canvas */}
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
 # Anexo 1: Fundamentos Geométricos para la Física
 
 <nav>
@@ -44,7 +47,7 @@ $$
 \alpha + \beta + \gamma = 180^\circ = \pi \text{ rad} \eqtag{2.1}
 $$
 
-![Figura 2.1: Triángulo ABC con sus vértices, lados y ángulos.](vector:svgA1_1_1 "Triángulo ABC con sus vértices, lados y ángulos.")
+![Figura 2.1: Triángulo ABC con sus vértices, lados y ángulos.](vector:svgA1_1_1)
 
 #### Semejanza de triángulos
 Dos triángulos son semejantes si tienen ángulos iguales y lados proporcionales. Esta propiedad es vital en física para resolver problemas de óptica, sombras y diagramas de fuerzas mediante razones de proporcionalidad.
@@ -58,7 +61,7 @@ $$
 c^2 = a^2 + b^2 \eqtag{2.2}
 $$
 
-![Figura 2.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.](/images/RightTriangle.svg "Diagrama de un triángulo rectángulo")
+![Figura 2.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.](/images/RightTriangle.svg)
 
 ### 2.3. Teorema del seno y teorema del coseno
 Cuando el triángulo no es rectángulo, utilizamos relaciones más generales para determinar lados o ángulos desconocidos.
@@ -85,7 +88,7 @@ Considerando un triángulo rectángulo con un ángulo agudo $\theta$, definimos 
  - **Cateto opuesto ($c_o$):** El lado que se encuentra frente al ángulo $\theta$.
  - **Cateto contiguo o adyacente ($c_a$):** El lado que forma parte del ángulo $\theta$ (junto a la hipotenusa).
 
-![Figura 3.1: Posición del cateto contiguo o adyacente y del cateto opuesto, respecto del ángulo θ.](vector:svgA1_2_1 "Posición del cateto contiguo o adyacente y del cateto opuesto.")
+![Figura 3.1: Posición del cateto contiguo o adyacente y del cateto opuesto, respecto del ángulo θ.](vector:svgA1_2_1)
 
 #### ⚠️ Importante: Los catetos dependen del ángulo elegido
 Es crucial entender que los términos "opuesto" y "contiguo" **no son fijos**; dependen enteramente de qué ángulo agudo estemos utilizando como referencia.
@@ -152,7 +155,7 @@ Para describir un círculo y sus partes, utilizamos los siguientes conceptos:
 - **Arco ($s$):** Porción de la circunferencia comprendida entre dos puntos.
 - **Sector circular:** "Porción de tarta" del círculo delimitada por dos radios y un arco.
 
-![Figura 4.1: Elementos del círculo.](vector:svgA1_3_1 "Elementos del círculo.")
+![Figura 4.1: Elementos del círculo.](vector:svgA1_3_1)
 
 #### Longitud de la circunferencia y área
 La relación entre la longitud de una circunferencia ($L$) y su diámetro es una constante universal llamada **$\pi$ (pi)**. De forma intuitiva, $\pi$ (aprox. 3.14159...) representa cuántas veces cabe el diámetro en el perímetro de su círculo.
@@ -208,7 +211,7 @@ $$ P = (x, y) $$
 
 Donde $x$ representa la distancia perpendicular al eje $y$, y $y$ representa la distancia perpendicular al eje $x$. Estos dos ejes dividen al plano en cuatro regiones llamadas **cuadrantes**, numerados del I al IV en sentido antihorario partiendo del cuadrante superior derecho.
 
-![Figura 5.1: Plano cartesiano y coordenadas cartesianas de un punto.](vector:svgA1_X "Plano cartesiano y coordenadas cartesianas de un punto.")
+![Figura 5.1: Plano cartesiano y coordenadas cartesianas de un punto.](vector:svgA1_X)
 
 ### 5.1. Teorema de Pitágoras
 En cualquier triángulo rectángulo $\triangle ABC$, donde c es la longitud de la hipotenusa y a y b son las longitudes de los catetos,
@@ -217,12 +220,12 @@ $$
 a^2 + b^2 = c^2 \eqtag{5.1}
 $$
 
-![Figura 5.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.](/images/RightTriangle.svg "Diagrama de un triángulo rectángulo")
+![Figura 5.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.](/images/RightTriangle.svg)
 
 ### 5.2. Definiciones gráficas de las funciones seno, coseno y tangente
 Consideremos una circunferencia con radio de longitud r con centro en el origen *O* en a sistema de coordenadas rectangulares, y un punto P con coordenadas (x,y) en la circunferencia. Y nombremos $\alpha$ a el ángulo entre el eje x y el segmento OP, según se muestra en la siguiente figura. Entonces, $\sin \alpha$ es el cociente y/r.
 
-![Figura 5.3: Circunferencia de radio r con un punto P y su ángulo α con el eje x.](/images/Circunference_and_coordinates.svg "Diagrama de una circunferencia con punto P y triángulo rectángulo inscrito.")
+![Figura 5.3: Circunferencia de radio r con un punto P y su ángulo α con el eje x.](/images/Circunference_and_coordinates.svg)
 
 Entonce, definimos las funicones seno, coseno y tengente como:
 

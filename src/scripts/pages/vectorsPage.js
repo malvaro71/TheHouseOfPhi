@@ -9,10 +9,10 @@ import {
     textWithSubscript,
     renderMathExpression,
     writeValue
-} from '../core/SVGDrawing.js';
+} from '../core/SVGDrawing.ts';
 
-import { CartesianPlane } from '../core/CartesianPlane.js';
-import { EuclideanSpace } from '../core/EuclideanSpace.js';
+import { CartesianPlane } from '../core/CartesianPlane.ts';
+import { EuclideanSpace } from '../core/EuclideanSpace.ts';
 import * as math from 'mathjs';
 
 export const vectorsDrawings = {
@@ -30,8 +30,8 @@ export const vectorsDrawings = {
 
     plane.drawVectorB(pointA, vectorAB, "\\overrightarrow{AB}",{}, { dx: -18, dy: -33 });
 
-    plane.drawLabel(pointA, "A", { fill: "brown", fontSize: 20 });
-    plane.drawLabel(pointB, "B", { fill: "brown", fontSize: 20, corner: "lefttop" });
+    plane.drawMath(pointA, "\\text{A}", { color: "brown", scale: 1.3, dx: -20, dy: -15 });
+    plane.drawMath(pointB, "\\text{B}", { color: "brown", scale: 1.3, dx: 1, dy: 0 });
     },
 
     // ======================================================
@@ -76,13 +76,15 @@ export const vectorsDrawings = {
     // ======================================================
     "svg1_3": (svg) => {
         const plane = new CartesianPlane(svg, -10, 11, -10, 10);
-    plane.drawAxes("y-axis", "x-axis", "O");
 
-    plane.drawPoint([5, 8], "green");
-    plane.drawLabel([6, 8], "P(x₁, y₁)", { fill: "green", fontSize: 20, corner: "leftbottom" });
+        plane.drawAxes("y", "x", "O");
 
-    plane.drawSegment([5, 0], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
-    plane.drawSegment([0, 8], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
+        plane.drawPoint([5, 8], "green");
+        plane.drawMath([6, 8], "\\text{P}(x_1, y_1)", { color: "green", scale: 1.3, dx: 0, dy: -5 });
+        plane.drawMath([5, 0], "x_1", { color: "green", scale: 1.3, dx: -10, dy: 5 });
+        plane.drawMath([0, 8], "y_1", { color: "green", scale: 1.3, dx: -25, dy: -5 });
+        plane.drawSegment([5, 0], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
+        plane.drawSegment([0, 8], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 }); 
     },
 
     // ======================================================
@@ -131,25 +133,22 @@ export const vectorsDrawings = {
     const projW_on_V = math.multiply(math.dot(vectorW, unitV), unitV);
 
     // Draw vectors
-    plane.drawVector(origin, vectorW, "w",
-        { strokeColor: "green" },
-        { fontSize: 22, fill: "green" }
-    );
+    plane.drawVectorB(origin, vectorW, "\\vec{w}", {strokeColor: "green"}, {color: "green", scale: 1.5, dx: -10, dy: -30});
 
     plane.drawVector(origin, vectorV);
-    plane.drawLabel([19, 2], "v", { fontSize: 18 });
+    plane.drawMath([19, 2], "\\vec{v}", { color: "brown", scale: 1.6, dx: -10, dy: -29 });
 
     plane.drawVector(origin, projW_on_V, "",
         { strokeColor: "green", strokeDasharray: "5,5" }
     );
 
-    plane.drawLabel([14, 2], "Projᵥw",
-        { fontSize: 18, fill: "green" }
+    plane.drawMath([14, 2], "\\overrightarrow{Proj_v w}",
+        { color: "green", scale: 1.2, dx: -70, dy: -38 }
     );
 
     // Angle between v and w
     plane.drawArc(origin, vectorV, vectorW, 4);
-    plane.drawLabel([7, 3], "θ", { fontSize: 16, fill: "blue" });
+    plane.drawMath([7, 3], "θ", { color: "blue", scale: 1.3, dx: -12, dy: -20 });
 
     // Dashed segment from W to its projection
     plane.drawSegment(
@@ -174,8 +173,8 @@ export const vectorsDrawings = {
         const sumVW = math.add(vectorV, vectorW);
 
         // Vectors
-        plane.drawVector(origin, vectorV, "v", { strokeColor: "blue" }, { fill: "blue", fontSize: 25, fontWeight: "bold" });
-        plane.drawVector(origin, vectorW, "w", { strokeColor: "brown" }, { fill: "brown", fontSize: 25, fontWeight: "bold" });
+        plane.drawVectorB(origin, vectorV, "\\vec{v}", { strokeColor: "blue" }, { color: "blue", scale: 1.3, dx: -10, dy: -25 });
+        plane.drawVectorB(origin, vectorW, "\\vec{w}", { strokeColor: "brown" }, { color: "brown", scale: 1.3, dx: -10, dy: -25 });
 
         // Parallelogram sides (dashed)
         plane.drawSegment(vectorV, sumVW, { strokeColor: "brown", strokeDasharray: "5,5", strokeWidth: 2 });
@@ -187,7 +186,7 @@ export const vectorsDrawings = {
         plane.drawSegment(projV_on_X, vectorV, { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 2 });
 
         // Label for height
-        plane.drawLabel([4.2, 1.5], "||v||·sin(θ)", { fill: "green", fontSize: 20 });
+        plane.drawMath([4.2, 1.5], "||\\vec{v}||·sin(θ)", { color: "green", scale: 1.1, dx: -3, dy: -8 });
 
         // Angle theta
         plane.drawArc(origin, vectorW, vectorV, 1.5, { strokeColor: "green" });
@@ -195,7 +194,7 @@ export const vectorsDrawings = {
             1.8 * math.cos(math.atan2(3, 4) / 2),
             1.8 * math.sin(math.atan2(3, 4) / 2)
         ];
-        plane.drawLabel(angleLabelPos, "θ", { fill: "green", fontSize: 20 });
+        plane.drawMath(angleLabelPos, "θ", { color: "green", scale: 1.2, dx: -10, dy: -10 });
     },
 
     // ======================================================
@@ -304,14 +303,14 @@ export const vectorsDrawings = {
         plane.drawAxes("y-axis", "x-axis", "O");
 
         // Labels
-        plane.drawLabel([7, 39], "Data:", { corner: "lefttop", fontSize: 15 });
-        plane.drawMath([7, 36], "\\vec{v}_r = \\langle 9, 0 \\rangle \\text{ Km/h}", {});
-        plane.drawMath([7, 33], "\\vec{v}_b = \\langle 0, 36 \\rangle \\text{ Km/h}", {});
+        plane.drawMath([7, 39], "\\text{Data:}", { scale: 1.2, dx: 0, dy: 8 });
+        plane.drawMath([7, 36], "\\vec{V}_r = \\langle 9, 0 \\rangle \\text{ Km/h}", {});
+        plane.drawMath([7, 33], "\\vec{V}_b = \\langle 0, 36 \\rangle \\text{ Km/h}", {});
 
         const initialPoint = [0, 0];
 
         // Vr
-        plane.drawVectorB(initialPoint, vRiver, "\\vec{V}_r", { strokeColor: "blue" }, {scale: 1.3});
+        plane.drawVectorB(initialPoint, vRiver, "\\vec{V}_r", { strokeColor: "blue" }, {scale: 1, dy: 4 });
 
         // Vp
         plane.drawVectorB(initialPoint, vPropelled, "\\vec{V}_p", { strokeColor: "blue" }, {scale: 1.3, color: "blue", dx: 4, dy: -4});
@@ -321,28 +320,28 @@ export const vectorsDrawings = {
             { strokeColor: "green", strokeDasharray: "5,5" }
         );
 
-        plane.drawVector(initialPoint, math.multiply(-1, vRiver), "Vx = -Vrx",
+        plane.drawVectorB(initialPoint, math.multiply(-1, vRiver), "\\vec{V}_x = -\\vec{V}_{rx}",
             { strokeColor: "green" },
-            { corner: "righttop" }
+            { scale: 1, color: "green", dx: -36, dy: 4 }
         );
 
         plane.drawSegment(vPropelled, vBoat,
             { strokeColor: "green", strokeDasharray: "5,5" }
         );
 
-        plane.drawVector(initialPoint, vBoat, "Vy = Vby",
+        plane.drawVectorB(initialPoint, vBoat, "\\vec{V}_b = \\vec{V}_{py}",
             { strokeColor: "green" },
-            { corner: "lefttop" }
+            { scale: 1.3, color: "green", dx: 5, dy: -4 }
         );
 
         // Angle
         plane.drawArc(initialPoint, vRiver, vPropelled, 3);
-        plane.drawLabel([3, 3], "φ", { fill: "blue", corner: "leftbottom" });
+        plane.drawMath([3, 3], "φ", { color: "blue", scale: 1.2, dx: 0, dy: 0 });
 
         // Solutions
-        plane.drawLabel([7, 30], "Solution:", { corner: "lefttop", fontSize: 15 });
-        plane.drawLabel([7, 27], `φ = ${phi.toFixed(1)}º`, { corner: "lefttop", fontSize: 15 });
-        plane.drawLabel([7, 24], `|Vp| = ${normvPropelled.toFixed(1)} Km/h`, { corner: "lefttop", fontSize: 15 });
+        plane.drawMath([7, 30], "\\text{Solution:}", { scale: 1.1, dx: 0, dy: 8 });
+        plane.drawMath([7, 27], `φ = ${phi.toFixed(1)}º`, { scale: 1.1, dx: 0, dy: 0 });
+        plane.drawMath([7, 24], `||\\vec{V}_p|| = ${normvPropelled.toFixed(1)} Km/h`, {  scale: 1.1, dx: 0, dy: 0 });
     },
 };
 /*

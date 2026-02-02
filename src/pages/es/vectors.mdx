@@ -10,11 +10,10 @@ import * as math from 'mathjs';
 {/* Cargar MathJax para renderizado dinámico en SVGs. Sin 'async' para asegurar que cargue antes que los scripts del canvas */}
 <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-# Vectores
 
-<nav>
-    [Inicio](/) > [Vectores](#)
-</nav>
+[Página de Inicio](/)
+
+# Vectores
 
 ## 1. Introducción
 ¿Alguna vez te has preguntado cómo los físicos describen el movimiento de un planeta, el trayecto de un balón o la trayectoria de un cohete? La clave reside en un concepto fundamental: la **posición**. Saber "dónde" se encuentra algo en el universo, en un instante específico y respecto a un punto de referencia, es el punto de partida.
@@ -22,6 +21,8 @@ import * as math from 'mathjs';
 La posición no es solo un dato; es la base sobre la que se construyen pilares de la física como el **desplazamiento**, la **velocidad** y la **aceleración**. Sin ella, sería imposible entender si un objeto se ha movido, en qué dirección o con qué rapidez. Pero su importancia va más allá del movimiento: influye directamente en la **energía potencial**, en cómo se aplican y sienten las **fuerzas**, y en la descripción de **campos** gravitatorios, eléctricos o magnéticos.
 
 Para manejar esta información de manera precisa, la física recurre a una herramienta matemática indispensable: los **vectores de posición**. Estos no solo nos dicen cuán lejos está un objeto de un origen, sino también en qué dirección y sentido se encuentra. Son la clave para representar ubicaciones en dos o tres dimensiones de forma completa y rigurosa.
+
+El uso de vectores se extiende mucho más allá de la cinemática. En **dinámica**, las fuerzas son magnitudes vectoriales que determinan la aceleración de los cuerpos según las leyes de Newton. En **estática**, el análisis de estructuras depende de que la suma vectorial de fuerzas y momentos sea nula. En **electromagnetismo**, tanto el campo eléctrico como el magnético son campos vectoriales que describen cómo interactúan las cargas en el espacio. Asimismo, principios fundamentales como la conservación del momento lineal (en choques) o del momento angular (en rotaciones) requieren un tratamiento vectorial riguroso para su correcta formulación.
 
 En este primer capítulo, exploraremos a fondo los **vectores** y el **sistema de coordenadas cartesianas**, desentrañando las **operaciones vectoriales** fundamentales como la suma, resta, producto escalar y producto vectorial. Estas herramientas del **álgebra vectorial** no solo simplifican enormemente la resolución de problemas complejos en física e ingeniería, sino que también nos permiten, por ejemplo, calcular la distancia precisa entre dos puntos con una elegancia matemática asombrosa. Prepárate para descubrir el lenguaje que nos permite describir y predecir el mundo físico con una claridad sin precedentes.
 
@@ -117,13 +118,13 @@ $$
 </details>
 
 ## 7. Suma de vectores y multiplicación por un escalar usando sus componentes
-La suma de dos vectores expresados mediante sus componentes, $\vec v = (x_1, y_1)$ y $\vec w = (x_2, y_2)$, se define como
+La **suma de dos vectores** expresados mediante sus **componentes**, $\vec v = (x_1, y_1)$ y $\vec w = (x_2, y_2)$, se define como
 
 $$
 \vec v + \vec w = (x_1 + x_2, y_1 + y_2) \tag{7.1}
 $$
 
-El producto de un escalar $\lambda$ por un vector $\vec v$, expresado mediante sus componentes, $\vec v = (x, y)$, se define como
+El **producto de un escalar $\lambda$ por un vector $\vec v$**, expresado mediante sus **componentes**, $\vec v = (x, y)$, se define como
 
 $$
 \lambda\vec v = (\lambda x, \lambda y) \tag{7.2}
@@ -234,10 +235,10 @@ $$
 \vec v \times \vec w = (y_1 \cdot z_2 - z_1 \cdot y_2, z_1 \cdot x_2 - x_1 \cdot z_2, x_1 \cdot y_2 - y_1 \cdot x_2) \tag{12.2}
 $$
 
-Cada componente de este vector resultante es el determinante de una matriz de 2x2 formada eliminando la fila y la columna del componente correspondiente de una matriz de 3x3 que contiene los vectores unitarios $\hat{\imath}$, $\hat{\jmath}$ y $\hat{k}$ en la primera fila, los componentes de $\vec v$ en la segunda fila, y los componentes de $\vec w$ en la tercera fila.
+Cada componente de este vector resultante es el determinante de una matriz de 2x2 formada eliminando la fila y la columna del componente correspondiente de una matriz de 3x3 que contiene los vectores unitarios $\hat\imath$, $\hat\jmath$ y $\hat k$ en la primera fila, los componentes de $\vec v$ en la segunda fila, y los componentes de $\vec w$ en la tercera fila.
 
 $$
-\begin{vmatrix}\vec i & \vec j & \vec k \\ x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2\\ \end{vmatrix} = \begin{vmatrix} y_1 & z_1 \\ y_2 & z_2 \\ \end{vmatrix} \hat{\imath} - \begin{vmatrix} x_1 & z_1 \\ x_2 & z_2\\ \end{vmatrix} \hat{\jmath} + \begin{vmatrix} x_1 & y_1 \\ x_2 & y_2 \\ \end{vmatrix}\hat{k} \tag{12.3}
+\begin{vmatrix}\vec i & \vec j & \vec k \\ x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2\\ \end{vmatrix} = \begin{vmatrix} y_1 & z_1 \\ y_2 & z_2 \\ \end{vmatrix} \hat\imath - \begin{vmatrix} x_1 & z_1 \\ x_2 & z_2\\ \end{vmatrix} \hat\jmath + \begin{vmatrix} x_1 & y_1 \\ x_2 & y_2 \\ \end{vmatrix}\hat k \tag{12.3}
 $$
 
 Propiedades del producto vectorial:
@@ -295,10 +296,10 @@ $$
 ## 15. Funciones Vectoriales
 Una **función vectorial** es una función matemática de una o más variables cuyo rango es un conjunto de vectores.
 
-Por ejemplo, un tipo común de función vectorial es aquella que depende de un único parámetro real t y produce un vector $\vec f(t)$ como resultado. En términos de los vectores unitarios están $\hat{\imath}$, $\hat{\jmath}$, $\hat{k}$ del espacio cartesiano 3D, estos tipos específicos de funciones con valores vectoriales vienen dados por expresiones como:
+Por ejemplo, un tipo común de función vectorial es aquella que depende de un único parámetro real t y produce un vector $\vec f(t)$ como resultado. En términos de los vectores unitarios están $\hat\imath$, $\hat\jmath$, $\hat k$ del espacio cartesiano 3D, estos tipos específicos de funciones con valores vectoriales vienen dados por expresiones como:
 
 $$
-\vec f(t) = f_x(t)\hat{\imath} + f_y(t)\hat{\jmath} + f_z(t)\hat{k} \tag{15.1}
+\vec f(t) = f_x(t)\hat\imath + f_y(t)\hat\jmath + f_z(t)\hat k \tag{15.1}
 $$
 
 Donde $f_x(t)$, $f_y(t)$, y $f_z(t)$ son las funciones de coordenadas del parámetro t, y el dominio de esta función vectorial es la intersección de los dominios de las funciones $f_x(t)$, $f_y(t)$, y $f_z(t)$.
@@ -307,7 +308,7 @@ Donde $f_x(t)$, $f_y(t)$, y $f_z(t)$ son las funciones de coordenadas del parám
 La **derivada de una función vectorial** es casi idéntica a la definición de derivada de una función real de una variable. Sin embargo, debido a que el rango de una función con valores vectoriales consta de vectores, lo mismo ocurre con el rango de la derivada de una función con valores vectoriales. Es decir:
 
 $$
-\vec f'(t) = \frac{d\vec f}{dt} = \frac{df_x}{dt}\hat{\imath} + \frac{df_y}{dt}\hat{\jmath} +\frac{df_z}{dt}\hat{k} \tag{16.1}
+\vec f'(t) = \frac{d\vec f}{dt} = \frac{df_x}{dt}\hat\imath + \frac{df_y}{dt}\hat\jmath +\frac{df_z}{dt}\hat k \tag{16.1}
 $$
 
 ## 17. Derivada parcial de una función y su derivada total
@@ -342,57 +343,67 @@ $$
 ## 19. Ejercicios con vectores
 
 {/* --- Lógica para Ejercicio 1 --- */}
-export const vRiver_e1 = [9, 0];
-export const vBoat_e1 = [0, 36];
+export const e1_vRiver = [9, 0];
+export const e1_vBoat = [0, 36];
 
 {/* vPropelled = vBoat – vRiver */}
-export const vPropelled_e1 = math.subtract(vBoat_e1, vRiver_e1);
-export const normvPropelled_e1 = math.norm(vPropelled_e1);
+export const e1_vPropelled = math.subtract(e1_vBoat, e1_vRiver);
+export const e1_normvPropelled = math.norm(e1_vPropelled);
 
 {/* Ángulo φ entre vRiver y vPropelled */}
-export const dotProduct_e1 = math.dot(vRiver_e1, vPropelled_e1);
-export const normRiver_e1 = math.norm(vRiver_e1);
-export const cosPhi_e1 = dotProduct_e1 / (normRiver_e1 * normvPropelled_e1);
-export const phi_e1 = math.acos(cosPhi_e1) * 180 / math.pi;
+export const e1_dotProduct = math.dot(e1_vRiver, e1_vPropelled);
+export const e1_normRiver = math.norm(e1_vRiver);
+export const e1_cosPhi = e1_dotProduct / (e1_normRiver * e1_normvPropelled);
+export const e1_phi = math.acos(e1_cosPhi) * 180 / math.pi;
 
 ### Ejercicio 1
-Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de {vBoat_e1[1]} km/h. El agua del río fluye a una velocidad de {vRiver_e1[0]} km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
+Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de {e1_vBoat[1]} km/h. El agua del río fluye a una velocidad de {e1_vRiver[0]} km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
 
-La velocidad del bote $\vec v_b$ es la suma de la velocidad con la que el barquero propulsa el bote $\vec v_p$ más la velocidad del agua del río $\vec v_r$. Entonces:
+Llamemos un vector $\vec v_r$ a la velocidad del agua del río y un vector $\vec v_b$ a la velocidad del bote con respecto a la orilla del río. El objetivo es encontrar el vector $\vec v_p$, que es la velocidad con la que el barquero debe propulsar el bote para que su velocidad resultante $\vec v_b$ sea perpendicular a la orilla del río.
+
+Si elegimos un plano de coordenadas de manera que el eje x tenga la misma dirección que el río y el eje y sea perpendicular a este (ver Figura 19.1), podemos expresar los vectores involucrados mediante sus componentes:
+
+<div>
+    $\vec v_b = ($ {e1_vBoat.join(', ')} $) \text{ Km/h}$
+</div>
+
+<div>
+    $\vec v_r = ($ {e1_vRiver.join(', ')} $) \text{ Km/h}$
+</div>
+
+Por otra parte, la velocidad del bote $\vec v_b$ se puede expresar como una [suma de vectores](#3-suma-de-vectores-método-gráfico):
+
+$$
+\vec v_b = \vec v_p + \vec v_r
+$$
+
+Entonces:
 
 $$
 \vec v_p = \vec v_b - \vec v_r
 $$
 
-Si elegimos el plano de coordenadas de manera que el eje x tenga la misma dirección que el río:
+Ahora, calculamos $\vec v_p$ mediante la resta de los vectores $\vec v_b$ y $\vec v_r$ usando sus [componentes](#7-suma-de-vectores-y-multiplicación-por-un-escalar-usando-sus-componentes):
 
 <div>
-    $\vec v_b = ($ {vBoat_e1.join(', ')} $) \text{ Km/h}$
+    $\vec v_p = ($ {e1_vBoat.join(', ')} $) - ($ {e1_vRiver.join(', ')} $) = ($ {e1_vPropelled.join(', ')} $) \text{ Km/h}$
 </div>
+
+La magnitud del vector $\vec v_p$ es la velocidad a la que debe propulsa el bote, se expresa como $\|\vec v_p\|$ y, según [6.1](#6-relación-entre-las-componentes-de-un-vector-su-módulo-y-su-dirección), se calcula como:
 
 <div>
-    $\vec v_r = ($ {vRiver_e1.join(', ')} $) \text{ Km/h}$
+    $\|\vec v_p\| = \sqrt{v_x^2 + v_y^2} = \sqrt{(-9)^2 + 36^2} = \sqrt{81+1296} = \sqrt {1377} =$ {e1_normvPropelled.toFixed(1)} $\text{ Km/h}$
 </div>
 
-<div>
-    $\vec v_p = ($ {vBoat_e1.join(', ')} $) - ($ {vRiver_e1.join(', ')} $) = ($ {vPropelled_e1.join(', ')} $) \text{ Km/h}$
-</div>
-
-La magnitud del vector $\vec v_p$ es la velocidad a la que se impulsa el bote, se expresa como $\|\vec v_p\|$ y, según [6.1], se calcula como:
-
-<div>
-    $\|\vec v_p\| = \sqrt{v_x^2 + v_y^2} = \sqrt{9^2 + 36^2} = \sqrt{81+1296} = \sqrt {1377} =$ {normvPropelled_e1.toFixed(1)} $\text{ Km/h}$
-</div>
-
-El valor del ángulo $\phi$ es la dirección en la que se impulsa el bote, corresponde con la orientación de $\vec v_p$ y según [10.3], se calcula como:
+Para calcular el valor del ángulo $\phi$ en la dirección en la que se impulsa el bote, que corresponde al ángulo formado entre el vector $\vec v_p$ y el vector $\vec v_r$, utilizamos las propiedades del [producto escalar de dos vectores](#10-producto-escalar-de-dos-vectores). En particular, aplicando la expresión [10.3] para $\vec v_p$ y $\vec v_r$ tenemos que:
 
 <div class="centered">
-    $\displaystyle \phi = \arccos \left( \frac{\vec v_p \cdot \vec v_r}{\|\vec v_p\| \cdot \|\vec v_r\|} \right) =$ {phi_e1.toFixed(1)}$^\circ$
+    $\displaystyle \phi = \arccos \left( \frac{\vec v_p \cdot \vec v_r}{\|\vec v_p\| \cdot \|\vec v_r\|} \right) =$ {e1_phi.toFixed(1)}$^\circ$
 </div>
 
-Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de {normvPropelled_e1.toFixed(1)} Km/h y en una dirección que forme {phi_e1.toFixed(1)}º con el río.
+Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de {e1_normvPropelled.toFixed(1)} Km/h y en una dirección que forme un ángulo de {e1_phi.toFixed(1)}º con el río.
 
-![Figura 19.1: Plano de coordenadas, vr como la velocidad del agua del río y v como la velocidad con la que se propulsa el bote.](vector:svge_1 "Plano de coordenadas, vr como la velocidad del agua del río y v como la velocidad con la que se propulsa el bote.")
+![Figura 19.1: Plano de coordenadas, Vr como la velocidad del agua del río y Vb como la velocidad con la que se propulsa el bote.](vector:svge_1)
 
 #### Referencias
 - [Coordinate Plane. Mathisfun.](https://www.mathsisfun.com/definitions/coordinate-plane.html)

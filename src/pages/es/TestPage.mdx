@@ -1,0 +1,63 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: Laboratorio de Migración TS
+lang: es
+---
+import VectorCanvas from '../../components/VectorCanvas.astro';
+
+{/* Cargar MathJax para renderizado dinámico en SVGs. Sin 'async' para asegurar que cargue antes que los scripts del canvas */}
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+# Laboratorio de Migración a TypeScript
+
+Esta página se utiliza para probar los nuevos componentes del núcleo (`core`) reescritos en TypeScript sin afectar a las páginas de producción (Geometría, Vectores, etc.).
+
+## 1. Prueba de Integración
+Si ves el texto "¡Hola desde TypeScript!" abajo, significa que el pipeline de `.ts` está funcionando correctamente en `VectorCanvas`.
+
+![Gráfico de prueba generado por testPage.ts](vector:svg_test_ts)
+
+## 2. Prueba de SVGDrawing.ts (Segmentos)
+Prueba de las funciones `ensureSharedMarkerDefs` y `drawSegment` migradas a TypeScript.
+
+![Segmentos de prueba](vector:svg_test_segment)
+
+## 3. Prueba de Círculos y Texto con Subíndice
+Prueba de `drawCircle` y `textWithSubscript`.
+
+![Círculos y Texto](vector:svg_test_circle_text)
+
+## 4. Prueba de Texto y Alineación
+Prueba de `writeText` (con diferentes esquinas) y `writeVerticalText`.
+
+![Texto y Alineación](vector:svg_test_text)
+
+## 5. Prueba de Expresiones Matemáticas
+Prueba de `writeMath` usando MathJax.
+
+![Expresiones Matemáticas](vector:svg_test_math)
+
+## 6. Prueba de CartesianPlane.ts
+Prueba de la clase `CartesianPlane` migrada a TypeScript.
+
+![Plano Cartesiano desde TS](vector:svg_test_plane)
+
+## 7. Prueba de Dibujos en CartesianPlane.ts
+Prueba de los métodos `drawPoint`, `drawSegment` y `drawCircunference`.
+
+![Dibujos en Plano Cartesiano desde TS](vector:svg_test_plane_drawings)
+
+## 8. Prueba de Arcos y Trayectorias en CartesianPlane.ts
+Prueba de los métodos `drawArc` y `drawPath`.
+
+![Arcos y Trayectorias desde TS](vector:svg_test_plane_arc_path)
+
+## 9. Prueba de Vectores en CartesianPlane.ts
+Prueba de los métodos `drawVector` y `drawVectorB` (con LaTeX).
+
+![Vectores desde TS](vector:svg_test_plane_vectors)
+
+## 10. Prueba de Ángulos en CartesianPlane.ts
+Prueba de los métodos `drawRightAngle` y `drawAngle`.
+
+![Ángulos desde TS](vector:svg_test_plane_angles)

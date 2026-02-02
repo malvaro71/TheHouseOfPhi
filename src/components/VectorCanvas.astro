@@ -5,14 +5,15 @@ const { id, viewBox = "0 0 400 400", width = "100%", height = "400" } = Astro.pr
 <svg id={id} viewBox={viewBox} width={width} height={height}></svg>
 
 <script>
-    import { geometryDrawings } from '../scripts/pages/geometryPage.js';
+    import { geometryDrawings } from '../scripts/pages/geometryPage.ts';
     import { vectorsDrawings } from '../scripts/pages/vectorsPage.js';
+    import { testDrawings } from '../scripts/pages/testPage.ts';
     import { ensureSharedMarkerDefs } from '../scripts/core/SVGDrawing.js';
 
     // Declarar MathJax para evitar errores de TypeScript (se carga globalmente)
     declare const MathJax: any;
 
-    const allDrawings = { ...geometryDrawings, ...vectorsDrawings };
+    const allDrawings = { ...geometryDrawings, ...vectorsDrawings, ...testDrawings };
 
     const initDrawings = async () => {
         console.log("VectorCanvas: Iniciando renderizado de gráficos...");
@@ -29,9 +30,9 @@ const { id, viewBox = "0 0 400 400", width = "100%", height = "400" } = Astro.pr
         }
 
         for (const [id, drawFunc] of Object.entries(allDrawings)) {
-            const svg = document.getElementById(id);
+            const svg = document.getElementById(id) as Element | null;
             // Verificamos si existe, es función y si NO ha sido dibujado ya (para evitar duplicados)
-            if (svg && typeof drawFunc === 'function' && !svg.hasAttribute('data-drawn')) {
+            if (svg instanceof SVGElement && typeof drawFunc === 'function' && !svg.hasAttribute('data-drawn')) {
                 try {
                     drawFunc(svg);
                     svg.setAttribute('data-drawn', 'true'); // Marcamos como dibujado

@@ -17,5 +17,14 @@
     // Opcional: Si tienes varios formateadores instalados (por ejemplo, Prettier),
     // esto asegura que ESLint sea el formateador predeterminado para archivos JS.
     // "dbaeumer.vscode-eslint" es el identificador del plugin de ESLint en VS Code.
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[astro]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[mdx]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
