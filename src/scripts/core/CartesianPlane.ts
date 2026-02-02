@@ -79,10 +79,10 @@ export class CartesianPlane {
         const planeHeight = this.yMax - this.yMin;
         this.drawVector([0, this.yMin], [0, planeHeight]);
         this.drawMath([0, this.yMax], yAxisText, { color: "brown", scale: 1.2, dx: -15, dy: 10 });
+        
         // x-axis
         const planeWidth = this.xMax - this.xMin;
         this.drawVector([this.xMin, 0], [planeWidth, 0]);
-
         this.drawMath([this.xMax, 0], xAxisText, { color: "brown", scale: 1.2, dx: -10, dy: 10 });
 
         // Origin

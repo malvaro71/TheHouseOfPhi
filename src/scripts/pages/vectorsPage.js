@@ -77,7 +77,7 @@ export const vectorsDrawings = {
     "svg1_3": (svg) => {
         const plane = new CartesianPlane(svg, -10, 11, -10, 10);
 
-        plane.drawAxes("\\text{y}", "x", "O");
+        plane.drawAxes("y", "x", "O");
 
         plane.drawPoint([5, 8], "green");
         plane.drawMath([6, 8], "\\text{P}(x_1, y_1)", { color: "green", scale: 1.3, dx: 0, dy: -5 });
