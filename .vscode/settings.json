@@ -1,5 +1,9 @@
 {
 	"editor.wordWrap": "on",
+    "files.associations": {
+        "*.mdx": "mdx"
+    },
+
     // Esta línea es crucial: le dice a VS Code que ejecute las correcciones de ESLint
     // automáticamente cada vez que guardes un archivo.
     "editor.codeActionsOnSave": {
@@ -11,20 +15,6 @@
         "javascriptreact",
         "typescript",
         "typescriptreact",
-        "astro",
-        "mdx"
-    ],
-    // Opcional: Si tienes varios formateadores instalados (por ejemplo, Prettier),
-    // esto asegura que ESLint sea el formateador predeterminado para archivos JS.
-    // "dbaeumer.vscode-eslint" es el identificador del plugin de ESLint en VS Code.
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[astro]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[mdx]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+        "astro"
+    ]
 }

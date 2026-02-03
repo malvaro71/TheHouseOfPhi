@@ -78,12 +78,12 @@ export class CartesianPlane {
         // y-axis
         const planeHeight = this.yMax - this.yMin;
         this.drawVector([0, this.yMin], [0, planeHeight]);
-        this.drawMath([0, this.yMax], yAxisText, { color: "brown", scale: 1.2, dx: -15, dy: 10 });
+        this.drawMath([0, this.yMax], yAxisText, { color: "brown", scale: 1.2, dx: -20, dy: 10 });
         
         // x-axis
         const planeWidth = this.xMax - this.xMin;
         this.drawVector([this.xMin, 0], [planeWidth, 0]);
-        this.drawMath([this.xMax, 0], xAxisText, { color: "brown", scale: 1.2, dx: -10, dy: 10 });
+        this.drawMath([this.xMax, 0], xAxisText, { color: "brown", scale: 1.2, dx: -15, dy: 10 });
 
         // Origin
         if (originText) {
@@ -306,7 +306,7 @@ export class CartesianPlane {
             const labelRadius = radius * 1.3; 
             const labelPos = math.add(vertex, [uMid[0]*labelRadius, uMid[1]*labelRadius]) as Point2D;
             
-            this.drawMath(labelPos, `\\text{${label}}`, mathAttributes);
+            this.drawMath(labelPos, label, mathAttributes);
         }
     }
 

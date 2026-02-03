@@ -3,6 +3,7 @@ layout: ../../layouts/BaseLayout.astro
 title: Vectores - The House of Phi
 lang: es
 ---
+
 import VectorCanvas from '../../components/VectorCanvas.astro';
 import VectorConverter from '../../components/VectorConverter.astro';
 import * as math from 'mathjs';
@@ -88,18 +89,21 @@ Cuando un vector se escribe de esta manera, los escalares x e y se denominan **c
 ## 6. Relación entre las componentes de un vector, su módulo y su dirección
 Para hallar la magnitud de un vector a partir de sus componentes, utilizamos el Teorema de Pitágoras. Y para encontrar su dirección Usamos la función tangente inversa.
 
-Dado un vector de posición $\vec v = (x, y)$, su **magnitud (o módulo)** se calcula mediante
+### 6.1 Módulo de un vector
+Dado un vector de posición $\vec v = (x, y)$, su **magnitud (o módulo)**, **$\|\vec v\|$**, se calcula mediante
 
 $$
 \|\vec v\| = \sqrt{x^2+y^2} \tag{6.1}
 $$
 
-Y su **dirección** se calcula mediante
+### 6.2 Dirección de un vector
+La **dirección** del vector, o el ángulo que forma con la horizontal, **$\theta$**, se calcula mediante
 
 $$
 \theta = \arctan (y/x) \tag{6.2}
 $$
 
+### 6.3 Compnentes de un vector dados su módulo y su dirección
 Dadas la magnitud y dirección de un vector $\vec v$, su **componente x** se calcula mediante
 
 $$
@@ -342,26 +346,16 @@ $$
 
 ## 19. Ejercicios con vectores
 
-{/* --- Lógica para Ejercicio 1 --- */}
-export const e1_vRiver = [9, 0];
-export const e1_vBoat = [0, 36];
-
-{/* vPropelled = vBoat – vRiver */}
-export const e1_vPropelled = math.subtract(e1_vBoat, e1_vRiver);
-export const e1_normvPropelled = math.norm(e1_vPropelled);
-
-{/* Ángulo φ entre vRiver y vPropelled */}
-export const e1_dotProduct = math.dot(e1_vRiver, e1_vPropelled);
-export const e1_normRiver = math.norm(e1_vRiver);
-export const e1_cosPhi = e1_dotProduct / (e1_normRiver * e1_normvPropelled);
-export const e1_phi = math.acos(e1_cosPhi) * 180 / math.pi;
-
 ### Ejercicio 1
 Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de {e1_vBoat[1]} km/h. El agua del río fluye a una velocidad de {e1_vRiver[0]} km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
 
 Llamemos un vector $\vec v_r$ a la velocidad del agua del río y un vector $\vec v_b$ a la velocidad del bote con respecto a la orilla del río. El objetivo es encontrar el vector $\vec v_p$, que es la velocidad con la que el barquero debe propulsar el bote para que su velocidad resultante $\vec v_b$ sea perpendicular a la orilla del río.
 
 Si elegimos un plano de coordenadas de manera que el eje x tenga la misma dirección que el río y el eje y sea perpendicular a este (ver Figura 19.1), podemos expresar los vectores involucrados mediante sus componentes:
+
+{/* --- Velocidades del bote y del río expresadas mediante sus componentes--- */}
+export const e1_vRiver = [9, 0];
+export const e1_vBoat = [0, 36];
 
 <div>
     $\vec v_b = ($ {e1_vBoat.join(', ')} $) \text{ Km/h}$
@@ -385,17 +379,28 @@ $$
 
 Ahora, calculamos $\vec v_p$ mediante la resta de los vectores $\vec v_b$ y $\vec v_r$ usando sus [componentes](#7-suma-de-vectores-y-multiplicación-por-un-escalar-usando-sus-componentes):
 
+{/* Usamos math.subtract para restar vectores*/}
+export const e1_vPropelled = math.subtract(e1_vBoat, e1_vRiver);
+
 <div>
     $\vec v_p = ($ {e1_vBoat.join(', ')} $) - ($ {e1_vRiver.join(', ')} $) = ($ {e1_vPropelled.join(', ')} $) \text{ Km/h}$
 </div>
 
 La magnitud del vector $\vec v_p$ es la velocidad a la que debe propulsa el bote, se expresa como $\|\vec v_p\|$ y, según [6.1](#6-relación-entre-las-componentes-de-un-vector-su-módulo-y-su-dirección), se calcula como:
 
+{/*Usamos math.norm para calcular la magnitud de un vector*/}
+export const e1_normvPropelled = math.norm(e1_vPropelled);
+
 <div>
     $\|\vec v_p\| = \sqrt{v_x^2 + v_y^2} = \sqrt{(-9)^2 + 36^2} = \sqrt{81+1296} = \sqrt {1377} =$ {e1_normvPropelled.toFixed(1)} $\text{ Km/h}$
 </div>
 
 Para calcular el valor del ángulo $\phi$ en la dirección en la que se impulsa el bote, que corresponde al ángulo formado entre el vector $\vec v_p$ y el vector $\vec v_r$, utilizamos las propiedades del [producto escalar de dos vectores](#10-producto-escalar-de-dos-vectores). En particular, aplicando la expresión [10.3] para $\vec v_p$ y $\vec v_r$ tenemos que:
+
+{/* Calculamos el angulo φ entre vRiver y vPropelled
+*   Usamos math.dot para calcular el producto escalar de dos vectores
+*   Usamos math.acos para calcular el ángulo en radianes y convertimos a grados */}
+export const e1_phi = math.acos(math.dot(e1_vRiver, e1_vPropelled) / (math.norm(e1_vRiver) * e1_normvPropelled)) * 180 / math.pi;
 
 <div class="centered">
     $\displaystyle \phi = \arccos \left( \frac{\vec v_p \cdot \vec v_r}{\|\vec v_p\| \cdot \|\vec v_r\|} \right) =$ {e1_phi.toFixed(1)}$^\circ$
@@ -411,3 +416,291 @@ Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a 
 - [Speed and Velocity. Mathisfun.](https://www.mathsisfun.com/measure/speed-velocity.html)
 - [Sine, Cosine and Tangent in Four Quadrants. Mathisfun.](https://www.mathsisfun.com/algebra/trig-four-quadrants.html)
 - [Dot Product. Mathisfun.](https://www.mathsisfun.com/algebra/vectors-dot-product.html)
+
+### Ejercicio 2
+Dibuja, uno a continuación del otro, los vectores $\vec a = 2\hat{\imath} + 3\hat{\jmath}$, $\vec b = 4\hat{\imath} - 2\hat{\jmath}$, $\vec c = 3\hat{\imath} - 2\hat{\jmath}$ y $\vec d = -9\hat{\imath} + \hat{\jmath}$. Calcula el vector resultante de la suma de todos ellos y su magnitud.
+
+Para resolver este ejercicio, primero representemos gráficamente los vectores $\vec a$, $\vec b$, $\vec c$ y $\vec d$ en un plano cartesiano, uno a continuación del otro, utilizando el método gráfico de [suma de vectores](#3-suma-de-vectores-método-gráfico).
+
+![Figura 19.2: Suma de a, b, c y d por el método gráfico.](vector:svge_2)
+
+Se puede observar que el origen de $\vec a$ coincide con el final de $\vec d$. Así que el vector resultante de dicha suma es el vector $\vec 0$, y su magnitud es cero.
+
+#### Referencias
+- [5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.](https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods)
+
+{/* --- Lógica para Ejercicio 3 --- */}
+
+
+
+### Ejercicio 3
+Un barco de vela se mueve con una velocidad de {e3_sailboatSpeed} km/h en la dirección NNE (nornoreste). ¿Cuáles son las componentes de la velocidad del barco en dirección Norte y en dirección Este?
+{/* Datos del enunciado*/}
+export const e3_sailboatSpeed = 4; // km/h
+export const e3_angleDeg = 67.5; // grados. Nornoreste es equivalente a 67.5º
+export const e3_angleRad = e3_angleDeg * Math.PI / 180; // radianes
+
+Si situamos el eje x en la dirección este y el eje y en la dirección norte, la dirección NNE (nornoreste) está orientada formando un ángulo de {e3_angleDeg}º, o $3\pi/8$ radianes, con el eje x (dirección este); según se muestra en la siguiente figura.
+
+![Figura 19.3: Dirección NNE, velocidad V y sus componentes Vx y Vy.](vector:svge_3)
+
+Para resolver este ejercicio, utilicemos la noción de [componentes de un vector](#5-componentes-de-un-vector) y la [relación entre las componentes de un vector, su módulo y su dirección](#6-relación-entre-las-componentes-de-un-vector-su-módulo-y-su-dirección).
+
+Según esto, la componente de la velocidad del barco en dirección norte concide con la componente vertical $\vec V _y$, y la compenente en dirección este concide con la componente horizontal $\vec V _x$ del vector $\vec V$.
+
+
+Entonces, usamos la expresión [6.3] para calcular $\|\vec V_x\|$, y usamos la expresión [6.4] para calcular $\|\vec V_y\|$.
+
+Sustituyendo $\|\vec V\| =$ {e3_sailboatSpeed} km/h y $\theta$ = {e3_angleDeg}º.
+
+export const e3_sailboatSpeedX = e3_sailboatSpeed * Math.cos(e3_angleRad);
+export const e3_sailboatSpeedY = e3_sailboatSpeed * Math.sin(e3_angleRad);
+
+$\vec V_x =$ {e3_sailboatSpeed} $\cdot \cos(${e3_angleDeg}$^\circ) = ${e3_sailboatSpeedX.toFixed(2)} km/h
+
+$\vec V_y =$ {e3_sailboatSpeed} $\cdot \sin(${e3_angleDeg}$^\circ) = ${e3_sailboatSpeedY.toFixed(2)} km/h
+
+#### Referencias
+- [Rosa de los vientos. Wikipedia.](https://es.wikipedia.org/wiki/Rosa_de_los_vientos)
+
+
+### Ejercicio 4
+Un objeto se mueve de tal manera que su velocidad en un instante determinado es de {e4_speed} m/s y forma un ángulo de {e4_angleDeg}º con la horizontal. Halla las componentes horizontal y vertical de la velocidad. Expresa el vector velocidad en función de sus componentes.
+
+{/* --- Datos del enunciado --- */}
+export const e4_speed = 120;
+export const e4_angleDeg = 30;
+export const e4_angleRad = e4_angleDeg * Math.PI / 180;
+
+Las fórmulas para calcular las [componentes de un vector](#5-componentes-de-un-vector) $\vec v$ dado su módulo $\|\vec v\|$ y dirección $\theta$ vienen definidas por las expresiones [6.3] y [6.4]:
+
+{/*Componente horizontal de la velocidad:*/}
+export const e4_Vx = e4_speed * Math.cos(e4_angleRad);
+
+$\vec v_x = \|\vec v\|\cos \theta \cdot\hat\imath$
+
+{/*Componente vertical de la velocidad:*/}
+export const e4_Vy = e4_speed * Math.sin(e4_angleRad);
+
+$\vec v_y = \|\vec v\|\sin \theta \cdot\hat\jmath$
+
+$\vec v = \vec v_x + \vec v_y$
+
+Donde $\|\vec v\|$ = {e4_speed} m/s, y $\theta$ = {e4_angleDeg}º. Así que:
+
+$\vec v_x = 120\cos(30^\circ) = 120\cdot\frac{\sqrt 3}{2} =$ {e4_Vx.toFixed(1)} m/s
+
+$\vec v_y = 120\sin(30^\circ) = 120\cdot\frac{1}{2} =$ {e4_Vy.toFixed(1)} m/s
+
+Y expresado vectorialmente:
+
+$\vec v = ${e4_Vx.toFixed(1)}$\hat\imath + ${e4_Vy.toFixed(1)}$\hat\jmath$ m/s
+
+#### Referencias
+- [8.8 Vectores. Precalculus. Openstax.](https://openstax.org/books/precalculus/pages/8-8-vectors)
+- [7.2 Right Triangle Trigonometry. Algebra and Trigonometry. Openstax.](https://openstax.org/books/algebra-and-trigonometry/pages/7-2-right-triangle-trigonometry)
+- [7.4 The Other Trigonometric Functions. Algebra and Trigonometry. Openstax.](https://openstax.org/books/algebra-and-trigonometry/pages/7-4-the-other-trigonometric-functions)
+
+### Ejercicio 5
+Calcula el producto escalar de los vectores $\vec v = 5\hat\imath - 3\hat\jmath + 2\hat k$ y $\vec w = -2\hat\imath + \hat\jmath + 3\hat k$, y el ángulo que forman.
+
+{/* --- Datos del enunciado --- */}
+export const e5_v = [5, -3, 2];
+export const e5_w = [-2, 1, 3];
+
+
+El [producto escalar](#10-producto-escalar-de-dos-vectores) de dos vectores $\vec v$ y $\vec w$, dadas sus componentes, es según se muestra en [10.1]:
+
+$$
+\vec v\cdot\vec w = v_x\cdot w_x + v_y\cdot w_y + v_z\cdot w_z
+$$
+
+Entonces:
+
+{/* Producto escalar */}
+export const e5_dotProduct = math.dot(e5_v, e5_w);
+
+$\vec v\cdot\vec w = (5)(-2) + (-3)(1) + (2)(3) = -10 - 3 + 6 =$ {e5_dotProduct}
+
+El valór del ángulo $\theta$ que forman dos vectores $\vec v$ y $\vec w$, viene dado por la expresión [10.3].
+
+$$
+\theta = \arccos\frac{\vec v\cdot\vec w}{\|\vec v\|\cdot\|\vec w\|}
+$$
+
+Calculamos primero $\|\vec v\|$ y $\|\vec w\|$:
+{/* Módulos */}
+export const e5_normV = math.norm(e5_v);
+export const e5_normW = math.norm(e5_w);
+
+$\|\vec v\| = \sqrt{5^2 + (-3)^2 + 2^2} = \sqrt{25 + 9 + 4} = \sqrt{38} \approx$ {e5_normV.toFixed(2)}
+
+$\|\vec w\| = \sqrt{(-2)^2 + 1^2 + 3^2} = \sqrt{4 + 1 + 9} = \sqrt {14} \approx$ {e5_normW.toFixed(2)}
+
+Y ya podemos calcular el valor del ángulo $\theta$:
+
+{/* Ángulo */}
+export const e5_cosTheta = e5_dotProduct / (e5_normV * e5_normW);
+export const e5_thetaRad = math.acos(e5_cosTheta);
+export const e5_thetaDeg = e5_thetaRad * 180 / math.pi;
+
+
+$\theta  = \arccos\left(\frac{\vec v\cdot\vec w}{\|\vec v\|\cdot\|\vec w\|}\right) = \arccos\left(\frac{-7}{\sqrt {38}\cdot\sqrt {14}}\right) \approx \arccos(${e5_cosTheta.toFixed(4)}) $\approx$ ${e5_thetaDeg.toFixed(2)}º
+
+#### Referencias
+- Coordinate Systems and Components of a Vector. University Physics Volume 1. Openstax.
+- Products of Vectors. University Physics Volume 1. Openstax.
+
+### Ejercicio 6
+Un avión se desplaza a una velocidad de {e6_planeSpeed} km/h en dirección NE. Halla la proyección de su velocidad en la dirección este.
+
+{/* --- Datos del enunciado --- */}
+export const e6_planeSpeed = 600; // km/h
+export const e6_angleDeg = 45; // grados. NE es equivalente a 45º respecto a la horizontal (dirección este)
+export const e6_angleRad = e6_angleDeg * Math.PI / 180; // radianes
+
+
+La dirección NE (noreste) forma un ángulo de {e6_angleDeg}º con la dirección este, como se muestra en la siguiente figura.
+
+![Figura 19.4: Ángulo entre E y NE, y la proyección de v sobre E.](vector:svge_6)
+
+Para calcular la [proyección de la velocidad](#11-proyección-de-un-vector) en la dirección este, usamos la expresión [11.2].
+
+$\|\text{proj}_E \vec v\| = \|\vec v\|\cos\theta$
+
+Donde $\|\vec v\|$ = {e6_planeSpeed} Km/h y $\theta$ = {e6_angleDeg}º. 
+
+Entonces:
+
+{/* Calculamos la proyección de la velocidad en la dirección este:*/}
+export const e6_projection = e6_planeSpeed * Math.cos(e6_angleRad);
+
+$\|\text{proj}_E \vec v\| = 600\cdot\cos(45^\circ) = 600 \cdot \frac{\sqrt{2}}{2} \approx$ {e6_projection.toFixed(0)} Km/h
+
+#### Referencias
+- [The Dot Product. Calculus Volume 3. Openstax.](https://openstax.org/books/calculus-volume-3/pages/2-3-the-dot-product)
+
+### Ejercicio 7
+Un cuerpo rígido gira con una velocidad angular $\vec w$ dada por el vector $\vec w = \hat\imath + \hat\jmath + \hat k$ rad/s. Calcula la velocidad lineal $\vec v$ con que se mueve un punto P del cuerpo, cuyo vector de posición es $\vec r = 2\hat\imath - 2\hat\jmath + \hat k$ m., sabiendo que $\vec v = \vec w \times \vec r$.
+
+{/* --- Datos del enunciado --- */}
+export const e7_w = [1, 1, 1];
+export const e7_r = [2, -2, 1];
+
+Para resolver este ejercicio, utilicemos la noción de [producto vectorial](#12-producto-vectorial) y la expresión [12.2].
+
+
+{`
+    $$
+        \\vec v = \\vec w \\times \\vec r = 
+        \\begin{vmatrix} 
+            \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\
+            ${e7_w[0]} & ${e7_w[1]} & ${e7_w[2]}  \\\\
+            ${e7_r[0]} & ${e7_r[1]} & ${e7_r[2]}
+        \\end{vmatrix}
+    $$
+`}
+
+Calculamos el determinante:
+
+{`
+    $$
+        \\vec v = 
+        \\begin{vmatrix} 
+            ${e7_w[1]} & ${e7_w[2]} \\\\
+            ${e7_r[1]} & ${e7_r[2]} 
+        \\end{vmatrix} \\hat\\imath -
+        \\begin{vmatrix} 
+            ${e7_w[0]} & ${e7_w[2]} \\\\
+            ${e7_r[0]} & ${e7_r[2]} 
+        \\end{vmatrix} \\hat\\jmath + 
+        \\begin{vmatrix} 
+            ${e7_w[0]} & ${e7_w[1]} \\\\
+            ${e7_r[0]} & ${e7_r[1]} 
+        \\end{vmatrix}\\hat k = 
+        ((${e7_w[1]*e7_r[2]}) - (${e7_w[2]*e7_r[1]}))\\hat\\imath - 
+        ((${e7_w[0]*e7_r[2]}) - (${e7_w[2]*e7_r[0]}))\\hat\\jmath + 
+        ((${e7_w[0]*e7_r[1]}) - (${e7_w[1]*e7_r[0]}))\\hat k = 
+        ${math.cross(e7_w, e7_r)[0]}\\hat\\imath + 
+        ${math.cross(e7_w, e7_r)[1]}\\hat\\jmath + 
+        ${math.cross(e7_w, e7_r)[2]}\\hat k
+    $$
+`}
+
+Verificamos el resultado calculándolo directamente:
+
+{/* Cálculo del producto vectorial */}
+export const e7_v = math.cross(e7_w, e7_r);
+
+$\vec v = ($ {e7_v[0]} $)\hat\imath + ($ {e7_v[1]} $)\hat\jmath + ($ {e7_v[2]} $)\hat k$ m/s.
+
+### Ejercicio 8
+Calcula el área de un triángulo $\triangle ABC$, siendo las coordenadas cartesianas de los vértices, $A = (3, 4, 1)$ m., $B = (1, -2, 2)$ m. y $C = (-2, 1, 4)$ m.
+
+{/* --- Datos del enunciado --- */}
+export const e8_A = [3, 4, 1];
+export const e8_B = [1, -2, 2];
+export const e8_C = [-2, 1, 4];
+
+Para resolver este ejercicio, utilicemos la noción de [producto vectorial](#12-producto-vectorial) y la expresión [12.1]. Ya que la magnitud (o longitud) del producto vectorial se puede interpretar como el área del paralelogramo que abarcan los dos vectores que se multiplican. Entonces, el área del triángulo $\triangle ABC$ sería la mitad del área de dicho paralelogramo.
+
+Así que definimos el vector $\overrightarrow{AB}$ como aquel que va del punto A hasta el punto B, y el vector $\overrightarrow{AC}$ como aquel que va del punto A hasta el punto C, y calculamos sus coordenadas:
+
+{/* Vectores AB y AC */}
+export const e8_AB = math.subtract(e8_B, e8_A);
+export const e8_AC = math.subtract(e8_C, e8_A);
+
+$\overrightarrow{AB} = B - A = (1-3, -2-4, 2-1) = ($ {e8_AB.join(', ')} $)$
+
+$\overrightarrow{AC} = C - A = (-2-3, 1-4, 4-1) = ($ {e8_AC.join(', ')} $)$
+
+Y calculamos el área del triángulo $\triangle ABC$ mediante la siguiente expresión:
+
+$$
+\text{Área} = \frac{\|\overrightarrow{AB} \times \overrightarrow{AC}\|}{2}
+$$
+
+{/* Producto vectorial y Área */}
+export const e8_cross = math.cross(e8_AB, e8_AC);
+export const e8_area = math.norm(e8_cross) / 2;
+
+Calculamos el producto vectorial:
+
+{`
+$$
+    \\overrightarrow{AB} \\times \\overrightarrow{AC} = 
+    \\begin{vmatrix}
+        \\hat\\imath & \\hat\\jmath & \\hat k \\\\ 
+        ${e8_AB[0]} & ${e8_AB[1]} & ${e8_AB[2]} \\\\ 
+        ${e8_AC[0]} & ${e8_AC[1]} & ${e8_AC[2]}\\ 
+    \\end{vmatrix} = 
+    ((${e8_AB[1]*e8_AC[2]}) - (${e8_AB[2]*e8_AC[1]}))\\hat\\imath - 
+    ((${e8_AB[0]*e8_AC[2]}) - (${e8_AB[2]*e8_AC[0]}))\\hat\\jmath + 
+    ((${e8_AB[0]*e8_AC[1]}) - (${e8_AB[1]*e8_AC[0]}))\\hat k = 
+    ${e8_cross[0]}\\hat\\imath +
+    ${e8_cross[1]}\\hat\\jmath + 
+    ${e8_cross[2]}\\hat k
+$$
+`}
+
+Verificamos el resultado calculándolo directamente:
+{`
+$$
+    \\|\\overrightarrow{AB} \\times \\overrightarrow{AC}\\| = 
+    \\sqrt{(${e8_cross[0]})^2 + (${e8_cross[1]})^2 + (${e8_cross[2]})^2} =
+    \\sqrt{${e8_cross[0]**2} + ${e8_cross[1]**2} + ${e8_cross[2]**2}} = 
+    \\sqrt{${e8_cross[0]**2 + e8_cross[1]**2 + e8_cross[2]**2}} \\approx ${math.norm(e8_cross).toFixed(2)}
+$$
+`}
+
+{`
+$$
+    \\text{Área} = 
+    \\frac{\\sqrt{802}}{2} \\approx ${e8_area.toFixed(2)} \\text{ m}^2
+$$
+`}
+
+![Figura 19.5: Paralelogramo definido por los vectores AB y AC, y triángulo ABC como mitad de dicho paralelogramo.](vector:svg2_8)
+
+#### Referencias
+- [Triángulo. Wikipedia.](https://es.wikipedia.org/wiki/Tri%C3%A1ngulo)

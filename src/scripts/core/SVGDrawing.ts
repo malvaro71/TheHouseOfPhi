@@ -45,6 +45,12 @@ export function ensureSharedMarkerDefs(): void {
     defs.appendChild(createMarkerArrow('Brownarrow', 'brown'));
     defs.appendChild(createMarkerArrow('Bluearrow', 'blue'));
     defs.appendChild(createMarkerArrow('Greenarrow', 'green'));
+    defs.appendChild(createMarkerArrow('Redarrow', 'red'));
+    defs.appendChild(createMarkerArrow('Orangearrow', 'orange'));
+    defs.appendChild(createMarkerArrow('Purplearrow', 'purple'));
+    defs.appendChild(createMarkerArrow('DarkKhakiarrow', 'darkKhaki'));
+    defs.appendChild(createMarkerArrow('CornflowerBluearrow', 'cornflowerBlue'));
+    defs.appendChild(createMarkerArrow('Siennaarrow', 'sienna'));
     sharedSvg.appendChild(defs);
     const appendToBody = () => document.body.appendChild(sharedSvg);
     if (document.body) appendToBody(); else document.addEventListener('DOMContentLoaded', appendToBody, { once: true });
@@ -88,9 +94,27 @@ export function drawSegment(svgElement: SVGElement, x1: number, y1: number, x2: 
             case "green":
                 line.setAttribute("marker-end", "url(#Greenarrow)");
                 break;
+            case "red":
+                line.setAttribute("marker-end", "url(#Redarrow)");
+                break;
+            case "orange":
+                line.setAttribute("marker-end", "url(#Orangearrow)");
+                break;
+            case "purple":
+                line.setAttribute("marker-end", "url(#Purplearrow)");
+                break;
+            case "darkKhaki":
+                line.setAttribute("marker-end", "url(#DarkKhakiarrow)");
+                break;
+            case "cornflowerBlue":
+                line.setAttribute("marker-end", "url(#CornflowerBluearrow)");
+                break;
+            case "Sienna":
+                line.setAttribute("marker-end", "url(#Siennaarrow)");
+                break;
         }
     }
-    // Append the line element to the SVG
+    // Append the line element to the SVG element
     svgElement.appendChild(line);
 }
 
