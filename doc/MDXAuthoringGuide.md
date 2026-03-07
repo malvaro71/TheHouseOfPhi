@@ -118,6 +118,34 @@ $$
 a^2 + b^2 = c^2 \eqtag{5.1}
 $$
 ```
+### 3.3. Dynamic Block Math
+
+While standard block math ($$...$$) is rendered on the server and does not support JavaScript variable interpolation, there is a powerful technique to create dynamic formulas (like matrices with calculated values) by leveraging client-side rendering with MathJax.
+
+The Technique:
+Wrap the entire $$...$$ block within a JavaScript template literal ({...}). 
+Why it works: 
+This method bypasses Astro's server-side KaTeX renderer. The raw string, including the interpolated variables, is sent to the browser. The client-side MathJax script then finds this string and renders it dynamically. 
+
+Prerequisite: 
+This page must include the MathJax component. 
+```mdx
+import MathJax from '../../components/MathJax.astro';
+
+<MathJax />
+```
+
+Example: 
+To display a matrix with dynamic values from variables e7_w and e7_r: 
+
+Source: 
+md 
+{` +$$ +\\begin{vmatrix} +\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ +${e7_w[0]} & ${e7_w[1]} & ${e7_w[2]} \\\\ +${e7_r[0]} & ${e7_r[1]} & ${e7_r[2]} +\\end{vmatrix} +$$ +`}
+
+Important: 
+- Notice the use of backticks (`) for the template literal. 
+- All backslashes (\) within the LaTeX code must be escaped (\\). 
+- This method relies on client-side JavaScript and may cause a brief flash of unstyled content (the raw LaTeX code) on slow connections before MathJax processes it.
 
 ## 4. Graphics and Figures
 
@@ -206,7 +234,7 @@ Given a circle with radius {radius} m, the area is:
 
 $ A = \pi r^2 =$ {area.toFixed(2)} $\text{ m}^2 $
 ```
-**Important**: Variable interpolation {} only works when interleaved with inline math ($) or plain text. It does not work inside block math ($$).
+**Important:** Variable interpolation {} does not work directly inside standard block math ($$...$$) because it is rendered on the server. For dynamic formulas, see the section on Dynamic Block Math.
 
 ### 5.2. Contextual Linking in Solutions
 When writing the solution for an exercise, explicitly reference the theoretical concepts explained earlier in the document that are being applied. Use internal links to the corresponding sections (anchors) to reinforce learning.
@@ -263,4 +291,44 @@ Simply write the number, between brackets `[]`, in the text.
 ```md
 Substituting the velocity value into equation [2.1], we obtain...
 ```
+## 8. Scripting in MDX
+
+### 8.1. The "Paragraph" Problem 
+MDX treats content inside HTML tags (like <script>) as Markdown content. If you indent your JavaScript code or leave empty lines, MDX may wrap it in <p> tags, causing syntax errors (e.g., Uncaught SyntaxError: Unexpected token '<'). 
+
+### 8.2. Inline Scripts (Simple Logic)
+If you must write inline JavaScript, use the is:inline attribute and wrap the code in a template literal inside curly braces {...}. This prevents MDX from processing the content. 
+
+```mdx 
+<script is:inline>
+{`
+    console.log("Hello from inline script");
+    localStorage.setItem("key", "value");
+`}
+</script>
+```
+
+### 8.3. External Scripts (Recommended)
+For complex logic, imports, or TypeScript support, always extract the code to an external file.
+The best practice is to create a dedicated **script loader component**. This provides better encapsulation and clarity.
+
+1.  **Create the script** in `src/scripts/pages/` (e.g., `my-page-script.ts`).
+2.  **Create a loader component** in `src/components/` (e.g., `MyPageScript.astro`):
+    ```astro
+    ---
+    ---
+    <script src="../scripts/pages/my-page-script.ts"></script>
+    ```
+3.  **Use the component in MDX**:
+    ```mdx
+    import MyPageScript from '../../components/MyPageScript.astro';
+
+    <MyPageScript />
+    ```
+
+This pattern ensures that Astro's build process correctly handles, bundles, and optimizes the TypeScript file.
+
+**Alternative (Legacy):** For very simple cases, you can import a script directly, but the component approach is preferred.
+```mdx
+<script> import "../../scripts/pages/my_complex_logic.ts"; </script>
 ```

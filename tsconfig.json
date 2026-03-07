@@ -1,5 +1,14 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "src/**/*"],
-
+    "extends": "astro/tsconfigs/strict",
+    "include": [
+        ".astro/types.d.ts", 
+        "src/**/*"
+    ],
+    "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "react", // O "astro" dependiendo de tu config
+    "plugins": [
+      { "name": "@astrojs/ts-plugin" }
+    ]
+  }
 }

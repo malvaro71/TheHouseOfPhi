@@ -3,6 +3,10 @@
     "files.associations": {
         "*.mdx": "mdx"
     },
+    "[mdx]": {
+        "editor.defaultFormatter": "astro-build.astro-vscode",
+        "editor.semanticHighlighting.enabled": true
+    },
 
     // Esta línea es crucial: le dice a VS Code que ejecute las correcciones de ESLint
     // automáticamente cada vez que guardes un archivo.

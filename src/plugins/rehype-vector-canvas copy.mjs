@@ -13,30 +13,15 @@ export function rehypeVectorCanvas() {
         typeof node.properties.src === 'string' &&
         node.properties.src.startsWith('vector:')
       ) {
-        const src = node.properties.src;
-        const [base, queryString] = src.split('?');
-        const vectorId = base.replace('vector:', '').trim(); // Añadimos .trim() para limpiar espacios
+        const vectorId = node.properties.src.replace('vector:', '');
 
-        const attributes = [
-            { type: 'mdxJsxAttribute', name: 'id', value: vectorId }
-        ];
-
-        if (queryString) {
-            const params = new URLSearchParams(queryString);
-            for (const [key, value] of params) {
-                attributes.push({
-                    type: 'mdxJsxAttribute',
-                    name: key,
-                    value: value
-                });
-            }
-        }
-
-        // Creamos el nodo JSX para MDX que representa <VectorCanvas id="..." ...attrs />
+        // Creamos el nodo JSX para MDX que representa <VectorCanvas id="..." />
         const newNode = {
-          type: 'mdxJsxFlowElement',
+       type: 'mdxJsxFlowElement',
           name: 'VectorCanvas',
-          attributes: attributes,
+          attributes: [
+            { type: 'mdxJsxAttribute', name: 'id', value: vectorId }
+          ],
           children: []
         };
 

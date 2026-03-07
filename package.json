@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
-    "astro": "^5.16.15",
+    "astro": "^5.18.0",
     "mathjs": "^15.1.0",
     "rehype-figure": "^1.0.1",
     "rehype-katex": "^7.0.1",

@@ -6,10 +6,12 @@ lang: es
 
 import VectorCanvas from '../../components/VectorCanvas.astro';
 import VectorConverter from '../../components/VectorConverter.astro';
+import MathJax from '../../components/MathJax.astro';
+import VectorsExercisesScript from '../../components/VectorsExercisesScript.astro';
 import * as math from 'mathjs';
 
-{/* Cargar MathJax para renderizado dinámico en SVGs. Sin 'async' para asegurar que cargue antes que los scripts del canvas */}
-<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<MathJax />
+<VectorsExercisesScript />
 
 
 [Página de Inicio](/)
@@ -408,7 +410,20 @@ export const e1_phi = math.acos(math.dot(e1_vRiver, e1_vPropelled) / (math.norm(
 
 Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de {e1_normvPropelled.toFixed(1)} Km/h y en una dirección que forme un ángulo de {e1_phi.toFixed(1)}º con el río.
 
-![Figura 19.1: Plano de coordenadas, Vr como la velocidad del agua del río y Vb como la velocidad con la que se propulsa el bote.](vector:svge_1)
+export const e1_vRiver_json = JSON.stringify(e1_vRiver);
+export const e1_vBoat_json = JSON.stringify(e1_vBoat);
+export const e1_vPropelled_json = JSON.stringify(e1_vPropelled);
+
+<figure class="centered">
+    <svg id="svge_1"
+        data-v-river={e1_vRiver_json}
+        data-v-boat={e1_vBoat_json}
+        data-v-propelled={e1_vPropelled_json}
+        data-phi={e1_phi}
+        data-norm-v-propelled={e1_normvPropelled}
+    ></svg>
+    <figcaption><b>Figura 19.1</b>: Plano de coordenadas, Vr como la velocidad del agua del río y Vb como la velocidad con la que se propulsa el bote.</figcaption>
+</figure>
 
 #### Referencias
 - [Coordinate Plane. Mathisfun.](https://www.mathsisfun.com/definitions/coordinate-plane.html)
@@ -422,7 +437,26 @@ Dibuja, uno a continuación del otro, los vectores $\vec a = 2\hat{\imath} + 3\h
 
 Para resolver este ejercicio, primero representemos gráficamente los vectores $\vec a$, $\vec b$, $\vec c$ y $\vec d$ en un plano cartesiano, uno a continuación del otro, utilizando el método gráfico de [suma de vectores](#3-suma-de-vectores-método-gráfico).
 
-![Figura 19.2: Suma de a, b, c y d por el método gráfico.](vector:svge_2)
+export const e2_a = [2, 3];
+export const e2_b = [4, -2];
+export const e2_c = [3, -2];
+export const e2_d = [-9, 1];
+
+export const e2_a_json = JSON.stringify(e2_a);
+export const e2_b_json = JSON.stringify(e2_b);
+export const e2_c_json = JSON.stringify(e2_c);
+export const e2_d_json = JSON.stringify(e2_d);
+
+<figure class="centered">
+    <svg id="svge_2"
+        data-vec-a={e2_a_json}
+        data-vec-b={e2_b_json}
+        data-vec-c={e2_c_json}
+        data-vec-d={e2_d_json}
+    ></svg>
+    <figcaption><b>Figura 19.2</b>: Suma de a, b, c y d por el método gráfico.</figcaption>
+</figure>
+
 
 Se puede observar que el origen de $\vec a$ coincide con el final de $\vec d$. Así que el vector resultante de dicha suma es el vector $\vec 0$, y su magnitud es cero.
 
@@ -440,9 +474,21 @@ export const e3_sailboatSpeed = 4; // km/h
 export const e3_angleDeg = 67.5; // grados. Nornoreste es equivalente a 67.5º
 export const e3_angleRad = e3_angleDeg * Math.PI / 180; // radianes
 
+export const e3_sailboatSpeedX = e3_sailboatSpeed * Math.cos(e3_angleRad);
+export const e3_sailboatSpeedY = e3_sailboatSpeed * Math.sin(e3_angleRad);
+
 Si situamos el eje x en la dirección este y el eje y en la dirección norte, la dirección NNE (nornoreste) está orientada formando un ángulo de {e3_angleDeg}º, o $3\pi/8$ radianes, con el eje x (dirección este); según se muestra en la siguiente figura.
 
-![Figura 19.3: Dirección NNE, velocidad V y sus componentes Vx y Vy.](vector:svge_3)
+export const e3_V = [e3_sailboatSpeedX, e3_sailboatSpeedY];
+export const e3_V_json = JSON.stringify(e3_V);
+
+<figure class="centered">
+    <svg id="svge_3"
+        data-vec-v={e3_V_json}
+        data-angle={e3_angleDeg}
+    ></svg>
+    <figcaption><b>Figura 19.3</b>: Dirección NNE, velocidad V y sus componentes Vx y Vy.</figcaption>
+</figure>
 
 Para resolver este ejercicio, utilicemos la noción de [componentes de un vector](#5-componentes-de-un-vector) y la [relación entre las componentes de un vector, su módulo y su dirección](#6-relación-entre-las-componentes-de-un-vector-su-módulo-y-su-dirección).
 
@@ -452,9 +498,6 @@ Según esto, la componente de la velocidad del barco en dirección norte concide
 Entonces, usamos la expresión [6.3] para calcular $\|\vec V_x\|$, y usamos la expresión [6.4] para calcular $\|\vec V_y\|$.
 
 Sustituyendo $\|\vec V\| =$ {e3_sailboatSpeed} km/h y $\theta$ = {e3_angleDeg}º.
-
-export const e3_sailboatSpeedX = e3_sailboatSpeed * Math.cos(e3_angleRad);
-export const e3_sailboatSpeedY = e3_sailboatSpeed * Math.sin(e3_angleRad);
 
 $\vec V_x =$ {e3_sailboatSpeed} $\cdot \cos(${e3_angleDeg}$^\circ) = ${e3_sailboatSpeedX.toFixed(2)} km/h
 
@@ -562,7 +605,10 @@ export const e6_angleRad = e6_angleDeg * Math.PI / 180; // radianes
 
 La dirección NE (noreste) forma un ángulo de {e6_angleDeg}º con la dirección este, como se muestra en la siguiente figura.
 
-![Figura 19.4: Ángulo entre E y NE, y la proyección de v sobre E.](vector:svge_6)
+<figure class="centered">
+    <svg id="svge_6"></svg>
+    <figcaption><b>Figura 19.4</b>: Ángulo entre E y NE, y la proyección de v sobre E.</figcaption>
+</figure>
 
 Para calcular la [proyección de la velocidad](#11-proyección-de-un-vector) en la dirección este, usamos la expresión [11.2].
 
@@ -684,12 +730,18 @@ $$
 `}
 
 Verificamos el resultado calculándolo directamente:
+
+export const e8_sq0 = e8_cross[0]**2;
+export const e8_sq1 = e8_cross[1]**2;
+export const e8_sq2 = e8_cross[2]**2;
+export const e8_sumSq = e8_sq0 + e8_sq1 + e8_sq2;
+
 {`
 $$
-    \\|\\overrightarrow{AB} \\times \\overrightarrow{AC}\\| = 
+    \\Vert\\overrightarrow{AB} \\times \\overrightarrow{AC}\\Vert = 
     \\sqrt{(${e8_cross[0]})^2 + (${e8_cross[1]})^2 + (${e8_cross[2]})^2} =
-    \\sqrt{${e8_cross[0]**2} + ${e8_cross[1]**2} + ${e8_cross[2]**2}} = 
-    \\sqrt{${e8_cross[0]**2 + e8_cross[1]**2 + e8_cross[2]**2}} \\approx ${math.norm(e8_cross).toFixed(2)}
+    \\sqrt{${e8_sq0} + ${e8_sq1} + ${e8_sq2}} = 
+    \\sqrt{${e8_sumSq}} \\approx ${math.norm(e8_cross).toFixed(2)}
 $$
 `}
 
@@ -700,7 +752,10 @@ $$
 $$
 `}
 
-![Figura 19.5: Paralelogramo definido por los vectores AB y AC, y triángulo ABC como mitad de dicho paralelogramo.](vector:svg2_8)
+<figure class="centered">
+    <svg id="svg2_8"></svg>
+    <figcaption><b>Figura 19.5</b>: Paralelogramo definido por los vectores AB y AC, y triángulo ABC como mitad de dicho paralelogramo.</figcaption>
+</figure>
 
 #### Referencias
 - [Triángulo. Wikipedia.](https://es.wikipedia.org/wiki/Tri%C3%A1ngulo)
