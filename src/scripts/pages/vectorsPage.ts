@@ -3,13 +3,6 @@
 // ES Module for Vectors Page
 // ======================================================
 
-// Import core modules
-import {
-    textWithSubscript,
-    renderMathExpression,
-    writeValue
-} from '../core/SVGDrawing.ts';
-
 import { CartesianPlane } from '../core/CartesianPlane.ts';
 import { EuclideanSpace } from '../core/EuclideanSpace.ts';
 import * as math from 'mathjs';
