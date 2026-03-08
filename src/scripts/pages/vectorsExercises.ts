@@ -4,21 +4,36 @@ import { ensureSharedMarkerDefs } from '../core/SVGDrawing.ts';
 import * as math from 'mathjs';
 import type { Point2D, Point3D } from '../core/types.ts';
 
-function drawExercise1() {
+function drawExercise1(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) {
     const svg = document.getElementById('svge_1');
-    if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
+    if (!(svg instanceof SVGElement)) return;
 
-    const vRiverStr = svg.getAttribute('data-v-river');
-    const vBoatStr = svg.getAttribute('data-v-boat');
-    const vPropelledStr = svg.getAttribute('data-v-propelled');
+    let e1_vRiver: Point2D, e1_vBoat: Point2D, e1_vPropelled: Point2D;
 
-    if (!vRiverStr || !vBoatStr || !vPropelledStr) return;
+    if (vRiver && vBoat && vPropelled) {
+        // Update mode
+        svg.innerHTML = '';
+        e1_vRiver = vRiver;
+        e1_vBoat = vBoat;
+        e1_vPropelled = vPropelled;
+    } else {
+        // Initial draw mode
+        if (svg.hasAttribute('data-drawn')) return;
+        const vRiverStr = svg.getAttribute('data-v-river');
+        const vBoatStr = svg.getAttribute('data-v-boat');
+        const vPropelledStr = svg.getAttribute('data-v-propelled');
+        if (!vRiverStr || !vBoatStr || !vPropelledStr) return;
+        try {
+            e1_vRiver = JSON.parse(vRiverStr) as Point2D;
+            e1_vBoat = JSON.parse(vBoatStr) as Point2D;
+            e1_vPropelled = JSON.parse(vPropelledStr) as Point2D;
+        } catch (e) {
+            console.error("Error parsing initial vectors for exercise 1", e);
+            return;
+        }
+    }
 
-    const e1_vRiver = JSON.parse(vRiverStr) as Point2D;
-    const e1_vBoat = JSON.parse(vBoatStr) as Point2D;
-    const e1_vPropelled = JSON.parse(vPropelledStr) as Point2D;
-
-    const plane = new CartesianPlane(svg, -23, 23, -6, 40, 9);
+    const plane = new CartesianPlane(svg, e1_vPropelled[0] - 5, e1_vRiver[0] + 5, -5, e1_vBoat[1] + 5);
     plane.drawAxes("y", "x", "O");
 
     const initialPoint: Point2D = [0, 0];
@@ -35,6 +50,52 @@ function drawExercise1() {
     plane.drawAngle(initialPoint, e1_vRiver, e1_vPropelled, 3, "\\phi", { strokeColor: "orange" }, { color: "orange", scale: 1.2, dx: 0, dy: -8 });
 
     svg.setAttribute('data-drawn', 'true');
+}
+
+function setupExercise1Interactivity() {
+    const inputRiverX = document.getElementById('input-e1-vriver-x') as HTMLInputElement;
+    const inputBoatY = document.getElementById('input-e1-vboat-y') as HTMLInputElement;
+
+    // Output elements
+    const outputVBoat = document.getElementById('output-e1-vboat');
+    const outputVRiver = document.getElementById('output-e1-vriver');
+    const outputVBoat2 = document.getElementById('output-e1-vboat-2');
+    const outputVRiver2 = document.getElementById('output-e1-vriver-2');
+    const outputVPropelled = document.getElementById('output-e1-vpropelled');
+    const outputNormVPropelled = document.getElementById('output-e1-norm-vpropelled');
+    const outputPhi = document.getElementById('output-e1-phi');
+    const outputNormVPropelled2 = document.getElementById('output-e1-norm-vpropelled-2');
+    const outputPhi2 = document.getElementById('output-e1-phi-2');
+
+    if (!inputRiverX || !inputBoatY) return;
+
+    const update = () => {
+        const riverX = parseFloat(inputRiverX.value) || 0;
+        const boatY = parseFloat(inputBoatY.value) || 0;
+
+        const vRiver: Point2D = [riverX, 0];
+        const vBoat: Point2D = [0, boatY];
+        const vPropelled = math.subtract(vBoat, vRiver) as Point2D;
+        const normVPropelled = math.norm(vPropelled) as number;
+        const phi = math.acos(math.dot(vRiver, vPropelled) / (math.norm(vRiver) * normVPropelled)) * 180 / math.pi;
+
+        // Update text outputs
+        if (outputVBoat) outputVBoat.textContent = `${vBoat.join(', ')}`;
+        if (outputVRiver) outputVRiver.textContent = `${vRiver.join(', ')}`;
+        if (outputVBoat2) outputVBoat2.textContent = `(${vBoat.join(', ')})`;
+        if (outputVRiver2) outputVRiver2.textContent = `(${vRiver.join(', ')})`;
+        if (outputVPropelled) outputVPropelled.textContent = `(${vPropelled.join(', ')})`;
+        if (outputNormVPropelled) outputNormVPropelled.textContent = normVPropelled.toFixed(1);
+        if (outputPhi) outputPhi.textContent = phi.toFixed(1);
+        if (outputNormVPropelled2) outputNormVPropelled2.textContent = normVPropelled.toFixed(1);
+        if (outputPhi2) outputPhi2.textContent = phi.toFixed(1);
+
+        // Redraw SVG
+        drawExercise1(vRiver, vBoat, vPropelled);
+    };
+
+    inputRiverX.addEventListener('input', update);
+    inputBoatY.addEventListener('input', update);
 }
 
 function drawExercise2() {
@@ -162,11 +223,126 @@ function drawExercise8() {
     svg.setAttribute('data-drawn', 'true');
 }
 
+function setupExercise4Interactivity() {
+    const inputSpeed = document.getElementById('input-e4-speed') as HTMLInputElement;
+    const inputAngle = document.getElementById('input-e4-angle') as HTMLInputElement;
+
+    if (!inputSpeed || !inputAngle) return;
+
+    const update = () => {
+        const speed = parseFloat(inputSpeed.value) || 0;
+        const angleDeg = parseFloat(inputAngle.value) || 0;
+        const angleRad = angleDeg * Math.PI / 180;
+
+        const vx = speed * Math.cos(angleRad);
+        const vy = speed * Math.sin(angleRad);
+
+        const setContent = (id: string, val: string) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = val;
+        };
+
+        setContent('output-e4-speed', speed.toString());
+        setContent('output-e4-angle', angleDeg.toString());
+        
+        setContent('output-e4-speed-2', speed.toString());
+        setContent('output-e4-angle-2', angleDeg.toString());
+        setContent('output-e4-vx', vx.toFixed(1));
+
+        setContent('output-e4-speed-3', speed.toString());
+        setContent('output-e4-angle-3', angleDeg.toString());
+        setContent('output-e4-vy', vy.toFixed(1));
+
+        setContent('output-e4-vx-2', vx.toFixed(1));
+        setContent('output-e4-vy-2', vy.toFixed(1));
+    };
+
+    inputSpeed.addEventListener('input', update);
+    inputAngle.addEventListener('input', update);
+}
+
+function setupExercise5Interactivity() {
+    // Inputs
+    const inputs = {
+        vx: document.getElementById('input-e5-vx') as HTMLInputElement,
+        vy: document.getElementById('input-e5-vy') as HTMLInputElement,
+        vz: document.getElementById('input-e5-vz') as HTMLInputElement,
+        wx: document.getElementById('input-e5-wx') as HTMLInputElement,
+        wy: document.getElementById('input-e5-wy') as HTMLInputElement,
+        wz: document.getElementById('input-e5-wz') as HTMLInputElement,
+    };
+
+    if (Object.values(inputs).some(el => !el)) return;
+
+    const setContent = (id: string, val: string) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+    };
+
+    const update = () => {
+        const v: Point3D = [
+            parseFloat(inputs.vx.value) || 0,
+            parseFloat(inputs.vy.value) || 0,
+            parseFloat(inputs.vz.value) || 0
+        ];
+        const w: Point3D = [
+            parseFloat(inputs.wx.value) || 0,
+            parseFloat(inputs.wy.value) || 0,
+            parseFloat(inputs.wz.value) || 0
+        ];
+
+        const dotProduct = math.dot(v, w) as number;
+        const normV = math.norm(v) as number;
+        const normW = math.norm(w) as number;
+        const normV_sq = normV * normV;
+        const normW_sq = normW * normW;
+        
+        let cosTheta = 0;
+        let thetaDeg = 0;
+        if (normV > 0 && normW > 0) {
+            cosTheta = dotProduct / (normV * normW);
+            cosTheta = Math.max(-1, Math.min(1, cosTheta)); // Clamp to avoid float errors
+            thetaDeg = math.acos(cosTheta) * 180 / Math.PI;
+        }
+
+        // Update spans for dot product calculation
+        setContent('output-e5-vx-1', v[0].toString()); setContent('output-e5-wx-1', w[0].toString());
+        setContent('output-e5-vy-1', v[1].toString()); setContent('output-e5-wy-1', w[1].toString());
+        setContent('output-e5-vz-1', v[2].toString()); setContent('output-e5-wz-1', w[2].toString());
+        setContent('output-e5-dotproduct', dotProduct.toString());
+
+        // Update spans for norm calculations
+        setContent('output-e5-vx-2', v[0].toString());
+        setContent('output-e5-vy-2', v[1].toString());
+        setContent('output-e5-vz-2', v[2].toString());
+        setContent('output-e5-normv-sq', normV_sq.toFixed(0));
+        setContent('output-e5-normv', normV.toFixed(2));
+
+        setContent('output-e5-wx-2', w[0].toString());
+        setContent('output-e5-wy-2', w[1].toString());
+        setContent('output-e5-wz-2', w[2].toString());
+        setContent('output-e5-normw-sq', normW_sq.toFixed(0));
+        setContent('output-e5-normw', normW.toFixed(2));
+
+        // Update spans for angle calculation
+        setContent('output-e5-dotproduct-2', dotProduct.toString());
+        setContent('output-e5-normv-2', normV.toFixed(2));
+        setContent('output-e5-normw-2', normW.toFixed(2));
+        setContent('output-e5-costheta', cosTheta.toFixed(4));
+        setContent('output-e5-theta', thetaDeg.toFixed(2));
+    };
+
+    Object.values(inputs).forEach(input => input.addEventListener('input', update));
+}
+
 function runAllDrawings() {
     ensureSharedMarkerDefs();
     drawExercise1();
+    setupExercise1Interactivity();
     drawExercise2();
     drawExercise3();
+    setupExercise4Interactivity();
+    setupExercise5Interactivity();
     drawExercise6();
     drawExercise8();
 }
