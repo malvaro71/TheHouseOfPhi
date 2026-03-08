@@ -335,6 +335,61 @@ function setupExercise5Interactivity() {
     Object.values(inputs).forEach(input => input.addEventListener('input', update));
 }
 
+function setupExercise7Interactivity() {
+    // Declare MathJax globally for TypeScript
+    declare const MathJax: any;
+
+    // Inputs
+    const inputs = {
+        wx: document.getElementById('input-e7-wx') as HTMLInputElement,
+        wy: document.getElementById('input-e7-wy') as HTMLInputElement,
+        wz: document.getElementById('input-e7-wz') as HTMLInputElement,
+        rx: document.getElementById('input-e7-rx') as HTMLInputElement,
+        ry: document.getElementById('input-e7-ry') as HTMLInputElement,
+        rz: document.getElementById('input-e7-rz') as HTMLInputElement,
+    };
+
+    // Determinant containers
+    const det1Container = document.getElementById('e7-determinant-1');
+    const det2Container = document.getElementById('e7-determinant-2');
+
+    // Final result spans
+    const outputVx = document.getElementById('output-e7-vx');
+    const outputVy = document.getElementById('output-e7-vy');
+    const outputVz = document.getElementById('output-e7-vz');
+
+    if (Object.values(inputs).some(el => !el) || !det1Container || !det2Container || !outputVx || !outputVy || !outputVz) {
+        return;
+    }
+
+    const update = () => {
+        const w: Point3D = [ parseFloat(inputs.wx.value) || 0, parseFloat(inputs.wy.value) || 0, parseFloat(inputs.wz.value) || 0 ];
+        const r: Point3D = [ parseFloat(inputs.rx.value) || 0, parseFloat(inputs.ry.value) || 0, parseFloat(inputs.rz.value) || 0 ];
+
+        const v = math.cross(w, r) as Point3D;
+
+        // Update final result spans
+        outputVx.textContent = v[0].toString();
+        outputVy.textContent = v[1].toString();
+        outputVz.textContent = v[2].toString();
+
+        // Regenerate LaTeX for determinants
+        const latex1 = `$$ \\vec v = \\vec w \\times \\vec r = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ ${w[0]} & ${w[1]} & ${w[2]} \\\\ ${r[0]} & ${r[1]} & ${r[2]} \\end{vmatrix} $$`;
+        const latex2 = `$$ \\vec v = \\begin{vmatrix} ${w[1]} & ${w[2]} \\\\ ${r[1]} & ${r[2]} \\end{vmatrix} \\hat\\imath - \\begin{vmatrix} ${w[0]} & ${w[2]} \\\\ ${r[0]} & ${r[2]} \\end{vmatrix} \\hat\\jmath + \\begin{vmatrix} ${w[0]} & ${w[1]} \\\\ ${r[0]} & ${r[1]} \\end{vmatrix}\\hat k = ((${w[1]*r[2]}) - (${w[2]*r[1]}))\\hat\\imath - ((${w[0]*r[2]}) - (${w[2]*r[0]}))\\hat\\jmath + ((${w[0]*r[1]}) - (${w[1]*r[0]}))\\hat k = ${v[0]}\\hat\\imath + ${v[1]}\\hat\\jmath + ${v[2]}\\hat k $$`;
+
+        // Update container content and re-render with MathJax
+        det1Container.innerHTML = latex1;
+        det2Container.innerHTML = latex2;
+        
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            // This tells MathJax to re-scan the containers for new math content and render it.
+            MathJax.typesetPromise([det1Container, det2Container]).catch((err: any) => console.error('MathJax typesetting error:', err));
+        }
+    };
+
+    Object.values(inputs).forEach(input => input.addEventListener('input', update));
+}
+
 function runAllDrawings() {
     ensureSharedMarkerDefs();
     drawExercise1();
@@ -343,6 +398,7 @@ function runAllDrawings() {
     drawExercise3();
     setupExercise4Interactivity();
     setupExercise5Interactivity();
+    setupExercise7Interactivity();
     drawExercise6();
     drawExercise8();
 }
