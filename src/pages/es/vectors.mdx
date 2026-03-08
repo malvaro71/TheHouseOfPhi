@@ -29,6 +29,23 @@ El uso de vectores se extiende mucho más allá de la cinemática. En **dinámic
 
 En este primer capítulo, exploraremos a fondo los **vectores** y el **sistema de coordenadas cartesianas**, desentrañando las **operaciones vectoriales** fundamentales como la suma, resta, producto escalar y producto vectorial. Estas herramientas del **álgebra vectorial** no solo simplifican enormemente la resolución de problemas complejos en física e ingeniería, sino que también nos permiten, por ejemplo, calcular la distancia precisa entre dos puntos con una elegancia matemática asombrosa. Prepárate para descubrir el lenguaje que nos permite describir y predecir el mundo físico con una claridad sin precedentes.
 
+### 1.1. Bloques fundamentales del capítulo
+Este capítulo se organiza en los siguientes bloques de consulta:
+- **[Vectores](#2-vectores):** Definición y tipos de vectores (fijos, deslizantes y libres).
+- **[Suma de Vectores, Método Gráfico](#3-suma-de-vectores-método-gráfico):** Cómo sumar vectores visualmente.
+- **[Sistema de coordenadas cartesianas](#4-sistema-de-coordenadas-cartesianas):** Representación de vectores en 2D y 3D.
+- **[Componentes de un Vector](#5-componentes-de-un-vector):** Descomposición de un vector en sus componentes.
+- **[Relación entre componentes, módulo y dirección](#6-relación-entre-las-componentes-de-un-vector-su-módulo-y-su-dirección):** Cálculos fundamentales.
+- **[Operaciones con componentes](#7-suma-de-vectores-y-multiplicación-por-un-escalar-usando-sus-componentes):** Suma y multiplicación por un escalar.
+- **[Vector unitario](#8-el-vector-unitario):** Definición y cálculo.
+- **[Representación con vectores unitarios](#9-representación-de-vectores-mediante-sus-vectores-unitarios-î-ĵ-y-k):** Notación estándar en física.
+- **[Producto escalar](#10-producto-escalar-de-dos-vectores):** Definición, cálculo y aplicaciones como el ángulo entre vectores.
+- **[Proyección de un vector](#11-proyección-de-un-vector):** Cómo proyectar un vector sobre otro.
+- **[Producto vectorial](#12-producto-vectorial):** Definición, cálculo y aplicaciones como el área de un paralelogramo.
+- **[Momento de un vector](#13-momento-de-un-vector-deslizante-respecto-a-un-punto):** Concepto de momento respecto a un punto y una línea.
+- **[Cálculo vectorial](#15-funciones-vectoriales):** Introducción a funciones vectoriales, derivadas e integrales.
+- **[Ejercicios con vectores](#19-ejercicios-con-vectores):** Problemas resueltos para aplicar los conceptos.
+
 ## 2. Vectores
 Un **vector** es un segmento dirigido, uno de cuyos extremos (el punto A) se dice que es el origen, mientras que el otro (el punto B) se dice que es el final del vector. Tal vector puede ser denotado por **_v_**, $\vec v$ o $\overrightarrow{AB}$. Un vector cuyo origen y fin coinciden se dice que es un **vector cero**, y generalmente se denota por $\vec0$. El vector $\overrightarrow{BA}$ se dice que es el **vector opuesto** a $\overrightarrow{AB}$. Un vector con una longitud igual a uno se denomina vector unitario. Cualquier dirección puede ser asignada a un vector cero.
 
@@ -49,6 +66,8 @@ Un vector está caracterizado:
 - por su **magnitud (o módulo)**, que es igual a la longitud del segmento $\overline{AB}$ y se denota por $\|\vec v\|$,
 - y por su **dirección**: de A hacia B.
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## 3. Suma de Vectores, Método Gráfico
 La suma de dos vectores $\vec a$ y $\vec b$, o suma de vectores, produce un tercer vector $\overrightarrow{a+b}$.
 
@@ -57,6 +76,8 @@ Para encontrar $\overrightarrow{a+b}$, primero dibujamos el vector $\vec a$, y d
 ![Figura 3.1: Suma de vectores. Método Gráfico.](vector:svg1_2)
 
 Un **escalar** es una cantidad que tiene magnitud pero no dirección. O, en otras palabras, una cantidad que se puede expresar con un número (real).
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 4. Sistema de coordenadas cartesianas
 Para especificar la magnitud y la dirección de un vector necesitamos un sistema de coordenadas. Hay tres sistemas de coordenadas comúnmente utilizados: cartesiano, cilíndrico y esférico. En esta sección describimos el sistema de coordenadas cartesianas.
@@ -79,6 +100,8 @@ Describimos un punto P en el sistema de coordenadas rectangulares tridimensional
 
 ![Figura 4.3: Para trazar el punto P, con coordenadas (x1, y1, z1), desplazarse x1 unidades a lo largo del eje x, entonces ir y1 unidades en la dirección del eje Y, luego desplazarse z1 unidades en la dirección del eje z.](vector:svg1_5)
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## 5. Componentes de un Vector
 Cuando el punto inicial de un vector coincide con el origen del sistema de coordenadas, llamamos al vector **vector de posición estándar**. Debido a que se sabe que el punto inicial de cualquier vector en posición estándar es (0,0), podemos describir el vector tomando sólo las coordenadas de su punto terminal. Por lo tanto, si el vector $\vec v$ tiene su punto inicial en el origen y su punto terminal en (x, y), escribimos el vector mediante sus componentes como
 
@@ -87,6 +110,8 @@ $$
 $$
 
 Cuando un vector se escribe de esta manera, los escalares x e y se denominan **componentes** de $\vec v$. Cuando necesitamos realizar cálculos con vectores, solemos describirlos como vectores de posición estándar porque es más fácil realizar tales cálculos.
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 6. Relación entre las componentes de un vector, su módulo y su dirección
 Para hallar la magnitud de un vector a partir de sus componentes, utilizamos el Teorema de Pitágoras. Y para encontrar su dirección Usamos la función tangente inversa.
@@ -123,6 +148,8 @@ $$
     <VectorConverter />
 </details>
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## 7. Suma de vectores y multiplicación por un escalar usando sus componentes
 La **suma de dos vectores** expresados mediante sus **componentes**, $\vec v = (x_1, y_1)$ y $\vec w = (x_2, y_2)$, se define como
 
@@ -136,6 +163,8 @@ $$
 \lambda\vec v = (\lambda x, \lambda y) \tag{7.2}
 $$
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## 8. El vector unitario
 El **vector unitario** $\vec u_v$ de un vector distinto de cero $\vec v$ es un vector que tiene la misma dirección que $\vec v$ pero una magnitud de 1. El vector unitario se calcula mediante
 
@@ -144,6 +173,8 @@ $$
 $$
 
 Obsérvese que la magnitud $\|\vec v\|$ es un escalar, y dividir por un escalar es lo mismo que multiplicar por el recíproco del escalar $1/\|\vec v\|$.
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 9. Representación de vectores mediante sus vectores unitarios $\hat\imath$, $\hat\jmath$ y $\hat k$
 En un espacio bidimensional, un vector se puede representar mediante los vectores unitarios $\hat\imath$ y $\hat\jmath$. El vector unitario $\hat\imath$ es un vector de longitud 1 a lo largo del eje x, y el vector unitario $\hat\jmath$ es un vector de longitud 1 a lo largo del eje y.
@@ -163,6 +194,8 @@ $$
 $$
 
 Esta suma vectorial se denomina **combinación lineal** de los vectores $\hat\imath$, $\hat\jmath$ y $\hat k$.
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 10. Producto escalar de dos vectores
 El **producto escalar** de dos vectores es un número (escalar) que se obtiene multiplicando los componentes correspondientes de los dos vectores y luego sumando dichos productos.
@@ -188,6 +221,8 @@ $$
 $$
 
 Cuando el producto escalar de dos vectores es cero, se dice que ambos vectores son **ortogonales** o perpendiculares.
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 11. Proyección de un vector
 La **proyección de $\vec w$ sobre $\vec v$** o sobre la línea que contiene a $\vec v$, se denota como $\text{proj}_v \vec w$, es un vector que se encuentra en $\vec v$ tiene la misma dirección que $\vec w$ (si el ángulo entre $\vec v$ y $\vec w$ es inferior a 90 grados) u opuesto a $\vec v$ (si el ángulo entre $\vec v$ y $\vec w$ es mayor de 90 grados).
@@ -219,6 +254,8 @@ Entonces, usando las coordenadas de $\vec v$, $(x_1, y_1, z_1)$ y de $\vec w$, $
 $$
 \|\text{proj}_v \vec w\| = \frac{x_1\cdot x_2 + y_1\cdot y_2 + z_1\cdot z_2}{\sqrt{x_1^2+y_1^2+z_1^2}} \tag{11.4}
 $$
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 12. Producto vectorial
 El **producto vectorial** de dos vectores es una operación binaria sobre dos vectores en un espacio tridimensional y se escribe como **$\vec v \times \vec w$**. El resultado de este producto vectorial es un tercer vector perpendicular (u ortogonal) a los vectores que se multiplican o dicho de otra forma, normal al plano que los contiene.
@@ -254,6 +291,8 @@ Propiedades del producto vectorial:
 - Producto vectorial del vector cero: $\vec u \times \vec 0 = \vec 0 \times \vec u = \vec 0$
 - Producto vectorial de un vector por si mismo: $\vec v \times \vec v = \vec 0$
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## 13. Momento de un Vector Deslizante respecto a un Punto
 El **momento de un vector deslizante** $\vec v$ respecto a un punto P se calcula mediante el producto vectorial de $\vec r$ por $\vec v$. Siendo $\vec r$ el vector de posición de $\vec v$ respecto a P.
 
@@ -270,6 +309,8 @@ Las propiedades del producto vectorial nos permiten concluir que $\vec M$ es un 
 Al deslizar un vector a lo largo de su línea de acción, no cambia la magnitud del vector deslizante ni la distancia perpendicular desde su línea de acción hasta el punto o eje de interés. Por lo tanto, el momento sigue siendo el mismo. Esta propiedad es lo que lo convierte en un "vector deslizante".
 
 Este concepto es fundamental en física e ingeniería, ya que nos ayuda a comprender y calcular los efectos de las fuerzas en la rotación de los objetos.
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 14. Momento de un Vector Deslizante respecto de una Línea
 El momento de un vector deslizante alrededor de una recta de interés l es la proyección sobre dicha recta del momento del vector con respecto a cualquier punto de la recta.
@@ -299,6 +340,8 @@ $$
 \vec M_l = \|\vec M_l\| \cdot \vec u_l \tag{14.3}
 $$
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## 15. Funciones Vectoriales
 Una **función vectorial** es una función matemática de una o más variables cuyo rango es un conjunto de vectores.
 
@@ -310,12 +353,16 @@ $$
 
 Donde $f_x(t)$, $f_y(t)$, y $f_z(t)$ son las funciones de coordenadas del parámetro t, y el dominio de esta función vectorial es la intersección de los dominios de las funciones $f_x(t)$, $f_y(t)$, y $f_z(t)$.
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## 16. Derivada de una función vectorial
 La **derivada de una función vectorial** es casi idéntica a la definición de derivada de una función real de una variable. Sin embargo, debido a que el rango de una función con valores vectoriales consta de vectores, lo mismo ocurre con el rango de la derivada de una función con valores vectoriales. Es decir:
 
 $$
 \vec f'(t) = \frac{d\vec f}{dt} = \frac{df_x}{dt}\hat\imath + \frac{df_y}{dt}\hat\jmath +\frac{df_z}{dt}\hat k \tag{16.1}
 $$
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 17. Derivada parcial de una función y su derivada total
 Si una función depende de más de una variable, su **derivada parcial** es la derivada con respecto a una de esas variables manteniendo las otras como constantes.
@@ -332,6 +379,8 @@ $$
 df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy + \frac{\partial f}{\partial z}dz \tag{17.2}
 $$
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## 18. Integral de una función vectorial
 La **integral de una función vectorial** es otra función vectorial en la que sus funciones coordenadas son las integrales de la funciones coordenadas de la función vectorial inicial. Es decir, si $\vec f(t) = f_x(t)\vec i + f_y(t)\vec j + f_z(t)\vec k = (f_x(t), f_y(t), f_z(t))$, su integral es:
 
@@ -339,12 +388,16 @@ $$
 \int \vec f(t) dt = \int (f_x(t), f_y(t), f_z(t)) dt = \left( \int f_x(t)dt, \int f_y(t)dt, \int f_z(t)dt \right) \tag{18.1}
 $$
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 ## Referencias
 - [8.8 Vectores. Precalculus. Openstax.](https://openstax.org/books/prec%C3%A1lculo-2ed/pages/8-8-vectores)
 - [Vector. Encyclopedia of Mathematics.](http://encyclopediaofmath.org/index.php?title=Vector&oldid=49131)
 - [Vector algebra. Encyclopedia of Mathematics.](http://encyclopediaofmath.org/index.php?title=Vector_algebra&oldid=49132)
 - [Cartesian orthogonal coordinate system. Encyclopedia of Mathematics.](https://encyclopediaofmath.org/wiki/Cartesian_orthogonal_coordinate_system)
 - [5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.](https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods)
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ## 19. Ejercicios con vectores
 
@@ -425,6 +478,8 @@ export const e1_vPropelled_json = JSON.stringify(e1_vPropelled);
     <figcaption><b>Figura 19.1</b>: Plano de coordenadas, Vr como la velocidad del agua del río y Vb como la velocidad con la que se propulsa el bote.</figcaption>
 </figure>
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 #### Referencias
 - [Coordinate Plane. Mathisfun.](https://www.mathsisfun.com/definitions/coordinate-plane.html)
 - [Vectors. Mathisfun.](https://www.mathsisfun.com/algebra/vectors.html)
@@ -459,6 +514,8 @@ export const e2_d_json = JSON.stringify(e2_d);
 
 
 Se puede observar que el origen de $\vec a$ coincide con el final de $\vec d$. Así que el vector resultante de dicha suma es el vector $\vec 0$, y su magnitud es cero.
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 #### Referencias
 - [5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.](https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods)
@@ -503,6 +560,8 @@ $\vec V_x =$ {e3_sailboatSpeed} $\cdot \cos(${e3_angleDeg}$^\circ) = ${e3_sailbo
 
 $\vec V_y =$ {e3_sailboatSpeed} $\cdot \sin(${e3_angleDeg}$^\circ) = ${e3_sailboatSpeedY.toFixed(2)} km/h
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 #### Referencias
 - [Rosa de los vientos. Wikipedia.](https://es.wikipedia.org/wiki/Rosa_de_los_vientos)
 
@@ -538,6 +597,8 @@ $\vec v_y = 120\sin(30^\circ) = 120\cdot\frac{1}{2} =$ {e4_Vy.toFixed(1)} m/s
 Y expresado vectorialmente:
 
 $\vec v = ${e4_Vx.toFixed(1)}$\hat\imath + ${e4_Vy.toFixed(1)}$\hat\jmath$ m/s
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 #### Referencias
 - [8.8 Vectores. Precalculus. Openstax.](https://openstax.org/books/precalculus/pages/8-8-vectors)
@@ -590,6 +651,8 @@ export const e5_thetaDeg = e5_thetaRad * 180 / math.pi;
 
 $\theta  = \arccos\left(\frac{\vec v\cdot\vec w}{\|\vec v\|\cdot\|\vec w\|}\right) = \arccos\left(\frac{-7}{\sqrt {38}\cdot\sqrt {14}}\right) \approx \arccos(${e5_cosTheta.toFixed(4)}) $\approx$ ${e5_thetaDeg.toFixed(2)}º
 
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
+
 #### Referencias
 - Coordinate Systems and Components of a Vector. University Physics Volume 1. Openstax.
 - Products of Vectors. University Physics Volume 1. Openstax.
@@ -622,6 +685,8 @@ Entonces:
 export const e6_projection = e6_planeSpeed * Math.cos(e6_angleRad);
 
 $\|\text{proj}_E \vec v\| = 600\cdot\cos(45^\circ) = 600 \cdot \frac{\sqrt{2}}{2} \approx$ {e6_projection.toFixed(0)} Km/h
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 #### Referencias
 - [The Dot Product. Calculus Volume 3. Openstax.](https://openstax.org/books/calculus-volume-3/pages/2-3-the-dot-product)
@@ -679,6 +744,8 @@ Verificamos el resultado calculándolo directamente:
 export const e7_v = math.cross(e7_w, e7_r);
 
 $\vec v = ($ {e7_v[0]} $)\hat\imath + ($ {e7_v[1]} $)\hat\jmath + ($ {e7_v[2]} $)\hat k$ m/s.
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ### Ejercicio 8
 Calcula el área de un triángulo $\triangle ABC$, siendo las coordenadas cartesianas de los vértices, $A = (3, 4, 1)$ m., $B = (1, -2, 2)$ m. y $C = (-2, 1, 4)$ m.
@@ -756,6 +823,8 @@ $$
     <svg id="svg2_8"></svg>
     <figcaption><b>Figura 19.5</b>: Paralelogramo definido por los vectores AB y AC, y triángulo ABC como mitad de dicho paralelogramo.</figcaption>
 </figure>
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 #### Referencias
 - [Triángulo. Wikipedia.](https://es.wikipedia.org/wiki/Tri%C3%A1ngulo)

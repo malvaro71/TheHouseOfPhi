@@ -60,18 +60,22 @@ Headers must be numbered manually according to the following hierarchy:
 ### 2.4. Standard Chapter Structure
 
 Every chapter (MDX file) must begin with an Introduction section (## 1. Introduction). This section serves three purposes:
-* 1. Motivation: Provide a general overview and motivate the reader about the content. 
-* 2. Navigation: List the main blocks or sections of the chapter. 
-* 3. Planning: If the chapter is a work in progress, list the planned sections to outline the structure.
+*   **Motivation:** Provide a general overview and motivate the reader about the content.
+*   **Navigation:** List the main blocks or sections of the chapter.
+*   **Planning:** If the chapter is a work in progress, list the planned sections to outline the structure.
 
 **Format:**
-The introduction should end with a list of the chapter's sections, including internal links to them (anchors). If a section does not exist yet, include the link to its planned anchor name. 
+The introduction must contain a subsection (e.g., `### 1.1. Bloques fundamentales del capítulo`) with a list of the chapter's main sections. Each item in the list must include:
+- A link to the section's anchor.
+- A brief, one-line description of the section's content.
+
+If a section does not exist yet, the link should still point to its planned anchor name.
 
 **Example:**
 ```md 
 ## 1. Introduction
 Physics and geometry are inseparable... [Motivational text] 
-### 1.1. Chapter Overview 
+### 1.1. Bloques fundamentales del capítulo
 This resource is organized into the following blocks: 
 - **[Triangle Geometry](#2-triangle-geometry):** Basic properties and fundamental theorems. 
 - **[Trigonometric Ratios](#3-trigonometric-ratios):** Definitions and applications. 
