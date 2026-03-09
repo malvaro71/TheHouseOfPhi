@@ -2,7 +2,7 @@
 
 - [x] mover el contenido de vectors_es.astro a en/vectors.mdx
 - [ ] revisar MDXAuthoringGuide.md tras mover los ejercicios de vectores.
-- [ ] Actualizar ProjectStructure.md tras mover los ejercicios de vectores.
+- [x] Actualizar ProjectStructure.md tras mover los ejercicios de vectores.
 - [ ] Actualizar ProjectDependencies.md tras mover los ejercicios de vectores.
 - [ ] mover el contenido de kinematics_es.astro a en/kinematics.mdx
 - [ ] revisar MDXAuthoringGuide.md, ProjectStructure.md y ProjectDependencies.md tras mover los ejercicios de cinemática.
@@ -15,4 +15,8 @@
 - [ ] Hacer un readme.md del proyecto.
 - [x] Actualizar copilot-instructions.md
 - [ ] Analizar y decidir si creo un agente único que ayude en el desarrollo del proyecto. O creo un agente centrado en las tareas de arquitectura del proyecto y un segundo agente centrado en la edición del contenido.
-- [ ] Revisar la redacción de la introducción en geometry.mdx, vectors.mdx y kinematics.mdx conforme a las instrucciones de MDXAuthoringGuide.md.
+- [] Revisar la redacción de la introducción en geometry.mdx, conforme a las instrucciones de MDXAuthoringGuide.md.
+- [x] Revisar la redacción de la introducción en vectors.mdx conforme a las instrucciones de MDXAuthoringGuide.md.
+- [ ] Revisar la redacción de la introducción en kinematics.mdx conforme a las instrucciones de MDXAuthoringGuide.md.
+- [ ] Ampliar el contenido de es/geometry.mdx según lo planeado en su sección de introducción.
+- [ ] Traducir el contenido en español de geometry.mdx al inglés, en su correspondiente archivo en/geometry.mdx.

@@ -9,14 +9,14 @@ The structure is designed to be clean, scalable, and aligned with the dependency
 
 ```text
 TheHouseOfPhi-1/
-├── .gitignore
-├── astro.config.mjs
-├── package-lock.json
-├── package.json
-├── tsconfig.json
+├── .gitignore                   <-- Files to ignore for Git
+├── astro.config.mjs             <-- Main Astro configuration (integrations, plugins)
+├── package.json                 <-- Project dependencies and scripts
+├── package-lock.json            <-- Exact dependency versions
+├── tsconfig.json                <-- TypeScript configuration
 ├── .astro/
 ├── .github/
-│   ├── copilot-instructions.md
+│   └── copilot-instructions.md
 ├── .vscode/
 │   ├── extensions.json
 │   ├── launch.json
@@ -37,38 +37,42 @@ TheHouseOfPhi-1/
     ├── assets/
     │   └── ...
     ├── components/
-    │   ├── MathJax.astro
-    │   ├── TestPageScript.astro
-    │   ├── VectorCanvas.astro   <-- Reusable SVG container
-    │   ├── VectorConverter.astro
-    │   └── VectorExercisesScript.astro
+    │   ├── MathJax.astro               <-- Client-side math rendering (MathJax)
+    │   ├── TestPageScript.astro        <-- Script loader for TestPage
+    │   ├── VectorCanvas.astro          <-- Reusable container for dynamic SVGs
+    │   ├── VectorConverter.astro       <-- Interactive vector calculator component
+    │   └── VectorsExercisesScript.astro <-- Script loader for vector exercises
     ├── layouts/
     │   └── BaseLayout.astro     <-- Global HTML shell
     ├── pages/
     │   ├── index.astro          <-- Root redirector
     │   ├── en/
     │   │   ├── geometry.mdx
-    │   │   └── index.mdx
+    │   │   ├── index.mdx
+    │   │   ├── kinematics.mdx
+    │   │   └── vectors.mdx
     │   └── es/
     │       ├── geometry.mdx
     │       ├── index.mdx
     │       ├── kinematics.mdx
     │       └── vectors.mdx 
     ├── plugins/
-    │   └── rehype-vector-canvas.mjs <-- Custom Rehype plugin
+    │   └── rehype-vector-canvas.mjs <-- Custom Rehype plugin (img[src="vector:"] -> <VectorCanvas/>)
     ├── scripts/
     │   ├── components/          <-- Logic for interactive UI components
-    │   │   └── VectorConverterLogic.js
+    │   │   └── VectorConverterLogic.ts
     │   ├── core/                <-- Reusable math/drawing logic
-    │   │   ├── CartesianPlane.js
-    │   │   ├── EuclideanSpace.js
-    │   │   └── SVGDrawing.js
+    │   │   ├── CartesianPlane.ts
+    │   │   ├── EuclideanSpace.ts
+    │   │   ├── SVGDrawing.ts
+    │   │   └── types.ts
     │   └── pages/               <-- Page-specific drawing logic
-    │       ├── geometryPage.js
-    │       └── vectorsPage.js
+    │       ├── geometryPage.ts      <-- Drawings for geometry.mdx
+    │       ├── testPage.ts
+    │       └── vectorsExercises.ts  <-- Drawings & interactivity for vectors.mdx
     ├── styles/
     │   └── styles.css
-    └── rehype-figure.d.ts       <-- Type declaration
+    └── rehype-figure.d.ts       <-- Type declaration for rehype-figure plugin
 
 ```
 
@@ -77,53 +81,49 @@ TheHouseOfPhi-1/
 
 ## 🧩 Folder Descriptions
 
-### **src/scripts/core/**
-Fundamental, reusable modules.  
-They do not depend on page controllers or form handlers.
+### **src/components/**
+Reusable Astro components (.astro) used within the MDX pages.
 
-- **SVGDrawing.js**  
-  Low‑level SVG drawing utilities: segments, circles, text, markers, etc.
+- **VectorCanvas.astro**: A key component that acts as a container for SVG graphics. It receives an id and uses it to invoke the corresponding drawing function from a page script.
 
-- **CartesianPlane.js**  
-  Class for representing a 2D Cartesian plane inside an SVG, including scaling, coordinate transforms, and geometric helpers.
+- **VectorConverter.astro**: An interactive UI component (an "island") for vector calculations.
 
-- **EuclideanSpace.js**  
-  Class for representing a 3D (or pseudo‑3D) space inside an SVG, useful for spatial geometry and vector visualization.
+- *Script.astro: Loader components that simply contain a <script> tag to import and execute the necessary TypeScript for a page (e.g., VectorsExercisesScript.astro).
 
 ---
 
 ### **src/pages/**
-Astro file-system routing.
-
-- **index.astro**: Handles automatic language redirection.
-- **[lang]/*.mdx**: Content pages written in Markdown + JSX. They import components like `VectorCanvas` to render graphics.
+Contains all the content of the site, organized by language (en/, es/). Each page is an .mdx file that combines Markdown with Astro components. The root index.astro handles language redirection.
 
 ---
 
-### **src/scripts/pages/**
-Drawing logic and controllers for specific pages.
-Instead of running automatically, these modules export dictionaries of functions (e.g., `geometryDrawings`) that are invoked by the `VectorCanvas` component when the MDX page loads.
+### **src/plugins/**
+Custom plugins that extend the build process. 
+- rehype-vector-canvas.mjs: A crucial plugin that intercepts Markdown image syntax like !... and transforms it into a <VectorCanvas id="my-id" /> component call. This is the magic that connects the MDX content to the drawing engine.
 
-- **geometryPage.js**
-- **vectorsPage.js**
-- **kinematicsPage.js**
-
----
+### src/scripts/ 
+This directory contains all the client-side TypeScript logic.
 
 ### **src/scripts/components/**
-Logic for interactive UI components (Islands).
-These scripts are instantiated by Astro components to handle client-side interactivity and SVG updates.
+Contains the logic for interactive components. For example, VectorConverterLogic.ts would handle the events and calculations for the VectorConverter.astro component.
 
 - **VectorConverterLogic.js**
 
 ---
 
-### **src/components/**
-Reusable Astro components.
+### **src/scripts/core/**
+Fundamental, reusable modules.  
+They do not depend on page controllers or form handlers.
 
-- **VectorCanvas.astro**: A wrapper for SVG elements. It handles the lifecycle of the scripts, ensuring graphics are drawn correctly upon page load or navigation.
+- **SVGDrawing.ts**: Low-level utilities for creating SVG elements (lines, circles, text) and MathJax integration for SVG labels.
+- **CartesianPlane.ts**: Class for representing a 2D Cartesian plane inside an SVG, handling scaling and coordinate transforms.
+- **EuclideanSpace.ts**: Class for representing a 3D space inside an SVG using isometric projection (45° skew).
+- **types.ts**: Shared TypeScript type definitions (e.g., `Point2D`, `Point3D`, `LineAttributes`).
 
-- **VectorConverter.astro**: An interactive form with real-time SVG feedback for vector calculations.
+---
+
+### **src/scripts/pages/**
+Contains the specific logic for each content page. For example, vectorsExercises.ts includes all the drawing and interactivity functions for the exercises in vectors.mdx. These scripts are loaded by the *Script.astro components.
 
 ---
 
