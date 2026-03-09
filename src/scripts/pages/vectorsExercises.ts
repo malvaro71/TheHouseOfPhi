@@ -38,15 +38,15 @@ function drawExercise1(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) 
 
     const initialPoint: Point2D = [0, 0];
 
-    plane.drawVectorB(initialPoint, e1_vRiver, "\\vec{V}_r", { strokeColor: "cornflowerBlue" }, { scale: 1, dy: 4 });
-    plane.drawVectorB(initialPoint, e1_vPropelled, "\\vec{V}_p", { strokeColor: "cornflowerBlue" }, { scale: 1.3, dx: 4, dy: -4 });
+    plane.drawVectorB(initialPoint, e1_vRiver, "\\vec{v}_r", { strokeColor: "cornflowerBlue" }, { scale: 1.2, dy: 4 });
+    plane.drawVectorB(initialPoint, e1_vPropelled, "\\vec{v}_p", { strokeColor: "sienna" }, { scale: 1.3, dx: 4, dy: -4 });
     
     const negVRiver = math.multiply(-1, e1_vRiver) as Point2D;
     plane.drawSegment(e1_vPropelled, negVRiver, { strokeColor: "green", strokeDasharray: "5,5" });
-    plane.drawVectorB(initialPoint, negVRiver, "\\vec{V}_x = -\\vec{V}_{rx}", { strokeColor: "green" }, { scale: 1, color: "green", dx: -46, dy: 4 });
+    plane.drawVectorB(initialPoint, negVRiver, "\\vec{v}_{px}", { strokeColor: "green" }, { scale: 1.2, color: "green", dx: -46, dy: 4 });
     
     plane.drawSegment(e1_vPropelled, e1_vBoat, { strokeColor: "green", strokeDasharray: "5,5" });
-    plane.drawVectorB(initialPoint, e1_vBoat, "\\vec{V}_b = \\vec{V}_{py}", { strokeColor: "green" }, { scale: 1.3, color: "green", dx: 5, dy: -4 });
+    plane.drawVectorB(initialPoint, e1_vBoat, "\\vec{v}_b", { strokeColor: "green" }, { scale: 1.3, color: "green", dx: 5, dy: -4 });
     plane.drawAngle(initialPoint, e1_vRiver, e1_vPropelled, 3, "\\phi", { strokeColor: "orange" }, { color: "orange", scale: 1.2, dx: 0, dy: -8 });
 
     svg.setAttribute('data-drawn', 'true');

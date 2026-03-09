@@ -5,7 +5,9 @@
     },
     "[mdx]": {
         "editor.defaultFormatter": "astro-build.astro-vscode",
-        "editor.semanticHighlighting.enabled": true
+        "editor.semanticHighlighting.enabled": true,
+        // Desactiva el validador de TypeScript por defecto para archivos MDX
+        "typescript.validate.enable": false
     },
 
     // Esta línea es crucial: le dice a VS Code que ejecute las correcciones de ESLint

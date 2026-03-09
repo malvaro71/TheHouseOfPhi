@@ -454,14 +454,14 @@ export const e1_vBoat_json = JSON.stringify(e1_vBoat);
 export const e1_vPropelled_json = JSON.stringify(e1_vPropelled);
 
 <figure class="centered">
-    <svg id="svge_1"
+    <VectorCanvas id="svge_1"
         data-v-river={e1_vRiver_json}
         data-v-boat={e1_vBoat_json}
         data-v-propelled={e1_vPropelled_json}
         data-phi={e1_phi}
         data-norm-v-propelled={e1_normvPropelled}
-    ></svg>
-    <figcaption><b>Figura 19.1</b>: Plano de coordenadas, Vr como la velocidad del agua del río y Vb como la velocidad con la que se propulsa el bote.</figcaption>
+    />
+    <figcaption><b>Figura 19.1</b>: Descomposición de las velocidades. $\vec{v}_r$ es la velocidad del río, $\vec{v}_b$ es la velocidad resultante del bote (perpendicular a la orilla), y $\vec{v}_p$ es la velocidad de propulsión necesaria.</figcaption>
 </figure>
 
 <p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
@@ -489,12 +489,12 @@ export const e2_c_json = JSON.stringify(e2_c);
 export const e2_d_json = JSON.stringify(e2_d);
 
 <figure class="centered">
-    <svg id="svge_2"
+    <VectorCanvas id="svge_2"
         data-vec-a={e2_a_json}
         data-vec-b={e2_b_json}
         data-vec-c={e2_c_json}
         data-vec-d={e2_d_json}
-    ></svg>
+    />
     <figcaption><b>Figura 19.2</b>: Suma de a, b, c y d por el método gráfico.</figcaption>
 </figure>
 
@@ -526,10 +526,10 @@ export const e3_V = [e3_sailboatSpeedX, e3_sailboatSpeedY];
 export const e3_V_json = JSON.stringify(e3_V);
 
 <figure class="centered">
-    <svg id="svge_3"
+    <VectorCanvas id="svge_3"
         data-vec-v={e3_V_json}
         data-angle={e3_angleDeg}
-    ></svg>
+    />
     <figcaption><b>Figura 19.3</b>: Dirección NNE, velocidad V y sus componentes Vx y Vy.</figcaption>
 </figure>
 
@@ -660,7 +660,7 @@ export const e6_angleRad = e6_angleDeg * Math.PI / 180; // radianes
 La dirección NE (noreste) forma un ángulo de {e6_angleDeg}º con la dirección este, como se muestra en la siguiente figura.
 
 <figure class="centered">
-    <svg id="svge_6"></svg>
+    <VectorCanvas id="svge_6" />
     <figcaption><b>Figura 19.4</b>: Ángulo entre E y NE, y la proyección de v sobre E.</figcaption>
 </figure>
 
@@ -816,11 +816,11 @@ $$
 `}
 
 <figure class="centered">
-    <svg id="svg2_8"></svg>
+    <VectorCanvas id="svg2_8" />
     <figcaption><b>Figura 19.5</b>: Paralelogramo definido por los vectores AB y AC, y triángulo ABC como mitad de dicho paralelogramo.</figcaption>
 </figure>
 
-<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
-
 #### Referencias
 - [Triángulo. Wikipedia.](https://es.wikipedia.org/wiki/Tri%C3%A1ngulo)
+
+<p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>

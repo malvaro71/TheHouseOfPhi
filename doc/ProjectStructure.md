@@ -11,22 +11,37 @@ The structure is designed to be clean, scalable, and aligned with the dependency
 TheHouseOfPhi-1/
 ├── .gitignore
 ├── astro.config.mjs
+├── package-lock.json
 ├── package.json
 ├── tsconfig.json
+├── .astro/
+├── .github/
+│   ├── copilot-instructions.md
+├── .vscode/
+│   ├── extensions.json
+│   ├── launch.json
+│   └── settings.json
 ├── doc/
 │   ├── Backlog.md
+│   ├── DrawingEngineReference.md
 │   ├── InternationalizationArchitecture.md
 │   ├── MDXAuthoringGuide.md
-│   ├── DrawingEngineReference.md
 │   ├── ProjectDependencies.md
 │   └── ProjectStructure.md
+├── node_modules/
 ├── public/
 │   ├── favicon.svg
 │   └── images/
 │       └── ...
 └── src/
+    ├── assets/
+    │   └── ...
     ├── components/
-    │   └── VectorCanvas.astro   <-- Reusable SVG container
+    │   ├── MathJax.astro
+    │   ├── TestPageScript.astro
+    │   ├── VectorCanvas.astro   <-- Reusable SVG container
+    │   ├── VectorConverter.astro
+    │   └── VectorExercisesScript.astro
     ├── layouts/
     │   └── BaseLayout.astro     <-- Global HTML shell
     ├── pages/
@@ -36,7 +51,9 @@ TheHouseOfPhi-1/
     │   │   └── index.mdx
     │   └── es/
     │       ├── geometry.mdx
-    │       └── index.mdx
+    │       ├── index.mdx
+    │       ├── kinematics.mdx
+    │       └── vectors.mdx 
     ├── plugins/
     │   └── rehype-vector-canvas.mjs <-- Custom Rehype plugin
     ├── scripts/
