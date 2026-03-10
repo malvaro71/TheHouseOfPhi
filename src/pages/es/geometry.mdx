@@ -24,47 +24,58 @@ Desde el estudio de la caída de un grave hasta la descripción de las órbitas 
 ### 1.2. Bloques fundamentales del anexo
 Este recurso se organiza en los siguientes bloques de consulta:
 - **[Sistema de coordenadas cartesianas](#2-sistema-de-coordenadas-cartesianas):** Representación de puntos y rectas en el plano.
-- **[Geometría del triángulo](#3-geometría-del-triángulo):** Propiedades básicas y teoremas fundamentales (Pitágoras, Seno y Coseno).
-- **[Razones trigonométricas en el triángulo rectángulo](#3-razones-trigonométricas-en-el-triángulo-rectángulo):** Definiciones, identidades y aplicaciones.
-- **[Geometría del círculo](#4-geometría-del-círculo):** Elementos del círculo y la definición del radián.
-- **A1.4 Funciones trigonométricas en la circunferencia:** El círculo unitario, gráficas y periodicidad.
-- **A1.6 Cónicas (Parábola y Elipse):** Definición y aplicaciones en física.
+- **[El Triángulo](#3-el-triángulo-razones-trigonométricas):** Propiedades básicas y teoremas fundamentales (Pitágoras, Seno y Coseno).
+- **[El Círculo](#4-el-círculo):** Elementos del círculo y la definición del radián.
+- **[Las Cónicas](#5-las-conicas):** (Parábola, elipse e hipérbola)Definición y aplicaciones en física.
 - **A1.7 Sistema de coordenadas polares:** Localización mediante radio y ángulo.
 
 ## 2. Sistema de coordenadas cartesianas
 
 La geometría analítica parte de la idea de que cualquier punto del plano puede describirse mediante dos números: su distancia horizontal y su distancia vertical respecto a dos ejes fijos (generalmente perpendiculares). Este sistema es la base de casi cualquier representación en Física, desde gráficas cinemáticas hasta mapas de campos.
 
-Un **punto** se escribe como $(x, y)$:
-- **x** indica cuánto se desplaza horizontalmente (positivo hacia la derecha).
-- **y** indica cuánto se desplaza verticalmente (positivo hacia arriba).
+Esto nos lleva al concepto de **sistema de coordenadas cartesianas** (o sistema de coordenadas rectangulares) en dos dimensiones es un marco de referencia que permite localizar cualquier punto en un plano de manera unívoca.
+
+Este sistema está constituido por dos rectas numéricas perpendiculares entre sí, denominadas **ejes de coordenadas**, que se cortan en un punto llamado **origen (O)**.
+
+- **Eje de abscisas (Eje x):** Es la recta horizontal. Los valores positivos se encuentran a la derecha del origen.
+- **Eje de ordenadas (Eje y):** Es la recta vertical. Los valores positivos se encuentran por encima del origen.
+
+Cualquier punto $P$ en el plano se describe mediante un par ordenado de números $(x, y)$, llamados **coordenadas**:
+
+$$ P = (x, y) \eqtag{2.1}$$
+
+Donde $x$ representa la distancia perpendicular al eje $y$, y $y$ representa la distancia perpendicular al eje $x$. Estos dos ejes dividen al plano en cuatro regiones llamadas **cuadrantes**, numerados del I al IV en sentido antihorario partiendo del cuadrante superior derecho.
+
+![Figura 5.1: Plano cartesiano y coordenadas cartesianas de un punto.](vector:svgA1_X)
+
+La verdadera potencia de este sistema reside en que establece un puente directo entre la geometría y el álgebra. Gracias a las coordenadas, podemos describir figuras geométricas (como rectas, círculos o parábolas) mediante ecuaciones algebraicas, y viceversa. Este enfoque, conocido como **geometría analítica**, nos permite resolver problemas geométricos utilizando las herramientas del álgebra, como el cálculo de distancias, la determinación de puntos de intersección o el análisis de las propiedades de las curvas.
 
 Este sistema nos permite traducir posiciones físicas reales —por ejemplo, en una mesa de laboratorio o a lo largo de una regla— a una representación matemática precisa.
 
 La representación en coordenadas \((x, y)\) también se puede expresar como un **vector de posición** $\vec r = (x, y)$ respecto a un origen fijo. Esto permite expresar distancias, desplazamientos y cambios de forma compacta.
 
-**Figura 1**: *Plano cartesiano con ejes x e y, cuadrantes, un punto genérico (x, y) marcado y su vector de posición.*
+**Figura 2.1**: *Plano cartesiano con ejes x e y, cuadrantes, un punto genérico (x, y) marcado y su vector de posición.*
+
+### Punto medio
+El **punto medio** de dos posiciones permite describir centros geométricos o puntos de equilibrio y se calcula mediante:
+\[ M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right). \eqtag{2.2} \]
+O, mediante los vectores de posición:
+$$ \vec r_M = \tfrac{1}{2}(\vec r_1+\vec r_2)\ \eqtag{2.3} $$
 
 ### 2.1 Ecuaciones de la recta
 Cada forma de la recta es útil para un tipo de problema distinto.
 
 #### Forma explícita:
-$$
-\(y = mx + n\) \eqtag{2.1}
-$$
+$$ \(y = mx + n\) \eqtag{2.4} $$
 - **m** es la pendiente: indica cuánto crece y por cada unidad que avanza x.
 - **n** es la ordenada en el origen: valor de y cuando x = 0.
 
 #### Forma punto–pendiente: 
-$$
-y - y_0 = m(x - x_0)  \eqtag{2.2}
-$$
+$$ y - y_0 = m(x - x_0)  \eqtag{2.5} $$
 Muy útil cuando conocemos un punto concreto de la recta.
 
 #### Forma general:
-$$
-Ax + By + C = 0  \eqtag{2.3}
-$$
+$$ Ax + By + C = 0  \eqtag{2.6} $$
 La más adecuada cuando queremos:
 - identificar paralelismo o perpendicularidad,
 - usar métodos algebraicos,
@@ -73,21 +84,17 @@ El vector **normal** a la recta es \(\vec n=(A,B)\).
 
 #### Forma Paramétrica/Vectorial:
 Se escribe como:
-$$
-x = x_0 + ta, \quad y = y_0 + tb. \eqtag{2.4}
-$$
+$$ x = x_0 + ta, \quad y = y_0 + tb. \eqtag{2.8} $$
 Aquí, \(t\) es un parámetro que describe el avance a lo largo de la recta.
 O como:  
-$$
-\vec r(t)=\vec r_0 + t\,\vec v,\quad t\in\mathbb{R}, \eqtag{2.5}
-$$
+$$ \vec r(t)=\vec r_0 + t\,\vec v,\quad t\in\mathbb{R}, \eqtag{2.9} $$
 siendo $\vec r_0$ un punto de la recta y $\vec v$ un vector **dirección** (no nulo).
   
 Relaciones útiles: si $\vec v=(a,b)$, entonces la pendiente $m=b/a$ (si $a\neq0$).
 
-**Figura 2**: *Recta dada por \(\vec r(t)=\vec r_0+t\vec v\), mostrando \(\vec v\) como incremento por unidad de \(t\).* 
+**Figura 2.2**: *Recta dada por \(\vec r(t)=\vec r_0+t\vec v\), mostrando \(\vec v\) como incremento por unidad de \(t\).* 
 
-## 3. Geometría del triángulo
+## 3. El triángulo, Razones trigonométricas
 El triángulo es el polígono más simple y la unidad fundamental para la descomposición de casi cualquier magnitud física vectorial en el plano.
 
 ### 3.1. Elementos básicos del triángulo y nomenclatura
@@ -99,46 +106,18 @@ Un triángulo es un polígono de tres lados que encierra una región del plano. 
 
 Una propiedad ineludible en geometría euclidiana es que la suma de los ángulos internos de cualquier triángulo siempre es constante:
 
-$$
-\alpha + \beta + \gamma = 180^\circ = \pi \text{ rad} \eqtag{2.1}
-$$
+$$ \alpha + \beta + \gamma = 180^\circ = \pi \text{ rad} \eqtag{3.1} $$
 
-![Figura 2.1: Triángulo ABC con sus vértices, lados y ángulos.](vector:svgA1_1_1)
+![Figura 3.1: Triángulo ABC con sus vértices, lados y ángulos.](vector:svgA1_1_1)
 
 #### Semejanza de triángulos
 Dos triángulos son semejantes si tienen ángulos iguales y lados proporcionales. Esta propiedad es vital en física para resolver problemas de óptica, sombras y diagramas de fuerzas mediante razones de proporcionalidad.
 
-### 2.2. Teorema de Pitágoras
-Establece que en un triángulo rectángulo, el cuadrado de la hipotenusa ($c$) es igual a la suma de los cuadrados de los catetos ($a$ y $b$):
-
-El **teorema de Pitágoras** establece que en cualquier triángulo rectángulo $\triangle ABC$, donde $c$ es la longitud de la hipotenusa y $a$ y $b$ son las longitudes de los catetos,
-
-$$
-c^2 = a^2 + b^2 \eqtag{2.2}
-$$
-
-![Figura 2.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.](/images/RightTriangle.svg)
-
-### 2.3. Teorema del seno y teorema del coseno
-Cuando el triángulo no es rectángulo, utilizamos relaciones más generales para determinar lados o ángulos desconocidos.
-
-**Teorema del Coseno:** Se aplica cuando conocemos dos lados y el ángulo que forman ($C$). Es la base de la ley del paralelogramo en la suma de vectores.
-
-$$
-c^2 = a^2 + b^2 - 2ab \cdot \cos(C) \eqtag{2.3}
-$$
-
-**Teorema del Seno:** Establece la proporción entre los lados y los senos de sus ángulos opuestos:
-
-$$
-\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} \eqtag{2.4}
-$$
-
-## 3. Razones trigonométricas en el triángulo rectángulo
+### 3.2 Razones trigonométricas en el triángulo rectángulo
 En un triángulo rectángulo, las relaciones entre los ángulos y las longitudes de sus lados no son arbitrarias; se rigen por proporciones constantes denominadas **razones trigonométricas**. Estas razones permiten determinar distancias inaccesibles y son la base de la descomposición de vectores.
 
-### 3.1. Definición de seno, coseno y tangente
-Considerando un triángulo rectángulo con un ángulo agudo $\theta$, definimos las razones principales respecto a dicho ángulo:
+#### Definición de seno, coseno y tangente
+Considerando un triángulo rectángulo y uno cualquiera de sus dos ángulos agudos, al que llamamos $\theta$, nombramos los lados de este triángulo respecto a dicho ángulo como:
 
  - **Hipotenusa ($h$):** El lado más largo, opuesto al ángulo recto.
  - **Cateto opuesto ($c_o$):** El lado que se encuentra frente al ángulo $\theta$.
@@ -153,55 +132,63 @@ Si en lugar del ángulo $\theta$ (en la base) usáramos el otro ángulo agudo (e
 
 **Regla de oro para física:** Nunca memorices que el seno es "vertical" o el coseno "horizontal". Siempre pregúntate: "¿Este cateto está enfrente de mi ángulo (seno) o lo está tocando (coseno)?".
 
-Las razones principales (respecto al ángulo elegido) se definen como:
+Las razones principales (respecto al ángulo elegido, $\theta$) se definen como:
 
-$$
-\sin \theta = \frac{\text{cateto opuesto}}{\text{hipotenusa}} = \frac{c_o}{h} \eqtag{3.1}
-$$
+$$ \sin \theta = \frac{\text{cateto opuesto}}{\text{hipotenusa}} = \frac{c_o}{h} \eqtag{3.2} $$
 
-$$
-\cos \theta = \frac{\text{cateto contiguo}}{\text{hipotenusa}} = \frac{c_a}{h} \eqtag{3.2}
-$$
+$$ \cos \theta = \frac{\text{cateto contiguo}}{\text{hipotenusa}} = \frac{c_a}{h} \eqtag{3.3} $$
 
-$$
-\tan \theta = \frac{\text{cateto opuesto}}{\text{cateto contiguo}} = \frac{c_o}{c_a} \eqtag{3.3}
-$$
+$$ \tan \theta = \frac{\text{cateto opuesto}}{\text{cateto contiguo}} = \frac{c_o}{c_a} \eqtag{3.4} $$
 
-#### Interpretación geométrica intuitiva
 Podemos imaginar las razones trigonométricas como "factores de escala": el **coseno** nos indica qué fracción de la hipotenusa se proyecta sobre el eje horizontal, mientras que el **seno** indica qué fracción se proyecta sobre el eje vertical. La **tangente**, por su parte, define la pendiente o inclinación de la hipotenusa respecto a la base.
 
-### 3.2. Identidades fundamentales
+#### Identidades fundamentales
 Existen relaciones matemáticas que siempre se cumplen, independientemente del tamaño del triángulo:
 
-#### Identidad pitagórica
-Derivada directamente del Teorema de Pitágoras, es la identidad más importante de la trigonometría:
+- **Identidad pitagórica:** Derivada directamente del Teorema de Pitágoras, es la identidad más importante de la trigonometría:
+$$ \sin^2 \theta + \cos^2 \theta = 1 \eqtag{3.5} $$
 
-$$
-\sin^2 \theta + \cos^2 \theta = 1 \eqtag{3.4}
-$$
+- **Relación entre razones:** La tangente puede expresarse siempre como el cociente entre el seno y el coseno:
+$$ \tan \theta = \frac{\sin \theta}{\cos \theta} \eqtag{3.6} $$
 
-#### Relación entre razones
-La tangente puede expresarse siempre como el cociente entre el seno y el coseno:
+- **Ángulos complementarios:** Dado que la suma de los ángulos agudos en un triángulo rectángulo es 90º, se cumple que el seno de un ángulo es igual al coseno de su complementario:
+$$ \sin \theta = \cos(90^\circ - \theta) \eqtag{3.7} $$
 
-$$
-\tan \theta = \frac{\sin \theta}{\cos \theta} \eqtag{3.5}
-$$
-
-#### Ángulos complementarios
-Dado que la suma de los ángulos agudos en un triángulo rectángulo es 90º, se cumple que el seno de un ángulo es igual al coseno de su complementario:
-
-$$
-\sin \theta = \cos(90^\circ - \theta) \eqtag{3.6}
-$$
-
-### 3.3. Aplicaciones
+#### Aplicaciones
 En física, la trigonometría no es solo una herramienta de cálculo, sino un método para entender cómo se distribuyen las magnitudes en el espacio.
 - **Cálculo de alturas y distancias:** Permite hallar la altura de un proyectil o la distancia a un objeto conociendo solo el ángulo de observación y una base medida.
 - **Planos inclinados:** Es fundamental para descomponer la fuerza del peso ($P = mg$) en una componente paralela al plano ($mg \sin \theta$) que genera movimiento, y una componente normal ($mg \cos \theta$) que genera rozamiento.
 - **Descomposición de fuerzas:** Cualquier fuerza ejercida con un ángulo inclinado (como la tensión de una cuerda) se divide en una componente horizontal y una vertical mediante el uso de seno y coseno.
 
-## 4. Geometría del círculo
+### 3.3. Teorema de Pitágoras
+Establece que en un triángulo rectángulo, el cuadrado de la hipotenusa ($c$) es igual a la suma de los cuadrados de los catetos ($a$ y $b$):
+
+El **teorema de Pitágoras** establece que en cualquier triángulo rectángulo $\triangle ABC$, donde $c$ es la longitud de la hipotenusa y $a$ y $b$ son las longitudes de los catetos,
+
+$$ c^2 = a^2 + b^2 \eqtag{3.8} $$
+
+![Figura 3.2: Triángulo rectángulo con catetos a y b, e hipotenusa c.](/images/RightTriangle.svg)
+
+#### Distancia entre dos puntos
+Aplicando el teorema de Pitágoras, calculamos la distancia entre dos puntos del plano:
+\[ AB = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \eqtag{3.9} \]
+Este cálculo aparece continuamente en Física: distancias entre posiciones, magnitudes de desplazamientos, longitudes de trayectorias idealizadas, etc.
+
+### 3.4. Teorema del seno y teorema del coseno
+Cuando el triángulo no es rectángulo, utilizamos relaciones más generales para determinar lados o ángulos desconocidos.
+
+**Teorema del Coseno:** Se aplica cuando conocemos dos lados y el ángulo que forman ($C$). Es la base de la ley del paralelogramo en la suma de vectores.
+$$ c^2 = a^2 + b^2 - 2ab \cdot \cos(C) \eqtag{3.10} $$
+
+**Teorema del Seno:** Establece la proporción entre los lados y los senos de sus ángulos opuestos:
+$$ \frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} \eqtag{3.11} $$
+
+## 4. El círculo
 El círculo es una de las figuras más presentes en la física, desde el estudio de las órbitas y motores hasta la propagación de ondas. Mientras que la **circunferencia** es la línea curva cerrada donde todos los puntos están a la misma distancia del centro, el **círculo** es la superficie contenida dentro de ella.
+
+**Definición de circunferencia**  
+El conjunto de puntos del plano que están a una distancia fija \(R > 0\) de un punto fijo \(\vec c = (h,k)\), llamado **centro**:
+\[ \lVert \vec r - \vec c \rVert = R, \quad \text{con } \vec r=(x,y). \eqtag{4.1} \]
 
 ### 4.1. Elementos del círculo
 Para describir un círculo y sus partes, utilizamos los siguientes conceptos:
@@ -216,13 +203,9 @@ Para describir un círculo y sus partes, utilizamos los siguientes conceptos:
 #### Longitud de la circunferencia y área
 La relación entre la longitud de una circunferencia ($L$) y su diámetro es una constante universal llamada **$\pi$ (pi)**. De forma intuitiva, $\pi$ (aprox. 3.14159...) representa cuántas veces cabe el diámetro en el perímetro de su círculo.
 
-$$
-L = 2\pi r \eqtag{4.1}
-$$
+$$ L = 2\pi r \eqtag{4.2} $$
 
-$$
-\text{Área} = \pi r^2 \eqtag{4.2}
-$$
+$$ \text{Área} = \pi r^2 \eqtag{4.3} $$
 
 ### 4.2. Ángulos en la circunferencia
 En el análisis de movimientos rotatorios, es fundamental distinguir cómo medimos los ángulos:
@@ -240,36 +223,133 @@ Un radián es el ángulo central subtendido por un arco cuya longitud ($s$) es i
 #### Conversión grados ↔ radianes
 Puesto que una vuelta completa (360°) equivale a la longitud total de la circunferencia ($2\pi r$), la equivalencia fundamental es:
 
-$$
-360^\circ = 2\pi \text{ rad} \implies 180^\circ = \pi \text{ rad} \eqtag{4.3}
-$$
+$$ 360^\circ = 2\pi \text{ rad} \implies 180^\circ = \pi \text{ rad} \eqtag{4.4} $$
 
 #### ¿Por qué en física se usan radianes?
 El uso del radián no es caprichoso. Su principal ventaja es que simplifica las ecuaciones de movimiento, ya que permite relacionar directamente magnitudes lineales y angulares sin factores de conversión extraños. Por ejemplo, la longitud de un arco se calcula simplemente como:
 
-$$
-s = \theta \cdot r \eqtag{4.4}
-$$
+$$ s = \theta \cdot r \eqtag{4.5} $$
 
 Esta relación solo es válida si el ángulo $\theta$ está expresado en **radianes**.
 
-## 5. Sistema de Coordenadas Cartesianas en dos dimensiones
-El **sistema de coordenadas cartesianas** (o sistema de coordenadas rectangulares) en dos dimensiones es un marco de referencia que permite localizar cualquier punto en un plano de manera unívoca.
+### 4.4. Ecuaciones de la circunferencia
 
-Está constituido por dos rectas numéricas perpendiculares entre sí, denominadas **ejes de coordenadas**, que se cortan en un punto llamado **origen (O)**.
+### **Ecuación canónica (cartesiana)**
+\[ (x - h)^2 + (y - k)^2 = R^2. \eqtag{4.6} \]
 
-- **Eje de abscisas (Eje x):** Es la recta horizontal. Los valores positivos se encuentran a la derecha del origen.
-- **Eje de ordenadas (Eje y):** Es la recta vertical. Los valores positivos se encuentran por encima del origen.
+### **Ecuación general (cartesiana)**
+\[ x^2 + y^2 + D x + E y + F = 0, \eqtag{4.7} \]
+que se lleva a la forma canónica completando cuadrados:
+\[ (x - h)^2 + (y - k)^2 = R^2,\qquad h = -\tfrac{D}{2}, \quad k = -\tfrac{E}{2}, \quad R^2 = h^2 + k^2 - F \eqtag{4.8} \]
 
-Cualquier punto $P$ en el plano se describe mediante un par ordenado de números $(x, y)$, llamados **coordenadas**:
+---
 
-$$ P = (x, y) $$
+### **Forma vectorial**
+\[ \lVert \vec r - \vec c \rVert^2 = R^2,\qquad \vec r=(x,y),\; \vec c=(h,k) \eqtag{4.9} \]
 
-Donde $x$ representa la distancia perpendicular al eje $y$, y $y$ representa la distancia perpendicular al eje $x$. Estos dos ejes dividen al plano en cuatro regiones llamadas **cuadrantes**, numerados del I al IV en sentido antihorario partiendo del cuadrante superior derecho.
+---
 
-![Figura 5.1: Plano cartesiano y coordenadas cartesianas de un punto.](vector:svgA1_X)
+### **Ecuación paramétrica de la circunferencia**
+La forma paramétrica describe la circunferencia recorriéndola mediante un ángulo \(\theta\):
+\[
+\begin{cases}
+x(\theta) = h + R \cos\theta, \\
+y(\theta) = k + R \sin\theta,
+\end{cases}
+\qquad \theta \in [0, 2\pi).
+\]
 
-La verdadera potencia de este sistema reside en que establece un puente directo entre la geometría y el álgebra. Gracias a las coordenadas, podemos describir figuras geométricas (como rectas, círculos o parábolas) mediante ecuaciones algebraicas, y viceversa. Este enfoque, conocido como **geometría analítica**, nos permite resolver problemas geométricos utilizando las herramientas del álgebra, como el cálculo de distancias, la determinación de puntos de intersección o el análisis de las propiedades de las curvas.
+**Propiedades:**
+- Para \(\theta = 0\), el punto corresponde a \((h+R, k)\).
+- El recorrido se hace en **sentido antihorario** al aumentar \(\theta\).
+- Puede añadirse un desfase angular:
+\[ x(\theta)=h+R\cos(\theta+\theta_0),\qquad y(\theta)=k+R\sin(\theta+\theta_0). \]
+- Si se interpreta \(\theta\) como parámetro temporal:
+\[
+\frac{d\vec r}{d\theta} = (-R\sin\theta, R\cos\theta),\qquad 
+\left\lVert\frac{d\vec r}{d\theta}\right\rVert = R,
+\]
+es decir, la rapidez respecto al parámetro \(\theta\) es constante.
+
+## 5. Las Cónicas
+
+Las **cónicas** constituyen una familia de curvas fundamentales tanto en Matemáticas como en Física. Aunque se originan como secciones producidas al cortar un cono con un plano, su relevancia trasciende esta interpretación geométrica: aparecen en la **óptica geométrica**, en la **mecánica celeste**, en el **estudio de campos**, en el diseño de **sistemas ópticos**, en trayectorias de partículas y en múltiples contextos más. 
+
+En la sección anterior se estudió el caso particular del **círculo**, que es una cónica de excentricidad nula. Ahora ampliaremos esta visión abordando las otras tres cónicas importantes: **parábola**, **elipse** e **hipérbola**. Aunque sus ecuaciones parezcan diferentes, todas comparten una estructura geométrica común basada en relaciones de distancia respecto a focos, directrices y simetrías.
+
+---
+
+### 5.1. La Parábola
+
+La **parábola** es la cónica más directamente vinculada a fenómenos de reflexión y concentración de energía. Su forma está determinada por una propiedad métrica muy sencilla: cada punto de la parábola es **equidistante** del **foco** \(\vec f\) y de una **directriz**, que es una recta definida por \(\vec n \cdot \vec r + d = 0\).
+
+Esta condición métrica puede escribirse como:
+\[ \lVert \vec r - \vec f \rVert = \frac{|\vec n \cdot \vec r + d|}{\lVert \vec n \rVert}. \]
+
+Cuando elegimos un sistema de ejes adecuado (foco en \((p,0)\), directriz en \(x=-p\)), esta definición adopta la conocida forma **canónica**:
+\[ y^2 = 4px. \]
+
+La parábola aparece en numerosos contextos físicos:
+- **Óptica geométrica**: un haz de rayos paralelos converge en el foco tras reflejarse.
+- **Antenas parabólicas y radioastronomía**: concentración de ondas electromagnéticas en el receptor.
+- **Reflectores de telescopios**: focalización precisa de luz estelar.
+- **Movimiento parabólico**: trayectorias balísticas en campos gravitatorios uniformes (aproximación de primer orden).
+
+**Figura 8**: *Parábola con foco, directriz (mostrando \(\vec n\)) y eje de simetría.*
+
+---
+
+### 5.2. La Elipse
+
+La **elipse** es quizá la cónica más relevante para la física gravitatoria. Se define por la condición de que la **suma de las distancias** a dos focos \(\vec f_1,\vec f_2\) es constante:
+\[ \lVert \vec r - \vec f_1 \rVert + \lVert \vec r - \vec f_2 \rVert = 2a. \]
+
+Este comportamiento métrico se traduce, al elegir ejes principales, en la ecuación canónica:
+\[ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1, \]
+con focos situados en \((\pm c,0)\) y relación entre parámetros dada por \(c^2 = a^2 - b^2\).
+
+Su presencia en Física es extensa:
+- **Órbitas celestes**: según la *primera ley de Kepler*, los planetas describen elipses con el Sol en uno de sus focos.
+- **Sistemas ópticos y acústicos**: en una sala elíptica, un sonido emitido desde un foco se concentra en el otro.
+- **Conservación de energía y momento angular** en mecánica lagrangiana aplicada a gravedad newtoniana.
+
+**Figura 9**: *Elipse con focos, semiejes y centros; construcción métrica por suma de distancias.*
+
+---
+
+### 5.3. La Hipérbola
+
+La **hipérbola** complementa la familia de cónicas asociándose a situaciones donde existe un exceso de energía que permite trayectorias de escape. Su definición métrica establece que la **diferencia de distancias** a dos focos es constante:
+\[ \big|\lVert\vec r - \vec f_1\rVert - \lVert\vec r - \vec f_2\rVert \big| = 2a. \]
+
+Con los ejes alineados, su ecuación canónica es:
+\[ \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1, \]
+y sus asíntotas vienen dadas por las rectas \(y = \pm (b/a)\, x\).
+
+Desde la perspectiva física:
+- Describe **órbitas de escape** de cuerpos con energía mecánica positiva.
+- Las **asíntotas** modelan direcciones límite en procesos de dispersión gravitatoria.
+- Modela curvas equipotenciales en sistemas donde existe simetría hiperbólica.
+
+**Figura 10**: *Hipérbola con vértices, focos y asíntotas.*
+
+---
+
+### 5.4. Relación entre Cónicas y Excentricidad
+
+Aunque las parábolas, elipses e hipérbolas parezcan objetos muy distintos, todas ellas pueden interpretarse como **secciones de un mismo cono geométrico**. La clave que las unifica es su **excentricidad** \(e\), un parámetro que mide cuánto "se aleja" la cónica del caso circular:
+- \(0 < e < 1\): **elipse**.
+- \(e = 1\): **parábola**.
+- \(e > 1\): **hipérbola**.
+
+Más allá de su origen geométrico, todas pueden transformarse entre sí mediante **cambios de coordenadas** adecuados. Si una cónica está dada en un sistema arbitrario, es posible llevarla a su forma canónica mediante rotación y traslación:
+\[ \vec r = R\,\vec r' + \vec r_c, \]
+donde \(R\) es una matriz de rotación y \(\vec r_c\) un vector de traslación. Este procedimiento revela la estructura fundamental de la cónica independientemente de su orientación o posición.
+
+**Figura 11**: *Cono y planos de corte que generan cada tipo de cónica.*
+
+---
+
 
 ### X. Perpendicularidad entre un vector con módulo constante y su variación temporal
 #### Introducción:
