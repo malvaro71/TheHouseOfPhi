@@ -23,18 +23,74 @@ Desde el estudio de la caída de un grave hasta la descripción de las órbitas 
 
 ### 1.2. Bloques fundamentales del anexo
 Este recurso se organiza en los siguientes bloques de consulta:
-- **[Geometría del triángulo](#2-geometría-del-triángulo):** Propiedades básicas y teoremas fundamentales (Pitágoras, Seno y Coseno).
+- **[Sistema de coordenadas cartesianas](#2-sistema-de-coordenadas-cartesianas):** Representación de puntos y rectas en el plano.
+- **[Geometría del triángulo](#3-geometría-del-triángulo):** Propiedades básicas y teoremas fundamentales (Pitágoras, Seno y Coseno).
 - **[Razones trigonométricas en el triángulo rectángulo](#3-razones-trigonométricas-en-el-triángulo-rectángulo):** Definiciones, identidades y aplicaciones.
 - **[Geometría del círculo](#4-geometría-del-círculo):** Elementos del círculo y la definición del radián.
-- **Sistema de coordenadas cartesianas:** Representación de puntos, rectas y funciones en el plano.
 - **A1.4 Funciones trigonométricas en la circunferencia:** El círculo unitario, gráficas y periodicidad.
 - **A1.6 Cónicas (Parábola y Elipse):** Definición y aplicaciones en física.
 - **A1.7 Sistema de coordenadas polares:** Localización mediante radio y ángulo.
 
-## 2. Geometría del triángulo
+## 2. Sistema de coordenadas cartesianas
+
+La geometría analítica parte de la idea de que cualquier punto del plano puede describirse mediante dos números: su distancia horizontal y su distancia vertical respecto a dos ejes fijos (generalmente perpendiculares). Este sistema es la base de casi cualquier representación en Física, desde gráficas cinemáticas hasta mapas de campos.
+
+Un **punto** se escribe como $(x, y)$:
+- **x** indica cuánto se desplaza horizontalmente (positivo hacia la derecha).
+- **y** indica cuánto se desplaza verticalmente (positivo hacia arriba).
+
+Este sistema nos permite traducir posiciones físicas reales —por ejemplo, en una mesa de laboratorio o a lo largo de una regla— a una representación matemática precisa.
+
+La representación en coordenadas \((x, y)\) también se puede expresar como un **vector de posición** $\vec r = (x, y)$ respecto a un origen fijo. Esto permite expresar distancias, desplazamientos y cambios de forma compacta.
+
+**Figura 1**: *Plano cartesiano con ejes x e y, cuadrantes, un punto genérico (x, y) marcado y su vector de posición.*
+
+### 2.1 Ecuaciones de la recta
+Cada forma de la recta es útil para un tipo de problema distinto.
+
+#### Forma explícita:
+$$
+\(y = mx + n\) \eqtag{2.1}
+$$
+- **m** es la pendiente: indica cuánto crece y por cada unidad que avanza x.
+- **n** es la ordenada en el origen: valor de y cuando x = 0.
+
+#### Forma punto–pendiente: 
+$$
+y - y_0 = m(x - x_0)  \eqtag{2.2}
+$$
+Muy útil cuando conocemos un punto concreto de la recta.
+
+#### Forma general:
+$$
+Ax + By + C = 0  \eqtag{2.3}
+$$
+La más adecuada cuando queremos:
+- identificar paralelismo o perpendicularidad,
+- usar métodos algebraicos,
+- calcular distancias.
+El vector **normal** a la recta es \(\vec n=(A,B)\).
+
+#### Forma Paramétrica/Vectorial:
+Se escribe como:
+$$
+x = x_0 + ta, \quad y = y_0 + tb. \eqtag{2.4}
+$$
+Aquí, \(t\) es un parámetro que describe el avance a lo largo de la recta.
+O como:  
+$$
+\vec r(t)=\vec r_0 + t\,\vec v,\quad t\in\mathbb{R}, \eqtag{2.5}
+$$
+siendo $\vec r_0$ un punto de la recta y $\vec v$ un vector **dirección** (no nulo).
+  
+Relaciones útiles: si $\vec v=(a,b)$, entonces la pendiente $m=b/a$ (si $a\neq0$).
+
+**Figura 2**: *Recta dada por \(\vec r(t)=\vec r_0+t\vec v\), mostrando \(\vec v\) como incremento por unidad de \(t\).* 
+
+## 3. Geometría del triángulo
 El triángulo es el polígono más simple y la unidad fundamental para la descomposición de casi cualquier magnitud física vectorial en el plano.
 
-### 2.1. Elementos básicos del triángulo y nomenclatura
+### 3.1. Elementos básicos del triángulo y nomenclatura
 Un triángulo es un polígono de tres lados que encierra una región del plano. Sus elementos fundamentales son los vértices, los lados y los ángulos. Para facilitar la resolución de problemas, se utiliza una **nomenclatura clásica** que relaciona estos elementos entre sí:
 
  - **Vértices:** Son los puntos de intersección de los lados. Se representan con letras mayúsculas: $A$, $B$ y $C$.
