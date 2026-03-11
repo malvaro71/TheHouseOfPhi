@@ -17,12 +17,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install, build, and upload site
+      - name: Install dependencies, build site, and upload artifact
         uses: withastro/action@v2
         with:
           path: .
-          # node-version: 20
-          # package-manager: auto
+          node-version: 20
 
   deploy:
     needs: build
