@@ -5,6 +5,10 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+# 👇 Fuerza a GitHub a permitir Node.js moderno (18/20) en runners antiguos
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
 permissions:
   contents: read
   pages: write
@@ -17,10 +21,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
       - name: Install dependencies
         run: npm install
 
-      - name: Build site
+      - name: Build Astro site
         run: npm run build
 
       - name: Upload GitHub Pages artifact
