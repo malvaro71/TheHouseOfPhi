@@ -8,14 +8,20 @@ import { rehypeVectorCanvas } from './src/plugins/rehype-vector-canvas.mjs';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx({
-    // Habilita la sintaxis de LaTeX ($...$)
-    remarkPlugins: [remarkMath],
-    // Renderiza el LaTeX a HTML y SVG usando KaTeX, procesa figuras y luego inyecta VectorCanvas
-    rehypePlugins: [
-      [rehypeKatex, { macros: { "\\eqtag": "\\tag*{[#1]}" } }], 
-      [rehypeFigure, { className: 'centered' }], 
-      rehypeVectorCanvas
-    ]
-  })]
+  site: 'https://malvaro71.github.io',
+  base: '/TheHouseOfPhi/',
+
+  integrations: [
+    mdx({
+      // Habilita la sintaxis de LaTeX ($...$)
+      remarkPlugins: [remarkMath],
+
+      // Renderiza el LaTeX a HTML y SVG usando KaTeX, procesa figuras y luego inyecta VectorCanvas
+      rehypePlugins: [
+        [rehypeKatex, { macros: { "\\eqtag": "\\tag*{[#1]}" } }], 
+        [rehypeFigure, { className: 'centered' }],
+        rehypeVectorCanvas
+      ]
+    })
+  ]
 });
