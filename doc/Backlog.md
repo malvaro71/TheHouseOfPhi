@@ -14,7 +14,7 @@
 - [ ] Hacer un readme.md del proyecto.
 - [x] Actualizar copilot-instructions.md
 - [ ] Analizar y decidir si creo un agente único que ayude en el desarrollo del proyecto. O creo un agente centrado en las tareas de arquitectura del proyecto y un segundo agente centrado en la edición del contenido.
-- [] Revisar la redacción de la introducción en geometry.mdx, conforme a las instrucciones de MDXAuthoringGuide.md.
+- [ ] Revisar la redacción de la introducción en geometry.mdx, conforme a las instrucciones de MDXAuthoringGuide.md.
 - [x] Revisar la redacción de la introducción en vectors.mdx conforme a las instrucciones de MDXAuthoringGuide.md.
 - [ ] Revisar la redacción de la introducción en kinematics.mdx conforme a las instrucciones de MDXAuthoringGuide.md.
 - [ ] Ampliar el contenido de es/geometry.mdx según lo planeado en su sección de introducción.
