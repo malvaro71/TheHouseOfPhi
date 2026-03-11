@@ -4,7 +4,6 @@
 - [ ] revisar MDXAuthoringGuide.md tras mover los ejercicios de vectores.
 - [x] Actualizar ProjectStructure.md tras mover los ejercicios de vectores.
 - [ ] Actualizar ProjectDependencies.md tras mover los ejercicios de vectores.
-- [ ] mover el contenido de kinematics_es.astro a en/kinematics.mdx
 - [ ] revisar MDXAuthoringGuide.md, ProjectStructure.md y ProjectDependencies.md tras mover los ejercicios de cinemática.
 - [x] Migrar javascript a typescript, revisando los tipos a usar en CartesianPlane y EuclideanSpace. Considerar el uso de objetos components2D (.x, .y) y components3D, (.x, .y, .z) en lugar de arrays.
 - [x] Tras introducir el tipado en CartesianPlane y EuclideanSpace, revisar el uso de las funciones de validación validateCoordinates2D(coordinates), validateCoordinates3D(coordinates), validateObject(lineAttributes), etc.
@@ -20,3 +19,7 @@
 - [ ] Revisar la redacción de la introducción en kinematics.mdx conforme a las instrucciones de MDXAuthoringGuide.md.
 - [ ] Ampliar el contenido de es/geometry.mdx según lo planeado en su sección de introducción.
 - [ ] Traducir el contenido en español de geometry.mdx al inglés, en su correspondiente archivo en/geometry.mdx.
+- [ ] Recuperar kinematicsPage.js de la papelera de reciclaje y guardarlo en /src/scripts/pages/kinematicsPage.js.
+- [ ] Transformar kinematicsPage.js en ../scripts/pages/kinematicsPage.ts, con la misma estructura que tiene vectorsPage.ts.
+- [ ] Transforma el contenido de kinematics_es.astro a formato .mdx y guardarlo es/kinematics.mdx usar es/vectors.mdx como referencia.
+- [ ] En src/components/VectorCanvas.astro, añadir import y const para ../scripts/pages/kinematicsPage.ts.
