@@ -5,9 +5,11 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
-# 👇 Fuerza a GitHub a permitir Node.js moderno (18/20) en runners antiguos
+# Opcional: fuerza a que TODAS las GitHub Actions JavaScript del workflow
+# usen Node 24 desde ya (recomendación de GitHub para la transición 2026).
+# Si prefieres no forzarlo aún, puedes comentar este bloque.
 env:
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 permissions:
   contents: read
@@ -18,25 +20,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout (Node 24-compatible)
+        uses: actions/checkout@v5
 
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v4
+      # withastro/action v5: build + artifact para Pages
+      - name: Install, build, and upload site
+        uses: withastro/action@v5
         with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build Astro site
-        run: npm run build
-
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
+          path: .
+          node-version: 24   # alíneate ya con la migración a Node 24
 
   deploy:
     needs: build
