@@ -23,9 +23,16 @@ p {
     display: block;
 }
 
+h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
 h3 {
     color:brown;
     display: block;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 ul {

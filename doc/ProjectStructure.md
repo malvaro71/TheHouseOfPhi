@@ -81,6 +81,14 @@ TheHouseOfPhi-1/
 
 ## 🧩 Folder Descriptions
 
+### Root Files Configuration
+
+- **`astro.config.mjs`**:
+  - **Integrations**: Loads MDX, Math (Remark/Rehype), and custom plugins like `rehype-vector-canvas`.
+  - **Base Path Strategy**: Handles the difference between GitHub Pages (subdirectory) and Localhost (root).
+    - In **Production** (build): Sets `base: '/TheHouseOfPhi-1'` so assets load correctly from the repository subfolder.
+    - In **Development** (local): Sets `base: '/'` so URLs work naturally at `localhost:4321/`.
+
 ### **src/components/**
 Reusable Astro components (.astro) used within the MDX pages.
 
