@@ -1,48 +1,28 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-title: Laboratorio de Migración TS
+title: Laboratorio de Fórmulas Dinámicas
 lang: es
 ---
 
-import VectorCanvas from '../../components/VectorCanvas.astro'; // Import VectorCanvas for the protocol
 import MathJax from '../../components/MathJax.astro'; // Import the MathJax component for rendering math
 import TestPageScript from '../../components/TestPageScript.astro'; // Import the script loader component
-import * as math from 'mathjs'; // Import the mathjs library for vector calculations
 
 {/* Load the MathJax library in the browser */}
 <MathJax />
 {/* Execute the specific script for this page */}
 <TestPageScript />
 
-# Prueba de Arquitectura
+# Laboratorio de Fórmulas Dinámicas
 
-## Versión Dinámica
+Este entorno se utiliza para probar la inyección de LaTeX y el renderizado dinámico en el cliente usando MathJax.
 
-export const a = [2, 4]; // Define vectors a and b
-export const b = [1, -1];
+## Prueba de Raíz Cuadrada (Teorema de Pitágoras)
 
-Dados dos vectores $\vec a = (2, 4)$ y $\vec b = ($<input type="number" id="input-bx" value={b[0]} style="width: 40px; text-align: center;" />, <input type="number" id="input-by" value={b[1]} style="width: 40px; text-align: center;" />$)$, calcula su suma y representa el vector resultante $\vec v_{test}$.
+Introduce los valores de los catetos para calcular la hipotenusa:
 
-$$
-\vec v_{test} = \vec a + \vec b
-$$
+Cateto $a$: <input type="number" id="input-dyn-a" value="3" style="width: 60px; text-align: center;" /> 
+Cateto $b$: <input type="number" id="input-dyn-b" value="4" style="width: 60px; text-align: center;" />
 
-export const v_test = math.add(a, b); // Calculate the sum of vectors a and b
-export const v_test_json = JSON.stringify(v_test); // Convert the result array to a JSON string to pass it as an HTML attribute
-
-<figure class="centered">
-    <svg id="svg_test_simple" data-vec={v_test_json}></svg>
-    <figcaption>Prueba de vector [{v_test.join(', ')}]</figcaption>
-</figure>
-
-<br/><hr/><br/>
-
-## Versión Estática (Original)
-
-Dados dos vectores $\vec a = (${a.join(', ')}$)$ y $\vec b = (${b.join(', ')}$)$, calcula su suma y representa el vector resultante $\vec v_{test}$.
-
-$$
-\vec v_{test} = \vec a + \vec b
-$$
-
-![Versión estática: Vector [3, 3]](vector:svg_test_static?data-vec=[3,3])
+<div id="dynamic-sqrt-test" class="centered" style="margin: 30px 0; padding: 20px; border: 1px dashed green; min-height: 80px; display: flex; align-items: center; justify-content: center;">
+  $$\sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5.00$$
+</div>

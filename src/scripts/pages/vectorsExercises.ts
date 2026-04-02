@@ -90,12 +90,12 @@ function setupExercise1Interactivity() {
         const phi = math.acos(math.dot(vRiver, vPropelled) / (math.norm(vRiver) * normVPropelled)) * 180 / math.pi;
 
         // Update text outputs
-        if (outputVBoat) outputVBoat.textContent = `${vBoat.join(', ')}`;
+        if (outputVBoat) outputVBoat.textContent = `${vBoat.join(', ')}`; //.join(', ') method takes the arrayand converts it into a readable string where the numbers are separated by a comma and a space.
         if (outputVRiver) outputVRiver.textContent = `${vRiver.join(', ')}`;
         if (outputVBoat2) outputVBoat2.textContent = `(${vBoat.join(', ')})`;
         if (outputVRiver2) outputVRiver2.textContent = `(${vRiver.join(', ')})`;
         if (outputVPropelled) outputVPropelled.textContent = `(${vPropelled.join(', ')})`;
-        if (outputNormVPropelled) outputNormVPropelled.textContent = normVPropelled.toFixed(1);
+        if (outputNormVPropelled) outputNormVPropelled.textContent = normVPropelled.toFixed(1); //.toFixed(1) converts number into a string and rounds it with 1 decimal.
         if (outputPhi) outputPhi.textContent = phi.toFixed(1);
         if (outputNormVPropelled2) outputNormVPropelled2.textContent = normVPropelled.toFixed(1);
         if (outputPhi2) outputPhi2.textContent = phi.toFixed(1);

@@ -92,6 +92,60 @@ La más adecuada cuando queremos:
 El vector **normal** a la recta es \(\vec n=(A,B)\).
 
 #### **Forma Paramétrica/Vectorial:**
+
+La ecuación paramétrica es una de las formas más intuitivas y potentes de describir una recta en el plano. En lugar de expresar la relación entre `x` e `y` mediante una única ecuación, la recta se representa como el conjunto de todos los puntos que se obtienen al desplazar un punto fijo en una dirección determinada.
+
+Para definir una recta en forma paramétrica necesitamos dos elementos esenciales:
+
+- **Un punto de la recta**, llamado *punto base* o *punto de apoyo*:
+
+  $$A(a_1, a_2)$$
+
+- **Un vector director**, que indica la dirección de la recta:
+
+  $$\vec v = (v_1, v_2)$$
+
+Este vector director es fundamental: determina hacia dónde avanza la recta y cómo se generan todos sus puntos.
+
+Para construir la ecuación paramétrica de una recta, partimos del punto `A` y nos desplazamos en la dirección del vector `v`, tantas veces como indique un parámetro real `λ`. Entonces, la ecuación paramétrica queda así:
+
+$$
+\begin{cases}
+x = a_1 + \lambda v_1 \\
+y = a_2 + \lambda v_2
+\end{cases}
+\quad \lambda \in \mathbb{R}
+$$
+
+Cada valor de `λ` genera un punto distinto de la recta.
+
+La ecuación paramétrica muestra explícitamente cómo se recorre la recta. Es especialmente útil en:
+- geometría analítica
+- física
+- programación gráfica
+- álgebra lineal
+
+{/* --- Valores del punto base, el vector director y t (pueden ser modificados por el lector) --- */}
+export const svgA1_2_t = 0;
+export const svgA1_2_A = [-4, -2];
+export const svgA1_2_v = [3, 1];
+
+Veamos un ejemplo: Supongamos que tenemos un punto base A(<input type="number" id="input-svgA1_2_Ax" value={svgA1_2_A[0]} style="width: 40px; text-align: center;"/>, <input type="number" id="input-svgA1_2_Ay" value={svgA1_2_A[1]} style="width: 40px; text-align: center;"/>) y un vector director $\vec v$ = (<input type="number" id="input-svgA1_2_vx" value={svgA1_2_v[0]} style="width: 40px; text-align: center;"/>, <input type="number" id="input-svgA1_2_vy" value={svgA1_2_v[1]} style="width: 40px; text-align: center;"/>), la recta queda:
+
+$ x = $<span id="output-svgA1_2_Ax">{svgA1_2_A[0]}</span>$ + $<span id="output-svgA1_2_vx">{svgA1_2_v[0]}</span>$\lambda$
+
+$ y = $<span id="output-svgA1_2_Ay">{svgA1_2_A[1]}</span>$ + $<span id="output-svgA1_2_vy">{svgA1_2_v[1]}</span>$\lambda$
+
+
+
+$$
+\begin{cases}
+x = -4 + 3\lambda \\
+y = -2 + \lambda
+\end{cases}
+$$
+
+
 Se escribe como:
 $$
 x = x_0 + ta, \quad y = y_0 + tb. \tag{2.8}
@@ -104,6 +158,11 @@ $$
 siendo $\vec r_0$ un punto de la recta y $\vec v$ un vector **dirección** (no nulo).
   
 Relaciones útiles: si $\vec v=(a,b)$, entonces la pendiente $m=b/a$ (si $a\neq0$).
+
+
+
+//export const e1_vRiver_json = JSON.stringify(svgA1_2_t);
+
 
 **Figura 2.2**: *Recta dada por \(\vec r(t)=\vec r_0+t\vec v\), mostrando \(\vec v\) como incremento por unidad de \(t\).* 
 
