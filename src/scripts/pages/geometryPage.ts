@@ -10,6 +10,38 @@ import type { Point2D } from '../core/types.ts';
 
 // Export a dictionary of drawing functions keyed by SVG ID
 export const geometryDrawings = {
+    // ======================================================
+    // svgA1_1 — Cartesian coordinates of a point and quadrants
+    // ======================================================
+    "svgA1_1": (svg: SVGElement) => {
+        // Initialize the 2D Cartesian plane with grid boundaries
+        const plane = new CartesianPlane(svg, -10, 11, -10, 10);
+
+        // Draw coordinate axes with labels for Y, X and the Origin (O)
+        plane.drawAxes("Y", "X", "O");
+
+        // Draw labels for each of the four quadrants (I, II, III, IV)
+        plane.drawMath([7, 7], "\\text{I}", { color: "brown", scale: 1.5 });
+        plane.drawMath([-7, 7], "\\text{II}", { color: "brown", scale: 1.5 });
+        plane.drawMath([-7, -7], "\\text{III}", { color: "brown", scale: 1.5 });
+        plane.drawMath([7, -7], "\\text{IV}", { color: "brown", scale: 1.5 });
+
+        // Draw the target point P at coordinates (5, 8) in green
+        plane.drawPoint([5, 8], "green");
+        // Add a mathematical label for the point P(x, y)
+        plane.drawMath([6, 8], "\\text{P}(x, y)", { color: "green", scale: 1.3, dx: 0, dy: -5 });
+        // Draw the vector position r (5,8)
+        plane.drawVectorB([0, 0], [5, 8], "\\vec r", { strokeColor: "green" }, { scale: 1.3, dx: 0, dy: 0 });
+        // Label the x1 value on the horizontal axis
+        plane.drawMath([5, 0], "x", { color: "green", scale: 1.3, dx: -10, dy: 5 });
+        // Label the y1 value on the vertical axis
+        plane.drawMath([0, 8], "y", { color: "green", scale: 1.3, dx: -25, dy: -5 });
+        // Draw a vertical dashed line connecting the x-axis to the point
+        plane.drawSegment([5, 0], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
+        // Draw a horizontal dashed line connecting the y-axis to the point
+        plane.drawSegment([0, 8], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
+    },
+
     // ---------------------------------------------------------
     // A1_1_1 — Triangle with angles and side labels
     // ---------------------------------------------------------
@@ -103,6 +135,12 @@ export const geometryDrawings = {
         const plane = new CartesianPlane(svg, -10, 11, -10, 10);
 
         plane.drawAxes("y", "x", "O");
+
+        // Draw labels for each of the four quadrants (I, II, III, IV)
+        plane.drawMath([7, 7], "\\text{I}", { color: "brown", scale: 1.5 });
+        plane.drawMath([-7, 7], "\\text{II}", { color: "brown", scale: 1.5 });
+        plane.drawMath([-7, -7], "\\text{III}", { color: "brown", scale: 1.5 });
+        plane.drawMath([7, -7], "\\text{IV}", { color: "brown", scale: 1.5 });
 
         plane.drawPoint([5, 8], "green");
         plane.drawMath([6, 8], "\\text{P}(x_1, y_1)", { color: "green", scale: 1.3, dx: 0, dy: -5 });

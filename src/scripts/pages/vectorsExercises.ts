@@ -4,6 +4,13 @@ import { ensureSharedMarkerDefs } from '../core/SVGDrawing.ts';
 import * as math from 'mathjs';
 import type { Point2D, Point3D } from '../core/types.ts';
 
+/**
+ * Draws Exercise 1: Boat crossing a river.
+ * 
+ * @param vRiver - River velocity vector.
+ * @param vBoat - Resulting boat velocity vector.
+ * @param vPropelled - Propulsion velocity vector.
+ */
 function drawExercise1(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) {
     const svg = document.getElementById('svge_1');
     if (!(svg instanceof SVGElement)) return;
@@ -52,6 +59,9 @@ function drawExercise1(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) 
     svg.setAttribute('data-drawn', 'true');
 }
 
+/**
+ * Sets up interactivity for Exercise 1.
+ */
 function setupExercise1Interactivity() {
     const inputRiverX = document.getElementById('input-e1-vriver-x') as HTMLInputElement;
     const inputBoatY = document.getElementById('input-e1-vboat-y') as HTMLInputElement;
@@ -98,6 +108,9 @@ function setupExercise1Interactivity() {
     inputBoatY.addEventListener('input', update);
 }
 
+/**
+ * Draws Exercise 2: Graphical addition of multiple vectors.
+ */
 function drawExercise2() {
     const svg = document.getElementById('svge_2');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
@@ -137,6 +150,9 @@ function drawExercise2() {
     svg.setAttribute('data-drawn', 'true');
 }
 
+/**
+ * Draws Exercise 3: Sailboat components.
+ */
 function drawExercise3() {
     const svg = document.getElementById('svge_3');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
@@ -168,6 +184,9 @@ function drawExercise3() {
     svg.setAttribute('data-drawn', 'true');
 }
 
+/**
+ * Draws Exercise 6: Plane speed projection.
+ */
 function drawExercise6() {
     const svg = document.getElementById('svge_6');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
@@ -194,6 +213,9 @@ function drawExercise6() {
     svg.setAttribute('data-drawn', 'true');
 }
 
+/**
+ * Draws Exercise 8: Triangle area via cross product.
+ */
 function drawExercise8() {
     const svg = document.getElementById('svg2_8');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
@@ -223,6 +245,9 @@ function drawExercise8() {
     svg.setAttribute('data-drawn', 'true');
 }
 
+/**
+ * Sets up interactivity for Exercise 4: Speed components.
+ */
 function setupExercise4Interactivity() {
     const inputSpeed = document.getElementById('input-e4-speed') as HTMLInputElement;
     const inputAngle = document.getElementById('input-e4-angle') as HTMLInputElement;
@@ -261,6 +286,9 @@ function setupExercise4Interactivity() {
     inputAngle.addEventListener('input', update);
 }
 
+/**
+ * Sets up interactivity for Exercise 5: Dot product.
+ */
 function setupExercise5Interactivity() {
     // Inputs
     const inputs = {
@@ -335,6 +363,9 @@ function setupExercise5Interactivity() {
     Object.values(inputs).forEach(input => input.addEventListener('input', update));
 }
 
+/**
+ * Sets up interactivity for Exercise 7: Linear velocity from angular velocity.
+ */
 function setupExercise7Interactivity() {
     // Declare MathJax globally for TypeScript
     declare const MathJax: any;

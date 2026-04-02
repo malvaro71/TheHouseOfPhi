@@ -3,8 +3,9 @@ layout: ../../layouts/BaseLayout.astro
 title: TheHouseOfPhi Geometría
 lang: es
 ---
-import VectorCanvas from '../../components/VectorCanvas.astro';
-import MathJax from '../../components/MathJax.astro';
+
+import VectorCanvas from '../../components/VectorCanvas.astro'; // Contenedor para renderizar los gráficos SVG dinámicos
+import MathJax from '../../components/MathJax.astro'; // Carga la librería MathJax para renderizar LaTeX dentro de los SVGs
 
 <MathJax />
 
@@ -45,15 +46,14 @@ $$
 
 Donde $x$ representa la distancia perpendicular al eje $y$, y $y$ representa la distancia perpendicular al eje $x$. Estos dos ejes dividen al plano en cuatro regiones llamadas **cuadrantes**, numerados del I al IV en sentido antihorario partiendo del cuadrante superior derecho.
 
-![Figura 5.1: Plano cartesiano y coordenadas cartesianas de un punto.](vector:svgA1_X)
-
 La verdadera potencia de este sistema reside en que establece un puente directo entre la geometría y el álgebra. Gracias a las coordenadas, podemos describir figuras geométricas (como rectas, círculos o parábolas) mediante ecuaciones algebraicas, y viceversa. Este enfoque, conocido como **geometría analítica**, nos permite resolver problemas geométricos utilizando las herramientas del álgebra, como el cálculo de distancias, la determinación de puntos de intersección o el análisis de las propiedades de las curvas.
 
 Este sistema nos permite traducir posiciones físicas reales —por ejemplo, en una mesa de laboratorio o a lo largo de una regla— a una representación matemática precisa.
 
 La representación en coordenadas \((x, y)\) también se puede expresar como un **vector de posición** $\vec r = (x, y)$ respecto a un origen fijo. Esto permite expresar distancias, desplazamientos y cambios de forma compacta.
 
-**Figura 2.1**: *Plano cartesiano con ejes x e y, cuadrantes, un punto genérico (x, y) marcado y su vector de posición.*
+![Figura 2.1: Plano cartesiano con ejes X e Y, cuadrantes, un punto genérico P, de coordenadas x e y, y su vector de posición r.](vector:svgA1_1)
+
 
 ### Punto medio
 El **punto medio** de dos posiciones permite describir centros geométricos o puntos de equilibrio y se calcula mediante:

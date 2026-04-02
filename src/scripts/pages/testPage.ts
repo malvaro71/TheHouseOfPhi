@@ -3,11 +3,11 @@ import { ensureSharedMarkerDefs } from '../core/SVGDrawing.ts';
 import type { Point2D } from '../core/types.ts';
 import * as math from 'mathjs';
 
-const vecA: Point2D = [2, 4]; // Vector fijo A definido en el ejercicio
+const vecA: Point2D = [2, 4]; // Fixed vector A defined in the exercise
 
 /**
- * Dibuja el gráfico de prueba en el SVG con id "svg_test_simple".
- * Si se pasa un vector 'vecSum', redibuja el gráfico con ese valor.
+ * Draws the test graph in the SVG with id "svg_test_simple".
+ * If a 'vecSum' vector is passed, it redraws the graph with that value.
  */
 function drawTestSimple(vecSum?: Point2D) {
   const el = document.getElementById('svg_test_simple');
@@ -18,11 +18,11 @@ function drawTestSimple(vecSum?: Point2D) {
   let vec: Point2D;
 
   if (vecSum) {
-    // Modo actualización: Limpiamos el SVG y usamos el nuevo vector
+    // Update mode: Clear the SVG and use the new vector
     el.innerHTML = '';
     vec = vecSum;
   } else {
-    // Modo inicial: Leemos del atributo HTML
+    // Initial mode: Read from the HTML attribute
     if (el.hasAttribute('data-drawn')) return;
     
     const vecStr = el.getAttribute('data-vec');
@@ -39,14 +39,14 @@ function drawTestSimple(vecSum?: Point2D) {
   try {
     ensureSharedMarkerDefs();
 
-    // Ajustamos el rango para que quepan vectores más grandes si el usuario cambia los valores
+    // Adjust the range to accommodate larger vectors if the user changes values
     const plane = new CartesianPlane(el, -2, 10, -2, 10, 35);
     plane.drawAxes('y', 'x', 'O');
     
-    // Dibujamos A para referencia
+    // Draw A for reference
     plane.drawVectorB([0, 0], vecA, '\\vec{a}', { strokeColor: 'blue' });
 
-    // Dibujamos el vector resultante (Suma)
+    // Draw the resulting vector (Sum)
     plane.drawVectorB([0, 0], vec, '\\vec{v}_{test}', { strokeColor: 'purple' });
     plane.drawMath([1, 8], `\\vec{v}_{test} = (${vec[0]}, ${vec[1]})`, { color: 'purple', scale: 1.2 });
 
@@ -96,11 +96,11 @@ function setupInteractivity() {
     const bx = parseFloat(inputBx.value) || 0;
     const by = parseFloat(inputBy.value) || 0;
 
-    // Calcular nueva suma
+    // Calculate new sum
     const vecB: Point2D = [bx, by];
     const vecSum = math.add(vecA, vecB) as Point2D;
 
-    // Redibujar
+    // Redraw
     drawTestSimple(vecSum);
   };
 
@@ -108,19 +108,19 @@ function setupInteractivity() {
   inputBy.addEventListener('input', update);
 }
 
-// Ejecución automática en el cliente
+// Automatic client-side execution
 if (typeof document !== 'undefined') {
-    // Intentar dibujar inmediatamente
+    // Attempt to draw immediately
     drawTestSimple();
     drawTestStatic();
     setupInteractivity();
-    // Asegurar dibujo al cargar el DOM
+    // Ensure drawing when DOM loads
     document.addEventListener('DOMContentLoaded', () => {
       drawTestSimple();
       drawTestStatic();
       setupInteractivity();
     });
-    // Asegurar redibujado en navegación SPA
+    // Ensure redrawing on SPA navigation
     document.addEventListener('astro:after-swap', () => {
       drawTestSimple();
       drawTestStatic();

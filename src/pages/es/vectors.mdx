@@ -4,11 +4,11 @@ title: Vectores - The House of Phi
 lang: es
 ---
 
-import VectorCanvas from '../../components/VectorCanvas.astro';
-import VectorConverter from '../../components/VectorConverter.astro';
-import MathJax from '../../components/MathJax.astro';
-import VectorsExercisesScript from '../../components/VectorsExercisesScript.astro';
-import * as math from 'mathjs';
+import VectorCanvas from '../../components/VectorCanvas.astro'; // Contenedor para renderizar los gráficos SVG dinámicos
+import VectorConverter from '../../components/VectorConverter.astro'; // Componente interactivo para cálculos y conversión de vectores
+import MathJax from '../../components/MathJax.astro'; // Carga la librería MathJax para renderizar LaTeX dentro de los SVGs
+import VectorsExercisesScript from '../../components/VectorsExercisesScript.astro'; // Inyecta la lógica TypeScript específica para los ejercicios de esta página
+import * as math from 'mathjs'; // Biblioteca para realizar operaciones matemáticas vectoriales complejas
 
 <MathJax />
 <VectorsExercisesScript />

@@ -5,20 +5,20 @@ const { id, viewBox = "0 0 400 400", width = "100%", height = "400", ...rest } =
 <svg id={id} viewBox={viewBox} width={width} height={height} {...rest}></svg>
 
 <script>
-    import { geometryDrawings } from '../scripts/pages/geometryPage';
-    import { vectorsDrawings } from '../scripts/pages/vectorsPage';
-    import { ensureSharedMarkerDefs } from '../scripts/core/SVGDrawing';
+    import { geometryDrawings } from '../scripts/pages/geometryPage'; // Dictionary of drawing functions for the geometry page (geometry.mdx)
+    import { vectorsDrawings } from '../scripts/pages/vectorsPage'; // Dictionary of drawing functions for the vectors page (vectors.mdx)
+    import { ensureSharedMarkerDefs } from '../scripts/core/SVGDrawing'; // Ensures the existence of shared markers (arrows) in the DOM
 
-    // Declarar MathJax para evitar errores de TypeScript (se carga globalmente)
+    // Declare MathJax to avoid TypeScript errors (loaded globally)
     declare const MathJax: any;
 
     const allDrawings = { ...geometryDrawings, ...vectorsDrawings };
 
     const initDrawings = async () => {
-        // Asegurar que los marcadores (flechas) estén definidos
+        // Ensure markers (arrows) are defined
         ensureSharedMarkerDefs();
 
-        // Si MathJax está cargado, esperamos a que esté listo para renderizar
+        // If MathJax is loaded, wait for it to be ready for rendering
         if (typeof MathJax !== 'undefined' && MathJax.startup) {
             try {
                 await MathJax.startup.promise;
@@ -29,21 +29,21 @@ const { id, viewBox = "0 0 400 400", width = "100%", height = "400", ...rest } =
 
         for (const [id, drawFunc] of Object.entries(allDrawings)) {
             const svg = document.getElementById(id) as Element | null;
-            // Verificamos si existe, es función y si NO ha sido dibujado ya (para evitar duplicados)
+            // Check if it exists, is a function, and has NOT been drawn yet (to avoid duplicates)
             if (svg instanceof SVGElement && typeof drawFunc === 'function' && !svg.hasAttribute('data-drawn')) {
                 try {
                     drawFunc(svg);
-                    svg.setAttribute('data-drawn', 'true'); // Marcamos como dibujado
+                    svg.setAttribute('data-drawn', 'true'); // Mark as drawn
                 } catch (e) {
-                    console.error(`❌ Error dibujando ${id}:`, e);
+                    console.error(`❌ Error drawing ${id}:`, e);
                 }
             }
         }
     };
 
-    // Ejecutar inmediatamente (los scripts module se ejecutan tras el parseo del HTML)
+    // Execute immediately (module scripts execute after HTML parsing)
     initDrawings();
     
-    // Soporte opcional por si activas View Transitions en el futuro
+    // Optional support for Astro View Transitions
     document.addEventListener('astro:after-swap', initDrawings);
 </script>
