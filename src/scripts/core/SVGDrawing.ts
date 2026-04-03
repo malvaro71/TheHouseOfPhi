@@ -109,7 +109,7 @@ export function drawSegment(svgElement: SVGElement, x1: number, y1: number, x2: 
             case "cornflowerBlue":
                 line.setAttribute("marker-end", "url(#CornflowerBluearrow)");
                 break;
-            case "Sienna":
+            case "sienna":
                 line.setAttribute("marker-end", "url(#Siennaarrow)");
                 break;
         }

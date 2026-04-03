@@ -35,3 +35,4 @@ Instead of using CSS classes to hide/show text (e.g., `.lang-es`), we create ind
 - **Layouts:** `BaseLayout.astro` provides the HTML shell, accepts a `lang` prop, and includes global styles.
 - **Math Rendering:** Shared via a global `BaseLayout.astro` that imports KaTeX CSS, ensuring mathematical expressions ($E=mc^2$) look consistent across all languages.
 - **State Persistence:** Language preference is stored in `localStorage` via inline scripts in the MDX pages, ensuring consistent redirection on future visits to the root.
+- **Code Documentation Policy:** While content is localized for users, all technical documentation and comments within source code files (.ts, .js, .astro) must be written exclusively in English.

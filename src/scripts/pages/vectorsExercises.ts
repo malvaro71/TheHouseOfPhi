@@ -5,26 +5,26 @@ import * as math from 'mathjs';
 import type { Point2D, Point3D } from '../core/types.ts';
 
 /**
- * Draws Exercise 1: Boat crossing a river.
+ * Draws the chart for Exercise 1: A boat crossing a river.
  * 
- * @param vRiver - River velocity vector.
- * @param vBoat - Resulting boat velocity vector.
- * @param vPropelled - Propulsion velocity vector.
+ * This function handles the visual representation (SVG).
+ * It can operate in initial mode (reading data from HTML) or update mode (receiving new vectors).
  */
 function drawExercise1(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) {
+    // Attempt to get the SVG element by its ID
     const svg = document.getElementById('svge_1');
     if (!(svg instanceof SVGElement)) return;
 
     let e1_vRiver: Point2D, e1_vBoat: Point2D, e1_vPropelled: Point2D;
 
+    // If vectors are passed as arguments, it means the user has moved the controls
     if (vRiver && vBoat && vPropelled) {
-        // Update mode
-        svg.innerHTML = '';
+        svg.innerHTML = ''; // Clear previous drawing
         e1_vRiver = vRiver;
         e1_vBoat = vBoat;
         e1_vPropelled = vPropelled;
     } else {
-        // Initial draw mode
+        // If no arguments, read initial values stored in SVG 'data-' attributes
         if (svg.hasAttribute('data-drawn')) return;
         const vRiverStr = svg.getAttribute('data-v-river');
         const vBoatStr = svg.getAttribute('data-v-boat');
@@ -40,72 +40,116 @@ function drawExercise1(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) 
         }
     }
 
+    // Set up the Cartesian plane, adjusting boundaries so vectors remain visible
     const plane = new CartesianPlane(svg, e1_vPropelled[0] - 5, e1_vRiver[0] + 5, -5, e1_vBoat[1] + 5);
-    plane.drawAxes("y", "x", "O");
+    plane.drawAxes("y", "x", "O"); // Draw X and Y axes
 
     const initialPoint: Point2D = [0, 0];
 
+    // Draw the river velocity vector (blue)
     plane.drawVectorB(initialPoint, e1_vRiver, "\\vec{v}_r", { strokeColor: "cornflowerBlue" }, { scale: 1.2, dy: 4 });
+    
+    // Draw the propulsion vector (direction where the boat points, sienna)
     plane.drawVectorB(initialPoint, e1_vPropelled, "\\vec{v}_p", { strokeColor: "sienna" }, { scale: 1.3, dx: 4, dy: -4 });
     
+    // Draw components to help visualize the vector addition
     const negVRiver = math.multiply(-1, e1_vRiver) as Point2D;
     plane.drawSegment(e1_vPropelled, negVRiver, { strokeColor: "green", strokeDasharray: "5,5" });
     plane.drawVectorB(initialPoint, negVRiver, "\\vec{v}_{px}", { strokeColor: "green" }, { scale: 1.2, color: "green", dx: -46, dy: 4 });
     
+    // Draw the resulting boat velocity vector (perpendicular to the shore, green)
     plane.drawSegment(e1_vPropelled, e1_vBoat, { strokeColor: "green", strokeDasharray: "5,5" });
     plane.drawVectorB(initialPoint, e1_vBoat, "\\vec{v}_b", { strokeColor: "green" }, { scale: 1.3, color: "green", dx: 5, dy: -4 });
+    
+    // Draw the arc representing angle phi between the river and propulsion
     plane.drawAngle(initialPoint, e1_vRiver, e1_vPropelled, 3, "\\phi", { strokeColor: "orange" }, { color: "orange", scale: 1.2, dx: 0, dy: -8 });
 
-    svg.setAttribute('data-drawn', 'true');
+    svg.setAttribute('data-drawn', 'true'); // Mark SVG as drawn to avoid redundancy
 }
 
 /**
  * Sets up interactivity for Exercise 1.
+ * Listens for changes in numerical inputs and updates calculations, formulas, and the graph.
  */
 function setupExercise1Interactivity() {
+    // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
+    declare const MathJax: any;
+
+    // Get input fields where the user enters values
     const inputRiverX = document.getElementById('input-e1-vriver-x') as HTMLInputElement;
     const inputBoatY = document.getElementById('input-e1-vboat-y') as HTMLInputElement;
 
-    // Output elements
+    // Elements where text results and formulas will be written
     const outputVBoat = document.getElementById('output-e1-vboat');
     const outputVRiver = document.getElementById('output-e1-vriver');
-    const outputVBoat2 = document.getElementById('output-e1-vboat-2');
-    const outputVRiver2 = document.getElementById('output-e1-vriver-2');
-    const outputVPropelled = document.getElementById('output-e1-vpropelled');
-    const outputNormVPropelled = document.getElementById('output-e1-norm-vpropelled');
-    const outputPhi = document.getElementById('output-e1-phi');
+
+    const vpFormula = document.getElementById('e1-vp-formula');
+    const magFormula = document.getElementById('e1-magnitude-formula');
+    const phiFormula = document.getElementById('e1-phi-formula');
+
     const outputNormVPropelled2 = document.getElementById('output-e1-norm-vpropelled-2');
     const outputPhi2 = document.getElementById('output-e1-phi-2');
 
-    if (!inputRiverX || !inputBoatY) return;
+    // Validate existence of critical elements to avoid null pointer errors
+    if (!inputRiverX || !inputBoatY || !vpFormula) return;
+    // Check for initialization flag to prevent multiple event listeners on the same inputs
+    if (vpFormula.hasAttribute('data-math-initialized')) return;
 
+    // This function executes every time the user changes a value in the inputs
     const update = () => {
+        // Read current values from inputs
         const riverX = parseFloat(inputRiverX.value) || 0;
         const boatY = parseFloat(inputBoatY.value) || 0;
 
+        // Define vectors based on input values
         const vRiver: Point2D = [riverX, 0];
         const vBoat: Point2D = [0, boatY];
+        
+        // Physics calculations using mathjs library
         const vPropelled = math.subtract(vBoat, vRiver) as Point2D;
         const normVPropelled = math.norm(vPropelled) as number;
-        const phi = math.acos(math.dot(vRiver, vPropelled) / (math.norm(vRiver) * normVPropelled)) * 180 / math.pi;
+        const normVRiver = math.norm(vRiver) as number;
+        const dotProduct = math.dot(vRiver, vPropelled) as number;
+        // Angle calculation using dot product
+        const phi = math.acos(dotProduct / (normVRiver * normVPropelled)) * 180 / math.pi;
 
-        // Update text outputs
-        if (outputVBoat) outputVBoat.textContent = `${vBoat.join(', ')}`; //.join(', ') method takes the arrayand converts it into a readable string where the numbers are separated by a comma and a space.
+        // Update simple text labels (vector coordinates)
+        if (outputVBoat) outputVBoat.textContent = `${vBoat.join(', ')}`;
         if (outputVRiver) outputVRiver.textContent = `${vRiver.join(', ')}`;
-        if (outputVBoat2) outputVBoat2.textContent = `(${vBoat.join(', ')})`;
-        if (outputVRiver2) outputVRiver2.textContent = `(${vRiver.join(', ')})`;
-        if (outputVPropelled) outputVPropelled.textContent = `(${vPropelled.join(', ')})`;
-        if (outputNormVPropelled) outputNormVPropelled.textContent = normVPropelled.toFixed(1); //.toFixed(1) converts number into a string and rounds it with 1 decimal.
-        if (outputPhi) outputPhi.textContent = phi.toFixed(1);
+
+        // Generate LaTeX code for dynamic formulas, injecting calculated values
+        if (vpFormula) {
+            vpFormula.innerHTML = `$$ \\vec v_p = (${vBoat[0]}, ${vBoat[1]}) - (${vRiver[0]}, ${vRiver[1]}) = (${vPropelled[0]}, ${vPropelled[1]}) \\text{ Km/h} $$`;
+        }
+        if (magFormula) {
+            // Pythagorean theorem step-by-step
+            magFormula.innerHTML = `$$ \\|\\vec v_p\\| = \\sqrt{(${vPropelled[0]})^2 + ${vPropelled[1]}^2} = \\sqrt{${(vPropelled[0]**2 + vPropelled[1]**2).toFixed(1)}} \\approx ${normVPropelled.toFixed(1)} \\text{ Km/h} $$`;
+        }
+        if (phiFormula) {
+            // Angle calculation step-by-step via arccosine
+            phiFormula.innerHTML = `$$ \\displaystyle \\phi = \\arccos \\left( \\frac{${dotProduct}}{${normVPropelled.toFixed(1)} \\cdot ${normVRiver.toFixed(1)}} \\right) \\approx ${phi.toFixed(1)}^\\circ $$`;
+        }
+
+        // Update final results in the conclusion text
         if (outputNormVPropelled2) outputNormVPropelled2.textContent = normVPropelled.toFixed(1);
         if (outputPhi2) outputPhi2.textContent = phi.toFixed(1);
 
-        // Redraw SVG
+        // Request MathJax to process the new injected LaTeX code for proper rendering
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([vpFormula, magFormula, phiFormula]).catch((err: any) => console.error(err));
+        }
+
+        // Finally, redraw the graph with the new vectors
         drawExercise1(vRiver, vBoat, vPropelled);
     };
 
+    // Listen for the 'input' event for instant updates as the user types
     inputRiverX.addEventListener('input', update);
     inputBoatY.addEventListener('input', update);
+
+    // Mark the container as initialized and run 'update' once to sync the initial view
+    vpFormula.setAttribute('data-math-initialized', 'true');
+    update();
 }
 
 /**
@@ -249,47 +293,64 @@ function drawExercise8() {
  * Sets up interactivity for Exercise 4: Speed components.
  */
 function setupExercise4Interactivity() {
+    // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
+    declare const MathJax: any;
+
+    // Get input fields where the user enters values
     const inputSpeed = document.getElementById('input-e4-speed') as HTMLInputElement;
     const inputAngle = document.getElementById('input-e4-angle') as HTMLInputElement;
 
-    if (!inputSpeed || !inputAngle) return;
+    // Elements where text results and formulas will be written
+    const vxFormula = document.getElementById('e4-vx-formula');
+    const vyFormula = document.getElementById('e4-vy-formula');
+    const vectorFormula = document.getElementById('e4-vector-formula');
 
+    // Validate existence
+    if (!inputSpeed || !inputAngle || !vxFormula || !vyFormula || !vectorFormula ) return;
+    // Avoid duplicate listeners
+    if (vxFormula.hasAttribute('data-math-initialized')) return;
+
+    // This function executes every time the user changes a value in the inputs
     const update = () => {
+        // Read current values from inputs
         const speed = parseFloat(inputSpeed.value) || 0;
         const angleDeg = parseFloat(inputAngle.value) || 0;
         const angleRad = angleDeg * Math.PI / 180;
-
+        
+        // Calculate components
         const vx = speed * Math.cos(angleRad);
         const vy = speed * Math.sin(angleRad);
 
-        const setContent = (id: string, val: string) => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = val;
-        };
+        // Update dynamic LaTeX formulas using template literals
+        if (vxFormula) {
+            vxFormula.innerHTML = `$$ \\vec v_x = \\|\\vec v\\| \\cos \\theta \\hat\\imath = ${speed} \\cos(${angleDeg}^\\circ) \\hat\\imath \\approx ${vx.toFixed(1)} \\hat\\imath \\text{ m/s} $$`;
+        }
+        if (vyFormula) {
+            vyFormula.innerHTML = `$$ \\vec v_y = \\|\\vec v\\| \\sin \\theta \\hat\\jmath = ${speed} \\sin(${angleDeg}^\\circ) \\hat\\jmath \\approx ${vy.toFixed(1)} \\hat\\jmath \\text{ m/s} $$`;
+        }
+        if (vectorFormula) {
+            vectorFormula.innerHTML = `$$ \\vec v = ${vx.toFixed(1)} \\hat\\imath + ${vy.toFixed(1)} \\hat\\jmath \\text{ m/s} $$`;
+        }
 
-        setContent('output-e4-speed', speed.toString());
-        setContent('output-e4-angle', angleDeg.toString());
-        
-        setContent('output-e4-speed-2', speed.toString());
-        setContent('output-e4-angle-2', angleDeg.toString());
-        setContent('output-e4-vx', vx.toFixed(1));
-
-        setContent('output-e4-speed-3', speed.toString());
-        setContent('output-e4-angle-3', angleDeg.toString());
-        setContent('output-e4-vy', vy.toFixed(1));
-
-        setContent('output-e4-vx-2', vx.toFixed(1));
-        setContent('output-e4-vy-2', vy.toFixed(1));
+        // Re-render MathJax for the containers
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([vxFormula, vyFormula, vectorFormula]).catch((err: any) => console.error(err));
+        }
     };
 
     inputSpeed.addEventListener('input', update);
     inputAngle.addEventListener('input', update);
+
+    // Initial sync and mark as initialized
+    vxFormula.setAttribute('data-math-initialized', 'true');
+    update();
 }
 
 /**
  * Sets up interactivity for Exercise 5: Dot product.
  */
 function setupExercise5Interactivity() {
+    declare const MathJax: any;
     // Inputs
     const inputs = {
         vx: document.getElementById('input-e5-vx') as HTMLInputElement,
@@ -300,12 +361,13 @@ function setupExercise5Interactivity() {
         wz: document.getElementById('input-e5-wz') as HTMLInputElement,
     };
 
-    if (Object.values(inputs).some(el => !el)) return;
+    const formulaDot = document.getElementById('e5-dot-formula');
+    const formulaNormV = document.getElementById('e5-normv-formula');
+    const formulaNormW = document.getElementById('e5-normw-formula');
+    const formulaAngle = document.getElementById('e5-angle-formula');
 
-    const setContent = (id: string, val: string) => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = val;
-    };
+    if (Object.values(inputs).some(el => !el) || !formulaDot) return;
+    if (formulaDot.hasAttribute('data-math-initialized')) return;
 
     const update = () => {
         const v: Point3D = [
@@ -333,34 +395,31 @@ function setupExercise5Interactivity() {
             thetaDeg = math.acos(cosTheta) * 180 / Math.PI;
         }
 
-        // Update spans for dot product calculation
-        setContent('output-e5-vx-1', v[0].toString()); setContent('output-e5-wx-1', w[0].toString());
-        setContent('output-e5-vy-1', v[1].toString()); setContent('output-e5-wy-1', w[1].toString());
-        setContent('output-e5-vz-1', v[2].toString()); setContent('output-e5-wz-1', w[2].toString());
-        setContent('output-e5-dotproduct', dotProduct.toString());
+        // Update dynamic LaTeX formulas using template literals
+        if (formulaDot) {
+            formulaDot.innerHTML = `$$ \\vec v \\cdot \\vec w = (${v[0]})(${w[0]}) + (${v[1]})(${w[1]}) + (${v[2]})(${w[2]}) = ${dotProduct} $$`;
+        }
+        if (formulaNormV) {
+            formulaNormV.innerHTML = `$$ \\|\\vec v\\| = \\sqrt{${v[0]}^2 + (${v[1]})^2 + ${v[2]}^2} = \\sqrt{${normV_sq.toFixed(0)}} \\approx ${normV.toFixed(2)} $$`;
+        }
+        if (formulaNormW) {
+            formulaNormW.innerHTML = `$$ \\|\\vec w\\| = \\sqrt{(${w[0]})^2 + ${w[1]}^2 + ${w[2]}^2} = \\sqrt{${normW_sq.toFixed(0)}} \\approx ${normW.toFixed(2)} $$`;
+        }
+        if (formulaAngle) {
+            formulaAngle.innerHTML = `$$ \\theta = \\arccos \\left( \\frac{${dotProduct}}{${normV.toFixed(2)} \\cdot ${normW.toFixed(2)}} \\right) \\approx \\arccos(${cosTheta.toFixed(4)}) \\approx ${thetaDeg.toFixed(2)}^\\circ $$`;
+        }
 
-        // Update spans for norm calculations
-        setContent('output-e5-vx-2', v[0].toString());
-        setContent('output-e5-vy-2', v[1].toString());
-        setContent('output-e5-vz-2', v[2].toString());
-        setContent('output-e5-normv-sq', normV_sq.toFixed(0));
-        setContent('output-e5-normv', normV.toFixed(2));
-
-        setContent('output-e5-wx-2', w[0].toString());
-        setContent('output-e5-wy-2', w[1].toString());
-        setContent('output-e5-wz-2', w[2].toString());
-        setContent('output-e5-normw-sq', normW_sq.toFixed(0));
-        setContent('output-e5-normw', normW.toFixed(2));
-
-        // Update spans for angle calculation
-        setContent('output-e5-dotproduct-2', dotProduct.toString());
-        setContent('output-e5-normv-2', normV.toFixed(2));
-        setContent('output-e5-normw-2', normW.toFixed(2));
-        setContent('output-e5-costheta', cosTheta.toFixed(4));
-        setContent('output-e5-theta', thetaDeg.toFixed(2));
+        // Re-render MathJax
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([formulaDot, formulaNormV, formulaNormW, formulaAngle]).catch((err: any) => console.error(err));
+        }
     };
 
     Object.values(inputs).forEach(input => input.addEventListener('input', update));
+
+    // Initial sync and mark as initialized
+    formulaDot.setAttribute('data-math-initialized', 'true');
+    update();
 }
 
 /**
@@ -383,15 +442,12 @@ function setupExercise7Interactivity() {
     // Determinant containers
     const det1Container = document.getElementById('e7-determinant-1');
     const det2Container = document.getElementById('e7-determinant-2');
+    const resultContainer = document.getElementById('e7-result-formula');
 
-    // Final result spans
-    const outputVx = document.getElementById('output-e7-vx');
-    const outputVy = document.getElementById('output-e7-vy');
-    const outputVz = document.getElementById('output-e7-vz');
-
-    if (Object.values(inputs).some(el => !el) || !det1Container || !det2Container || !outputVx || !outputVy || !outputVz) {
+    if (Object.values(inputs).some(el => !el) || !det1Container || !det2Container || !resultContainer) {
         return;
     }
+    if (det1Container.hasAttribute('data-math-initialized')) return;
 
     const update = () => {
         const w: Point3D = [ parseFloat(inputs.wx.value) || 0, parseFloat(inputs.wy.value) || 0, parseFloat(inputs.wz.value) || 0 ];
@@ -399,26 +455,26 @@ function setupExercise7Interactivity() {
 
         const v = math.cross(w, r) as Point3D;
 
-        // Update final result spans
-        outputVx.textContent = v[0].toString();
-        outputVy.textContent = v[1].toString();
-        outputVz.textContent = v[2].toString();
-
-        // Regenerate LaTeX for determinants
+        // Regenerate LaTeX for determinants and final result
         const latex1 = `$$ \\vec v = \\vec w \\times \\vec r = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ ${w[0]} & ${w[1]} & ${w[2]} \\\\ ${r[0]} & ${r[1]} & ${r[2]} \\end{vmatrix} $$`;
         const latex2 = `$$ \\vec v = \\begin{vmatrix} ${w[1]} & ${w[2]} \\\\ ${r[1]} & ${r[2]} \\end{vmatrix} \\hat\\imath - \\begin{vmatrix} ${w[0]} & ${w[2]} \\\\ ${r[0]} & ${r[2]} \\end{vmatrix} \\hat\\jmath + \\begin{vmatrix} ${w[0]} & ${w[1]} \\\\ ${r[0]} & ${r[1]} \\end{vmatrix}\\hat k = ((${w[1]*r[2]}) - (${w[2]*r[1]}))\\hat\\imath - ((${w[0]*r[2]}) - (${w[2]*r[0]}))\\hat\\jmath + ((${w[0]*r[1]}) - (${w[1]*r[0]}))\\hat k = ${v[0]}\\hat\\imath + ${v[1]}\\hat\\jmath + ${v[2]}\\hat k $$`;
+        const latexResult = `$$ \\vec v = (${v[0]})\\hat\\imath + (${v[1]})\\hat\\jmath + (${v[2]})\\hat k \\text{ m/s} $$`;
 
         // Update container content and re-render with MathJax
         det1Container.innerHTML = latex1;
         det2Container.innerHTML = latex2;
-        
+        resultContainer.innerHTML = latexResult;
+
         if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
-            // This tells MathJax to re-scan the containers for new math content and render it.
-            MathJax.typesetPromise([det1Container, det2Container]).catch((err: any) => console.error('MathJax typesetting error:', err));
+            MathJax.typesetPromise([det1Container, det2Container, resultContainer]).catch((err: any) => console.error('MathJax typesetting error:', err));
         }
     };
 
     Object.values(inputs).forEach(input => input.addEventListener('input', update));
+
+    // Initial sync and mark as initialized
+    det1Container.setAttribute('data-math-initialized', 'true');
+    update();
 }
 
 function runAllDrawings() {

@@ -59,7 +59,7 @@ npm run preview          # Preview production build
 
 ### Comments
 - TypeScript JSDoc style for functions/classes/interfaces: `@param`, `@returns`, `@throws`
-- Inline comments explaining coordinate transforms, isometric projections, and design decisions
+- **Mandatory English:** All inline comments explaining coordinate transforms, isometric projections, and design decisions must be written in English.
 - Section markers with equals signs (see vectorsPage.ts for example pattern)
 
 ### Validation Patterns
@@ -87,7 +87,7 @@ npm run preview          # Preview production build
 
 ### Comments
 - JSDoc style for functions/classes: `@param`, `@returns`, `@throws`
-- Inline Spanish comments when documenting design decisions (project origin language)
+- **English-only comments:** All documentation and inline comments must be in English to comply with project standards.
 - Future integration notes (e.g., mathjs, node_modules gitignore)
 
 ### Validation Patterns

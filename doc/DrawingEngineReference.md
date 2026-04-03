@@ -6,6 +6,11 @@ It covers the three core modules used to generate geometric visualizations progr
 
 ---
 
+# 📢 Language Policy
+To maintain professional standards and ensure global readability, **all code comments and technical documentation** within the source files of the drawing engine must be written in **English**.
+
+---
+
 # 🧱 1. Architecture Overview
 
 The drawing system is structured in three layers:

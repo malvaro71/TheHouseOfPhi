@@ -102,11 +102,11 @@ The velocity vector is defined as $\vec{v} = \frac{d\vec{r}}{dt}$.
 Use double dollar signs (`$$`) to display equations on their own line, centered. **Important:** Place the `$$` delimiters on separate lines from the equation content to ensure proper rendering and support for numbering tags.
 
 **Source:**
-    ```md
+```mdx
     $$
     \int_{a}^{b} f(x) dx = F(b) - F(a)
     $$
-    ```
+``` 
 
 **Rendered:**
 $$
@@ -114,42 +114,80 @@ $$
 $$
 
 ### 3.2. Numbered Equations
-
 Use `\eqtag{}` inside the LaTeX block. The system automatically adds brackets `[]` around the number.
 
-```md
+```mdx
 $$
-a^2 + b^2 = c^2 \eqtag{5.1}
+    a^2 + b^2 = c^2 \eqtag{5.1}
 $$
-```
+``` 
 ### 3.3. Dynamic Block Math
 
-While standard block math ($$...$$) is rendered on the server and does not support JavaScript variable interpolation, there is a powerful technique to create dynamic formulas (like matrices with calculated values) by leveraging client-side rendering with MathJax.
+Standard block math (`$$...$$`) is rendered on the server during build time. To create interactive formulas that update when a user changes an input, we use **client-side re-rendering** with MathJax.
 
-The Technique:
-Wrap the entire $$...$$ block within a JavaScript template literal ({...}). 
-Why it works: 
-This method bypasses Astro's server-side KaTeX renderer. The raw string, including the interpolated variables, is sent to the browser. The client-side MathJax script then finds this string and renders it dynamically. 
+#### The Pattern
 
-Prerequisite: 
-This page must include the MathJax component. 
+**1. MDX (Initial Static State):**
+Place the formula inside an HTML `div` with a unique `id`. Write the initial LaTeX normally using `$$...$$`. This ensures the formula is visible immediately on page load (via server-side KaTeX).
+
+```mdx
+<div id="dynamic-sqrt-example" class="centered">
+  $$\sqrt{3^2 + 4^2} = 5.00$$
+</div>
+```
+
+**2. TypeScript (Runtime Dynamic Update):**
+In your `.ts` file, update the `innerHTML` of the container. 
+
+> **Crucial:** You must use **backticks (template literals)** in TypeScript to allow variable interpolation (`${val}`) and escape backslashes (`\\`).
+
+```typescript
+// Inputs and container for the formula
+const inputDynA = document.getElementById('input-dyn-a') as HTMLInputElement;
+const inputDynB = document.getElementById('input-dyn-b') as HTMLInputElement;
+const container = document.getElementById('dynamic-sqrt-example');
+
+const update = () => {
+    // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
+    declare const MathJax: any;
+
+    const valA = 3;
+    const valB = 4;
+    const result = 5;
+
+    // 1. Build the new LaTeX string using backticks
+    const newLatex = `$$ \\sqrt{${valA}^2 + ${valB}^2} = ${result} $$`;
+
+    // 2. Inject the string into the DOM
+    container.innerHTML = newLatex;
+
+    // 3. Request MathJax to re-render the container
+    if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+        MathJax.typesetPromise([container]);
+    }
+};
+```
+
+#### Summary Table
+
+| Environment | Requirement | Syntax Example |
+| :--- | :--- | :--- |
+| **MDX File** | Standard LaTeX | `$$\sqrt{x}$$` |
+| **TS File** | Template Literal | `` `$$ \\sqrt{${x}} $$` `` |
+| **TS File** | Escape Backslashes | Use `\\sqrt`, `\\vec`, `\\frac` |
+
+#### Prerequisites
+The MDX page must include the `MathJax` component:
 ```mdx
 import MathJax from '../../components/MathJax.astro';
-
 <MathJax />
 ```
 
-Example: 
-To display a matrix with dynamic values from variables e7_w and e7_r: 
+#### Best Practices
+- **Avoid small spans:** Instead of updating 10 small `<span>` elements inside a paragraph, update one single `<div>` containing the entire formula.
+- **Unique IDs:** Always prefix IDs with the exercise number (e.g., `e4-result-formula`).
+- **Initial Sync:** Call the `update()` function once during initialization to ensure the UI matches the input values.
 
-Source: 
-md 
-{` +$$ +\\begin{vmatrix} +\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ +${e7_w[0]} & ${e7_w[1]} & ${e7_w[2]} \\\\ +${e7_r[0]} & ${e7_r[1]} & ${e7_r[2]} +\\end{vmatrix} +$$ +`}
-
-Important: 
-- Notice the use of backticks (`) for the template literal. 
-- All backslashes (\) within the LaTeX code must be escaped (\\). 
-- This method relies on client-side JavaScript and may cause a brief flash of unstyled content (the raw LaTeX code) on slow connections before MathJax processes it.
 
 ## 4. Graphics and Figures
 
@@ -195,6 +233,7 @@ export const geometryDrawings = {
 *   **Do not** manipulate the DOM directly (e.g., `document.createElement`). Use the provided classes.
 *   **Do not** call `transformCoordinates()` manually. The engines handle this.
 *   **Do not** set SVG width/height manually. The `VectorCanvas` component handles sizing.
+*   **English Comments:** All code comments within script files or MDX script blocks must be written in English.
 
 **Math in Graphics:**
 You can render LaTeX expressions inside the SVG using `drawMath`.

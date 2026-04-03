@@ -4,11 +4,11 @@ title: Vectores - The House of Phi
 lang: es
 ---
 
-import VectorCanvas from '../../components/VectorCanvas.astro'; // Contenedor para renderizar los gráficos SVG dinámicos
-import VectorConverter from '../../components/VectorConverter.astro'; // Componente interactivo para cálculos y conversión de vectores
-import MathJax from '../../components/MathJax.astro'; // Carga la librería MathJax para renderizar LaTeX dentro de los SVGs
-import VectorsExercisesScript from '../../components/VectorsExercisesScript.astro'; // Inyecta la lógica TypeScript específica para los ejercicios de esta página
-import * as math from 'mathjs'; // Biblioteca para realizar operaciones matemáticas vectoriales complejas
+import VectorCanvas from '../../components/VectorCanvas.astro'; // Container for rendering dynamic SVG graphics
+import VectorConverter from '../../components/VectorConverter.astro'; // Interactive component for vector calculations and conversion
+import MathJax from '../../components/MathJax.astro'; // Loads MathJax library to render LaTeX within SVGs
+import VectorsExercisesScript from '../../components/VectorsExercisesScript.astro'; // Injects specific TypeScript logic for the exercises on this page
+import * as math from 'mathjs'; // Library for performing complex vector math operations
 
 <MathJax />
 <VectorsExercisesScript />
@@ -408,7 +408,7 @@ Llamemos un vector $\vec v_r$ a la velocidad del agua del río y un vector $\vec
 
 Si elegimos un plano de coordenadas de manera que el eje x tenga la misma dirección que el río y el eje y sea perpendicular a este (ver Figura 19.1), podemos expresar los vectores involucrados mediante sus componentes:
 
-{/* --- Velocidades del bote y del río expresadas mediante sus componentes--- */}
+{/* --- Boat and river velocities expressed by their components --- */}
 export const e1_vRiver = [9, 0];
 export const e1_vBoat = [0, 36];
 
@@ -426,26 +426,38 @@ $$ \vec v_p = \vec v_b - \vec v_r $$
 
 Ahora, calculamos $\vec v_p$ mediante la resta de los vectores $\vec v_b$ y $\vec v_r$ usando sus [componentes](#7-suma-de-vectores-y-multiplicación-por-un-escalar-usando-sus-componentes):
 
-{/* Usamos math.subtract para restar vectores*/}
+{/* Use math.subtract to subtract vectors */}
 export const e1_vPropelled = math.subtract(e1_vBoat, e1_vRiver);
 
-$\vec v_p = ($<span id="output-e1-vboat-2">{e1_vBoat.join(', ')}</span>$) - ($<span id="output-e1-vriver-2">{e1_vRiver.join(', ')}</span>$) = ($<span id="output-e1-vpropelled">{e1_vPropelled.join(', ')}</span>$) \text{ Km/h}$
+<div id="e1-vp-formula" class="centered" style="margin: 1.5rem 0;">
+    $$
+    \vec v_p = (0, 36) - (9, 0) = (-9, 36) \text{ Km/h}
+    $$
+</div>
 
 La magnitud del vector $\vec v_p$ es la velocidad a la que debe propulsa el bote, se expresa como $\|\vec v_p\|$ y, según [6.1](#6-relación-entre-las-componentes-de-un-vector-su-módulo-y-su-dirección), se calcula como:
 
-{/*Usamos math.norm para calcular la magnitud de un vector*/}
+{/* Use math.norm to calculate vector magnitude */}
 export const e1_normvPropelled = math.norm(e1_vPropelled);
 
-$\|\vec v_p\| = \sqrt{v_{px}^2 + v_{py}^2} = $<span id="output-e1-norm-vpropelled">{e1_normvPropelled.toFixed(1)}</span>$ \text{ Km/h}$
+<div id="e1-magnitude-formula" class="centered" style="margin: 1.5rem 0;">
+    $$
+    \|\vec v_p\| = \sqrt{(-9)^2 + 36^2} \approx 37.1 \text{ Km/h}
+    $$
+</div>
 
 Para calcular el valor del ángulo $\phi$ en la dirección en la que se impulsa el bote, que corresponde al ángulo formado entre el vector $\vec v_p$ y el vector $\vec v_r$, utilizamos las propiedades del [producto escalar de dos vectores](#10-producto-escalar-de-dos-vectores). En particular, aplicando la expresión [10.3] para $\vec v_p$ y $\vec v_r$ tenemos que:
 
-{/* Calculamos el angulo φ entre vRiver y vPropelled
-*   Usamos math.dot para calcular el producto escalar de dos vectores
-*   Usamos math.acos para calcular el ángulo en radianes y convertimos a grados */}
+{/* Calculate the angle φ between vRiver and vPropelled
+*   Use math.dot to calculate the dot product of two vectors
+*   Use math.acos to calculate the angle in radians and convert to degrees */}
 export const e1_phi = math.acos(math.dot(e1_vRiver, e1_vPropelled) / (math.norm(e1_vRiver) * e1_normvPropelled)) * 180 / math.pi;
 
-<div class="centered">$\displaystyle \phi = \arccos \left( \frac{\vec v_p \cdot \vec v_r}{\|\vec v_p\| \cdot \|\vec v_r\|} \right) = $<span id="output-e1-phi">{e1_phi.toFixed(1)}</span>$^\circ$</div>
+<div id="e1-phi-formula" class="centered" style="margin: 1.5rem 0;">
+    $$
+    \displaystyle \phi = \arccos \left( \frac{\vec v_p \cdot \vec v_r}{\|\vec v_p\| \cdot \|\vec v_r\|} \right) \approx 104.0^\circ
+    $$
+</div>
 
 Entonces, la respuesta al ejercicio es que la embarcación debe ser impulsada a una velocidad de <span id="output-e1-norm-vpropelled-2">{e1_normvPropelled.toFixed(1)}</span> Km/h y en una dirección que forme un ángulo de <span id="output-e1-phi-2">{e1_phi.toFixed(1)}</span>º con el río.
 
@@ -553,36 +565,21 @@ $\vec V_y =$ {e3_sailboatSpeed} $\cdot \sin(${e3_angleDeg}$^\circ) = ${e3_sailbo
 
 
 ### Ejercicio 4
+{/* --- Datos inciales del enunciado --- */}
+export const e4_speed = 130;
+export const e4_angleDeg = 30;
+
 Un objeto se mueve de tal manera que su velocidad en un instante determinado es de <input type="number" id="input-e4-speed" value={e4_speed} style="width: 60px; text-align: center;" /> m/s y forma un ángulo de <input type="number" id="input-e4-angle" value={e4_angleDeg} style="width: 50px; text-align: center;" />º con la horizontal. Halla las componentes horizontal y vertical de la velocidad. Expresa el vector velocidad en función de sus componentes.
 
-{/* --- Datos del enunciado --- */}
-export const e4_speed = 120;
-export const e4_angleDeg = 30;
-export const e4_angleRad = e4_angleDeg * Math.PI / 180;
+Las fórmulas para calcular las [componentes de un vector](#5-componentes-de-un-vector) $\vec v$ dado su módulo $\|\vec v\|$ y dirección $\theta$ vienen definidas por las expresiones [6.3] y [6.4]. 
 
-Las fórmulas para calcular las [componentes de un vector](#5-componentes-de-un-vector) $\vec v$ dado su módulo $\|\vec v\|$ y dirección $\theta$ vienen definidas por las expresiones [6.3] y [6.4]:
+<div id="e4-vx-formula" class="centered"></div>
 
-{/*Componente horizontal de la velocidad:*/}
-export const e4_Vx = e4_speed * Math.cos(e4_angleRad);
+<div id="e4-vy-formula" class="centered"></div>
 
-$\vec v_x = \|\vec v\|\cos \theta \cdot\hat\imath$
+Y expresado vectorialmente como $\vec v = \vec v_x + \vec v_y$:
 
-{/*Componente vertical de la velocidad:*/}
-export const e4_Vy = e4_speed * Math.sin(e4_angleRad);
-
-$\vec v_y = \|\vec v\|\sin \theta \cdot\hat\jmath$
-
-$\vec v = \vec v_x + \vec v_y$
-
-Donde $\|\vec v\|$ = <span id="output-e4-speed">{e4_speed}</span> m/s, y $\theta$ = <span id="output-e4-angle">{e4_angleDeg}</span>º. Así que:
-
-$\vec v_x = $<span id="output-e4-speed-2">{e4_speed}</span>$\cos($<span id="output-e4-angle-2">{e4_angleDeg}</span>$^\circ) =$ <span id="output-e4-vx">{e4_Vx.toFixed(1)}</span> m/s
-
-$\vec v_y = $<span id="output-e4-speed-3">{e4_speed}</span>$\sin($<span id="output-e4-angle-3">{e4_angleDeg}</span>$^\circ) =$ <span id="output-e4-vy">{e4_Vy.toFixed(1)}</span> m/s
-
-Y expresado vectorialmente:
-
-$\vec v = $<span id="output-e4-vx-2">{e4_Vx.toFixed(1)}</span>$\hat\imath + $<span id="output-e4-vy-2">{e4_Vy.toFixed(1)}</span>$\hat\jmath$ m/s
+<div id="e4-vector-formula" class="centered"></div>
 
 <p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
@@ -605,42 +602,35 @@ $$
 \vec v\cdot\vec w = v_x\cdot w_x + v_y\cdot w_y + v_z\cdot w_z
 $$
 
-Entonces:
+Aplicando la expresión [10.1], calculamos el producto escalar:
 
-{/* Producto escalar */}
-export const e5_dotProduct = math.dot(e5_v, e5_w);
+<div id="e5-dot-formula" class="centered">
+    $$
+    \vec v \cdot \vec w = (5)(-2) + (-3)(1) + (2)(3) = -7
+    $$
+</div>
 
-$\vec v\cdot\vec w = ($<span id="output-e5-vx-1">{e5_v[0]}</span>$)($<span id="output-e5-wx-1">{e5_w[0]}</span>$) + ($<span id="output-e5-vy-1">{e5_v[1]}</span>$)($<span id="output-e5-wy-1">{e5_w[1]}</span>$) + ($<span id="output-e5-vz-1">{e5_v[2]}</span>$)($<span id="output-e5-wz-1">{e5_w[2]}</span>$) = $<span id="output-e5-dotproduct">{e5_dotProduct}</span>
+Para hallar el ángulo $\theta$, calculamos primero las magnitudes $\|\vec v\|$ y $\|\vec w\|$ según [6.1]:
 
-El valór del ángulo $\theta$ que forman dos vectores $\vec v$ y $\vec w$, viene dado por la expresión [10.3].
+<div id="e5-normv-formula" class="centered">
+    $$
+    \|\vec v\| = \sqrt{5^2 + (-3)^2 + 2^2} = \sqrt{38} \approx 6.16
+    $$
+</div>
 
-$$
-\theta = \arccos\frac{\vec v\cdot\vec w}{\|\vec v\|\cdot\|\vec w\|}
-$$
+<div id="e5-normw-formula" class="centered">
+    $$
+    \|\vec w\| = \sqrt{(-2)^2 + 1^2 + 3^2} = \sqrt{14} \approx 3.74
+    $$
+</div>
 
-Calculamos primero $\|\vec v\|$ y $\|\vec w\|$:
-{/* Módulos */}
-export const e5_normV = math.norm(e5_v);
-export const e5_normW = math.norm(e5_w);
-export const e5_normV_sq = e5_normV**2;
-export const e5_normW_sq = e5_normW**2;
+Finalmente, aplicando la expresión [10.3], el valor del ángulo $\theta$ es:
 
-$\|\vec v\|^2 = ($<span id="output-e5-vx-2">{e5_v[0]}</span>$)^2 + ($<span id="output-e5-vy-2">{e5_v[1]}</span>$)^2 + ($<span id="output-e5-vz-2">{e5_v[2]}</span>$)^2 = $<span id="output-e5-normv-sq">{e5_normV_sq.toFixed(0)}</span>
-
-$\|\vec v\| \approx $<span id="output-e5-normv">{e5_normV.toFixed(2)}</span>
-
-$\|\vec w\|^2 = ($<span id="output-e5-wx-2">{e5_w[0]}</span>$)^2 + ($<span id="output-e5-wy-2">{e5_w[1]}</span>$)^2 + ($<span id="output-e5-wz-2">{e5_w[2]}</span>$)^2 = $<span id="output-e5-normw-sq">{e5_normW_sq.toFixed(0)}</span>
-
-$\|\vec w\| \approx $<span id="output-e5-normw">{e5_normW.toFixed(2)}</span>
-
-Y ya podemos calcular el valor del ángulo $\theta$:
-
-{/* Ángulo */}
-export const e5_cosTheta = e5_dotProduct / (e5_normV * e5_normW);
-export const e5_thetaRad = math.acos(e5_cosTheta);
-export const e5_thetaDeg = e5_thetaRad * 180 / math.pi;
-
-$\theta  = \arccos($<span id="output-e5-dotproduct-2">{e5_dotProduct}</span>$ / ($<span id="output-e5-normv-2">{e5_normV.toFixed(2)}</span>$\cdot$<span id="output-e5-normw-2">{e5_normW.toFixed(2)}</span>$)) \approx \arccos($<span id="output-e5-costheta">{e5_cosTheta.toFixed(4)}</span>$) \approx$ <span id="output-e5-theta">{e5_thetaDeg.toFixed(2)}</span>º
+<div id="e5-angle-formula" class="centered">
+    $$
+    \theta = \arccos \left( \frac{-7}{6.16 \cdot 3.74} \right) \approx 107.65^\circ
+    $$
+</div>
 
 <p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
@@ -672,7 +662,7 @@ Donde $\|\vec v\|$ = {e6_planeSpeed} Km/h y $\theta$ = {e6_angleDeg}º.
 
 Entonces:
 
-{/* Calculamos la proyección de la velocidad en la dirección este:*/}
+{/* Calculate the projection of velocity in the east direction: */}
 export const e6_projection = e6_planeSpeed * Math.cos(e6_angleRad);
 
 $\|\text{proj}_E \vec v\| = 600\cdot\cos(45^\circ) = 600 \cdot \frac{\sqrt{2}}{2} \approx$ {e6_projection.toFixed(0)} Km/h
@@ -734,12 +724,11 @@ Calculamos el determinante:
     `}
 </div>
 
-El resultado final es:
+El resultado final de la velocidad lineal es:
 
-{/* Cálculo del producto vectorial */}
-export const e7_v = math.cross(e7_w, e7_r);
-
-$\vec v = ($<span id="output-e7-vx">{e7_v[0]}</span>$)\hat\imath + ($<span id="output-e7-vy">{e7_v[1]}</span>$)\hat\jmath + ($<span id="output-e7-vz">{e7_v[2]}</span>$)\hat k$ m/s.
+<div id="e7-result-formula" class="centered">
+    $\vec v = (-3)\hat\imath + (-1)\hat\jmath + (-4)\hat k \text{ m/s}$
+</div>
 
 <p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
@@ -755,7 +744,7 @@ Para resolver este ejercicio, utilicemos la noción de [producto vectorial](#12-
 
 Así que definimos el vector $\overrightarrow{AB}$ como aquel que va del punto A hasta el punto B, y el vector $\overrightarrow{AC}$ como aquel que va del punto A hasta el punto C, y calculamos sus coordenadas:
 
-{/* Vectores AB y AC */}
+{/* AB and AC vectors */}
 export const e8_AB = math.subtract(e8_B, e8_A);
 export const e8_AC = math.subtract(e8_C, e8_A);
 
@@ -769,7 +758,7 @@ $$
 \text{Área} = \frac{\|\overrightarrow{AB} \times \overrightarrow{AC}\|}{2}
 $$
 
-{/* Producto vectorial y Área */}
+{/* Cross product and Area */}
 export const e8_cross = math.cross(e8_AB, e8_AC);
 export const e8_area = math.norm(e8_cross) / 2;
 
