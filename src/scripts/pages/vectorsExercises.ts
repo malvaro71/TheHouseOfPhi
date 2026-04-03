@@ -323,13 +323,13 @@ function setupExercise4Interactivity() {
 
         // Update dynamic LaTeX formulas using template literals
         if (vxFormula) {
-            vxFormula.innerHTML = `$$ \\vec v_x = \\|\\vec v\\| \\cos \\theta \\hat\\imath = ${speed} \\cos(${angleDeg}^\\circ) \\hat\\imath \\approx ${vx.toFixed(1)} \\hat\\imath \\text{ m/s} $$`;
+            vxFormula.innerHTML = `$$ \\vec v_x = \\|\\vec v\\| \\cos \\theta \\hat\\imath = ${speed} \\cos(${angleDeg}^\\circ) \\hat\\imath \\approx ${vx.toFixed(1)} \\hat\\imath \\text{ m/s} $$`; // Corrected LaTeX for hat{i}
         }
         if (vyFormula) {
-            vyFormula.innerHTML = `$$ \\vec v_y = \\|\\vec v\\| \\sin \\theta \\hat\\jmath = ${speed} \\sin(${angleDeg}^\\circ) \\hat\\jmath \\approx ${vy.toFixed(1)} \\hat\\jmath \\text{ m/s} $$`;
+            vyFormula.innerHTML = `$$ \\vec v_y = \\|\\vec v\\| \\sin \\theta \\hat\\jmath = ${speed} \\sin(${angleDeg}^\\circ) \\hat\\jmath \\approx ${vy.toFixed(1)} \\hat\\jmath \\text{ m/s} $$`; // Corrected LaTeX for hat{j}
         }
         if (vectorFormula) {
-            vectorFormula.innerHTML = `$$ \\vec v = ${vx.toFixed(1)} \\hat\\imath + ${vy.toFixed(1)} \\hat\\jmath \\text{ m/s} $$`;
+            vectorFormula.innerHTML = `$$ \\vec v = ${vx.toFixed(1)} \\hat\\imath + ${vy.toFixed(1)} \\hat\\jmath \\text{ m/s} $$`; // Corrected LaTeX for hat{i} and hat{j}
         }
 
         // Re-render MathJax for the containers
@@ -366,6 +366,7 @@ function setupExercise5Interactivity() {
     const formulaNormW = document.getElementById('e5-normw-formula');
     const formulaAngle = document.getElementById('e5-angle-formula');
 
+    // Validate existence of critical elements
     if (Object.values(inputs).some(el => !el) || !formulaDot) return;
     if (formulaDot.hasAttribute('data-math-initialized')) return;
 
@@ -397,16 +398,16 @@ function setupExercise5Interactivity() {
 
         // Update dynamic LaTeX formulas using template literals
         if (formulaDot) {
-            formulaDot.innerHTML = `$$ \\vec v \\cdot \\vec w = (${v[0]})(${w[0]}) + (${v[1]})(${w[1]}) + (${v[2]})(${w[2]}) = ${dotProduct} $$`;
+            formulaDot.innerHTML = `$$ \\vec v \\cdot \\vec w = (${v[0]})(${w[0]}) + (${v[1]})(${w[1]}) + (${v[2]})(${w[2]}) = ${dotProduct} $$`; // Corrected LaTeX for dot product
         }
         if (formulaNormV) {
-            formulaNormV.innerHTML = `$$ \\|\\vec v\\| = \\sqrt{${v[0]}^2 + (${v[1]})^2 + ${v[2]}^2} = \\sqrt{${normV_sq.toFixed(0)}} \\approx ${normV.toFixed(2)} $$`;
+            formulaNormV.innerHTML = `$$ \\|\\vec v\\| = \\sqrt{${v[0]}^2 + (${v[1]})^2 + ${v[2]}^2} = \\sqrt{${normV_sq.toFixed(0)}} \\approx ${normV.toFixed(2)} $$`; // Corrected LaTeX for norm V
         }
         if (formulaNormW) {
-            formulaNormW.innerHTML = `$$ \\|\\vec w\\| = \\sqrt{(${w[0]})^2 + ${w[1]}^2 + ${w[2]}^2} = \\sqrt{${normW_sq.toFixed(0)}} \\approx ${normW.toFixed(2)} $$`;
+            formulaNormW.innerHTML = `$$ \\|\\vec w\\| = \\sqrt{(${w[0]})^2 + ${w[1]}^2 + ${w[2]}^2} = \\sqrt{${normW_sq.toFixed(0)}} \\approx ${normW.toFixed(2)} $$`; // Corrected LaTeX for norm W
         }
         if (formulaAngle) {
-            formulaAngle.innerHTML = `$$ \\theta = \\arccos \\left( \\frac{${dotProduct}}{${normV.toFixed(2)} \\cdot ${normW.toFixed(2)}} \\right) \\approx \\arccos(${cosTheta.toFixed(4)}) \\approx ${thetaDeg.toFixed(2)}^\\circ $$`;
+            formulaAngle.innerHTML = `$$ \\theta = \\arccos \\left( \\frac{${dotProduct}}{${normV.toFixed(2)} \\cdot ${normW.toFixed(2)}} \\right) \\approx \\arccos(${cosTheta.toFixed(4)}) \\approx ${thetaDeg.toFixed(2)}^\\circ $$`; // Corrected LaTeX for angle
         }
 
         // Re-render MathJax
@@ -444,10 +445,12 @@ function setupExercise7Interactivity() {
     const det2Container = document.getElementById('e7-determinant-2');
     const resultContainer = document.getElementById('e7-result-formula');
 
+    // Validate existence of critical elements
     if (Object.values(inputs).some(el => !el) || !det1Container || !det2Container || !resultContainer) {
         return;
     }
     if (det1Container.hasAttribute('data-math-initialized')) return;
+
 
     const update = () => {
         const w: Point3D = [ parseFloat(inputs.wx.value) || 0, parseFloat(inputs.wy.value) || 0, parseFloat(inputs.wz.value) || 0 ];
@@ -456,9 +459,9 @@ function setupExercise7Interactivity() {
         const v = math.cross(w, r) as Point3D;
 
         // Regenerate LaTeX for determinants and final result
-        const latex1 = `$$ \\vec v = \\vec w \\times \\vec r = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ ${w[0]} & ${w[1]} & ${w[2]} \\\\ ${r[0]} & ${r[1]} & ${r[2]} \\end{vmatrix} $$`;
-        const latex2 = `$$ \\vec v = \\begin{vmatrix} ${w[1]} & ${w[2]} \\\\ ${r[1]} & ${r[2]} \\end{vmatrix} \\hat\\imath - \\begin{vmatrix} ${w[0]} & ${w[2]} \\\\ ${r[0]} & ${r[2]} \\end{vmatrix} \\hat\\jmath + \\begin{vmatrix} ${w[0]} & ${w[1]} \\\\ ${r[0]} & ${r[1]} \\end{vmatrix}\\hat k = ((${w[1]*r[2]}) - (${w[2]*r[1]}))\\hat\\imath - ((${w[0]*r[2]}) - (${w[2]*r[0]}))\\hat\\jmath + ((${w[0]*r[1]}) - (${w[1]*r[0]}))\\hat k = ${v[0]}\\hat\\imath + ${v[1]}\\hat\\jmath + ${v[2]}\\hat k $$`;
-        const latexResult = `$$ \\vec v = (${v[0]})\\hat\\imath + (${v[1]})\\hat\\jmath + (${v[2]})\\hat k \\text{ m/s} $$`;
+        const latex1 = `$$ \\vec v = \\vec w \\times \\vec r = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ ${w[0]} & ${w[1]} & ${w[2]} \\\\ ${r[0]} & ${r[1]} & ${r[2]} \\end{vmatrix} $$`; // Corrected LaTeX for hat{i}, hat{j}, hat{k}
+        const latex2 = `$$ \\vec v = \\begin{vmatrix} ${w[1]} & ${w[2]} \\\\ ${r[1]} & ${r[2]} \\end{vmatrix} \\hat\\imath - \\begin{vmatrix} ${w[0]} & ${w[2]} \\\\ ${r[0]} & ${r[2]} \\end{vmatrix} \\hat\\jmath + \\begin{vmatrix} ${w[0]} & ${w[1]} \\\\ ${r[0]} & ${r[1]} \\end{vmatrix}\\hat k = ((${w[1]*r[2]}) - (${w[2]*r[1]}))\\hat\\imath - ((${w[0]*r[2]}) - (${w[2]*r[0]}))\\hat\\jmath + ((${w[0]*r[1]}) - (${w[1]*r[0]}))\\hat k = ${v[0]}\\hat\\imath + ${v[1]}\\hat\\jmath + ${v[2]}\\hat k $$`; // Corrected LaTeX for hat{i}, hat{j}, hat{k}
+        const latexResult = `$$ \\vec v = (${v[0]})\\hat\\imath + (${v[1]})\\hat\\jmath + (${v[2]})\\hat k \\text{ m/s} $$`; // Corrected LaTeX for hat{i}, hat{j}, hat{k}
 
         // Update container content and re-render with MathJax
         det1Container.innerHTML = latex1;
@@ -477,6 +480,39 @@ function setupExercise7Interactivity() {
     update();
 }
 
+/**
+ * Sets up interactivity for Exercise 8: Triangle area via cross product.
+ */
+function setupExercise8Interactivity() {
+    declare const MathJax: any;
+
+    // Elements for dynamic formulas
+    const abVectorFormula = document.getElementById('e8-ab-vector-formula');
+    const acVectorFormula = document.getElementById('e8-ac-vector-formula');
+    const crossProductFormula = document.getElementById('e8-cross-product-formula');
+    const normCrossProductFormula = document.getElementById('e8-norm-cross-product-formula');
+    const areaFormula = document.getElementById('e8-area-formula');
+
+    // No inputs for this exercise, but we still need to ensure MathJax renders
+    // and avoid duplicate initializations if the page is swapped.
+    if (!abVectorFormula || abVectorFormula.hasAttribute('data-math-initialized')) return;
+
+    // This exercise does not have interactive inputs, but we want to ensure
+    // the dynamic LaTeX blocks are rendered by MathJax on load.
+    const update = () => {
+        // MathJax will process the initial content of the div,
+        // but if we were to make these dynamic, this is where the LaTeX string would be built.
+        // For now, we just trigger a typeset on the existing content.
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([abVectorFormula, acVectorFormula, crossProductFormula, normCrossProductFormula, areaFormula]).catch((err: any) => console.error('MathJax typesetting error:', err));
+        }
+    };
+
+    // Initial sync and mark as initialized
+    abVectorFormula.setAttribute('data-math-initialized', 'true');
+    update();
+}
+
 function runAllDrawings() {
     ensureSharedMarkerDefs();
     drawExercise1();
@@ -486,6 +522,7 @@ function runAllDrawings() {
     setupExercise4Interactivity();
     setupExercise5Interactivity();
     setupExercise7Interactivity();
+    setupExercise8Interactivity(); // Added setup for Exercise 8
     drawExercise6();
     drawExercise8();
 }

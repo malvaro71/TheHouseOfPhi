@@ -13,7 +13,7 @@ import * as math from 'mathjs';
 <MathJax />
 <VectorsExercisesScript />
 
-[Home Page](/)
+[Home Page](/en/)
 
 # Vectors
 
@@ -35,14 +35,18 @@ This chapter is organized into the following reference blocks:
 - **[Cartesian Coordinate System](#4-cartesian-coordinate-system):** Representing vectors in 2D and 3D.
 - **[Vector Components](#5-vector-components):** Decomposing a vector into its components.
 - **[Relationship between Components, Magnitude, and Direction](#6-relationship-between-components-magnitude-and-direction):** Fundamental calculations.
-- **[Operations with Components](#7-vector-addition-and-multiplication-by-a-scalar-using-components):** Addition and multiplication by a scalar.
+- **[Vector Addition and Multiplication by a Scalar Using Components](#7-vector-addition-and-multiplication-by-a-scalar-using-components):** Addition and multiplication by a scalar.
 - **[The Unit Vector](#8-the-unit-vector):** Definition and calculation.
-- **[Representation with Unit Vectors](#9-representation-of-vectors-using-unit-vectors-î-ĵ-and-k):** Standard notation in physics.
+- **[Representation of Vectors using Unit Vectors î, ĵ and k](#9-representation-of-vectors-using-unit-vectors-î-ĵ-and-k):** Standard notation in physics.
 - **[Dot Product of Two Vectors](#10-dot-product-of-two-vectors):** Definition, calculation, and applications such as the angle between vectors.
 - **[Vector Projection](#11-vector-projection):** How to project one vector onto another.
 - **[Cross Product](#12-cross-product):** Definition, calculation, and applications such as the area of a parallelogram.
-- **[Moment of a Vector](#13-moment-of-a-sliding-vector-about-a-point):** Concept of moment about a point and a line.
+- **[Moment of a Sliding Vector about a Point](#13-moment-of-a-sliding-vector-about-a-point):** Concept of moment about a point and a line.
+- **[Moment of a Sliding Vector about a Line](#14-moment-of-a-sliding-vector-about-a-line):** Concept of moment about a point and a line.
 - **[Vector Functions](#15-vector-functions):** Introduction to vector functions, derivatives, and integrals.
+- **[Derivative of a Vector Function](#16-derivative-of-a-vector-function):** How to calculate the derivative of a vector function.
+- **[Partial Derivative of a Function and its Total Derivative](#17-partial-derivative-of-a-function-and-its-total-derivative):** How to calculate the partial derivative of a function and its total derivative.
+- **[Integral of a Vector Function](#18-integral-of-a-vector-function):** How to calculate the integral of a vector function.
 - **[Vector Exercises](#19-vector-exercises):** Solved problems to apply the concepts.
 
 ## 2. Vectors
@@ -124,7 +128,7 @@ $$
 
 ### 6.2 Vector Direction
 The **direction** of the vector, or the angle it forms with the horizontal, **$\theta$**, is calculated by
-
+ 
 $$
 \theta = \arctan (y/x) \tag{6.2}
 $$
@@ -148,7 +152,7 @@ $$
 </details>
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 7. Vector Addition and Multiplication by a Scalar Using Components
 The **sum of two vectors** expressed by their **components**, $\vec v = (x_1, y_1)$ and $\vec w = (x_2, y_2)$, is defined as
 
@@ -163,7 +167,7 @@ $$
 $$
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 8. The Unit Vector
 The **unit vector** $\vec u_v$ of a non-zero vector $\vec v$ is a vector that has the same direction as $\vec v$ but a magnitude of 1. The unit vector is calculated by
 
@@ -222,7 +226,7 @@ $$
 When the dot product of two vectors is zero, the two vectors are said to be **orthogonal** or perpendicular.
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 11. Vector Projection
 The **projection of $\vec w$ onto $\vec v$** or onto the line containing $\vec v$, denoted as $\text{proj}_v \vec w$, is a vector that lies on $\vec v$ and has the same direction as $\vec w$ (if the angle between $\vec v$ and $\vec w$ is less than 90 degrees) or the opposite direction to $\vec v$ (if the angle between $\vec v$ and $\vec w$ is greater than 90 degrees).
 
@@ -255,7 +259,7 @@ $$
 $$
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 12. Cross Product
 The **cross product** of two vectors is a binary operation on two vectors in a three-dimensional space and is written as **$\vec v \times \vec w$**. The result of this cross product is a third vector that is perpendicular (or orthogonal) to the vectors being multiplied, or in other words, normal to the plane containing them.
 
@@ -291,7 +295,7 @@ Properties of the cross product:
 - Cross product of a vector with itself: $\vec v \times \vec v = \vec 0$
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 13. Moment of a Sliding Vector about a Point
 The **moment of a sliding vector** $\vec v$ about a point P is calculated by the cross product of $\vec r$ and $\vec v$. Where $\vec r$ is the position vector of $\vec v$ with respect to P.
 
@@ -310,7 +314,7 @@ When a vector is slid along its line of action, neither the magnitude of the sli
 This concept is fundamental in physics and engineering, as it helps us understand and calculate the effects of forces on the rotation of objects.
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 14. Moment of a Sliding Vector about a Line
 The moment of a sliding vector about a line of interest l is the projection onto that line of the moment of the vector with respect to any point on the line.
 
@@ -363,7 +367,7 @@ $$
 $$
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 17. Partial Derivative of a Function and its Total Derivative
 If a function depends on more than one variable, its **partial derivative** is the derivative with respect to one of those variables while keeping the others constant.
 
@@ -380,7 +384,7 @@ df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy + \frac{\
 $$
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 18. Integral of a Vector Function
 The **integral of a vector function** is another vector function in which its coordinate functions are the integrals of the coordinate functions of the initial vector function. That is, if $\vec f(t) = f_x(t)\vec i + f_y(t)\vec j + f_z(t)\vec k = (f_x(t), f_y(t), f_z(t))$, its integral is:
 
@@ -396,10 +400,10 @@ $$
 - 5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ## 19. Vector Exercises
 
-### Exercise 1
+### Exercise 1: Boat Crossing a River
 A boatman is rowing a boat, wanting to always stay perpendicular to the riverbank and crossing with an average speed of <input type="number" id="input-e1-vboat-y" value={e1_vBoat[1]} style="width: 50px; text-align: center;" /> km/h. The river water flows at a speed of <input type="number" id="input-e1-vriver-x" value={e1_vRiver[0]} style="width: 50px; text-align: center;" /> km/h. At what speed must the boat be propelled? In what direction?
 
 Let's call vector $\vec v_r$ the velocity of the river water and vector $\vec v_b$ the velocity of the boat with respect to the riverbank. The goal is to find the vector $\vec v_p$, which is the velocity at which the boatman must propel the boat so that its resulting velocity $\vec v_b$ is perpendicular to the riverbank.
@@ -410,11 +414,15 @@ If we choose a coordinate plane such that the x-axis has the same direction as t
 export const e1_vRiver = [9, 0];
 export const e1_vBoat = [0, 36];
 
-$\vec v_b = ($<span id="output-e1-vboat">{e1_vBoat.join(', ')}</span>$) \text{ Km/h}$
+<div class="centered">
+    $\vec v_b = ($<span id="output-e1-vboat">{e1_vBoat.join(', ')}</span>$) \text{ Km/h}$
+</div>
 
-$\vec v_r = ($<span id="output-e1-vriver">{e1_vRiver.join(', ')}</span>$) \text{ Km/h}$
+<div class="centered">
+    $\vec v_r = ($<span id="output-e1-vriver">{e1_vRiver.join(', ')}</span>$) \text{ Km/h}$
+</div>
 
-On the other hand, the boat's velocity $\vec v_b$ can be expressed as a vector sum:
+On the other hand, the boat's velocity $\vec v_b$ can be expressed as a [vector sum](#3-vector-addition-graphical-method):
 
 $$ \vec v_b = \vec v_p + \vec v_r $$
 
@@ -422,28 +430,40 @@ Therefore:
 
 $$ \vec v_p = \vec v_b - \vec v_r $$
 
-Now, we calculate $\vec v_p$ by subtracting the vectors $\vec v_b$ and $\vec v_r$ using their components:
+Now, we calculate $\vec v_p$ by subtracting the vectors $\vec v_b$ and $\vec v_r$ using their [components](#7-vector-addition-and-multiplication-by-a-scalar-using-components):
 
-{/* We use math.subtract to subtract vectors */}
+{/* Use math.subtract to subtract vectors */}
 export const e1_vPropelled = math.subtract(e1_vBoat, e1_vRiver);
 
-$\vec v_p = ($<span id="output-e1-vboat-2">{e1_vBoat.join(', ')}</span>$) - ($<span id="output-e1-vriver-2">{e1_vRiver.join(', ')}</span>$) = ($<span id="output-e1-vpropelled">{e1_vPropelled.join(', ')}</span>$) \text{ Km/h}$
+<div id="e1-vp-formula" class="centered" style="margin: 1.5rem 0;">
+    $$
+    \vec v_p = (0, 36) - (9, 0) = (-9, 36) \text{ Km/h}
+    $$
+</div>
 
-The magnitude of the vector $\vec v_p$ is the speed at which the boat must be propelled, expressed as $\|\vec v_p\|$, and according to 6.1, it is calculated as:
+The magnitude of the vector $\vec v_p$ is the speed at which the boat must be propelled, expressed as $\|\vec v_p\|$, and according to [6.1](#6-relationship-between-components-magnitude-and-direction), it is calculated as:
 
-{/* We use math.norm to calculate the magnitude of a vector */}
+{/* Use math.norm to calculate vector magnitude */}
 export const e1_normvPropelled = math.norm(e1_vPropelled);
 
-$\|\vec v_p\| = \sqrt{v_{px}^2 + v_{py}^2} = $<span id="output-e1-norm-vpropelled">{e1_normvPropelled.toFixed(1)}</span>$ \text{ Km/h}$
+<div id="e1-magnitude-formula" class="centered" style="margin: 1.5rem 0;">
+    $$
+    \|\vec v_p\| = \sqrt{(-9)^2 + 36^2} \approx 37.1 \text{ Km/h}
+    $$
+</div>
 
-To calculate the value of the angle $\phi$ in the direction in which the boat is propelled, which corresponds to the angle formed between the vector $\vec v_p$ and the vector $\vec v_r$, we use the properties of the dot product of two vectors. Specifically, applying expression [10.3] for $\vec v_p$ and $\vec v_r$ we have:
+To calculate the value of the angle $\phi$ in the direction in which the boat is propelled, which corresponds to the angle formed between the vector $\vec v_p$ and the vector $\vec v_r$, we use the properties of the [dot product of two vectors](#10-dot-product-of-two-vectors). Specifically, applying expression [10.3] for $\vec v_p$ and $\vec v_r$ we have:
 
 {/* We calculate the angle φ between vRiver and vPropelled
 *   We use math.dot to calculate the dot product of two vectors
 *   We use math.acos to calculate the angle in radians and convert to degrees */}
 export const e1_phi = math.acos(math.dot(e1_vRiver, e1_vPropelled) / (math.norm(e1_vRiver) * e1_normvPropelled)) * 180 / math.pi;
 
-<div class="centered">$\displaystyle \phi = \arccos \left( \frac{\vec v_p \cdot \vec v_r}{\|\vec v_p\| \cdot \|\vec v_r\|} \right) = $<span id="output-e1-phi">{e1_phi.toFixed(1)}</span>$^\circ$</div>
+<div id="e1-phi-formula" class="centered" style="margin: 1.5rem 0;">
+    $$
+    \displaystyle \phi = \arccos \left( \frac{\vec v_p \cdot \vec v_r}{\|\vec v_p\| \cdot \|\vec v_r\|} \right) \approx 104.0^\circ
+    $$
+</div>
 
 So, the answer to the exercise is that the boat must be propelled at a speed of <span id="output-e1-norm-vpropelled-2">{e1_normvPropelled.toFixed(1)}</span> Km/h and in a direction that forms an angle of <span id="output-e1-phi-2">{e1_phi.toFixed(1)}</span>º with the river.
 
@@ -459,7 +479,7 @@ export const e1_vPropelled_json = JSON.stringify(e1_vPropelled);
         data-phi={e1_phi}
         data-norm-v-propelled={e1_normvPropelled}
     />
-    <figcaption><b>Figure 19.1</b>: Decomposition of velocities. $\vec v_r$ is the river's velocity, $\vec v_b$ is the boat's resulting velocity (perpendicular to the bank), and $\vec v_p$ is the required propelled velocity.</figcaption>
+    <figcaption><b>Figure 19.1</b>: Decomposition of velocities. $\vec{v}_r$ is the river's velocity, $\vec{v}_b$ is the boat's resulting velocity (perpendicular to the bank), and $\vec{v}_p$ is the required propelled velocity.</figcaption>
 </figure>
 
 #### References
@@ -471,7 +491,7 @@ export const e1_vPropelled_json = JSON.stringify(e1_vPropelled);
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
 
-### Exercise 2
+### Exercise 2: Graphical Vector Addition
 Draw, one after the other, the vectors $\vec a = 2\hat{\imath} + 3\hat{\jmath}$, $\vec b = 4\hat{\imath} - 2\hat{\jmath}$, $\vec c = 3\hat{\imath} - 2\hat{\jmath}$ and $\vec d = -9\hat{\imath} + \hat{\jmath}$. Calculate the resulting vector from their sum and its magnitude.
 
 To solve this exercise, let's first graphically represent the vectors $\vec a$, $\vec b$, $\vec c$, and $\vec d$ on a Cartesian plane, one after the other, using the graphical method of [vector addition](#3-vector-addition-graphical-method).
@@ -497,7 +517,7 @@ export const e2_d_json = JSON.stringify(e2_d);
 </figure>
 
 It can be observed that the origin of $\vec a$ coincides with the end of $\vec d$. So the resulting vector of this sum is the vector $\vec 0$, and its magnitude is zero.
-
+ 
 #### References
 - [5.1 Vector Addition and Subtraction: Graphical Methods. Physics High School. Openstax.](https://openstax.org/books/physics/pages/5-1-vector-addition-and-subtraction-graphical-methods)
 
@@ -505,7 +525,7 @@ It can be observed that the origin of $\vec a$ coincides with the end of $\vec d
 
 ### Exercise 3
 A sailboat is moving with a speed of {e3_sailboatSpeed} km/h in the NNE (north-northeast) direction. What are the components of the boat's velocity in the North and East directions?
-
+ 
 {/* --- Problem data --- */}
 export const e3_sailboatSpeed = 4; // km/h
 export const e3_angleDeg = 67.5; // degrees. North-northeast is equivalent to 67.5º
@@ -528,7 +548,7 @@ export const e3_V_json = JSON.stringify(e3_V);
 </figure>
 
 To solve this exercise, let's use the concept of [vector components](#5-vector-components) and the [relationship between a vector's components, its magnitude, and its direction](#6-relationship-between-components-magnitude-and-direction).
-
+ 
 According to this, the component of the boat's velocity in the north direction coincides with the vertical component $\vec V_y$, and the component in the east direction coincides with the horizontal component $\vec V_x$ of the vector $\vec V$.
 
 Then, we use expression [6.3] to calculate $\|\vec V_x\|$, and we use expression [6.4] to calculate $\|\vec V_y\|$.
@@ -552,30 +572,27 @@ export const e4_speed = 120;
 export const e4_angleDeg = 30;
 export const e4_angleRad = e4_angleDeg * Math.PI / 180;
 
-The formulas to calculate the [components of a vector](#5-vector-components) $\vec v$ given its magnitude $\|\vec v\|$ and direction $\theta$ are defined by expressions [6.3] and [6.4]:
+The formulas to calculate the [components of a vector](#5-vector-components) $\vec v$ given its magnitude $\|\vec v\|$ and direction $\theta$ are defined by expressions [6.3] and [6.4]. 
 
-{/*Horizontal component of velocity:*/}
-export const e4_Vx = e4_speed * Math.cos(e4_angleRad);
+<div id="e4-vx-formula" class="centered">
+    $$
+    \vec v_x = \|\vec v\|\cos \theta \cdot\hat\imath = 120 \cos(30^\circ) \hat\imath \approx 103.9 \hat\imath \text{ m/s}
+    $$
+</div>
 
-$\vec v_x = \|\vec v\|\cos \theta \cdot\hat\imath$
+<div id="e4-vy-formula" class="centered">
+    $$
+    \vec v_y = \|\vec v\|\sin \theta \cdot\hat\jmath = 120 \sin(30^\circ) \hat\jmath \approx 60.0 \hat\jmath \text{ m/s}
+    $$
+</div>
 
-{/*Vertical component of velocity:*/}
-export const e4_Vy = e4_speed * Math.sin(e4_angleRad);
+And expressed vectorially as $\vec v = \vec v_x + \vec v_y$:
 
-$\vec v_y = \|\vec v\|\sin \theta \cdot\hat\jmath$
-
-$\vec v = \vec v_x + \vec v_y$
-
-Where $\|\vec v\|$ = <span id="output-e4-speed">{e4_speed}</span> m/s, and $\theta$ = <span id="output-e4-angle">{e4_angleDeg}</span>º. So:
-
-$\vec v_x = $<span id="output-e4-speed-2">{e4_speed}</span>$\cos($<span id="output-e4-angle-2">{e4_angleDeg}</span>$^\circ) =$ <span id="output-e4-vx">{e4_Vx.toFixed(1)}</span> m/s
-
-$\vec v_y = $<span id="output-e4-speed-3">{e4_speed}</span>$\sin($<span id="output-e4-angle-3">{e4_angleDeg}</span>$^\circ) =$ <span id="output-e4-vy">{e4_Vy.toFixed(1)}</span> m/s
-
-And expressed as a vector:
-
-$\vec v = $<span id="output-e4-vx-2">{e4_Vx.toFixed(1)}</span>$\hat\imath + $<span id="output-e4-vy-2">{e4_Vy.toFixed(1)}</span>$\hat\jmath$ m/s
-
+<div id="e4-vector-formula" class="centered">
+    $$
+    \vec v = 103.9 \hat\imath + 60.0 \hat\jmath \text{ m/s}
+    $$
+</div>
 
 #### References
 - [8.8 Vectors. Precalculus. Openstax.](https://openstax.org/books/precalculus/pages/8-8-vectors)
@@ -583,7 +600,7 @@ $\vec v = $<span id="output-e4-vx-2">{e4_Vx.toFixed(1)}</span>$\hat\imath + $<sp
 - [7.4 The Other Trigonometric Functions. Algebra and Trigonometry. Openstax.](https://openstax.org/books/algebra-and-trigonometry/pages/7-4-the-other-trigonometric-functions)
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ### Exercise 5
 Calculate the dot product of the vectors $\vec v = ($<input type="number" id="input-e5-vx" value={e5_v[0]} style="width: 40px; text-align: center;" />$)\hat\imath + ($<input type="number" id="input-e5-vy" value={e5_v[1]} style="width: 40px; text-align: center;" />$)\hat\jmath + ($<input type="number" id="input-e5-vz" value={e5_v[2]} style="width: 40px; text-align: center;" />$)\hat k$ and $\vec w = ($<input type="number" id="input-e5-wx" value={e5_w[0]} style="width: 40px; text-align: center;" />$)\hat\imath + ($<input type="number" id="input-e5-wy" value={e5_w[1]} style="width: 40px; text-align: center;" />$)\hat\jmath + ($<input type="number" id="input-e5-wz" value={e5_w[2]} style="width: 40px; text-align: center;" />$)\hat k$, and the angle between them.
 
@@ -597,49 +614,42 @@ $$
 \vec v\cdot\vec w = v_x\cdot w_x + v_y\cdot w_y + v_z\cdot w_z
 $$
 
-Then:
+Applying expression [10.1], we calculate the dot product:
 
-{/* Dot product */}
-export const e5_dotProduct = math.dot(e5_v, e5_w);
+<div id="e5-dot-formula" class="centered">
+    $$
+    \vec v \cdot \vec w = (5)(-2) + (-3)(1) + (2)(3) = -7
+    $$
+</div>
 
-$\vec v\cdot\vec w = ($<span id="output-e5-vx-1">{e5_v[0]}</span>$)($<span id="output-e5-wx-1">{e5_w[0]}</span>$) + ($<span id="output-e5-vy-1">{e5_v[1]}</span>$)($<span id="output-e5-wy-1">{e5_w[1]}</span>$) + ($<span id="output-e5-vz-1">{e5_v[2]}</span>$)($<span id="output-e5-wz-1">{e5_w[2]}</span>$) = $<span id="output-e5-dotproduct">{e5_dotProduct}</span>
+To find the angle $\theta$, we first calculate the magnitudes $\|\vec v\|$ and $\|\vec w\|$ according to [6.1](#6-relationship-between-components-magnitude-and-direction):
 
-The value of the angle $\theta$ between two vectors $\vec v$ and $\vec w$ is given by expression [10.3].
+<div id="e5-normv-formula" class="centered">
+    $$
+    \|\vec v\| = \sqrt{5^2 + (-3)^2 + 2^2} = \sqrt{38} \approx 6.16
+    $$
+</div>
 
-$$
-\theta = \arccos\frac{\vec v\cdot\vec w}{\|\vec v\|\cdot\|\vec w\|}
-$$
+<div id="e5-normw-formula" class="centered">
+    $$
+    \|\vec w\| = \sqrt{(-2)^2 + 1^2 + 3^2} = \sqrt{14} \approx 3.74
+    $$
+</div>
 
-First, we calculate $\|\vec v\|$ and $\|\vec w\|$:
-{/* Magnitudes */}
-export const e5_normV = math.norm(e5_v);
-export const e5_normW = math.norm(e5_w);
-export const e5_normV_sq = e5_normV**2;
-export const e5_normW_sq = e5_normW**2;
+Finally, applying expression [10.3], the value of the angle $\theta$ is:
 
-$\|\vec v\|^2 = ($<span id="output-e5-vx-2">{e5_v[0]}</span>$)^2 + ($<span id="output-e5-vy-2">{e5_v[1]}</span>$)^2 + ($<span id="output-e5-vz-2">{e5_v[2]}</span>$)^2 = $<span id="output-e5-normv-sq">{e5_normV_sq.toFixed(0)}</span>
-
-$\|\vec v\| \approx $<span id="output-e5-normv">{e5_normV.toFixed(2)}</span>
-
-$\|\vec w\|^2 = ($<span id="output-e5-wx-2">{e5_w[0]}</span>$)^2 + ($<span id="output-e5-wy-2">{e5_w[1]}</span>$)^2 + ($<span id="output-e5-wz-2">{e5_w[2]}</span>$)^2 = $<span id="output-e5-normw-sq">{e5_normW_sq.toFixed(0)}</span>
-
-$\|\vec w\| \approx $<span id="output-e5-normw">{e5_normW.toFixed(2)}</span>
-
-And now we can calculate the value of the angle $\theta$:
-
-{/* Angle */}
-export const e5_cosTheta = e5_dotProduct / (e5_normV * e5_normW);
-export const e5_thetaRad = math.acos(e5_cosTheta);
-export const e5_thetaDeg = e5_thetaRad * 180 / math.pi;
-
-$\theta  = \arccos($<span id="output-e5-dotproduct-2">{e5_dotProduct}</span>$ / ($<span id="output-e5-normv-2">{e5_normV.toFixed(2)}</span>$\cdot$<span id="output-e5-normw-2">{e5_normW.toFixed(2)}</span>$)) \approx \arccos($<span id="output-e5-costheta">{e5_cosTheta.toFixed(4)}</span>$) \approx$ <span id="output-e5-theta">{e5_thetaDeg.toFixed(2)}</span>º
+<div id="e5-angle-formula" class="centered">
+    $$
+    \theta = \arccos \left( \frac{-7}{6.16 \cdot 3.74} \right) \approx 107.65^\circ
+    $$
+</div>
 
 #### References
 - [Coordinate Systems and Components of a Vector. University Physics Volume 1. Openstax.](https://openstax.org/books/university-physics-volume-1/pages/2-2-coordinate-systems-and-components-of-a-vector)
 - [Products of Vectors. University Physics Volume 1. Openstax.](https://openstax.org/books/university-physics-volume-1/pages/2-4-products-of-vectors)
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
-
+ 
 ### Exercise 7
 A rigid body rotates with an angular velocity $\vec w$ given by the vector $\vec w = ($<input type="number" id="input-e7-wx" value={e7_w[0]} style="width: 40px; text-align: center;" />$)\hat\imath + ($<input type="number" id="input-e7-wy" value={e7_w[1]} style="width: 40px; text-align: center;" />$)\hat\jmath + ($<input type="number" id="input-e7-wz" value={e7_w[2]} style="width: 40px; text-align: center;" />$)\hat k$ rad/s. Calculate the linear velocity $\vec v$ of a point P on the body, whose position vector is $\vec r = ($<input type="number" id="input-e7-rx" value={e7_r[0]} style="width: 40px; text-align: center;" />$)\hat\imath + ($<input type="number" id="input-e7-ry" value={e7_r[1]} style="width: 40px; text-align: center;" />$)\hat\jmath + ($<input type="number" id="input-e7-rz" value={e7_r[2]} style="width: 40px; text-align: center;" />$)\hat k$ m., knowing that $\vec v = \vec w \times \vec r$.
 
@@ -649,53 +659,48 @@ export const e7_r = [2, -2, 1];
 
 To solve this exercise, let's use the concept of the [cross product](#12-cross-product) and expression [12.2].
 
-<div id="e7-determinant-1">
-    {`
-        $$
-            \\vec v = \\vec w \\times \\vec r = 
-            \\begin{vmatrix} 
-                \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\
-                ${e7_w[0]} & ${e7_w[1]} & ${e7_w[2]}  \\\\
-                ${e7_r[0]} & ${e7_r[1]} & ${e7_r[2]}
-            \\end{vmatrix}
-        $$
-    `}
+<div id="e7-determinant-1" class="centered">
+    $$
+        \vec v = \vec w \times \vec r = 
+        \begin{vmatrix} 
+            \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+            1 & 1 & 1  \\
+            2 & -2 & 1
+        \end{vmatrix}
+    $$
 </div>
 
 We calculate the determinant:
 
-<div id="e7-determinant-2">
-    {`
-        $$
-            \\vec v = 
-            \\begin{vmatrix} 
-                ${e7_w[1]} & ${e7_w[2]} \\\\
-                ${e7_r[1]} & ${e7_r[2]} 
-            \\end{vmatrix} \\hat\\imath - 
-            \\begin{vmatrix} 
-                ${e7_w[0]} & ${e7_w[2]} \\\\
-                ${e7_r[0]} & ${e7_r[2]} 
-            \\end{vmatrix} \\hat\\jmath + 
-            \\begin{vmatrix} 
-                ${e7_w[0]} & ${e7_w[1]} \\\\
-                ${e7_r[0]} & ${e7_r[1]} 
-            \\end{vmatrix}\\hat k = 
-            ((${e7_w[1]*e7_r[2]}) - (${e7_w[2]*e7_r[1]}))\\hat\\imath - 
-            ((${e7_w[0]*e7_r[2]}) - (${e7_w[2]*e7_r[0]}))\\hat\\jmath + 
-            ((${e7_w[0]*e7_r[1]}) - (${e7_w[1]*e7_r[0]}))\\hat k = 
-            ${math.cross(e7_w, e7_r)[0]}\\hat\\imath + 
-            ${math.cross(e7_w, e7_r)[1]}\\hat\\jmath + 
-            ${math.cross(e7_w, e7_r)[2]}\\hat k
-        $$
-    `}
+<div id="e7-determinant-2" class="centered">
+    $$
+        \vec v = 
+        \begin{vmatrix} 
+            1 & 1 \\
+            -2 & 1 
+        \end{vmatrix} \hat\imath - 
+        \begin{vmatrix} 
+            1 & 1 \\
+            2 & 1 
+        \end{vmatrix} \hat\jmath + 
+        \begin{vmatrix} 
+            1 & 1 \\
+            2 & -2 
+        \end{vmatrix}\hat k = 
+        (1 - (-2))\hat\imath - 
+        (1 - 2)\hat\jmath + 
+        (-2 - 2)\hat k = 
+        3\hat\imath + 1\hat\jmath - 4\hat k
+    $$
 </div>
 
-The final result is:
+The final result of the linear velocity is:
 
-{/* Cross product calculation */}
-export const e7_v = math.cross(e7_w, e7_r);
-
-$\vec v = ($<span id="output-e7-vx">{e7_v[0]}</span>$)\hat\imath + ($<span id="output-e7-vy">{e7_v[1]}</span>$)\hat\jmath + ($<span id="output-e7-vz">{e7_v[2]}</span>$)\hat k$ m/s.
+<div id="e7-result-formula" class="centered">
+    $$
+    \vec v = 3\hat\imath + 1\hat\jmath - 4\hat k \text{ m/s}
+    $$
+</div>
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
 
@@ -716,7 +721,7 @@ The NE (northeast) direction forms an angle of {e6_angleDeg}º with the east dir
 
 To calculate the [projection of the velocity](#11-vector-projection) in the east direction, we use expression [11.2].
 
-$\|\text{proj}_E \vec v\| = \|\vec v\|\cos\theta$
+$$ \|\text{proj}_E \vec v\| = \|\vec v\|\cos\theta $$
 
 Where $\|\vec v\|$ = {e6_planeSpeed} Km/h and $\theta$ = {e6_angleDeg}º.
 
@@ -725,7 +730,9 @@ Then:
 {/* We calculate the projection of the velocity in the east direction:*/}
 export const e6_projection = e6_planeSpeed * Math.cos(e6_angleRad);
 
-$\|\text{proj}_E \vec v\| = 600\cdot\cos(45^\circ) = 600 \cdot \frac{\sqrt{2}}{2} \approx$ {e6_projection.toFixed(0)} Km/h
+$$
+\|\text{proj}_E \vec v\| = 600\cdot\cos(45^\circ) = 600 \cdot \frac{\sqrt{2}}{2} \approx {e6_projection.toFixed(0)} \text{ Km/h}
+$$
 
 #### References
 - [The Dot Product. Calculus Volume 3. Openstax.](https://openstax.org/books/calculus-volume-3/pages/2-3-the-dot-product)
@@ -750,36 +757,37 @@ export const e8_AC = math.subtract(e8_C, e8_A);
 
 $\overrightarrow{AB} = B - A = (1-3, -2-4, 2-1) = ($ {e8_AB.join(', ')} $)$
 
-$\overrightarrow{AC} = C - A = (-2-3, 1-4, 4-1) = ($ {e8_AC.join(', ')} $)$
+<div class="centered">
+    $\overrightarrow{AC} = C - A = (-2-3, 1-4, 4-1) = ($ {e8_AC.join(', ')} $)$
+</div>
 
 And we calculate the area of the triangle $\triangle ABC$ using the following expression:
 
 $$
 \text{Area} = \frac{\|\overrightarrow{AB} \times \overrightarrow{AC}\|}{2}
 $$
-
 {/* Cross product and Area */}
 export const e8_cross = math.cross(e8_AB, e8_AC);
 export const e8_area = math.norm(e8_cross) / 2;
 
 We calculate the cross product:
 
-{`
-$$
-    \\overrightarrow{AB} \\times \\overrightarrow{AC} = 
-    \\begin{vmatrix}
-        \\hat\\imath & \\hat\\jmath & \\hat k \\\\ 
-        ${e8_AB[0]} & ${e8_AB[1]} & ${e8_AB[2]} \\\\ 
-        ${e8_AC[0]} & ${e8_AC[1]} & ${e8_AC[2]}\\ 
-    \\end{vmatrix} = 
-    ((${e8_AB[1]*e8_AC[2]}) - (${e8_AB[2]*e8_AC[1]}))\\hat\\imath - 
-    ((${e8_AB[0]*e8_AC[2]}) - (${e8_AB[2]*e8_AC[0]}))\\hat\\jmath + 
-    ((${e8_AB[0]*e8_AC[1]}) - (${e8_AB[1]*e8_AC[0]}))\\hat k = 
-    ${e8_cross[0]}\\hat\\imath +
-    ${e8_cross[1]}\\hat\\jmath + 
-    ${e8_cross[2]}\\hat k
-$$
-`}
+<div id="e8-cross-product-formula" class="centered">
+    $$
+        \overrightarrow{AB} \times \overrightarrow{AC} = 
+        \begin{vmatrix}
+            \hat\imath & \hat\jmath & \hat k \\ 
+            ${e8_AB[0]} & ${e8_AB[1]} & ${e8_AB[2]} \\ 
+            ${e8_AC[0]} & ${e8_AC[1]} & ${e8_AC[2]}
+        \end{vmatrix} = 
+        ((${e8_AB[1]*e8_AC[2]}) - (${e8_AB[2]*e8_AC[1]}))\hat\imath - 
+        ((${e8_AB[0]*e8_AC[2]}) - (${e8_AB[2]*e8_AC[0]}))\hat\jmath + 
+        ((${e8_AB[0]*e8_AC[1]}) - (${e8_AB[1]*e8_AC[0]}))\hat k = 
+        ${e8_cross[0]}\hat\imath +
+        ${e8_cross[1]}\hat\jmath + 
+        ${e8_cross[2]}\hat k
+    $$
+</div>
 
 We verify the result by calculating it directly:
 
@@ -788,21 +796,21 @@ export const e8_sq1 = e8_cross[1]**2;
 export const e8_sq2 = e8_cross[2]**2;
 export const e8_sumSq = e8_sq0 + e8_sq1 + e8_sq2;
 
-{`
-$$
-    \\Vert\\overrightarrow{AB} \\times \\overrightarrow{AC}\\Vert = 
-    \\sqrt{(${e8_cross[0]})^2 + (${e8_cross[1]})^2 + (${e8_cross[2]})^2} =
-    \\sqrt{${e8_sq0} + ${e8_sq1} + ${e8_sq2}} = 
-    \\sqrt{${e8_sumSq}} \\approx ${math.norm(e8_cross).toFixed(2)}
-$$
-`}
+<div id="e8-norm-cross-product-formula" class="centered">
+    $$
+        \|\overrightarrow{AB} \times \overrightarrow{AC}\| = 
+        \sqrt{(${e8_cross[0]})^2 + (${e8_cross[1]})^2 + (${e8_cross[2]})^2} =
+        \sqrt{${e8_sq0} + ${e8_sq1} + ${e8_sq2}} = 
+        \sqrt{${e8_sumSq}} \approx ${math.norm(e8_cross).toFixed(2)}
+    $$
+</div>
 
-{`
-$$
-    \\text{Area} = 
-    \\frac{\\sqrt{802}}{2} \\approx ${e8_area.toFixed(2)} \\text{ m}^2
-$$
-`}
+<div id="e8-area-formula" class="centered">
+    $$
+        \text{Area} = 
+        \frac{\sqrt{802}}{2} \approx ${e8_area.toFixed(2)} \text{ m}^2
+    $$
+</div>
 
 <figure class="centered">
     <VectorCanvas id="svg2_8" />
