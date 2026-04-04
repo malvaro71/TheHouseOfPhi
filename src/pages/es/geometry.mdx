@@ -55,7 +55,7 @@ Este sistema nos permite traducir posiciones físicas reales —por ejemplo, en 
 La representación en coordenadas \(x, y\) también se puede expresar como un **vector de posición** $\vec r = (x, y)$ respecto a un origen fijo. Esto permite expresar distancias, desplazamientos y cambios de forma compacta.
 
 {/* --- Initial values for A1_1 example --- */}
-export const exaA1_1_P = [2, 4];
+export const exaA1_1_P = [4, 7];
 
 Veamos un ejemplo. La siguiente figura muestra un sistema de coordenadas cartesianas, con el eje de abcisas (Eje x), el eje de ordenadas (Eje y) y el origen (O). Además, se marcan los cuadrantes del plano. En este sitema de coordenadas, mostramos un punto P, de coordenadas (<input type="number" id="input-exaA1_1_Px" value={exaA1_1_P[0]} min="-10" max="10" style="width: 40px"/>, <input type="number" id="input-exaA1_1_Py" value={exaA1_1_P[1]} min="-10" max="10" style="width: 40px"/>)
 
@@ -69,9 +69,6 @@ export const exaA1_1_P_json = JSON.stringify(exaA1_1_P);
     <figcaption><b>Figura A1.1</b>: Representación de un punto, sus coordenadas y su vector posición en el plano.</figcaption>
 </figure>
 
-{/* ---![Figura 2.1: Plano cartesiano con ejes X e Y, cuadrantes, un punto genérico P, de coordenadas x e y, y su vector de posición r.](vector:svgA1_1) --- */}
-
-
 ### Punto medio
 El **punto medio** de dos posiciones permite describir centros geométricos o puntos de equilibrio y se calcula mediante:
 $$
@@ -83,7 +80,7 @@ $$
 $$
 
 ### 2.1 Ecuaciones de la recta
-Cada forma de la recta es útil para un tipo de problema distinto.
+Cada forma de la recta es útil para un tipo de problema distinto. 
 
 #### **Forma explícita:**
 $$
@@ -97,6 +94,31 @@ $$
 y - y_0 = m(x - x_0)  \tag{2.5}
 $$
 Muy útil cuando conocemos un punto concreto de la recta.
+
+{/* --- Initial values for A1_2_1 example --- */}
+export const exaA1_2_1P = [4, 7];
+export const exaA1_2_1m = 3;
+
+
+Veamos un ejemplo de ecuación de la recta en su forma punto-pendiente. Supongamos que tenemos una recta que  pasa por el punto P, de coordenadas (<input type="number" id="input-exaA1_2_1Px" value={exaA1_2_1P[0]} min="-10" max="10" style="width: 40px"/>, <input type="number" id="input-exaA1_2_1Py" value={exaA1_2_1P[1]} min="-10" max="10" style="width: 40px"/>), y tiene una pendiente <input type="number" id="input-exaA1_2_1m" value={exaA1_2_1m} min="-10" max="10" style="width: 40px"/>.
+
+La ecuación de dicha recta en su forma punto pendiente sería:
+<div id="exaA1_2_line-equation-formula" class="centered" style="margin: 1.5rem 0;">
+</div>
+
+Y en el siguiente gráfico podemos ver dibujada dicha recta en el plano cartesiano.
+
+{/* Convert to string in order to pass as parameters in VectorCanvas component */}
+export const exaA1_2_1P_json = JSON.stringify(exaA1_2_1P);
+export const exaA1_2_1m_json = JSON.stringify(exaA1_2_1m);
+
+<figure class="centered">
+    <VectorCanvas id="svgA1_2_1"
+        data-point-coordinates={exaA1_2_1P_json}
+        data-slope={exaA1_2_1m_json}
+    />
+    <figcaption><b>Figura A1.2.1</b>: Representación de una recta en su forma punto-pendiente.</figcaption>
+</figure>
 
 #### **Forma general:**
 $$

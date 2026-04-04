@@ -254,6 +254,78 @@ Where:
 *   **X**: The number of the current Level 2 section (`##`).
 *   **Y**: A sequential number starting at 1, which resets for each new Level 2 section.
 
+### 4.3. Interactive Graphics
+
+Interactive graphics extend the `VectorCanvas` pattern by allowing the drawing to respond to user inputs (like sliders or text fields). This requires a coordinated effort between the MDX file and the TypeScript page script.
+
+#### 1. MDX Setup
+In the MDX file, you must:
+1.  Define the initial state variables and export their JSON string representation.
+2.  Provide `<input>` elements with unique IDs.
+3.  Pass the initial state string to `<VectorCanvas>` using a `data-` attribute.
+
+```mdx
+{/* 1. Initial State */}
+export const e1_initialPos = [2, 4];
+export const e1_posJson = JSON.stringify(e1_initialPos);
+
+{/* 2. Inputs */}
+Point A: <input type="number" id="input-e1-ax" value={e1_initialPos[0]} />
+
+{/* 3. Canvas with Initial Data */}
+<VectorCanvas id="svg-interactive-example" data-initial-pos={e1_posJson} />
+```
+
+#### 2. TypeScript Logic (Page Script)
+The logic in the `.ts` file consists of two parts: the **Drawing Function** and the **Interactivity Setup**.
+
+**A. The Drawing Function:**
+It must handle two modes: **Initial Load** (reading from the DOM attribute) and **Update** (using passed arguments).
+
+```typescript
+function drawExample(newCoords?: Point2D) {
+    const svg = document.getElementById('svg-interactive-example');
+    if (!(svg instanceof SVGElement)) return;
+
+    let coords: Point2D;
+    if (newCoords) {
+        svg.innerHTML = ''; // Clear for redraw
+        coords = newCoords;
+    } else {
+        if (svg.hasAttribute('data-drawn')) return;
+        const raw = svg.getAttribute('data-initial-pos');
+        coords = JSON.parse(raw || '[0,0]');
+    }
+
+    const plane = new CartesianPlane(svg, -10, 10, -10, 10);
+    plane.drawPoint(coords, "green");
+    svg.setAttribute('data-drawn', 'true');
+}
+```
+
+**B. The Interactivity Setup:**
+This function attaches event listeners to the inputs. When a value changes, it recalculates the logic, calls the drawing function, and triggers MathJax if there are new labels.
+
+```typescript
+function setupInteractivity() {
+    declare const MathJax: any;
+    const inputX = document.getElementById('input-e1-ax') as HTMLInputElement;
+    if (!inputX) return;
+
+    const update = () => {
+        const valX = parseFloat(inputX.value) || 0;
+        drawExample([valX, 4]); // Redraw with new values
+
+        // Re-render MathJax if labels were added to the SVG
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([document.getElementById('svg-interactive-example')]);
+        }
+    };
+
+    inputX.addEventListener('input', update);
+}
+```
+
 ## 5. Computed Values and Solved Exercises
 
 For exercises where values are calculated and displayed dynamically, we use a strategy that mixes JavaScript logic with MDX content. This ensures accuracy and consistency.

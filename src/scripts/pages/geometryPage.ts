@@ -10,6 +10,51 @@ import * as math from 'mathjs';
 import type { Point2D } from '../core/types.ts';
 
 /**
+ * Sets up interactivity for example about parametric equation of a line,
+ * Given the basepoint A and the director vector v.
+ */
+function setupExample1Interactivity() {
+    // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
+    declare const MathJax: any;
+
+    // Get input fields where the user enters values
+    const inputPx = document.getElementById('input-exaA1_1_Px') as HTMLInputElement;
+    const inputPy = document.getElementById('input-exaA1_1_Py') as HTMLInputElement;
+    
+    // Get svg element
+    const svg = document.getElementById('svgA1_1');
+    
+    // Validate existence of critical elements to avoid null pointer errors
+    if (!inputPx || !inputPy || !svg) return;
+    // Avoid duplicate listeners
+    if (svg.hasAttribute('data-math-initialized')) return;
+
+    const update = () => {
+        // Read current values from inputs
+        const Px = parseFloat(inputPx.value) || 0;
+        const Py = parseFloat(inputPy.value) || 0;
+
+        // Define point coordinates based on input values
+        const Pcoordinates: Point2D = [Px, Py];
+
+        // Redraw SVG
+        drawsvgA1_1(Pcoordinates);
+
+        // Request MathJax to process the new labels inside the SVG
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([svg]).catch((err: any) => console.error(err));
+        }
+    };
+
+    inputPx.addEventListener('input', update);
+    inputPy.addEventListener('input', update);
+
+    // Mark as initialized and perform initial sync
+    svg.setAttribute('data-math-initialized', 'true');
+    update();
+}
+
+/**
  * Draws a point, of given coordinates, and its possition vector in a plane.
  * 
  * This function handles the visual representation (SVG).
@@ -23,7 +68,8 @@ function drawsvgA1_1(pointCoordinates?: Point2D) {
     let pointCoord: Point2D;
 
     // If vectors are passed as arguments, it means the user has moved the controls
-    if (pointCoordinates) {
+    // We check for undefined to allow [0,0] coordinates
+    if (pointCoordinates !== undefined) {
         svg.innerHTML = ''; // Clear previous drawing
         pointCoord = pointCoordinates;
     } else {
@@ -56,8 +102,8 @@ function drawsvgA1_1(pointCoordinates?: Point2D) {
     // Add a mathematical label for the point P(x, y)
     plane.drawMath([pointCoord[0] + 0.5, pointCoord[1]], `\\text{P}(${pointCoord[0]}, ${pointCoord[1]})`, { color: "green", scale: 1.3, dx: 0, dy: -5 });
 
-    // Draw the vector position r from origin to point A
-    plane.drawVectorB([0, 0], pointCoord, "\\vec r", { strokeColor: "green" });
+    // Draw the vector position r from origin to point P
+    plane.drawVectorB([0, 0], pointCoord, "\\vec r", {color: "green", scale: 1.3});
 
     // Draw projections (dashed lines) to the axes
     plane.drawSegment([pointCoord[0], 0], pointCoord, { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
@@ -66,6 +112,128 @@ function drawsvgA1_1(pointCoordinates?: Point2D) {
     // Label the x and y values on the axes
     plane.drawMath([pointCoord[0], 0], `${pointCoord[0]}`, { color: "green", scale: 1.3, dx: -10, dy: 15 });
     plane.drawMath([0, pointCoord[1]], `${pointCoord[1]}`, { color: "green", scale: 1.3, dx: -25, dy: -5 });
+
+    svg.setAttribute('data-drawn', 'true'); // Mark SVG as drawn to avoid redundancy
+}
+
+/**
+ * Sets up interactivity for Example A1_2_1.
+ * Listens for changes in numerical inputs and updates calculations, formulas, and the graph.
+ */
+function setupExempleA1_2_1Interactivity() {
+    // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
+    declare const MathJax: any;
+
+    // Get svg element
+    const svg = document.getElementById('svgA1_2_1');
+
+    // Get input fields where the user enters values
+    const inputPx = document.getElementById('input-exaA1_2_1Px') as HTMLInputElement;
+    const inputPy = document.getElementById('input-exaA1_2_1Py') as HTMLInputElement;
+    const inputM = document.getElementById('input-exaA1_2_1m') as HTMLInputElement;
+
+    // Elements where text results and formulas will be written
+    const lineEquationFormula = document.getElementById('exaA1_2_line-equation-formula');
+    
+
+    // Validate existence of critical elements to avoid null pointer errors
+    if (!inputPx || !inputPy || !inputM || !lineEquationFormula) return;
+    // Check for initialization flag to prevent multiple event listeners on the same inputs
+    if (lineEquationFormula.hasAttribute('data-math-initialized')) return;
+
+    // This function executes every time the user changes a value in the inputs
+    const update = () => {
+        // Read current values from inputs
+        const Px = parseFloat(inputPx.value) || 0;
+        const Py = parseFloat(inputPy.value) || 0;
+        const m = parseFloat(inputM.value) || 0;
+
+
+        // Define vectors based on input values
+        const Point: Point2D = [Px, Py];
+        
+
+        // Generate LaTeX code for dynamic formulas, injecting calculated values
+        if (lineEquationFormula) {
+            lineEquationFormula.innerHTML = `$$ y - (${Point[1]}) = ${m}(x - (${Point[0]})) $$`;
+        }
+
+        // Request MathJax to process the new injected LaTeX code for proper rendering
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([lineEquationFormula]).catch((err: any) => console.error(err));
+        }
+
+        // Finally, redraw the graph with the new vectors
+        drawExampleA1_2_1(Point, m);
+
+        // Request MathJax to process the new labels inside the SVG
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([svg]).catch((err: any) => console.error(err));
+        }
+    };
+
+    // Listen for the 'input' event for instant updates as the user types
+    inputPx.addEventListener('input', update);
+    inputPy.addEventListener('input', update);
+    inputM.addEventListener('input', update);
+
+    // Mark the container as initialized and run 'update' once to sync the initial view
+    lineEquationFormula.setAttribute('data-math-initialized', 'true');
+    update();
+}
+
+/**
+ * Draws a line, given one of its points and its slope.
+ * 
+ * This function handles the visual representation (SVG).
+ * It can operate in initial mode (reading data from HTML) or update mode (receiving new vectors).
+ */
+function drawExampleA1_2_1(pointCoordinates?: Point2D, slope?: number) {
+    // Attempt to get the SVG element by its ID
+    const svg = document.getElementById('svgA1_2_1');
+    if (!(svg instanceof SVGElement)) return;
+
+    let pointCoord: Point2D, m: number;
+
+    // If vectors are passed as arguments, it means the user has moved the controls
+    // IMPORTANT: Check for undefined specifically because slope can be 0 (which is falsy)
+    if (pointCoordinates !== undefined && slope !== undefined) {
+        svg.innerHTML = ''; // Clear previous drawing
+        pointCoord = pointCoordinates;
+        m = slope;
+    } else {
+        // If no arguments, read initial values stored in SVG 'data-' attributes
+        if (svg.hasAttribute('data-drawn')) return;
+        const pointCoordStr = svg.getAttribute('data-point-coordinates');
+        const slopeStr = svg.getAttribute('data-slope');
+        if (!pointCoordStr || !slopeStr) return;
+        try {
+            pointCoord = JSON.parse(pointCoordStr) as Point2D;
+            m = parseFloat(slopeStr);
+        } catch (e) {
+            console.error("Error parsing initial vectors for exampleA1_2_1", e);
+            return;
+        }
+    }
+
+    // Set up the Cartesian plane, adjusting boundaries so vectors remain visible
+    // The input value has been limited to a defined range
+    const plane = new CartesianPlane(svg, -11, 11, -11, 11);
+    plane.drawAxes("Y", "X", "O"); // Draw X and Y axes and mark origin
+
+
+    // Draw the target point P using the dynamic coordinates
+    plane.drawPoint(pointCoord, "green");
+
+    // Add a mathematical label for the point P(x, y)
+    plane.drawMath([pointCoord[0] + 0.5, pointCoord[1]], `\\text{P}(${pointCoord[0]}, ${pointCoord[1]})`, { color: "green", scale: 1.3, dx: 0, dy: -5 });
+
+    // Calculate points of the line
+    const Point1 = [-11, pointCoord[1] + m * (-11 - pointCoord[0])];
+    const Point2 = [11, pointCoord[1] + m * (11 - pointCoord[0])];
+
+    // Draw the line
+    plane.drawSegment(Point1, Point2, { strokeColor: "green", strokeWidth: 1 });
 
     svg.setAttribute('data-drawn', 'true'); // Mark SVG as drawn to avoid redundancy
 }
@@ -297,46 +465,12 @@ export const geometryDrawings = {
     svg.setAttribute('data-drawn', 'true');
 }*/
 
-/**
- * Sets up interactivity for example about parametric equation of a line,
- * Given the basepoint A and the director vector v.
- */
-function setupExample1Interactivity() {
-    // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
-    declare const MathJax: any;
-
-    // Get input fields where the user enters values
-    const inputPx = document.getElementById('input-exaA1_1_Px') as HTMLInputElement;
-    const inputPy = document.getElementById('input-exaA1_1_Py') as HTMLInputElement;
-    
-    // Validate existence of critical elements to avoid null pointer errors
-    if (!inputPx || !inputPy) return;
-
-    const update = () => {
-        // Read current values from inputs
-        const Px = parseFloat(inputPx.value) || 0;
-        const Py = parseFloat(inputPy.value) || 0;
-
-        // Define point coordinates based on input values
-        const Pcoordinates: Point2D = [Px, Py];
-
-        // Redraw SVG
-        drawsvgA1_1(Pcoordinates);
-
-        // Request MathJax to process the new labels inside the SVG
-        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
-            MathJax.typesetPromise([svg]).catch((err: any) => console.error(err));
-        }
-    };
-
-    inputPx.addEventListener('input', update);
-    inputPy.addEventListener('input', update);
-}
-
 function runAllDrawings() {
     ensureSharedMarkerDefs();
     drawsvgA1_1();
     setupExample1Interactivity();
+    drawExampleA1_2_1();
+    setupExempleA1_2_1Interactivity();
 }
 
 if (typeof document !== 'undefined') {
