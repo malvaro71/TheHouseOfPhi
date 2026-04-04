@@ -6,8 +6,10 @@ lang: es
 
 import VectorCanvas from '../../components/VectorCanvas.astro'; // Contenedor para renderizar los gráficos SVG dinámicos
 import MathJax from '../../components/MathJax.astro'; // Carga la librería MathJax para renderizar LaTeX dentro de los SVGs
+import GeometryScript from '../../components/GeometryScript.astro'; // Injects specific TypeScript logic for the exercises on this page
 
 <MathJax />
+<GeometryScript />
 
 # Anexo 1: Fundamentos Geométricos para la Física
 
@@ -50,9 +52,24 @@ La verdadera potencia de este sistema reside en que establece un puente directo 
 
 Este sistema nos permite traducir posiciones físicas reales —por ejemplo, en una mesa de laboratorio o a lo largo de una regla— a una representación matemática precisa.
 
-La representación en coordenadas \((x, y)\) también se puede expresar como un **vector de posición** $\vec r = (x, y)$ respecto a un origen fijo. Esto permite expresar distancias, desplazamientos y cambios de forma compacta.
+La representación en coordenadas \(x, y\) también se puede expresar como un **vector de posición** $\vec r = (x, y)$ respecto a un origen fijo. Esto permite expresar distancias, desplazamientos y cambios de forma compacta.
 
-![Figura 2.1: Plano cartesiano con ejes X e Y, cuadrantes, un punto genérico P, de coordenadas x e y, y su vector de posición r.](vector:svgA1_1)
+{/* --- Initial values for A1_1 example --- */}
+export const exaA1_1_P = [2, 4];
+
+Veamos un ejemplo. La siguiente figura muestra un sistema de coordenadas cartesianas, con el eje de abcisas (Eje x), el eje de ordenadas (Eje y) y el origen (O). Además, se marcan los cuadrantes del plano. En este sitema de coordenadas, mostramos un punto P, de coordenadas (<input type="number" id="input-exaA1_1_Px" value={exaA1_1_P[0]} min="-10" max="10" style="width: 40px"/>, <input type="number" id="input-exaA1_1_Py" value={exaA1_1_P[1]} min="-10" max="10" style="width: 40px"/>)
+
+{/* --- Converts to string for passing to the drawing function--- */}
+export const exaA1_1_P_json = JSON.stringify(exaA1_1_P);
+
+<figure class="centered">
+    <VectorCanvas id="svgA1_1"
+        data-point-coordinates={exaA1_1_P_json}
+    />
+    <figcaption><b>Figura A1.1</b>: Representación de un punto, sus coordenadas y su vector posición en el plano.</figcaption>
+</figure>
+
+{/* ---![Figura 2.1: Plano cartesiano con ejes X e Y, cuadrantes, un punto genérico P, de coordenadas x e y, y su vector de posición r.](vector:svgA1_1) --- */}
 
 
 ### Punto medio
@@ -130,7 +147,7 @@ export const svgA1_2_t = 0;
 export const svgA1_2_A = [-4, -2];
 export const svgA1_2_v = [3, 1];
 
-Veamos un ejemplo: Supongamos que tenemos un punto base A(<input type="number" id="input-svgA1_2_Ax" value={svgA1_2_A[0]} style="width: 40px; text-align: center;"/>, <input type="number" id="input-svgA1_2_Ay" value={svgA1_2_A[1]} style="width: 40px; text-align: center;"/>) y un vector director $\vec v$ = (<input type="number" id="input-svgA1_2_vx" value={svgA1_2_v[0]} style="width: 40px; text-align: center;"/>, <input type="number" id="input-svgA1_2_vy" value={svgA1_2_v[1]} style="width: 40px; text-align: center;"/>), la recta queda:
+Veamos un ejemplo: Supongamos que tenemos un punto base A(<input type="number" id="input-svgA1_2_Ax" value={svgA1_2_A[0]} min="-15" max="15" style="width: 40px"/>, <input type="number" id="input-svgA1_2_Ay" value={svgA1_2_A[1]} min="-15" max="15" style="width: 40px"/>) y un vector director $\vec v$ = (<input type="number" id="input-svgA1_2_vx" value={svgA1_2_v[0]} min="-10" max="10" style="width: 40px; text-align: center;"/>, <input type="number" id="input-svgA1_2_vy" value={svgA1_2_v[1]} min="-10" max="10" style="width: 40px; text-align: center;"/>), la recta queda:
 
 $ x = $<span id="output-svgA1_2_Ax">{svgA1_2_A[0]}</span>$ + $<span id="output-svgA1_2_vx">{svgA1_2_v[0]}</span>$\lambda$
 
@@ -182,7 +199,7 @@ $$
 \alpha + \beta + \gamma = 180^\circ = \pi \text{ rad} \tag{3.1}
 $$
 
-![Figura 3.1: Triángulo ABC con sus vértices, lados y ángulos.](vector:svgA1_1_1)
+![Figura 3.1: Triángulo ABC con sus vértices, lados y ángulos.](vector:svgA1_3_1)
 
 #### **Semejanza de triángulos**
 Dos triángulos son semejantes si tienen ángulos iguales y lados proporcionales. Esta propiedad es vital en física para resolver problemas de óptica, sombras y diagramas de fuerzas mediante razones de proporcionalidad.

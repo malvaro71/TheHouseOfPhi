@@ -9,9 +9,70 @@ import { ensureSharedMarkerDefs } from '../core/SVGDrawing.ts';
 import * as math from 'mathjs';
 import type { Point2D } from '../core/types.ts';
 
+/**
+ * Draws a point, of given coordinates, and its possition vector in a plane.
+ * 
+ * This function handles the visual representation (SVG).
+ * It can operate in initial mode (reading data from HTML) or update mode (receiving new vectors).
+ */
+function drawsvgA1_1(pointCoordinates?: Point2D) {
+    // Attempt to get the SVG element by its ID
+    const svg = document.getElementById('svgA1_1');
+    if (!(svg instanceof SVGElement)) return;
+
+    let pointCoord: Point2D;
+
+    // If vectors are passed as arguments, it means the user has moved the controls
+    if (pointCoordinates) {
+        svg.innerHTML = ''; // Clear previous drawing
+        pointCoord = pointCoordinates;
+    } else {
+        // If no arguments, read initial values stored in SVG 'data-' attributes
+        if (svg.hasAttribute('data-drawn')) return;
+        const pointCoordStr = svg.getAttribute('data-point-coordinates');
+        if (!pointCoordStr) return;
+        try {
+            pointCoord = JSON.parse(pointCoordStr) as Point2D;
+        } catch (e) {
+            console.error("Error parsing initial vectors for exampleA1_1", e);
+            return;
+        }
+    }
+
+    // Set up the Cartesian plane, adjusting boundaries so vectors remain visible
+    // The input value has been limited to a defined range
+    const plane = new CartesianPlane(svg, -11, 11, -11, 11);
+    plane.drawAxes("Y", "X", "O"); // Draw X and Y axes and mark origin
+
+    // Draw labels for each of the four quadrants (I, II, III, IV)
+    plane.drawMath([10, 10], "\\text{I}", { color: "brown", scale: 1.5 });
+    plane.drawMath([-10, 10], "\\text{II}", { color: "brown", scale: 1.5 });
+    plane.drawMath([-10, -10], "\\text{III}", { color: "brown", scale: 1.5 });
+    plane.drawMath([9, -10], "\\text{IV}", { color: "brown", scale: 1.5 });
+
+    // Draw the target point P using the dynamic coordinates
+    plane.drawPoint(pointCoord, "green");
+
+    // Add a mathematical label for the point P(x, y)
+    plane.drawMath([pointCoord[0] + 0.5, pointCoord[1]], `\\text{P}(${pointCoord[0]}, ${pointCoord[1]})`, { color: "green", scale: 1.3, dx: 0, dy: -5 });
+
+    // Draw the vector position r from origin to point A
+    plane.drawVectorB([0, 0], pointCoord, "\\vec r", { strokeColor: "green" });
+
+    // Draw projections (dashed lines) to the axes
+    plane.drawSegment([pointCoord[0], 0], pointCoord, { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
+    plane.drawSegment([0, pointCoord[1]], pointCoord, { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
+
+    // Label the x and y values on the axes
+    plane.drawMath([pointCoord[0], 0], `${pointCoord[0]}`, { color: "green", scale: 1.3, dx: -10, dy: 15 });
+    plane.drawMath([0, pointCoord[1]], `${pointCoord[1]}`, { color: "green", scale: 1.3, dx: -25, dy: -5 });
+
+    svg.setAttribute('data-drawn', 'true'); // Mark SVG as drawn to avoid redundancy
+}
+
 // Export a dictionary of drawing functions keyed by SVG ID
 export const geometryDrawings = {
-    // ======================================================
+    /*// ======================================================
     // svgA1_1 — Cartesian coordinates of a point and quadrants
     // ======================================================
     "svgA1_1": (svg: SVGElement) => {
@@ -41,7 +102,7 @@ export const geometryDrawings = {
         plane.drawSegment([5, 0], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
         // Draw a horizontal dashed line connecting the y-axis to the point
         plane.drawSegment([0, 8], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
-    }/*,
+    },
     
     // ======================================================
     // svgA1_2 — Line given by \(\vec r(t)=\vec r_0+t\vec v\), showing \(\vec v\) as an increment per unit of \(t\).
@@ -177,8 +238,8 @@ export const geometryDrawings = {
         plane.drawMath([0, 8], "y_1", { color: "green", scale: 1.3, dx: -25, dy: -5 });
         plane.drawSegment([5, 0], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
         plane.drawSegment([0, 8], [5, 8], { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });  
-    }
-        */
+    }*/
+        
 };
 
 /**
@@ -188,7 +249,7 @@ export const geometryDrawings = {
  * @param vBoat - Resulting boat velocity vector.
  * @param vPropelled - Propulsion velocity vector.
  */
-function drawSVGA1_2(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) {
+/*function drawSVGA1_2(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) {
     const svg = document.getElementById('svgA1_2');
     if (!(svg instanceof SVGElement)) return;
 
@@ -234,59 +295,48 @@ function drawSVGA1_2(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) {
     plane.drawAngle(initialPoint, e1_vRiver, e1_vPropelled, 3, "\\phi", { strokeColor: "orange" }, { color: "orange", scale: 1.2, dx: 0, dy: -8 });
 
     svg.setAttribute('data-drawn', 'true');
-}
+}*/
 
 /**
  * Sets up interactivity for example about parametric equation of a line,
  * Given the basepoint A and the director vector v.
  */
 function setupExample1Interactivity() {
-    const inputAx = document.getElementById('input-svgA1_2_Ax') as HTMLInputElement;
-    const inputAy = document.getElementById('input-svgA1_2_Ay') as HTMLInputElement;
-    const inputvx = document.getElementById('input-svgA1_2_vx') as HTMLInputElement;
-    const inputvy = document.getElementById('input-svgA1_2_vy') as HTMLInputElement;
+    // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
+    declare const MathJax: any;
 
-    // Output elements
-    const outputAx = document.getElementById('output-svgA1_2_Ax');
-    const outputAy = document.getElementById('output-svgA1_2_Ay');
-    const outputvx = document.getElementById('output-svgA1_2_vx');
-    const outputvy = document.getElementById('output-svgA1_2_vy');
-
-    if (!inputAx || !inputAy || !inputvx || !inputvy) return;
+    // Get input fields where the user enters values
+    const inputPx = document.getElementById('input-exaA1_1_Px') as HTMLInputElement;
+    const inputPy = document.getElementById('input-exaA1_1_Py') as HTMLInputElement;
+    
+    // Validate existence of critical elements to avoid null pointer errors
+    if (!inputPx || !inputPy) return;
 
     const update = () => {
-        const Ax = parseFloat(inputAx.value) || 0;
-        const Ay = parseFloat(inputAy.value) || 0;
-        const vx = parseFloat(inputvx.value) || 0;
-        const vy = parseFloat(inputvy.value) || 0;
+        // Read current values from inputs
+        const Px = parseFloat(inputPx.value) || 0;
+        const Py = parseFloat(inputPy.value) || 0;
 
-        // Update text outputs
-        if (outputAx) outputAx.textContent = Ax.toFixed(0);
-        if (outputAy) outputAy.textContent = Ay.toFixed(0);
-        if (outputvx) outputvx.textContent = vx.toFixed(0);
-        if (outputvy) outputvy.textContent = vy.toFixed(0);
+        // Define point coordinates based on input values
+        const Pcoordinates: Point2D = [Px, Py];
 
         // Redraw SVG
-        drawSVGA1_2(Ax, Ay, vx);
+        drawsvgA1_1(Pcoordinates);
+
+        // Request MathJax to process the new labels inside the SVG
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([svg]).catch((err: any) => console.error(err));
+        }
     };
 
-    inputAx.addEventListener('input', update);
-    inputAy.addEventListener('input', update);
-    inputvx.addEventListener('input', update);
-    inputvy.addEventListener('input', update);
+    inputPx.addEventListener('input', update);
+    inputPy.addEventListener('input', update);
 }
 
 function runAllDrawings() {
     ensureSharedMarkerDefs();
-    drawSVGA1_2();
+    drawsvgA1_1();
     setupExample1Interactivity();
-    //drawExercise2();
-    //drawExercise3();
-    //setupExercise4Interactivity();
-    //setupExercise5Interactivity();
-    //setupExercise7Interactivity();
-    //drawExercise6();
-    //drawExercise8();
 }
 
 if (typeof document !== 'undefined') {
