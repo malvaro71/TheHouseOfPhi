@@ -1,76 +1,600 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-title: TheHouseOfPhi Geometry
+title: TheHouseOfPhi Geometry - Annex 1
 lang: en
 ---
 
-<header>
-    # 2. GEOMETRY
-</header>
+import VectorCanvas from '../../components/VectorCanvas.astro'; // Container for rendering dynamic SVG graphics
+import MathJax from '../../components/MathJax.astro'; // Loads MathJax library to render LaTeX within SVGs
+import GeometryScript from '../../components/GeometryScript.astro'; // Script loader for geometry page logic
 
-<nav>
-    <ul>
-        <li>[Home](/)</li>
-        <li>[Geometry](#Geometry)</li>
-    </ul>
-</nav>
+<MathJax />
+<GeometryScript />
 
-<section>
-    ### 1.1 Introduction
-    In this chapter, we show concepts about Geometry that will be used along the website.
-</section>
 
-<section>
-    ### 2.2 Pythagorean theorem
-    In any right triangle $\triangle ABC$, where c is the length of the hypotenuse and a and b are the lengths of the legs,
+# Annex 1: Geometric Foundations for Physics
 
-    <div className="container">
-        <div className="center">$a^2 + b^2 = c^2$</div>
-        <div className="right" id="[2.1]">[2.2]</div>
-    </div>
+[Home](/) > [Geometry](#1-introduction)
 
-    <figure className="centered">
-        <img src="/images/RightTriangle.svg" width="300" height="225" alt="Right triangle diagram"/>
-        <figcaption><b>Figure 2.1</b> Right triangle with hypotenuse c and legs a and b.</figcaption>
-    </figure>
-</section>
+## 1. Introduction
+Physics and geometry are inseparable disciplines. While the former seeks to understand the natural laws that govern the universe, the latter provides the language and structural framework necessary to quantify the space where these phenomena occur.
 
-<section>
-    ### 2.3 Graphical definitions of sine, cosine and tangent functions
+### 1.1. Importance of geometry as a basis for physics
+From the study of a falling body to the description of planetary orbits, all motion follows a trajectory defined by geometric properties. Mastery of trigonometry is essential for the decomposition of vector quantities, while knowledge of conics is the key to understanding universal gravitation. This annex acts as a technical "toolbox" that the reader can turn to in order to facilitate the transition between physical intuition and precise mathematical resolution.
 
-    Let's consider a circunference with radius of length r with centre at the origin *O* in a rectangular coordinate system, and a point P with coordinates (x,y) in the circunference. And let's name $\alpha$ the angle between the x-axis and the segment OP, as shown in figure below. Then, $\sin \alpha$ is the ratio y/r, `cos alpha` is the ratio x/r and $\tan \alpha$ is the ratio y/x.
+### 1.2. Fundamental blocks of the annex
+This resource is organized into the following reference blocks:
+- **[Cartesian coordinate system](#2-cartesian-coordinate-system):** Representation of points and lines in the plane.
+- **[The Triangle, Trigonometric ratios](#3-the-triangle-trigonometric-ratios):** Basic properties and fundamental theorems (Pythagoras, Law of Sines and Cosines).
+- **[The Circle](#4-the-circle):** Elements of the circle and the definition of the radian.
+- **[The Conics](#5-the-conics):** (Parabola, ellipse and hyperbola) Definition and applications in physics.
+- **A1.7 Polar coordinate system:** Localization using radius and angle.
 
-    <figure className="centered">
-        <img src="/images/Circunference_and_coordinates.svg" width="300" height="300" alt="Diagram of a circle with point P and inscribed right triangle."/>
-        <figcaption><b>Figure 2.2</b> Circunference of radius r with a point P and angle $\alpha$ with x-axis.</figcaption>
-    </figure>
+## 2. Cartesian coordinate system
 
-    Then, we define the sine, cosine and tangent functions as:
+Analytical geometry starts from the idea that any point in the plane can be described by two numbers: its horizontal distance and its vertical distance relative to two fixed (usually perpendicular) axes. This system is the basis for almost any representation in Physics, from kinematic graphs to field maps.
 
-    <div className="container">
-        <div className="center">$\sin \alpha = y/r$</div>
-        <div className="right" id="[2.2]">[2.2]</div>
-    </div>
-    <br />
+This leads us to the concept of the **Cartesian coordinate system** (or rectangular coordinate system) in two dimensions, which is a reference frame that allows any point in a plane to be located uniquely.
 
-    <div className="container">
-        <div className="center">$\cos \alpha = x/r$</div>
-        <div className="right" id="[2.3]">[2.3]</div>
-    </div>
-    <br />
+This system consists of two perpendicular number lines, called **coordinate axes**, which intersect at a point called the **origin (O)**.
 
-    <div className="container">
-        <div className="center">$\tan \alpha = y/x$</div>
-        <div className="right" id="[2.4]">[2.4]</div>
-    </div>
-    <br />
-</section>
+- **Abscissa axis (x-axis):** The horizontal line. Positive values are to the right of the origin.
+- **Ordinate axis (y-axis):** The vertical line. Positive values are above the origin.
 
-<aside>
+Any point $P$ in the plane is described by an ordered pair of numbers $(x, y)$, called **coordinates**:
+
+$$
+P = (x, y) \tag{2.1}
+$$
+
+Where $x$ represents the perpendicular distance to the $y$ axis, and $y$ represents the perpendicular distance to the $x$ axis. These two axes divide the plane into four regions called **quadrants**, numbered I to IV counterclockwise starting from the upper right quadrant.
+
+The true power of this system lies in the fact that it establishes a direct bridge between geometry and algebra. Thanks to coordinates, we can describe geometric figures (such as lines, circles, or parabolas) using algebraic equations, and vice versa. This approach, known as **analytical geometry**, allows us to solve geometric problems using the tools of algebra, such as calculating distances, determining intersection points, or analyzing the properties of curves.
+
+This system allows us to translate real physical positions —for example, on a laboratory table or along a ruler— into a precise mathematical representation.
+
+The representation in $(x, y)$ coordinates can also be expressed as a **position vector** $\vec r = (x, y)$ relative to a fixed origin. This allows distances, displacements, and changes to be expressed compactly.
+
+{/* --- Initial values for A1_2_1 example --- */}
+export const exaA1_2_1P = [4, 7];
+
+Let's see an example. The following figure shows a Cartesian coordinate system, with the abscissa axis (x-axis), the ordinate axis (y-axis), and the origin (O). Furthermore, the quadrants of the plane are marked. In this coordinate system, we show a point P, with coordinates (<input type="number" id="input-exaA1_2_1Px" value={exaA1_2_1P[0]} min="-10" max="10" style="width: 40px"/>, <input type="number" id="input-exaA1_2_1Py" value={exaA1_2_1P[1]} min="-10" max="10" style="width: 40px"/>)
+
+{/* --- Converts to string for passing to the drawing function--- */}
+export const exaA1_2_1P_json = JSON.stringify(exaA1_2_1P);
+
+<figure class="centered">
+    <VectorCanvas id="svgA1_2_1"
+        data-point-coordinates={exaA1_2_1P_json}
+    />
+    <figcaption><b>Figure A1.2.1</b>: Representation of a point, its coordinates, and its position vector in the plane.</figcaption>
+</figure>
+
+### Midpoint
+The **midpoint** of two positions allows describing geometric centers or equilibrium points and is calculated by:
+$$
+M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right). \tag{2.2}
+$$
+Or, using position vectors:
+$$
+\vec r_M = \tfrac{1}{2}(\vec r_1+\vec r_2)\ \tag{2.3}
+$$
+
+### 2.1 Line equations
+Each form of the line is useful for a different type of problem.
+
+#### **Explicit form:**
+$$
+y = mx + n \tag{2.4}
+$$
+- **m** is the slope: it indicates how much y grows for each unit that x advances.
+- **n** is the y-intercept: the value of y when x = 0.
+
+#### **Point–slope form:** 
+$$
+y - y_0 = m(x - x_0)  \tag{2.5}
+$$
+Very useful when we know a specific point on the line.
+
+{/* --- Initial values for A1_2_2 example --- */}
+export const exaA1_2_2P = [4, 7];
+export const exaA1_2_2m = 3;
+
+
+Let's see an example of the line equation in its point-slope form. Suppose we have a line that passes through point P, with coordinates (<input type="number" id="input-exaA1_2_2Px" value={exaA1_2_2P[0]} min="-10" max="10" style="width: 40px"/>, <input type="number" id="input-exaA1_2_2Py" value={exaA1_2_2P[1]} min="-10" max="10" style="width: 40px"/>), and has a slope of <input type="number" id="input-exaA1_2_2m" value={exaA1_2_2m} min="-10" max="10" style="width: 40px"/>.
+
+The equation of said line in its point-slope form would be:
+<div id="exaA1_2_2line-equation-formula" class="centered" style="margin: 1.5rem 0;">
+</div>
+
+And in the following graph, we can see this line drawn in the Cartesian plane.
+
+{/* Convert to string in order to pass as parameters in VectorCanvas component */}
+export const exaA1_2_2P_json = JSON.stringify(exaA1_2_2P);
+export const exaA1_2_2m_json = JSON.stringify(exaA1_2_2m);
+
+<figure class="centered">
+    <VectorCanvas id="svgA1_2_2"
+        data-point-coordinates={exaA1_2_2P_json}
+        data-slope={exaA1_2_2m_json}
+    />
+    <figcaption><b>Figure A1.2.2</b>: Representation of a line in its point-slope form.</figcaption>
+</figure>
+
+#### **General form:**
+$$
+Ax + By + C = 0  \tag{2.6}
+$$
+Most suitable when we want to:
+- identify parallelism or perpendicularity,
+- use algebraic methods,
+- calculate distances.
+The **normal** vector to the line is \(\vec n=(A,B)\).
+
+#### **Parametric/Vectorial Form:**
+
+The parametric equation is one of the most intuitive and powerful ways to describe a line in the plane. Instead of expressing the relationship between `x` and `y` through a single equation, the line is represented as the set of all points obtained by displacing a fixed point in a determined direction.
+
+To define a line in parametric form, we need two essential elements:
+
+- **A point on the line**, called *base point* or *support point*:
+
+  $$A(a_1, a_2)$$
+
+- **A director vector**, which indicates the direction of the line:
+
+  $$\vec v = (v_1, v_2)$$
+
+This director vector is fundamental: it determines where the line advances and how all its points are generated.
+
+To build the parametric equation of a line, we start from point `A` and move in the direction of vector `v`, as many times as a real parameter `λ` indicates. Then, the line is defined in its parametric form by the following system of equations:
+
+$$
+\begin{cases}
+x = A_x + \lambda v_x \\
+y = A_y + \lambda v_y
+\end{cases}
+\quad \lambda \in \mathbb{R}
+$$
+
+Each value of `λ` generates a different point on the line.
+
+Useful relationships: if $\vec v=(v_x,v_y)$, then the slope $m=v_y/v_x$ (if $v_x\neq0$).
+
+The parametric equation explicitly shows how the line is traversed. It is especially useful in:
+- analytical geometry
+- physics
+- graphic programming
+- linear algebra
+
+{/* --- Initial values for A1_2_3 example. Punto base, vector director y t (este último puede ser modificados por el lector) --- */}
+export const exaA1_2_3lambda = 0;
+export const exaA1_2_3A = [-4, 3];
+export const exaA1_2_3v = [3, 1];
+
+Let's see an example: Suppose we have a base point A({exaA1_2_3A[0]} , {exaA1_2_3A[1]}) and a director vector $\vec v$ = ({exaA1_2_3v[0]}, {exaA1_2_3v[1]}), the system of equations that defines the line in its parametric form becomes:
+
+{`
+$$
+    \\begin{cases}
+        x = ${exaA1_2_3A[0]} + \\lambda\\cdot(${exaA1_2_3v[0]}) \\\\
+        y = ${exaA1_2_3A[1]} + \\lambda\\cdot(${exaA1_2_3v[1]})
+    \\end{cases}
+    \\quad \\lambda \\in \\mathbb{R}
+$$
+`}
+
+If we represent the line defined by the previous system in the plane and show the position vector for the point on the line with a value of `λ` = <input type="number" id="input-exaA1_2_3lambda" value={exaA1_2_3lambda} min="-10" max="10" style="width: 40px"/>, we can see how the position of the point varies along the line as the value of `λ` changes.
+
+{/* Convert to string in order to pass as parameters in VectorCanvas component */}
+export const exaA1_2_3lambda_json = JSON.stringify(exaA1_2_3lambda);
+export const exaA1_2_3A_json = JSON.stringify(exaA1_2_3A);
+export const exaA1_2_3v_json = JSON.stringify(exaA1_2_3v);
+
+
+{/* --- Declare de figure e.1 and define attributes to be used in VectorCanvas component --- */}
+<figure class="centered">
+    <VectorCanvas id="svgA1_2_3"
+        data-lambda={exaA1_2_3lambda_json}
+        data-a={exaA1_2_3A_json}
+        data-v={exaA1_2_3v_json}
+    />
+    <figcaption><b>Figure A1.2.3</b>: Variation of the position vector of a point on a line in its parametric form.</figcaption>
+</figure>  
+
+
+## 3. The triangle, Trigonometric ratios
+The triangle is the simplest polygon and the fundamental unit for the decomposition of almost any physical vector quantity in the plane.
+
+### 3.1. Basic elements of the triangle and nomenclature
+A triangle is a polygon with three sides that encloses a region of the plane. Its fundamental elements are the vertices, sides, and angles. To facilitate problem-solving, a **classic nomenclature** is used that relates these elements to each other:
+
+ - **Vertices:** These are the points of intersection of the sides. They are represented by capital letters: $A$, $B$, and $C$.
+ - **Sides:** These are the segments that join the vertices. They are represented by lowercase letters: $a$, $b$, and $c$. The convention dictates that **side $a$ is opposite to vertex $A$**, side $b$ is opposite to vertex $B$, and so on.
+ - **Angles:** These are the openings between two adjacent sides. They can be named using Greek letters ($\alpha$, $\beta$, $\gamma$) or by the name of the vertex with a circumflex accent ($\hat A$, $\hat B$, $\hat C$). Like the sides, the angle $\alpha$ (or $\hat A$) is located at vertex $A$.
+
+An inescapable property in Euclidean geometry is that the sum of the internal angles of any triangle is always constant:
+
+$$
+\alpha + \beta + \gamma = 180^\circ = \pi \text{ rad} \tag{3.1}
+$$
+
+!Figure 3.1: Triangle ABC with its vertices,**Initiating the Translation**
+
+I've begun translating the Spanish content of `es/geometry.mdx` into English, adhering to the structure and including the necessary components like `VectorCanvas`, `MathJax`, and the `GeometryScript` component, as the user intended and indicated through past requests. I'm also replicating the figure references, and ensuring consistent ID usage for interactive elements, focusing now on generating the MDX content.
+
+
+sides, and angles.
+
+#### **Similarity of triangles**
+Two triangles are similar if they have equal angles and proportional sides. This property is vital in physics to solve problems of optics, shadows, and force diagrams through proportionality ratios.
+
+### 3.2 Trigonometric ratios in the right triangle
+In a right triangle, the relationships between the angles and the lengths of its sides are not arbitrary; they are governed by constant proportions called **trigonometric ratios**. These ratios allow determining inaccessible distances and are the basis of vector decomposition.
+
+#### **Definition of sine, cosine, and tangent**
+Considering a right triangle and any one of its two acute angles, which we call $\theta$, we name the sides of this triangle relative to said angle as:
+
+ - **Hypotenuse ($h$):** The longest side, opposite the right angle.
+ - **Opposite side ($c_o$):** The side that is in front of the angle $\theta$.
+ - **Adjacent side ($c_a$):** The side that forms part of the angle $\theta$ (along with the hypotenuse).
+
+!Figure 3.1: Position of the adjacent and opposite sides relative to the angle θ.
+
+#### ⚠️ **Important: The legs depend on the chosen angle**
+It is crucial to understand that the terms "opposite" and "adjacent" **are not fixed**; they depend entirely on which acute angle we are using as a reference.
+
+If instead of angle $\theta$ (at the base) we used the other acute angle (the upper one), the roles would reverse: the side that was previously "opposite" would become "adjacent" to that new angle, and vice versa. The hypotenuse, however, never changes.
+
+**Golden rule for physics:** Never memorize that sine is "vertical" or cosine is "horizontal". Always ask yourself: "Is this leg in front of my angle (sine) or is it touching it (cosine)?".
+
+The main ratios (relative to the chosen angle, $\theta$) are defined as:
+
+$$
+\sin \theta = \frac{\text{opposite leg}}{\text{hypotenuse}} = \frac{c_o}{h} \tag{3.2}
+$$
+
+$$
+\cos \theta = \frac{\text{adjacent leg}}{\text{hypotenuse}} = \frac{c_a}{h} \tag{3.3}
+$$
+
+$$
+\tan \theta = \frac{\text{opposite leg}}{\text{adjacent leg}} = \frac{c_o}{c_a} \tag{3.4}
+$$
+
+We can imagine trigonometric ratios as "scale factors": the **cosine** tells us what fraction of the hypotenuse is projected onto the horizontal axis, while the **sine** indicates what fraction is projected onto the vertical axis. The **tangent**, for its part, defines the slope or inclination of the hypotenuse relative to the base.
+
+#### **Fundamental identities**
+There are mathematical relationships that are always fulfilled, regardless of the size of the triangle:
+
+- **Pythagorean identity:** Derived directly from the Pythagorean Theorem, it is the most important identity in trigonometry:
+$$
+\sin^2 \theta + \cos^2 \theta = 1 \tag{3.5}
+$$
+
+- **Relationship between ratios:** The tangent can always be expressed as the quotient of sine and cosine:
+$$
+\tan \theta = \frac{\sin \theta}{\cos \theta} \tag{3.6}
+$$
+
+- **Complementary angles:** Since the sum of the acute angles in a right triangle is 90º, it holds that the sine of an angle is equal to the cosine of its complement:
+$$
+\sin \theta = \cos(90^\circ - \theta) \tag{3.7}
+$$
+
+#### **Applications**
+In physics, trigonometry is not just a calculation tool, but a method to understand how magnitudes are distributed in space.
+- **Calculation of heights and distances:** Allows finding the height of a projectile or the distance to an object knowing only the angle of observation and a measured base.
+- **Inclined planes:** It is fundamental for decomposing the force of weight ($P = mg$) into a component parallel to the plane ($mg \sin \theta$) that generates motion, and a normal component ($mg \cos \theta$) that generates friction.
+- **Decomposition of forces:** Any force exerted at an inclined angle (such as the tension of a rope) is divided into a horizontal and a vertical component through the use of sine and cosine.
+
+### 3.3. Pythagorean theorem
+It establishes that in a right triangle, the square of the hypotenuse ($c$) is equal to the sum of the squares of the legs ($a$ and $b$):
+
+The **Pythagorean theorem** establishes that in any right triangle $\triangle ABC$, where $c$ is the length of the hypotenuse and $a$ and $b$ are the lengths of the legs,
+
+$$
+c^2 = a^2 + b^2 \tag{3.8}
+$$
+
+!Figure 3.2: Right triangle with legs a and b, and hypotenuse c.
+
+#### **Distance between two points**
+Applying the Pythagorean theorem, we calculate the distance between two points in the plane:
+$$
+AB = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \tag{3.9}
+$$
+This calculation appears continuously in Physics: distances between positions, magnitudes of displacements, lengths of idealized trajectories, etc.
+
+### 3.4. Law of Sines and Law of Cosines
+When the triangle is not a right triangle, we use more general relationships to determine unknown sides or angles.
+
+**Law of Cosines:** It is applied when we know two sides and the angle they form ($C$). It is the basis of the parallelogram law in vector addition.
+$$
+c^2 = a^2 + b^2 - 2ab \cdot \cos(C) \tag{3.10}
+$$
+
+**Law of Sines:** Establishes the proportion between the sides and the sines of their opposite angles:
+$$
+\frac{a}{\sin(A)} = \frac{b}{\sin(B)} = \frac{c}{\sin(C)} \tag{3.11}
+$$
+
+## 4. The circle
+The circle is one of the most present figures in physics, from the study of orbits and engines to the propagation of waves. While the **circumference** is the closed curved line where all points are at the same distance from the center, the **circle** is the surface contained within it.
+
+**Definition of circumference**  
+The set of points in the plane that are at a fixed distance \(R > 0\) from a fixed point \(\vec c = (h,k)\), called the **center**:
+$$
+\lVert \vec r - \vec c \rVert = R, \quad \text{with } \vec r=(x,y). \tag{4.1}
+$$
+
+### 4.1. Elements of the circle
+To describe a circle and its parts, we use the following concepts:
+- **Radius ($r$):** Segment that joins the center with any point on the circumference.
+- **Diameter ($d$):** Segment that joins two points on the circumference passing through the center. Its length is twice the radius ($d = 2r$).
+- **Chord:** Segment that joins two points on the circumference without necessarily passing through the center.
+- **Arc ($s$):** Portion of the circumference between two points.
+- **Circular sector:** "Pie slice" of the circle delimited by two radii and an arc.
+
+!Figure 4.1: Elements of the circle.
+
+#### **Circumference length and area**
+The relationship between the length of a circumference ($L$) and its diameter is a universal constant called **$\pi$ (pi)**. Intuitively, $\pi$ (approx. 3.14159...) represents how many times the diameter fits into the perimeter of its circle.
+
+$$
+L = 2\pi r \tag{4.2}
+$$
+
+$$
+\text{Area} = \pi r^2 \tag{4.3}
+$$
+
+### 4.2. Angles in the circumference
+In the analysis of rotary movements, it is essential to distinguish how we measure angles:
+- **Central angle:** It is one whose vertex is at the center of the circumference and its sides are two radii. The measurement of the intercepted arc is directly proportional to this angle.
+- **Inscribed angle:** It is one whose vertex is at a point on the circumference and its sides are two chords.
+
+**Fundamental relationship:** For the same arc, the central angle measures exactly twice the inscribed angle.
+
+### 4.3. Radians
+Although in daily life we use sexagesimal degrees (0° to 360°), in physics the natural unit of measurement is the **radian (rad)**.
+
+#### **Definition**
+A radian is the central angle subtended by an arc whose length ($s$) is equal to the radius ($r$) of the circumference.
+
+#### **Degrees ↔ radians conversion**
+Since a complete turn (360°) is equivalent to the total length of the circumference ($2\pi r$), the fundamental equivalence is:
+
+$$
+360^\circ = 2\pi \text{ rad} \implies 180^\circ = \pi \text{ rad} \tag{4.4}
+$$
+
+#### **Why are radians used in physics?**
+The use of the radian is not capricious. Its main advantage is that it simplifies the equations of motion, as it allows relating linear and angular magnitudes directly without extra conversion factors. For example, the length of an arc is calculated simply as:
+
+$$
+s = \theta \cdot r \tag{4.5}
+$$
+
+This relationship is only valid if the angle $\theta$ is expressed in **radians**.
+
+### 4.4. Equations of the circle
+
+### **Canonical equation (Cartesian)**
+$$
+(x - h)^2 + (y - k)^2 = R^2. \tag{4.6}
+$$
+
+### **General equation (Cartesian)**
+$$
+x^2 + y^2 + D x + E y + F = 0, \tag{4.7}
+$$
+which is brought to the canonical form by completing squares:
+$$
+(x - h)^2 + (y - k)^2 = R^2,\qquad h = -\tfrac{D}{2}, \quad k = -\tfrac{E}{2}, \quad R^2 = h^2 + k^2 - F \tag{4.8}
+$$
+
+### **Vector form**
+$$
+\lVert \vec r - \vec c \rVert^2 = R^2,\qquad \vec r=(x,y),\; \vec c=(h,k) \tag{4.9}
+$$
+
+### **Parametric equation of the circle**
+The parametric form describes the circumference by traversing it through an angle $\theta$:
+$$
+\begin{cases}
+x(\theta) = h + R \cos\theta, \\
+y(\theta) = k + R \sin\theta,
+\end{cases}
+\qquad \theta \in [0, 2\pi).
+$$
+
+**Properties:**
+- For $\theta = 0$, the point corresponds to $(h+R, k)$.
+- The path is made in **counterclockwise direction** as \(\theta\) increases.
+- An angular offset can be added:
+$$
+x(\theta)=h+R\cos(\theta+\theta_0),\qquad y(\theta)=k+R\sin(\theta+\theta_0).
+$$
+- If $\theta$ is interpreted as a temporal parameter:
+$$
+\frac{d\vec r}{d\theta} = (-R\sin\theta, R\cos\theta),\qquad 
+\left\lVert\frac{d\vec r}{d\theta}\right\rVert = R,
+$$
+that is, the speed relative to the parameter $\theta$ is constant.
+
+## 5. The Conics
+
+The **conics** constitute a family of curves fundamental to both Mathematics and Physics. Although they originate as sections produced by cutting a cone with a plane, their relevance transcends this geometric interpretation: they appear in **geometric optics**, in **celestial mechanics**, in the **study of fields**, in the design of **optical systems**, in particle trajectories, and in multiple other contexts.
+
+In the previous section, the particular case of the **circle** was studied, which is a conic of zero eccentricity. Now we will expand this vision by addressing the other three important conics: **parabola**, **ellipse**, and **hyperbola**. Although their equations seem different, they all share a common geometric structure based on distance relationships relative to foci, directrices, and symmetries.
+
+
+### 5.1. The Parabola
+
+The **parabola** is the conic most directly linked to phenomena of reflection and energy concentration. Its shape is determined by a very simple metric property: each point of the parabola is **equidistant** from the **focus** $\vec f$ and a **directrix**, which is a line defined by $\vec n \cdot \vec r + d = 0$.
+
+This metric condition can be written as:
+$$
+\lVert \vec r - \vec f \rVert = \frac{|\vec n \cdot \vec r + d|}{\lVert \vec n \rVert}.
+$$
+
+When we choose a suitable coordinate system (focus at $(p,0)$, directrix at $x=-p$), this definition adopts the well-known **canonical** form:
+$$
+y^2 = 4px.
+$$
+
+The parabola appears in numerous physical contexts:
+- **Geometric optics**: a beam of parallel rays converges at the focus after reflecting.
+- **Parabolic antennas and radio astronomy**: concentration of electromagnetic waves at the receiver.
+- **Telescope reflectors**: precise focusing of starlight.
+- **Parabolic motion**: ballistic trajectories in uniform gravitational fields (first-order approximation).
+
+**Figure 8**: *Parabola with focus, directrix (showing $\vec n$), and axis of symmetry.*
+
+
+### 5.2. The Ellipse
+
+The **ellipse** is perhaps the most relevant conic for gravitational physics. It is defined by the condition that the **sum of the distances** to two foci $\vec f_1,\vec f_2$ is constant:
+$$
+\lVert \vec r - \vec f_1 \rVert + \lVert \vec r - \vec f_2 \rVert = 2a.
+$$
+
+This metric behavior translates, when choosing principal axes, into the canonical equation:
+$$
+\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1,
+$$
+with foci located at $(\pm c,0)$ and the relationship between parameters given by $c^2 = a^2 - b^2$.
+
+Its presence in Physics is extensive:
+- **Celestial orbits**: according to *Kepler's first law*, planets describe ellipses with the Sun at one of its foci.
+- **Optical and acoustic systems**: in an elliptical room, a sound emitted from one focus concentrates at the other.
+- **Conservation of energy and angular momentum** in Lagrangian mechanics applied to Newtonian gravity.
+
+**Figure 9**: *Ellipse with foci, semi-axes, and centers; metric construction by sum of distances.*
+
+
+### 5.3. The Hyperbola
+
+The **hyperbola** complements the family of conics by being associated with situations where there is an excess of energy that allows escape trajectories. Its metric definition establishes that the **difference of distances** to two foci is constant:
+$$
+\big|\lVert\vec r - \vec f_1\rVert - \lVert\vec r - \vec f_2\rVert \big| = 2a.
+$$
+
+With aligned axes, its canonical equation is:
+$$
+\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1,
+$$
+and its asymptotes are given by the lines $y = \pm (b/a)\, x$.
+
+From a physical perspective:
+- Describes **escape orbits** of bodies with positive mechanical energy.
+- The **asymptotes** model limiting directions in gravitational scattering processes.
+- Models equipotential curves in systems where hyperbolic symmetry exists.
+
+**Figure 10**: *Hyperbola with vertices, foci, and asymptotes.*
+
+
+### 5.4. Relationship between Conics and Eccentricity
+
+Although parabolas, ellipses, and hyperbolas seem very different objects, all of them can be interpreted as **sections of the same geometric cone**. The key that unifies them is their **eccentricity** $e$, a parameter that measures how much the conic "moves away" from the circular case:
+- $0 < e < 1$: **ellipse**.
+- $e = 1$: **parabola**.
+- $e > 1$: **hyperbola**.
+
+Beyond their geometric origin, all can be transformed into each other through suitable **coordinate changes**. If a conic is given in an arbitrary system, it is possible to bring it to its canonical form through rotation and translation:
+$$
+\vec r = R\,\vec r' + \vec r_c,
+$$
+where $R$ is a rotation matrix and $\vec r_c$ a translation vector. This procedure reveals the fundamental structure of the conic regardless of its orientation or position.
+
+**Figure 11**: *Cone and cutting planes that generate each type of conic.*
+
+---
+
+
+### X. Perpendicularity between a vector with constant magnitude and its temporal variation
+#### Introduction:
+In various areas of physics, mechanics, and kinematics, we frequently encounter the analysis of **vectors whose magnitude remains constant over time**, although their direction may vary. This includes position vectors in movements restricted to a spherical or circular surface, as well as unit vectors that change orientation, such as the tangential unit vector in the study of curved trajectories. In these scenarios, a fundamental geometric property arises: **the temporal variation of any vector of constant magnitude is always perpendicular to the original vector**. This property, with roots in geometry, has broad and significant applications in physics, facilitating the understanding of concepts such as velocity and acceleration in curvilinear movements, the decomposition of acceleration into intrinsic components, and in general, the analysis of physical systems where certain vector quantities remain constant. In this article, we will explore and demonstrate this essential property, using two complementary perspectives: an intuitive geometric demonstration based on the isosceles triangle and a rigorous analytical demonstration using the parametric function.
+
+#### Intuitive Geometric Approach - The Isosceles Triangle
+Let's consider a generic vector $\vec V(t)$, which varies in time *t*, but whose magnitude remains constant, that is, $|\vec V(t)| = C$, where C is a scalar constant. Let's visualize the vector $\vec V(t)$ and a vector $\vec V(t + \Delta t)$ at a slightly later point in time, *t + Δt*. Due to the constancy of the magnitude, the tips of these vectors will move restricted to a spherical surface (or circular in 2D) of radius C, centered at the origin.
+
+The change in vector $\vec V(t)$ during this small time interval Δt is the difference vector $\Delta \vec V = \vec V(t + \Delta t) - \vec V(t)$. Geometrically, $\Delta \vec V$ represents the vector that joins the tip of $\vec V(t)$ with the tip of $\vec V(t + \Delta t)$.
+
+If we consider the vector triangle formed by $\vec V(t)$, $\vec V(t + \Delta t)$, and $\Delta \vec V$ (more precisely, the vectors $\vec V(t)$, $-\vec V(t)$, and $\vec V(t + \Delta t)$), we notice that it is an isosceles triangle, since $|\vec V(t)| = |\vec V(t + \Delta t)| = C$. The vector $\Delta \vec V$ is the base of this isosceles triangle, with $\vec V(t)$ and $\vec V(t + \Delta t)$ as the equal sides.
+
+Let's consider the angle Δθ between $\vec V(t)$ and $\vec V(t + \Delta t)$. In the isosceles triangle, the angles opposite the equal sides (adjacent to $\Delta \vec V$) are equal, let's call them α. The sum of the internal angles of a triangle is $\pi$ radians:
+
+$$
+2\alpha + \Delta\theta = \pi \tag{X.1}
+$$
+
+From which we obtain:
+
+$$
+\alpha = \frac{(\pi - \Delta\theta)}{2} = \frac{\pi}{2} - \frac{\Delta\theta}{2} \tag{X.2}
+$$
+
+Now, let's analyze the limit as the time interval Δt tends to zero (Δt → 0, and therefore Δθ → 0). In this limit, $\Delta \vec V$ becomes the differential $d\vec V$, and Δθ becomes dθ. The angle α approaches:
+
+$$
+\alpha \rightarrow \frac{\pi}{2} - 0 = \frac{\pi}{2} \text{ radians or } 90^\circ. \tag{X.3}
+$$
+
+This implies that, in the infinitesimal limit, the angle between the change vector $d\vec V$ and the original vector $\vec V(t)$ tends to 90 degrees. That is, the infinitesimal variation $d\vec V$ is perpendicular to vector $\vec V(t)$. Since the derivative $d\vec V/dt$ (which represents the rate of temporal variation) has the same direction as $d\vec V$, we conclude geometrically that the temporal variation rate of $\vec V(t)$ is perpendicular to $\vec V(t)$ at each instant, provided that the magnitude of $\vec V(t)$ remains constant.
+
+#### Analytical Approach - Generalized Parametric Function with Temporal Parameter
+For a more general analytical demonstration, let's consider a vector $\vec V(t)$ in three dimensions (the demonstration is equally valid in two dimensions), expressed in Cartesian components:
+
+$$
+\vec V(t) = V_x(t) \mathbf{i} + V_y(t) \mathbf{j} + V_z(t) \mathbf{k} \tag{X.4}
+$$
+
+The condition of constant magnitude $|\vec V(t)| = C$ = constant, is expressed as:
+
+$$
+|\vec V(t)|^2 = V_x(t)^2 + V_y(t)^2 + V_z(t)^2 = C^2 \tag{X.5}
+$$
+
+For this condition to be maintained over time, the time derivative of $|\vec V(t)|^2$ must be zero. We differentiate both sides of the equation with respect to time, using the chain rule:
+
+$$
+\frac{d}{dt} (|\vec V(t)|^2) = \frac{d}{dt} (C^2) \tag{X.6}
+$$
+$$
+\frac{d}{dt} (V_x(t)^2 + V_y(t)^2 + V_z(t)^2) = 0 \tag{X.7}
+$$
+
+Applying the chain rule to each term:
+
+$$
+2V_x(t) \frac{dV_x(t)}{dt} + 2V_y(t) \frac{dV_y(t)}{dt} + 2V_z(t) \frac{dV_z(t)}{dt} = 0 \tag{X.8}
+$$
+
+Dividing by 2 and rearranging:
+
+$$
+V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} = 0 \tag{X.9}
+$$
+
+The left side of this equation is precisely the dot product of vector $\vec V(t)$ with its time derivative $\displaystyle\frac{d\vec V}{dt}$
+
+$$
+\vec V(t) \cdot \frac{d\vec V(t)}{dt} = \left( V_x(t), V_y(t), V_z(t) \right) \cdot \left( \frac{dV_x(t)}{dt}, \frac{dV_y(t)}{dt}, \frac{dV_z(t)}{dt} \right) = V_x(t) \frac{dV_x(t)}{dt} + V_y(t) \frac{dV_y(t)}{dt} + V_z(t) \frac{dV_z(t)}{dt} \tag{X.10}
+$$
+
+Therefore, the constant magnitude condition $|\vec V(t)| = C$ implies that:
+
+$$
+\vec V(t) \cdot \frac{d\vec V(t)}{dt} = 0 \tag{X.11}
+$$
+
+This demonstrates analytically that **vector $\vec V(t)$ and its time derivative $\displaystyle\frac{d\vec V(t)}{dt}$ are always perpendicular to each other**, under the condition that the magnitude of $\vec V(t)$ remains constant. This result is valid for any vector with constant magnitude, not just for position vectors.
+
+#### Conclusion
+We have demonstrated, through two complementary approaches, that **the temporal variation of a vector of constant magnitude is intrinsically perpendicular to the original vector**. This fundamental property, visualized geometrically and confirmed analytically, transcends the particular case of the position vector and applies to any vector whose magnitude is conserved constant during its temporal evolution.
+
+This relationship of perpendicularity is of great relevance in physics. It allows a better understanding of the nature of velocity in curvilinear movements, the direction of normal acceleration in terms of change of velocity direction, and provides a solid basis for the analysis of systems where the conservation of vector magnitudes, such as the length of a vector, plays a fundamental role. The property demonstrated here is not just a geometric result, but a powerful conceptual tool for the analysis and interpretation of diverse physical phenomena in mechanics, electromagnetism, and other areas of physics.
+
     #### References
-    - The Pitagorean Theorem. Prealgebra 2e. 9.3. Openstax.
-    - Pythagorean theorem. Encyclopedia of Mathematics.
-    - Sine. Encyclopedia of Mathematics.
-    - Sine, Cosine and Tangent. Mathisfun.
-    - Using Right Triangles to Evaluate Trigonometric Functions. Openstax.
-</aside>

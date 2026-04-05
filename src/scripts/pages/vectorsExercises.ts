@@ -15,6 +15,7 @@ function drawExercise1(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) 
     const svg = document.getElementById('svg1e_1');
     if (!(svg instanceof SVGElement)) return;
 
+    // Variables to charge values from exercise1 in MDX
     let e1_vRiver: Point2D, e1_vBoat: Point2D, e1_vPropelled: Point2D;
 
     // If vectors are passed as arguments, it means the user has moved the controls

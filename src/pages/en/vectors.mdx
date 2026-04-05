@@ -463,6 +463,7 @@ export const e1_phi = math.acos(math.dot(e1_vRiver, e1_vPropelled) / (math.norm(
 
 So, the answer to the exercise is that the boat must be propelled at a speed of <span id="output-e1-norm-vpropelled-2">{e1_normvPropelled.toFixed(1)}</span> Km/h and in a direction that forms an angle of <span id="output-e1-phi-2">{e1_phi.toFixed(1)}</span>º with the river.
 
+{/* --- Convert vectors to strings in order to pass them as parameters in VectorCanvas component --- */}
 export const e1_vRiver_json = JSON.stringify(e1_vRiver);
 export const e1_vBoat_json = JSON.stringify(e1_vBoat);
 export const e1_vPropelled_json = JSON.stringify(e1_vPropelled);

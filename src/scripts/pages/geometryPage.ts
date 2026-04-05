@@ -13,16 +13,16 @@ import type { Point2D } from '../core/types.ts';
  * Sets up interactivity for example about parametric equation of a line,
  * Given the basepoint A and the director vector v.
  */
-function setupExample1Interactivity() {
+function setupExampleA1_2_1Interactivity() {
     // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
     declare const MathJax: any;
 
     // Get input fields where the user enters values
-    const inputPx = document.getElementById('input-exaA1_1_Px') as HTMLInputElement;
-    const inputPy = document.getElementById('input-exaA1_1_Py') as HTMLInputElement;
+    const inputPx = document.getElementById('input-exaA1_2_1Px') as HTMLInputElement;
+    const inputPy = document.getElementById('input-exaA1_2_1Py') as HTMLInputElement;
     
     // Get svg element
-    const svg = document.getElementById('svgA1_1');
+    const svg = document.getElementById('svgA1_2_1');
     
     // Validate existence of critical elements to avoid null pointer errors
     if (!inputPx || !inputPy || !svg) return;
@@ -38,7 +38,7 @@ function setupExample1Interactivity() {
         const Pcoordinates: Point2D = [Px, Py];
 
         // Redraw SVG
-        drawsvgA1_1(Pcoordinates);
+        drawsvgA1_2_1(Pcoordinates);
 
         // Request MathJax to process the new labels inside the SVG
         if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
@@ -60,9 +60,9 @@ function setupExample1Interactivity() {
  * This function handles the visual representation (SVG).
  * It can operate in initial mode (reading data from HTML) or update mode (receiving new vectors).
  */
-function drawsvgA1_1(pointCoordinates?: Point2D) {
+function drawsvgA1_2_1(pointCoordinates?: Point2D) {
     // Attempt to get the SVG element by its ID
-    const svg = document.getElementById('svgA1_1');
+    const svg = document.getElementById('svgA1_2_1');
     if (!(svg instanceof SVGElement)) return;
 
     let pointCoord: Point2D;
@@ -80,7 +80,7 @@ function drawsvgA1_1(pointCoordinates?: Point2D) {
         try {
             pointCoord = JSON.parse(pointCoordStr) as Point2D;
         } catch (e) {
-            console.error("Error parsing initial vectors for exampleA1_1", e);
+            console.error("Error parsing initial vectors for exampleA1_2_1", e);
             return;
         }
     }
@@ -103,7 +103,7 @@ function drawsvgA1_1(pointCoordinates?: Point2D) {
     plane.drawMath([pointCoord[0] + 0.5, pointCoord[1]], `\\text{P}(${pointCoord[0]}, ${pointCoord[1]})`, { color: "green", scale: 1.3, dx: 0, dy: -5 });
 
     // Draw the vector position r from origin to point P
-    plane.drawVectorB([0, 0], pointCoord, "\\vec r", {color: "green", scale: 1.3});
+    plane.drawVectorB([0, 0], pointCoord, "\\vec r", { strokeColor: "green" }, { color: "green", scale: 1.3 });
 
     // Draw projections (dashed lines) to the axes
     plane.drawSegment([pointCoord[0], 0], pointCoord, { strokeColor: "green", strokeDasharray: "5,5", strokeWidth: 1 });
@@ -117,25 +117,24 @@ function drawsvgA1_1(pointCoordinates?: Point2D) {
 }
 
 /**
- * Sets up interactivity for Example A1_2_1.
+ * Sets up interactivity for Example A1_2_2.
  * Listens for changes in numerical inputs and updates calculations, formulas, and the graph.
  */
-function setupExempleA1_2_1Interactivity() {
+function setupExempleA1_2_2Interactivity() {
     // Declare MathJax to avoid TypeScript errors for the global variable loaded externally
     declare const MathJax: any;
 
     // Get svg element
-    const svg = document.getElementById('svgA1_2_1');
+    const svg = document.getElementById('svgA1_2_2');
 
     // Get input fields where the user enters values
-    const inputPx = document.getElementById('input-exaA1_2_1Px') as HTMLInputElement;
-    const inputPy = document.getElementById('input-exaA1_2_1Py') as HTMLInputElement;
-    const inputM = document.getElementById('input-exaA1_2_1m') as HTMLInputElement;
+    const inputPx = document.getElementById('input-exaA1_2_2Px') as HTMLInputElement;
+    const inputPy = document.getElementById('input-exaA1_2_2Py') as HTMLInputElement;
+    const inputM = document.getElementById('input-exaA1_2_2m') as HTMLInputElement;
 
     // Elements where text results and formulas will be written
-    const lineEquationFormula = document.getElementById('exaA1_2_line-equation-formula');
+    const lineEquationFormula = document.getElementById('exaA1_2_2line-equation-formula');
     
-
     // Validate existence of critical elements to avoid null pointer errors
     if (!inputPx || !inputPy || !inputM || !lineEquationFormula) return;
     // Check for initialization flag to prevent multiple event listeners on the same inputs
@@ -143,7 +142,7 @@ function setupExempleA1_2_1Interactivity() {
 
     // This function executes every time the user changes a value in the inputs
     const update = () => {
-        // Read current values from inputs
+       // Read current values from inputs
         const Px = parseFloat(inputPx.value) || 0;
         const Py = parseFloat(inputPy.value) || 0;
         const m = parseFloat(inputM.value) || 0;
@@ -164,7 +163,7 @@ function setupExempleA1_2_1Interactivity() {
         }
 
         // Finally, redraw the graph with the new vectors
-        drawExampleA1_2_1(Point, m);
+        drawExampleA1_2_2(Point, m);
 
         // Request MathJax to process the new labels inside the SVG
         if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
@@ -188,9 +187,9 @@ function setupExempleA1_2_1Interactivity() {
  * This function handles the visual representation (SVG).
  * It can operate in initial mode (reading data from HTML) or update mode (receiving new vectors).
  */
-function drawExampleA1_2_1(pointCoordinates?: Point2D, slope?: number) {
+function drawExampleA1_2_2(pointCoordinates?: Point2D, slope?: number) {
     // Attempt to get the SVG element by its ID
-    const svg = document.getElementById('svgA1_2_1');
+    const svg = document.getElementById('svgA1_2_2');
     if (!(svg instanceof SVGElement)) return;
 
     let pointCoord: Point2D, m: number;
@@ -211,7 +210,7 @@ function drawExampleA1_2_1(pointCoordinates?: Point2D, slope?: number) {
             pointCoord = JSON.parse(pointCoordStr) as Point2D;
             m = parseFloat(slopeStr);
         } catch (e) {
-            console.error("Error parsing initial vectors for exampleA1_2_1", e);
+            console.error("Error parsing initial vectors for exampleA1_2_2", e);
             return;
         }
     }
@@ -225,7 +224,7 @@ function drawExampleA1_2_1(pointCoordinates?: Point2D, slope?: number) {
     // Draw the target point P using the dynamic coordinates
     plane.drawPoint(pointCoord, "green");
 
-    // Add a mathematical label for the point P(x, y)
+    // Add a m athematical label for the point P(x, y)
     plane.drawMath([pointCoord[0] + 0.5, pointCoord[1]], `\\text{P}(${pointCoord[0]}, ${pointCoord[1]})`, { color: "green", scale: 1.3, dx: 0, dy: -5 });
 
     // Calculate points of the line
@@ -236,6 +235,105 @@ function drawExampleA1_2_1(pointCoordinates?: Point2D, slope?: number) {
     plane.drawSegment(Point1, Point2, { strokeColor: "green", strokeWidth: 1 });
 
     svg.setAttribute('data-drawn', 'true'); // Mark SVG as drawn to avoid redundancy
+}
+
+/**
+ * Sets up interactivity for Example A1_2_3 (Parametric equation of a line).
+ * Listens for changes in the lambda parameter and updates the graph.
+ */
+function setupExampleA1_2_3Interactivity() {
+    declare const MathJax: any;
+
+    const inputLambda = document.getElementById('input-exaA1_2_3lambda') as HTMLInputElement;
+    const svg = document.getElementById('svgA1_2_3');
+
+    // Validate existence of critical elements to avoid null pointer errors
+    if (!inputLambda || !svg) return;
+    // Check for initialization flag to prevent multiple event listeners on the same inputs
+    if (svg.hasAttribute('data-math-initialized')) return;
+
+    // This function executes every time the user changes a value in the inputs
+    const update = () => {
+        // Read current values from inputs
+        const lambda = parseFloat(inputLambda.value) || 0;
+
+        // Redraw the graph with the new values
+        drawsvgA1_2_3(lambda);
+
+        // Request MathJax to process labels inside the SVG
+        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+            MathJax.typesetPromise([svg]).catch((err: any) => console.error(err));
+        }
+    };
+
+    inputLambda.addEventListener('input', update);
+    svg.setAttribute('data-math-initialized', 'true');
+    update();
+}
+
+/**
+ * Draws the parametric line example.
+ * Shows the base point A, director vector v, and the resulting point P(lambda).
+ */
+function drawsvgA1_2_3(lambdaValue?: number) {
+    // Attempt to get the SVG element by its ID
+    const svg = document.getElementById('svgA1_2_3');
+    if (!(svg instanceof SVGElement)) return;
+
+    // Variable to charge lambda value from A1_2_3 in MDX
+    let L: number;
+    let A: Point2D, v: Point2D;
+
+    // Attributes are automatically lowercased in the DOM (data-A becomes data-a)
+    const pointCoordStr = svg.getAttribute('data-a');
+    const vectorCoordStr = svg.getAttribute('data-v');
+    
+    if (!pointCoordStr || !vectorCoordStr) return;
+
+    try {
+        A = JSON.parse(pointCoordStr) as Point2D;
+        v = JSON.parse(vectorCoordStr) as Point2D;
+
+        if (lambdaValue !== undefined) {
+            // Update mode: Clear and use the provided lambda
+            svg.innerHTML = ''; 
+            L = lambdaValue;
+        } else {
+            // Initial mode: Read lambda from attribute if not already drawn
+            if (svg.hasAttribute('data-drawn')) return;
+            L = parseFloat(svg.getAttribute('data-lambda') || '0');
+        }
+    } catch (e) {
+        console.error("Error parsing vectors for example A1_2_3", e);
+        return;
+    }
+
+    const plane = new CartesianPlane(svg, -11, 11, -11, 11);
+    plane.drawAxes("Y", "X", "O");
+
+    // Draw the full line as a reference (using two far points)
+    const pFar1: Point2D = [A[0] + -10 * v[0], A[1] + -10 * v[1]];
+    const pFar2: Point2D = [A[0] + 10 * v[0], A[1] + 10 * v[1]];
+    plane.drawSegment(pFar1, pFar2, { strokeColor: "gray", strokeWidth: 1, strokeDasharray: "2,2" });
+
+    // Draw base point A
+    plane.drawPoint(A, "brown");
+    plane.drawMath([A[0], A[1]], "A", { color: "brown", dy: -20, dx: -15, scale: 1.3 });
+
+    // Draw director vector v starting from A
+    plane.drawVectorB(A, v, "\\vec v", { strokeColor: "blue" }, { color: "blue", dx: -10, dy: -23, scale: 1.5 });
+
+    // Calculate current point P = A + L*v
+    const P = math.add(A, math.multiply(L, v)) as Point2D;
+
+    // Draw the resulting point P and its label
+    plane.drawPoint(P, "green");
+    plane.drawMath([P[0], P[1]], `P(\\lambda = ${L.toFixed(1)})`, { color: "green", dy: -15, dx: 10 });
+
+    // Draw the position vector r from origin to P
+    plane.drawVectorB([0, 0], P, "\\vec r", { strokeColor: "green" }, { color: "green", scale: 1.3 });
+
+    svg.setAttribute('data-drawn', 'true');
 }
 
 // Export a dictionary of drawing functions keyed by SVG ID
@@ -467,10 +565,12 @@ export const geometryDrawings = {
 
 function runAllDrawings() {
     ensureSharedMarkerDefs();
-    drawsvgA1_1();
-    setupExample1Interactivity();
-    drawExampleA1_2_1();
-    setupExempleA1_2_1Interactivity();
+    drawsvgA1_2_1();
+    setupExampleA1_2_1Interactivity();
+    drawExampleA1_2_2();
+    setupExempleA1_2_2Interactivity();
+    drawsvgA1_2_3();
+    setupExampleA1_2_3Interactivity();
 }
 
 if (typeof document !== 'undefined') {
