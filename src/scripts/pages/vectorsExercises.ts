@@ -261,10 +261,26 @@ function drawExercise6() {
  * Draws Exercise 8: Triangle area via cross product.
  */
 function drawExercise8() {
+    // Attempt to get the SVG element by its ID
     const svg = document.getElementById('svg2_8');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
-    
-    const A: Point3D = [3, 4, 1], B: Point3D = [1, -2, 2], C: Point3D = [-2, 1, 4];
+
+    const aStr = svg.getAttribute('data-vec-a');
+    const bStr = svg.getAttribute('data-vec-b');
+    const cStr = svg.getAttribute('data-vec-c');
+    if (!aStr || !bStr || !cStr) return;
+
+    let A: Point3D, B: Point3D, C: Point3D;
+    try {
+        A = JSON.parse(aStr) as Point3D;
+        B = JSON.parse(bStr) as Point3D;
+        C = JSON.parse(cStr) as Point3D;
+    } catch (e) {
+        console.error("Error parsing initial points for exercise 8", e);
+        return;
+    }
+
+    // Calculate AB, AC and B+AC vectors
     const AB = math.subtract(B, A) as Point3D;
     const AC = math.subtract(C, A) as Point3D;
     const BplusAC = math.add(B, AC) as Point3D;
@@ -480,39 +496,6 @@ function setupExercise7Interactivity() {
     update();
 }
 
-/**
- * Sets up interactivity for Exercise 8: Triangle area via cross product.
- */
-function setupExercise8Interactivity() {
-    declare const MathJax: any;
-
-    // Elements for dynamic formulas
-    const abVectorFormula = document.getElementById('e8-ab-vector-formula');
-    const acVectorFormula = document.getElementById('e8-ac-vector-formula');
-    const crossProductFormula = document.getElementById('e8-cross-product-formula');
-    const normCrossProductFormula = document.getElementById('e8-norm-cross-product-formula');
-    const areaFormula = document.getElementById('e8-area-formula');
-
-    // No inputs for this exercise, but we still need to ensure MathJax renders
-    // and avoid duplicate initializations if the page is swapped.
-    if (!abVectorFormula || abVectorFormula.hasAttribute('data-math-initialized')) return;
-
-    // This exercise does not have interactive inputs, but we want to ensure
-    // the dynamic LaTeX blocks are rendered by MathJax on load.
-    const update = () => {
-        // MathJax will process the initial content of the div,
-        // but if we were to make these dynamic, this is where the LaTeX string would be built.
-        // For now, we just trigger a typeset on the existing content.
-        if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
-            MathJax.typesetPromise([abVectorFormula, acVectorFormula, crossProductFormula, normCrossProductFormula, areaFormula]).catch((err: any) => console.error('MathJax typesetting error:', err));
-        }
-    };
-
-    // Initial sync and mark as initialized
-    abVectorFormula.setAttribute('data-math-initialized', 'true');
-    update();
-}
-
 function runAllDrawings() {
     ensureSharedMarkerDefs();
     drawExercise1();
@@ -522,7 +505,6 @@ function runAllDrawings() {
     setupExercise4Interactivity();
     setupExercise5Interactivity();
     setupExercise7Interactivity();
-    setupExercise8Interactivity(); // Added setup for Exercise 8
     drawExercise6();
     drawExercise8();
 }

@@ -33,21 +33,20 @@ The project employs a hybrid rendering strategy involving both build-time genera
 MDX Pages (src/pages/[lang]/)
 │
 ├── index.mdx
-│
 ├── geometry.mdx
 │   └── uses `vector:` protocol
 │       └── transformed by `rehype-vector-canvas`
 │           └── imports <VectorCanvas />
-│               └── imports src/scripts/pages/geometryPage.ts
-│           └── imports <VectorConverter />
-│               └── imports src/scripts/components/VectorConverterLogic.ts
-│
+│               └── imports src/scripts/pages/geometryPage.ts        
 └── vectors.mdx
-    └── uses `vector:` protocol
-        └── transformed by `rehype-vector-canvas`
-            └── imports <VectorCanvas />
-    └── imports <VectorsExercisesScript />
-        └── imports src/scripts/pages/vectorsExercises.ts
+    ├── uses `vector:` protocol
+    │   └── transformed by `rehype-vector-canvas`
+    │       └── imports <VectorCanvas />
+    │           └── imports src/scripts/pages/vectorsPage.ts│
+    ├── imports <VectorsExercisesScript />
+    │   └── imports src/scripts/pages/vectorsExercises.ts
+    └── imports <VectorConverter />
+        └── imports src/scripts/components/VectorConverterLogic.ts
 
 # Dependency Diagram (Detailed)
 

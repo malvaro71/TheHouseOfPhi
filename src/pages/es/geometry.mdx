@@ -6,10 +6,9 @@ lang: es
 
 import VectorCanvas from '../../components/VectorCanvas.astro'; // Contenedor para renderizar los gráficos SVG dinámicos
 import MathJax from '../../components/MathJax.astro'; // Carga la librería MathJax para renderizar LaTeX dentro de los SVGs
-import GeometryScript from '../../components/GeometryScript.astro'; // Injects specific TypeScript logic for the exercises on this page
 
 <MathJax />
-<GeometryScript />
+
 
 # Anexo 1: Fundamentos Geométricos para la Física
 
@@ -66,7 +65,7 @@ export const exaA1_1_P_json = JSON.stringify(exaA1_1_P);
     <VectorCanvas id="svgA1_1"
         data-point-coordinates={exaA1_1_P_json}
     />
-    <figcaption><b>Figura A1.1</b>: Representación de un punto, sus coordenadas y su vector posición en el plano.</figcaption>
+    <figcaption><b>Figura A1.2.1</b>: Representación de un punto, sus coordenadas y su vector posición en el plano.</figcaption>
 </figure>
 
 ### Punto medio
@@ -117,7 +116,7 @@ export const exaA1_2_1m_json = JSON.stringify(exaA1_2_1m);
         data-point-coordinates={exaA1_2_1P_json}
         data-slope={exaA1_2_1m_json}
     />
-    <figcaption><b>Figura A1.2.1</b>: Representación de una recta en su forma punto-pendiente.</figcaption>
+    <figcaption><b>Figura A1.2.2</b>: Representación de una recta en su forma punto-pendiente.</figcaption>
 </figure>
 
 #### **Forma general:**
@@ -164,25 +163,22 @@ La ecuación paramétrica muestra explícitamente cómo se recorre la recta. Es 
 - programación gráfica
 - álgebra lineal
 
-{/* --- Valores del punto base, el vector director y t (pueden ser modificados por el lector) --- */}
-export const svgA1_2_t = 0;
-export const svgA1_2_A = [-4, -2];
-export const svgA1_2_v = [3, 1];
+{/* --- Initial values for A1_2_2 exampleValores del punto base, el vector director y t (pueden ser modificados por el lector) --- */}
+export const svgA1_2_3t = 0;
+export const svgA1_2_3A = [-4, -2];
+export const svgA1_2_3v = [3, 1];
 
-Veamos un ejemplo: Supongamos que tenemos un punto base A(<input type="number" id="input-svgA1_2_Ax" value={svgA1_2_A[0]} min="-15" max="15" style="width: 40px"/>, <input type="number" id="input-svgA1_2_Ay" value={svgA1_2_A[1]} min="-15" max="15" style="width: 40px"/>) y un vector director $\vec v$ = (<input type="number" id="input-svgA1_2_vx" value={svgA1_2_v[0]} min="-10" max="10" style="width: 40px; text-align: center;"/>, <input type="number" id="input-svgA1_2_vy" value={svgA1_2_v[1]} min="-10" max="10" style="width: 40px; text-align: center;"/>), la recta queda:
+Veamos un ejemplo: Supongamos que tenemos un punto base A({svgA1_2_3A[0]} , {svgA1_2_3A[1]}) y un vector director $\vec v$ = ({svgA1_2_3v[0]}, {svgA1_2_3v[1]}), la recta queda:
 
-$ x = $<span id="output-svgA1_2_Ax">{svgA1_2_A[0]}</span>$ + $<span id="output-svgA1_2_vx">{svgA1_2_v[0]}</span>$\lambda$
-
-$ y = $<span id="output-svgA1_2_Ay">{svgA1_2_A[1]}</span>$ + $<span id="output-svgA1_2_vy">{svgA1_2_v[1]}</span>$\lambda$
-
-
-
+{`
 $$
-\begin{cases}
-x = -4 + 3\lambda \\
-y = -2 + \lambda
-\end{cases}
+    \\begin{cases}
+        x = ${svgA1_2_3A[0]} + 3\\lambda \\\\
+        y = -2 + \\lambda
+    \\end{cases}
+    \\quad \\lambda \\in \\mathbb{R}
 $$
+`}
 
 
 Se escribe como:

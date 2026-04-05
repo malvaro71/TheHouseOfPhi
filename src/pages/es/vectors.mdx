@@ -7,7 +7,7 @@ lang: es
 import VectorCanvas from '../../components/VectorCanvas.astro'; // Container for rendering dynamic SVG graphics
 import VectorConverter from '../../components/VectorConverter.astro'; // Interactive component for vector calculations and conversion
 import MathJax from '../../components/MathJax.astro'; // Loads MathJax library to render LaTeX within SVGs
-import VectorsExercisesScript from '../../components/VectorsExercisesScript.astro'; // Injects specific TypeScript logic for the exercises on this page
+import VectorsExercisesScript from '../../components/VectorsExercisesScript.astro'; // Script loader; injects specific TypeScript logic for the exercises on this page
 import * as math from 'mathjs'; // Library for performing complex vector math operations
 
 <MathJax />
@@ -491,16 +491,19 @@ Dibuja, uno a continuación del otro, los vectores $\vec a = 2\hat{\imath} + 3\h
 
 Para resolver este ejercicio, primero representemos gráficamente los vectores $\vec a$, $\vec b$, $\vec c$ y $\vec d$ en un plano cartesiano, uno a continuación del otro, utilizando el método gráfico de [suma de vectores](#3-suma-de-vectores-método-gráfico).
 
+{/* --- Declare initial values for exercise 2 vectors --- */}
 export const e2_a = [2, 3];
 export const e2_b = [4, -2];
 export const e2_c = [3, -2];
 export const e2_d = [-9, 1];
 
+{/* --- Convert vector values to string in order to pass as parameters in VectorCanvas component--- */}
 export const e2_a_json = JSON.stringify(e2_a);
 export const e2_b_json = JSON.stringify(e2_b);
 export const e2_c_json = JSON.stringify(e2_c);
 export const e2_d_json = JSON.stringify(e2_d);
 
+{/* --- Declare figure 19.2 and add vectors to it--- */}
 <figure class="centered">
     <VectorCanvas id="svge_2"
         data-vec-a={e2_a_json}
@@ -525,19 +528,22 @@ Se puede observar que el origen de $\vec a$ coincide con el final de $\vec d$. A
 
 ### Ejercicio 3
 Un barco de vela se mueve con una velocidad de {e3_sailboatSpeed} km/h en la dirección NNE (nornoreste). ¿Cuáles son las componentes de la velocidad del barco en dirección Norte y en dirección Este?
-{/* Datos del enunciado*/}
+{/* --- Declare initial values for exercise 3 ---*/}
 export const e3_sailboatSpeed = 4; // km/h
 export const e3_angleDeg = 67.5; // grados. Nornoreste es equivalente a 67.5º
 export const e3_angleRad = e3_angleDeg * Math.PI / 180; // radianes
 
+Si situamos el eje x en la dirección este y el eje y en la dirección norte, la dirección NNE (nornoreste) está orientada formando un ángulo de {e3_angleDeg}º, o $3\pi/8$ radianes, con el eje x (dirección este); según se muestra en la siguiente figura.
+
+{/* --- Calculate velocity components in North and East directions --- */}
 export const e3_sailboatSpeedX = e3_sailboatSpeed * Math.cos(e3_angleRad);
 export const e3_sailboatSpeedY = e3_sailboatSpeed * Math.sin(e3_angleRad);
 
-Si situamos el eje x en la dirección este y el eje y en la dirección norte, la dirección NNE (nornoreste) está orientada formando un ángulo de {e3_angleDeg}º, o $3\pi/8$ radianes, con el eje x (dirección este); según se muestra en la siguiente figura.
-
+{/* --- Declare velocity vector and convert it to string in order to pass as parameters in VectorCanvas component --- */}
 export const e3_V = [e3_sailboatSpeedX, e3_sailboatSpeedY];
 export const e3_V_json = JSON.stringify(e3_V);
 
+{/* --- Declare figure 19.3 and pass velocity vector and angle to VectorCanvas component--- */}
 <figure class="centered">
     <VectorCanvas id="svge_3"
         data-vec-v={e3_V_json}
@@ -549,7 +555,6 @@ export const e3_V_json = JSON.stringify(e3_V);
 Para resolver este ejercicio, utilicemos la noción de [componentes de un vector](#5-componentes-de-un-vector) y la [relación entre las componentes de un vector, su módulo y su dirección](#6-relación-entre-las-componentes-de-un-vector-su-módulo-y-su-dirección).
 
 Según esto, la componente de la velocidad del barco en dirección norte concide con la componente vertical $\vec V _y$, y la compenente en dirección este concide con la componente horizontal $\vec V _x$ del vector $\vec V$.
-
 
 Entonces, usamos la expresión [6.3] para calcular $\|\vec V_x\|$, y usamos la expresión [6.4] para calcular $\|\vec V_y\|$.
 
@@ -734,9 +739,9 @@ El resultado final de la velocidad lineal es:
 <p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
 
 ### Ejercicio 8
-Calcula el área de un triángulo $\triangle ABC$, siendo las coordenadas cartesianas de los vértices, $A = (3, 4, 1)$ m., $B = (1, -2, 2)$ m. y $C = (-2, 1, 4)$ m.
+Calcula el área de un triángulo $\triangle ABC$, siendo las coordenadas cartesianas de los vértices, A = ({e8_A[0]}, {e8_A[1]}, {e8_A[2]}) m., B = ({e8_B[0]}, {e8_B[1]}, {e8_B[2]}) m., y C = ({e8_C[0]}, {e8_C[1]}, {e8_C[2]}) m.
 
-{/* --- Datos del enunciado --- */}
+{/* --- Declare initial values for exercise 8 --- */}
 export const e8_A = [3, 4, 1];
 export const e8_B = [1, -2, 2];
 export const e8_C = [-2, 1, 4];
@@ -745,13 +750,13 @@ Para resolver este ejercicio, utilicemos la noción de [producto vectorial](#12-
 
 Así que definimos el vector $\overrightarrow{AB}$ como aquel que va del punto A hasta el punto B, y el vector $\overrightarrow{AC}$ como aquel que va del punto A hasta el punto C, y calculamos sus coordenadas:
 
-{/* AB and AC vectors */}
+{/* Calculate AB and AC vectors */}
 export const e8_AB = math.subtract(e8_B, e8_A);
 export const e8_AC = math.subtract(e8_C, e8_A);
 
-$\overrightarrow{AB} = B - A = (1-3, -2-4, 2-1) = ($ {e8_AB.join(', ')} $)$
+$\overrightarrow{AB} = \vec B - \vec A$ = ({e8_B[0]} - {e8_A[0]}, {e8_B[1]} - {e8_A[1]}, {e8_B[2]} - {e8_A[2]}) = ({e8_AB.join(', ')})
 
-$\overrightarrow{AC} = C - A = (-2-3, 1-4, 4-1) = ($ {e8_AC.join(', ')} $)$
+$\overrightarrow{AC} = \vec C - \vec A$ = ({e8_C[0]} - {e8_A[0]}, {e8_C[1]} - {e8_A[1]}, {e8_C[2]} - {e8_A[2]}) = ({e8_AC.join(', ')})
 
 Y calculamos el área del triángulo $\triangle ABC$ mediante la siguiente expresión:
 
@@ -805,8 +810,18 @@ $$
 $$
 `}
 
+{/* --- Convert points A, B and C to string in order to pass as parameters in VectorCanvas component --- */}
+export const e8_A_json = JSON.stringify(e8_A);
+export const e8_B_json = JSON.stringify(e8_B);
+export const e8_C_json = JSON.stringify(e8_C);
+
+{/* --- Declare de figure 19.5 and define attributes to be used in VectorCanvas component--- */}
 <figure class="centered">
-    <VectorCanvas id="svg2_8" />
+    <VectorCanvas id="svg2_8" 
+        data-vec-a={e8_A_json}
+        data-vec-b={e8_B_json}
+        data-vec-c={e8_C_json}
+    />
     <figcaption><b>Figura 19.5</b>: Paralelogramo definido por los vectores AB y AC, y triángulo ABC como mitad de dicho paralelogramo.</figcaption>
 </figure>
 
