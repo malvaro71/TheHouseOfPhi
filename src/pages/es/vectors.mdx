@@ -402,7 +402,7 @@ $$
 ## 19. Ejercicios con vectores
 
 ### Ejercicio 1
-Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de <input type="number" id="input-e1-vboat-y" value={e1_vBoat[1]} style="width: 50px; text-align: center;" /> km/h. El agua del río fluye a una velocidad de <input type="number" id="input-e1-vriver-x" value={e1_vRiver[0]} style="width: 50px; text-align: center;" /> km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
+Un barquero está remando en el bote, queriendo mantenerse siempre perpendicular a la orilla del río y cruzando con una velocidad media de <input type="number" id="input-e1-vboat-y" value={e1_vBoat[1]} min="1" max="35" style="width: 50px; text-align: center;" /> km/h. El agua del río fluye a una velocidad de <input type="number" id="input-e1-vriver-x" value={e1_vRiver[0]} min="0" max="15" style="width: 50px; text-align: center;" /> km/h. ¿A qué velocidad debe propulsarse el bote? ¿En qué dirección?
 
 Llamemos un vector $\vec v_r$ a la velocidad del agua del río y un vector $\vec v_b$ a la velocidad del bote con respecto a la orilla del río. El objetivo es encontrar el vector $\vec v_p$, que es la velocidad con la que el barquero debe propulsar el bote para que su velocidad resultante $\vec v_b$ sea perpendicular a la orilla del río.
 
@@ -410,7 +410,7 @@ Si elegimos un plano de coordenadas de manera que el eje x tenga la misma direcc
 
 {/* --- Boat and river velocities expressed by their components --- */}
 export const e1_vRiver = [9, 0];
-export const e1_vBoat = [0, 36];
+export const e1_vBoat = [0, 26];
 
 $\vec v_b = ($<span id="output-e1-vboat">{e1_vBoat.join(', ')}</span>$) \text{ Km/h}$
 
@@ -466,15 +466,16 @@ export const e1_vRiver_json = JSON.stringify(e1_vRiver);
 export const e1_vBoat_json = JSON.stringify(e1_vBoat);
 export const e1_vPropelled_json = JSON.stringify(e1_vPropelled);
 
+{/* --- Declare de figure e.1 and define attributes to be used in VectorCanvas component --- */}
 <figure class="centered">
-    <VectorCanvas id="svge_1"
+    <VectorCanvas id="svg1e_1"
         data-v-river={e1_vRiver_json}
         data-v-boat={e1_vBoat_json}
         data-v-propelled={e1_vPropelled_json}
         data-phi={e1_phi}
         data-norm-v-propelled={e1_normvPropelled}
     />
-    <figcaption><b>Figura 19.1</b>: Descomposición de las velocidades. $\vec{v}_r$ es la velocidad del río, $\vec{v}_b$ es la velocidad resultante del bote (perpendicular a la orilla), y $\vec{v}_p$ es la velocidad de propulsión necesaria.</figcaption>
+    <figcaption><b>Figura e.1</b>: Descomposición de las velocidades. $\vec{v}_r$ es la velocidad del río, $\vec{v}_b$ es la velocidad resultante del bote (perpendicular a la orilla), y $\vec{v}_p$ es la velocidad de propulsión necesaria.</figcaption>
 </figure>
 
 <p style="text-align: right;"><a href="#vectores">Volver al inicio del capítulo</a></p>
@@ -491,7 +492,7 @@ Dibuja, uno a continuación del otro, los vectores $\vec a = 2\hat{\imath} + 3\h
 
 Para resolver este ejercicio, primero representemos gráficamente los vectores $\vec a$, $\vec b$, $\vec c$ y $\vec d$ en un plano cartesiano, uno a continuación del otro, utilizando el método gráfico de [suma de vectores](#3-suma-de-vectores-método-gráfico).
 
-{/* --- Declare initial values for exercise 2 vectors --- */}
+{/* --- Declare initial values for exercise 2 --- */}
 export const e2_a = [2, 3];
 export const e2_b = [4, -2];
 export const e2_c = [3, -2];
@@ -503,15 +504,15 @@ export const e2_b_json = JSON.stringify(e2_b);
 export const e2_c_json = JSON.stringify(e2_c);
 export const e2_d_json = JSON.stringify(e2_d);
 
-{/* --- Declare figure 19.2 and add vectors to it--- */}
+{/* --- Declare de figure e.2 and define attributes to be used in VectorCanvas component --- */}
 <figure class="centered">
-    <VectorCanvas id="svge_2"
+    <VectorCanvas id="svg1e_2"
         data-vec-a={e2_a_json}
         data-vec-b={e2_b_json}
         data-vec-c={e2_c_json}
         data-vec-d={e2_d_json}
     />
-    <figcaption><b>Figura 19.2</b>: Suma de a, b, c y d por el método gráfico.</figcaption>
+    <figcaption><b>Figura e.2</b>: Suma de a, b, c y d por el método gráfico.</figcaption>
 </figure>
 
 
@@ -528,6 +529,7 @@ Se puede observar que el origen de $\vec a$ coincide con el final de $\vec d$. A
 
 ### Ejercicio 3
 Un barco de vela se mueve con una velocidad de {e3_sailboatSpeed} km/h en la dirección NNE (nornoreste). ¿Cuáles son las componentes de la velocidad del barco en dirección Norte y en dirección Este?
+
 {/* --- Declare initial values for exercise 3 ---*/}
 export const e3_sailboatSpeed = 4; // km/h
 export const e3_angleDeg = 67.5; // grados. Nornoreste es equivalente a 67.5º
@@ -543,13 +545,13 @@ export const e3_sailboatSpeedY = e3_sailboatSpeed * Math.sin(e3_angleRad);
 export const e3_V = [e3_sailboatSpeedX, e3_sailboatSpeedY];
 export const e3_V_json = JSON.stringify(e3_V);
 
-{/* --- Declare figure 19.3 and pass velocity vector and angle to VectorCanvas component--- */}
+{/* --- Declare figure e.3 and pass velocity vector and angle to VectorCanvas component--- */}
 <figure class="centered">
-    <VectorCanvas id="svge_3"
+    <VectorCanvas id="svg1e_3"
         data-vec-v={e3_V_json}
         data-angle={e3_angleDeg}
     />
-    <figcaption><b>Figura 19.3</b>: Dirección NNE, velocidad V y sus componentes Vx y Vy.</figcaption>
+    <figcaption><b>Figura e.3</b>: Dirección NNE, velocidad V y sus componentes Vx y Vy.</figcaption>
 </figure>
 
 Para resolver este ejercicio, utilicemos la noción de [componentes de un vector](#5-componentes-de-un-vector) y la [relación entre las componentes de un vector, su módulo y su dirección](#6-relación-entre-las-componentes-de-un-vector-su-módulo-y-su-dirección).
@@ -571,11 +573,11 @@ $\vec V_y =$ {e3_sailboatSpeed} $\cdot \sin(${e3_angleDeg}$^\circ) = ${e3_sailbo
 
 
 ### Ejercicio 4
-{/* --- Datos inciales del enunciado --- */}
+Un objeto se mueve de tal manera que su velocidad en un instante determinado es de <input type="number" id="input-e4-speed" value={e4_speed} style="width: 60px; text-align: center;" /> m/s y forma un ángulo de <input type="number" id="input-e4-angle" value={e4_angleDeg} style="width: 50px; text-align: center;" />º con la horizontal. Halla las componentes horizontal y vertical de la velocidad. Expresa el vector velocidad en función de sus componentes.
+
+{/* --- Declare initial values for exercise 4 --- */}
 export const e4_speed = 130;
 export const e4_angleDeg = 30;
-
-Un objeto se mueve de tal manera que su velocidad en un instante determinado es de <input type="number" id="input-e4-speed" value={e4_speed} style="width: 60px; text-align: center;" /> m/s y forma un ángulo de <input type="number" id="input-e4-angle" value={e4_angleDeg} style="width: 50px; text-align: center;" />º con la horizontal. Halla las componentes horizontal y vertical de la velocidad. Expresa el vector velocidad en función de sus componentes.
 
 Las fórmulas para calcular las [componentes de un vector](#5-componentes-de-un-vector) $\vec v$ dado su módulo $\|\vec v\|$ y dirección $\theta$ vienen definidas por las expresiones [6.3] y [6.4]. 
 
@@ -597,7 +599,7 @@ Y expresado vectorialmente como $\vec v = \vec v_x + \vec v_y$:
 ### Ejercicio 5
 Calcula el producto escalar de los vectores $\vec v = ($<input type="number" id="input-e5-vx" value={e5_v[0]} style="width: 40px; text-align: center;" />$)\hat\imath + ($<input type="number" id="input-e5-vy" value={e5_v[1]} style="width: 40px; text-align: center;" />$)\hat\jmath + ($<input type="number" id="input-e5-vz" value={e5_v[2]} style="width: 40px; text-align: center;" />$)\hat k$ y $\vec w = ($<input type="number" id="input-e5-wx" value={e5_w[0]} style="width: 40px; text-align: center;" />$)\hat\imath + ($<input type="number" id="input-e5-wy" value={e5_w[1]} style="width: 40px; text-align: center;" />$)\hat\jmath + ($<input type="number" id="input-e5-wz" value={e5_w[2]} style="width: 40px; text-align: center;" />$)\hat k$, y el ángulo que forman.
 
-{/* --- Datos del enunciado --- */}
+{/* --- Declare initial values for exercise 5 --- */}
 export const e5_v = [5, -3, 2];
 export const e5_w = [-2, 1, 3];
 

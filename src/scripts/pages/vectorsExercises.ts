@@ -12,7 +12,7 @@ import type { Point2D, Point3D } from '../core/types.ts';
  */
 function drawExercise1(vRiver?: Point2D, vBoat?: Point2D, vPropelled?: Point2D) {
     // Attempt to get the SVG element by its ID
-    const svg = document.getElementById('svge_1');
+    const svg = document.getElementById('svg1e_1');
     if (!(svg instanceof SVGElement)) return;
 
     let e1_vRiver: Point2D, e1_vBoat: Point2D, e1_vPropelled: Point2D;
@@ -156,7 +156,7 @@ function setupExercise1Interactivity() {
  * Draws Exercise 2: Graphical addition of multiple vectors.
  */
 function drawExercise2() {
-    const svg = document.getElementById('svge_2');
+    const svg = document.getElementById('svg1e_2');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
 
     const vecAStr = svg.getAttribute('data-vec-a');
@@ -198,7 +198,7 @@ function drawExercise2() {
  * Draws Exercise 3: Sailboat components.
  */
 function drawExercise3() {
-    const svg = document.getElementById('svge_3');
+    const svg = document.getElementById('svg1e_3');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
 
     const vecVStr = svg.getAttribute('data-vec-v');
