@@ -232,11 +232,25 @@ function drawExercise3() {
  * Draws Exercise 6: Plane speed projection.
  */
 function drawExercise6() {
-    const svg = document.getElementById('svge_6');
+    // Attempt to get the SVG element by its ID
+    const svg = document.getElementById('svg1e_6');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
     
-    const planeSpeed = 600;
-    const angleNERad = 45 * Math.PI / 180;
+    // Declare strings from attributes defined in VectorCanvas component
+    const speedStr = svg.getAttribute('data-speed');
+    const angleStr = svg.getAttribute('data-angle');
+
+    if (!speedStr || !angleStr) return;
+
+    // Define de variables to be used and parse the strings into them
+    let planeSpeed: number, angleNERad: number;
+    try {
+        planeSpeed = JSON.parse(speedStr) as number;
+        angleNERad = JSON.parse(angleStr) as number;
+    } catch (e) {
+        console.error("Error parsing initial points for exercise 6", e);
+        return;
+    }
 
     const V: Point2D = [ planeSpeed * Math.cos(angleNERad), planeSpeed * Math.sin(angleNERad) ];
     const projEV = math.multiply( planeSpeed * Math.cos(angleNERad), [1, 0] ) as Point2D;
@@ -248,9 +262,9 @@ function drawExercise6() {
     const origin: Point2D = [0, 0];
     const NE: Point2D = [ 700 * Math.cos(angleNERad), 700 * Math.sin(angleNERad) ];
 
-    plane.drawVectorB(origin, NE, "NE", { strokeColor: "blue" }, { scale: 1.2, color: "blue" });
+    plane.drawVectorB(origin, NE, "NE", { strokeColor: "blue"}, { scale: 1.2, color: "blue", dy: -45});
     plane.drawVectorB(origin, V, "V", { strokeColor: "green" }, { scale: 1.2, color: "green" });
-    plane.drawVectorB(origin, projEV, "\\text{proj}_E V", { strokeColor: "green" }, { color: "green", scale: 1.2, dy: 20 });
+    plane.drawVectorB(origin, projEV, "\\text{proj}_E V", { strokeColor: "green" }, { color: "green", scale: 1.2, dy: 10 });
     plane.drawSegment(projEV, V, { strokeColor: "blue", strokeDasharray: "5, 5" });
     plane.drawAngle(origin, projEV, V, 100, "\\theta = 45^\\circ", { strokeColor: "blue" }, { color: "blue", scale: 1 });
 
@@ -262,14 +276,16 @@ function drawExercise6() {
  */
 function drawExercise8() {
     // Attempt to get the SVG element by its ID
-    const svg = document.getElementById('svg2_8');
+    const svg = document.getElementById('svg1e_8');
     if (!(svg instanceof SVGElement) || svg.hasAttribute('data-drawn')) return;
 
+    // Declare strings from attributes defined in VectorCanvas component
     const aStr = svg.getAttribute('data-vec-a');
     const bStr = svg.getAttribute('data-vec-b');
     const cStr = svg.getAttribute('data-vec-c');
     if (!aStr || !bStr || !cStr) return;
 
+    // Parse the strings to Point3D
     let A: Point3D, B: Point3D, C: Point3D;
     try {
         A = JSON.parse(aStr) as Point3D;

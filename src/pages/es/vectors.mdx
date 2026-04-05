@@ -647,7 +647,7 @@ Finalmente, aplicando la expresión [10.3], el valor del ángulo $\theta$ es:
 ### Ejercicio 6
 Un avión se desplaza a una velocidad de {e6_planeSpeed} km/h en dirección NE. Halla la proyección de su velocidad en la dirección este.
 
-{/* --- Datos del enunciado --- */}
+{/* --- Declare initial values for exercise 6 --- */}
 export const e6_planeSpeed = 600; // km/h
 export const e6_angleDeg = 45; // grados. NE es equivalente a 45º respecto a la horizontal (dirección este)
 export const e6_angleRad = e6_angleDeg * Math.PI / 180; // radianes
@@ -655,9 +655,17 @@ export const e6_angleRad = e6_angleDeg * Math.PI / 180; // radianes
 
 La dirección NE (noreste) forma un ángulo de {e6_angleDeg}º con la dirección este, como se muestra en la siguiente figura.
 
+{/* --- Convert planeSpeed and angle to string in order to pass as parameters in VectorCanvas component --- */}
+export const e6_planeSpeed_json = JSON.stringify(e6_planeSpeed);
+export const e6_angleRad_json = JSON.stringify(e6_angleRad);
+
+{/* --- Declare de figure e.6 and define attributes to be used in VectorCanvas component --- */}
 <figure class="centered">
-    <VectorCanvas id="svge_6" />
-    <figcaption><b>Figura 19.4</b>: Ángulo entre E y NE, y la proyección de v sobre E.</figcaption>
+    <VectorCanvas id="svg1e_6" 
+        data-speed={e6_planeSpeed_json}
+        data-angle={e6_angleRad_json}
+    />
+    <figcaption><b>Figura e.6</b>: Ángulo entre E y NE, y la proyección de v sobre E.</figcaption>
 </figure>
 
 Para calcular la [proyección de la velocidad](#11-proyección-de-un-vector) en la dirección este, usamos la expresión [11.2].
@@ -815,14 +823,14 @@ export const e8_A_json = JSON.stringify(e8_A);
 export const e8_B_json = JSON.stringify(e8_B);
 export const e8_C_json = JSON.stringify(e8_C);
 
-{/* --- Declare de figure 19.5 and define attributes to be used in VectorCanvas component--- */}
+{/* --- Declare de figure e.8 and define attributes to be used in VectorCanvas component --- */}
 <figure class="centered">
-    <VectorCanvas id="svg2_8" 
+    <VectorCanvas id="svg1e_8" 
         data-vec-a={e8_A_json}
         data-vec-b={e8_B_json}
         data-vec-c={e8_C_json}
     />
-    <figcaption><b>Figura 19.5</b>: Paralelogramo definido por los vectores AB y AC, y triángulo ABC como mitad de dicho paralelogramo.</figcaption>
+    <figcaption><b>Figura e.8</b>: Paralelogramo definido por los vectores AB y AC, y triángulo ABC como mitad de dicho paralelogramo.</figcaption>
 </figure>
 
 #### Referencias

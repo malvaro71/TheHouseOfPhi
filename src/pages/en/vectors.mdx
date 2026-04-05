@@ -628,9 +628,17 @@ export const e6_angleRad = e6_angleDeg * Math.PI / 180; // radians
 
 The NE (northeast) direction forms an angle of {e6_angleDeg}º with the east direction, as shown in the following figure.
 
+{/* --- Convert planeSpeed and angle to string in order to pass as parameters in VectorCanvas component --- */}
+export const e6_planeSpeed_json = JSON.stringify(e6_planeSpeed);
+export const e6_angleRad_json = JSON.stringify(e6_angleRad);
+
+{/* --- Declare de figure e.6 and define attributes to be used in VectorCanvas component --- */}
 <figure class="centered">
-    <VectorCanvas id="svge_6" />
-    <figcaption><b>Figure 19.4</b>: Angle between E and NE, and the projection of v onto E.</figcaption>
+    <VectorCanvas id="svg1e_6" 
+        data-speed={e6_planeSpeed_json}
+        data-angle={e6_angleRad_json}
+    />
+    <figcaption><b>Figura e.6</b>: Ángulo entre E y NE, y la proyección de v sobre E.</figcaption>
 </figure>
 
 To calculate the [projection of the velocity](#11-vector-projection) in the east direction, we use expression [11.2].
@@ -751,13 +759,14 @@ export const e8_A_json = JSON.stringify(e8_A);
 export const e8_B_json = JSON.stringify(e8_B);
 export const e8_C_json = JSON.stringify(e8_C);
 
+{/* --- Declare de figure e.8 and define attributes to be used in VectorCanvas component --- */}
 <figure class="centered">
-    <VectorCanvas id="svg2_8"
+    <VectorCanvas id="svg1e_8"
         data-vec-a={e8_A_json}
         data-vec-b={e8_B_json}
         data-vec-c={e8_C_json}
     />
-    <figcaption><b>Figure 19.5</b>: Parallelogram defined by vectors AB and AC, and triangle ABC as half of said parallelogram.</figcaption>
+    <figcaption><b>Figure e.8</b>: Parallelogram defined by vectors AB and AC, and triangle ABC as half of said parallelogram.</figcaption>
 </figure>
 
 <p style="text-align: right;"><a href="#vectors">Back to top of chapter</a></p>
