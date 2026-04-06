@@ -4,9 +4,8 @@ title: Cinemática - The House of Phi
 lang: es
 ---
 
-import VectorCanvas from '../../components/VectorCanvas.astro';
-import MathJax from '../../components/MathJax.astro';
-import * as math from 'mathjs';
+import VectorCanvas from '../../components/VectorCanvas.astro'; // Contenedor para renderizar los gráficos SVG dinámicos
+import MathJax from '../../components/MathJax.astro'; // Carga la librería MathJax para renderizar LaTeX dentro de los SVGs
 
 <MathJax />
 
@@ -49,390 +48,66 @@ Este capítulo se organiza en los siguientes bloques de consulta:
 - **[Cinemática de algunos tipos de Movimiento](#6-cinemática-de-algunos-tipos-de-movimiento):**
 
 ## 2 Movimiento y trayectoria
-
-asd
-
 Un cuerpo se mueve cuando en el transcurso del tiempo cambia de posición respecto a un punto de referencia que se supone fijo
 
 Para reducir la complejidad y centrarnos en los conceptos básicos del movimiento, en lugar de estudiar el movimiento de cualquier cuerpo, comenzaremos estudiando el movimiento de un **punto material** o **partícula**; con el cual representamos a veces, de modo burdo, a un cuerpo. Y lo definimos como un punto geométrico en el que consideramos que está concentrada toda la masa del cuerpo.
 
 Para determinar la posición de un punto material, es necesario especificar el **sistema de coordenadas** respecto al cual se mide su posición.
 
-La posición de un punto, respecto al sistema de referencia elegido, se describe mediante el **vector de posición** \(\vec r\).
+La posición de un punto, respecto al sistema de referencia elegido, se describe mediante el **vector de posición** $\vec r$.
 
-Para estudiar el movimiento, analizaremos cómo varía el vector de posición \(\vec r\) a lo largo del tiempo. Así, buscaremos determinar la función vectorial \(\vec r(t)\), que describa cómo varían con el tiempo \(t\) cada uno de sus componentes.
+Para estudiar el movimiento, analizaremos cómo varía el vector de posición $\vec r$ a lo largo del tiempo. Así, buscaremos determinar la función vectorial $\vec r(t)$, que describa cómo varían con el tiempo $t$ cada uno de sus componentes.
 
-El extremo del vector posición \(\vec r\) dibuja en el espacio una línea descrita por el punto material en su movimiento. Esta ruta o camino que sigue el punto móvil a lo largo del tiempo se denomina **trayectoria**. Podemos imaginar la trayectoria como una línea que marca el camino exacto del objeto.
+El extremo del vector posición $\vec r$ dibuja en el espacio una línea descrita por el punto material en su movimiento. Esta ruta o camino que sigue el punto móvil a lo largo del tiempo se denomina **trayectoria**. Podemos imaginar la trayectoria como una línea que marca el camino exacto del objeto.
 
-\[ \vec r(t) = x(t)\,\hat\imath + y(t)\,\hat\jmath + z(t)\,\hat k  \tag{2.1}\]
+$$
+ \vec r(t) = x(t)\,\hat\imath + y(t)\,\hat\jmath + z(t)\,\hat k  \tag{2.1}
+$$
 
-donde \(x(t)\), \(y(t)\) y \(z(t)\) son las coordenadas del punto en función del tiempo, y \(\hat\imath\), \(\hat\jmath\) y \(\hat k\) son los vectores unitarios en las direcciones de los ejes X, Y y Z, respectivamente.
+donde $x(t)$, $y(t)$ y $z(t)$ son las coordenadas del punto en función del tiempo, y $\hat\imath$, $\hat\jmath$ y $\hat k$ son los vectores unitarios en las direcciones de los ejes X, Y y Z, respectivamente.
 
-![Figura 2.1: Vector de posición \(\vec r\), indicando la trayectoria de un objeto y su posición en un instante \(t\), respecto a un sistema de coordenadas dado.](vector:svg1_1)
+![Figura 2.1: Vector de posición $\vec r$, indicando la trayectoria de un objeto y su posición en un instante $t$, respecto a un sistema de coordenadas dado.](vector:svg1_1)
 
-Si conocemos la trayectoria del punto móvil (por ejemplo, una línea recta, una circunferencia, etc.), entonces el problema de describir su movimiento se simplifica mucho. Lo único que necesitamos encontrar es una ecuación que nos diga en qué punto de esa trayectoria se encuentra el objeto en cada instante de tiempo. Si llamamos **s** al **camino recorrido** o **longitud de la trayectoria**, el problema cinemático se reduce por tanto a conocer \( s = f(t) \).
+Si conocemos la trayectoria del punto móvil (por ejemplo, una línea recta, una circunferencia, etc.), entonces el problema de describir su movimiento se simplifica mucho. Lo único que necesitamos encontrar es una ecuación que nos diga en qué punto de esa trayectoria se encuentra el objeto en cada instante de tiempo. Si llamamos **s** al **camino recorrido** o **longitud de la trayectoria**, el problema cinemático se reduce por tanto a conocer $ s = f(t) $.
 
-Por ejemplo, imaginemos una pelota que cae en línea recta. La trayectoria es una línea vertical. Si encontramos una ecuación \(s = f(t)\) que nos diga a qué altura está la pelota en cada segundo, entonces hemos resuelto el problema cinemático para esa pelota.
+Por ejemplo, imaginemos una pelota que cae en línea recta. La trayectoria es una línea vertical. Si encontramos una ecuación $s = f(t)$ que nos diga a qué altura está la pelota en cada segundo, entonces hemos resuelto el problema cinemático para esa pelota.
 <p style="text-align: right;"><a href="#cinemática">Volver al inicio del capítulo</a></p>
 
-
 ## 3 Vector Desplazamiento
+El instante en el que se inicia el estudio del movimiento de un punto material recibe el nombre de **instante inicial** $t_0$. La posición del punto en dicho instante es la **posición inicial** $\vec r_0$.
 
-El instante en el que se inicia el estudio del movimiento de un punto material recibe el nombre de **instante inicial** \(t_0\). La posición del punto en dicho instante es la **posición inicial** \(\vec r_0\).
+Como el sistema de referencia temporal, al igual que el instante de referencia espacial, es arbitrario, se suele considerar $t_0 = 0$.
 
-Como el sistema de referencia temporal, al igual que el instante de referencia espacial, es arbitrario, se suele considerar \(t_0 = 0\).
+Con el paso del tiempo, el móvil irá cambiando de posición. En el instante $t_1$, su posición será $\vec r(t_1)$; en el instante $t_2$, será $\vec r(t_2)$; y así sucesivamente.
 
-Con el paso del tiempo, el móvil irá cambiando de posición. En el instante \(t_1\), su posición será \(\vec r(t_1)\); en el instante \(t_2\), será \(\vec r(t_2)\); y así sucesivamente.
-
-Entonces, para representar el cambio de posición del punto material, definimos el **vector desplazamiento** \(\Delta \vec r\) en el intervalo de tiempo \([t_1, t_2]\) como un vector cuyo origen es la posición del punto en el instante \(t_1\) y cuyo extremo es la posición en el instante \(t_2\).
+Entonces, para representar el cambio de posición del punto material, definimos el **vector desplazamiento** $\Delta \vec r$ en el intervalo de tiempo $[t_1, t_2]$ como un vector cuyo origen es la posición del punto en el instante $t_1$ y cuyo extremo es la posición en el instante $t_2$.
 
 De este modo:
 
-\[ \Delta\vec r = \vec r(t_2) - \vec r(t_1) \tag{3.1} \]
+$$ 
+\Delta\vec r = \vec r(t_2) - \vec r(t_1) \tag{3.1} 
+$$
 
-Si llamamos \(\Delta t\) al intervalo de tiempo transcurrido, podemos escribir:
+Si llamamos $\Delta t$ al intervalo de tiempo transcurrido, podemos escribir:
 
-- \(t_1 = t\)
-- \(t_2 = t + \Delta t\)
+- $t_1 = t$
+- $t_2 = t + \Delta t$
 
 Y por tanto:
 
-\[ \Delta\vec r = \vec r(t + \Delta t) - \vec r(t) \tag{3.2}\]
+$$ 
+\Delta\vec r = \vec r(t + \Delta t) - \vec r(t) \tag{3.2}
+$$
 
 que puede expresarse también como:
 
-\[ \Delta\vec r = \Delta x\,\hat\imath + \Delta y\,\hat\jmath + \Delta z\,\hat k \tag{3.3} \]
+$$ 
+\Delta\vec r = \Delta x\,\hat\imath + \Delta y\,\hat\jmath + \Delta z\,\hat k \tag{3.3} 
+$$
 
-donde \(\Delta x\), \(\Delta y\) y \(\Delta z\) representan cómo varían las coordenadas del punto en el intervalo de tiempo considerado.
+donde $\Delta x$, $\Delta y$ y $\Delta z$ representan cómo varían las coordenadas del punto en el intervalo de tiempo considerado.
 
 Si el cuerpo se desplaza en línea recta y sin cambiar el sentido de su movimiento, el módulo del vector desplazamiento coincide con la distancia recorrida por el cuerpo. Pero esto solo se cumple en esas circunstancias, porque el vector desplazamiento **no depende de la trayectoria seguida por el móvil**, sino únicamente del punto inicial y final.
 
-![Figura 3.1: Mostrando la trayectoria de un móvil y su vector desplazamiento entre dos instantes \(t_1\) y \(t_2\) como la diferencia entre los vectores de posición de dichos instantes.](vector:svg1_2)
+![Figura 3.1: Mostrando la trayectoria de un móvil y su vector desplazamiento entre dos instantes $t_1$ y $t_2$ como la diferencia entre los vectores de posición de dichos instantes.](vector:svg1_2)
 <p style="text-align: right;"><a href="#cinemática">Volver al inicio del capítulo</a></p>
-
-
-## 4 Velocidad
-
-Decíamos en la Introducción que en el estudio del movimiento de un punto nos interesa saber en cada instante **dónde está** y **cómo se mueve**. El primer objetivo lo conseguimos conociendo la variación temporal del vector posición \(\vec r\). Para responder a la segunda pregunta —qué va a pasar con el móvil en instantes sucesivos— introducimos una nueva magnitud fundamental: la **velocidad**.
-
-Supongamos que un punto material \(P\) se traslada, en un intervalo de tiempo \(\Delta t\), desde un punto 1 hasta un punto 2, caracterizados respectivamente por los vectores de posición \(\vec r_1\) y \(\vec r_2\).
-
-![Figura 3.1: Vectores de posición \(\vec r_1\) y \(\vec r_2\), vector desplazamiento \(\Delta \vec r\) y vectores velocidad \(\vec v_1\) y \(\vec v_2\) de un móvil.](vector:svg1_3)
-
-Se define la **velocidad media** \(\vec v_{med}\) en el intervalo de tiempo \(\Delta t\) como:
-
-\[ \vec v_{med} = \frac{\Delta \vec r}{\Delta t} \tag{4.1} \]
-
-La **velocidad instantánea** \(\vec v\) se define como:
-
-\[ \vec v = \lim_{\Delta t \to 0} \frac{\Delta \vec r}{\Delta t} = \frac{d\vec r}{dt} \tag{4.2} \]
-
-Es decir, es la rapidez con la que cambia el vector de posición respecto al tiempo.
-
-Observamos que \(\Delta \vec r\) está contenido en una recta **secante** a la trayectoria. Cuando \(\Delta t \to 0\), el límite de las secantes es la **tangente** a la trayectoria en el punto \(\vec r\). Por tanto, la velocidad instantánea es **siempre un vector tangente a la trayectoria**.
-
-Teniendo esto en cuenta, si referimos la velocidad instantánea al camino recorrido o a la longitud de la trayectoria durante \(\Delta t\), podemos escribir:
-
-\[ \vec v = \lim_{\Delta t\to 0} \frac{\Delta \vec r}{\Delta t} = \lim_{\Delta t \to 0} \frac{\Delta \vec r}{\Delta s} \cdot \frac{\Delta s}{\Delta t} \tag{4.3} \]
-
-A cada vector desplazamiento \(\Delta \vec r\) le corresponde una longitud de trayectoria \(\Delta s\), para cada intervalo de tiempo \(\Delta t\). Normalmente se cumple que \(\Delta s > |\Delta \vec r|\). Sin embargo, cuando \(\Delta t \to 0\), el arco \(\Delta s\) tiende a la cuerda \(|\Delta \vec r|\). El primer límite produce un vector unitario, tangente a la trayectoria y con el sentido del movimiento. Este vector se llama **vector tangente unitario** y se representa por \(\hat \tau\).
-
-El segundo límite es un escalar que representa el **módulo de la velocidad instantánea**, también llamado **celeridad** o **rapidez**, y se simboliza por \(v\).
-
-Así pues:
-
-\[ \vec v = v\,\hat \tau \tag{4.4} \]
-
-Si expresamos la velocidad instantánea en términos de las componentes del vector posición, obtenemos:
-
-\[ \vec v = \frac{d\vec r}{dt} = \frac{dx}{dt}\,\hat\imath + \frac{dy}{dt}\,\hat\jmath + \frac{dz}{dt}\,\hat k \tag{4.5} \]
-
-Es decir,
-
-\[ \vec v = v_x\,\hat\imath + v_y\,\hat\jmath + v_z\,\hat k \tag{4.6} \]
-
-El módulo de la velocidad instantánea será:
-
-\[ v = |\vec v| = \sqrt{v_x^2 + v_y^2 + v_z^2} \tag{4.7} \]
-<p style="text-align: right;"><a href="#cinemática">Volver al inicio del capítulo</a></p>
-
-
-## 5 Aceleración
-
-**Aceleración**, en general, es la variación de la velocidad en un intervalo de tiempo. Al ser la velocidad una magnitud vectorial, la aceleración será distinta de cero siempre que la velocidad varíe en su módulo, su dirección o su sentido.
-
-Para determinar el movimiento de una partícula, es necesario saber **cómo varía la aceleración en el tiempo**. Para ello introducimos los conceptos de **aceleración media** y **aceleración instantánea**.
-
-**Aceleración media.** Representa cuánto cambia la velocidad por unidad de tiempo en un intervalo dado; es decir, el vector que resulta de dividir la variación de velocidad entre el intervalo temporal considerado:
-
-\[ \vec a_{med} = \frac{\Delta\vec v}{\Delta t} = \frac{\Delta v_x}{\Delta t}\,\hat\imath +  \frac{\Delta v_y}{\Delta t}\,\hat\jmath +  \frac{\Delta v_z}{\Delta t}\,\hat k \tag{5.1} \]
-
-![Figura 5.1: Variación de la velocidad en una trayectoria curva.](vector:svg1_4)
-
-**Aceleración instantánea.** Es la aceleración de la partícula en un instante \(t\) (o punto de la trayectoria). Se define como el límite de la aceleración media cuando el intervalo de tiempo tiende a cero:
-
-\[ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \frac{d \vec v}{d t} = \frac{d^2 \vec r}{d t^2} \tag{5.2} \]
-
-En la práctica, la aceleración **instantánea** es la magnitud de interés; por ello, salvo indicación en contra, cuando hablemos de aceleración nos referiremos a esta.
-
----
-
-### Componentes Cartesianas de la Aceleración
-
-Si conocemos la función vectorial velocidad \(\vec v = \vec v(t)\), sus derivadas proporcionan las **componentes cartesianas de la aceleración**:
-
-\[ \vec a = \frac{d \vec v}{d t} = \frac{d (v_x\,\hat\imath + v_y\,\hat\jmath + v_z\,\hat k)}{d t} = \frac{dv_x}{dt}\,\hat\imat + \frac{dv_y}{dt}\,\hat\jmath + \frac{dv_z}{dt}\,\hat k = a_x\,\hat\imat + a_y\,\hat\jmath + a_z\,\hat k \tag{5.3} \]
-
-El **módulo de la aceleración** es:
-
-\[ |\vec a| = \sqrt{a_x^{2}+a_y^{2}+a_z^{2}} \tag{5.4} \]
-
----
-
-### Componentes Intrínsecas de la Aceleración
-
-En movimiento curvilíneo resulta útil describir \(\vec a\) en un sistema ligado a la trayectoria. En cada punto de la trayectoria definimos:
-- **Eje tangente** (dirección de \(\vec v\)).
-- **Eje normal** (perpendicular al tangente, apuntando al centro de curvatura).
-
-Asociamos a cada eje los vectores unitarios **tangente** \(\hat\tau\) y **normal** \(\vec\eta\). Al descomponer la aceleración:
-
-\[ \Delta \vec v = \Delta\vec v_{\tau} + \Delta\vec v_{\eta},\qquad \frac{\Delta \vec v}{\Delta t} = \frac{\Delta\vec v_{\tau}}{\Delta t} + \frac{\Delta\vec v_{\eta}}{\Delta t} \tag{5.5} \]
-
-Y en el límite:
-
-\[ \vec a = \lim_{\Delta t\to 0} \frac{\Delta \vec v}{\Delta t} = \vec a_{\tau} + \vec a_{\eta} = a_{\tau}\,\hat\tau + a_{\eta}\,\hat\eta \tag{5.6} \]
-
-Partiendo de \(\vec v = v\,\vec\tau\):
-
-\[ \vec a = \frac{d \vec v}{d t} = \frac{d (v\,\hat\tau)}{d t} = \frac{d v}{d t}\,\hat\tau + v\,\frac{d \hat\tau}{d t} \tag{5.7} \]
-
-Para un pequeño desplazamiento a lo largo de la trayectoria, el cambio de \(\hat\tau\) es aproximadamente un giro de ángulo diferencial \(d\theta\) sobre un arco de circunferencia de radio 1 (por ser \(\hat\tau\) unitario), de modo que \(|d\hat\tau| \approx d\theta\). Si \(ds\) es el incremento de longitud de arco y \(R\) el **radio de curvatura**, se cumple:
-
-\[ ds = R\,d\theta \;\Rightarrow\; \frac{|d\hat\tau|}{ds} = \frac{1}{R} \tag{5.8} \]
-
-Así,
-
-\[ \vec a = \frac{d v}{d t}\,\hat\tau + v\,\frac{|d\hat\tau|}{d t}\,\hat\eta = \frac{d v}{d t}\,\hat\tau + v\,\frac{|d\hat\tau|}{d s}\,\frac{d s}{d t}\,\hat\eta = \frac{d v}{d t}\,\hat\tau + \frac{v^{2}}{R}\,\hat\eta \tag{5.9} \]
-
-Por tanto, las **coordenadas intrínsecas** quedan:
-
-- **Aceleración tangencial** \(a_{\tau}\):
-\[ a_{\tau} = \frac{d v}{d t} \tag{5.10} \]
-
-- **Aceleración normal** \(a_{\eta}\):
-\[ a_{\eta} = \frac{v^{2}}{R} \tag{5.11} \]
-
-La descomposición intrínseca proporciona una interpretación clara: \(a_{\tau}\) controla el **cambio de rapidez**, mientras que \(a_{\eta}\) controla el **cambio de dirección** del movimiento.
-<p style="text-align: right;"><a href="#cinemática">Volver al inicio del capítulo</a></p>
-
-
-## 6 Cinemática de algunos tipos de Movimiento
-
-Apliquemos los conceptos expuestos hasta ahora a algunos de los movimientos más importantes:
-- Movimiento Rectilíneo Uniforme (MRU)
-- Movimiento Rectilíneo Uniformemente Acelerado (MRUA)
-- Movimiento Circular Uniforme (MCU)
-- Movimiento Circular Uniformemente Acelerado (MCUA)
-
----
-
-### 6.1 Movimiento Rectilíneo Uniforme (MRU)
-
-Un movimiento es **rectilíneo y uniforme** cuando la **velocidad es constante**. Esto implica:
-- La velocidad es constante en dirección y sentido: la trayectoria es recta.
-- La velocidad es constante en módulo: se recorren espacios iguales en tiempos iguales.
-
-También podemos definirlo mediante la aceleración:
-
-\[ a_{\tau} = \frac{dv}{dt} = 0 \;\Rightarrow\; v = \text{cte} \]
-\[ a_{\eta} = \frac{v^2}{R} = 0 \;\Rightarrow\; R = \infty \quad \text{(la trayectoria es una recta)} \]
-
-Para deducir la ley del movimiento, partimos de la definición de velocidad instantánea:
-
-\[ \vec v = \frac{d\vec r}{dt} \quad \Rightarrow \quad d\vec r = \vec v\, dt \tag{6.1} \]
-
-Integramos:
-\[ \vec r(t) = \int \vec v\, dt = \vec v t + C \tag{6.2} \]
-
-Esta ecuación debe cumplirse también para \(t=0\):
-
-\[ \left.\begin{matrix} 
-    \vec r = \vec v t + C \\
-    t = 0
-  \end{matrix}\right\} \Rightarrow \vec r_0 = C \tag{6.3} \]
-
-Por tanto, la **ecuación vectorial del MRU** es:
-
-\[ \vec r(t) = \vec r_0 + \vec v\, t \tag{6.4} \]
-
-![Figura 6.1: Trayectoria, velocidad y posición de un móvil en MRU.](vector:svg1_5)
-
-Para este movimiento es habitual usar un **sistema unidimensional**, definiendo la posición solo mediante un escalar \(x\):
-
-\[ \vec r = (x,0,0) \tag{6.5} \]
-
-![Figura 6.2: En un movimiento rectilíneo, puede tomarse la dirección de movimiento como referencia.](vector:svg1_6)
-
-La ecuación vectorial se reduce a la ecuación escalar:
-
-\[ x(t) = x_0 + vt \tag{6.6} \]
-
-El desplazamiento coincide con la distancia recorrida:
-
-\[
-    \left.\begin{matrix}
-        \Delta x = x(t_2) - x(t_1) = v\, \Delta t \\
-        \Delta x = \Delta s
-    \end{matrix}\right\} \Rightarrow \Delta s = v \Delta t
-    \tag{6.7} 
-\]
-
-La velocidad media en MRU se expresa como:
-
-\[ v = \frac{\Delta x}{\Delta t} = \frac{\Delta s}{\Delta t} \tag{6.8} \]
-
-Para representar el movimiento es útil el **diagrama x–t**, representación gráfica de la función \(x = f(t)\). En MRU, con \(x = x_0 + vt\), el diagrama es una recta cuya pendiente es la velocidad.
-
-![Figura 6.3: Gráfica de \(x=f(t)\) para MRU.](vector:svg1_7)
-
-La pendiente \((\tan\alpha)\) de la recta en el diagrama x–t corresponde a la **velocidad media**:
-
-\[\tan \alpha = \frac{x(t_1) - x_0}{t_1} = v_{\text{media}} \tag{6.9} \]
-
----
-
-### Tabla 6.1: Resumen de ecuaciones del MRU
-
-| Magnitud | Ecuación |
-|----------|----------|
-| **Vector de posición** | \( \vec r(t) = \vec r_0 + \vec v t \) |
-| **Posición (escalar)** | \( x(t) = x_0 + vt \) |
-| **Velocidad** | \( v = \text{cte} \) |
-| **Desplazamiento** | \( \Delta x = v\Delta t,\; \Delta s = v\Delta t \) |
-| **Diagrama x–t** | Pendiente \(=v\). Recta: \( x = x_0 + vt \) |
-<p style="text-align: right;"><a href="#cinemática">Volver al inicio del capítulo</a></p>
-
-### 6.2 Movimiento Rectilíneo Uniformemente Acelerado (MRUA)
-
-Se llama **rectilíneo y uniformemente acelerado (MRUA)** a aquel movimiento que **no** tiene aceleración normal y cuya **aceleración tangencial es constante**.
-
-Al no existir aceleración normal, la trayectoria es una **línea recta**. Si elegimos como sistema de referencia la dirección del movimiento (igual que en el MRU), todas las magnitudes vectoriales se reducen a **escalares**.
-
----
-
-#### Ecuación de la velocidad
-Partiendo de la definición de aceleración tangencial e **integrando**:
-
-\[ a = \frac{dv}{dt} \;\Rightarrow\; dv = a\,dt \;\Rightarrow\; v(t) = \int a\,dt = a\int dt = a t + C \tag{6.10} \]
-
-Imponiendo la condición inicial \(t=0\):
-
-\[ \left.\begin{matrix} v(t) = a t + C \\ t=0 \end{matrix}\right\} \;\Rightarrow\; v_0 = C \tag{6.11} \]
-
-Por tanto, la ecuación para la velocidad en cualquier instante es:
-
-\[ v(t) = v_0 + a t \tag{6.12} \]
-
----
-
-#### Ecuación de la posición
-Desde la definición de velocidad e integrando:
-
-\[ v = \frac{dx}{dt} \;\Rightarrow\; dx = v\,dt \;\Rightarrow\; x(t) = \int v\,dt = \int (v_0 + a t)\,dt \\ = \int v_0\,dt + \int a t\,dt = v_0 t + \frac{1}{2} a t^2 + C \tag{6.13} \]
-
-Para \(t=0\), la constante es la **posición inicial** \(C=x_0\). Así, la **ecuación escalar del MRUA** queda:
-
-\[ x(t) = x_0 + v_0 t + \tfrac{1}{2} a t^2 \tag{6.14} \]
-
----
-
-#### Interpretación gráfica (diagrama x–t)
-En un diagrama \(x\)–\(t\), la función \(x=f(t)\) del MRUA es una **parábola** cuya ordenada en el origen es \(x_0\). La **velocidad instantánea** en cada punto corresponde a la **pendiente** de la recta tangente a la curva (derivada \(dx/dt\)).
-
-\[ \tan\alpha = \frac{dx}{dt} = v_{\text{instantánea}} \tag{6.15} \]
-
----
-
-### Tabla 1.2: Resumen de ecuaciones del MRUA
-
-| Magnitud | Ecuación |
-|---|---|
-| **Aceleración** | \( a = \text{cte} \) |
-| **Velocidad** | \( v(t) = v_0 + a t \) |
-| **Posición** | \( x(t) = x_0 + v_0 t + \tfrac{1}{2} a t^2 \) |
-<p style="text-align: right;"><a href="#cinemática">Volver al inicio del capítulo</a></p>
-
-### 6.3 Movimiento Circular Uniforme (MCU)
-
-El **Movimiento Circular Uniforme (MCU)** describe el movimiento de un objeto que se desplaza en una trayectoria circular con **rapidez constante**. Para hallar la ecuación que define su posición en cualquier instante, comenzamos analizando las características de su aceleración.
-
----
-
-### Las Aceleraciones en el MCU
-
-La aceleración de un móvil puede descomponerse en dos componentes intrínsecas: la **aceleración tangencial** \(a_t\) y la **aceleración normal o centrípeta** \(a_n\).
-
-- **Aceleración tangencial \(a_t\):** actúa en la dirección del movimiento y cambia la *magnitud* de la velocidad. Como en el MCU la rapidez es constante, **la aceleración tangencial es nula**:
-  
-  \[ a_t = 0 \tag{6.16} \]
-
-- **Aceleración normal o centrípeta \(a_n\):** actúa perpendicularmente a la velocidad y apunta hacia el centro de la trayectoria. Es responsable del *cambio en la dirección* de la velocidad. En el MCU:
-
-  \[ a_n = \frac{v^2}{R} \tag{6.17} \]
-
-  Dado que \(v\) y \(R\) son constantes, **la aceleración centrípeta también lo es**.
-
----
-
-### La Posición del Móvil: Coordenadas Polares y Radián
-
-El sistema de **coordenadas polares** \((r, \theta)\) es el más adecuado para describir un movimiento circular.
-
-- **Radio \(r\):** Para una circunferencia centrada en el origen, el radio es constante: \(r = R\).
-- **Ángulo \(\theta\):** Representa la posición angular respecto del eje \(x\). Se mide en **radianes**.
-
-**Radián:** un radián es el ángulo que subtiende un arco de longitud igual al radio. Si el arco mide \(s\):
-
-\[ \theta = \frac{s}{R} \tag{6.18} \]
-
-Para un cambio infinitesimal:
-
-\[ ds = R \, d\theta \tag{6.19} \]
-
-Esta relación vincula la longitud recorrida con el cambio angular.
-
----
-
-### La Velocidad Angular \(\omega\) como Constante del MCU
-
-Como la aceleración tangencial es nula, la rapidez lineal \(v\) es constante:
-
-\[ v = \frac{ds}{dt} = \frac{R \, d\theta}{dt} = R \frac{d\theta}{dt} \tag{6.20} \]
-
-La derivada \(d\theta/dt\) es la **velocidad angular**:
-
-\[ v = \omega R \tag{6.21} \]
-
-Como \(v\) y \(R\) son constantes en el MCU, se deduce que **\(\omega\) también es constante**.
-
----
-
-### Ecuación de Movimiento para la Posición Angular
-
-Dado que:
-
-\[ \omega = \frac{d\theta}{dt} \tag{6.22} \]
-
-y \(\omega\) es constante, podemos integrar:
-
-\[ d\theta = \omega \, dt \tag{6.23} \]
-
-Integrando entre \(t=0\) y \(t=t\), y \(\theta(0)=\theta_0\):
-
-\[ \int_{\theta_0}^{\theta(t)} d\theta = \int_0^t \omega \, dt \tag{6.24} \]
-\[ \theta(t) - \theta_0 = \omega t \tag{6.25} \]
-
-Por tanto, la **posición angular** en cualquier instante es:
-
-\[ \theta(t) = \omega t + \theta_0 \tag{6.26} \]
