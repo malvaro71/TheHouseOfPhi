@@ -1,6 +1,6 @@
 // vectorsPage.ts
 // ======================================================
-// ES Module for Vectors Page
+// Module for Vectors Page
 // ======================================================
 
 import { CartesianPlane } from '../core/CartesianPlane.ts';

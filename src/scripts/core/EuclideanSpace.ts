@@ -273,4 +273,57 @@ export class EuclideanSpace {
         // Append the path element to the provided SVG element
         this.svgElement.appendChild(pathElement);
     }
+
+    /**
+     * Plots a series of 3D points as a smooth curve (Cubic Bézier) within an SVG element.
+     * Uses neighboring points to calculate control points for a fluid transition.
+     *
+     * @param coordinates - An ordered list of 3D points.
+     * @param color - The color of the line stroke.
+     * @throws {Error} If the coordinate list contains fewer than two values.
+     */
+    drawSmoothPath(coordinates: Point3D[], color: string): void {
+        if (coordinates.length < 2) {
+            throw new Error('The coordinate list must contain at least two values.');
+        }
+
+        // Validate and transform all 3D points to 2D SVG coordinates
+        const svgPoints = coordinates.map(coord => {
+            this.validateCoordinates3D(coord);
+            return this.transformCoordinates(coord);
+        });
+
+        const pathElement = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        let pathData = `M ${svgPoints[0][0]},${svgPoints[0][1]}`;
+
+        if (svgPoints.length === 2) {
+            // If only two points, draw a straight line
+            pathData += ` L ${svgPoints[1][0]},${svgPoints[1][1]}`;
+        } else {
+            // Smoothing factor (tension). 0.15 - 0.2 is usually ideal for a natural look.
+            const f = 0.15;
+
+            for (let i = 0; i < svgPoints.length - 1; i++) {
+                const p0 = svgPoints[i === 0 ? i : i - 1];
+                const p1 = svgPoints[i];
+                const p2 = svgPoints[i + 1];
+                const p3 = svgPoints[i + 2 >= svgPoints.length ? i + 1 : i + 2];
+
+                // Calculate control points based on segments slopes
+                const cp1x = p1[0] + (p2[0] - p0[0]) * f;
+                const cp1y = p1[1] + (p2[1] - p0[1]) * f;
+
+                const cp2x = p2[0] - (p3[0] - p1[0]) * f;
+                const cp2y = p2[1] - (p3[1] - p1[1]) * f;
+
+                pathData += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p2[0]},${p2[1]}`;
+            }
+        }
+
+        pathElement.setAttribute("d", pathData);
+        pathElement.setAttribute("fill", "none");
+        pathElement.setAttribute("stroke", color);
+        pathElement.setAttribute("stroke-width", "1");
+        this.svgElement.appendChild(pathElement);
+    }
 }
